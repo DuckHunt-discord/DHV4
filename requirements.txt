@@ -1,0 +1,6 @@
+jishaku
+toml
+uvloop
+parsedatetime
+pytz
+discord.py[voice]

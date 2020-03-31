@@ -1,0 +1,23 @@
+[bot]
+prefixes = ["c!", "d!"]
+description = """An example bot designed to get started quickly with discord.py"""
+playing = "Edit mah config"
+commands_are_case_insensitive = true
+
+[auth.discord]
+# Your bot token. You can find it on the Bot page of the Developper portal
+token = ""
+
+[cogs]
+# Names of cogs to load. Usually cogs.file_name_without_py
+cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.background_loop', 'cogs.support_server_commands']
+
+# The name after cogs is the name of the class
+[cogs.SimpleCommands]
+hello_message = "Hello there!"
+
+[cogs.SupportServerCommands]
+# That's the ID of your server where the command will be ran
+support_server_id = 336642139381301249
+# ID of an empty channel that will be used as a status dashboard.
+status_channel_id = 694531384873713704
