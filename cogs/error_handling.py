@@ -68,11 +68,12 @@ class CommandErrorHandler(Cog):
                 if isinstance(exception, commands.PrivateMessageOnly):
                     message = f"❌ This command can only be used in a private message."
                 elif isinstance(exception, commands.NoPrivateMessage):
-                    message = f"❌ This command can not be used in a private message."
+                    message = f"❌ This command cannot be used in a private message."
                 elif isinstance(exception, commands.CheckAnyFailure):
                     message = f"❌ Multiple errors were encountered when running your command : {exception.errors}"
                 elif isinstance(exception, commands.NotOwner):
                     message = f"❌ You need to be the owner of the bot to run that."
+                # We could edit and change the message here, but the lib messages are fine and specify exactly what permissions are missing
                 elif isinstance(exception, commands.MissingPermissions):
                     message = f"❌ {str(exception)}"
                 elif isinstance(exception, commands.BotMissingPermissions):
@@ -114,7 +115,7 @@ class CommandErrorHandler(Cog):
                     message = "❌ This command is overused. Please try again in {seconds}s.".format(
                         seconds=round(exception.retry_after, 1))
             elif isinstance(exception, commands.errors.MaxConcurrencyReached):
-                message = f"❌ {str(exception)}" # The message from the lib is great.
+                message = f"❌ {str(exception)}"  # The message from the lib is great.
             else:
                 message = f"❌ {str(exception)} ({type(exception).__name__})"
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))

@@ -115,7 +115,7 @@ class SupportServerCommands(Cog):
         message += f"\n```\n\nAvg latency: {self.bot.latency}ms"
         if self.bot.is_ready():
             message += " (bot ready)"
-            
+
         await ctx.send(message)
 
 
