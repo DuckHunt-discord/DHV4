@@ -108,7 +108,7 @@ class CommandErrorHandler(Cog):
                 message = f"❌ There was an error running the specified command. Contact the bot admins."
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.errors.CommandOnCooldown):
-                if self.bot.is_owner(ctx.author):
+                if await self.bot.is_owner(ctx.author):
                     await ctx.reinvoke()
                     return
                 else:
