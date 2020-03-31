@@ -20,6 +20,7 @@ class MyBot(AutoShardedBot):
         super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
+        self.shards_ready = set()
 
     def reload_config(self):
         self.config = config.load_config()
@@ -39,6 +40,12 @@ class MyBot(AutoShardedBot):
         self.commands_used[ctx.command.name] += 1
         ctx.logger.info(f"{ctx.message.clean_content}")
 
+    async def on_shard_ready(self, shard_id):
+        self.shards_ready.add(shard_id)
+
+    async def on_disconnect(self):
+        self.shards_ready = set()
+
     async def on_ready(self):
         messages = ["-----------", f"The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
         total_members = len(self.users)
@@ -49,6 +56,9 @@ class MyBot(AutoShardedBot):
         messages.append("-----------")
         for message in messages:
             self.logger.info(message)
+
+        for message in messages:
+            print(message)
 
 
 async def get_prefix(bot: MyBot, message: discord.Message):

@@ -101,8 +101,22 @@ class SupportServerCommands(Cog):
 
         latencies = sorted(self.bot.latencies, key=lambda l: l[0])
         message = "```"
-        message += "\n".join(f"•\t Shard ID {latency[0]}: {round(latency[1], 2)}ms" for latency in latencies)
+
+        for shard, latency in latencies:
+            if shard == ctx.guild.shard_id:
+                message += "**"
+            message += f"•\t Shard ID {shard}: {round(latency, 2)}ms"
+            if shard in self.bot.shards_ready:
+                message += f" (ready)"
+            if shard == ctx.guild.shard_id:
+                message += "**"
+            message += "\n"
+
         message += f"\n```\n\nAvg latency: {self.bot.latency}ms"
+        if self.bot.is_ready():
+            message += " (bot ready)"
+            
         await ctx.send(message)
+
 
 setup = SupportServerCommands.setup
