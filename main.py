@@ -1,6 +1,5 @@
 import asyncio
 import uvloop
-from tortoise import run_async
 
 from utils.config import load_config
 from utils.bot_class import MyBot

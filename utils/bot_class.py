@@ -1,6 +1,5 @@
 import collections
 import datetime
-import traceback
 
 import discord
 from discord.ext.commands.bot import AutoShardedBot
@@ -21,7 +20,6 @@ class MyBot(AutoShardedBot):
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
-        self.db = None
 
     def reload_config(self):
         self.config = config.load_config()
