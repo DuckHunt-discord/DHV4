@@ -4,6 +4,7 @@ from discord.ext import commands
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.models import get_from_db
 
 
 class SimpleCommands(Cog):
@@ -24,6 +25,16 @@ class SimpleCommands(Cog):
         Say hi with a customisable hello message. This is used to demonstrate cogs config usage
         """
         await ctx.send(self.config()["hello_message"])
+
+    @commands.command()
+    async def how_many(self, ctx: MyContext):
+        """
+        Say hi with a customisable hello message. This is used to demonstrate cogs config usage
+        """
+        db_user = await get_from_db(ctx.author, as_user=True)
+        db_user.times_ran_example_command += 1
+        await db_user.save()
+        await ctx.send(f"You ran that command {db_user.times_ran_example_command} times already!")
 
 
 setup = SimpleCommands.setup

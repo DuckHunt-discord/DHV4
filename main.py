@@ -1,12 +1,17 @@
 import asyncio
 import uvloop
+from tortoise import run_async
 
 from utils.config import load_config
 from utils.bot_class import MyBot
+from utils.models import init_db_connection
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 config = load_config()
+
+if config['database']['enable']:
+    asyncio.ensure_future(init_db_connection(config['database']))
 
 bot = MyBot(description=config["bot"]["description"])
 

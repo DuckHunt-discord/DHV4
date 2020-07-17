@@ -14,13 +14,14 @@ from utils.logger import FakeLogger
 class MyBot(AutoShardedBot):
     def __init__(self, *args, **kwargs):
         self.logger = FakeLogger()
-        self.config:dict = {}
+        self.config: dict = {}
         self.reload_config()
         activity = discord.Game(self.config["bot"]["playing"])
         super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
+        self.db = None
 
     def reload_config(self):
         self.config = config.load_config()
