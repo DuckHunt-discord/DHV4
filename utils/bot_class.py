@@ -1,6 +1,9 @@
+import asyncio
 import collections
 import datetime
+from typing import Optional
 
+import aiohttp
 import discord
 from discord.ext.commands.bot import AutoShardedBot
 from discord.ext import commands
@@ -20,9 +23,24 @@ class MyBot(AutoShardedBot):
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
+        self._client_session: Optional[aiohttp.ClientSession] = None
+        asyncio.ensure_future(self.async_setup())
+
+    @property
+    def client_session(self):
+        if self._client_session:
+            return self._client_session
+        else:
+            raise RuntimeError("The bot haven't been setup yet. Ensure you call bot.async_setup asap.")
 
     def reload_config(self):
         self.config = config.load_config()
+
+    async def async_setup(self):
+        """
+        This funtcion is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
+        """
+        self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
 
     async def on_message(self, message):
         if not self.is_ready():
