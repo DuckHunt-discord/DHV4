@@ -39,5 +39,4 @@ class DatabaseCommands(Cog):
             await ctx.send(f"There is no specific prefix set for this guild.")
 
 
-
 setup = DatabaseCommands.setup
