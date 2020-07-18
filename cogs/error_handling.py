@@ -96,6 +96,16 @@ class CommandErrorHandler(Cog):
                         message = f"❌ You need to be in the {correct_guild.name} server (`{exception.must_be_in_guild_id}`)."
                     else:
                         message = f"❌ You need to be in a server with ID {exception.must_be_in_guild_id}."
+                elif isinstance(exception, checks.HavingPermission):
+                    message = f"❌ You have the `{exception.permission}` permission."
+                elif isinstance(exception, checks.MissingPermission):
+                    message = f"❌ You need the `{exception.permission}` permission."
+                elif isinstance(exception, checks.HavingPermissions):
+                    message = f"❌ You have {exception.required} or more of the following permissions : `{exception.permissions}`."
+                elif isinstance(exception, checks.MissingPermissions):
+                    message = f"❌ You need {exception.required} or more of the following permissions : `{exception.permissions}`."
+                elif isinstance(exception, checks.BotIgnore):
+                    return
                 else:
                     message = f"❌ Check error running this command : {str(exception)} ({type(exception).__name__})"
                     ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
@@ -108,7 +118,7 @@ class CommandErrorHandler(Cog):
                 message = f"❌ There was an error running the specified command. Contact the bot admins."
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.errors.CommandOnCooldown):
-                if await self.bot.is_owner(ctx.author):
+                if await self.bot.is_owner(ctx.author) or checks.has_permission("bot.bypass_cooldowns"):
                     await ctx.reinvoke()
                     return
                 else:
@@ -123,7 +133,8 @@ class CommandErrorHandler(Cog):
             message = f"❌ This should not have happened. A command raised an error that does not comes from CommandError. Please inform the owner."
             ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
-        await ctx.send(message, delete_after=DELETE_ERROR_MESSAGE_AFTER)
+        if message:
+            await ctx.send(message, delete_after=DELETE_ERROR_MESSAGE_AFTER)
 
 
 setup = CommandErrorHandler.setup

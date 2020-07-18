@@ -15,6 +15,16 @@ user = "mybot"
 password = "mybot"
 database = "mybot"
 
+[permissions.default]
+"server.ignored" = false
+"simple_commands.hello" = false
+"simple_commands.ping" = false
+
+[permissions.fixed]
+"bot.bypass_cooldowns" = false
+"bot.ignored"         = false
+"bot.administrator"    = false
+
 
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal
