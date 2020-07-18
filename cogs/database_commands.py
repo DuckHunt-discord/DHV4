@@ -33,7 +33,11 @@ class DatabaseCommands(Cog):
         if new_prefix:
             db_guild.prefix = new_prefix
         await db_guild.save()
-        await ctx.send(f"The server prefix is set to `{escape_mentions(escape_markdown(db_guild.prefix))}`.")
+        if db_guild.prefix:
+            await ctx.send(f"The server prefix is set to `{escape_mentions(escape_markdown(db_guild.prefix))}`.")
+        else:
+            await ctx.send(f"There is no specific prefix set for this guild.")
+
 
 
 setup = DatabaseCommands.setup
