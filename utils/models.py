@@ -10,7 +10,7 @@ class DiscordGuild(Model):
     id = fields.IntField(pk=True)
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
-    prefix = fields.CharField(20, default="")
+    prefix = fields.CharField(20, null=True)
 
     class Meta:
         table = "guilds"
