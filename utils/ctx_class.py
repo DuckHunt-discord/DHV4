@@ -50,3 +50,6 @@ class MyContext(commands.Context):
             asyncio.ensure_future(delete_messages_if_message_removed(self.bot, self.message, message))
 
         return message
+
+    def author_permissions(self):
+        return self.channel.permissions_for(self.author)

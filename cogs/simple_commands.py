@@ -26,15 +26,5 @@ class SimpleCommands(Cog):
         """
         await ctx.send(self.config()["hello_message"])
 
-    @commands.command()
-    async def how_many(self, ctx: MyContext):
-        """
-        Say hi with a customisable hello message. This is used to demonstrate cogs config usage
-        """
-        db_user = await get_from_db(ctx.author, as_user=True)
-        db_user.times_ran_example_command += 1
-        await db_user.save()
-        await ctx.send(f"You ran that command {db_user.times_ran_example_command} times already!")
-
 
 setup = SimpleCommands.setup

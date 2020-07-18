@@ -11,6 +11,7 @@ from discord.ext import commands
 from utils import config as config
 from utils.ctx_class import MyContext
 from utils.logger import FakeLogger
+from utils.models import get_from_db
 
 
 class MyBot(AutoShardedBot):
@@ -86,4 +87,9 @@ async def get_prefix(bot: MyBot, message: discord.Message):
         return commands.when_mentioned_or(*forced_prefixes, "")(bot, message)
 
     else:
+
+        if bot.config["database"]["enable"]:
+            db_guild = await get_from_db(message.guild)
+            forced_prefixes.append(db_guild.prefix)
+
         return commands.when_mentioned_or(*forced_prefixes)(bot, message)
