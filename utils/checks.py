@@ -39,3 +39,9 @@ def has_permission(permission):
                 return True
             else:
                 raise commands.MissingPermissions([getattr(discord.Permissions, permission_name)])
+    else:
+        def predicate(ctx):
+            return False
+
+    return commands.check(predicate)
+
