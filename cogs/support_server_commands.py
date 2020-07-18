@@ -86,21 +86,6 @@ class SupportServerCommands(Cog):
 
         latencies = sorted(self.bot.latencies, key=lambda l: l[0])
         message = "```"
-        message += "\n".join(f"•\t Shard ID {latency[0]}: {round(latency[1], 2)}ms" for latency in latencies)
-        message += f"\n```\n\nAvg latency: {self.bot.latency}ms"
-        await ctx.send(message)
-
-    @commands.command(aliases=["shard_status"])
-    async def shards(self, ctx: MyContext):
-        """
-        Check the status of every shard the bot is hosting.
-        """
-        if self.bot.shard_count == 1:
-            await ctx.send("The bot is not yet sharded.")
-            return
-
-        latencies = sorted(self.bot.latencies, key=lambda l: l[0])
-        message = "```"
 
         for shard, latency in latencies:
             if shard == ctx.guild.shard_id:
