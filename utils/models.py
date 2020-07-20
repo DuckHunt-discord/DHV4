@@ -1,6 +1,3 @@
-"""
-This example demonstrates most basic operations with single model
-"""
 import discord
 from tortoise import Tortoise, fields
 from tortoise.models import Model
@@ -104,9 +101,9 @@ async def get_from_db(discord_object, as_user=False):
 async def get_ctx_permissions(ctx: MyContext) -> dict:
     """
     Discover the permissions for a specified context. Permissions are evaluated first from the default permissions
-    specified in the config file, then by the guild config, and again from the member_specific permissions, then by the
-    fixed permissions as seen in the config file, and finally using user overrides set by the bot administrator in the
-    database.
+    specified in the config file, then by the guild config, the channel conifg, and again from the member_specific
+    permissions, then by the fixed permissions as seen in the config file, and finally using user overrides set by
+    the bot administrator in the database.
     :param ctx:
     :return:
     """
@@ -162,6 +159,5 @@ async def init_db_connection(config):
     }
 
     await Tortoise.init(tortoise_config)
-    models = Tortoise.describe_models()
 
     await Tortoise.generate_schemas()
