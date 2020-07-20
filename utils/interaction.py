@@ -9,6 +9,10 @@ if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
 
+def escape_everything(mystr: str):
+    return discord.utils.escape_mentions(discord.utils.escape_markdown(mystr))
+
+
 async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message, message_to_delete: discord.Message):
     def check(message: discord.RawMessageDeleteEvent):
         return message.message_id == watch_message.id
@@ -18,7 +22,7 @@ async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discor
     except asyncio.TimeoutError:
         pass
     else:
-        await message_to_delete.delete(delay=(random.randrange(1,10)/10))
+        await message_to_delete.delete(delay=(random.randrange(1, 10) / 10))
 
 
 async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwargs):

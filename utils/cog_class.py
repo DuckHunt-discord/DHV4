@@ -22,7 +22,9 @@ class Cog(commands.Cog):
     async def cog_check(self, ctx):
         command = ctx.command
         cog = command.cog
-
-        permission_name = f"{cog.qualified_name}.{command.name}"
-        my_check = server_admin_or_permission(permission_name).predicate
-        return super().cog_check(ctx) and await my_check(ctx)
+        if len(command.checks) == 0:
+            permission_name = f"{cog.qualified_name}.{command.name}"
+            my_check = server_admin_or_permission(permission_name).predicate
+            return super().cog_check(ctx) and await my_check(ctx)
+        else:
+            return super().cog_check(ctx)

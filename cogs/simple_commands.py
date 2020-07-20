@@ -2,10 +2,8 @@ import time
 
 from discord.ext import commands
 
-from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db
 
 
 class SimpleCommands(Cog):

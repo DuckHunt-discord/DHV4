@@ -26,12 +26,13 @@ database = "mybot"
 # For example, suppose the bot is checking for a.b.c, and the user has a.* allowed, a.b.* denied, and a.b.c allowed,
 # the permission is granted by a.b.c since it's the most specific of all.
 # WARNING : Ensure that all permissions names are lowercased.
-# Dont forget that each command have, by default and unless specified otherwise, a permission going by the form
+# Dont forget that each command have, by default and unless another check exists, a permission going by the form
 # CogName.command_name. As you might see in [permissions.fixed], they are by default evaluted to false. So if you want
 # to make them by-default accessible to anyone, you have to give that permission (or a lower wildcard) here.
 "server.ignored" = false
 "simplecommands.*" = true
 "databasecommands.*" = true
+"permissionscommands.*" = true
 
 [permissions.fixed]
 # We need to deny that one to everyone, because by default there is no permissions granted
@@ -53,7 +54,7 @@ token = ""
 
 [cogs]
 # Names of cogs to load. Usually cogs.file_name_without_py
-cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.background_loop', 'cogs.support_server_commands', 'cogs.database_commands']
+cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.background_loop', 'cogs.support_server_commands', 'cogs.database_commands', 'cogs.permissions_commands']
 
 # The name after cogs is the name of the class
 [cogs.SimpleCommands]
@@ -61,6 +62,6 @@ hello_message = "Hello there!"
 
 [cogs.SupportServerCommands]
 # That's the ID of your server where the command will be ran
-support_server_id = 336642139381301249
+support_server_id = 734810932529856652
 # ID of an empty channel that will be used as a status dashboard.
-status_channel_id = 694531384873713704
+status_channel_id = 734879974842171474
