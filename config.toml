@@ -26,6 +26,9 @@ database = "mybot"
 # For example, suppose the bot is checking for a.b.c, and the user has a.* allowed, a.b.* denied, and a.b.c allowed,
 # the permission is granted by a.b.c since it's the most specific of all.
 # WARNING : Ensure that all permissions names are lowercased.
+# Dont forget that each command have, by default and unless specified otherwise, a permission going by the form
+# CogName.command_name. As you might see in [permissions.fixed], they are by default evaluted to false. So if you want
+# to make them by-default accessible to anyone, you have to give that permission (or a lower wildcard) here.
 "server.ignored" = false
 "simplecommands.*" = true
 "databasecommands.*" = true
