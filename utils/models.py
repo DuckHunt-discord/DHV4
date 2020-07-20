@@ -81,7 +81,7 @@ async def get_from_db(discord_object, as_user=False):
     elif isinstance(discord_object, discord.abc.GuildChannel):
         db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
         if not db_obj:
-            db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=get_from_db(discord_object.guild))
+            db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=await get_from_db(discord_object.guild))
             await db_obj.save()
         return db_obj
     elif isinstance(discord_object, discord.Member) and not as_user:
