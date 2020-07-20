@@ -2,7 +2,6 @@
 This example demonstrates most basic operations with single model
 """
 import discord
-from discord.ext import commands
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
