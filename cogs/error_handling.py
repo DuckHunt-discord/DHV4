@@ -56,7 +56,7 @@ class CommandErrorHandler(Cog):
                     else:  # Should not trigger, just in case some more errors are added.
                         message = f"❌ The way you are invoking this command is confusing me. The correct syntax would be `{command_invoke_help}`."
                 elif isinstance(exception, commands.BadArgument):
-                    message = f"❌ An argument passed was incorrect. `{exception.message}`" \
+                    message = f"❌ An argument passed was incorrect. `{exception}`" \
                               f"Please check that you are using the correct syntax: `{command_invoke_help}`."
                 elif isinstance(exception, commands.BadUnionArgument):
                     message = f"❌ {str(exception)}. The correct syntax would be `{command_invoke_help}`."
