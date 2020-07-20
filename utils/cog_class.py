@@ -2,6 +2,7 @@ import toml
 from discord.ext import commands
 
 from utils.bot_class import MyBot
+from utils.checks import server_admin_or_permission
 
 
 class Cog(commands.Cog):
@@ -18,3 +19,10 @@ class Cog(commands.Cog):
         cog_config = config["cogs"].get(self.qualified_name, {})
         return cog_config
 
+    async def cog_check(self, ctx):
+        command = ctx.command
+        cog = command.cog
+
+        permission_name = f"{cog.qualified_name}.{command.name}"
+        my_check = server_admin_or_permission(permission_name).predicate
+        return super().cog_check(ctx) and await my_check(ctx)

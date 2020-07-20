@@ -16,11 +16,29 @@ password = "mybot"
 database = "mybot"
 
 [permissions.default]
+# Permissions work on a inheritance basis
+# First, default permissions here are applied. They usually deny almost everything but the base functions of the bot.
+# Then, Guild permissions are applied and remplace some default permisions. After that, special member permissions are
+# applied. Finally, Fixed permissions below are applied to prevent giving too much rights (like bot.administrator) in a
+# server or a memeber config. Then, if there are some, user permissions are applied and are allowed to override anything.
+# They are set by the bot admins, in the db.
+# Once the permissions are calculated, they are applied from precise to imprecise (wildcards).
+# For example, suppose the bot is checking for a.b.c, and the user has a.* allowed, a.b.* denied, and a.b.c allowed,
+# the permission is granted by a.b.c since it's the most specific of all.
+# WARNING : Ensure that all permissions names are lowercased.
 "server.ignored" = false
-"simple_commands.hello" = false
-"simple_commands.ping" = false
+"simplecommands.*" = true
+"databasecommands.*" = true
 
 [permissions.fixed]
+# We need to deny that one to everyone, because by default there is no permissions granted
+"*" = false
+
+# Bot permissions are special and must not be overridden
+# "Just in case"
+"bot.*" = false
+
+# These need to be overriden "per-user" in the database.
 "bot.bypass_cooldowns" = false
 "bot.ignored"         = false
 "bot.administrator"    = false

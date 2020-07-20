@@ -31,6 +31,7 @@ class DiscordChannel(Model):
     guild = fields.ForeignKeyField('models.DiscordGuild')
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
+    permissions = fields.JSONField(default={})
 
     class Meta:
         table = "channels"
@@ -112,16 +113,21 @@ async def get_ctx_permissions(ctx: MyContext) -> dict:
     """
     if ctx.guild:
         db_member: DiscordMember = await get_from_db(ctx.author)
+        db_channel: DiscordChannel = await get_from_db(ctx.channel)
         db_user: DiscordUser = db_member.user
         db_guild: DiscordGuild = db_member.guild
         guild_permissions = db_guild.permissions
+        channel_permissions = db_channel.permissions
         member_permissions = db_member.permissions
         user_permissions = db_user.permissions
         subguild_permissions = {}
+        subchannel_permissions = {}
         for role in ctx.author.roles:
             subguild_permissions = {**subguild_permissions, **guild_permissions.get(role.id, {})}
+            subchannel_permissions = {**subchannel_permissions, **channel_permissions.get(role.id, {})}
     else:
         subguild_permissions = {}
+        subchannel_permissions = {}
         member_permissions = {}
         db_user: DiscordUser = await get_from_db(ctx.author, as_user=True)
         user_permissions = db_user.permissions
@@ -129,7 +135,7 @@ async def get_ctx_permissions(ctx: MyContext) -> dict:
     default_permissions = ctx.bot.config['permissions']['default']
     fixed_permissions = ctx.bot.config['permissions']['fixed']
 
-    permissions = {**default_permissions, **subguild_permissions, **member_permissions, **fixed_permissions, **user_permissions}
+    permissions = {**default_permissions, **subguild_permissions, **subchannel_permissions, **member_permissions, **fixed_permissions, **user_permissions}
     return permissions
 
 

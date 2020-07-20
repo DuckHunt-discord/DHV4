@@ -10,7 +10,6 @@ from utils.models import get_from_db
 
 class SimpleCommands(Cog):
     @commands.command()
-    @checks.has_permission("simple_commands.ping")
     async def ping(self, ctx: MyContext):
         """
         Check that the bot is online, give the latency between the bot and discord servers.
@@ -22,7 +21,6 @@ class SimpleCommands(Cog):
         await ctx.send("Pong. — Time taken: {}ms".format(time_delta))  # send a message telling the user the calculated ping time
 
     @commands.command()
-    @checks.server_admin_or_permission("simple_commands.hello")
     async def say_hello(self, ctx: MyContext):
         """
         Say hi with a customisable hello message. This is used to demonstrate cogs config usage

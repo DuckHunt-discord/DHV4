@@ -1,8 +1,9 @@
-import discord
 from discord.ext import commands
 from typing import List
 
 from utils.models import get_ctx_permissions
+from utils.permissions import has_permission as permissions_has_permissions
+from utils.permissions import is_ignored
 
 
 class NotInServer(commands.CheckFailure):
@@ -54,79 +55,24 @@ def is_in_server(must_be_in_guild_id):
             raise NotInServer(must_be_in_guild_id=must_be_in_guild_id)
         return True
 
-        # a function that takes ctx as it's only arg, that returns a truethy or falsey value, or raises an exception
-
     return commands.check(predicate)
-
-
-def is_not_ignored():
-    return has_permission('', negate=True)
-
-
-def _has_discord_permission(ctx, permission_name):
-    permissions: discord.Permissions = ctx.author_permissions()
-
-    return permissions.is_superset(discord.Permissions(**{permission_name: True}))
-
-
-async def _has_permission(ctx, permission, negate=False, permissions=None):
-    if permissions is None:
-        permissions = await get_ctx_permissions(ctx)
-
-    parsed_permission = permission.lower().split(".")
-
-    if parsed_permission[0] == "discord":
-        # Special permissions first
-        permission_name = parsed_permission[1]
-        if _has_discord_permission(ctx, permission_name):
-            if negate:
-                return HavingPermission(permission_name)
-            else:
-                return True
-        else:
-            if negate:
-                return True
-            else:
-                raise MissingPermission(permission_name)
-    else:
-
-        permission_value = permissions.get(permission, False)
-        if permissions["bot.administrator"]:
-            if negate:
-                return HavingPermission(permission)
-            else:
-                return True
-        elif permissions["server.ignored"]:
-            raise BotIgnore()
-        elif permissions['bot.ignored']:
-            raise BotIgnore()
-        elif permission_value:
-            if negate:
-                raise HavingPermission(permission)
-            else:
-                return True
-        else:
-            if negate:
-                return True
-            else:
-                raise MissingPermission(permission)
 
 
 def has_any_permission(permissions: List[str], negate=False, required=1):
     async def predictate(ctx):
         user_permissions = await get_ctx_permissions(ctx)
+        if await is_ignored(ctx, permissions=user_permissions):
+            raise BotIgnore()
+
         in_error = []
         ok = []
 
         for permission in permissions:
-            try:
-                await _has_permission(ctx, permission, negate=negate, permissions=user_permissions)
-            except (HavingPermission, MissingPermission, commands.MissingPermissions):
-                in_error.append(permission)
-            except BotIgnore:
-                raise
-            else:
+            permissions_value = await permissions_has_permissions(ctx, permission, negate=negate, permissions=user_permissions)
+            if permissions_value:
                 ok.append(permission)
+            else:
+                in_error.append(permission)
 
         if len(ok) >= required:
             return True
@@ -145,6 +91,17 @@ def server_admin_or_permission(permission: str):
 
 def has_permission(permission: str, negate=False):
     async def predictate(ctx):
-        return await _has_permission(ctx, permission, negate=negate)
+        user_permissions = await get_ctx_permissions(ctx)
+
+        if await is_ignored(ctx, permissions=user_permissions):
+            raise BotIgnore()
+
+        ret = await permissions_has_permissions(ctx, permission, negate=negate)
+        if ret and negate:
+            raise HavingPermission(permission)
+        elif not ret and not negate:
+            raise MissingPermission(permission)
+        else:
+            return True
 
     return commands.check(predictate)
