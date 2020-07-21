@@ -119,8 +119,8 @@ async def get_ctx_permissions(ctx: MyContext) -> dict:
         subguild_permissions = {}
         subchannel_permissions = {}
         for role in ctx.author.roles:
-            subguild_permissions = {**subguild_permissions, **guild_permissions.get(role.id, {})}
-            subchannel_permissions = {**subchannel_permissions, **channel_permissions.get(role.id, {})}
+            subguild_permissions = {**subguild_permissions, **guild_permissions.get(str(role.id), {})}
+            subchannel_permissions = {**subchannel_permissions, **channel_permissions.get(str(role.id), {})}
     else:
         subguild_permissions = {}
         subchannel_permissions = {}

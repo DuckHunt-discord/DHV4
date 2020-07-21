@@ -8,7 +8,17 @@ from utils import permissions, checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
-from utils.models import get_from_db
+from utils.models import get_from_db, DiscordMember, DiscordChannel, DiscordUser, DiscordGuild
+from utils.permissions import _recursive_permission_check
+
+
+def get_sign(value):
+    if value is True:
+        return "+"
+    elif value is False:
+        return "-"
+    else:
+        return "="
 
 
 class PermissionsCommands(Cog):
@@ -25,15 +35,65 @@ class PermissionsCommands(Cog):
         """
 
     @view.command(name="me")
-    async def view_me(self, ctx: MyContext, permission: str, negate: bool = False, administrator: bool = True):
+    async def view_me(self, ctx: MyContext, permission: str, negate: bool = False, administrator: bool = True, show_none: bool = False):
         """
         Check a permission for yourself
         """
+
         value = await permissions.has_permission(ctx, permission, negate=negate, administrator=administrator)
         if value:
             await ctx.send("😃 You have that permission.")
         else:
             await ctx.send("☹️ You don't have that permission.")
+
+        if ctx.guild:
+            message = [f"Details of permissions hierarchy", "```diff"]
+            parsed_permission = permission.split(".")
+
+            default_permissions = ctx.bot.config['permissions']['default']
+
+            value, by = _recursive_permission_check(parsed_permission, default_permissions)
+            message.append(f"{get_sign(value)} Default (from {get_sign(value)}{by})")
+
+            db_member: DiscordMember = await get_from_db(ctx.author)
+            db_channel: DiscordChannel = await get_from_db(ctx.channel)
+            db_user: DiscordUser = db_member.user
+            db_guild: DiscordGuild = db_member.guild
+            guild_permissions = db_guild.permissions
+
+            for role in ctx.author.roles:
+                role_permissions = guild_permissions.get(str(role.id), {})
+                if len(role_permissions):
+                    value, by = _recursive_permission_check(parsed_permission, role_permissions)
+                    if value in [True, False] or show_none:
+                        message.append(f"{get_sign(value)} Guild role {escape_everything(role.name)} (from {get_sign(value)}{by})")
+
+            channel_permissions = db_channel.permissions
+            for role in ctx.author.roles:
+                role_permissions = channel_permissions.get(str(role.id), {})
+                if len(role_permissions):
+                    value, by = _recursive_permission_check(parsed_permission, role_permissions)
+                    if value in [True, False] or show_none:
+                        message.append(f"{get_sign(value)} Channel role {escape_everything(role.name)} (from {get_sign(value)}{by})")
+
+            member_permissions = db_member.permissions
+            value, by = _recursive_permission_check(parsed_permission, member_permissions)
+            if value in [True, False] or show_none:
+                message.append(f"{get_sign(value)} Member (from {get_sign(value)}{by})")
+
+            fixed_permissions = ctx.bot.config['permissions']['fixed']
+            value, by = _recursive_permission_check(parsed_permission, fixed_permissions)
+            if value in [True, False] or show_none:
+                message.append(f"{get_sign(value)} Fixed (from {get_sign(value)}{by})")
+
+            user_permissions = db_user.permissions
+            value, by = _recursive_permission_check(parsed_permission, user_permissions)
+            if value in [True, False] or show_none:
+                message.append(f"{get_sign(value)} User (from {get_sign(value)}{by})")
+
+            message.append("```")
+
+            await ctx.send("\n".join(message))
 
     @view.command(name="guild")
     @commands.cooldown(2, 30, commands.BucketType.guild)

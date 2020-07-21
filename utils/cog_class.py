@@ -25,6 +25,8 @@ class Cog(commands.Cog):
         if len(command.checks) == 0:
             permission_name = f"{cog.qualified_name}.{command.name}"
             my_check = server_admin_or_permission(permission_name).predicate
-            return super().cog_check(ctx) and await my_check(ctx)
+            ret = super().cog_check(ctx)
+            ret = ret and await my_check(ctx)
+            return ret
         else:
             return super().cog_check(ctx)

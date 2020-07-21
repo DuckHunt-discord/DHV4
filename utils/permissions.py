@@ -23,13 +23,13 @@ async def is_ignored(ctx, permissions=None):
 
 def _recursive_permission_check(parsed_permission, permissions):
     permission = ".".join(parsed_permission)
-
-    if permissions.get(permission, None):  # Special case for that specific permission, since there is no wildcard for it
-        return True
+    value = permissions.get(permission, None)
+    if value in [True, False]:  # Special case for that specific permission, since there is no wildcard for it
+        return value, permission
 
     permission_len = len(parsed_permission)
     if permission_len <= 1:
-        return False
+        return False, None
     else:
         for depth in range(permission_len)[::-1]:
             permission_part = parsed_permission[:depth]
@@ -38,9 +38,10 @@ def _recursive_permission_check(parsed_permission, permissions):
                 permission = "*"
             value = permissions.get(permission, None)
             if value:
-                return True
+                return True, permission
             elif value is False:
-                return False
+                return False, permission
+    return None, None
 
 
 async def has_permission(ctx, permission, negate=False, administrator=True, permissions=None):
@@ -57,9 +58,10 @@ async def has_permission(ctx, permission, negate=False, administrator=True, perm
         else:
             return negate
     else:
+        value, by = _recursive_permission_check(parsed_permission, permissions)
         if permissions["bot.administrator"] and administrator:
             return not negate
-        elif _recursive_permission_check(parsed_permission, permissions):
+        elif value:
             return not negate
         else:
             return negate
