@@ -1,8 +1,10 @@
 import discord
+import typing
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
-from utils.ctx_class import MyContext
+if typing.TYPE_CHECKING:
+    from utils.ctx_class import MyContext
 
 
 # TODO : https://github.com/long2ice/aerich
@@ -100,7 +102,7 @@ async def get_from_db(discord_object, as_user=False):
         return db_obj
 
 
-async def get_ctx_permissions(ctx: MyContext) -> dict:
+async def get_ctx_permissions(ctx: 'MyContext') -> dict:
     """
     Discover the permissions for a specified context. Permissions are evaluated first from the default permissions
     specified in the config file, then by the guild config, the channel conifg, and again from the member_specific
