@@ -19,11 +19,11 @@ class SimpleCommands(Cog):
         await ctx.send("Pong. — Time taken: {}ms".format(time_delta))  # send a message telling the user the calculated ping time
 
     @commands.command()
-    async def say_hello(self, ctx: MyContext):
+    async def wiki(self, ctx: MyContext):
         """
         Say hi with a customisable hello message. This is used to demonstrate cogs config usage
         """
-        await ctx.send(self.config()["hello_message"])
+        await ctx.send(self.config()["wiki_url"])
 
 
 setup = SimpleCommands.setup

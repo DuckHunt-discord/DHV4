@@ -118,7 +118,7 @@ cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.
 
 # The name after cogs is the name of the class
 [cogs.SimpleCommands]
-hello_message = "Hello there!"
+wiki_url = "https://docs.duckhunt.me"
 
 [cogs.SupportServerCommands]
 # That's the ID of your server where the command will be ran
