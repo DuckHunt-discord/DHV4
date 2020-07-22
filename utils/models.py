@@ -5,6 +5,8 @@ from tortoise.models import Model
 from utils.ctx_class import MyContext
 
 
+# TODO : https://github.com/long2ice/aerich
+
 class DiscordGuild(Model):
     id = fields.IntField(pk=True)
     discord_id = fields.BigIntField(index=True)
@@ -152,7 +154,7 @@ async def init_db_connection(config):
         },
         'apps': {
             'models': {
-                'models': ["utils.models"],
+                'models': ["utils.models", "aerich.models"],
                 'default_connection': 'default',
             }
         }

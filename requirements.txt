@@ -4,7 +4,8 @@ uvloop
 parsedatetime
 pytz
 discord.py[voice]
-tortoise-orm
+tortoise-orm[accel]
+aerich
 asyncpg
 python-rapidjson
 ciso8601
