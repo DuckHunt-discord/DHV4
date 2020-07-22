@@ -4,6 +4,7 @@ import time
 from typing import Optional
 
 import discord
+from discord.utils import escape_markdown
 
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
@@ -27,7 +28,7 @@ class Duck:
         self.channel = channel
         self._db_channel: Optional[DiscordChannel] = None
 
-        self._webhook_parameters = random.choice(self.config['webhooks_parameters'][self.category])
+        self._webhook_parameters = random.choice(self.config['webhooks_parameters'][self.category]).copy()
         self._webhook_parameters['avatar_url'] = self.config['images'][self._webhook_parameters['avatar_url']]
         self.spawned_at: Optional[int] = None
         self.target_lock = asyncio.Lock()
@@ -61,12 +62,19 @@ class Duck:
         return None
 
     async def get_spawn_message(self) -> str:
-        traces = self.config['ascii']['traces']
-        faces = self.config['ascii']['faces']
-        shouts = self.config['ascii']['shouts']
+        db_channel = await self.get_db_channel()
 
-        trace = random.choice(traces)
-        face = random.choice(faces)
+        traces = self.config['ascii'][self.category]['traces']
+
+        if not db_channel.use_emojis:
+            faces = self.config['ascii'][self.category]['faces']
+        else:
+            faces = self.config['ascii'][self.category]['emojis']
+
+        shouts = self.config['ascii'][self.category]['shouts']
+
+        trace = escape_markdown(random.choice(traces))
+        face = escape_markdown(random.choice(faces))
         shout = random.choice(shouts)
 
         return anti_bot_zero_width(f"{trace} {face} {shout}")
@@ -74,9 +82,13 @@ class Duck:
     async def get_webhook_parameters(self) -> dict:
         return self._webhook_parameters
 
+    async def set_lives(self):
+        self._lives = 1
+
     async def get_lives(self):
         if not self._lives:
-            self._lives = 1
+            await self.set_lives()
+            self.lives_left = self._lives
         return self._lives
 
     async def get_time_left(self) -> float:
@@ -92,7 +104,7 @@ class Duck:
         webhook = await get_webhook_if_possible(bot, channel)
 
         await self.get_lives()
-        self.lives_left = self.lives
+
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
@@ -127,12 +139,9 @@ class SuperDuck(Duck):
 
         self._lives = lives
 
-    async def get_lives(self):
-        if not self._lives:
-            db_channel = await self.get_db_channel()
-            self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
-
-        return self._lives
+    async def set_lives(self):
+        db_channel = await self.get_db_channel()
+        self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
 
 
 

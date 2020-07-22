@@ -35,6 +35,9 @@ class DiscordChannel(Model):
 
     webhook_url = fields.TextField(null=True)
 
+    # Generic settings
+    use_emojis = fields.BooleanField(default=True)  # Seconds
+
     # Duck settings
     ducks_time_to_live = fields.IntField(default=660)  # Seconds
     super_ducks_min_life = fields.IntField(default=2)

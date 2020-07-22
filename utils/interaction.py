@@ -69,15 +69,15 @@ def anti_bot_zero_width(mystr: str):
 
     out = []
     for char in mystr:
-        if random.randint(100) <= 15:
-            out.append(random.choice(addings))
         if char in replacements.keys():
-            if random.randint(100) <= 50:
+            if random.randint(1, 100) <= 50:
                 out.append(random.choice(replacements[char]))
             else:
                 out.append(char)
         else:
             out.append(char)
+        if random.randint(1, 100) <= 15 and char not in ["\\"]:
+            out.append(random.choice(addings))
 
     return ''.join(out)
 
