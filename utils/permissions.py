@@ -65,3 +65,15 @@ async def has_permission(ctx, permission, negate=False, administrator=True, perm
             return not negate
         else:
             return negate
+
+
+async def has_server_administrator_or_permission(ctx, permission: str, negate=False, administrator=True, permissions=None):
+    if permissions is None:
+        permissions = await get_ctx_permissions(ctx)
+
+    admin_permissions = ["discord.administrator", "server.administrator"] + [permission]
+
+    for permission in admin_permissions:
+        if has_permission(ctx, permission, negate, administrator, permissions):
+            return True
+    return False
