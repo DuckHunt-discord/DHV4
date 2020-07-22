@@ -74,10 +74,14 @@ class Duck:
         shouts = self.config['ascii'][self.category]['shouts']
 
         trace = escape_markdown(random.choice(traces))
-        face = escape_markdown(random.choice(faces))
+        if not db_channel.use_emojis:
+            face = escape_markdown(random.choice(faces))
+        else:
+            face = random.choice(faces)
+
         shout = random.choice(shouts)
 
-        return anti_bot_zero_width(f"{trace} {face} {shout}")
+        return f"{anti_bot_zero_width(trace)} {face} {anti_bot_zero_width(shout)}"
 
     async def get_webhook_parameters(self) -> dict:
         return self._webhook_parameters
