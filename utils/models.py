@@ -35,6 +35,11 @@ class DiscordChannel(Model):
 
     webhook_url = fields.TextField(null=True)
 
+    # Duck settings
+    ducks_time_to_live = fields.IntField(default=660)  # Seconds
+    super_ducks_min_life = fields.IntField(default=2)
+    super_ducks_max_life = fields.IntField(default=7)
+
     class Meta:
         table = "channels"
 
@@ -62,6 +67,28 @@ class DiscordUser(Model):
 
     def __repr__(self):
         return f"<User name={self.name}#{self.discriminator}>"
+
+
+class Player(Model):
+    id = fields.IntField(pk=True)
+    channel = fields.ForeignKeyField('models.DiscordChannel')
+    member = fields.ForeignKeyField('models.DiscordMember')
+
+    # Generic stats
+    experience = fields.BigIntField(default=0)
+
+    # Killed ducks stats
+    killed_normal_ducks = fields.IntField(default=0)
+    killed_super_ducks = fields.IntField(default=0)
+
+    async def get_bonus_experience(self, given_experience):
+        return 0
+
+    class Meta:
+        table = "players"
+
+    def __repr__(self):
+        return f"<Player member={self.member} channel={self.channel}>"
 
 
 class DiscordMember(Model):
@@ -102,6 +129,14 @@ async def get_from_db(discord_object, as_user=False):
             db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
             await db_obj.save()
         return db_obj
+
+
+async def get_player(member: discord.Member, channel: discord.TextChannel):
+    db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).first()
+    if not db_obj:
+        db_obj = Player(channel=await get_from_db(channel.guild), member=await get_from_db(member, as_user=False))
+        await db_obj.save()
+    return db_obj
 
 
 async def get_ctx_permissions(ctx: 'MyContext') -> dict:
