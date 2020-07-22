@@ -27,12 +27,16 @@ class PermissionsCommands(Cog):
         """
         Commands to view and edit permissions
         """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
 
     @permissions.group()
     async def view(self, ctx: MyContext):
         """
         Do you have that permission you'd so much like to have ?
         """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
 
     @view.command(name="me")
     async def view_me(self, ctx: MyContext, permission: str, negate: bool = False, administrator: bool = True, show_none: bool = False):
@@ -178,6 +182,8 @@ class PermissionsCommands(Cog):
         """
         Set a permission in a guild, a channel, for a member...
         """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
 
     @set.command(name="user")
     @checks.has_permission("bot.administrator")
