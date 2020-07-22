@@ -64,14 +64,14 @@ class Duck:
     async def get_spawn_message(self) -> str:
         db_channel = await self.get_db_channel()
 
-        traces = self.config['ascii'][self.category]['traces']
+        traces = self.config['ascii'][self.ascii_art]['traces']
 
         if not db_channel.use_emojis:
-            faces = self.config['ascii'][self.category]['faces']
+            faces = self.config['ascii'][self.ascii_art]['faces']
         else:
-            faces = self.config['ascii'][self.category]['emojis']
+            faces = self.config['ascii'][self.ascii_art]['emojis']
 
-        shouts = self.config['ascii'][self.category]['shouts']
+        shouts = self.config['ascii'][self.ascii_art]['shouts']
 
         trace = escape_markdown(random.choice(traces))
         if not db_channel.use_emojis:
