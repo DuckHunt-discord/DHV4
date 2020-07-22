@@ -5,6 +5,8 @@ import typing
 from typing import List
 import random
 
+from utils.models import get_from_db, DiscordChannel
+
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
@@ -35,3 +37,20 @@ async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwa
         check = lambda m: check(m) and check_pinned(m)
 
     return await channel.purge(check=check, **kwargs)
+
+
+async def get_webhook_if_possible(bot: 'MyBot', channel: discord.TextChannel):
+    db_channel: DiscordChannel = await get_from_db(channel)
+
+    if not db_channel.webhook_url:
+        try:
+            webhook = await channel.create_webhook(name="DuckHunt", reason="Better Ducks")
+            db_channel.webhook_url = webhook.url
+            await db_channel.save()
+        except discord.Forbidden:
+            return None
+
+    else:
+        webhook = discord.Webhook.from_url(db_channel.webhook_url, adapter=discord.AsyncWebhookAdapter(bot.client_session))
+
+    return webhook

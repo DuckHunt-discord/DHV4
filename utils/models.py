@@ -31,6 +31,8 @@ class DiscordChannel(Model):
     name = fields.TextField()
     permissions = fields.JSONField(default={})
 
+    webhook_url = fields.TextField(null=True)
+
     class Meta:
         table = "channels"
 
