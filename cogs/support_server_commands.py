@@ -25,8 +25,9 @@ class SupportServerCommands(Cog):
         self.background_loop.cancel()
 
     async def cog_check(self, ctx):
-        predicate = checks.is_in_server(self.config()["support_server_id"]).predicate
-        return await super().cog_check(ctx) and await predicate
+        ret = await super().cog_check(ctx)
+        ret = ret and ctx.guild.id == self.config()["support_server_id"]
+        return ret
 
     @tasks.loop(minutes=15)
     async def background_loop(self):
