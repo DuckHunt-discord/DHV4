@@ -1,10 +1,11 @@
 import asyncio
 import collections
 import datetime
-from typing import Optional
+from typing import Optional, List
 
 import aiohttp
 import discord
+import typing
 from discord.ext.commands.bot import AutoShardedBot
 from discord.ext import commands
 
@@ -12,6 +13,10 @@ from utils import config as config
 from utils.ctx_class import MyContext
 from utils.logger import FakeLogger
 from utils.models import get_from_db
+
+if typing.TYPE_CHECKING:
+    # Prevent circular imports
+    from utils.ducks import Duck
 
 
 class MyBot(AutoShardedBot):
@@ -25,7 +30,7 @@ class MyBot(AutoShardedBot):
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
         self._client_session: Optional[aiohttp.ClientSession] = None
-        self.ducks_spawned: collections.defaultdict = collections.defaultdict(list)
+        self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
         asyncio.ensure_future(self.async_setup())
 
     @property
