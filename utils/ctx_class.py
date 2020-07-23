@@ -51,5 +51,9 @@ class MyContext(commands.Context):
 
         return message
 
+    def ducks(self):
+        self.bot: 'MyBot'
+        return self.bot.ducks_spawned[self.channel]
+
     def author_permissions(self):
         return self.channel.permissions_for(self.author)
