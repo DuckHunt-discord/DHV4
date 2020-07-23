@@ -25,6 +25,7 @@ class MyBot(AutoShardedBot):
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
         self._client_session: Optional[aiohttp.ClientSession] = None
+        self.ducks_spawned: collections.defaultdict = collections.defaultdict(list)
         asyncio.ensure_future(self.async_setup())
 
     @property
