@@ -1,5 +1,5 @@
 [bot]
-prefixes = ["c!", "d!"]
+prefixes = ["c!", "d!", "C!", "D!"]
 description = """Discord Version 4 of DuckHunt, the popular game bot"""
 playing = "Ducks are everywhere"
 commands_are_case_insensitive = true
