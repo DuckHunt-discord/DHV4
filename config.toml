@@ -33,6 +33,8 @@ database = "mybot"
 "simplecommands.*" = true
 "databasecommands.*" = true
 "permissionscommands.*" = true
+"duckshuntingcommands.*" = true
+"ducksspawningcommands.*" = false
 
 [permissions.fixed]
 # We need to deny that one to everyone, because by default there is no permissions granted
@@ -114,7 +116,16 @@ token = ""
 
 [cogs]
 # Names of cogs to load. Usually cogs.file_name_without_py
-cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.background_loop', 'cogs.support_server_commands', 'cogs.database_commands', 'cogs.permissions_commands', 'cogs.ducks_spawning_commands']
+cogs_to_load = ['jishaku',
+                'cogs.error_handling',
+                'cogs.simple_commands',
+                'cogs.background_loop',
+                'cogs.support_server_commands',
+                'cogs.database_commands',
+                'cogs.permissions_commands',
+                'cogs.ducks_spawning_commands',
+                'cogs.ducks_hunting_commands',
+                ]
 
 # The name after cogs is the name of the class
 [cogs.SimpleCommands]

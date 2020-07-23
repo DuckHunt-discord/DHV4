@@ -38,10 +38,12 @@ class Duck:
         self._lives: Optional[int] = None
         self.lives_left: Optional[int] = self._lives
 
-    async def target(self, member: discord.Member):
+    async def target(self, member: discord.Member = None):
         await self.target_lock.acquire()
-        self.target_lock_by = member
-        self.db_target_lock_by = await get_player(member, self.channel)
+        if member:
+            self.target_lock_by = member
+            self.db_target_lock_by = await get_player(member, self.channel)
+
         await self.get_db_channel()
 
     async def release(self):
@@ -86,14 +88,24 @@ class Duck:
     async def get_webhook_parameters(self) -> dict:
         return self._webhook_parameters
 
-    async def set_lives(self):
+    async def initial_set_lives(self):
         self._lives = 1
 
     async def get_lives(self):
         if not self._lives:
-            await self.set_lives()
+            await self.initial_set_lives()
             self.lives_left = self._lives
         return self._lives
+
+    async def is_killed(self):
+        return self.lives_left <= 0
+
+    async def damage(self, lives):
+        """
+        This function remove lives from a duck and returns True if the duck was killed, False otherwise
+        """
+        self.lives_left = self.lives_left - lives
+        return await self.is_killed()
 
     async def get_time_left(self) -> float:
         db_channel = await self.get_db_channel()
@@ -101,20 +113,24 @@ class Duck:
         should_disappear_after = db_channel.ducks_time_to_live
         return should_disappear_after - self.spawned_for
 
-    async def spawn(self):
-        bot = self.bot
-        channel = self.channel
-        message = await self.get_spawn_message()
-        webhook = await get_webhook_if_possible(bot, channel)
-
-        await self.get_lives()
-
+    async def send(self, message: str):
+        webhook = await get_webhook_if_possible(self.bot, self.channel)
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
             await webhook.send(message, **this_webhook_parameters)
         else:
-            await channel.send(message)
+            await self.channel.send(message)
+
+    async def spawn(self):
+        total_lives = await self.get_lives()
+
+        bot = self.bot
+        message = await self.get_spawn_message()
+
+        await self.send(message)
+
+        bot.ducks_spawned[self.channel].append(self)
 
         self.spawned_at = time.time()
 
@@ -122,13 +138,43 @@ class Duck:
         db_channel = await self.get_db_channel()
         return db_channel.base_duck_exp + db_channel.per_life_exp * await self.get_lives()
 
-    async def kill(self):
+    async def kill(self, damage:int):
         """The duck was killed by the current target player"""
+        self.bot.ducks_spawned[self.channel].remove(self)
+
+        killer = self.target_lock_by
+        db_killer = self.db_target_lock_by
+
+        await self.release()
 
         # Increment killed by 1
-        setattr(self.db_target_lock_by, self.get_killed_count_variable(), getattr(self.db_target_lock_by, self.get_killed_count_variable()) + 1)
+        setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
         won_experience = await self.get_exp_value()
-        self.db_target_lock_by.experience += won_experience + await self.db_target_lock_by.get_bonus_experience(won_experience)
+        db_killer.experience += won_experience + await db_killer.get_bonus_experience(won_experience)
+
+        await db_killer.save()
+
+        await self.send(f"{killer.mention} killed the duck blahblahblah")
+
+    async def hurt(self, damage:int):
+        hurter = self.target_lock_by
+        db_hurter = self.db_target_lock_by
+
+        await self.release()
+
+        await self.send(f"{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]")
+
+    async def get_damage(self):
+        return 1
+
+    async def shoot(self):
+        damage = await self.get_damage()
+
+        if await self.damage(damage):
+            await self.kill(damage)
+        else:
+            await self.hurt(damage)
+
 
     def get_killed_count_variable(self):
         return f"killed_{self.category}_ducks"
@@ -143,7 +189,7 @@ class SuperDuck(Duck):
 
         self._lives = lives
 
-    async def set_lives(self):
+    async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
         self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
 

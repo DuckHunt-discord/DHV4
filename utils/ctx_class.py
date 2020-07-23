@@ -55,5 +55,17 @@ class MyContext(commands.Context):
         self.bot: 'MyBot'
         return self.bot.ducks_spawned[self.channel]
 
+    async def target_next_duck(self):
+        try:
+            myduck = self.ducks()[0]
+        except IndexError:
+            return None
+
+        await myduck.target(self.author)
+        if not await myduck.is_killed():
+            return myduck
+        else:
+            return await myduck.target(self.author)
+
     def author_permissions(self):
         return self.channel.permissions_for(self.author)

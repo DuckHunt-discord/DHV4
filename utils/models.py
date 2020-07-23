@@ -38,6 +38,10 @@ class DiscordChannel(Model):
     # Generic settings
     use_emojis = fields.BooleanField(default=True)  # Seconds
 
+    # Experience
+    base_duck_exp = fields.IntField(default=10)
+    per_life_exp = fields.IntField(default=7)
+
     # Duck settings
     ducks_time_to_live = fields.IntField(default=660)  # Seconds
     super_ducks_min_life = fields.IntField(default=2)
