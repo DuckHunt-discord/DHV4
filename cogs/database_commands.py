@@ -26,11 +26,20 @@ class DatabaseCommands(Cog):
                          times_ran_example_command=db_user.times_ran_example_command
                          ))
 
-    @commands.command()
-    @checks.has_permission("discord.administrator")
+    @commands.group()
+    async def settings(self, ctx: MyContext):
+        """
+        Commands to view and edit settings
+        """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
+
+    @settings.command()
     async def prefix(self, ctx: MyContext, new_prefix: Optional[str] = None):
         """
         Change/view the server prefix.
+
+        Note that some prefixes are global and can't be edited.
         """
         _ = await ctx.get_translate_function()
         db_guild = await get_from_db(ctx.guild)
@@ -44,5 +53,28 @@ class DatabaseCommands(Cog):
         else:
             await ctx.send(_("There is no specific prefix set for this guild."))
 
+    @settings.command()
+    async def language(self, ctx: MyContext, language_code: Optional[str] = None):
+        """
+        Change/view the server language.
+
+        Specify the server language as a 2/5 letters code. For example, if you live in France, you'd use fr or fr_FR.
+        In Québec, you could use fr_QC.
+        """
+        db_guild = await get_from_db(ctx.guild)
+        if language_code:
+            db_guild.language = language_code
+        await db_guild.save()
+
+        _ = await ctx.get_translate_function()
+        if db_guild.language:
+            await ctx.send(_("The server language is set to `{prefix}`.",
+                             prefix=escape_mentions(escape_markdown(db_guild.language))
+                             ))
+
+            # Do not translate
+            await ctx.send(f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
+        else:
+            await ctx.send(_("There is no specific language set for this guild."))
 
 setup = DatabaseCommands.setup
