@@ -9,3 +9,4 @@ aerich
 asyncpg
 python-rapidjson
 ciso8601
+Babel
