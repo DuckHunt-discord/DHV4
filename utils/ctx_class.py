@@ -8,6 +8,9 @@ from discord import Message
 from discord.errors import InvalidArgument
 from discord.ext import commands
 
+from utils.models import get_from_db
+from utils.translations import _
+
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
@@ -69,3 +72,19 @@ class MyContext(commands.Context):
 
     def author_permissions(self):
         return self.channel.permissions_for(self.author)
+
+    async def get_language_code(self):
+        if self.guild:
+            db_guild = await get_from_db(self.guild)
+            language = db_guild.language
+        else:
+            db_user = await get_from_db(self.author)
+            language = db_user.language
+
+        return language
+
+    async def translate(self, message):
+        language_code = await self.get_language_code()
+        return _(message, language_code)
+
+    _ = translate
