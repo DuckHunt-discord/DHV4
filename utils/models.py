@@ -16,6 +16,8 @@ class DiscordGuild(Model):
     prefix = fields.CharField(20, null=True)
     permissions = fields.JSONField(default={})
 
+    language = fields.CharField(6, default="en")
+
     class Meta:
         table = "guilds"
 
@@ -51,6 +53,8 @@ class DiscordUser(Model):
     last_modified = fields.DatetimeField(auto_now=True)
     times_ran_example_command = fields.IntField(default=0)
     permissions = fields.JSONField(default={})
+
+    language = fields.CharField(6, default="en")
 
     class Meta:
         table = "users"
