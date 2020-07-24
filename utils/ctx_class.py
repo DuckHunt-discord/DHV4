@@ -9,7 +9,7 @@ from discord.errors import InvalidArgument
 from discord.ext import commands
 
 from utils.models import get_from_db
-from utils.translations import _
+from utils.translations import translate
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
@@ -69,6 +69,13 @@ class MyContext(commands.Context):
 
     async def translate(self, message):
         language_code = await self.get_language_code()
-        return _(message, language_code)
+        return translate(message, language_code)
 
-    _ = translate
+    async def get_translate_function(self):
+        language_code = await self.get_language_code()
+
+        def _(message, **kwargs):
+            return translate(message, language_code).format(**kwargs)
+
+        return _
+

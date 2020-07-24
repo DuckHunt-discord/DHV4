@@ -13,6 +13,7 @@ from utils import checks, human_time
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages
+from babel import dates
 
 
 class SupportServerCommands(Cog):
@@ -56,8 +57,8 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Current ping", value=f"{ping}ms", inline=True)
         embed.add_field(name="Shards Count", value=f"{self.bot.shard_count}", inline=True)
 
-        def get_bot_uptime(brief=False):
-            return human_time.human_timedelta(self.bot.uptime, accuracy=None, brief=brief, suffix=False)
+        def get_bot_uptime():
+            return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
 
         embed.add_field(name="Cogs loaded", value=f"{len(self.bot.cogs)}", inline=True)
         embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
@@ -68,7 +69,7 @@ class SupportServerCommands(Cog):
         next_it = self.background_loop.next_iteration
         now = pytz.utc.localize(datetime.datetime.utcnow())
 
-        delta = human_time.human_timedelta(next_it, source=now)
+        delta = dates.format_timedelta(next_it - now, locale='en')
         embed.set_footer(text=f"This should update every {delta} - Last update")
 
         await status_channel.send(embed=embed)
