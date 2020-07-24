@@ -68,8 +68,8 @@ class DatabaseCommands(Cog):
 
         _ = await ctx.get_translate_function()
         if db_guild.language:
-            await ctx.send(_("The server language is set to `{prefix}`.",
-                             prefix=escape_mentions(escape_markdown(db_guild.language))
+            await ctx.send(_("The server language is set to `{language}`.",
+                             language=escape_mentions(escape_markdown(db_guild.language))
                              ))
 
             # Do not translate
