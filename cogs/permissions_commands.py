@@ -43,21 +43,22 @@ class PermissionsCommands(Cog):
         """
         Check a permission for yourself
         """
+        _ = await ctx.get_translate_function()
 
         value = await permissions.has_permission(ctx, permission, negate=negate, administrator=administrator)
         if value:
-            await ctx.send("😃 You have that permission.")
+            await ctx.send(_("😃 You have that permission."))
         else:
-            await ctx.send("☹️ You don't have that permission.")
+            await ctx.send(_("☹️ You don't have that permission."))
 
         if ctx.guild:
-            message = [f"Details of permissions hierarchy", "```diff"]
+            message = [_("Details of permissions hierarchy"), "```diff"]
             parsed_permission = permission.split(".")
 
             default_permissions = ctx.bot.config['permissions']['default']
 
             value, by = _recursive_permission_check(parsed_permission, default_permissions)
-            message.append(f"{get_sign(value)} Default (from {get_sign(value)}{by})")
+            message.append(_("{sign} Default (from {sign}{by})", sign=get_sign(value), by=by))
 
             db_member: DiscordMember = await get_from_db(ctx.author)
             db_channel: DiscordChannel = await get_from_db(ctx.channel)
@@ -70,7 +71,11 @@ class PermissionsCommands(Cog):
                 if len(role_permissions):
                     value, by = _recursive_permission_check(parsed_permission, role_permissions)
                     if value in [True, False] or show_none:
-                        message.append(f"{get_sign(value)} Guild role {escape_everything(role.name)} (from {get_sign(value)}{by})")
+
+                        message.append(_("{sign} Guild role {role} (from {sign}{by})",
+                                         sign=get_sign(value),
+                                         role=escape_everything(role.name),
+                                         by=by))
 
             channel_permissions = db_channel.permissions
             for role in ctx.author.roles:
@@ -78,22 +83,31 @@ class PermissionsCommands(Cog):
                 if len(role_permissions):
                     value, by = _recursive_permission_check(parsed_permission, role_permissions)
                     if value in [True, False] or show_none:
-                        message.append(f"{get_sign(value)} Channel role {escape_everything(role.name)} (from {get_sign(value)}{by})")
+                        message.append(_("{sign} Channel role {role} (from {sign}{by})",
+                                         sign=get_sign(value),
+                                         role=escape_everything(role.name),
+                                         by=by))
 
             member_permissions = db_member.permissions
             value, by = _recursive_permission_check(parsed_permission, member_permissions)
             if value in [True, False] or show_none:
-                message.append(f"{get_sign(value)} Member (from {get_sign(value)}{by})")
+                message.append(_("{sign} Member (from {sign}{by})",
+                                 sign=get_sign(value),
+                                 by=by))
 
             fixed_permissions = ctx.bot.config['permissions']['fixed']
             value, by = _recursive_permission_check(parsed_permission, fixed_permissions)
             if value in [True, False] or show_none:
-                message.append(f"{get_sign(value)} Fixed (from {get_sign(value)}{by})")
+                message.append(_("{sign} Fixed (from {sign}{by})",
+                                 sign=get_sign(value),
+                                 by=by))
 
             user_permissions = db_user.permissions
             value, by = _recursive_permission_check(parsed_permission, user_permissions)
             if value in [True, False] or show_none:
-                message.append(f"{get_sign(value)} User (from {get_sign(value)}{by})")
+                message.append(_("{sign} User (from {sign}{by})",
+                                 sign=get_sign(value),
+                                 by=by))
 
             message.append("```")
 
@@ -105,6 +119,8 @@ class PermissionsCommands(Cog):
         """
         Display all permissions set for this guild
         """
+        _ = await ctx.get_translate_function()
+
         said_something = False
         guild = ctx.guild
         db_guild = await get_from_db(guild)
@@ -113,7 +129,7 @@ class PermissionsCommands(Cog):
         for role_id, role_permissions in permissions_by_role.items():
             role = guild.get_role(int(role_id))
             if role and len(role_permissions):
-                message = [f"**{escape_everything(role.name)} permissions**", "```diff"]
+                message = [_("**{role} permissions**", role=escape_everything(role.name)), "```diff"]
 
                 for permission, value in role_permissions.items():
                     sign = "+" if value else "-"
@@ -123,7 +139,7 @@ class PermissionsCommands(Cog):
                 await ctx.send("\n".join(message))
 
         if not said_something:
-            await ctx.send("There are no specific permissions set in this guild.")
+            await ctx.send(_("There are no specific permissions set in this guild."))
 
     @view.command(name="channel")
     @commands.cooldown(2, 30, commands.BucketType.guild)
@@ -131,6 +147,8 @@ class PermissionsCommands(Cog):
         """
         Display all permissions set for this channel
         """
+        _ = await ctx.get_translate_function()
+
         said_something = False
         guild = ctx.guild
         if not channel or channel.guild.id != guild.id:
@@ -142,7 +160,7 @@ class PermissionsCommands(Cog):
         for role_id, role_permissions in permissions_by_role.items():
             role = guild.get_role(int(role_id))
             if role and len(role_permissions):
-                message = [f"**{escape_everything(role.name)} permissions**", "```diff"]
+                message = [_("**{role} permissions**", role=escape_everything(role.name)), "```diff"]
 
                 for permission, value in role_permissions.items():
                     sign = "+" if value else "-"
@@ -152,7 +170,7 @@ class PermissionsCommands(Cog):
                 await ctx.send("\n".join(message))
 
         if not said_something:
-            await ctx.send("There are no specific permissions set in this channel.")
+            await ctx.send(_("There are no specific permissions set in this channel."))
 
     @view.command(name="member")
     @commands.cooldown(2, 30, commands.BucketType.guild)
@@ -160,6 +178,8 @@ class PermissionsCommands(Cog):
         """
         Display all permissions set for this channel
         """
+        _ = await ctx.get_translate_function()
+
         if not member:
             member = ctx.author
 
@@ -167,7 +187,7 @@ class PermissionsCommands(Cog):
         permissions = db_member.permissions
 
         if len(permissions):
-            message = [f"**{member.name}#{member.discriminator} permissions**", "```diff"]
+            message = [_("**{member.name}#{member.discriminator} permissions**", member=member), "```diff"]
 
             for permission, value in permissions.items():
                 sign = "+" if value else "-"
@@ -175,7 +195,7 @@ class PermissionsCommands(Cog):
             message.append("```")
             await ctx.send("\n".join(message))
         else:
-            await ctx.send("There are no specific permissions for this member.")
+            await ctx.send(_("There are no specific permissions for this member."))
 
     @permissions.group()
     async def set(self, ctx: MyContext, ):
@@ -191,11 +211,16 @@ class PermissionsCommands(Cog):
         """
         Set a permission for a specific user, globally.
         """
+        _ = await ctx.get_translate_function()
+
         db_user = await get_from_db(user, as_user=True)
         db_user.permissions[permission] = value
         await db_user.save(update_fields=['permissions'])
 
-        await ctx.send(f"👌 Permission {escape_everything(permission)} for user {user.name}#{user.discriminator} has been set to {value} globally.")
+        await ctx.send(_("👌 Permission {permission} for user {user.name}#{user.discriminator} has been set to {value} globally.",
+                         permission=escape_everything(permission),
+                         user=user,
+                         value=value))
 
     @set.command(name="member")
     @checks.server_admin_or_permission("server.manage_permissions.member")
@@ -203,23 +228,29 @@ class PermissionsCommands(Cog):
         """
         Set a permission for a member in a guild
         """
+        _ = await ctx.get_translate_function()
+
         db_user = await get_from_db(member, as_user=False)
         db_user.permissions[permission] = value
         await db_user.save(update_fields=['permissions'])
-        await ctx.send(f"👌 Permission {escape_everything(permission)} for user {member.name}#{member.discriminator} has been set to {value} in this server.")
-
+        await ctx.send(_("👌 Permission {permission} for member {member.name}#{member.discriminator} has been set to {value} globally.",
+                         permission=escape_everything(permission),
+                         member=member,
+                         value=value))
     @set.command(name="channel")
     @checks.server_admin_or_permission("server.manage_permissions.channel")
     async def set_channel(self, ctx: MyContext, channel: discord.TextChannel, role: discord.Role, permission: str, value: bool):
         """
         Set a permission for a role in a channel
         """
+        _ = await ctx.get_translate_function()
+
         if channel not in ctx.guild.channels:
-            await ctx.send(f"❌ Can't set permissions in a channel that is not in this guild.")
+            await ctx.send(_("❌ Can't set permissions in a channel that is not in this guild."))
             return False
 
         if role.guild.id != ctx.guild.id:
-            await ctx.send(f"❌ Can't set permissions for a role that does not exist in this guild.")
+            await ctx.send(_("❌ Can't set permissions for a role that does not exist in this guild."))
             return False
 
         db_channel = await get_from_db(channel)
@@ -229,7 +260,11 @@ class PermissionsCommands(Cog):
         db_channel.permissions[str(role.id)] = current_permissions
 
         await db_channel.save(update_fields=['permissions'])
-        await ctx.send(f"👌 Permission {escape_everything(permission)} for role {escape_everything(role.name)} [`{role.id}`] has been set to {value} in this channel.")
+        await ctx.send(_("👌 Permission {permission} for role {role_name} [`{role_id}`] has been set to {value} in this channel.",
+                         permission=escape_everything(permission),
+                         role_name=escape_everything(role.name),
+                         role_id=role.id,
+                         value=value))
 
     @set.command(name="guild")
     @checks.server_admin_or_permission("server.manage_permissions.guild")
@@ -237,8 +272,10 @@ class PermissionsCommands(Cog):
         """
         Set a permission for a role in a guild
         """
+        _ = await ctx.get_translate_function()
+
         if role.guild.id != ctx.guild.id:
-            await ctx.send(f"❌ Can't set permissions for a role that does not exist in this guild.")
+            await ctx.send(_("❌ Can't set permissions for a role that does not exist in this guild."))
             return False
 
         db_guild = await get_from_db(ctx.guild)
@@ -248,7 +285,11 @@ class PermissionsCommands(Cog):
         db_guild.permissions[str(role.id)] = current_permissions
 
         await db_guild.save(update_fields=['permissions'])
-        await ctx.send(f"👌 Permission {escape_everything(permission)} for role {escape_everything(role.name)} [`{role.id}`] has been set to {value} in this guild.")
+        await ctx.send(_("👌 Permission {permission} for role {role_name} [`{role_id}`] has been set to {value} in this guild.",
+                         permission=escape_everything(permission),
+                         role_name=escape_everything(role.name),
+                         role_id=role.id,
+                         value=value))
 
 
 setup = PermissionsCommands.setup
