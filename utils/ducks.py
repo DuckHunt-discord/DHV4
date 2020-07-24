@@ -9,6 +9,7 @@ from discord.utils import escape_markdown
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordMember, DiscordChannel, get_from_db, Player, get_player
+from utils.translations import translate
 
 DUCKS_IMAGES = {
     "emoji": "https://cdn.discordapp.com/attachments/734810933091762188/735588049596973066/duck.png",
@@ -38,6 +39,15 @@ class Duck:
         self._lives: Optional[int] = None
         self.lives_left: Optional[int] = self._lives
 
+    async def get_translate_function(self):
+        db_guild = await get_from_db(self.channel.guild)
+        language = db_guild.language
+
+        def _(message, **kwargs):
+            return translate(message, language).format(**kwargs)
+
+        return _
+
     async def target(self, member: discord.Member = None):
         await self.target_lock.acquire()
         if member:
@@ -64,6 +74,8 @@ class Duck:
         return None
 
     async def get_spawn_message(self) -> str:
+        _ = await self.get_translate_function()
+
         db_channel = await self.get_db_channel()
 
         traces = self.config['ascii'][self.ascii_art]['traces']
@@ -81,7 +93,7 @@ class Duck:
         else:
             face = random.choice(faces)
 
-        shout = random.choice(shouts)
+        shout = _(random.choice(shouts))
 
         return f"{anti_bot_zero_width(trace)} {face} {anti_bot_zero_width(shout)}"
 
@@ -147,6 +159,8 @@ class Duck:
 
         await self.release()
 
+        _ = await self.get_translate_function()
+
         # Increment killed by 1
         setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
         won_experience = await self.get_exp_value()
@@ -154,7 +168,7 @@ class Duck:
 
         await db_killer.save()
 
-        await self.send(f"{killer.mention} killed the duck blahblahblah")
+        await self.send(_("{killer.mention} killed the duck blahblahblah", killer=killer))
 
     async def hurt(self, damage:int):
         hurter = self.target_lock_by
@@ -162,7 +176,11 @@ class Duck:
 
         await self.release()
 
-        await self.send(f"{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]")
+        _ = await self.get_translate_function()
+
+        await self.send(_("{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]",
+                          hurter=hurter,
+                          damage=damage))
 
     async def get_damage(self):
         return 1
@@ -174,7 +192,6 @@ class Duck:
             await self.kill(damage)
         else:
             await self.hurt(damage)
-
 
     def get_killed_count_variable(self):
         return f"killed_{self.category}_ducks"
@@ -192,7 +209,4 @@ class SuperDuck(Duck):
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
         self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
-
-
-
 

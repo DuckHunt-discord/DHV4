@@ -59,8 +59,8 @@ async def get_webhook_if_possible(bot: 'MyBot', channel: discord.TextChannel):
 def anti_bot_zero_width(mystr: str):
     """Add zero-width spaces and replace lookalikes characters in a string to make it harder to detect for bots"""
 
-    addings = ["\u2060", # Word joiner
-               "​"      , # ZWSP
+    addings = ["\u2060",  # Word joiner
+               "​"      ,  # ZWSP
     ]
 
     replacements = {
