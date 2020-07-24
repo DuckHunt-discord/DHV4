@@ -28,7 +28,9 @@ class SimpleCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        await ctx.send(_(self.config()["wiki_url"]))
+        wiki_url = self.config()["wiki_url"]
+
+        await ctx.send(_(wiki_url))
 
 
 setup = SimpleCommands.setup
