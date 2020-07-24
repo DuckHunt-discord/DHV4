@@ -146,23 +146,25 @@ class Duck:
 
         self.spawned_at = time.time()
 
+    def despawn(self):
+        self.bot.ducks_spawned[self.channel].remove(self)
+
     async def get_exp_value(self):
         db_channel = await self.get_db_channel()
         return db_channel.base_duck_exp + db_channel.per_life_exp * await self.get_lives()
 
-    async def kill(self, damage:int):
+    async def kill(self, damage: int, args):
         """The duck was killed by the current target player"""
-        self.bot.ducks_spawned[self.channel].remove(self)
+        self.despawn()
 
         killer = self.target_lock_by
         db_killer = self.db_target_lock_by
-
+        await self.increment_kills()
         await self.release()
 
         _ = await self.get_translate_function()
 
         # Increment killed by 1
-        setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
         won_experience = await self.get_exp_value()
         db_killer.experience += won_experience + await db_killer.get_bonus_experience(won_experience)
 
@@ -170,9 +172,11 @@ class Duck:
 
         await self.send(_("{killer.mention} killed the duck blahblahblah", killer=killer))
 
-    async def hurt(self, damage:int):
+    async def hurt(self, damage: int, args):
         hurter = self.target_lock_by
         db_hurter = self.db_target_lock_by
+
+        await self.increment_hurts()
 
         await self.release()
 
@@ -185,17 +189,86 @@ class Duck:
     async def get_damage(self):
         return 1
 
-    async def shoot(self):
+    async def hug(self, args):
+        hugger = self.target_lock_by
+        db_hugger = self.db_target_lock_by
+
+        await self.increment_hugs()
+        await self.release()
+
+        _ = await self.get_translate_function()
+        await self.send(_("{hugger.mention} hugged the duck and lost exp, I guess ?",
+                          hugger=hugger
+                          ))
+
+    async def shoot(self, args):
         damage = await self.get_damage()
 
         if await self.damage(damage):
-            await self.kill(damage)
+            await self.kill(damage, args)
         else:
-            await self.hurt(damage)
+            await self.hurt(damage, args)
+
+    async def increment_hurts(self):
+        db_hurter = self.db_target_lock_by
+        setattr(db_hurter, self.get_hurted_count_variable(), getattr(db_hurter, self.get_hurted_count_variable()) + 1)
+
+    async def increment_kills(self):
+        db_killer = self.db_target_lock_by
+        setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
+
+    async def increment_hugs(self):
+        db_hugger = self.db_target_lock_by
+        setattr(db_hugger, self.get_hugged_count_variable(), getattr(db_hugger, self.get_hugged_count_variable()) + 1)
+
+    def get_hurted_count_variable(self):
+        return f"hurted_{self.category}_ducks"
 
     def get_killed_count_variable(self):
         return f"killed_{self.category}_ducks"
 
+    def get_hugged_count_variable(self):
+        return f"hugged_{self.category}_ducks"
+
+
+class BabyDuck(Duck):
+    category = 'baby'
+    ascii_art = 'normal'
+
+    async def kill(self, damage: int, args):
+        """
+        You shouldn't kill a baby duck
+        """
+        self.despawn()
+
+        killer = self.target_lock_by
+        db_killer = self.db_target_lock_by
+
+        await self.increment_kills()
+        await self.release()
+
+        _ = await self.get_translate_function()
+
+        # Increment killed by 1
+        setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
+        won_experience = await self.get_exp_value()
+        db_killer.experience -= won_experience
+
+        await db_killer.save()
+
+        await self.send(_("{killer.mention} killed the duck baby snif", killer=killer))
+
+    async def hug(self, args):
+        hugger = self.target_lock_by
+        db_hugger = self.db_target_lock_by
+        await self.increment_hugs()
+        await self.release()
+
+        _ = await self.get_translate_function()
+
+        await self.send(_("{hugger.mention} hugged the duck and won exp, I guess ?",
+                          hugger=hugger
+                          ))
 
 class SuperDuck(Duck):
     category = 'super'
@@ -209,4 +282,3 @@ class SuperDuck(Duck):
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
         self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
-

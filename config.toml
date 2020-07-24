@@ -53,6 +53,9 @@ database = "mybot"
 emoji = "https://media.discordapp.net/attachments/734810933091762188/735596788408385750/PicsArt_07-22-03.38.37.png"
 glare = "https://cdn.discordapp.com/emojis/436542355257163777.png"
 eyebrows = "https://cdn.discordapp.com/emojis/436542355504627712.png"
+wave = "https://cdn.discordapp.com/emojis/436542355345113091.png"
+lurk = "https://cdn.discordapp.com/emojis/436542355030409219.png"
+sip = "https://cdn.discordapp.com/emojis/436548864170786836.png"
 
 [ducks.ascii.normal]
 traces = ["-,_,.-'`'°-,_,.-'`'°", "-,..,.-'`'°-,_,.-'`'°", "-._..-'`'°-,_,.-'`'°", "-,_,.-'`'°-,_,.-''`"]
@@ -109,6 +112,17 @@ avatar_url = "glare"
 username = "Heavy duck"
 avatar_url = "eyebrows"
 
+[[ducks.webhooks_parameters.baby]]
+username = "Smol duck"
+avatar_url = "wave"
+
+[[ducks.webhooks_parameters.baby]]
+username = "Smol duck"
+avatar_url = "lurk"
+
+[[ducks.webhooks_parameters.baby]]
+username = "Young duck"
+avatar_url = "sip"
 
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal
