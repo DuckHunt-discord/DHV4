@@ -44,6 +44,4 @@ class DucksHuntingCommands(Cog):
             await channel.send(_("No duck, bruh. Tree."))
 
 
-
-
 setup = DucksHuntingCommands.setup
