@@ -56,6 +56,7 @@ eyebrows = "https://cdn.discordapp.com/emojis/436542355504627712.png"
 wave = "https://cdn.discordapp.com/emojis/436542355345113091.png"
 lurk = "https://cdn.discordapp.com/emojis/436542355030409219.png"
 sip = "https://cdn.discordapp.com/emojis/436548864170786836.png"
+ghost = "https://cdn.discordapp.com/emojis/660287926902718504.gif"
 
 [ducks.ascii.normal]
 traces = ["-,_,.-'`'°-,_,.-'`'°", "-,..,.-'`'°-,_,.-'`'°", "-._..-'`'°-,_,.-'`'°", "-,_,.-'`'°-,_,.-''`"]
@@ -127,6 +128,10 @@ avatar_url = "sip"
 [[ducks.webhooks_parameters.prof]]
 username = "Pr. Duck"
 avatar_url = "eyebrows"
+
+[[ducks.webhooks_parameters.ghost]]
+username = "Ghost Duck"
+avatar_url = "ghost"
 
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal

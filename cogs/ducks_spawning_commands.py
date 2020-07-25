@@ -7,7 +7,7 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -64,6 +64,16 @@ class DucksSpawningCommands(Cog):
         """
         myduck = GhostDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
+
+    @coin.command(aliases=["mother", "mother_of_all_ducks"])
+    @checks.server_admin_or_permission("ducks.spawn.moad")
+    async def moad(self, ctx: MyContext):
+        """
+        Spawns a MOAD.
+        """
+        myduck = MotherOfAllDucks(ctx.bot, ctx.channel)
+        await myduck.spawn()
+
 
 
 setup = DucksSpawningCommands.setup
