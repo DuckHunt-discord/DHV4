@@ -7,7 +7,7 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -45,6 +45,15 @@ class DucksSpawningCommands(Cog):
         Spawns a baby duck
         """
         myduck = BabyDuck(ctx.bot, ctx.channel)
+        await myduck.spawn()
+
+    @coin.command()
+    @checks.server_admin_or_permission("ducks.spawn.prof")
+    async def prof(self, ctx: MyContext):
+        """
+        Spawns a Professor Duck.
+        """
+        myduck = PrDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
 
 

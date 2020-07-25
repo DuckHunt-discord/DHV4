@@ -92,10 +92,12 @@ class Player(Model):
     killed_normal_ducks = fields.IntField(default=0)
     killed_super_ducks = fields.IntField(default=0)
     killed_baby_ducks = fields.IntField(default=0)
+    killed_prof_ducks = fields.IntField(default=0)
 
     hugged_normal_ducks = fields.IntField(default=0)
     hugged_super_ducks = fields.IntField(default=0)
     hugged_baby_ducks = fields.IntField(default=0)
+    hugged_prof_ducks = fields.IntField(default=0)
 
     hurted_super_ducks = fields.IntField(default=0)
 

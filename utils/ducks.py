@@ -8,7 +8,7 @@ from discord.utils import escape_markdown
 
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
-from utils.models import DiscordMember, DiscordChannel, get_from_db, Player, get_player
+from utils.models import DiscordChannel, get_from_db, Player, get_player
 from utils.translations import translate
 
 DUCKS_IMAGES = {
@@ -19,6 +19,9 @@ DUCKS_IMAGES = {
 
 
 class Duck:
+    """
+    The standard duck. Kill it with the pan command
+    """
     category = 'normal'
     ascii_art = category
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
@@ -73,29 +76,37 @@ class Duck:
             return max(time.time() - self.spawned_at, 0)
         return None
 
-    async def get_spawn_message(self) -> str:
-        _ = await self.get_translate_function()
-
-        db_channel = await self.get_db_channel()
-
+    async def get_trace(self) -> str:
         traces = self.config['ascii'][self.ascii_art]['traces']
+        trace = escape_markdown(random.choice(traces))
+
+        return anti_bot_zero_width(trace)
+
+    async def get_face(self) -> str:
+        db_channel = await self.get_db_channel()
 
         if not db_channel.use_emojis:
             faces = self.config['ascii'][self.ascii_art]['faces']
-        else:
-            faces = self.config['ascii'][self.ascii_art]['emojis']
-
-        shouts = self.config['ascii'][self.ascii_art]['shouts']
-
-        trace = escape_markdown(random.choice(traces))
-        if not db_channel.use_emojis:
             face = escape_markdown(random.choice(faces))
         else:
+            faces = self.config['ascii'][self.ascii_art]['emojis']
             face = random.choice(faces)
 
-        shout = _(random.choice(shouts))
+        return face
 
-        return f"{anti_bot_zero_width(trace)} {face} {anti_bot_zero_width(shout)}"
+    async def get_shout(self) -> str:
+        _ = await self.get_translate_function()
+        shouts = self.config['ascii'][self.ascii_art]['shouts']
+
+        shout = _(random.choice(shouts))
+        return anti_bot_zero_width(shout)
+
+    async def get_spawn_message(self) -> str:
+        trace = await self.get_trace()
+        face = await self.get_face()
+        shout = await self.get_shout()
+
+        return f"{trace} {face} {shout}"
 
     async def get_webhook_parameters(self) -> dict:
         return self._webhook_parameters
@@ -153,6 +164,11 @@ class Duck:
         db_channel = await self.get_db_channel()
         return db_channel.base_duck_exp + db_channel.per_life_exp * await self.get_lives()
 
+    async def post_kill(self):
+        """
+        Just in case youwant to do something after a duck died.
+        """
+
     async def kill(self, damage: int, args):
         """The duck was killed by the current target player"""
         self.despawn()
@@ -171,6 +187,7 @@ class Duck:
         await db_killer.save()
 
         await self.send(_("{killer.mention} killed the duck blahblahblah", killer=killer))
+        await self.post_kill()
 
     async def hurt(self, damage: int, args):
         hurter = self.target_lock_by
@@ -231,7 +248,52 @@ class Duck:
         return f"hugged_{self.category}_ducks"
 
 
+class PrDuck(Duck):
+    category = 'prof'
+    ascii_art = 'normal'
+
+    def __init__(self, bot: MyBot, channel: discord.TextChannel):
+        super().__init__(bot, channel)
+        r1 = random.randint(0, 100)
+        r2 = random.randint(0, 100)
+        self.operation = f"{r1} + {r2}"
+        self.answer = r1 + r2
+
+    async def get_shout(self) -> str:
+        _ = await self.get_translate_function()
+
+        return _("Huh, quick question, what's {operation} ?", operation=self.operation)
+
+    async def shoot(self, args: list):
+        _ = await self.get_translate_function()
+        hurter = self.target_lock_by
+
+        try:
+            result = int(args[0])
+        except IndexError:
+            await self.send(_("{hurter.mention}, I asked you a question !",
+                              hurter=hurter))
+            await self.release()
+            return
+        except ValueError:
+            await self.send(_("{hurter.mention}, Just give me digits !",
+                              hurter=hurter))
+            await self.release()
+            return
+
+        if result != self.answer:
+            await self.send(_("{hurter.mention}, that's not the correct answer !",
+                              hurter=hurter))
+            await self.release()
+            return
+        else:
+            await super().shoot(args)
+
+
 class BabyDuck(Duck):
+    """
+    A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
+    """
     category = 'baby'
     ascii_art = 'normal'
 
@@ -257,6 +319,7 @@ class BabyDuck(Duck):
         await db_killer.save()
 
         await self.send(_("{killer.mention} killed the duck baby snif", killer=killer))
+        await self.post_kill()
 
     async def hug(self, args):
         hugger = self.target_lock_by
@@ -270,7 +333,11 @@ class BabyDuck(Duck):
                           hugger=hugger
                           ))
 
+
 class SuperDuck(Duck):
+    """
+    A duck with many lives to spare.
+    """
     category = 'super'
     ascii_art = 'normal'
 
@@ -282,3 +349,18 @@ class SuperDuck(Duck):
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
         self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
+
+
+class MotherOfAllDucks(SuperDuck):
+    """
+    This duck will spawn two more when she dies.
+    """
+    category = 'moad'
+
+    async def post_kill(self):
+        for i in range(2):
+            await spawn_random_weighted_duck(self.channel)
+
+
+async def spawn_random_weighted_duck(channel: discord.TextChannel):
+    pass

@@ -124,6 +124,10 @@ avatar_url = "lurk"
 username = "Young duck"
 avatar_url = "sip"
 
+[[ducks.webhooks_parameters.prof]]
+username = "Pr. Duck"
+avatar_url = "eyebrows"
+
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal
 token = ""
