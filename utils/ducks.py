@@ -10,12 +10,7 @@ from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player
 from utils.translations import translate
-
-DUCKS_IMAGES = {
-    "emoji": "https://cdn.discordapp.com/attachments/734810933091762188/735588049596973066/duck.png",
-    "glare": "https://cdn.discordapp.com/emojis/436542355257163777.png",
-    "eyebrows": "https://cdn.discordapp.com/emojis/436542355504627712.png",
-}
+from . import ducks_config
 
 
 class Duck:
@@ -25,15 +20,16 @@ class Duck:
     category = 'normal'
     ascii_art = category
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
+    use_bonus_exp = True
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         self.bot = bot
-        self.config = bot.config['ducks']
         self.channel = channel
         self._db_channel: Optional[DiscordChannel] = None
 
-        self._webhook_parameters = random.choice(self.config['webhooks_parameters'][self.category]).copy()
-        self._webhook_parameters['avatar_url'] = self.config['images'][self._webhook_parameters['avatar_url']]
+        self._webhook_parameters = {'avatar_url': random.choice(self.get_cosmetics()['avatar_urls']),
+                                    'username': random.choice(self.get_cosmetics()['usernames'])}
+
         self.spawned_at: Optional[int] = None
         self.target_lock = asyncio.Lock()
         self.target_lock_by: Optional[discord.Member] = None
@@ -41,6 +37,9 @@ class Duck:
 
         self._lives: Optional[int] = None
         self.lives_left: Optional[int] = self._lives
+
+    def get_cosmetics(self):
+        return getattr(ducks_config, self.ascii_art)
 
     @property
     def spawned_for(self):
@@ -69,7 +68,10 @@ class Duck:
         return self._db_channel
 
     async def get_webhook_parameters(self) -> dict:
-        return self._webhook_parameters
+        _ = await self.get_translate_function()
+        webhook = self._webhook_parameters
+        webhook['username'] = _(webhook['username'])
+        return webhook
 
     async def get_exp_value(self):
         db_channel = await self.get_db_channel()
@@ -114,7 +116,7 @@ class Duck:
     # Messages #
 
     async def get_trace(self) -> str:
-        traces = self.config['ascii'][self.ascii_art]['traces']
+        traces = self.get_cosmetics()['traces']
         trace = escape_markdown(random.choice(traces))
 
         return anti_bot_zero_width(trace)
@@ -123,17 +125,17 @@ class Duck:
         db_channel = await self.get_db_channel()
 
         if not db_channel.use_emojis:
-            faces = self.config['ascii'][self.ascii_art]['faces']
+            faces = self.get_cosmetics()['faces']
             face = escape_markdown(random.choice(faces))
         else:
-            faces = self.config['ascii'][self.ascii_art]['emojis']
+            faces = self.get_cosmetics()['emojis']
             face = random.choice(faces)
 
         return face
 
     async def get_shout(self) -> str:
         _ = await self.get_translate_function()
-        shouts = self.config['ascii'][self.ascii_art]['shouts']
+        shouts = self.get_cosmetics()['shouts']
 
         shout = _(random.choice(shouts))
         return anti_bot_zero_width(shout)
@@ -249,7 +251,10 @@ class Duck:
 
         # Increment killed by 1
         won_experience = await self.get_exp_value()
-        db_killer.experience += won_experience + await db_killer.get_bonus_experience(won_experience)
+        db_killer.experience += won_experience
+
+        if self.use_bonus_exp:
+            db_killer.experience += await db_killer.get_bonus_experience(won_experience)
 
         await db_killer.save()
 
@@ -286,6 +291,8 @@ class Duck:
         """
 
 
+# Standard ducks #
+
 class GhostDuck(Duck):
     """
     A rare duck that does *not* say anything when it spawns.
@@ -306,7 +313,7 @@ class GhostDuck(Duck):
 
 class PrDuck(Duck):
     category = 'prof'
-    ascii_art = 'normal'
+    ascii_art = category
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
@@ -351,7 +358,7 @@ class BabyDuck(Duck):
     A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
     """
     category = 'baby'
-    ascii_art = 'normal'
+    ascii_art = 'baby'
 
     async def kill(self, damage: int, args):
         """
@@ -390,6 +397,22 @@ class BabyDuck(Duck):
                           ))
 
 
+class MechanicalDuck(Duck):
+    category = 'mechanical'
+    ascii_art = 'mechanical'
+    fake = True
+    use_bonus_exp = False
+
+    async def get_exp_value(self):
+        return -10
+
+    async def get_kill_message(self, killer, db_killer):
+        _ = await self.get_translate_function()
+        return _("Damn, {killer.mention}, you suck! You killed a mechanical duck! I whoder who made it?")
+
+
+# Super ducks #
+
 class SuperDuck(Duck):
     """
     A duck with many lives to spare.
@@ -412,6 +435,7 @@ class MotherOfAllDucks(SuperDuck):
     This duck will spawn two more when she dies.
     """
     category = 'moad'
+    ascii_art = 'moad'
 
     async def post_kill(self):
         for i in range(2):
