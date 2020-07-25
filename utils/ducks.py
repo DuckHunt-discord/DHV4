@@ -108,6 +108,25 @@ class Duck:
 
         return f"{trace} {face} {shout}"
 
+    async def get_kill_message(self, killer, db_killer):
+        _ = await self.get_translate_function()
+
+        return _("{killer.mention} killed the duck blahblahblah", killer=killer)
+
+    async def get_hurt_message(self, hurter, db_hurter, damage):
+        _ = await self.get_translate_function()
+
+        return _("{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]",
+                 hurter=hurter,
+                 damage=damage)
+
+    async def get_hug_message(self, hugger, db_hugger):
+        _ = await self.get_translate_function()
+
+        return _("{hugger.mention} hugged the duck and lost exp, I guess ?",
+                 hugger=hugger
+                 )
+
     async def get_webhook_parameters(self) -> dict:
         return self._webhook_parameters
 
@@ -186,7 +205,7 @@ class Duck:
 
         await db_killer.save()
 
-        await self.send(_("{killer.mention} killed the duck blahblahblah", killer=killer))
+        await self.send(await self.get_kill_message(killer, db_killer))
         await self.post_kill()
 
     async def hurt(self, damage: int, args):
@@ -199,9 +218,7 @@ class Duck:
 
         _ = await self.get_translate_function()
 
-        await self.send(_("{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]",
-                          hurter=hurter,
-                          damage=damage))
+        await self.send(await self.get_hurt_message(hurter, db_hurter, damage))
 
     async def get_damage(self):
         return 1
@@ -214,9 +231,7 @@ class Duck:
         await self.release()
 
         _ = await self.get_translate_function()
-        await self.send(_("{hugger.mention} hugged the duck and lost exp, I guess ?",
-                          hugger=hugger
-                          ))
+        await self.send(await self.get_hug_message(hugger, db_hugger))
 
     async def shoot(self, args):
         damage = await self.get_damage()
@@ -246,6 +261,24 @@ class Duck:
 
     def get_hugged_count_variable(self):
         return f"hugged_{self.category}_ducks"
+
+
+class GhostDuck(Duck):
+    """
+    A rare duck that does *not* say anything when it spawns.
+    """
+    category = 'ghost'
+    ascii_art = category
+    fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
+
+    async def spawn(self):
+        total_lives = await self.get_lives()
+
+        bot = self.bot
+
+        bot.ducks_spawned[self.channel].append(self)
+
+        self.spawned_at = time.time()
 
 
 class PrDuck(Duck):
