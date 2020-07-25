@@ -428,6 +428,19 @@ class PlasticDuck(Duck):
         return await super().get_exp_value() * 0.5
 
 
+class KamikazeDuck(Duck):
+    category = 'kamikaze'
+
+    async def get_left_message(self):
+        _ = await self.get_translate_function()
+
+        return _("The kamikaze duck exploded, killing every duck on the channel.")
+
+    async def leave(self):
+        await self.send(await self.get_left_message())
+        self.bot.ducks_spawned[self.channel].clear()
+
+
 class MechanicalDuck(Duck):
     category = 'mechanical'
     fake = True

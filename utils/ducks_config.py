@@ -70,7 +70,7 @@ baby = {**normal,
 
 golden = {**normal,
           'shouts': ["€!", "$!", "£!", _("Free money !"), _("It's free money")],
-          'usernames': [_("Golden Duck"), _("Shiny Duck"), _("Rich Duck")],
+          'usernames': [_("Golden Duck"), _("Golden Goose"), _("Shiny Duck"), _("Rich Duck")],
           'avatar_urls': [DUCKS_IMAGES['golden']],
           'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']]
           }
@@ -81,6 +81,13 @@ plastic = {**normal,
            'avatar_urls': [DUCKS_IMAGES['plastic']],
            'emojis': [DUCKS_EMOJIS['meh_duck']]
            }
+
+kamikaze = {**normal,
+          'shouts': [_("**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"), _("Gonna kill y'all !")],
+          'usernames': [_("The Kamikaze Duck"), _("Explosive Duck"), _("Boom Duck")],
+          'avatar_urls': [DUCKS_IMAGES['golden']],
+          'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']]
+          }
 
 mechanical = {
     **normal,

@@ -7,7 +7,7 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck, KamikazeDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -101,6 +101,14 @@ class DucksSpawningCommands(Cog):
         myduck = PlasticDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
 
+    @coin.command()
+    @checks.server_admin_or_permission("ducks.spawn.kamikaze")
+    async def kamikaze(self, ctx: MyContext):
+        """
+        Spawns a plastic duck.
+        """
+        myduck = KamikazeDuck(ctx.bot, ctx.channel)
+        await myduck.spawn()
 
 
 setup = DucksSpawningCommands.setup
