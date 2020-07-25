@@ -164,6 +164,11 @@ class Duck:
                  hugger=hugger
                  )
 
+    async def get_left_message(self):
+        _ = await self.get_translate_function()
+
+        return _("The duck left.")
+
     async def send(self, message: str):
         webhook = await get_webhook_if_possible(self.bot, self.channel)
 
@@ -225,6 +230,10 @@ class Duck:
         _ = await self.get_translate_function()
         await self.send(await self.get_hug_message(hugger, db_hugger))
 
+    async def leave(self):
+        await self.send(await self.get_left_message())
+        self.despawn()
+
     # Actions #
 
     async def kill(self, damage: int, args):
@@ -275,7 +284,6 @@ class Duck:
         """
         Just in case youwant to do something after a duck died.
         """
-
 
 
 class GhostDuck(Duck):
