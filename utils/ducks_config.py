@@ -11,6 +11,8 @@ DUCKS_IMAGES = {
     'sip': "https://cdn.discordapp.com/emojis/436548864170786836.png",
     'ghost': "https://cdn.discordapp.com/emojis/660287926902718504.gif",
     'armored': 'http://worth1000.s3.amazonaws.com/submissions/14291000/14291206_4e56_625x1000.jpg',
+    'golden': 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e43a852-2160-46bd-a515-8e7fbfb35c8d/d3bjtk8-926fdfba-e78f-4167-ae27-4a7011e905eb.jpg/v1/fill/w_900,h_1182,q_75,strp/golden_duck_logo_by_demonicneko-d3bjtk8.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8wZTQzYTg1Mi0yMTYwLTQ2YmQtYTUxNS04ZTdmYmZiMzVjOGQvZDNianRrOC05MjZmZGZiYS1lNzhmLTQxNjctYWUyNy00YTcwMTFlOTA1ZWIuanBnIiwid2lkdGgiOiI8PTkwMCIsImhlaWdodCI6Ijw9MTE4MiJ9XV19.FUnroTGc7BKGNBvYgSgR0jOVTOEXxNojQA7Nt4dQa_U',
+    'plastic': 'https://i1.wp.com/amsterdamduckstore.com/wp-content/uploads/2016/08/Marathon-Rubber-Duck.jpg?resize=400%2C400&ssl=1',
 }
 
 DUCKS_EMOJIS = {
@@ -20,6 +22,9 @@ DUCKS_EMOJIS = {
     'baby_unicode': '🐤',
     'baby_in_egg': '<:BabyDuck_01:439546718263050241>',
     'plastic_baby': '<:BabyDuck_02:439551472762355724>',
+    'shiny_duck': '<:Golden_Duck:477800276082950145>',
+    'golden_duck': '<:DuckGolden:439393970028806144>',
+    'meh_duck': '<:Duck_Meh:477800274036129793>',
 }
 
 normal = {
@@ -62,6 +67,20 @@ baby = {**normal,
         'avatar_urls': [DUCKS_IMAGES['lurk'], DUCKS_IMAGES['sip'], DUCKS_IMAGES['wave']],
         'emojis': [DUCKS_EMOJIS['baby_in_egg'], DUCKS_EMOJIS['baby_unicode'], DUCKS_EMOJIS['plastic_baby']]
         }
+
+golden = {**normal,
+          'shouts': ["€!", "$!", "£!", _("Free money !"), _("It's free money")],
+          'usernames': [_("Golden Duck"), _("Shiny Duck"), _("Rich Duck")],
+          'avatar_urls': [DUCKS_IMAGES['golden']],
+          'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']]
+          }
+
+plastic = {**normal,
+           'shouts': ["€?", "$?", "£?", _("Have any money ?"), _("It's paid money")],
+           'usernames': [_("Plastic Duck"), _("Poor Duck"), _("Slimey Duck")],
+           'avatar_urls': [DUCKS_IMAGES['plastic']],
+           'emojis': [DUCKS_EMOJIS['meh_duck']]
+           }
 
 mechanical = {
     **normal,

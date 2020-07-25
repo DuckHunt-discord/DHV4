@@ -39,19 +39,33 @@ async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwa
     return await channel.purge(check=check, **kwargs)
 
 
+async def create_and_save_webhook(bot: 'MyBot', channel: discord.TextChannel, force=False):
+    db_channel: DiscordChannel = await get_from_db(channel)
+    webhook = None
+    try:
+        webhooks = await channel.webhooks()
+        for webhook in webhooks:
+            webhook: discord.Webhook
+            if webhook.name == "Duckhunt":
+                db_channel.webhook_urls.append(webhook.url)
+        if len(db_channel.webhook_urls) == 0 and not force:
+            webhook = await channel.create_webhook(name="DuckHunt", reason="Better Ducks")
+            db_channel.webhook_urls.append(webhook.url)
+
+    except discord.Forbidden:
+        db_channel.use_webhooks = False
+
+    await db_channel.save()
+    return webhook
+
+
 async def get_webhook_if_possible(bot: 'MyBot', channel: discord.TextChannel):
     db_channel: DiscordChannel = await get_from_db(channel)
 
-    if not db_channel.webhook_url:
-        try:
-            webhook = await channel.create_webhook(name="DuckHunt", reason="Better Ducks")
-            db_channel.webhook_url = webhook.url
-            await db_channel.save()
-        except discord.Forbidden:
-            return None
-
+    if len(db_channel.webhook_urls) == 0:
+        webhook = await create_and_save_webhook(bot, channel)
     else:
-        webhook = discord.Webhook.from_url(db_channel.webhook_url, adapter=discord.AsyncWebhookAdapter(bot.client_session))
+        webhook = discord.Webhook.from_url(random.choice(db_channel.webhook_urls), adapter=discord.AsyncWebhookAdapter(bot.client_session))
 
     return webhook
 
@@ -60,8 +74,8 @@ def anti_bot_zero_width(mystr: str):
     """Add zero-width spaces and replace lookalikes characters in a string to make it harder to detect for bots"""
 
     addings = ["\u2060",  # Word joiner
-               "​"      ,  # ZWSP
-    ]
+               "​",  # ZWSP
+               ]
 
     replacements = {
         " ": ['\u00A0', '\u1680', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005', '\u2006', '\u2007', '\u2008', '\u2009', '\u200A', '\u202F', '\u205F', '\u3000']
@@ -80,4 +94,3 @@ def anti_bot_zero_width(mystr: str):
             out.append(random.choice(addings))
 
     return ''.join(out)
-

@@ -7,7 +7,7 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -51,7 +51,7 @@ class DucksSpawningCommands(Cog):
     @checks.server_admin_or_permission("ducks.spawn.prof")
     async def prof(self, ctx: MyContext):
         """
-        Spawns a Professor Duck.
+        Spawns a professor Duck.
         """
         myduck = PrDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
@@ -60,7 +60,7 @@ class DucksSpawningCommands(Cog):
     @checks.server_admin_or_permission("ducks.spawn.ghost")
     async def ghost(self, ctx: MyContext):
         """
-        Spawns a Ghost Duck. There will be no spawn message, obviously.
+        Spawns a ghost duck. There will be no spawn message, obviously.
         """
         myduck = GhostDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
@@ -78,10 +78,29 @@ class DucksSpawningCommands(Cog):
     @checks.server_admin_or_permission("ducks.spawn.armored")
     async def armored(self, ctx: MyContext):
         """
-        Spawns an Armored duck, that will resist most 1 dmg hits.
+        Spawns an armored duck, that will resist most 1 dmg hits.
         """
         myduck = ArmoredDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
+
+    @coin.command()
+    @checks.server_admin_or_permission("ducks.spawn.golden")
+    async def golden(self, ctx: MyContext):
+        """
+        Spawns a golden duck.
+        """
+        myduck = GoldenDuck(ctx.bot, ctx.channel)
+        await myduck.spawn()
+
+    @coin.command()
+    @checks.server_admin_or_permission("ducks.spawn.plastic")
+    async def plastic(self, ctx: MyContext):
+        """
+        Spawns a plastic duck.
+        """
+        myduck = PlasticDuck(ctx.bot, ctx.channel)
+        await myduck.spawn()
+
 
 
 setup = DucksSpawningCommands.setup

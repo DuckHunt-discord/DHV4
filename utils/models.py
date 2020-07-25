@@ -35,10 +35,11 @@ class DiscordChannel(Model):
     name = fields.TextField()
     permissions = fields.JSONField(default={})
 
-    webhook_url = fields.TextField(null=True)
+    webhook_urls = fields.JSONField(default=[])
 
     # Generic settings
-    use_emojis = fields.BooleanField(default=True)  # Seconds
+    use_webhooks = fields.BooleanField(default=True)
+    use_emojis = fields.BooleanField(default=True)
 
     # Experience
     base_duck_exp = fields.IntField(default=10)
@@ -97,6 +98,9 @@ class Player(Model):
     killed_moad_ducks = fields.IntField(default=0)
     killed_mechanical_ducks = fields.IntField(default=0)
     killed_armored_ducks = fields.IntField(default=0)
+    killed_golden_ducks = fields.IntField(default=0)
+    killed_plastic_ducks = fields.IntField(default=0)
+
 
     hugged_normal_ducks = fields.IntField(default=0)
     hugged_super_ducks = fields.IntField(default=0)
@@ -106,6 +110,8 @@ class Player(Model):
     hugged_moad_ducks = fields.IntField(default=0)
     hugged_mechanical_ducks = fields.IntField(default=0)
     hugged_armored_ducks = fields.IntField(default=0)
+    hugged_golden_ducks = fields.IntField(default=0)
+    hugged_plastic_ducks = fields.IntField(default=0)
 
     hurted_super_ducks = fields.IntField(default=0)
     hurted_moad_ducks = fields.IntField(default=0)

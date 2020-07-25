@@ -72,7 +72,7 @@ class Duck:
         webhook['username'] = _(webhook['username'])
         return webhook
 
-    async def get_exp_value(self):
+    async def get_exp_value(self) -> int:
         db_channel = await self.get_db_channel()
         return db_channel.base_duck_exp + db_channel.per_life_exp * await self.get_lives()
 
@@ -169,7 +169,7 @@ class Duck:
         _ = await self.get_translate_function()
 
         return _("{hurter.mention}, the duck RESISTED. [SUPER ARMORED DUCK fml, lives : still the fucking same smh]",
-                 hurter=hurter,)
+                 hurter=hurter, )
 
     async def get_hug_message(self, hugger, db_hugger):
         _ = await self.get_translate_function()
@@ -193,7 +193,7 @@ class Duck:
                 return
             except discord.NotFound:
                 db_channel: DiscordChannel = await get_from_db(self.channel)
-                db_channel.webhook_url = None
+                db_channel.webhook_urls.remove(webhook.url)
                 await db_channel.save()
 
                 pass
@@ -292,7 +292,6 @@ class Duck:
             await self.send(await self.get_resists_message(hurter, db_hurter))
 
         await self.release()
-
 
     # Utilities #
 
@@ -413,6 +412,20 @@ class BabyDuck(Duck):
         await self.send(_("{hugger.mention} hugged the duck and won exp, I guess ?",
                           hugger=hugger
                           ))
+
+
+class GoldenDuck(Duck):
+    category = 'golden'
+
+    async def get_exp_value(self):
+        return await super().get_exp_value() * 2
+
+
+class PlasticDuck(Duck):
+    category = 'plastic'
+
+    async def get_exp_value(self):
+        return await super().get_exp_value() * 0.5
 
 
 class MechanicalDuck(Duck):

@@ -9,6 +9,7 @@ from discord.utils import escape_markdown, escape_mentions
 from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.interaction import create_and_save_webhook
 from utils.models import get_from_db
 
 
@@ -76,5 +77,46 @@ class DatabaseCommands(Cog):
             await ctx.send(f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
         else:
             await ctx.send(_("There is no specific language set for this guild."))
+
+    @settings.command()
+    async def use_webhooks(self, ctx: MyContext, value: Optional[bool] = None):
+        """
+        Specify wether the bot should use webhooks to communicate in this channel.
+
+        Webhooks allow for custom avatars and usernames. However, there is a Discord limit of 10 webhooks per channel.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        if value:
+            db_channel.use_webhooks = value
+        await db_channel.save()
+
+        _ = await ctx.get_translate_function()
+        if db_channel.use_webhooks:
+            await ctx.send(_("Webhooks are used in this channel."))
+        else:
+            await ctx.send(_("Webhooks are not used in this channel."))
+
+    @settings.command()
+    async def add_webhook(self, ctx: MyContext):
+        """
+        Add a new webhook to the channel, to get better rate limits handling. Remember the 10 webhooks/channel limit.
+        """
+        _ = await ctx.get_translate_function()
+
+        db_channel = await get_from_db(ctx.channel)
+
+        if not db_channel.use_webhooks:
+            await ctx.send(_("Webhooks are not used in this channel. Please enable them first. You can use `{command}` to do it.",
+                             command=f"{ctx.prefix}settings use_webhooks True"))
+            return
+
+        webhooks_count = len(db_channel.webhook_urls)
+
+        webhook = await create_and_save_webhook(ctx.bot, ctx.channel, force=True)
+        if webhook:
+            await ctx.send(_("Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks.", n=webhooks_count + 1))
+        else:
+            await ctx.send(_("I couldn't create a webhook. Double-check my permissions and try again."))
+
 
 setup = DatabaseCommands.setup
