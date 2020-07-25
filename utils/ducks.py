@@ -10,7 +10,7 @@ from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player
 from utils.translations import translate
-from . import ducks_config
+import utils.ducks_config as ducks_config
 
 
 class Duck:
@@ -18,7 +18,6 @@ class Duck:
     The standard duck. Kill it with the pan command
     """
     category = 'normal'
-    ascii_art = category
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
     use_bonus_exp = True
 
@@ -39,7 +38,7 @@ class Duck:
         self.lives_left: Optional[int] = self._lives
 
     def get_cosmetics(self):
-        return getattr(ducks_config, self.ascii_art)
+        return getattr(ducks_config, self.category)
 
     @property
     def spawned_for(self):
@@ -89,6 +88,10 @@ class Duck:
         db_hugger = self.db_target_lock_by
         setattr(db_hugger, self.get_hugged_count_variable(), getattr(db_hugger, self.get_hugged_count_variable()) + 1)
 
+    async def increment_resists(self):
+        db_hugger = self.db_target_lock_by
+        setattr(db_hugger, self.get_resisted_count_variable(), getattr(db_hugger, self.get_resisted_count_variable()) + 1)
+
     def get_hurted_count_variable(self):
         return f"hurted_{self.category}_ducks"
 
@@ -97,6 +100,9 @@ class Duck:
 
     def get_hugged_count_variable(self):
         return f"hugged_{self.category}_ducks"
+
+    def get_resisted_count_variable(self):
+        return f"resisted_{self.category}_ducks"
 
     # Locks #
 
@@ -158,6 +164,12 @@ class Duck:
         return _("{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]",
                  hurter=hurter,
                  damage=damage)
+
+    async def get_resists_message(self, hurter, db_hurter):
+        _ = await self.get_translate_function()
+
+        return _("{hurter.mention}, the duck RESISTED. [SUPER ARMORED DUCK fml, lives : still the fucking same smh]",
+                 hurter=hurter,)
 
     async def get_hug_message(self, hugger, db_hugger):
         _ = await self.get_translate_function()
@@ -265,13 +277,15 @@ class Duck:
         hurter = self.target_lock_by
         db_hurter = self.db_target_lock_by
 
-        await self.increment_hurts()
+        if damage:
+            await self.increment_hurts()
+            await self.send(await self.get_hurt_message(hurter, db_hurter, damage))
+        else:
+            await self.increment_resists()
+            await self.send(await self.get_resists_message(hurter, db_hurter))
 
         await self.release()
 
-        _ = await self.get_translate_function()
-
-        await self.send(await self.get_hurt_message(hurter, db_hurter, damage))
 
     # Utilities #
 
@@ -298,7 +312,6 @@ class GhostDuck(Duck):
     A rare duck that does *not* say anything when it spawns.
     """
     category = 'ghost'
-    ascii_art = category
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
 
     async def spawn(self):
@@ -313,7 +326,6 @@ class GhostDuck(Duck):
 
 class PrDuck(Duck):
     category = 'prof'
-    ascii_art = category
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
@@ -358,7 +370,6 @@ class BabyDuck(Duck):
     A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
     """
     category = 'baby'
-    ascii_art = 'baby'
 
     async def kill(self, damage: int, args):
         """
@@ -399,7 +410,6 @@ class BabyDuck(Duck):
 
 class MechanicalDuck(Duck):
     category = 'mechanical'
-    ascii_art = 'mechanical'
     fake = True
     use_bonus_exp = False
 
@@ -418,7 +428,6 @@ class SuperDuck(Duck):
     A duck with many lives to spare.
     """
     category = 'super'
-    ascii_art = 'normal'
 
     def __init__(self, *args, lives: int = None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -435,11 +444,21 @@ class MotherOfAllDucks(SuperDuck):
     This duck will spawn two more when she dies.
     """
     category = 'moad'
-    ascii_art = 'moad'
 
     async def post_kill(self):
         for i in range(2):
             await spawn_random_weighted_duck(self.channel)
+
+
+class ArmoredDuck(SuperDuck):
+    category = 'armored'
+
+    async def get_damage(self):
+        minus = 0
+        if random.randint(0, 100) < 90:
+            minus = 1
+
+        return await super().get_damage() - minus
 
 
 async def spawn_random_weighted_duck(channel: discord.TextChannel):

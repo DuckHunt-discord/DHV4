@@ -94,14 +94,24 @@ class Player(Model):
     killed_baby_ducks = fields.IntField(default=0)
     killed_prof_ducks = fields.IntField(default=0)
     killed_ghost_ducks = fields.IntField(default=0)
+    killed_moad_ducks = fields.IntField(default=0)
+    killed_mechanical_ducks = fields.IntField(default=0)
+    killed_armored_ducks = fields.IntField(default=0)
 
     hugged_normal_ducks = fields.IntField(default=0)
     hugged_super_ducks = fields.IntField(default=0)
     hugged_baby_ducks = fields.IntField(default=0)
     hugged_prof_ducks = fields.IntField(default=0)
     hugged_ghost_ducks = fields.IntField(default=0)
+    hugged_moad_ducks = fields.IntField(default=0)
+    hugged_mechanical_ducks = fields.IntField(default=0)
+    hugged_armored_ducks = fields.IntField(default=0)
 
     hurted_super_ducks = fields.IntField(default=0)
+    hurted_moad_ducks = fields.IntField(default=0)
+    hurted_armored_ducks = fields.IntField(default=0)
+
+    resisted_armored_ducks = fields.IntField(default=0)
 
     async def get_bonus_experience(self, given_experience):
         return 0

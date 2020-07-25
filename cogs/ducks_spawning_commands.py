@@ -7,7 +7,7 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -74,6 +74,14 @@ class DucksSpawningCommands(Cog):
         myduck = MotherOfAllDucks(ctx.bot, ctx.channel)
         await myduck.spawn()
 
+    @coin.command()
+    @checks.server_admin_or_permission("ducks.spawn.armored")
+    async def armored(self, ctx: MyContext):
+        """
+        Spawns an Armored duck, that will resist most 1 dmg hits.
+        """
+        myduck = ArmoredDuck(ctx.bot, ctx.channel)
+        await myduck.spawn()
 
 
 setup = DucksSpawningCommands.setup
