@@ -188,9 +188,16 @@ class Duck:
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
-            await webhook.send(message, **this_webhook_parameters)
-        else:
-            await self.channel.send(message)
+            try:
+                await webhook.send(message, **this_webhook_parameters)
+                return
+            except discord.NotFound:
+                db_channel: DiscordChannel = await get_from_db(self.channel)
+                db_channel.webhook_url = None
+                await db_channel.save()
+
+                pass
+        await self.channel.send(message)
 
     # Parameters #
 
