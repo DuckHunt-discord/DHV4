@@ -48,7 +48,7 @@ async def create_and_save_webhook(bot: 'MyBot', channel: discord.TextChannel, fo
             webhook: discord.Webhook
             if webhook.name == "Duckhunt":
                 db_channel.webhook_urls.append(webhook.url)
-        if len(db_channel.webhook_urls) == 0 and not force:
+        if len(db_channel.webhook_urls) == 0 or force:
             webhook = await channel.create_webhook(name="DuckHunt", reason="Better Ducks")
             db_channel.webhook_urls.append(webhook.url)
 

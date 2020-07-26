@@ -47,6 +47,7 @@ class Duck:
         return None
 
     async def is_killed(self):
+        await self.get_lives()
         return self.lives_left <= 0
 
     # Database #
