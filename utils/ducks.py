@@ -353,8 +353,9 @@ class PrDuck(Duck):
         try:
             result = int(args[0])
         except IndexError:
-            await self.send(_("{hurter.mention}, I asked you a question !",
-                              hurter=hurter))
+            await self.send(_("{hurter.mention}, I asked you a question ! What's {operation} ?",
+                              hurter=hurter,
+                              operation=self.operation))
             await self.release()
             return
         except ValueError:
