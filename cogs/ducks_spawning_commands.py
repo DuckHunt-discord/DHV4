@@ -1,3 +1,4 @@
+import asyncio
 import random
 
 import discord
@@ -7,7 +8,8 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck, KamikazeDuck, spawn_random_weighted_duck
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck, KamikazeDuck, spawn_random_weighted_duck, \
+    RANDOM_SPAWN_DUCKS_CLASSES, MechanicalDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -22,6 +24,22 @@ class DucksSpawningCommands(Cog):
         """
         if not ctx.invoked_subcommand:
             await spawn_random_weighted_duck(ctx.bot, ctx.channel)
+
+    @coin.command()
+    @commands.cooldown(1, 60, type=commands.BucketType.channel)
+    @checks.server_admin_or_permission("ducks.spawn.roulette")
+    async def roulette(self, ctx: MyContext, how_many_ducks: int = 5):
+        """
+        Spawns many ducks, of (at least) one is a mechanical one
+        """
+        ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks) + MechanicalDuck
+
+        random.shuffle(ducks_classes)
+
+        for duck_class in ducks_classes:
+            myduck = duck_class(ctx.bot, ctx.channel)
+            await myduck.spawn()
+            await asyncio.sleep(2)
 
     @coin.command()
     @checks.server_admin_or_permission("ducks.spawn.normal")
