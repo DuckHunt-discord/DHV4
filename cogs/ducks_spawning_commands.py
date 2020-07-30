@@ -7,7 +7,7 @@ from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck, KamikazeDuck
+from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, PlasticDuck, KamikazeDuck, spawn_random_weighted_duck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -18,11 +18,19 @@ class DucksSpawningCommands(Cog):
     @checks.server_admin_or_permission("ducks.spawn.normal")
     async def coin(self, ctx: MyContext):
         """
-        Spawns a duck
+        Spawns a random duck
         """
         if not ctx.invoked_subcommand:
-            myduck = Duck(ctx.bot, ctx.channel)
-            await myduck.spawn()
+            await spawn_random_weighted_duck(ctx.bot, ctx.channel)
+
+    @coin.command()
+    @checks.server_admin_or_permission("ducks.spawn.normal")
+    async def super(self, ctx: MyContext):
+        """
+        Spawns a normal duck
+        """
+        myduck = Duck(ctx.bot, ctx.channel)
+        await myduck.spawn()
 
     @coin.command()
     @checks.server_admin_or_permission("ducks.spawn.super")

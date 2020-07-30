@@ -116,9 +116,10 @@ plastic = {**normal,
 
 kamikaze = {**normal,
             'shouts': [_("**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"), _("Gonna kill y'all !")],
-            'usernames': [_("The Kamikaze Duck"), _("Explosive Duck"), _("Boom Duck")],
+            'usernames': [_("The Kamikaze Duck"), _("Explosive Duck"), _("Boom Duck"), _("Dynamite Duck")],
             'avatar_urls': [DUCKS_IMAGES['golden']],
-            'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']]
+            'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']],
+            'bye_shouts': [_("The kamikaze duck exploded, killing every duck on the channel.")]
             }
 
 mechanical = {

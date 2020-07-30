@@ -4,8 +4,10 @@ import time
 from typing import Optional
 
 import discord
+import typing
 from discord.utils import escape_markdown
 
+from utils import config
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player
@@ -173,12 +175,6 @@ class Duck:
 
         return f"{trace} {face} {shout}"
 
-    async def get_bye_message(self) -> str:
-        trace = await self.get_bye_trace()
-        shout = await self.get_bye_shout()
-
-        return f"{trace} {shout}"
-
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
 
@@ -204,10 +200,11 @@ class Duck:
                  hugger=hugger
                  )
 
-    async def get_left_message(self):
-        _ = await self.get_translate_function()
+    async def get_left_message(self) -> str:
+        trace = await self.get_bye_trace()
+        shout = await self.get_bye_shout()
 
-        return _("The duck left.")
+        return f"{trace} {shout}"
 
     async def send(self, message: str):
         webhook = await get_webhook_if_possible(self.bot, self.channel)
@@ -459,11 +456,6 @@ class PlasticDuck(Duck):
 class KamikazeDuck(Duck):
     category = 'kamikaze'
 
-    async def get_left_message(self):
-        _ = await self.get_translate_function()
-
-        return _("The kamikaze duck exploded, killing every duck on the channel.")
-
     async def leave(self):
         await self.send(await self.get_left_message())
         self.bot.ducks_spawned[self.channel].clear()
@@ -523,7 +515,7 @@ class MotherOfAllDucks(SuperDuck):
 
     async def post_kill(self):
         for i in range(2):
-            await spawn_random_weighted_duck(self.channel)
+            await spawn_random_weighted_duck(self.bot, self.channel)
 
 
 class ArmoredDuck(SuperDuck):
@@ -537,5 +529,23 @@ class ArmoredDuck(SuperDuck):
         return await super().get_damage() - minus
 
 
-async def spawn_random_weighted_duck(channel: discord.TextChannel):
-    pass
+RANDOM_SPAWN_DUCKS_CLASSES = [Duck, GhostDuck, PrDuck, BabyDuck, GoldenDuck, PlasticDuck, KamikazeDuck, MechanicalDuck, SuperDuck, MotherOfAllDucks, ArmoredDuck]
+DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLASSES}
+DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
+
+
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel):
+    duck = await get_random_weighted_duck(bot, channel)
+    await duck.spawn()
+    return duck
+
+
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel):
+    db_channel = await get_from_db(channel)
+    weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_CATEGORIES]
+    # noinspection PyPep8Naming
+    DuckClass: typing.Type[Duck] = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, weights)[0]
+
+    return DuckClass(bot, channel)
+
+

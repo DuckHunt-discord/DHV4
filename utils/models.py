@@ -45,6 +45,20 @@ class DiscordChannel(Model):
     base_duck_exp = fields.IntField(default=10)
     per_life_exp = fields.IntField(default=7)
 
+    # Spawn rates
+    ducks_per_day = fields.IntField(default=96)
+
+    spawn_weight_normal_ducks = fields.IntField(default=100)
+    spawn_weight_super_ducks = fields.IntField(default=15)
+    spawn_weight_baby_ducks = fields.IntField(default=7)
+    spawn_weight_prof_ducks = fields.IntField(default=10)
+    spawn_weight_ghost_ducks = fields.IntField(default=1)
+    spawn_weight_moad_ducks = fields.IntField(default=5)
+    spawn_weight_mechanical_ducks = fields.IntField(default=1)
+    spawn_weight_armored_ducks = fields.IntField(default=3)
+    spawn_weight_golden_ducks = fields.IntField(default=1)
+    spawn_weight_plastic_ducks = fields.IntField(default=6)
+
     # Duck settings
     ducks_time_to_live = fields.IntField(default=660)  # Seconds
     super_ducks_min_life = fields.IntField(default=2)

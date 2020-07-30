@@ -64,6 +64,7 @@ cogs_to_load = ['jishaku',
                 'cogs.database_commands',
                 'cogs.permissions_commands',
                 'cogs.ducks_spawning_commands',
+                'cogs.ducks_spawning',
                 'cogs.ducks_hunting_commands',
                 'cogs.community',
                 ]
