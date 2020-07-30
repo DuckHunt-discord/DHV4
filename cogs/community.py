@@ -48,7 +48,6 @@ class Community(Cog):
         if message.content.lower().startswith("rpg"):
             await message.delete(delay=10)
 
-
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = datetime.datetime.utcnow()
         cooldowns = []
