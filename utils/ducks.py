@@ -187,12 +187,18 @@ class Duck:
         return _("{hurter.mention}, the duck RESISTED. [ARMORED DUCK detected]",
                  hurter=hurter, )
 
-    async def get_hug_message(self, hugger, db_hugger):
+    async def get_hug_message(self, hugger, db_hugger, experience):
         _ = await self.get_translate_function()
-
-        return _("{hugger.mention} hugged the duck and lost exp, I guess ?",
-                 hugger=hugger
-                 )
+        if experience > 0:
+            return _("{hugger.mention} hugged the duck. So cute! [exp: {experience}]",
+                     hugger=hugger,
+                     experience=experience,
+                     )
+        else:
+            return _("{hugger.mention} try to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [exp: {experience}]",
+                     hugger=hugger,
+                     experience=experience,
+                     )
 
     async def get_left_message(self) -> str:
         trace = await self.get_bye_trace()
@@ -236,6 +242,9 @@ class Duck:
     async def get_damage(self):
         return 1
 
+    async def get_hug_experience(self):
+        return -2
+
     # Entry Points #
 
     async def spawn(self):
@@ -262,13 +271,16 @@ class Duck:
         hugger = self.target_lock_by
         db_hugger = self.db_target_lock_by
 
+        experience = await self.get_hug_experience()
         await self.increment_hugs()
         await self.release()
+
+        db_hugger.experience += experience
 
         await db_hugger.save()
 
         _ = await self.get_translate_function()
-        await self.send(await self.get_hug_message(hugger, db_hugger))
+        await self.send(await self.get_hug_message(hugger, db_hugger, experience))
 
     async def leave(self):
         await self.send(await self.get_left_message())
@@ -406,41 +418,15 @@ class BabyDuck(Duck):
     """
     category = 'baby'
 
-    async def kill(self, damage: int, args):
-        """
-        You shouldn't kill a baby duck
-        """
-        self.despawn()
-
-        killer = self.target_lock_by
-        db_killer = self.db_target_lock_by
-
-        await self.increment_kills()
-        await self.release()
-
+    async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
+        return _("{killer.mention} killed the duck baby snif", killer=killer)
 
-        # Increment killed by 1
-        setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
-        won_experience = await self.get_exp_value()
-        db_killer.experience -= won_experience
+    async def get_exp_value(self):
+        return - await super().get_exp_value()
 
-        await db_killer.save()
-
-        await self.send(_("{killer.mention} killed the duck baby snif", killer=killer))
-        await self.post_kill()
-
-    async def hug(self, args):
-        hugger = self.target_lock_by
-        db_hugger = self.db_target_lock_by
-        await self.increment_hugs()
-        await self.release()
-
-        _ = await self.get_translate_function()
-
-        await self.send(_("{hugger.mention} hugged the duck and won exp, I guess ?",
-                          hugger=hugger
-                          ))
+    async def get_hug_experience(self):
+        return 5
 
 
 class GoldenDuck(Duck):
