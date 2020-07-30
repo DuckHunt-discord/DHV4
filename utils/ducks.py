@@ -196,7 +196,7 @@ class Duck:
                      experience=experience,
                      )
         else:
-            return _("{hugger.mention} try to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [exp: {experience}]",
+            return _("{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [exp: {experience}]",
                      hugger=hugger,
                      experience=experience,
                      )
