@@ -22,6 +22,7 @@ class Duck:
     category = 'normal'
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
     use_bonus_exp = True
+    leave_on_hug = False
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         self.bot = bot
@@ -268,6 +269,9 @@ class Duck:
             await self.hurt(damage, args)
 
     async def hug(self, args):
+        if self.leave_on_hug:
+            self.despawn()
+
         hugger = self.target_lock_by
         db_hugger = self.db_target_lock_by
 
@@ -417,6 +421,7 @@ class BabyDuck(Duck):
     A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
     """
     category = 'baby'
+    leave_on_hug = True
 
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
