@@ -81,31 +81,23 @@ class Duck:
 
     async def increment_hurts(self):
         db_hurter = self.db_target_lock_by
-        setattr(db_hurter, self.get_hurted_count_variable(), getattr(db_hurter, self.get_hurted_count_variable()) + 1)
+        db_hurter.hurted[self.category] += 1
 
     async def increment_kills(self):
         db_killer = self.db_target_lock_by
-        setattr(db_killer, self.get_killed_count_variable(), getattr(db_killer, self.get_killed_count_variable()) + 1)
+        db_killer.killed[self.category] += 1
 
     async def increment_hugs(self):
         db_hugger = self.db_target_lock_by
-        setattr(db_hugger, self.get_hugged_count_variable(), getattr(db_hugger, self.get_hugged_count_variable()) + 1)
+        db_hugger.hugged[self.category] += 1
 
     async def increment_resists(self):
-        db_hugger = self.db_target_lock_by
-        setattr(db_hugger, self.get_resisted_count_variable(), getattr(db_hugger, self.get_resisted_count_variable()) + 1)
+        db_hurter = self.db_target_lock_by
+        db_hurter.resisted[self.category] += 1
 
-    def get_hurted_count_variable(self):
-        return f"hurted_{self.category}_ducks"
-
-    def get_killed_count_variable(self):
-        return f"killed_{self.category}_ducks"
-
-    def get_hugged_count_variable(self):
-        return f"hugged_{self.category}_ducks"
-
-    def get_resisted_count_variable(self):
-        return f"resisted_{self.category}_ducks"
+    async def increment_frightens(self):
+        db_frightener = self.db_target_lock_by
+        db_frightener.frightened[self.category] += 1
 
     # Locks #
 
@@ -178,7 +170,9 @@ class Duck:
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
 
-        return _("{killer.mention} killed the duck []", killer=killer)
+        return _("{killer.mention} killed the duck [exp: {won_experience}]",
+                 killer=killer,
+                 won_experience=won_experience)
 
     async def get_hurt_message(self, hurter, db_hurter, damage):
         _ = await self.get_translate_function()
@@ -271,6 +265,8 @@ class Duck:
         await self.increment_hugs()
         await self.release()
 
+        await db_hugger.save()
+
         _ = await self.get_translate_function()
         await self.send(await self.get_hug_message(hugger, db_hugger))
 
@@ -279,6 +275,13 @@ class Duck:
         self.despawn()
 
     # Actions #
+    async def frighten(self):
+        hunter = self.target_lock_by
+        db_hunter = self.db_target_lock_by
+        await self.increment_frightens()
+        await self.release()
+
+        await db_hunter.save()
 
     async def kill(self, damage: int, args):
         """The duck was killed by the current target player"""
@@ -316,6 +319,7 @@ class Duck:
             await self.send(await self.get_resists_message(hurter, db_hurter))
 
         await self.release()
+        await db_hurter.save()
 
     # Utilities #
 
@@ -331,7 +335,7 @@ class Duck:
 
     async def post_kill(self):
         """
-        Just in case youwant to do something after a duck died.
+        Just in case you want to do something after a duck died.
         """
 
 

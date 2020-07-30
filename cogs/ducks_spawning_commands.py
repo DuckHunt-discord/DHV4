@@ -32,7 +32,7 @@ class DucksSpawningCommands(Cog):
         """
         Spawns many ducks, of (at least) one is a mechanical one
         """
-        ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks) + MechanicalDuck
+        ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks) + [MechanicalDuck]
 
         random.shuffle(ducks_classes)
 
@@ -43,7 +43,7 @@ class DucksSpawningCommands(Cog):
 
     @coin.command()
     @checks.server_admin_or_permission("ducks.spawn.normal")
-    async def super(self, ctx: MyContext):
+    async def normal(self, ctx: MyContext):
         """
         Spawns a normal duck
         """

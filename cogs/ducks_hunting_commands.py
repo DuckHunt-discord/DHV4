@@ -39,7 +39,7 @@ class DucksHuntingCommands(Cog):
         channel = ctx.channel
         duck = await ctx.target_next_duck()
         if duck:
-            await duck.hug(*args)
+            await duck.hug(args)
         else:
             await channel.send(_("No duck, bruh. Tree."))
 

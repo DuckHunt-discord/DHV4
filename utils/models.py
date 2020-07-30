@@ -1,3 +1,6 @@
+import collections
+import datetime
+
 import discord
 import typing
 from tortoise import Tortoise, fields
@@ -7,8 +10,22 @@ if typing.TYPE_CHECKING:
     from utils.ctx_class import MyContext
 
 
-# TODO : https://github.com/long2ice/aerich
+class DefaultDictJSONField(fields.JSONField):
+    def __init__(self, default_factory=int, **kwargs: typing.Any):
+        self.default_factory = default_factory
+        kwargs["default"] = collections.defaultdict(default_factory)
+        super().__init__(**kwargs)
 
+    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[collections.defaultdict]:
+        ret = super().to_python_value(value)
+        return collections.defaultdict(self.default_factory, ret)
+
+    def to_db_value(self, value: typing.Optional[collections.defaultdict], instance: typing.Union[typing.Type[Model], Model]) -> typing.Optional[str]:
+        value = dict(value)
+        return super().to_db_value(value, instance)
+
+
+# TODO : https://github.com/long2ice/aerich
 class DiscordGuild(Model):
     id = fields.IntField(pk=True)
     discord_id = fields.BigIntField(index=True)
@@ -40,6 +57,19 @@ class DiscordChannel(Model):
     # Generic settings
     use_webhooks = fields.BooleanField(default=True)
     use_emojis = fields.BooleanField(default=True)
+    enabled = fields.BooleanField(default=False)
+
+    tax_on_user_give = fields.IntField(default=5)  # Pct
+    mentions_when_killed = fields.BooleanField(default=True)
+    show_duck_lives = fields.BooleanField(default=True)
+
+    # Luck percentages
+    kill_on_miss_chance = fields.IntField(default=3)  # Pct
+    duck_frighten_chance = fields.IntField(default=7)  # Pct
+
+    # Shop items
+    clover_min_experience = fields.IntField(default=1)
+    clover_max_experience = fields.IntField(default=10)
 
     # Experience
     base_duck_exp = fields.IntField(default=10)
@@ -58,6 +88,7 @@ class DiscordChannel(Model):
     spawn_weight_armored_ducks = fields.IntField(default=3)
     spawn_weight_golden_ducks = fields.IntField(default=1)
     spawn_weight_plastic_ducks = fields.IntField(default=6)
+    spawn_weight_kamikaze_ducks = fields.IntField(default=6)
 
     # Duck settings
     ducks_time_to_live = fields.IntField(default=660)  # Seconds
@@ -95,6 +126,14 @@ class DiscordUser(Model):
         return f"<User name={self.name}#{self.discriminator}>"
 
 
+def _before_current_time_property(field):
+    @property
+    def is_done(self):
+        return getattr(self, field) > datetime.datetime.utcnow()
+
+    return is_done
+
+
 class Player(Model):
     id = fields.IntField(pk=True)
     channel = fields.ForeignKeyField('models.DiscordChannel')
@@ -102,36 +141,50 @@ class Player(Model):
 
     # Generic stats
     experience = fields.BigIntField(default=0)
+    bullets = fields.IntField(default=6)
+    magazines = fields.IntField(default=6)
+
+    # Weapon & Player status
+    last_giveback = fields.DatetimeField(auto_now_add=True)
+
+    weapon_confiscated = fields.BooleanField(default=False)
+    weapon_jammed = fields.BooleanField(default=False)
+    weapon_sabotaged_by = fields.ForeignKeyField('models.Player', null=True, on_delete=fields.SET_NULL)
+    sand_in_weapon = fields.BooleanField(default=False)
+
+    is_dazzled = fields.BooleanField(default=False)
+    clover_experience = fields.IntField(null=True)
+    infrared_detector_uses_left = fields.IntField(null=True)
+
+    wet_until = fields.DatetimeField(auto_now_add=True)
+    clover_until = fields.DatetimeField(auto_now_add=True)
+    ap_ammo_until = fields.DatetimeField(auto_now_add=True)
+    explosive_ammo_until = fields.DatetimeField(auto_now_add=True)
+    infrared_detector_until = fields.DatetimeField(auto_now_add=True)
+    grease_until = fields.DatetimeField(auto_now_add=True)
+    sight_until = fields.DatetimeField(auto_now_add=True)
+    silencer_until = fields.DatetimeField(auto_now_add=True)
+    sunglasses_until = fields.DatetimeField(auto_now_add=True)
+
+    is_wet = _before_current_time_property("wet_until")
+    have_clover = _before_current_time_property("clover_until")
+    have_ap_ammo = _before_current_time_property("ap_ammo_until")
+    have_explosive_ammo = _before_current_time_property("explosive_ammo_until")
+    have_grease = _before_current_time_property("grease_until")
+    have_sight = _before_current_time_property("sight_until")
+    have_silencer = _before_current_time_property("silencer_until")
+    have_sunglasses = _before_current_time_property("sunglasses_until")
+
+    @property
+    def have_infrared_detector(self):
+        return self.infrared_detector_uses_left > 0 and self.infrared_detector_until > datetime.datetime.utcnow()
 
     # Killed ducks stats
-    killed_normal_ducks = fields.IntField(default=0)
-    killed_super_ducks = fields.IntField(default=0)
-    killed_baby_ducks = fields.IntField(default=0)
-    killed_prof_ducks = fields.IntField(default=0)
-    killed_ghost_ducks = fields.IntField(default=0)
-    killed_moad_ducks = fields.IntField(default=0)
-    killed_mechanical_ducks = fields.IntField(default=0)
-    killed_armored_ducks = fields.IntField(default=0)
-    killed_golden_ducks = fields.IntField(default=0)
-    killed_plastic_ducks = fields.IntField(default=0)
-
-
-    hugged_normal_ducks = fields.IntField(default=0)
-    hugged_super_ducks = fields.IntField(default=0)
-    hugged_baby_ducks = fields.IntField(default=0)
-    hugged_prof_ducks = fields.IntField(default=0)
-    hugged_ghost_ducks = fields.IntField(default=0)
-    hugged_moad_ducks = fields.IntField(default=0)
-    hugged_mechanical_ducks = fields.IntField(default=0)
-    hugged_armored_ducks = fields.IntField(default=0)
-    hugged_golden_ducks = fields.IntField(default=0)
-    hugged_plastic_ducks = fields.IntField(default=0)
-
-    hurted_super_ducks = fields.IntField(default=0)
-    hurted_moad_ducks = fields.IntField(default=0)
-    hurted_armored_ducks = fields.IntField(default=0)
-
-    resisted_armored_ducks = fields.IntField(default=0)
+    killed = DefaultDictJSONField()
+    hugged = DefaultDictJSONField()
+    hurted = DefaultDictJSONField()
+    resisted = DefaultDictJSONField()
+    frightened = DefaultDictJSONField()
 
     async def get_bonus_experience(self, given_experience):
         return 0
@@ -163,7 +216,7 @@ async def get_from_db(discord_object, as_user=False):
             db_obj = DiscordGuild(discord_id=discord_object.id, name=discord_object.name)
             await db_obj.save()
         return db_obj
-    elif isinstance(discord_object, discord.abc.GuildChannel):
+    elif isinstance(discord_object, discord.TextChannel):
         db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
         if not db_obj:
             db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=await get_from_db(discord_object.guild))
@@ -186,7 +239,7 @@ async def get_from_db(discord_object, as_user=False):
 async def get_player(member: discord.Member, channel: discord.TextChannel):
     db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).first()
     if not db_obj:
-        db_obj = Player(channel=await get_from_db(channel.guild), member=await get_from_db(member, as_user=False))
+        db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
         await db_obj.save()
     return db_obj
 
