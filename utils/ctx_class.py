@@ -73,12 +73,12 @@ class MyContext(commands.Context):
     def author_permissions(self):
         return self.channel.permissions_for(self.author)
 
-    async def get_language_code(self):
-        if self.guild:
+    async def get_language_code(self, user_language=False):
+        if self.guild and not user_language:
             db_guild = await get_from_db(self.guild)
             language = db_guild.language
         else:
-            db_user = await get_from_db(self.author)
+            db_user = await get_from_db(self.author, as_user=True)
             language = db_user.language
 
         return language
@@ -87,8 +87,8 @@ class MyContext(commands.Context):
         language_code = await self.get_language_code()
         return translate(message, language_code)
 
-    async def get_translate_function(self):
-        language_code = await self.get_language_code()
+    async def get_translate_function(self, user_language=False):
+        language_code = await self.get_language_code(user_language=user_language)
 
         def _(message, **kwargs):
             return translate(message, language_code).format(**kwargs)

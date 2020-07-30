@@ -35,6 +35,7 @@ database = "mybot"
 "permissionscommands.*" = true
 "duckshuntingcommands.*" = true
 "ducksspawningcommands.*" = false
+"community.*" = false
 
 [permissions.fixed]
 # We need to deny that one to everyone, because by default there is no permissions granted
@@ -64,6 +65,7 @@ cogs_to_load = ['jishaku',
                 'cogs.permissions_commands',
                 'cogs.ducks_spawning_commands',
                 'cogs.ducks_hunting_commands',
+                'cogs.community',
                 ]
 
 # The name after cogs is the name of the class
@@ -75,3 +77,7 @@ wiki_url = "https://docs.duckhunt.me"
 support_server_id = 734810932529856652
 # ID of an empty channel that will be used as a status dashboard.
 status_channel_id = 734879974842171474
+
+[cogs.Community]
+servers = [195260081036591104]
+rpg_role_name = "Ping me for RPG bot events"
