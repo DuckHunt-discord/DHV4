@@ -11,7 +11,7 @@ if typing.TYPE_CHECKING:
 
 
 class DefaultDictJSONField(fields.JSONField):
-    def __init__(self, default_factory=int, **kwargs: typing.Any):
+    def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
         self.default_factory = default_factory
         kwargs["default"] = collections.defaultdict(default_factory)
         super().__init__(**kwargs)
@@ -141,8 +141,21 @@ class Player(Model):
 
     # Generic stats
     experience = fields.BigIntField(default=0)
+    spent_experience = fields.BigIntField(default=0)
+    murders = fields.BigIntField(default=0)
+
+    givebacks = fields.BigIntField(default=0)
+
+    found_items = DefaultDictJSONField()
+
+    # Weapon stats
+    shots_without_ducks = fields.BigIntField(default=0)
+    effective_reloads = fields.BigIntField(default=0)
+    no_magazines_reloads = fields.BigIntField(default=0)
+    unneeded_reloads = fields.BigIntField(default=0)
+
     bullets = fields.IntField(default=6)
-    magazines = fields.IntField(default=6)
+    magazines = fields.IntField(default=2)
 
     # Weapon & Player status
     last_giveback = fields.DatetimeField(auto_now_add=True)
@@ -153,10 +166,13 @@ class Player(Model):
     sand_in_weapon = fields.BooleanField(default=False)
 
     is_dazzled = fields.BooleanField(default=False)
+    wet_until = fields.DatetimeField(auto_now_add=True)
+
+    # Shop items
+
     clover_experience = fields.IntField(null=True)
     infrared_detector_uses_left = fields.IntField(null=True)
 
-    wet_until = fields.DatetimeField(auto_now_add=True)
     clover_until = fields.DatetimeField(auto_now_add=True)
     ap_ammo_until = fields.DatetimeField(auto_now_add=True)
     explosive_ammo_until = fields.DatetimeField(auto_now_add=True)
@@ -165,6 +181,8 @@ class Player(Model):
     sight_until = fields.DatetimeField(auto_now_add=True)
     silencer_until = fields.DatetimeField(auto_now_add=True)
     sunglasses_until = fields.DatetimeField(auto_now_add=True)
+
+    # Timers
 
     is_wet = _before_current_time_property("wet_until")
     have_clover = _before_current_time_property("clover_until")
@@ -180,6 +198,7 @@ class Player(Model):
         return self.infrared_detector_uses_left > 0 and self.infrared_detector_until > datetime.datetime.utcnow()
 
     # Killed ducks stats
+    best_times = DefaultDictJSONField(default_factory=lambda: 660)
     killed = DefaultDictJSONField()
     hugged = DefaultDictJSONField()
     hurted = DefaultDictJSONField()

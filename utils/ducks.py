@@ -100,6 +100,10 @@ class Duck:
         db_frightener = self.db_target_lock_by
         db_frightener.frightened[self.category] += 1
 
+    async def set_best_time(self):
+        db_hunter = self.db_target_lock_by
+        db_hunter.best_times[self.category] = min(self.spawned_for, db_hunter.best_times[self.category])
+
     # Locks #
 
     async def target(self, member: discord.Member = None):
@@ -271,6 +275,7 @@ class Duck:
     async def hug(self, args):
         if self.leave_on_hug:
             self.despawn()
+            await self.set_best_time()
 
         hugger = self.target_lock_by
         db_hugger = self.db_target_lock_by
@@ -302,6 +307,7 @@ class Duck:
     async def kill(self, damage: int, args):
         """The duck was killed by the current target player"""
         self.despawn()
+        await self.set_best_time()
 
         killer = self.target_lock_by
         db_killer = self.db_target_lock_by
@@ -354,8 +360,8 @@ class Duck:
         Just in case you want to do something after a duck died.
         """
 
-
 # Standard ducks #
+
 
 class GhostDuck(Duck):
     """

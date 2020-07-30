@@ -18,6 +18,7 @@ DUCKS_IMAGES = {
     'ghost_2': 'https://cdn.discordapp.com/attachments/737978240966066177/737980172107644969/ghost_duck2.png',
     'ghost_1': 'https://cdn.discordapp.com/attachments/737978240966066177/737978554754793524/ghost_duck1.png',
     'armored': 'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
+    'baby': 'https://media.discordapp.net/attachments/737978240966066177/738490902762225704/baby_duck.png'
 }
 
 DUCKS_EMOJIS = {
@@ -96,7 +97,7 @@ prof = {**normal,
 baby = {**normal,
         'shouts': ["COIN", "Piou ?", "Coin ?", "Coin!", "COIIIIIINNNNNN!"],
         'usernames': [_("Smol Duck"), _("Mini Duck"), _("Ducky"), _("Duckie")],
-        'avatar_urls': [DUCKS_IMAGES['lurk'], DUCKS_IMAGES['sip'], DUCKS_IMAGES['wave']],
+        'avatar_urls': [DUCKS_IMAGES['baby']],
         'emojis': [DUCKS_EMOJIS['baby_in_egg'], DUCKS_EMOJIS['baby_unicode'], DUCKS_EMOJIS['plastic_baby']]
         }
 
