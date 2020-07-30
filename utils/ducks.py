@@ -145,6 +145,25 @@ class Duck:
         shouts = self.get_cosmetics()['shouts']
 
         shout = _(random.choice(shouts))
+        if "http" in shout:
+            return shout
+        else:
+            return anti_bot_zero_width(shout)
+
+    async def get_bye_trace(self):
+        _ = await self.get_translate_function()
+        traces = self.get_cosmetics()['bye_tracess']
+
+        trace = _(random.choice(traces))
+
+        return anti_bot_zero_width(trace)
+
+    async def get_bye_shout(self):
+        _ = await self.get_translate_function()
+        shouts = self.get_cosmetics()['bye_shouts']
+
+        shout = _(random.choice(shouts))
+
         return anti_bot_zero_width(shout)
 
     async def get_spawn_message(self) -> str:
@@ -154,22 +173,28 @@ class Duck:
 
         return f"{trace} {face} {shout}"
 
-    async def get_kill_message(self, killer, db_killer):
+    async def get_bye_message(self) -> str:
+        trace = await self.get_bye_trace()
+        shout = await self.get_bye_shout()
+
+        return f"{trace} {shout}"
+
+    async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
 
-        return _("{killer.mention} killed the duck blahblahblah", killer=killer)
+        return _("{killer.mention} killed the duck []", killer=killer)
 
     async def get_hurt_message(self, hurter, db_hurter, damage):
         _ = await self.get_translate_function()
 
-        return _("{hurter.mention} hurted the duck [SUPER DUCK fml, lives : -{damage}]",
+        return _("{hurter.mention} hurted the duck [SUPER DUCK detected] [lives : -{damage}]",
                  hurter=hurter,
                  damage=damage)
 
     async def get_resists_message(self, hurter, db_hurter):
         _ = await self.get_translate_function()
 
-        return _("{hurter.mention}, the duck RESISTED. [SUPER ARMORED DUCK fml, lives : still the fucking same smh]",
+        return _("{hurter.mention}, the duck RESISTED. [ARMORED DUCK detected]",
                  hurter=hurter, )
 
     async def get_hug_message(self, hugger, db_hugger):
@@ -271,14 +296,15 @@ class Duck:
 
         # Increment killed by 1
         won_experience = await self.get_exp_value()
-        db_killer.experience += won_experience
 
         if self.use_bonus_exp:
-            db_killer.experience += await db_killer.get_bonus_experience(won_experience)
+            won_experience += await db_killer.get_bonus_experience(won_experience)
+
+        db_killer.experience += won_experience
 
         await db_killer.save()
 
-        await self.send(await self.get_kill_message(killer, db_killer))
+        await self.send(await self.get_kill_message(killer, db_killer, 0))
         await self.post_kill()
 
     async def hurt(self, damage: int, args):
@@ -448,12 +474,27 @@ class MechanicalDuck(Duck):
     fake = True
     use_bonus_exp = False
 
+    def __init__(self, *args, creator: Optional[discord.Member] = None, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.creator = creator
+
     async def get_exp_value(self):
         return -10
 
-    async def get_kill_message(self, killer, db_killer):
+    async def get_kill_message(self, killer, db_killer, won_experience):
         _ = await self.get_translate_function()
-        return _("Damn, {killer.mention}, you suck! You killed a mechanical duck! I whoder who made it?")
+
+        creator = self.creator
+        if not creator:
+            return _("Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who made it? [exp: {won_experience}]",
+                     killer=killer,
+                     won_experience=won_experience)
+        else:
+            return _("Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this is {creator.mention}'s fault! [exp: {won_experience}]",
+                     killer=killer,
+                     won_experience=won_experience,
+                     creator=creator)
 
 
 # Super ducks #
