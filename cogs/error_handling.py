@@ -1,6 +1,7 @@
 import datetime
 import traceback
 
+import tortoise
 from discord.ext import commands
 
 from utils import checks
@@ -9,6 +10,7 @@ from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
 
 from babel import dates
+
 
 class CommandErrorHandler(Cog):
     @commands.Cog.listener()
@@ -32,6 +34,9 @@ class CommandErrorHandler(Cog):
         command_invoke_help = f"{ctx.prefix}{ctx.command.qualified_name} {ctx.command.signature}"
 
         ctx.logger.debug(f"Error during processing: {exception} ({repr(exception)})")
+
+        if hasattr(exception, "original"):
+            exception = exception.original
 
         # https://discordpy.readthedocs.io/en/latest/ext/commands/api.html#discord.ext.commands.CommandError
         if isinstance(exception, commands.CommandError):
@@ -163,8 +168,13 @@ class CommandErrorHandler(Cog):
                 message = f"{str(exception)} ({type(exception).__name__})"
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
         else:
-            message = _("This should not have happened. A command raised an error that does not comes from CommandError. Please inform the owner.")
-            ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
+            if isinstance(exception, tortoise.exceptions.OperationalError):
+                message = _("You are above the limits of DuckHunt database. Try to reduce your expectations. Database message: `{exception}`",
+                            exception=exception)
+            else:
+                message = _("This should not have happened. A command raised an error that does not comes from CommandError, and isn't handled by our error handler. "
+                            "Please inform the owner.")
+                ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
             await ctx.send("❌ " + message, delete_after=DELETE_ERROR_MESSAGE_AFTER)

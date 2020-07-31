@@ -150,6 +150,8 @@ class Player(Model):
     member = fields.ForeignKeyField('models.DiscordMember')
 
     # Generic stats
+    achievments = DefaultDictJSONField()
+
     experience = fields.BigIntField(default=0)
     spent_experience = fields.BigIntField(default=0)
     murders = fields.SmallIntField(default=0)
