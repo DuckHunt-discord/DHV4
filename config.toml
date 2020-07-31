@@ -35,6 +35,8 @@ database = "mybot"
 "permissionscommands.*" = true
 "duckshuntingcommands.*" = true
 "ducksspawningcommands.*" = false
+"inventorycommands.*" = true
+"inventorycommands.bp.give" = false
 "community.*" = false
 
 [permissions.fixed]
