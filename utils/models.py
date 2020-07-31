@@ -67,6 +67,7 @@ class DiscordChannel(Model):
     use_webhooks = fields.BooleanField(default=True)
     use_emojis = fields.BooleanField(default=True)
     enabled = fields.BooleanField(default=False)
+    giveback_at = fields.DatetimeField
 
     tax_on_user_send = PercentageField(default=5)
     mentions_when_killed = fields.BooleanField(default=True)

@@ -22,13 +22,101 @@ from utils.models import get_from_db
 
 
 class SettingsCommands(Cog):
-    @commands.group()
+    @commands.group(aliases=["set"])
     async def settings(self, ctx: MyContext):
         """
         Commands to view and edit settings
         """
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
+
+    @settings.group(aliases=["template", "preset", "presets"])
+    async def templates(self, ctx: MyContext):
+        """
+        Set your server settings to specific, designed modes
+        """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
+
+    # Templates #
+
+    @templates.command(aliases=["dhv3", "version3", "old"])
+    async def v3(self, ctx: MyContext):
+        """
+        Restore similar settings to DuckHunt V3, if that's your thing.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        db_channel.use_webhooks = False
+        db_channel.mentions_when_killed = False
+        db_channel.show_duck_lives = False
+
+        db_channel.kill_on_miss_chance = 5
+        db_channel.duck_frighten_chance = 3
+
+        db_channel.spawn_weight_normal_ducks = 100
+        db_channel.spawn_weight_super_ducks = 5
+        db_channel.spawn_weight_baby_ducks = 3
+        db_channel.spawn_weight_prof_ducks = 0
+        db_channel.spawn_weight_ghost_ducks = 0
+        db_channel.spawn_weight_moad_ducks = 2
+        db_channel.spawn_weight_mechanical_ducks = 0
+        db_channel.spawn_weight_armored_ducks = 0
+        db_channel.spawn_weight_golden_ducks = 0
+        db_channel.spawn_weight_plastic_ducks = 0
+        db_channel.spawn_weight_kamikaze_ducks = 0
+
+        db_channel.super_ducks_min_life = 3
+        db_channel.super_ducks_max_life = 6
+
+        await db_channel.save()
+
+        await ctx.send(_("DHV3-Like settings have been applied to this channel.", ))
+
+    @templates.command()
+    async def casual(self, ctx: MyContext):
+        """
+        Set the bot for a more casual experience.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        db_channel.use_webhooks = True
+        db_channel.use_emojis = True
+
+        db_channel.tax_on_user_send = 0
+        db_channel.mentions_when_killed = True
+        db_channel.show_duck_lives = True
+
+        db_channel.kill_on_miss_chance = 1
+        db_channel.duck_frighten_chance = 2
+
+        db_channel.clover_min_experience = 5
+        db_channel.clover_max_experience = 15
+
+        db_channel.base_duck_exp = 15
+        db_channel.per_life_exp = 8
+
+        db_channel.spawn_weight_normal_ducks = 100
+        db_channel.spawn_weight_super_ducks = 15
+        db_channel.spawn_weight_baby_ducks = 3
+        db_channel.spawn_weight_prof_ducks = 2
+        db_channel.spawn_weight_ghost_ducks = 5
+        db_channel.spawn_weight_moad_ducks = 10
+        db_channel.spawn_weight_mechanical_ducks = 1
+        db_channel.spawn_weight_armored_ducks = 2
+        db_channel.spawn_weight_golden_ducks = 5
+        db_channel.spawn_weight_plastic_ducks = 2
+        db_channel.spawn_weight_kamikaze_ducks = 1
+
+        db_channel.ducks_time_to_live = 960
+        db_channel.super_ducks_min_life = 3
+        db_channel.super_ducks_max_life = 9
+
+        await db_channel.save()
+
+        await ctx.send(_("Casual mode settings have been applied to this channel.", ))
 
     # Guild settings #
 
@@ -459,7 +547,6 @@ class SettingsCommands(Cog):
                                  ))
                 return
 
-
             db_channel.super_ducks_min_life = value
             await db_channel.save()
 
@@ -493,7 +580,6 @@ class SettingsCommands(Cog):
         await ctx.send(_("On {channel.mention}, super ducks will get a minimum of {value} lives.",
                          channel=ctx.channel,
                          value=db_channel.super_ducks_max_life))
-
 
 
 setup = SettingsCommands.setup
