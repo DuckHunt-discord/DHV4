@@ -67,7 +67,8 @@ class DiscordChannel(Model):
     use_webhooks = fields.BooleanField(default=True)
     use_emojis = fields.BooleanField(default=True)
     enabled = fields.BooleanField(default=False)
-    giveback_at = fields.DatetimeField
+
+    allow_global_items = fields.BooleanField(default=True)
 
     tax_on_user_send = PercentageField(default=5)
     mentions_when_killed = fields.BooleanField(default=True)
@@ -124,6 +125,8 @@ class DiscordUser(Model):
     times_ran_example_command = fields.IntField(default=0)
     permissions = fields.JSONField(default={})
 
+    inventory = fields.JSONField(default={})
+
     language = fields.CharField(6, default="en")
 
     class Meta:
@@ -136,21 +139,14 @@ class DiscordUser(Model):
         return f"<User name={self.name}#{self.discriminator}>"
 
 
-def _before_current_time_property(field):
-    @property
-    def is_done(self):
-        return getattr(self, field) > datetime.datetime.utcnow()
-
-    return is_done
-
-
 class Player(Model):
     id = fields.IntField(pk=True)
     channel = fields.ForeignKeyField('models.DiscordChannel')
     member = fields.ForeignKeyField('models.DiscordMember')
 
     # Generic stats
-    achievments = DefaultDictJSONField()
+    inventory = fields.JSONField(default={})
+    achievements = DefaultDictJSONField(default_factory=bool)
 
     experience = fields.BigIntField(default=0)
     spent_experience = fields.BigIntField(default=0)
@@ -179,35 +175,6 @@ class Player(Model):
 
     is_dazzled = fields.BooleanField(default=False)
     wet_until = fields.DatetimeField(auto_now_add=True)
-
-    # Shop items
-
-    clover_experience = fields.IntField(null=True)
-    infrared_detector_uses_left = fields.IntField(null=True)
-
-    clover_until = fields.DatetimeField(auto_now_add=True)
-    ap_ammo_until = fields.DatetimeField(auto_now_add=True)
-    explosive_ammo_until = fields.DatetimeField(auto_now_add=True)
-    infrared_detector_until = fields.DatetimeField(auto_now_add=True)
-    grease_until = fields.DatetimeField(auto_now_add=True)
-    sight_until = fields.DatetimeField(auto_now_add=True)
-    silencer_until = fields.DatetimeField(auto_now_add=True)
-    sunglasses_until = fields.DatetimeField(auto_now_add=True)
-
-    # Timers
-
-    is_wet = _before_current_time_property("wet_until")
-    have_clover = _before_current_time_property("clover_until")
-    have_ap_ammo = _before_current_time_property("ap_ammo_until")
-    have_explosive_ammo = _before_current_time_property("explosive_ammo_until")
-    have_grease = _before_current_time_property("grease_until")
-    have_sight = _before_current_time_property("sight_until")
-    have_silencer = _before_current_time_property("silencer_until")
-    have_sunglasses = _before_current_time_property("sunglasses_until")
-
-    @property
-    def have_infrared_detector(self):
-        return self.infrared_detector_uses_left > 0 and self.infrared_detector_until > datetime.datetime.utcnow()
 
     # Killed ducks stats
     best_times = DefaultDictJSONField(default_factory=lambda: 660)

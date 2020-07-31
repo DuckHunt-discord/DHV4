@@ -49,6 +49,9 @@ class SettingsCommands(Cog):
         _ = await ctx.get_translate_function()
 
         db_channel.use_webhooks = False
+
+        db_channel.allow_global_items = False
+
         db_channel.mentions_when_killed = False
         db_channel.show_duck_lives = False
 
@@ -84,6 +87,8 @@ class SettingsCommands(Cog):
 
         db_channel.use_webhooks = True
         db_channel.use_emojis = True
+
+        db_channel.allow_global_items = True
 
         db_channel.tax_on_user_send = 0
         db_channel.mentions_when_killed = True
