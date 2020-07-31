@@ -41,6 +41,8 @@ class DiscordGuild(Model):
     prefix = fields.CharField(20, null=True)
     permissions = fields.JSONField(default={})
 
+    vip = fields.BooleanField(default=False)
+
     language = fields.CharField(6, default="en")
 
     class Meta:
@@ -125,7 +127,7 @@ class DiscordUser(Model):
     times_ran_example_command = fields.IntField(default=0)
     permissions = fields.JSONField(default={})
 
-    inventory = fields.JSONField(default={})
+    inventory = fields.JSONField(default=[])
 
     language = fields.CharField(6, default="en")
 
@@ -144,8 +146,11 @@ class Player(Model):
     channel = fields.ForeignKeyField('models.DiscordChannel')
     member = fields.ForeignKeyField('models.DiscordMember')
 
-    # Generic stats
-    inventory = fields.JSONField(default={})
+    # Inventories
+    weapons = fields.JSONField(default=[])
+    backpack = fields.JSONField(default=[])
+    active_powerups = DefaultDictJSONField(default_factory=int)  # Until a timestamp.
+
     achievements = DefaultDictJSONField(default_factory=bool)
 
     experience = fields.BigIntField(default=0)
