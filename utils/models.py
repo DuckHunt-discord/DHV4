@@ -1,3 +1,4 @@
+import asyncio
 import collections
 import datetime
 
@@ -9,6 +10,7 @@ from tortoise.models import Model
 if typing.TYPE_CHECKING:
     from utils.ctx_class import MyContext
 
+DB_LOCKS = collections.defaultdict(asyncio.Lock)
 
 class DefaultDictJSONField(fields.JSONField):
     def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
@@ -34,9 +36,7 @@ class PercentageField(fields.SmallIntField):
 
 # TODO : https://github.com/long2ice/aerich
 class DiscordGuild(Model):
-    id = fields.IntField(pk=True)
-
-    discord_id = fields.BigIntField()
+    discord_id = fields.BigIntField(pk=True)
     name = fields.TextField()
     prefix = fields.CharField(20, null=True)
     permissions = fields.JSONField(default={})
@@ -56,10 +56,9 @@ class DiscordGuild(Model):
 
 
 class DiscordChannel(Model):
-    id = fields.IntField(pk=True)
+    discord_id = fields.BigIntField(pk=True)
 
     guild = fields.ForeignKeyField('models.DiscordGuild')
-    discord_id = fields.BigIntField()
     name = fields.TextField()
     permissions = fields.JSONField(default={})
 
@@ -119,8 +118,7 @@ class DiscordChannel(Model):
 
 
 class DiscordUser(Model):
-    id = fields.IntField(pk=True)
-    discord_id = fields.BigIntField()
+    discord_id = fields.BigIntField(pk=True)
     name = fields.TextField()
     discriminator = fields.CharField(4)
     last_modified = fields.DatetimeField(auto_now=True)
@@ -213,38 +211,40 @@ class DiscordMember(Model):
 
 
 async def get_from_db(discord_object, as_user=False):
-    if isinstance(discord_object, discord.Guild):
-        db_obj = await DiscordGuild.filter(discord_id=discord_object.id).first()
-        if not db_obj:
-            db_obj = DiscordGuild(discord_id=discord_object.id, name=discord_object.name)
-            await db_obj.save()
-        return db_obj
-    elif isinstance(discord_object, discord.TextChannel):
-        db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
-        if not db_obj:
-            db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=await get_from_db(discord_object.guild))
-            await db_obj.save()
-        return db_obj
-    elif isinstance(discord_object, discord.Member) and not as_user:
-        db_obj = await DiscordMember.filter(user__discord_id=discord_object.id).first().prefetch_related("user", "guild")
-        if not db_obj:
-            db_obj = DiscordMember(guild=await get_from_db(discord_object.guild), user=await get_from_db(discord_object, as_user=True))
-            await db_obj.save()
-        return db_obj
-    elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.Member) and as_user:
-        db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
-        if not db_obj:
-            db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
-            await db_obj.save()
-        return db_obj
+    async with DB_LOCKS[(discord_object, as_user)]:
+        if isinstance(discord_object, discord.Guild):
+            db_obj = await DiscordGuild.filter(discord_id=discord_object.id).first()
+            if not db_obj:
+                db_obj = DiscordGuild(discord_id=discord_object.id, name=discord_object.name)
+                await db_obj.save()
+            return db_obj
+        elif isinstance(discord_object, discord.TextChannel):
+            db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
+            if not db_obj:
+                db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=await get_from_db(discord_object.guild))
+                await db_obj.save()
+            return db_obj
+        elif isinstance(discord_object, discord.Member) and not as_user:
+            db_obj = await DiscordMember.filter(user__discord_id=discord_object.id).first().prefetch_related("user", "guild")
+            if not db_obj:
+                db_obj = DiscordMember(guild=await get_from_db(discord_object.guild), user=await get_from_db(discord_object, as_user=True))
+                await db_obj.save()
+            return db_obj
+        elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.Member) and as_user:
+            db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
+            if not db_obj:
+                db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
+                await db_obj.save()
+            return db_obj
 
 
 async def get_player(member: discord.Member, channel: discord.TextChannel):
-    db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).first()
-    if not db_obj:
-        db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
-        await db_obj.save()
-    return db_obj
+    async with DB_LOCKS[(member, channel)]:
+        db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).first()
+        if not db_obj:
+            db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
+            await db_obj.save()
+        return db_obj
 
 
 async def get_ctx_permissions(ctx: 'MyContext') -> dict:

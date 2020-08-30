@@ -4,6 +4,7 @@ uvloop
 parsedatetime
 pytz
 discord.py[voice]
+discord.py-stubs
 tortoise-orm[accel]
 aerich
 asyncpg

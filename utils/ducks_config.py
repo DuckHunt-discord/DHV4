@@ -18,7 +18,8 @@ DUCKS_IMAGES = {
     'ghost_2': 'https://cdn.discordapp.com/attachments/737978240966066177/737980172107644969/ghost_duck2.png',
     'ghost_1': 'https://cdn.discordapp.com/attachments/737978240966066177/737978554754793524/ghost_duck1.png',
     'armored': 'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
-    'baby': 'https://media.discordapp.net/attachments/737978240966066177/738490902762225704/baby_duck.png'
+    'baby': 'https://media.discordapp.net/attachments/737978240966066177/738490902762225704/baby_duck.png',
+    'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
 }
 
 DUCKS_EMOJIS = {

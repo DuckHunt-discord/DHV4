@@ -84,7 +84,7 @@ class Community(Cog):
         if has_embeds:
             embed: discord.Embed = message.embeds[0]
             is_pingable = str(embed.description).startswith("<:epicrpgarena:697563611698298922>")
-            is_pingable = is_pingable or (str(embed.author.name).endswith("'s miniboss") and embed.footer.text)
+            is_pingable = is_pingable or (str(embed.author.name).endswith("'s miniboss"))
             if len(embed.fields) >= 1:
                 first_field_name = str(embed.fields[0].name).replace("*", "").replace("`", "").lower()
                 is_pingable = is_pingable or first_field_name.startswith("an epic tree has just grown")
@@ -113,6 +113,8 @@ class Community(Cog):
                 monitored_player_id = int(embed.author.icon_url.split("/")[4])  # ID
             except ValueError:
                 print(embed.author.icon_url.split("/"))
+                await message.add_reaction("❌")
+                return
             monitored_player: discord.Member = ctx.guild.get_member(monitored_player_id)
 
             maybe_gather = self.epic_rpg_cd_coros.get(monitored_player_id, None)
