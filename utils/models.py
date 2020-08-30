@@ -12,6 +12,7 @@ if typing.TYPE_CHECKING:
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
 
+
 class DefaultDictJSONField(fields.JSONField):
     def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
         self.default_factory = default_factory
@@ -245,6 +246,10 @@ async def get_player(member: discord.Member, channel: discord.TextChannel):
             db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
             await db_obj.save()
         return db_obj
+
+
+async def get_enabled_channels():
+    return await DiscordChannel.filter(enabled=True).all()
 
 
 async def get_ctx_permissions(ctx: 'MyContext') -> dict:

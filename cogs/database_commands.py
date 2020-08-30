@@ -27,4 +27,6 @@ class DatabaseCommands(Cog):
                          times_ran_example_command=db_user.times_ran_example_command
                          ))
 
+
+
 setup = DatabaseCommands.setup

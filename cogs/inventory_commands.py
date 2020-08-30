@@ -62,6 +62,7 @@ async def show_items_menu(ctx, items, title: str):
 
 class InventoryCommands(Cog):
     @commands.group(aliases=["inv"])
+    @checks.channel_enabled()
     async def inventory(self, ctx: MyContext):
         """
         Show your inventory content (The global backpack)
@@ -76,6 +77,7 @@ class InventoryCommands(Cog):
 
     @inventory.command(name="give")
     @checks.has_permission("bot.give")
+    @checks.channel_enabled()
     async def inv_give(self, ctx: MyContext, target: discord.User, item_name: str):
         """
         Give something to some player.

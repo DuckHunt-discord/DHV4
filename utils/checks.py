@@ -105,3 +105,10 @@ def has_permission(permission: str, negate=False):
             return True
 
     return commands.check(predictate)
+
+
+def channel_enabled():
+    async def predictate(ctx):
+        return await ctx.is_channel_enabled()
+
+    return commands.check(predictate)

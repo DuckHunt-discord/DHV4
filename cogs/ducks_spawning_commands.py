@@ -17,7 +17,8 @@ from utils.ctx_class import MyContext
 
 class DucksSpawningCommands(Cog):
     @commands.group(aliases=["spawn", "spawnduck"])
-    @checks.server_admin_or_permission("ducks.spawn.normal")
+    @checks.server_admin_or_permission("ducks.spawn.random")
+    @checks.channel_enabled()
     async def coin(self, ctx: MyContext):
         """
         Spawns a random duck

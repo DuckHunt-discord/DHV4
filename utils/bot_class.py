@@ -31,6 +31,8 @@ class MyBot(AutoShardedBot):
         self.shards_ready = set()
         self._client_session: Optional[aiohttp.ClientSession] = None
         self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
+        self.enabled_channels: typing.Dict[discord.TextChannel, int] = {}
+
         asyncio.ensure_future(self.async_setup())
 
     @property

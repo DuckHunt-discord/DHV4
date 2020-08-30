@@ -1,9 +1,14 @@
 import asyncio
+import datetime
+import random
 
+import discord
 from discord.ext import commands, tasks
 from utils.cog_class import Cog
 from utils import ducks
 from time import time
+
+from utils.models import get_enabled_channels, DiscordChannel, get_from_db
 
 
 class DucksSpawning(Cog):
@@ -16,7 +21,7 @@ class DucksSpawning(Cog):
     async def loop(self):
         await self.before()
         now = time()
-        current_iteration = now
+        current_iteration = int(now)
         while not self.background_loop.cancelled():
             # Precalculate timings
             now = time()
@@ -39,14 +44,37 @@ class DucksSpawning(Cog):
             next_iteration = current_iteration + self.interval
             await asyncio.sleep(max(0.0, next_iteration - now))
 
-    async def spawn_ducks(self, now):
-        pass
+    async def spawn_ducks(self, now: int):
+        SECONDS_SPENT_TODAY = now % 86400
+        SECONDS_LEFT_TODAY = 86400 - SECONDS_SPENT_TODAY
+
+        for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
+            if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
+                await ducks.spawn_random_weighted_duck(self.bot, channel)
 
     def cog_unload(self):
         self.background_loop.cancel()
 
     async def before(self):
         await self.bot.wait_until_ready()
+
+        db_channels = await get_enabled_channels()
+        for db_channel in db_channels:
+            channel = self.bot.get_channel(db_channel.discord_id)
+
+            if channel:
+                self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=int(time()))
+            else:
+                db_channel.enabled = False
+                await db_channel.save()
+
+    async def calculate_ducks_per_day(self, db_channel: DiscordChannel, now: int):
+        # TODO : Really compute that
+        return db_channel.ducks_per_day
+
+    async def recompute_channel(self, channel: discord.TextChannel):
+        db_channel = await get_from_db(channel)
+        self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=int(time()))
 
 
 setup = DucksSpawning.setup

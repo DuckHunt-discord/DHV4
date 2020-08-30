@@ -255,8 +255,11 @@ class SettingsCommands(Cog):
 
         if db_channel.enabled:
             await ctx.send(_("Ducks will spawn on {channel.mention}", channel=ctx.channel))
+            await self.bot.get_cog('DucksSpawning').recompute_channel(ctx.channel)
         else:
             await ctx.send(_("Ducks won't spawn on {channel.mention}", channel=ctx.channel))
+            del self.bot.enabled_channels[ctx.channel]
+            del self.bot.ducks_spawned[ctx.channel]
 
     @settings.command()
     async def tax_on_user_send(self, ctx: MyContext, value: int = None):
@@ -460,15 +463,15 @@ class SettingsCommands(Cog):
             elif value > maximum_value:
                 await ctx.send(_("⚠️️ You cannot set that higher than {maximum_value}. "
                                  "The number of ducks per day is limited to ensure resources are used fairly. "
-                                 "If you donated towards bot, contact Eyesofcreeper#0001 to lift the limit. "
-                                 "If not, consider donating to support me.",
+                                 "If you donated towards the bot, contact Eyesofcreeper#0001 to lift the limit. "
+                                 "If not, consider donating to support me : {donor_url}.",
                                  maximum_value=maximum_value,
+                                 donor_url="<https://www.patreon.com/duckhunt>"
                                  ))
                 value = maximum_value
             db_channel.ducks_per_day = value
             await db_channel.save()
-
-        # TODO : Replan that channel.
+            await self.bot.get_cog('DucksSpawning').recompute_channel(ctx.channel)
 
         await ctx.send(_("On {channel.mention}, {value} ducks will spawn every day.",
                          channel=ctx.channel,
