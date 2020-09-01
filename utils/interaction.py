@@ -73,12 +73,12 @@ async def get_webhook_if_possible(bot: 'MyBot', channel: discord.TextChannel):
 def anti_bot_zero_width(mystr: str):
     """Add zero-width spaces and replace lookalikes characters in a string to make it harder to detect for bots"""
 
-    addings = ["\u2060",  # Word joiner
-               "​",  # ZWSP
-               ]
+    addings = [
+        "​",  # ZWSP
+        ]
 
     replacements = {
-        " ": ['\u00A0', '\u1680', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005', '\u2006', '\u2007', '\u2008', '\u2009', '\u200A', '\u202F', '\u205F', '\u3000']
+        " ": ['\u00A0', '\u1680', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005', '\u2006', '\u2007', '\u2008', '\u2009', '\u200A', '\u202F', '\u205F']
     }
 
     out = []

@@ -151,7 +151,7 @@ class Duck:
 
     async def get_bye_trace(self):
         _ = await self.get_translate_function()
-        traces = self.get_cosmetics()['bye_tracess']
+        traces = self.get_cosmetics()['bye_traces']
 
         trace = _(random.choice(traces))
 
@@ -295,6 +295,14 @@ class Duck:
         await self.send(await self.get_left_message())
         self.despawn()
 
+    async def maybe_leave(self):
+        db_channel = await self.get_db_channel()
+        if db_channel.ducks_time_to_live < self.spawned_for:
+            await self.leave()
+            return True
+        else:
+            return False
+
     # Actions #
     async def frighten(self):
         hunter = self.target_lock_by
@@ -326,7 +334,7 @@ class Duck:
 
         await db_killer.save()
 
-        await self.send(await self.get_kill_message(killer, db_killer, 0))
+        await self.send(await self.get_kill_message(killer, db_killer, won_experience))
         await self.post_kill()
 
     async def hurt(self, damage: int, args):

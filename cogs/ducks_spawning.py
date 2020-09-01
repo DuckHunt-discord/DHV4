@@ -50,7 +50,12 @@ class DucksSpawning(Cog):
 
         for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
             if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
-                await ducks.spawn_random_weighted_duck(self.bot, channel)
+                asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel))
+                self.bot.enabled_channels[channel] -= 1
+
+        for channel, ducks_queue in self.bot.ducks_spawned.items():
+            for duck in ducks_queue:
+                asyncio.ensure_future(duck.maybe_leave())
 
     def cog_unload(self):
         self.background_loop.cancel()
