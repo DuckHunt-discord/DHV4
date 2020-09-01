@@ -19,6 +19,7 @@ from utils.ctx_class import MyContext
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
 from utils.models import get_from_db
+from utils.permissions import has_permission
 
 
 class SettingsCommands(Cog):
@@ -461,14 +462,22 @@ class SettingsCommands(Cog):
                                  ))
                 return
             elif value > maximum_value:
-                await ctx.send(_("⚠️️ You cannot set that higher than {maximum_value}. "
-                                 "The number of ducks per day is limited to ensure resources are used fairly. "
-                                 "If you donated towards the bot, contact Eyesofcreeper#0001 to lift the limit. "
-                                 "If not, consider donating to support me : {donor_url}.",
-                                 maximum_value=maximum_value,
-                                 donor_url="<https://www.patreon.com/duckhunt>"
-                                 ))
-                value = maximum_value
+                if await has_permission(ctx, "bot.unlimited_ducks_per_day"):
+                    await ctx.send(_("⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
+                                     "The number of ducks per day is limited to ensure resources are used fairly.\n "
+                                     "I'm proceeding anyway as requested, with {value} ducks per day on the channel.",
+                                     maximum_value=maximum_value,
+                                     value=int(value),
+                                     ))
+                else:
+                    await ctx.send(_("⚠️️ You cannot set that higher than {maximum_value}. "
+                                     "The number of ducks per day is limited to ensure resources are used fairly. "
+                                     "If you donated towards the bot, contact Eyesofcreeper#0001 to lift the limit. "
+                                     "If not, consider donating to support me : {donor_url}.",
+                                     maximum_value=maximum_value,
+                                     donor_url="<https://www.patreon.com/duckhunt>"
+                                     ))
+                    value = maximum_value
             db_channel.ducks_per_day = value
             await db_channel.save()
             await self.bot.get_cog('DucksSpawning').recompute_channel(ctx.channel)

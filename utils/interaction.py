@@ -90,7 +90,7 @@ def anti_bot_zero_width(mystr: str):
                 out.append(char)
         else:
             out.append(char)
-        if random.randint(1, 100) <= 15 and char not in ["\\"]:
+        if random.randint(1, 100) <= 15 and char not in ["\\", "*", "`", "~", ">"]:
             out.append(random.choice(addings))
 
     return ''.join(out)

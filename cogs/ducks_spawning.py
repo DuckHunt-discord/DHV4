@@ -29,7 +29,7 @@ class DucksSpawning(Cog):
             delay = now - current_iteration
             if delay >= 30:
                 self.bot.logger.error(f"Ignoring iterations to compensate for delays ({delay} seconds)!")
-                current_iteration = now
+                current_iteration = int(now)
             elif delay >= 5:
                 self.bot.logger.warning(f"Loop running with severe delays ({delay} seconds)!")
 
@@ -54,8 +54,8 @@ class DucksSpawning(Cog):
                 self.bot.enabled_channels[channel] -= 1
 
         for channel, ducks_queue in self.bot.ducks_spawned.items():
-            for duck in ducks_queue:
-                asyncio.ensure_future(duck.maybe_leave())
+            for duck in ducks_queue.copy():
+                await duck.maybe_leave()
 
     def cog_unload(self):
         self.background_loop.cancel()

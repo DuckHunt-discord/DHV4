@@ -155,7 +155,7 @@ class Duck:
 
         trace = _(random.choice(traces))
 
-        return anti_bot_zero_width(trace)
+        return anti_bot_zero_width(discord.utils.escape_markdown(trace))
 
     async def get_bye_shout(self):
         _ = await self.get_translate_function()
@@ -258,6 +258,8 @@ class Duck:
         bot = self.bot
         message = await self.get_spawn_message()
 
+        self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
+
         await self.send(message)
 
         bot.ducks_spawned[self.channel].append(self)
@@ -292,6 +294,8 @@ class Duck:
         await self.send(await self.get_hug_message(hugger, db_hugger, experience))
 
     async def leave(self):
+        self.bot.logger.debug(f"Leaving {self}", guild=self.channel.guild, channel=self.channel)
+
         await self.send(await self.get_left_message())
         self.despawn()
 
@@ -367,6 +371,17 @@ class Duck:
         """
         Just in case you want to do something after a duck died.
         """
+
+    def __repr__(self):
+        attributes = []
+        if self.lives_left <= 0:  # No await
+            attributes.append("killed")
+        if self in self.bot.ducks_spawned[self.channel]:
+            attributes.append("spawned")
+
+        total_lives = self._lives  # We can't await here, so try our best
+
+        return f"<{type(self).__name__}{' '.join(attributes)} lives={self.lives_left}/{total_lives}>"
 
 # Standard ducks #
 
