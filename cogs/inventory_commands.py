@@ -3,9 +3,9 @@ import random
 
 import discord
 from discord.ext import commands
+from discord.ext import menus
 
 from utils import checks, permissions
-
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_player, DiscordUser, Player
@@ -35,7 +35,6 @@ BP_LOOTBOX_ITEMS = {
 
 }
 
-from discord.ext import menus
 
 
 class ItemsMenusSource(menus.ListPageSource):
