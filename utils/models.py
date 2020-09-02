@@ -129,6 +129,8 @@ class DiscordUser(Model):
     inventory = fields.JSONField(default=[])
 
     language = fields.CharField(6, default="en")
+    first_use = fields.BooleanField(default=True)
+
 
     class Meta:
         table = "users"

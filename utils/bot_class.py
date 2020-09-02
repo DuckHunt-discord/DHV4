@@ -63,6 +63,25 @@ class MyBot(AutoShardedBot):
             await self.invoke(ctx)
 
     async def on_command(self, ctx: MyContext):
+        db_user = await get_from_db(ctx.author, as_user=True)
+        if db_user.first_use:
+            _ = await ctx.get_translate_function(user_language=True)
+
+            await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
+                                    "and also provide you with links to the DuckHunt wiki.\n "
+                                    "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
+                                    "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
+                                    "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
+                                    "However, if the duck says **COIN** it's a **baby duck** and you should hug it with `dh!hug`.\n"
+                                    "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
+                                    "If you want to learn more about the game, use the wiki! <{wiki_link}>",
+                                    support_server_link=_("https://discord.gg/G4skWae"),
+                                    wiki_link=_("https://docs.duckhunt.me/players-guide/players-quickstart"),
+            ))
+
+            db_user.first_use = False
+            await db_user.save()
+
         self.commands_used[ctx.command.name] += 1
         ctx.logger.info(f"{ctx.message.clean_content}")
 
