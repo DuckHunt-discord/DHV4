@@ -14,7 +14,7 @@ if config['database']['enable']:
 
 bot = MyBot(description=config["bot"]["description"])
 
-for cog_name in config["cogs"]["cogs_to_load"]:
+for cog_name in config["cogs"]["cog_reloader"]["cogs_to_load"]:
     try:
         bot.load_extension(cog_name)
         bot.logger.debug(f"> {cog_name} loaded!")

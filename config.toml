@@ -52,9 +52,12 @@ database = "mybot"
 # Your bot token. You can find it on the Bot page of the Developper portal
 token = ""
 
-[cogs]
+[cogs.cog_reloader]
 # Names of cogs to load. Usually cogs.file_name_without_py
-cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.background_loop', 'cogs.support_server_commands', 'cogs.database_commands', 'cogs.permissions_commands']
+cogs_to_load = ['jishaku', 'cogs.error_handling', 'cogs.simple_commands', 'cogs.background_loop',
+    'cogs.support_server_commands', 'cogs.database_commands', 'cogs.permissions_commands', 'cogs.cog_reloader']
+# Disable the reload command for the following cogs
+disable_reload_for = ['cogs.cog_reloader']
 
 # The name after cogs is the name of the class
 [cogs.SimpleCommands]
