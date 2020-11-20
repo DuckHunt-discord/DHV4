@@ -203,7 +203,7 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
         await ctx.reply(_("💸 You added some grease to your weapon to reduce jamming for a day."))
 
-    @shop.command(aliases=["7",])
+    @shop.command(aliases=["7", ])
     async def sight(self, ctx: MyContext):
         """
         Add a sight to your weapon to improve accuracy.
@@ -272,7 +272,7 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
         await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any."))
 
-    @shop.command(aliases=["10", "best", "freeexp", "freexp", "4-leaf", "4leaf"])
+    @shop.command(aliases=["10", "best", "freeexp", "freexp", "4-leaf", "4leaf", "🍀"])
     async def clover(self, ctx: MyContext):
         """
         Buy a 4-Leaf clover to get more exp for every duck you kill :)
@@ -302,6 +302,55 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['clover'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more.", clover_exp=clover_exp))
+        await ctx.reply(_("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more.", clover_exp=clover_exp)) \
+ \
+    @shop.command(aliases=["11", "glasses", "👓️", "🕶️"])
+    async def sunglasses(self, ctx: MyContext):
+        """
+        Protects from mirror-induced glare for 24h.
+        """
+        ITEM_COST = 5
+
+        _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        previously_had = db_hunter.is_powerup_active('sunglasses')
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["sunglasses"] = int(time.time()) + DAY
+
+        db_hunter.bought_items['sunglasses'] += 1
+
+        await db_hunter.save()
+        if previously_had:
+            await ctx.reply(_("🕶️ You bought sunglasses, again... What a waste."))
+        else:
+            await ctx.reply(_("🕶️ You bought sunglasses."))
+
+    @shop.command(aliases=["12", "shirt", "dry"])
+    async def clothes(self, ctx: MyContext):
+        """
+        A new set of clothes. Useful if you are wet.
+        """
+        ITEM_COST = 7
+
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["wet"] = 0
+
+        db_hunter.bought_items['clothes'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You bought some new clothes. You look very good. Maybe the ducks will like your outfit."))
+
 
 setup = ShoppingCommands.setup
