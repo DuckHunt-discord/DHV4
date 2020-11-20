@@ -26,7 +26,7 @@ class SupportServerCommands(Cog):
         self.background_loop.cancel()
 
     async def cog_check(self, ctx):
-        ret = await super().cog_check(ctx)
+        ret = super().cog_check(ctx)
         ret = ret and ctx.guild.id == self.config()["support_server_id"]
         return ret
 
