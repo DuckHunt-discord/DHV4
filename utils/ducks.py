@@ -258,8 +258,13 @@ class Duck:
 
     async def will_frighten(self):
         db_channel = await self.get_db_channel()
-        frighten_chance = db_channel.duck_frighten_chance
-        return random.randint(1, 100) <= frighten_chance
+        db_hunter = self.db_target_lock_by
+
+        if not db_hunter.is_powerup_active('silencer'):
+            frighten_chance = db_channel.duck_frighten_chance
+            return random.randint(1, 100) <= frighten_chance
+        else:
+            return False
 
     # Entry Points #
 

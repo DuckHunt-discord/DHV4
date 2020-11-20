@@ -146,11 +146,17 @@ class DucksHuntingCommands(Cog):
 
         if duck:
             await duck.shoot(args)
-        else:
-            await ctx.reply(_("❓️ What are you trying to kill exactly ? There are no ducks here."))
-            db_hunter.shooting_stats['shots_without_ducks'] += 1
-
+        elif db_hunter.active_powerups['detector'] >= 1:
+            db_hunter.active_powerups['detector'] -= 1
+            db_hunter.shooting_stats['shots_stopped_by_detector'] += 1
             await db_hunter.save()
+            await ctx.reply(_("🕵️ Woah there ! Calm down, there are no ducks. Your infrared detctor stopped the shot.", ))
+        else:
+            db_hunter.shooting_stats['shots_without_ducks'] += 1
+            db_hunter.experience -= 2
+            await db_hunter.save()
+            await ctx.reply(_("❓️ What are you trying to kill exactly ? There are no ducks here. [**MISSED**: -2 exp]"))
+
 
     @commands.command(aliases=["rl"])
     @checks.channel_enabled()

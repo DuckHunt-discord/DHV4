@@ -226,5 +226,50 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
         await ctx.reply(_("💸 You added a sight to your weapon to improve your accuracy for the next few shots."))
 
+    @shop.command(aliases=["8", "ir", "infrared", "ir_detector", "infrared_detector"])
+    async def detector(self, ctx: MyContext):
+        """
+        Add an infrared detector to your weapon. Save bullets and shots.
+        """
+        ITEM_COST = 15
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if db_hunter.active_powerups["detector"]:
+            await ctx.reply(_("❌ You already have that infrared detector on your weapon."))
+            return False
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["detector"] = 6
+        db_hunter.bought_items['detector'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You added an infrared detector to your weapon. If you can't see ducks, you can't shoot them."))
+
+    @shop.command(aliases=["9", "shhh", "silence"])
+    async def silencer(self, ctx: MyContext):
+        """
+        Add a silencer to your weapon to prevent scaring ducks.
+        """
+        ITEM_COST = 5
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if db_hunter.is_powerup_active('silencer'):
+            await ctx.reply(_("❌ You already use a silencer."))
+            return False
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["silencer"] = int(time.time()) + DAY
+        db_hunter.bought_items['silencer'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any."))
 
 setup = ShoppingCommands.setup
