@@ -23,6 +23,10 @@ class AccessTooLow(commands.CheckFailure):
         self.required_access = required_access
 
 
+class ChannelDisabled(commands.CheckFailure):
+    """Exception raised when the channel wasn't enabled."""
+
+
 def is_in_server(must_be_in_guild_id):
     def predicate(ctx):
         if not ctx.guild:
@@ -35,7 +39,7 @@ def is_in_server(must_be_in_guild_id):
 
 
 def needs_access_level(required_access):
-    async def predicate(ctx:MyContext):
+    async def predicate(ctx: MyContext):
 
         if not ctx.guild:
             raise commands.NoPrivateMessage()
@@ -52,8 +56,12 @@ def needs_access_level(required_access):
 
     return commands.check(predicate)
 
+
 def channel_enabled():
     async def predictate(ctx):
-        return await ctx.is_channel_enabled()
+        if await ctx.is_channel_enabled():
+            return True
+        else:
+            raise ChannelDisabled()
 
     return commands.check(predictate)
