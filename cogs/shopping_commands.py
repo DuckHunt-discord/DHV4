@@ -11,7 +11,7 @@ from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import get_timedelta
-from utils.models import get_player, Player
+from utils.models import get_player, Player, get_from_db, DiscordChannel
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -111,7 +111,7 @@ class ShoppingCommands(Cog):
             time_delta = get_timedelta(db_hunter.active_powerups['ap_ammo'],
                                        time.time())
 
-            await ctx.reply(_("❌ Whoops, your gun is already using AP ammo for {time_delta} !",
+            await ctx.reply(_("❌ Whoops, your gun is already using AP ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
         elif db_hunter.is_powerup_active("explosive_ammo"):
@@ -146,7 +146,7 @@ class ShoppingCommands(Cog):
             time_delta = get_timedelta(db_hunter.active_powerups['explosive_ammo'],
                                        time.time())
 
-            await ctx.reply(_("❌ Your gun is already explosive ammo for {time_delta} !",
+            await ctx.reply(_("❌ Your gun is already explosive ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
@@ -271,5 +271,37 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
         await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any."))
+
+    @shop.command(aliases=["10", "best", "freeexp", "freexp", "4-leaf", "4leaf"])
+    async def clover(self, ctx: MyContext):
+        """
+        Buy a 4-Leaf clover to get more exp for every duck you kill :)
+        """
+        ITEM_COST = 13
+
+        _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_channel: DiscordChannel = await get_from_db(ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if db_hunter.is_powerup_active('clover'):
+            time_delta = get_timedelta(db_hunter.active_powerups['clover'],
+                                       time.time())
+            await ctx.reply(_("❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!",
+                              time_delta=format_timedelta(time_delta, locale=language_code)))
+            return False
+
+        clover_exp = random.randint(db_channel.clover_min_experience, db_channel.clover_max_experience)
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["clover"] = int(time.time()) + DAY
+        db_hunter.active_powerups["clover_exp"] = clover_exp
+
+        db_hunter.bought_items['clover'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more.", clover_exp=clover_exp))
 
 setup = ShoppingCommands.setup

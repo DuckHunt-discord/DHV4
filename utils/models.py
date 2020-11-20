@@ -197,6 +197,8 @@ class Player(Model):
     frightened = DefaultDictJSONField()
 
     async def get_bonus_experience(self, given_experience):
+        if self.is_powerup_active('clover'):
+            return self.active_powerups['clover_exp']
         return 0
 
     def level_info(self):
