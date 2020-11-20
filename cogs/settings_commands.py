@@ -199,7 +199,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.use_webhooks = value
             await db_channel.save()
 
@@ -239,7 +239,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.use_emojis = value
             await db_channel.save()
 
@@ -257,7 +257,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.enabled = value
             await db_channel.save()
 
@@ -266,8 +266,14 @@ class SettingsCommands(Cog):
             await self.bot.get_cog('DucksSpawning').recompute_channel(ctx.channel)
         else:
             await ctx.send(_("Ducks won't spawn on {channel.mention}", channel=ctx.channel))
-            del self.bot.enabled_channels[ctx.channel]
-            del self.bot.ducks_spawned[ctx.channel]
+            try:
+                del self.bot.enabled_channels[ctx.channel]
+            except KeyError:
+                pass
+            try:
+                del self.bot.ducks_spawned[ctx.channel]
+            except KeyError:
+                pass
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -298,7 +304,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.mentions_when_killed = value
             await db_channel.save()
 
@@ -317,7 +323,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.show_duck_lives = value
             await db_channel.save()
 
