@@ -108,7 +108,7 @@ class Community(Cog):
                 print(embed.author.icon_url.split("/"))
                 await message.add_reaction("❌")
                 return
-            monitored_player: discord.Member = ctx.guild.get_member(monitored_player_id)
+            monitored_player: discord.Member = await ctx.guild.fetch_member(monitored_player_id)
 
             maybe_gather = self.epic_rpg_cd_coros.get(monitored_player_id, None)
             if maybe_gather:
