@@ -12,3 +12,4 @@ python-rapidjson
 ciso8601
 Babel
 git+https://github.com/Rapptz/discord-ext-menus
+python-dateutil
