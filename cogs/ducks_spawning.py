@@ -10,6 +10,10 @@ from time import time
 
 from utils.models import get_enabled_channels, DiscordChannel, get_from_db
 
+SECOND = 1
+MINUTE = 60 * SECOND
+HOUR = 60 * MINUTE
+DAY = 24 * HOUR
 
 class DucksSpawning(Cog):
     def __init__(self, bot, *args, **kwargs):
@@ -74,8 +78,19 @@ class DucksSpawning(Cog):
                 await db_channel.save()
 
     async def calculate_ducks_per_day(self, db_channel: DiscordChannel, now: int):
-        # TODO : Really compute that
-        return db_channel.ducks_per_day
+        # TODO : Compute ducks sleep
+        ducks_per_day = db_channel.ducks_per_day
+
+        seconds_elapsed = now % DAY
+        seconds_left_in_day = DAY - seconds_elapsed
+
+        pct_day = round(seconds_elapsed/DAY, 2) * 100
+
+        ducks = int((seconds_left_in_day * ducks_per_day)/DAY)
+
+        self.bot.logger.debug(f"Recomputing : {pct_day}% day done, {ducks}/{ducks_per_day} ducks to spawn today")
+
+        return ducks
 
     async def recompute_channel(self, channel: discord.TextChannel):
         db_channel = await get_from_db(channel)
