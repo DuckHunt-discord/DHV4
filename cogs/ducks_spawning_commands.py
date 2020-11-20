@@ -116,7 +116,7 @@ class DucksSpawningCommands(Cog):
     @coin.command()
     async def kamikaze(self, ctx: MyContext):
         """
-        Spawns a plastic duck.
+        Spawns a kamikaze duck.
         """
         myduck = KamikazeDuck(ctx.bot, ctx.channel)
         await myduck.spawn()

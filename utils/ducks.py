@@ -175,7 +175,7 @@ class Duck:
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
 
-        return _("{killer.mention} killed the duck [**Killed**: {won_experience}]",
+        return _("{killer.mention} killed the duck [**Killed**: +{won_experience} exp]",
                  killer=killer,
                  won_experience=won_experience)
 
@@ -195,12 +195,12 @@ class Duck:
     async def get_hug_message(self, hugger, db_hugger, experience):
         _ = await self.get_translate_function()
         if experience > 0:
-            return _("{hugger.mention} hugged the duck. So cute! [**Hug**: {experience}]",
+            return _("{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]",
                      hugger=hugger,
                      experience=experience,
                      )
         else:
-            return _("{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [**FAIL**: {experience}]",
+            return _("{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [**FAIL**: {experience} exp]",
                      hugger=hugger,
                      experience=experience,
                      )
