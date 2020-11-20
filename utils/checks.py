@@ -1,9 +1,7 @@
 from discord.ext import commands
-from typing import List
 
-from utils.models import get_ctx_permissions
-from utils.permissions import has_permission as permissions_has_permissions
-from utils.permissions import is_ignored
+from utils.ctx_class import MyContext
+from utils.models import get_from_db
 
 
 class NotInServer(commands.CheckFailure):
@@ -13,38 +11,16 @@ class NotInServer(commands.CheckFailure):
         self.must_be_in_guild_id = must_be_in_guild_id
 
 
-class MissingPermissions(commands.CheckFailure):
-    """Exception raised when a member don't have some specific, rich permission"""
-
-    def __init__(self, permissions: List[str] = "", required: int = 1):
-        self.permissions = permissions
-        self.required = required
-
-
-class HavingPermissions(commands.CheckFailure):
-    """Exception raised when a member have some specific, rich permission"""
-
-    def __init__(self, permissions: List[str] = "", required: int = 1):
-        self.permissions = permissions
-        self.required = required
-
-
-class MissingPermission(commands.CheckFailure):
-    """Exception raised when a member don't have a specific, rich permission"""
-
-    def __init__(self, permission: str = ""):
-        self.permission = permission
-
-
-class HavingPermission(commands.CheckFailure):
-    """Exception raised when a member does have a specific, rich permission, and shouldn't"""
-
-    def __init__(self, permission: str = ""):
-        self.permission = permission
-
-
 class BotIgnore(commands.CheckFailure):
     """Exception raised when a member is ignored by the bot"""
+
+
+class AccessTooLow(commands.CheckFailure):
+    """Exception raised when the access level of a Member is too low."""
+
+    def __init__(self, current_access, required_access):
+        self.current_access = current_access
+        self.required_access = required_access
 
 
 def is_in_server(must_be_in_guild_id):
@@ -58,53 +34,22 @@ def is_in_server(must_be_in_guild_id):
     return commands.check(predicate)
 
 
-def has_any_permission(permissions: List[str], negate=False, required=1):
-    async def predictate(ctx):
-        user_permissions = await get_ctx_permissions(ctx)
-        if await is_ignored(ctx, permissions=user_permissions):
-            raise BotIgnore()
+def needs_access_level(required_access):
+    async def predicate(ctx:MyContext):
 
-        in_error = []
-        ok = []
-
-        for permission in permissions:
-            permissions_value = await permissions_has_permissions(ctx, permission, negate=negate, permissions=user_permissions)
-            if permissions_value:
-                ok.append(permission)
-            else:
-                in_error.append(permission)
-
-        if len(ok) >= required:
-            return True
+        if not ctx.guild:
+            raise commands.NoPrivateMessage()
         else:
-            if negate:
-                raise HavingPermissions(in_error, required)
+            db_user = await get_from_db(ctx.author)
+
+            access = db_user.get_access_level()
+            if access >= required_access:
+                return True
             else:
-                raise MissingPermissions(in_error, required)
+                raise AccessTooLow(current_access=access, required_access=required_access)
 
-    return commands.check(predictate)
+    return commands.check(predicate)
 
-
-def server_admin_or_permission(permission: str):
-    return has_any_permission(["discord.administrator", permission])
-
-
-def has_permission(permission: str, negate=False):
-    async def predictate(ctx):
-        user_permissions = await get_ctx_permissions(ctx)
-
-        if await is_ignored(ctx, permissions=user_permissions):
-            raise BotIgnore()
-
-        ret = await permissions_has_permissions(ctx, permission, negate=negate)
-        if ret and negate:
-            raise HavingPermission(permission)
-        elif not ret and not negate:
-            raise MissingPermission(permission)
-        else:
-            return True
-
-    return commands.check(predictate)
 
 
 def channel_enabled():
