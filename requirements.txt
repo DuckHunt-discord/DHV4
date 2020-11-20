@@ -10,7 +10,7 @@ aerich
 asyncpg
 python-rapidjson
 ciso8601
-Babel~=2.8.0
+Babel~=2.9.0
 git+https://github.com/Rapptz/discord-ext-menus
-python-dateutil~=2.6.1
+python-dateutil~=2.8.1
 aiohttp~=3.6.2
