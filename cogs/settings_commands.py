@@ -445,7 +445,7 @@ class SettingsCommands(Cog):
                          channel=ctx.channel,
                          value=db_channel.per_life_exp))
 
-    @settings.command()
+    @settings.command(aliases=["dpd"])
     async def ducks_per_day(self, ctx: MyContext, value: int = None):
         """
         Set the amount of ducks that will spawn every day
