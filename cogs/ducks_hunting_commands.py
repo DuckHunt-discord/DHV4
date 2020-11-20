@@ -31,7 +31,7 @@ def compute_luck(luck_pct):
 
 
 class DucksHuntingCommands(Cog):
-    @commands.command(aliases=["pan", "kill"])
+    @commands.command(aliases=["pan", "pew", "pang", "shoot", "bong", "bonk", "kill", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
     @checks.channel_enabled()
     async def bang(self, ctx: MyContext, target: Optional[discord.Member], *args):
         """
@@ -148,6 +148,71 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_without_ducks'] += 1
 
             await db_hunter.save()
+
+
+    @commands.command(aliases=["rl"])
+    @checks.channel_enabled()
+    async def reload(self, ctx: MyContext, *args):
+        """
+        Reload your gun.
+        """
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        now = int(time.time())
+
+
+
+        if db_hunter.weapon_confiscated:
+            db_hunter.shooting_stats['reloads_when_confiscated'] += 1
+            await db_hunter.save()
+
+            await ctx.reply(_("Dude... You don't have a weapon, it has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
+                              ctx=ctx))
+            return False
+
+        if db_hunter.weapon_jammed:
+            db_hunter.weapon_jammed = False
+            await db_hunter.save()
+
+            await ctx.reply(_("☀️️ Your unjam your weapon !"))
+            return True
+
+        level_info = get_level_info(db_hunter.experience)
+
+        if db_hunter.bullets <= 0 and db_hunter.magazines >= 1:
+            db_hunter.shooting_stats['reloads'] += 1
+            db_hunter.magazines -= 1
+            db_hunter.bullets = level_info["bullets"]
+
+            await db_hunter.save()
+
+            await ctx.reply(_("🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | Magazines: {current_magazines}/{max_magazines} ",
+                              current_bullets=db_hunter.bullets,
+                              max_bullets=level_info["bullets"],
+                              current_magazines=db_hunter.magazines,
+                              max_magazines=level_info["magazines"]))
+            return True
+        elif db_hunter.bullets > 0:
+            db_hunter.shooting_stats['unneeded_reloads'] += 1
+            await db_hunter.save()
+
+            await ctx.reply(_("🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/{max_bullets} | Magazines: {current_magazines}/{max_magazines} ",
+                              current_bullets=db_hunter.bullets,
+                              max_bullets=level_info["bullets"],
+                              current_magazines=db_hunter.magazines,
+                              max_magazines=level_info["magazines"]))
+            return False
+        elif db_hunter.magazines <= 0:
+            db_hunter.shooting_stats['unneeded_reloads'] += 1
+            await db_hunter.save()
+
+            await ctx.reply(_("🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: {current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/{max_magazines} ",
+                              current_bullets=db_hunter.bullets,
+                              max_bullets=level_info["bullets"],
+                              current_magazines=db_hunter.magazines,
+                              max_magazines=level_info["magazines"]))
+            return False
+
 
     @commands.command()
     @checks.channel_enabled()
