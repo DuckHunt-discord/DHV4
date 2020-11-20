@@ -1,3 +1,4 @@
+import asyncio
 import random
 import time
 from typing import Optional
@@ -302,8 +303,8 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['clover'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more.", clover_exp=clover_exp)) \
- \
+        await ctx.reply(_("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more.", clover_exp=clover_exp))
+
     @shop.command(aliases=["11", "glasses", "👓️", "🕶️"])
     async def sunglasses(self, ctx: MyContext):
         """
@@ -322,8 +323,13 @@ class ShoppingCommands(Cog):
 
         db_hunter.experience -= ITEM_COST
         db_hunter.active_powerups["sunglasses"] = int(time.time()) + DAY
+        db_hunter.active_powerups["mirror"] = 0
 
-        db_hunter.bought_items['sunglasses'] += 1
+
+        if previously_had:
+            db_hunter.bought_items['useless_sunglasses'] += 1
+        else:
+            db_hunter.bought_items['sunglasses'] += 1
 
         await db_hunter.save()
         if previously_had:
@@ -351,6 +357,60 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
         await ctx.reply(_("💸 You bought some new clothes. You look very good. Maybe the ducks will like your outfit."))
+
+    @shop.command(aliases=["13", "clean"])
+    async def brush(self, ctx: MyContext):
+        """
+        Clean your gun, removing sabotage and sand.
+        """
+        ITEM_COST = 7
+
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["sand"] = 0
+        db_hunter.weapon_sabotaged_by = None
+
+        db_hunter.bought_items['brush'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You've just cleaned your weapon. Could've just shot once, but heh ¯\\_(ツ)_/¯."))
+
+    @shop.command(aliases=["14"])
+    async def mirror(self, ctx: MyContext, target: discord.Member):
+        """
+        Dazzle another hunter using the power of sunlight
+        """
+        ITEM_COST = 7
+
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_target: Player = await get_player(target, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        if not db_target.is_powerup_active('sunglasses'):
+            db_target.active_powerups["mirror"] = 1
+            db_hunter.bought_items['mirror'] += 1
+            stupid = False
+        else:
+            db_hunter.bought_items['useless_mirror'] += 1
+            stupid = True
+
+        await asyncio.gather(db_hunter.save(), db_target.save())
+
+        if stupid:
+            await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. That was kinda stupid, since they have sunglasses 🕶️.", target=target))
+        else:
+            await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror.", target=target))
+
 
 
 setup = ShoppingCommands.setup

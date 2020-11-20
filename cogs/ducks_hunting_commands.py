@@ -106,6 +106,10 @@ class DucksHuntingCommands(Cog):
 
         # Missing
         accuracy = level_info['accuracy']
+        if db_hunter.active_powerups['mirror'] > 0:
+            accuracy /= 2
+            db_hunter.active_powerups['mirror'] -= 1
+
         if db_hunter.active_powerups['sight'] > 0:
             accuracy += int((100 - accuracy) / 3)
             db_hunter.active_powerups['sight'] -= 1
