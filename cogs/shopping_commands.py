@@ -171,6 +171,7 @@ class ShoppingCommands(Cog):
 
         if not db_hunter.weapon_confiscated:
             await ctx.reply(_("❌ Your gun isn't confiscated, why would you need a new one ?"))
+            return False
 
         db_hunter.experience -= ITEM_COST
         db_hunter.weapon_confiscated = False
@@ -178,6 +179,52 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
         await ctx.reply(_("💸 You bribed the police and brought back your weapon. The fun continues."))
+
+    @shop.command(aliases=["6", "lubricant"])
+    async def grease(self, ctx: MyContext):
+        """
+        Add some grease in your weapon to prevent jamming.
+        """
+        ITEM_COST = 8
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if db_hunter.is_powerup_active('grease'):
+            await ctx.reply(_("❌ Your gun is already perfectly greased, you don't need any more of that."))
+            return False
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["grease"] = int(time.time()) + DAY
+        db_hunter.bought_items['grease'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You added some grease to your weapon to reduce jamming for a day."))
+
+    @shop.command(aliases=["7",])
+    async def sight(self, ctx: MyContext):
+        """
+        Add a sight to your weapon to improve accuracy.
+        """
+        ITEM_COST = 6
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if db_hunter.active_powerups["sight"]:
+            await ctx.reply(_("❌ You added a new sight to your weapon recntly. You don't need a new one."))
+            return False
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["sight"] = 12  # 12 shots to go
+        db_hunter.bought_items['sight'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You added a sight to your weapon to improve your accuracy for the next few shots."))
 
 
 setup = ShoppingCommands.setup

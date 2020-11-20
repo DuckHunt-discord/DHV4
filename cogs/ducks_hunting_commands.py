@@ -91,7 +91,7 @@ class DucksHuntingCommands(Cog):
         # Jamming
         level_info = get_level_info(db_hunter.experience)
         lucky = compute_luck(level_info['reliability'])
-        if db_hunter.active_powerups['grease'] > now:
+        if db_hunter.is_powerup_active('grease'):
             lucky = lucky or compute_luck(level_info['reliability'])
 
         if not lucky:
@@ -106,8 +106,9 @@ class DucksHuntingCommands(Cog):
 
         # Missing
         accuracy = level_info['accuracy']
-        if db_hunter.active_powerups['sight'] > now:
+        if db_hunter.active_powerups['sight'] > 0:
             accuracy += int((100 - accuracy) / 3)
+            db_hunter.active_powerups['sight'] -= 1
 
         missed = not compute_luck(accuracy)
         if (missed and not target) or (target and not missed):
