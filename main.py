@@ -30,8 +30,15 @@ intents.invites      = False
 intents.voice_states = False
 intents.typing       = False
 
+# https://discordpy.readthedocs.io/en/latest/api.html#discord.AllowedMentions
+allowed_mentions = discord.AllowedMentions(
+    everyone=False,
+    roles=False,
+    users=True,
+)
 
-bot = MyBot(description=config["bot"]["description"], intents=intents)
+
+bot = MyBot(description=config["bot"]["description"], intents=intents, allowed_mentions=allowed_mentions)
 
 for cog_name in config["cogs"]["cogs_to_load"]:
     try:
