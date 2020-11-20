@@ -120,6 +120,7 @@ class DucksHuntingCommands(Cog):
             if killed_someone:
                 db_hunter.shooting_stats['killed'] += 1
                 db_hunter.experience -= 15
+                db_hunter.weapon_confiscated = True
 
                 if not target:
                     db_target: Player = await get_random_player(db_channel)
