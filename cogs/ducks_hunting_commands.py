@@ -134,6 +134,7 @@ class DucksHuntingCommands(Cog):
                                   player=db_target.member.user,
                                   ))
             else:
+                await db_hunter.save()
                 await ctx.reply(_("🌲 What did you try to aim at ? I guess you shot that tree, over here. [**MISSED**: -2 exp]",))
 
             return False
@@ -212,7 +213,6 @@ class DucksHuntingCommands(Cog):
                               current_magazines=db_hunter.magazines,
                               max_magazines=level_info["magazines"]))
             return False
-
 
     @commands.command()
     @checks.channel_enabled()
