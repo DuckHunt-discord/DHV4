@@ -170,6 +170,7 @@ class Player(Model):
     givebacks = fields.IntField(default=0)
 
     found_items = DefaultDictJSONField()
+    bought_items = DefaultDictJSONField()
 
     # Weapon stats
     bullets = fields.IntField(default=6)
