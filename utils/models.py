@@ -156,8 +156,6 @@ class Player(Model):
     member = fields.ForeignKeyField('models.DiscordMember')
 
     # Inventories
-    weapons = fields.JSONField(default=[])
-    backpack = fields.JSONField(default=[])
     active_powerups = DefaultDictJSONField(default_factory=int)  # Until a timestamp.
 
     achievements = DefaultDictJSONField(default_factory=bool)

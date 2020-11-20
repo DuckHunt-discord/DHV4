@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 from discord.ext import menus
 
-from utils import checks
+from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_player, DiscordUser, Player
@@ -74,7 +74,7 @@ class InventoryCommands(Cog):
             await show_items_menu(ctx, inventory, title=_("Your inventory"))
 
     @inventory.command(name="give")
-    @checks.channel_enabled()
+    @checks.needs_access_level(models.AccessLevel.BOT_OWNER)
     async def inv_give(self, ctx: MyContext, target: discord.User, item_name: str):
         """
         Give something to some player.
@@ -141,52 +141,6 @@ class InventoryCommands(Cog):
                 await ctx.send(_('✨ Yay! Free ammo!'))
 
         await db_user.save()
-        await db_player.save()
-
-    @commands.group(aliases=["bp"])
-    async def backpack(self, ctx: MyContext):
-        """
-        Show your backpack content
-        """
-        if not ctx.invoked_subcommand:
-            _ = await ctx.get_translate_function(user_language=True)
-
-            db_player: Player = await get_player(ctx.author, ctx.channel)
-            backpack = db_player.backpack
-            await show_items_menu(ctx, backpack, title=_("Your backpack on {channel.mention}", channel=ctx.channel))
-
-    @backpack.command(name="give")
-    async def bp_give(self, ctx: MyContext, target: discord.User, item_name: str):
-        """
-        Give something to some player.
-        """
-        _ = await ctx.get_translate_function(user_language=True)
-        db_target = await get_from_db(target, as_user=True)
-
-        item = BP_COMMON_ITEMS.get(item_name, None)
-        if not item:
-            await ctx.send(_("❌ Unknown item."))
-            return
-
-        db_target.inventory.append(item)
-        await db_target.save()
-        await ctx.send(_("👌 Item has been given to {target.name}.", target=target))
-
-    @backpack.command(name="use")
-    async def bp_use(self, ctx: MyContext, item_number: int):
-        """
-        Use one of your items
-        """
-        _ = await ctx.get_translate_function(user_language=True)
-
-        db_player = await get_player(ctx.author, ctx.channel)
-
-        try:
-            item = db_player.backpack.pop(item_number - 1)
-        except IndexError:
-            await ctx.send(_('❌ Unknown item number.'))
-            return
-
         await db_player.save()
 
 
