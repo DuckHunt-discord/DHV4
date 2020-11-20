@@ -175,32 +175,32 @@ class Duck:
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
 
-        return _("{killer.mention} killed the duck [exp: {won_experience}]",
+        return _("{killer.mention} killed the duck [**Killed**: {won_experience}]",
                  killer=killer,
                  won_experience=won_experience)
 
     async def get_hurt_message(self, hurter, db_hurter, damage):
         _ = await self.get_translate_function()
 
-        return _("{hurter.mention} hurted the duck [SUPER DUCK detected] [lives : -{damage}]",
+        return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
                  hurter=hurter,
                  damage=damage)
 
     async def get_resists_message(self, hurter, db_hurter):
         _ = await self.get_translate_function()
 
-        return _("{hurter.mention}, the duck RESISTED. [ARMORED DUCK detected]",
+        return _("{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]",
                  hurter=hurter, )
 
     async def get_hug_message(self, hugger, db_hugger, experience):
         _ = await self.get_translate_function()
         if experience > 0:
-            return _("{hugger.mention} hugged the duck. So cute! [exp: {experience}]",
+            return _("{hugger.mention} hugged the duck. So cute! [**Hug**: {experience}]",
                      hugger=hugger,
                      experience=experience,
                      )
         else:
-            return _("{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [exp: {experience}]",
+            return _("{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [**FAIL**: {experience}]",
                      hugger=hugger,
                      experience=experience,
                      )
@@ -250,6 +250,11 @@ class Duck:
     async def get_hug_experience(self):
         return -2
 
+    async def will_frighten(self):
+        db_channel = await self.get_db_channel()
+        frighten_chance = db_channel.duck_frighten_chance
+        return random.randint(1, 100) <= frighten_chance
+
     # Entry Points #
 
     async def spawn(self):
@@ -267,6 +272,9 @@ class Duck:
         self.spawned_at = time.time()
 
     async def shoot(self, args):
+        if await self.will_frighten():
+            return await self.frighten()
+
         damage = await self.get_damage()
 
         if await self.damage(damage):
@@ -382,6 +390,7 @@ class Duck:
         total_lives = self._lives  # We can't await here, so try our best
 
         return f"<{type(self).__name__}{' '.join(attributes)} lives={self.lives_left}/{total_lives}>"
+
 
 # Standard ducks #
 

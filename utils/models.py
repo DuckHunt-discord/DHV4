@@ -5,6 +5,7 @@ import datetime
 import discord
 import typing
 from tortoise import Tortoise, fields
+from tortoise.expressions import F
 from tortoise.models import Model
 
 from enum import IntEnum, unique
@@ -157,6 +158,7 @@ class Player(Model):
 
     # Inventories
     active_powerups = DefaultDictJSONField(default_factory=int)  # Until a timestamp.
+    shooting_stats  = DefaultDictJSONField(default_factory=int)  # Count of times.
 
     achievements = DefaultDictJSONField(default_factory=bool)
 
@@ -169,11 +171,6 @@ class Player(Model):
     found_items = DefaultDictJSONField()
 
     # Weapon stats
-    shots_without_ducks = fields.IntField(default=0)
-    effective_reloads = fields.IntField(default=0)
-    no_magazines_reloads = fields.IntField(default=0)
-    unneeded_reloads = fields.IntField(default=0)
-
     bullets = fields.IntField(default=6)
     magazines = fields.IntField(default=2)
 
@@ -181,12 +178,12 @@ class Player(Model):
     last_giveback = fields.DatetimeField(auto_now_add=True)
 
     weapon_confiscated = fields.BooleanField(default=False)
+    weapon_confiscated_count = fields.IntField(default=0)
     weapon_jammed = fields.BooleanField(default=False)
     weapon_sabotaged_by = fields.ForeignKeyField('models.Player', null=True, on_delete=fields.SET_NULL)
     sand_in_weapon = fields.BooleanField(default=False)
 
     is_dazzled = fields.BooleanField(default=False)
-    wet_until = fields.DatetimeField(auto_now_add=True)
 
     # Killed ducks stats
     best_times = DefaultDictJSONField(default_factory=lambda: 660)
@@ -253,6 +250,19 @@ async def get_from_db(discord_object, as_user=False):
                 db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
                 await db_obj.save()
             return db_obj
+
+
+async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextChannel]):
+    if isinstance(channel, discord.TextChannel):
+        db_channel = get_from_db(channel)
+    else:
+        db_channel = channel
+
+    return await Player.filter(channel=db_channel)\
+        .annotate(random_number=F("RANDOM"))\
+        .order_by("random_number")\
+        .first()\
+        .prefetch_related("member__user")
 
 
 async def get_player(member: discord.Member, channel: discord.TextChannel):

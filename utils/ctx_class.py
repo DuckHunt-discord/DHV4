@@ -2,7 +2,6 @@ import asyncio
 import io
 
 import discord
-import toml
 import typing
 from discord import Message
 from discord.errors import InvalidArgument
@@ -25,7 +24,10 @@ class MyContext(commands.Context):
 
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
-    async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, **kwargs) -> Message:
+    async def reply(self, *args, **kwargs):  # When V2 releases...
+        return await self.send(*args, **kwargs)
+
+    async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, reply=False, **kwargs) -> Message:
         # Case for a too-big message
         if content and len(content) > 1990:
             self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
@@ -46,7 +48,10 @@ class MyContext(commands.Context):
             else:
                 file = message_file
 
-        message = await super().send(content, file=file, files=files, **kwargs)
+        if reply:
+            message = await self.reply(content, file=file, files=files, **kwargs)
+        else:
+            message = await super().send(content, file=file, files=files, **kwargs)
 
         # Message deletion if source is deleted
         if delete_on_invoke_removed:
@@ -91,6 +96,7 @@ class MyContext(commands.Context):
         language_code = await self.get_language_code(user_language=user_language)
 
         def _(message, **kwargs):
+            kwargs = {'ctx': self, **kwargs}
             return translate(message, language_code).format(**kwargs)
 
         return _
