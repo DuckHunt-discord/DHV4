@@ -9,8 +9,6 @@ from tortoise.models import Model
 
 from enum import IntEnum, unique
 
-if typing.TYPE_CHECKING:
-    from utils.ctx_class import MyContext
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
 
@@ -125,6 +123,8 @@ class AccessLevel(IntEnum):
     TRUSTED = 100
     MODERATOR = 200
     ADMIN = 300
+    BOT_MODERATOR = 500
+    BOT_OWNER = 600
 
 
 class DiscordUser(Model):

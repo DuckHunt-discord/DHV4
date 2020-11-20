@@ -4,7 +4,7 @@ import random
 import discord
 from discord.ext import commands
 
-from utils import checks, permissions
+from utils import checks
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
@@ -17,7 +17,6 @@ from utils.ctx_class import MyContext
 
 class DucksSpawningCommands(Cog):
     @commands.group(aliases=["spawn", "spawnduck"])
-    @checks.server_admin_or_permission("ducks.spawn.random")
     @checks.channel_enabled()
     async def coin(self, ctx: MyContext):
         """
@@ -28,7 +27,6 @@ class DucksSpawningCommands(Cog):
 
     @coin.command()
     @commands.cooldown(1, 60, type=commands.BucketType.channel)
-    @checks.server_admin_or_permission("ducks.spawn.roulette")
     async def roulette(self, ctx: MyContext, how_many_ducks: int = 5):
         """
         Spawns many ducks, of (at least) one is a mechanical one
@@ -43,7 +41,6 @@ class DucksSpawningCommands(Cog):
             await asyncio.sleep(2)
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.normal")
     async def normal(self, ctx: MyContext):
         """
         Spawns a normal duck
@@ -52,7 +49,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.super")
     async def super(self, ctx: MyContext, lives: int = None):
         """
         Spawns a super duck
@@ -66,7 +62,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.baby")
     async def baby(self, ctx: MyContext):
         """
         Spawns a baby duck
@@ -75,7 +70,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.prof")
     async def prof(self, ctx: MyContext):
         """
         Spawns a professor Duck.
@@ -84,7 +78,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.ghost")
     async def ghost(self, ctx: MyContext):
         """
         Spawns a ghost duck. There will be no spawn message, obviously.
@@ -93,7 +86,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command(aliases=["mother", "mother_of_all_ducks"])
-    @checks.server_admin_or_permission("ducks.spawn.moad")
     async def moad(self, ctx: MyContext):
         """
         Spawns a MOAD.
@@ -102,7 +94,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.armored")
     async def armored(self, ctx: MyContext):
         """
         Spawns an armored duck, that will resist most 1 dmg hits.
@@ -111,7 +102,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.golden")
     async def golden(self, ctx: MyContext):
         """
         Spawns a golden duck.
@@ -120,7 +110,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.plastic")
     async def plastic(self, ctx: MyContext):
         """
         Spawns a plastic duck.
@@ -129,7 +118,6 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command()
-    @checks.server_admin_or_permission("ducks.spawn.kamikaze")
     async def kamikaze(self, ctx: MyContext):
         """
         Spawns a plastic duck.

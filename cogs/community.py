@@ -1,17 +1,10 @@
 import asyncio
 import datetime
-import random
-from typing import Optional
 
 import discord
-from discord.ext import commands
-
-from utils import checks, permissions
 from utils.bot_class import MyBot
 from utils.human_time import ShortTime
-from utils.interaction import get_webhook_if_possible
 
-from utils.ducks import Duck, SuperDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext

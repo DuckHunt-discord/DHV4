@@ -19,7 +19,6 @@ from utils.ctx_class import MyContext
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
 from utils.models import get_from_db
-from utils.permissions import has_permission
 
 
 class SettingsCommands(Cog):

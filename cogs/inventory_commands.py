@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 from discord.ext import menus
 
-from utils import checks, permissions
+from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_player, DiscordUser, Player
@@ -74,7 +74,6 @@ class InventoryCommands(Cog):
             await show_items_menu(ctx, inventory, title=_("Your inventory"))
 
     @inventory.command(name="give")
-    @checks.has_permission("bot.give")
     @checks.channel_enabled()
     async def inv_give(self, ctx: MyContext, target: discord.User, item_name: str):
         """
