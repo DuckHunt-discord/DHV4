@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 from utils.ctx_class import MyContext
-from utils.models import get_from_db
+from utils.models import get_from_db, AccessLevel
 
 
 class NotInServer(commands.CheckFailure):
@@ -45,12 +45,12 @@ def needs_access_level(required_access):
             access = db_user.get_access_level()
             if access >= required_access:
                 return True
-            else:
+            elif access >= AccessLevel.BANNED and required_access <= AccessLevel.ADMIN:
+                if ctx.author_permissions().administrator:
+                    return True  # Override permissions for administrators
                 raise AccessTooLow(current_access=access, required_access=required_access)
 
     return commands.check(predicate)
-
-
 
 def channel_enabled():
     async def predictate(ctx):
