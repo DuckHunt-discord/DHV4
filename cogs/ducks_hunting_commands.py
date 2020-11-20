@@ -138,6 +138,7 @@ class DucksHuntingCommands(Cog):
 
             return False
 
+        await db_hunter.save()
         duck = await ctx.target_next_duck()
 
         if duck:
