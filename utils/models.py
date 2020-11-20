@@ -14,7 +14,6 @@ class DiscordGuild(Model):
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
     prefix = fields.CharField(20, null=True)
-    permissions = fields.JSONField(default={})
 
     language = fields.CharField(6, default="en")
 
@@ -33,7 +32,6 @@ class DiscordChannel(Model):
     guild = fields.ForeignKeyField('models.DiscordGuild')
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
-    permissions = fields.JSONField(default={})
 
     class Meta:
         table = "channels"
@@ -52,7 +50,6 @@ class DiscordUser(Model):
     discriminator = fields.CharField(4)
     last_modified = fields.DatetimeField(auto_now=True)
     times_ran_example_command = fields.IntField(default=0)
-    permissions = fields.JSONField(default={})
 
     language = fields.CharField(6, default="en")
 
@@ -70,7 +67,6 @@ class DiscordMember(Model):
     id = fields.IntField(pk=True)
     guild = fields.ForeignKeyField('models.DiscordGuild')
     user = fields.ForeignKeyField('models.DiscordUser')
-    permissions = fields.JSONField(default={})
 
     class Meta:
         table = "members"
@@ -104,43 +100,6 @@ async def get_from_db(discord_object, as_user=False):
             db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
             await db_obj.save()
         return db_obj
-
-
-async def get_ctx_permissions(ctx: 'MyContext') -> dict:
-    """
-    Discover the permissions for a specified context. Permissions are evaluated first from the default permissions
-    specified in the config file, then by the guild config, the channel conifg, and again from the member_specific
-    permissions, then by the fixed permissions as seen in the config file, and finally using user overrides set by
-    the bot administrator in the database.
-    :param ctx:
-    :return:
-    """
-    if ctx.guild:
-        db_member: DiscordMember = await get_from_db(ctx.author)
-        db_channel: DiscordChannel = await get_from_db(ctx.channel)
-        db_user: DiscordUser = db_member.user
-        db_guild: DiscordGuild = db_member.guild
-        guild_permissions = db_guild.permissions
-        channel_permissions = db_channel.permissions
-        member_permissions = db_member.permissions
-        user_permissions = db_user.permissions
-        subguild_permissions = {}
-        subchannel_permissions = {}
-        for role in ctx.author.roles:
-            subguild_permissions = {**subguild_permissions, **guild_permissions.get(str(role.id), {})}
-            subchannel_permissions = {**subchannel_permissions, **channel_permissions.get(str(role.id), {})}
-    else:
-        subguild_permissions = {}
-        subchannel_permissions = {}
-        member_permissions = {}
-        db_user: DiscordUser = await get_from_db(ctx.author, as_user=True)
-        user_permissions = db_user.permissions
-
-    default_permissions = ctx.bot.config['permissions']['default']
-    fixed_permissions = ctx.bot.config['permissions']['fixed']
-
-    permissions = {**default_permissions, **subguild_permissions, **subchannel_permissions, **member_permissions, **fixed_permissions, **user_permissions}
-    return permissions
 
 
 async def init_db_connection(config):
