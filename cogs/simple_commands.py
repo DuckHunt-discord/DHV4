@@ -2,13 +2,8 @@ import time
 
 from discord.ext import commands
 
-from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-
-from babel import dates
-
-from utils.models import AccessLevel, get_from_db
 
 
 class SimpleCommands(Cog):
@@ -35,38 +30,5 @@ class SimpleCommands(Cog):
         wiki_url = self.config()["wiki_url"]
 
         await ctx.send(_(wiki_url))
-
-    @commands.command(aliases=['start', 'add_channel'])
-    @checks.needs_access_level(AccessLevel.ADMIN)
-    async def enable(self, ctx: MyContext):
-        _ = await ctx.get_translate_function()
-
-        db_channel = await get_from_db(ctx.channel)
-        if not db_channel.enabled:
-            db_channel.enabled = True
-            await db_channel.save()
-
-            await ctx.send(_("The game has been started on this channel."))
-        else:
-            await ctx.send(_("The game was already started on this channel. Wait a while for ducks to appear. Use `{ctx.prefix}disable` to stop the game.",
-                             ctx=ctx))
-
-    @commands.command(aliases=['stop', 'del_channel'])
-    @checks.needs_access_level(AccessLevel.ADMIN)
-    async def disable(self, ctx: MyContext):
-        _ = await ctx.get_translate_function()
-
-        db_channel = await get_from_db(ctx.channel)
-        if db_channel.enabled:
-
-            db_channel.enabled = True
-            await db_channel.save()
-
-            await ctx.send(_("The game has been stopped on this channel. The channel data is saved, and the game can be restarted at any time with `{ctx.prefix}enable`",
-                             ctx=ctx))
-        else:
-            await ctx.send(_("The game was already stopped here. The game can be restarted at any time with `{ctx.prefix}enable`",
-                             ctx=ctx))
-
 
 setup = SimpleCommands.setup
