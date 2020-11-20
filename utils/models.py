@@ -131,7 +131,6 @@ class DiscordUser(Model):
     discord_id = fields.BigIntField(pk=True)
     name = fields.TextField()
     discriminator = fields.CharField(4)
-    last_modified = fields.DatetimeField(auto_now=True)
     times_ran_example_command = fields.IntField(default=0)
 
     inventory = fields.JSONField(default=[])
