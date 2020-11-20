@@ -1,6 +1,7 @@
 import asyncio
 import collections
 import datetime
+import time
 
 import discord
 import typing
@@ -209,6 +210,10 @@ class Player(Model):
             self.magazines = level_info["magazines"]
             self.weapon_confiscated = False
             await self.save()
+
+    def is_powerup_active(self, powerup):
+        now = time.time()
+        return self.active_powerups[powerup] >= now
 
 
 

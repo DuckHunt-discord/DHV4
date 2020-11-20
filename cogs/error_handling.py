@@ -4,6 +4,7 @@ import traceback
 import tortoise
 from discord.ext import commands
 
+from cogs import shopping_commands
 from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -127,6 +128,9 @@ class CommandErrorHandler(Cog):
                     else:
                         message = _("You need to be in a server with ID {exception.must_be_in_guild_id}.",
                                     exception=exception)
+                elif isinstance(exception, shopping_commands.NotEnoughExperience):
+                    message = _(f"You don't have enough experience to enjoy this item. You'd need at least {exception.needed} exp, but you only have {exception.having}.",
+                                exception=exception)
 
                 elif isinstance(exception, checks.AccessTooLow):
                     message = _(f"Your access level is too low : you have an access level of {exception.current_access.name}, and you need at least {exception.required_access.name}.",

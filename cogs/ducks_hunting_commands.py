@@ -9,7 +9,7 @@ from discord.ext import commands
 
 from utils import checks
 from utils.bot_class import MyBot
-from utils.interaction import get_webhook_if_possible
+from utils.interaction import get_webhook_if_possible, get_timedelta
 
 from utils.ducks import Duck, SuperDuck
 
@@ -19,10 +19,6 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.levels import get_level_info
 from utils.models import get_from_db, get_player, Player, get_random_player
-
-
-def get_timedelta(event, now):
-    return datetime.datetime.fromtimestamp(event) - datetime.datetime.fromtimestamp(now)
 
 
 def compute_luck(luck_pct):

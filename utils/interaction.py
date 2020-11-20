@@ -1,4 +1,5 @@
 import asyncio
+import datetime
 
 import discord
 import typing
@@ -9,6 +10,10 @@ from utils.models import get_from_db, DiscordChannel
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
+
+
+def get_timedelta(event, now):
+    return datetime.datetime.fromtimestamp(event) - datetime.datetime.fromtimestamp(now)
 
 
 def escape_everything(mystr: str):
