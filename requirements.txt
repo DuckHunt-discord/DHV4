@@ -3,10 +3,11 @@ toml
 uvloop
 parsedatetime
 pytz
-discord.py[voice]
+discord.py[voice]>=1.5.0
 tortoise-orm[accel]
 aerich
 asyncpg
 python-rapidjson
 ciso8601
 Babel
+discord.py-stubs
