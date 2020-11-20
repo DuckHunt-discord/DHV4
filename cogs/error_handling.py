@@ -122,18 +122,6 @@ class CommandErrorHandler(Cog):
                     else:
                         message = _("You need to be in a server with ID {exception.must_be_in_guild_id}.",
                                     exception=exception)
-                elif isinstance(exception, checks.HavingPermission):
-                    message = _("You have the `{exception.permission}` permission.",
-                                exception=exception)
-                elif isinstance(exception, checks.MissingPermission):
-                    message = _("You need the `{exception.permission}` permission.",
-                                exception=exception)
-                elif isinstance(exception, checks.HavingPermissions):
-                    message = _("You have {exception.required} or more of the following permissions : `{exception.permissions}`.",
-                                exception=exception)
-                elif isinstance(exception, checks.MissingPermissions):
-                    message = _("You need {exception.required} or more of the following permissions : `{exception.permissions}`.",
-                                exception=exception)
                 elif isinstance(exception, checks.BotIgnore):
                     return
                 else:
@@ -148,7 +136,7 @@ class CommandErrorHandler(Cog):
                 message = _("There was an error running the specified command. Contact the bot admins.")
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.errors.CommandOnCooldown):
-                if await self.bot.is_owner(ctx.author) or checks.has_permission("bot.bypass_cooldowns"):
+                if await self.bot.is_owner(ctx.author):
                     await ctx.reinvoke()
                     return
                 else:
