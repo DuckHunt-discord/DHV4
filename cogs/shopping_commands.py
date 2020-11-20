@@ -4,7 +4,7 @@ from typing import Optional
 import discord
 from discord.ext import commands
 
-from utils import checks, permissions
+from utils import checks
 from utils.bot_class import MyBot
 from utils.interaction import get_webhook_if_possible
 
