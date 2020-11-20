@@ -393,7 +393,8 @@ class Duck:
 
     def __repr__(self):
         attributes = []
-        if self.lives_left <= 0:  # No await
+        ll = self.lives_left  # No await
+        if ll is not None and ll <= 0:
             attributes.append("killed")
         if self in self.bot.ducks_spawned[self.channel]:
             attributes.append("spawned")
@@ -545,6 +546,7 @@ class SuperDuck(Duck):
         super().__init__(*args, **kwargs)
 
         self._lives = lives
+        self.lives_left = lives
 
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
