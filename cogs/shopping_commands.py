@@ -129,5 +129,55 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
         await ctx.reply(_("💸 You bought some AP ammo. Twice the damage, twice the fun!"))
 
+    @shop.command(aliases=["4", "explosive_ammo", "explo"])
+    async def explosive(self, ctx: MyContext):
+        """
+        Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 hours
+        """
+        ITEM_COST = 25
+
+        _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if db_hunter.is_powerup_active("explosive_ammo"):
+            time_delta = get_timedelta(db_hunter.active_powerups['explosive_ammo'],
+                                       time.time())
+
+            await ctx.reply(_("❌ Your gun is already explosive ammo for {time_delta} !",
+                              time_delta=format_timedelta(time_delta, locale=language_code)))
+            return False
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["explosive_ammo"] = int(time.time()) + DAY
+        db_hunter.bought_items['explosive_ammo'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody!"))
+
+    @shop.command(aliases=["5", "gun", ])
+    async def weapon(self, ctx: MyContext):
+        """
+        Buy back your weapon from the police if it was confiscated.
+        """
+        ITEM_COST = 30
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        if not db_hunter.weapon_confiscated:
+            await ctx.reply(_("❌ Your gun isn'tconfiscated, why would you need a new one ?"))
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.weapon_confiscated = False
+        db_hunter.bought_items['weapon'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You bribed the police and brought back your weapon. The fun continues."))
+
 
 setup = ShoppingCommands.setup
