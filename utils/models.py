@@ -10,6 +10,7 @@ from tortoise.models import Model
 
 from enum import IntEnum, unique
 
+from utils.levels import get_level_info
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
 
@@ -196,6 +197,20 @@ class Player(Model):
     async def get_bonus_experience(self, given_experience):
         return 0
 
+    def level_info(self):
+        return get_level_info(self.experience)
+
+    async def maybe_giveback(self):
+        now = datetime.datetime.now()
+        if self.last_giveback.date() != now.date():
+            level_info = self.level_info()
+            self.last_giveback = now
+            self.magazines = level_info["magazines"]
+            self.weapon_confiscated = False
+            await self.save()
+
+
+
     class Meta:
         table = "players"
 
@@ -249,6 +264,7 @@ async def get_from_db(discord_object, as_user=False):
             if not db_obj:
                 db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
                 await db_obj.save()
+
             return db_obj
 
 
@@ -265,12 +281,16 @@ async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextCh
         .prefetch_related("member__user")
 
 
-async def get_player(member: discord.Member, channel: discord.TextChannel):
+async def get_player(member: discord.Member, channel: discord.TextChannel, giveback=False):
     async with DB_LOCKS[(member, channel)]:
-        db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).first()
+        db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).prefetch_related('member__user').first()
         if not db_obj:
             db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
             await db_obj.save()
+        elif giveback:
+            await db_obj.maybe_giveback()
+
+
         return db_obj
 
 

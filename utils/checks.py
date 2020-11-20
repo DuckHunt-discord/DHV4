@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, AccessLevel
+from utils.models import get_from_db, AccessLevel, get_player
 
 
 class NotInServer(commands.CheckFailure):

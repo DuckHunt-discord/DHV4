@@ -38,7 +38,7 @@ class DucksHuntingCommands(Cog):
         Shoot at the duck that appeared first on the channel.
         """
         _ = await ctx.get_translate_function()
-        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
         now = int(time.time())
 
         language_code = await ctx.get_language_code()
@@ -125,7 +125,7 @@ class DucksHuntingCommands(Cog):
                 if not target:
                     db_target: Player = await get_random_player(db_channel)
                 else:
-                    db_target: Player = await get_from_db(target)
+                    db_target: Player = await get_player(target, ctx.channel)
                     db_hunter.shooting_stats['murders'] += 1
 
                 db_target.shooting_stats['got_killed'] += 1
@@ -151,18 +151,15 @@ class DucksHuntingCommands(Cog):
 
             await db_hunter.save()
 
-
     @commands.command(aliases=["rl"])
     @checks.channel_enabled()
-    async def reload(self, ctx: MyContext, *args):
+    async def reload(self, ctx: MyContext):
         """
         Reload your gun.
         """
         _ = await ctx.get_translate_function()
-        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
         now = int(time.time())
-
-
 
         if db_hunter.weapon_confiscated:
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1
