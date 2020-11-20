@@ -389,6 +389,13 @@ class ShoppingCommands(Cog):
 
         _ = await ctx.get_translate_function()
 
+        if target.id == ctx.author.id:
+            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            return False
+        elif target.bot:
+            await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
+            return False
+
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
         db_target: Player = await get_player(target, ctx.channel)
 
