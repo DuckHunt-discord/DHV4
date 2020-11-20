@@ -17,6 +17,7 @@ from utils.models import get_from_db, get_player, Player
 
 class DucksHuntingCommands(Cog):
     @commands.command(aliases=["pan", "kill"])
+    @checks.channel_enabled()
     async def bang(self, ctx: MyContext, target: Optional[discord.Member], *args):
         """
         Shoot at the duck that appeared first on the channel.
@@ -34,6 +35,7 @@ class DucksHuntingCommands(Cog):
             await db_hunter.save()
 
     @commands.command()
+    @checks.channel_enabled()
     async def hug(self, ctx: MyContext, target: Optional[discord.Member], *args):
         """
         Hug the duck that appeared first on the channel.
