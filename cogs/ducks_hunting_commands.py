@@ -80,8 +80,12 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_with_empty_magazine'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("🦉 Magazine empty ! Reload or buy bullets ! **EMPTY**: 0 bullet, {magazines} magazines",
-                              magazines=db_hunter.magazines))
+            level_info = db_hunter.level_info()
+
+            await ctx.reply(_("🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | Magazines: {current_magazines}/{max_magazines}",
+                              max_bullets=level_info['bullets'],
+                              max_magazines=level_info['magazines'],
+                              current_magazines=db_hunter.magazines))
             return False
 
         # Jamming
