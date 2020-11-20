@@ -64,10 +64,15 @@ class MyContext(commands.Context):
         return self.bot.ducks_spawned[self.channel]
 
     async def target_next_duck(self):
+        ducks = self.ducks()
         try:
-            myduck = self.ducks()[0]
+            myduck = ducks[0]
         except IndexError:
             return None
+
+        if myduck.fake and len(ducks) > 1:
+            myduck.despawn()
+            return await self.target_next_duck()
 
         await myduck.target(self.author)
         if not await myduck.is_killed():

@@ -245,7 +245,13 @@ class Duck:
         return self._lives
 
     async def get_damage(self):
-        return 1
+        db_hugger = self.db_target_lock_by
+        if db_hugger.is_powerup_active('explosive_ammo'):
+            return 3
+        elif db_hugger.is_powerup_active('ap_ammo'):
+            return 2
+        else:
+            return 1
 
     async def get_hug_experience(self):
         return -2

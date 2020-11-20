@@ -83,7 +83,7 @@ class ShoppingCommands(Cog):
         level_info = db_hunter.level_info()
 
         max_magazines = level_info['magazines']
-        if db_hunter.bullets >= max_magazines:
+        if db_hunter.magazines >= max_magazines:
             await ctx.reply(_("❌ Whoops, you have too many magazines in your backpack already... Try reloading !"))
             return False
 
@@ -127,7 +127,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['ap_ammo'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a magazine in your weapon. Time to reload!"))
+        await ctx.reply(_("💸 You bought some AP ammo. Twice the damage, twice the fun!"))
 
 
 setup = ShoppingCommands.setup
