@@ -71,6 +71,7 @@ cogs_to_load = ['jishaku',
                 'cogs.ducks_hunting_commands',
                 'cogs.community',
                 'cogs.inventory_commands',
+                'cogs.shopping_commands',
                 ]
 
 # The name after cogs is the name of the class
