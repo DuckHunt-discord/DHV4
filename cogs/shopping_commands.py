@@ -170,7 +170,7 @@ class ShoppingCommands(Cog):
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         if not db_hunter.weapon_confiscated:
-            await ctx.reply(_("❌ Your gun isn'tconfiscated, why would you need a new one ?"))
+            await ctx.reply(_("❌ Your gun isn't confiscated, why would you need a new one ?"))
 
         db_hunter.experience -= ITEM_COST
         db_hunter.weapon_confiscated = False

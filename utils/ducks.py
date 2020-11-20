@@ -469,7 +469,7 @@ class BabyDuck(Duck):
 
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
         _ = await self.get_translate_function()
-        return _("{killer.mention} killed the duck baby snif", killer=killer)
+        return _("{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]", killer=killer, won_experience=won_experience)
 
     async def get_exp_value(self):
         return - await super().get_exp_value()
