@@ -3,6 +3,8 @@ import typing
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
+from enum import IntEnum, unique
+
 if typing.TYPE_CHECKING:
     from utils.ctx_class import MyContext
 
@@ -43,6 +45,15 @@ class DiscordChannel(Model):
         return f"<Channel name={self.name}>"
 
 
+@unique
+class AccessLevel(IntEnum):
+    BANNED = 0
+    DEFAULT = 50
+    TRUSTED = 100
+    MODERATOR = 200
+    ADMIN = 300
+
+
 class DiscordUser(Model):
     id = fields.IntField(pk=True)
     discord_id = fields.BigIntField(index=True)
@@ -52,6 +63,7 @@ class DiscordUser(Model):
     times_ran_example_command = fields.IntField(default=0)
 
     language = fields.CharField(6, default="en")
+    access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
     class Meta:
         table = "users"
@@ -65,8 +77,17 @@ class DiscordUser(Model):
 
 class DiscordMember(Model):
     id = fields.IntField(pk=True)
-    guild = fields.ForeignKeyField('models.DiscordGuild')
-    user = fields.ForeignKeyField('models.DiscordUser')
+    guild: DiscordGuild = fields.ForeignKeyField('models.DiscordGuild')
+    user: DiscordUser = fields.ForeignKeyField('models.DiscordUser')
+
+    access_level = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
+
+    def get_access_level(self):
+        override = self.user.access_level_override
+        if override != AccessLevel.DEFAULT:
+            return override
+        else:
+            return self.access_level
 
     class Meta:
         table = "members"
@@ -107,19 +128,19 @@ async def init_db_connection(config):
         'connections': {
             # Dict format for connection
             'default': {
-                'engine': 'tortoise.backends.asyncpg',
+                'engine'     : 'tortoise.backends.asyncpg',
                 'credentials': {
-                    'host': config['host'],
-                    'port': config['port'],
-                    'user': config['user'],
+                    'host'    : config['host'],
+                    'port'    : config['port'],
+                    'user'    : config['user'],
                     'password': config['password'],
                     'database': config['database'],
                 }
             },
         },
-        'apps': {
+        'apps'       : {
             'models': {
-                'models': ["utils.models", "aerich.models"],
+                'models'            : ["utils.models", "aerich.models"],
                 'default_connection': 'default',
             }
         }

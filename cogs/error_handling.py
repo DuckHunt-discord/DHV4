@@ -122,6 +122,9 @@ class CommandErrorHandler(Cog):
                     else:
                         message = _("You need to be in a server with ID {exception.must_be_in_guild_id}.",
                                     exception=exception)
+                elif isinstance(exception, checks.AccessTooLow):
+                    message = _(f"Your access level is too low : you have an access level of {exception.current_access}, and you need at least {exception.required_access}.",
+                                exception=exception)
                 elif isinstance(exception, checks.BotIgnore):
                     return
                 else:
