@@ -283,7 +283,7 @@ async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextCh
         db_channel = channel
 
     return await Player.filter(channel=db_channel)\
-        .annotate(random_number=F("RANDOM"))\
+        .annotate(random_number=F("RANDOM()"))\
         .order_by("random_number")\
         .first()\
         .prefetch_related("member__user")
