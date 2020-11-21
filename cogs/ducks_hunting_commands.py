@@ -3,6 +3,7 @@ import random
 import time
 import datetime
 from typing import Optional
+from urllib.parse import quote_plus
 
 import discord
 from discord.ext import commands
@@ -142,6 +143,8 @@ class DucksHuntingCommands(Cog):
                 await ctx.reply(_("🔫 You took your weapon, you shot... and killed {player.name}. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**KILL**: -15 exp]",
                                   player=db_target.member.user,
                                   ))
+
+                await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(db_target.member.user.name)}&top2={quote_plus(_('Forgot to duck'))}&top3=&top4=&sp=")
             else:
                 await db_hunter.save()
                 await ctx.reply(_("🌲 What did you try to aim at ? I guess you shot that tree, over here. [**MISSED**: -2 exp]",))
