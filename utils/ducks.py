@@ -149,7 +149,7 @@ class Duck:
         else:
             return anti_bot_zero_width(shout)
 
-    async def get_bye_trace(self):
+    async def get_bye_trace(self) -> str:
         _ = await self.get_translate_function()
         traces = self.get_cosmetics()['bye_traces']
 
@@ -157,7 +157,7 @@ class Duck:
 
         return anti_bot_zero_width(discord.utils.escape_markdown(trace))
 
-    async def get_bye_shout(self):
+    async def get_bye_shout(self) -> str:
         _ = await self.get_translate_function()
         shouts = self.get_cosmetics()['bye_shouts']
 
@@ -172,27 +172,33 @@ class Duck:
 
         return f"{trace} {face} {shout}"
 
-    async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
+    async def get_kill_message(self, killer, db_killer: Player, won_experience: int) -> str:
         _ = await self.get_translate_function()
 
         return _("{killer.mention} killed the duck [**Killed**: +{won_experience} exp]",
                  killer=killer,
                  won_experience=won_experience)
 
-    async def get_hurt_message(self, hurter, db_hurter, damage):
+    async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
+        _ = await self.get_translate_function()
+
+        return _("{hunter.mention} scared the duck.",
+                 killer=hunter,)
+
+    async def get_hurt_message(self, hurter, db_hurter, damage) -> str:
         _ = await self.get_translate_function()
 
         return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
                  hurter=hurter,
                  damage=damage)
 
-    async def get_resists_message(self, hurter, db_hurter):
+    async def get_resists_message(self, hurter, db_hurter) -> str:
         _ = await self.get_translate_function()
 
         return _("{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]",
                  hurter=hurter, )
 
-    async def get_hug_message(self, hugger, db_hugger, experience):
+    async def get_hug_message(self, hugger, db_hugger, experience) -> str:
         _ = await self.get_translate_function()
         if experience > 0:
             return _("{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]",
@@ -331,9 +337,12 @@ class Duck:
         hunter = self.target_lock_by
         db_hunter = self.db_target_lock_by
         await self.increment_frightens()
+        self.despawn()
         await self.release()
 
         await db_hunter.save()
+        await self.send(await self.get_frighten_message(hunter, db_hunter))
+
 
     async def kill(self, damage: int, args):
         """The duck was killed by the current target player"""

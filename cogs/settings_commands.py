@@ -18,7 +18,7 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
-from utils.models import get_from_db
+from utils.models import get_from_db, DiscordMember
 
 
 class SettingsCommands(Cog):
@@ -625,6 +625,37 @@ class SettingsCommands(Cog):
         await ctx.send(_("On {channel.mention}, super ducks will get a minimum of {value} lives.",
                          channel=ctx.channel,
                          value=db_channel.super_ducks_max_life))
+
+    @settings.group()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def permissions(self, ctx: MyContext):
+        """
+        Commands to edit permissions
+        """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
+
+    @permissions.command()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def view(self, ctx: MyContext):
+        """
+        View the current permissions
+        """
+        _ = await ctx.get_translate_function()
+
+        members_with_rights = await DiscordMember.filter(access_level__not=models.AccessLevel.DEFAULT, guild__discord_id=ctx.guild.id).prefetch_related("user").all()
+
+        if members_with_rights:
+            message = []
+            for db_member in sorted(members_with_rights, key=lambda u: u.access_level):
+                user = await self.bot.fetch_user(db_member.user.discord_id)
+                message.append(_("{level} - {user.name}#{user.discriminator} [`{user.id}`]", level=db_member.access_level.name, user=user))
+
+            await ctx.send('\n'.join(message))
+        else:
+            await ctx.send(_("No members have any specific rights in the server."))
+
+
 
 
 setup = SettingsCommands.setup
