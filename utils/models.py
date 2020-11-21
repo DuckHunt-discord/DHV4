@@ -196,6 +196,23 @@ class Player(Model):
     resisted = DefaultDictJSONField()
     frightened = DefaultDictJSONField()
 
+    @property
+    def real_reliability(self):
+        total_shots = self.shooting_stats["bullets_used"]
+        if total_shots:
+            return 100 - round(self.shooting_stats["shots_jamming_weapon"] / total_shots * 100, 2)
+        else:
+            return 0
+
+    @property
+    def real_accuracy(self):
+        total_shots = self.shooting_stats["bullets_used"]
+        if total_shots:
+            return 100 - round(self.shooting_stats["missed"] / total_shots * 100, 2)
+        else:
+            return 0
+
+
     async def get_bonus_experience(self, given_experience):
         if self.is_powerup_active('clover'):
             return self.active_powerups['clover_exp']

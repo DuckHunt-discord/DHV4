@@ -32,8 +32,8 @@ class StatisticsCommands(Cog):
         embed.add_field(name=_("Magazines"), value=f"{db_hunter.magazines}/{level_info['magazines']}", inline=True)
         embed.add_field(name=_("Experience"), value=db_hunter.experience, inline=True)
         embed.add_field(name=_("Level"), value=str(level_info['level']) + " - " + _(level_info['name']).title(), inline=True)
-        embed.add_field(name=_("Accuracy"), value=str(level_info['accuracy']) + " %", inline=True)
-        embed.add_field(name=_("Reliability"), value=str(level_info['reliability']) + " %", inline=True)
+        embed.add_field(name=_("Accuracy"), value=_("{level_reliability} % (Real: {real_reliability} %)", level_reliability=level_info['accuracy'], real_reliability=db_hunter.real_accuracy), inline=True)
+        embed.add_field(name=_("Reliability"), value=_("{level_reliability} % (Real: {real_reliability} %)", level_reliability=level_info['reliability'], real_reliability=db_hunter.real_reliability), inline=True)
 
         await ctx.send(embed=embed)
 

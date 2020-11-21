@@ -106,6 +106,7 @@ class DucksHuntingCommands(Cog):
             return False
 
         db_hunter.bullets -= 1
+        db_hunter.shooting_stats['bullets_used'] += 1
         db_channel = await get_from_db(ctx.channel)
 
         # Missing
@@ -193,6 +194,7 @@ class DucksHuntingCommands(Cog):
         duck = await ctx.target_next_duck()
 
         if duck:
+            db_hunter.shooting_stats['shots_with_duck'] += 1
             await duck.shoot(args)
         elif db_hunter.active_powerups['detector'] >= 1:
             db_hunter.active_powerups['detector'] -= 1
@@ -219,7 +221,8 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("Dude... You don't have a weapon, it has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
+            await ctx.reply(_("Dude... You don't have a weapon, it has been confiscated. "
+                              "Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
                               ctx=ctx))
             return False
 
@@ -258,8 +261,8 @@ class DucksHuntingCommands(Cog):
         elif db_hunter.magazines <= 0:
             db_hunter.shooting_stats['unneeded_reloads'] += 1
             await db_hunter.save()
-
-            await ctx.reply(_("🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: {current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/{max_magazines} ",
+            await ctx.reply(_("🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | "
+                              "Bullets: {current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/{max_magazines} ",
                               current_bullets=db_hunter.bullets,
                               max_bullets=level_info["bullets"],
                               current_magazines=db_hunter.magazines,
