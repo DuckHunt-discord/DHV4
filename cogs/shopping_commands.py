@@ -579,5 +579,28 @@ class ShoppingCommands(Cog):
 
         await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
+    @shop.command(aliases=["30", "homing"])
+    async def homing_bullets(self, ctx: MyContext):
+        """
+        Never miss a shot again with Homing Projectiles.
+        """
+        ITEM_COST = 150
+
+        _ = await ctx.get_translate_function(user_language=True)
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        db_hunter.bought_items['homing_bullets'] += 1
+        db_hunter.active_powerups["homing_bullets"] = 1
+
+        await db_hunter.save()
+
+        await ctx.reply(_("💸 You are now using the brand new Homing Bullets made by CACAC (Comitee Against the Comitee Against the Ducks) in China. "
+                          "Try them soon! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, channel=ctx.channel))
+
 
 setup = ShoppingCommands.setup

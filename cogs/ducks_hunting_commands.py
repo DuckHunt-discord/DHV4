@@ -119,9 +119,20 @@ class DucksHuntingCommands(Cog):
             db_hunter.active_powerups['sight'] -= 1
 
         missed = not compute_luck(accuracy)
+        homing = db_hunter.active_powerups["homing_bullets"] >= 1
+
+        if homing:
+            db_hunter.active_powerups["homing_bullets"] -= 1
+            missed = False
+            target = ctx.author
+
         if (missed and not target) or (target and not missed):
-            db_hunter.shooting_stats['missed'] += 1
-            db_hunter.experience -= 2
+            if missed:
+                db_hunter.shooting_stats['missed'] += 1
+                db_hunter.experience -= 2
+            elif homing:
+                db_hunter.shooting_stats['missed'] += 1
+                db_hunter.experience -= 2
 
             # Killing
             killed_someone = target or compute_luck(db_channel.kill_on_miss_chance)
@@ -140,9 +151,28 @@ class DucksHuntingCommands(Cog):
                 db_target.shooting_stats['got_killed'] += 1
                 await asyncio.gather(db_target.save(), db_hunter.save())  # Save both at the same time
 
-                await ctx.reply(_("🔫 You took your weapon, you shot... and killed {player.name}. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**KILL**: -15 exp]",
-                                  player=db_target.member.user,
-                                  ))
+                if homing:
+                    await ctx.reply(_("✨ You take the new homing bullets outside of their packaging, place them in your weapon and shoot with your eyes closed...",
+                                      ))
+                    await asyncio.sleep(2)
+                    await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
+                                      "You should send your complaints to the CACAC. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
+                                      ))
+                elif target:
+                    if target.id == ctx.author.id:
+                        await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
+                                          player=db_target.member.user,
+                                          ))
+                    else:
+                        await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player.name} head, and pulled the trigger. "
+                                          "[**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
+                                          player=db_target.member.user,
+                                          ))
+                else:
+                    await ctx.reply(_("🔫 You missed the duck... And shot {player.name} in the head, killing him on the spot. "
+                                      "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
+                                      player=db_target.member.user,
+                                      ))
 
                 await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(db_target.member.user.name)}&top2={quote_plus(_('Forgot to duck'))}&top3=&top4=&sp=")
             else:
