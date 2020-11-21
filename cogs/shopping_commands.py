@@ -54,7 +54,7 @@ class ShoppingCommands(Cog):
 
         level_info = db_hunter.level_info()
 
-        max_bullets = level_info['bullets']
+        max_bullets = level_info['bullet']
         if db_hunter.bullets >= max_bullets:
             await ctx.reply(_("❌ Whoops, you have too many bullets in your weapon already."))
             return False
@@ -83,7 +83,7 @@ class ShoppingCommands(Cog):
 
         level_info = db_hunter.level_info()
 
-        max_magazines = level_info['magazines']
+        max_magazines = level_info['magazine']
         if db_hunter.magazines >= max_magazines:
             await ctx.reply(_("❌ Whoops, you have too many magazines in your backpack already... Try reloading !"))
             return False
@@ -477,6 +477,40 @@ class ShoppingCommands(Cog):
         await asyncio.gather(db_hunter.save(), db_target.save())
 
         await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour!", target=target))
+
+    @shop.command(aliases=["17", "boom"])
+    async def sabotage(self, ctx: MyContext, target: discord.Member):
+        """
+        Sabotage the weapon of another player. Their gun will jam and explode in their face the next time they press the trigger.
+        """
+        ITEM_COST = 14
+
+        _ = await ctx.get_translate_function(user_language=True)
+        if target.id == ctx.author.id:
+            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            return False
+        elif target.bot:
+            await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
+            return False
+
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_target: Player = await get_player(target, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        db_target.weapon_sabotaged_by = db_hunter
+        db_hunter.bought_items['sabotage'] += 1
+
+        await asyncio.gather(db_hunter.save(), db_target.save())
+
+        await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet!", target=target,))
 
 
 setup = ShoppingCommands.setup
