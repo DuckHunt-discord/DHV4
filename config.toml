@@ -34,11 +34,17 @@ cogs_to_load = ['jishaku',
                 'cogs.community',
                 'cogs.inventory_commands',
                 'cogs.shopping_commands',
+                'cogs.duck_boss'
                 ]
 
 # The name after cogs is the name of the class
 [cogs.SimpleCommands]
 wiki_url = "https://docs.duckhunt.me"
+
+[cogs.DuckBoss]
+boss_channel_id = 779506107428241450
+required_bangs = 450
+
 
 [cogs.SupportServerCommands]
 # That's the ID of your server where the command will be ran
