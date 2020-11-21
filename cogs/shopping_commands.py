@@ -419,5 +419,36 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror.", target=target))
 
 
+    @shop.command(aliases=["15", "handful_of_sand"])
+    async def mirror(self, ctx: MyContext, target: discord.Member):
+        """
+        Dazzle another hunter using the power of sunlight
+        """
+        ITEM_COST = 7
+
+        _ = await ctx.get_translate_function()
+
+        if target.id == ctx.author.id:
+            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            return False
+        elif target.bot:
+            await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
+            return False
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_target: Player = await get_player(target, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        db_target.active_powerups["sand"] = 1
+        db_target.active_powerups["grease"] = 0
+        db_hunter.bought_items['sand'] += 1
+
+        await asyncio.gather(db_hunter.save(), db_target.save())
+
+        await ctx.reply(_("💸 You threw sand in {target.mention} weapon... Not cool!", target=target))
+
 
 setup = ShoppingCommands.setup

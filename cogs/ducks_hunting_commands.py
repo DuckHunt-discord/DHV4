@@ -93,6 +93,9 @@ class DucksHuntingCommands(Cog):
         lucky = compute_luck(level_info['reliability'])
         if db_hunter.is_powerup_active('grease'):
             lucky = lucky or compute_luck(level_info['reliability'])
+        elif db_hunter.active_powerups['sand'] > 0:
+            db_hunter.active_powerups['sand'] -= 1
+            lucky = lucky and compute_luck(level_info['reliability'])
 
         if not lucky:
             db_hunter.shooting_stats['shots_jamming_weapon'] += 1
@@ -160,7 +163,6 @@ class DucksHuntingCommands(Cog):
             db_hunter.experience -= 2
             await db_hunter.save()
             await ctx.reply(_("❓️ What are you trying to kill exactly ? There are no ducks here. [**MISSED**: -2 exp]"))
-
 
     @commands.command(aliases=["rl"])
     @checks.channel_enabled()
