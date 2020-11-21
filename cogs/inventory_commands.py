@@ -138,8 +138,9 @@ class InventoryCommands(Cog):
                 db_player.experience += amount
                 await ctx.send(_('✨ You learned a lot, adding {amount} experience points to your profile.', amount=amount))
             elif item_action == "refill_magazines":
-                db_player.magazines = 6
-                db_player.bullets = 6
+                level_info = db_player.level_info()
+                db_player.magazines = level_info['magazines']
+                db_player.bullets = level_info['bullets']
                 await ctx.send(_('✨ Yay! Free ammo!'))
 
         await db_user.save()
