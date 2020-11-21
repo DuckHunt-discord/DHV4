@@ -1,7 +1,6 @@
 import asyncio
 import random
 import time
-import datetime
 from typing import Optional
 from urllib.parse import quote_plus
 
@@ -9,10 +8,7 @@ import discord
 from discord.ext import commands
 
 from utils import checks
-from utils.bot_class import MyBot
-from utils.interaction import get_webhook_if_possible, get_timedelta
-
-from utils.ducks import Duck, SuperDuck
+from utils.interaction import get_timedelta
 
 from babel.dates import format_timedelta
 

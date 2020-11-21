@@ -9,7 +9,6 @@ import discord
 import pytz
 from discord.ext import commands, tasks
 
-from utils import checks, human_time
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages
