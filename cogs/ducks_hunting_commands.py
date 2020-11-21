@@ -291,32 +291,5 @@ class DucksHuntingCommands(Cog):
             db_hunter.hugged["nothing"] += 1
             await db_hunter.save()
 
-    @commands.command(aliases=["quick_stats", "quickstats"])
-    @checks.channel_enabled()
-    async def me(self, ctx: MyContext, target: discord.Member = None):
-        """
-        Get some quickstats about yourself (or someone else).
-        """
-        if not target:
-            target = ctx.author
-
-        _ = await ctx.get_translate_function()
-        db_hunter: Player = await get_player(target, ctx.channel)
-
-        embed = discord.Embed(colour=discord.Color.blurple(),
-                              title=_("{target.name} statistics.", target=target))
-
-        level_info = get_level_info(db_hunter.experience)
-
-        embed.add_field(name=_("Bullets"), value=f"{db_hunter.bullets}/{level_info['bullets']}", inline=True)
-        embed.add_field(name=_("Magazines"), value=f"{db_hunter.magazines}/{level_info['magazines']}", inline=True)
-        embed.add_field(name=_("Experience"), value=db_hunter.experience, inline=True)
-        embed.add_field(name=_("Level"), value=str(level_info['level']) + " - " + _(level_info['name']).title(), inline=True)
-        embed.add_field(name=_("Accuracy"), value=str(level_info['accuracy']) + " %", inline=True)
-        embed.add_field(name=_("Reliability"), value=str(level_info['reliability']) + " %", inline=True)
-
-        await ctx.send(embed=embed)
-
-
 
 setup = DucksHuntingCommands.setup

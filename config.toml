@@ -31,10 +31,11 @@ cogs_to_load = ['jishaku',
                 'cogs.ducks_spawning_commands',
                 'cogs.ducks_spawning',
                 'cogs.ducks_hunting_commands',
+                'cogs.statistics_experience_commands',
                 'cogs.community',
                 'cogs.inventory_commands',
                 'cogs.shopping_commands',
-                'cogs.duck_boss'
+                'cogs.duck_boss',
                 ]
 
 # The name after cogs is the name of the class
