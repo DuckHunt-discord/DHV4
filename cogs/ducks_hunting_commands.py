@@ -189,7 +189,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.weapon_jammed = False
             await db_hunter.save()
 
-            await ctx.reply(_("☀️️ Your unjam your weapon !"))
+            await ctx.reply(_("☀️️ You unjam your weapon !"))
             return True
 
         level_info = get_level_info(db_hunter.experience)
