@@ -1,14 +1,12 @@
 import asyncio
 import random
 import time
-from typing import Optional
 
 import discord
 from babel.dates import format_timedelta
 from discord.ext import commands
 
 from utils import checks, ducks
-
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import get_timedelta
@@ -64,12 +62,12 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['bullets'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a bullet in your weapon."))
+        await ctx.reply(_("💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
         if max_bullets > 1:
             await ctx.reply(_("💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"))
 
-    @shop.command(aliases=["2", "charger"])
+    @shop.command(aliases=["2", "charger", "mag"])
     async def magazine(self, ctx: MyContext):
         """
         Adds a magazine in your backpack.
@@ -93,7 +91,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['magazines'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a magazine in your weapon. Time to reload!"))
+        await ctx.reply(_("💸 You added a magazine in your weapon. Time to reload! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["3", "ap_ammo"])
     async def ap(self, ctx: MyContext):
@@ -128,7 +126,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['ap_ammo'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bought some AP ammo. Twice the damage, twice the fun!"))
+        await ctx.reply(_("💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["4", "explosive_ammo", "explo"])
     async def explosive(self, ctx: MyContext):
@@ -147,7 +145,7 @@ class ShoppingCommands(Cog):
             time_delta = get_timedelta(db_hunter.active_powerups['explosive_ammo'],
                                        time.time())
 
-            await ctx.reply(_("❌ Your gun is already explosive ammo for {time_delta}!",
+            await ctx.reply(_("❌ Your gun is already using explosive ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
@@ -156,7 +154,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['explosive_ammo'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody!"))
+        await ctx.reply(_("💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["5", "gun", ])
     async def weapon(self, ctx: MyContext):
@@ -179,7 +177,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['weapon'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bribed the police and brought back your weapon. The fun continues."))
+        await ctx.reply(_("💸 You bribed the police and brought back your weapon. The fun continues. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["6", "lubricant"])
     async def grease(self, ctx: MyContext):
@@ -202,7 +200,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['grease'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added some grease to your weapon to reduce jamming for a day."))
+        await ctx.reply(_("💸 You added some grease to your weapon to reduce jamming for a day. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["7", ])
     async def sight(self, ctx: MyContext):
@@ -225,7 +223,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['sight'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a sight to your weapon to improve your accuracy for the next few shots."))
+        await ctx.reply(_("💸 You added a sight to your weapon to improve your accuracy for the next few shots. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["8", "ir", "infrared", "ir_detector", "infrared_detector"])
     async def detector(self, ctx: MyContext):
@@ -248,7 +246,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['detector'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added an infrared detector to your weapon. If you can't see ducks, you can't shoot them."))
+        await ctx.reply(_("💸 You added an infrared detector to your weapon. If you can't see ducks, you can't shoot them. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["9", "shhh", "silence"])
     async def silencer(self, ctx: MyContext):
@@ -271,7 +269,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['silencer'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any."))
+        await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["10", "best", "freeexp", "freexp", "4-leaf", "4leaf", "🍀"])
     async def clover(self, ctx: MyContext):
@@ -303,7 +301,9 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['clover'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more.", clover_exp=clover_exp))
+        await ctx.reply(
+            _("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST,
+              clover_exp=clover_exp))
 
     @shop.command(aliases=["11", "glasses", "👓️", "🕶️"])
     async def sunglasses(self, ctx: MyContext):
@@ -332,9 +332,9 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
         if previously_had:
-            await ctx.reply(_("🕶️ You bought sunglasses, again... What a waste."))
+            await ctx.reply(_("🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
         else:
-            await ctx.reply(_("🕶️ You bought sunglasses."))
+            await ctx.reply(_("🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["12", "shirt", "dry"])
     async def clothes(self, ctx: MyContext):
@@ -355,7 +355,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['clothes'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bought some new clothes. You look very good. Maybe the ducks will like your outfit."))
+        await ctx.reply(_("💸 You bought some new clothes. You look very good. Maybe the ducks will like your outfit. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["13", "clean"])
     async def brush(self, ctx: MyContext):
@@ -377,7 +377,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['brush'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You've just cleaned your weapon. Could've just shot once, but heh ¯\\_(ツ)_/¯."))
+        await ctx.reply(_("💸 You've just cleaned your weapon. Could've just shot once, but heh ¯\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["14"])
     async def mirror(self, ctx: MyContext, target: discord.Member):
@@ -414,9 +414,10 @@ class ShoppingCommands(Cog):
 
         if stupid:
             await ctx.reply(
-                _("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. That was kinda stupid, since they have sunglasses 🕶️.", target=target))
+                _("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. "
+                  "That was kinda stupid, since they have sunglasses 🕶️. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
         else:
-            await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror.", target=target))
+            await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["15", "handful_of_sand"])
     async def sand(self, ctx: MyContext, target: discord.Member):
@@ -447,7 +448,7 @@ class ShoppingCommands(Cog):
 
         await asyncio.gather(db_hunter.save(), db_target.save())
 
-        await ctx.reply(_("💸 You threw sand in {target.mention} weapon... Not cool!", target=target))
+        await ctx.reply(_("💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["16", "water", "water_bucket", "bukkit", "spigot"])
     async def bucket(self, ctx: MyContext, target: discord.Member):
@@ -476,7 +477,7 @@ class ShoppingCommands(Cog):
 
         await asyncio.gather(db_hunter.save(), db_target.save())
 
-        await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour!", target=target))
+        await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["17", "boom"])
     async def sabotage(self, ctx: MyContext, target: discord.Member):
@@ -510,7 +511,7 @@ class ShoppingCommands(Cog):
 
         await asyncio.gather(db_hunter.save(), db_target.save())
 
-        await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet!", target=target, ))
+        await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target, ))
 
     @shop.command(aliases=["20", "duck"])
     async def decoy(self, ctx: MyContext):
@@ -544,7 +545,7 @@ class ShoppingCommands(Cog):
 
         asyncio.ensure_future(spawn())
 
-        await ctx.author.send(_("💸 You placed a decoy on the channel, the ducks will come soon!", ))
+        await ctx.author.send(_("💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, ))
 
     @shop.command(aliases=["23", "mecha"])
     async def mechanical(self, ctx: MyContext):
@@ -572,11 +573,11 @@ class ShoppingCommands(Cog):
 
         async def spawn():
             await asyncio.sleep(90)
-            await ducks.MechanicalDuck(creator=ctx.author).spawn()
+            await ducks.MechanicalDuck(bot=self.bot, channel=ctx.channel, creator=ctx.author).spawn()
 
         asyncio.ensure_future(spawn())
 
-        await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds.", channel=ctx.channel))
+        await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
 
 setup = ShoppingCommands.setup
