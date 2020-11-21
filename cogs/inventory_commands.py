@@ -17,6 +17,7 @@ def _(s):
 
 INV_COMMON_ITEMS = {
     'welcome_package': {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open in the lootbox menu")},
+    'foie_gras': {"type": "lootbox", "action": "welcome", "name": _("A clean box of fois gras"), "description": _("The boss dropped that when he died")},
     'vip_card': {"type": "item", "action": "set_vip", "uses": 1, "name": _("VIP Card"), "description": _("A nice and shiny card that allow you to set a server as VIP.")},
     'boost_exp': {"type": "item", "action": "add_exp", "uses": 1, "amount": 50, "name": _("A book"), "description": _("Reading it will give you experience")},
     'refill_magazines': {"type": "item", "action": "refill_magazines", "uses": 2, "name": _("A free card for magazines"), "description": _("Redeem it to refill your weapon.")}
@@ -24,6 +25,7 @@ INV_COMMON_ITEMS = {
 
 INV_LOOTBOX_ITEMS = {
     'welcome': [{"luck": 100, "item": INV_COMMON_ITEMS['boost_exp']}, {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']}],
+    'foie_gras': [{"luck": 100, "item": INV_COMMON_ITEMS['boost_exp']}, {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']}],
     'vote': [{"luck": 5, "item": INV_COMMON_ITEMS['boost_exp']}, {"luck": 100, "item": INV_COMMON_ITEMS["refill_magazines"]}]
 }
 
