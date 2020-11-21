@@ -418,7 +418,6 @@ class ShoppingCommands(Cog):
         else:
             await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror.", target=target))
 
-
     @shop.command(aliases=["15", "handful_of_sand"])
     async def mirror(self, ctx: MyContext, target: discord.Member):
         """
@@ -449,6 +448,35 @@ class ShoppingCommands(Cog):
         await asyncio.gather(db_hunter.save(), db_target.save())
 
         await ctx.reply(_("💸 You threw sand in {target.mention} weapon... Not cool!", target=target))
+
+    @shop.command(aliases=["16", "water", "water_bucket", "bukkit", "spigot"])
+    async def bucket(self, ctx: MyContext, target: discord.Member):
+        """
+        Throw a bucket of water on the hunter of your choice, forcing them to wait 1h for their clothes to dry before hunting again.
+        """
+        ITEM_COST = 10
+
+        _ = await ctx.get_translate_function()
+        if target.id == ctx.author.id:
+            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            return False
+        elif target.bot:
+            await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
+            return False
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_target: Player = await get_player(target, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        db_target.active_powerups["wet"] = int(time.time()) + HOUR
+        db_hunter.bought_items['bucket'] += 1
+
+        await asyncio.gather(db_hunter.save(), db_target.save())
+
+        await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour!", target=target))
 
 
 setup = ShoppingCommands.setup
