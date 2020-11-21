@@ -83,7 +83,7 @@ class ShoppingCommands(Cog):
 
         level_info = db_hunter.level_info()
 
-        max_magazines = level_info['magazine']
+        max_magazines = level_info['magazines']
         if db_hunter.magazines >= max_magazines:
             await ctx.reply(_("❌ Whoops, you have too many magazines in your backpack already... Try reloading !"))
             return False
