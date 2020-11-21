@@ -419,7 +419,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror.", target=target))
 
     @shop.command(aliases=["15", "handful_of_sand"])
-    async def mirror(self, ctx: MyContext, target: discord.Member):
+    async def sand(self, ctx: MyContext, target: discord.Member):
         """
         Dazzle another hunter using the power of sunlight
         """
