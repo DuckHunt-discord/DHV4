@@ -7,7 +7,7 @@ import discord
 from babel.dates import format_timedelta
 from discord.ext import commands
 
-from utils import checks
+from utils import checks, ducks
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -325,7 +325,6 @@ class ShoppingCommands(Cog):
         db_hunter.active_powerups["sunglasses"] = int(time.time()) + DAY
         db_hunter.active_powerups["mirror"] = 0
 
-
         if previously_had:
             db_hunter.bought_items['useless_sunglasses'] += 1
         else:
@@ -414,7 +413,8 @@ class ShoppingCommands(Cog):
         await asyncio.gather(db_hunter.save(), db_target.save())
 
         if stupid:
-            await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. That was kinda stupid, since they have sunglasses 🕶️.", target=target))
+            await ctx.reply(
+                _("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. That was kinda stupid, since they have sunglasses 🕶️.", target=target))
         else:
             await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror.", target=target))
 
@@ -510,7 +510,73 @@ class ShoppingCommands(Cog):
 
         await asyncio.gather(db_hunter.save(), db_target.save())
 
-        await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet!", target=target,))
+        await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet!", target=target, ))
+
+    @shop.command(aliases=["20", "duck"])
+    async def decoy(self, ctx: MyContext):
+        """
+        Place a decoy to make a duck spawn in the next 10 minutes.
+        """
+        ITEM_COST = 8
+
+        _ = await ctx.get_translate_function(user_language=True)
+
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        db_hunter.bought_items['decoy'] += 1
+
+        await db_hunter.save()
+
+        delay = random.randint(MINUTE, 10 * MINUTE)
+
+        async def spawn():
+            await asyncio.sleep(delay)
+            await ducks.spawn_random_weighted_duck(self.bot, ctx.channel)
+
+        asyncio.ensure_future(spawn())
+
+        await ctx.author.send(_("💸 You placed a decoy on the channel, the ducks will come soon!", ))
+
+    @shop.command(aliases=["23", "mecha"])
+    async def mechanical(self, ctx: MyContext):
+        """
+        Spawn a fake duck in exactly 90 seconds
+        """
+        ITEM_COST = 15
+
+        _ = await ctx.get_translate_function(user_language=True)
+
+        try:
+            await ctx.message.delete()
+        except discord.Forbidden:
+            pass
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+
+        db_hunter.bought_items['mechanical_duck'] += 1
+
+        await db_hunter.save()
+
+        async def spawn():
+            await asyncio.sleep(90)
+            await ducks.MechanicalDuck(creator=ctx.author).spawn()
+
+        asyncio.ensure_future(spawn())
+
+        await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds.", channel=ctx.channel))
 
 
 setup = ShoppingCommands.setup
