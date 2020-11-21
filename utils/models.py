@@ -1,16 +1,15 @@
 import asyncio
 import collections
 import datetime
+import random
 import time
 
 import discord
 import typing
 from tortoise import Tortoise, fields
-from tortoise.expressions import F
 from tortoise.models import Model
 
 from enum import IntEnum, unique
-
 from utils.levels import get_level_info
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
@@ -198,7 +197,7 @@ class Player(Model):
 
     @property
     def real_reliability(self):
-        total_shots = self.shooting_stats["bullets_used"]
+        total_shots = self.shooting_stats["bullets_used"] + self.shooting_stats["shots_jamming_weapon"]
         if total_shots:
             return 100 - round(self.shooting_stats["shots_jamming_weapon"] / total_shots * 100, 2)
         else:
@@ -299,11 +298,7 @@ async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextCh
     else:
         db_channel = channel
 
-    return await Player.filter(channel=db_channel)\
-        .annotate(random_number=F("RANDOM()"))\
-        .order_by("random_number")\
-        .first()\
-        .prefetch_related("member__user")
+    return random.choice(await Player.filter(channel=db_channel).prefetch_related("member__user"))
 
 
 async def get_player(member: discord.Member, channel: discord.TextChannel, giveback=False):

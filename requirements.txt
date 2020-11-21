@@ -5,7 +5,7 @@ parsedatetime~=2.6
 pytz~=2020.1
 discord.py-stubs
 discord.py[voice]>=1.5.0
-tortoise-orm[accel]
+tortoise-orm[accel]>=0.16.18
 aerich
 asyncpg
 python-rapidjson
