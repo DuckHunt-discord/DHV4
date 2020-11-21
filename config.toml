@@ -43,7 +43,7 @@ wiki_url = "https://docs.duckhunt.me"
 
 [cogs.DuckBoss]
 boss_channel_id = 779506107428241450
-required_bangs = 5
+required_bangs = 450
 
 
 [cogs.SupportServerCommands]
