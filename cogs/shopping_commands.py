@@ -54,7 +54,7 @@ class ShoppingCommands(Cog):
 
         level_info = db_hunter.level_info()
 
-        max_bullets = level_info['bullet']
+        max_bullets = level_info['bullets']
         if db_hunter.bullets >= max_bullets:
             await ctx.reply(_("❌ Whoops, you have too many bullets in your weapon already."))
             return False
