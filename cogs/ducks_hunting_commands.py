@@ -146,10 +146,18 @@ class DucksHuntingCommands(Cog):
                     db_target: Player = await get_random_player(db_channel)
                 else:
                     db_target: Player = await get_player(target, ctx.channel)
+
+                    if db_target.id == db_hunter.id:
+                        db_target = db_hunter
+
                     db_hunter.shooting_stats['murders'] += 1
 
                 db_target.shooting_stats['got_killed'] += 1
-                await asyncio.gather(db_target.save(), db_hunter.save())  # Save both at the same time
+
+                if db_target.id != db_hunter.id:
+                    await asyncio.gather(db_target.save(), db_hunter.save())  # Save both at the same time
+                else:
+                    await db_hunter.save()
 
                 if homing:
                     await ctx.reply(_("✨ You take the new homing bullets outside of their packaging, place them in your weapon and shoot with your eyes closed...",
