@@ -32,11 +32,14 @@ class StatisticsCommands(Cog):
         embed.add_field(name=_("Magazines"), value=f"{db_hunter.magazines}/{level_info['magazines']}", inline=True)
         embed.add_field(name=_("Experience"), value=db_hunter.experience, inline=True)
         embed.add_field(name=_("Level"), value=str(level_info['level']) + " - " + _(level_info['name']).title(), inline=True)
-        embed.add_field(name=_("Accuracy"), value=_("{level_reliability} % (Real: {real_reliability} %)", level_reliability=level_info['accuracy'], real_reliability=db_hunter.real_accuracy), inline=True)
-        embed.add_field(name=_("Reliability"), value=_("{level_reliability} % (Real: {real_reliability} %)", level_reliability=level_info['reliability'], real_reliability=db_hunter.real_reliability), inline=True)
+        embed.add_field(name=_("Accuracy"),
+                        value=_("{level_reliability} % (Real: {real_reliability} %)", level_reliability=level_info['accuracy'], real_reliability=db_hunter.real_accuracy),
+                        inline=True)
+        embed.add_field(name=_("Reliability"),
+                        value=_("{level_reliability} % (Real: {real_reliability} %)", level_reliability=level_info['reliability'], real_reliability=db_hunter.real_reliability),
+                        inline=True)
 
         await ctx.send(embed=embed)
-
 
     @commands.command(aliases=["shoots", "shooting"])
     @checks.channel_enabled()
@@ -54,6 +57,17 @@ class StatisticsCommands(Cog):
                               title=_("{target.name} shooting stats.", target=target))
 
         shooting_stats = db_hunter.shooting_stats
+
+        shots_when_dead = shooting_stats.get('shots_when_dead', None)
+        revives = shooting_stats.get('revives', 0)
+        brains_eaten = shooting_stats.get('brains_eaten', 0)
+        if shots_when_dead:
+            embed.add_field(name=_("🧠"), value=_("{shots_when_dead} shots attempted when DEAD. "
+                                                  "{target.mention} went back to life {revives} times eating a total of {brains_eaten} brains",
+                                                  target=target,
+                                                  shots_when_dead=shots_when_dead,
+                                                  revives=revives,
+                                                  brains_eaten=brains_eaten))
 
         shots_when_wet = shooting_stats.get('shots_when_wet', None)
         if shots_when_wet:
@@ -113,7 +127,6 @@ class StatisticsCommands(Cog):
             embed.add_field(name=_("❓"), value=_("{shots} shots without any duck in sight.", shots=shots_without_ducks, target=target))
 
         await ctx.send(embed=embed)
-
 
     def add_fields_for_every_duck(self, _, embed, from_dict, not_found_message):
         fields = [
@@ -271,7 +284,8 @@ class StatisticsCommands(Cog):
         """
         Send some of your experience to another player.
         """
-        _, db_channel, db_sender, db_reciver = await asyncio.gather(ctx.get_translate_function(), get_from_db(ctx.channel), get_player(ctx.author, ctx.channel), get_player(target, ctx.channel))
+        _, db_channel, db_sender, db_reciver = await asyncio.gather(ctx.get_translate_function(), get_from_db(ctx.channel), get_player(ctx.author, ctx.channel),
+                                                                    get_player(target, ctx.channel))
 
         if target.id == ctx.author.id:
             await ctx.reply(_("❌ You cant send experience to yourself."))
@@ -289,7 +303,7 @@ class StatisticsCommands(Cog):
             await ctx.reply(_("❌ You don't have enough experience 🤣."))
             return False
 
-        tax = int(amount * (db_channel.tax_on_user_send/100)+0.5)
+        tax = int(amount * (db_channel.tax_on_user_send / 100) + 0.5)
 
         db_sender.experience -= amount
         db_reciver.experience += amount - tax
@@ -324,7 +338,7 @@ class StatisticsCommands(Cog):
 
         await ctx.reply(_("💰️ You gave {amount} experience to {reciver.mention}. ",
                           amount=amount,
-                          reciver=target,))
+                          reciver=target, ))
 
 
 setup = StatisticsCommands.setup

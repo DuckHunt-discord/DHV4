@@ -41,6 +41,15 @@ class DucksHuntingCommands(Cog):
 
         language_code = await ctx.get_language_code()
 
+        if db_hunter.active_powerups["dead"] > 0:
+            db_hunter.shooting_stats['shots_when_dead'] += 1
+            await db_hunter.save()
+            await ctx.reply(_("☠️ It's a little cold in there... Maybe because **you are DEAD**! have you tried eating BRAINS ? `{ctx.prefix}revive`...",
+                              ctx=ctx,
+                              ))
+            return False
+
+
         if db_hunter.active_powerups['wet'] > now:
             db_hunter.shooting_stats['shots_when_wet'] += 1
             await db_hunter.save()
@@ -156,6 +165,7 @@ class DucksHuntingCommands(Cog):
                     db_hunter.shooting_stats['murders'] += 1
 
                 db_target.shooting_stats['got_killed'] += 1
+                db_target.active_powerups["dead"] += 1
 
                 if db_target.id != db_hunter.id:
                     await asyncio.gather(db_target.save(), db_hunter.save())  # Save both at the same time
@@ -306,6 +316,34 @@ class DucksHuntingCommands(Cog):
             await channel.send(_("What are you trying to hug, exactly? A tree?"))
             db_hunter.hugged["nothing"] += 1
             await db_hunter.save()
+
+    @commands.command(aliases=["cpr", "brains", "zombie", "undead"])
+    @checks.channel_enabled()
+    async def revive(self, ctx: MyContext):
+        """
+        Revive yourself by eating brains
+        """
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        dead_times = db_hunter.active_powerups["dead"]
+
+        if dead_times == 0:
+            db_hunter.shooting_stats['useless_revives'] += 1
+            await db_hunter.save()
+            await ctx.reply(_("You are already alive and well."))
+            return
+
+        else:
+            db_hunter.active_powerups["dead"] = 0
+            db_hunter.shooting_stats['revives'] += 1
+            db_hunter.shooting_stats['brains_eaten'] += dead_times
+            db_hunter.shooting_stats['max_brains_eaten_at_once'] = max(db_hunter.shooting_stats['max_brains_eaten_at_once'], dead_times)
+            await db_hunter.save()
+
+            await ctx.reply(_("You eat {brains} 🧠 and regain consiousness.", brains=dead_times))
+
 
 
 setup = DucksHuntingCommands.setup
