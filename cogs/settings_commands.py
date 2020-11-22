@@ -554,7 +554,7 @@ class SettingsCommands(Cog):
                 setattr(db_channel, attr, value)
                 await db_channel.save()
 
-        await ctx.send(_("❌ Weight for the {duck_type} is set to {value} in {channel.mention}.",
+        await ctx.send(_("🦆 Weight for the {duck_type} is set to {value} in {channel.mention}.",
                          channel=ctx.channel,
                          duck_type=duck_type,
                          value=getattr(db_channel, attr)
