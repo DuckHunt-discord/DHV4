@@ -7,6 +7,7 @@ from typing import Optional
 
 import babel.lists
 import babel.numbers
+import discord
 
 from babel import Locale
 
@@ -655,6 +656,21 @@ class SettingsCommands(Cog):
         else:
             await ctx.send(_("No members have any specific rights in the server."))
 
+    @permissions.command()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def set(self, ctx: MyContext, target: discord.Member, level: models.AccessLevel):
+        """
+        View the current permissions
+        """
+        _ = await ctx.get_translate_function()
+
+        db_member: DiscordMember = await get_from_db(target)
+
+        db_member.access_level = level
+
+        await db_member.save()
+
+        await ctx.send(_("{target.mention} now has a access of {level.name}.", level=level, target=target))
 
 
 

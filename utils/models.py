@@ -6,6 +6,8 @@ import time
 
 import discord
 import typing
+
+from discord.ext import commands
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
@@ -127,6 +129,16 @@ class AccessLevel(IntEnum):
     ADMIN = 300
     BOT_MODERATOR = 500
     BOT_OWNER = 600
+
+    @classmethod
+    async def convert(cls, ctx, argument:str):
+        if argument.isdigit():
+            return cls(min(int(argument), 300))
+        else:
+            if not argument.upper().startswith('BOT'):
+                return getattr(cls, argument.upper())
+            else:
+                raise commands.BadArgument("Can't set such a high level.")
 
 
 class DiscordUser(Model):
