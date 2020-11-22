@@ -4,6 +4,7 @@ import datetime
 import random
 import time
 
+import babel.lists
 import discord
 import typing
 
@@ -131,14 +132,20 @@ class AccessLevel(IntEnum):
     BOT_OWNER = 600
 
     @classmethod
-    async def convert(cls, ctx, argument:str):
+    async def convert(cls, ctx, argument: str):
+        _ = await ctx.get_translate_function()
+
         if argument.isdigit():
             return cls(min(int(argument), 300))
         else:
             if not argument.upper().startswith('BOT'):
-                return getattr(cls, argument.upper())
+                try:
+                    return getattr(cls, argument.upper())
+                except AttributeError:
+                    raise commands.BadArgument(_("This is not a valid level. Choose between {levels}.",
+                                                 levels=babel.lists.format_list(list(AccessLevel.__members__), locale=await ctx.get_language_code())))
             else:
-                raise commands.BadArgument("Can't set such a high level.")
+                raise commands.BadArgument(_("Can't set such a high level."))
 
 
 class DiscordUser(Model):
