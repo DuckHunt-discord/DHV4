@@ -4,7 +4,7 @@ import time
 import discord
 from discord.ext import commands
 
-from utils import checks
+from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import Player, get_player, get_from_db
@@ -76,6 +76,27 @@ class StatisticsCommands(Cog):
                           tax=tax,
                           reciver=target,
                           db_channel=db_channel))
+
+    @commands.command(aliases=["giveexp", "givexp", "give_xp"])
+    @checks.channel_enabled()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def give_exp(self, ctx: MyContext, target: discord.Member, amount: int):
+        """
+        Give some experience to another player. This is a cheat.
+        """
+        _, db_reciver = await asyncio.gather(ctx.get_translate_function(), get_player(target, ctx.channel))
+
+        if target.bot:
+            await ctx.reply(_("❌ I'm not sure that {target.mention} can play DuckHunt.", target=target))
+            return False
+
+        db_reciver.experience += amount
+
+        await db_reciver.save()
+
+        await ctx.reply(_("💰️ You gave {amount} experience to {reciver.mention}. ",
+                          amount=amount,
+                          reciver=target,))
 
 
 setup = StatisticsCommands.setup
