@@ -422,7 +422,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["15", "handful_of_sand"])
     async def sand(self, ctx: MyContext, target: discord.Member):
         """
-        Dazzle another hunter using the power of sunlight
+        Throw sand into another player weapon. This will increase their jamming chances for their next shot.
         """
         ITEM_COST = 7
 
