@@ -219,6 +219,14 @@ class StatisticsCommands(Cog):
 
         self.add_fields_for_every_duck(_, embed, db_hunter.hugged, None)
 
+        players = db_hunter.hugged.get('players', None)
+        if players:
+            embed.add_field(name=_("Players"), value=str(players), inline=True)
+
+        hugged_dead = db_hunter.hugged.get('when_dead', None)
+        if hugged_dead:
+            embed.add_field(name=_("Hugs when dead"), value=str(hugged_dead), inline=False)
+
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["hurted", "hurtstats"])

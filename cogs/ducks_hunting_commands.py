@@ -301,6 +301,14 @@ class DucksHuntingCommands(Cog):
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
+        if db_hunter.active_powerups["dead"] > 0:
+            db_hunter.hugged['when_dead'] += 1
+            await db_hunter.save()
+            await ctx.reply(_("☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself",
+                              ctx=ctx,
+                              ))
+            return False
+
         channel = ctx.channel
 
         if target:
