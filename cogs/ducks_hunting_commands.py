@@ -195,6 +195,7 @@ class DucksHuntingCommands(Cog):
         elif db_hunter.active_powerups['detector'] >= 1:
             db_hunter.active_powerups['detector'] -= 1
             db_hunter.shooting_stats['shots_stopped_by_detector'] += 1
+            db_hunter.bullets += 1
             await db_hunter.save()
             await ctx.reply(_("🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped the shot.", ))
         else:
