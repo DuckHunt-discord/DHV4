@@ -38,6 +38,83 @@ class StatisticsCommands(Cog):
         await ctx.send(embed=embed)
 
 
+    @commands.command(aliases=["shoots", "shooting"])
+    @checks.channel_enabled()
+    async def shooting_stats(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get shooting stats (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} shooting stats.", target=target))
+
+        shooting_stats = db_hunter.shooting_stats
+
+        shots_when_wet = shooting_stats.get('shots_when_wet', None)
+        if shots_when_wet:
+            embed.add_field(name=_("🚰"), value=_("{shots} shots attempted when wet.", shots=shots_when_wet))
+
+        shots_when_confiscated = shooting_stats.get('shots_when_confiscated', None)
+        if shots_when_confiscated:
+            embed.add_field(name=_("⛔️"), value=_("{shots} shots attempted when {target.mention} gun was confiscated.", shots=shots_when_confiscated, target=target))
+
+        shots_when_sabotaged = shooting_stats.get('shots_when_sabotaged', None)
+        if shots_when_sabotaged:
+            embed.add_field(name=_("💥"), value=_("{shots} shots attempted with a sabotaged gun.", shots=shots_when_sabotaged, target=target))
+
+        shots_when_jammed = shooting_stats.get('shots_when_jammed', None)
+        if shots_when_jammed:
+            embed.add_field(name=_("☁"), value=_("{shots} shots attempted with a jammed weapon.", shots=shots_when_jammed, target=target))
+
+        shots_with_empty_magazine = shooting_stats.get('shots_with_empty_magazine', None)
+        if shots_with_empty_magazine:
+            embed.add_field(name=_("🦉"), value=_("{shots} shots attempted without bullets.", shots=shots_with_empty_magazine, target=target))
+
+        shots_jamming_weapon = shooting_stats.get('shots_jamming_weapon', None)
+        if shots_jamming_weapon:
+            embed.add_field(name=_("💥"), value=_("{shots} shots jamming {target.mention} weapon.", shots=shots_jamming_weapon, target=target))
+
+        bullets_used = shooting_stats.get('bullets_used', None)
+        if bullets_used:
+            embed.add_field(name=_("🔫"), value=_("{bullets} bullets used in a duck killing madness.", bullets=bullets_used, target=target))
+
+        missed = shooting_stats.get('missed', None)
+        if missed:
+            embed.add_field(name=_("🎯"), value=_("{shots} shots missing a target.", shots=missed, target=target))
+
+        killed = shooting_stats.get('killed', None)
+        murders = shooting_stats.get('murders', 0)
+        if killed:
+            embed.add_field(name=_("☠️"), value=_("{shots} shots killing someone ({murders} were murders).", shots=killed, murders=murders, target=target))
+
+        got_killed = shooting_stats.get('got_killed', None)
+        if got_killed:
+            embed.add_field(name=_("🧟"), value=_("{target.mention} was killed {times} times.", times=got_killed, target=target))
+
+        homing_kills = shooting_stats.get('homing_kills', None)
+        if homing_kills:
+            embed.add_field(name=_("🏆️"), value=_("{shots} shots using homing bullets.", shots=homing_kills, target=target))
+
+        shots_with_duck = shooting_stats.get('shots_with_duck', None)
+        if shots_with_duck:
+            embed.add_field(name=_("🦆"), value=_("{shots} shots going towards ducks.", shots=shots_with_duck, target=target))
+
+        shots_stopped_by_detector = shooting_stats.get('shots_stopped_by_detector', None)
+        if shots_stopped_by_detector:
+            embed.add_field(name=_("🕵"), value=_("{shots} shots stopped by the infrared detector.", shots=shots_stopped_by_detector, target=target))
+
+        shots_without_ducks = shooting_stats.get('shots_without_ducks', None)
+        if shots_without_ducks:
+            embed.add_field(name=_("❓"), value=_("{shots} shots without any duck in sight.", shots=shots_without_ducks, target=target))
+
+        await ctx.send(embed=embed)
+
+
     def add_fields_for_every_duck(self, _, embed, from_dict, not_found_message):
         fields = [
             (_("Normal ducks"), 'normal'),

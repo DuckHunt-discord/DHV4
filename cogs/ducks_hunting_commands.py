@@ -46,7 +46,7 @@ class DucksHuntingCommands(Cog):
             await db_hunter.save()
 
             td = get_timedelta(db_hunter.active_powerups['wet'], now)
-            await ctx.reply(_("Dude... Your clothes are wet, at least dry them (for **{time_delta}**) or something, or buy new ones (`{ctx.prefix}shop clothes`)",
+            await ctx.reply(_("🚰 Dude... Your clothes are wet, at least dry them (for **{time_delta}**) or something, or buy new ones (`{ctx.prefix}shop clothes`)",
                               ctx=ctx,
                               time_delta=format_timedelta(td, locale=language_code)))
             return False
@@ -55,7 +55,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_when_confiscated'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("Dude... Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
+            await ctx.reply(_("⛔️ Dude... Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
                               ctx=ctx))
             return False
 
@@ -133,6 +133,7 @@ class DucksHuntingCommands(Cog):
                 db_hunter.shooting_stats['missed'] += 1
                 db_hunter.experience -= 2
             elif homing:
+                db_hunter.shooting_stats['homing_kills'] += 1
                 db_hunter.shooting_stats['missed'] += 1
                 db_hunter.experience -= 2
 
@@ -200,6 +201,7 @@ class DucksHuntingCommands(Cog):
         elif db_hunter.active_powerups['detector'] >= 1:
             db_hunter.active_powerups['detector'] -= 1
             db_hunter.shooting_stats['shots_stopped_by_detector'] += 1
+            db_hunter.shooting_stats['bullets_used'] -= 1
             db_hunter.bullets += 1
             await db_hunter.save()
             await ctx.reply(_("🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped the shot.", ))
