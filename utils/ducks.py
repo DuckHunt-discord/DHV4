@@ -452,7 +452,7 @@ class GhostDuck(Duck):
     category = 'ghost'
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
 
-    async def spawn(self):
+    async def spawn(self, loud=True):
         total_lives = await self.get_lives()
 
         bot = self.bot
@@ -463,6 +463,9 @@ class GhostDuck(Duck):
 
 
 class PrDuck(Duck):
+    """
+    Duck that will ask a simple math question to be killed
+    """
     category = 'prof'
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
@@ -533,6 +536,9 @@ class BabyDuck(Duck):
 
 
 class GoldenDuck(Duck):
+    """
+    Duck worth twice the usual experience
+    """
     category = 'golden'
 
     async def get_exp_value(self):
@@ -540,6 +546,9 @@ class GoldenDuck(Duck):
 
 
 class PlasticDuck(Duck):
+    """
+    Worthless duck (half the exp)
+    """
     category = 'plastic'
 
     async def get_exp_value(self):
@@ -547,6 +556,9 @@ class PlasticDuck(Duck):
 
 
 class KamikazeDuck(Duck):
+    """
+    This duck kills every other duck on the channel when leaving
+    """
     category = 'kamikaze'
 
     async def leave(self):
@@ -555,6 +567,9 @@ class KamikazeDuck(Duck):
 
 
 class MechanicalDuck(Duck):
+    """
+    This duck is not really a duck...
+    """
     category = 'mechanical'
     fake = True
     use_bonus_exp = False
@@ -622,6 +637,9 @@ class MotherOfAllDucks(SuperDuck):
 
 
 class ArmoredDuck(SuperDuck):
+    """
+    This duck will resist a damage of 1.
+    """
     category = 'armored'
 
     async def get_damage(self):
