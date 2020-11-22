@@ -162,6 +162,11 @@ class DucksHuntingCommands(Cog):
                 else:
                     await db_hunter.save()
 
+                if db_channel.mentions_when_killed:
+                    player_name = f"<@{db_target.member.user.discord_id}>"
+                else:
+                    player_name = db_target.member.user.name
+
                 if homing:
                     await ctx.reply(_("✨ You take the new homing bullets outside of their packaging, place them in your weapon and shoot with your eyes closed...",
                                       ))
@@ -172,17 +177,16 @@ class DucksHuntingCommands(Cog):
                 elif target:
                     if target.id == ctx.author.id:
                         await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
-                                          player=db_target.member.user,
                                           ))
                     else:
-                        await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player.name} head, and pulled the trigger. "
+                        await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player_name} head, and pulled the trigger. "
                                           "[**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
-                                          player=db_target.member.user,
+                                          player_name=player_name,
                                           ))
                 else:
-                    await ctx.reply(_("🔫 You missed the duck... And shot {player.name} in the head, killing him on the spot. "
+                    await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing him on the spot. "
                                       "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
-                                      player=db_target.member.user,
+                                      player_name=player_name,
                                       ))
 
                 await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(db_target.member.user.name)}&top2={quote_plus(_('Forgot to duck'))}&top3=&top4=&sp=")
