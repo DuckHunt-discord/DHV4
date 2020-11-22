@@ -32,6 +32,7 @@ class SettingsCommands(Cog):
             await ctx.send_help(ctx.command)
 
     @settings.group(aliases=["template", "preset", "presets"])
+    @checks.channel_enabled()
     async def templates(self, ctx: MyContext):
         """
         Set your server settings to specific, designed modes
@@ -153,6 +154,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.MODERATOR)
+    @checks.channel_enabled()
     async def language(self, ctx: MyContext, language_code: Optional[str] = None):
         """
         Change/view the server language.
@@ -191,6 +193,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def use_webhooks(self, ctx: MyContext, value: Optional[bool] = None):
         """
         Specify wether the bot should use webhooks to communicate in this channel.
@@ -211,6 +214,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.MODERATOR)
+    @checks.channel_enabled()
     async def add_webhook(self, ctx: MyContext):
         """
         Add a new webhook to the channel, to get better rate limits handling. Remember the 10 webhooks/channel limit.
@@ -233,6 +237,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.MODERATOR)
+    @checks.channel_enabled()
     async def use_emojis(self, ctx: MyContext, value: bool = None):
         """
         Allow ducks to use emojis when they spawn.
@@ -278,6 +283,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def tax_on_user_send(self, ctx: MyContext, value: int = None):
         """
         Change the tax taken from users when they *send* some experience to another player.
@@ -298,6 +304,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def mentions_when_killed(self, ctx: MyContext, value: bool = None):
         """
         Control if users might be pinged when they get killed. It's recommanded to set this to False on big servers.
@@ -317,6 +324,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def show_duck_lives(self, ctx: MyContext, value: bool = None):
         """
         When killing super ducks and the like, show how many lives the ducks have left.
@@ -336,6 +344,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def kill_on_miss_chance(self, ctx: MyContext, value: int = None):
         """
         Set how likely it is that a hunter will kill someone when missing a shot.
@@ -357,6 +366,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def duck_frighten_chance(self, ctx: MyContext, value: int = None):
         """
         Set how likely it is that a hunter will frighten a duck when shooting.
@@ -378,6 +388,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def clover_min_experience(self, ctx: MyContext, value: int = None):
         """
         Set the minimum experience a clover will give. Might be negative for funsies :)
@@ -399,12 +410,13 @@ class SettingsCommands(Cog):
             db_channel.clover_min_experience = value
             await db_channel.save()
 
-        await ctx.send(_("On {channel.mention}, when a hunter buy a clover, the minimum experience given per duck kill will be of {value}.",
+        await ctx.send(_("On {channel.mention}, when a hunter buy a clover, the minimum experience given per duck kill will be of {value} for every life the duck has.",
                          channel=ctx.channel,
                          value=db_channel.clover_min_experience))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def clover_max_experience(self, ctx: MyContext, value: int = None):
         """
         Set the maximum experience a clover will give. Might be negative for funsies :)
@@ -428,6 +440,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def base_duck_exp(self, ctx: MyContext, value: int = None):
         """
         Set the normal amount of experience a duck will give when killed.
@@ -449,6 +462,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def per_life_exp(self, ctx: MyContext, value: int = None):
         """
         Set the additional amount of experience given for every life of a super duck.
@@ -470,6 +484,7 @@ class SettingsCommands(Cog):
 
     @settings.command(aliases=["dpd"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def ducks_per_day(self, ctx: MyContext, value: int = None):
         """
         Set the amount of ducks that will spawn every day
@@ -513,6 +528,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def weights(self, ctx: MyContext, duck_type: str, value: int = None):
         """
         Set a duck probably to spawn to a certain weight. The higher the weight, the more probability for it to spawn.
@@ -546,6 +562,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def ducks_time_to_live(self, ctx: MyContext, value: int = None):
         """
         Set for how many seconds a duck will stay on the channel before leaving
@@ -573,6 +590,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def super_ducks_min_life(self, ctx: MyContext, value: int = None):
         """
         Set the minimum lives of a super duck
@@ -601,6 +619,7 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
     async def super_ducks_max_life(self, ctx: MyContext, value: int = None):
         """
         Set the maximum lives of a super duck
