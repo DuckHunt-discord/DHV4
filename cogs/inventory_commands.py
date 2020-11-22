@@ -76,7 +76,7 @@ class InventoryCommands(Cog):
             await show_items_menu(ctx, inventory, title=_("Your inventory"))
 
     @inventory.command(name="give")
-    @checks.needs_access_level(models.AccessLevel.BOT_OWNER)
+    @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
     async def inv_give(self, ctx: MyContext, target: discord.User, item_name: str):
         """
         Give something to some player.
@@ -102,6 +102,11 @@ class InventoryCommands(Cog):
 
         db_user = await get_from_db(ctx.author, as_user=True)
         db_player = await get_player(ctx.author, ctx.channel)
+        db_channel = await get_from_db(ctx.channel)
+
+        if not db_channel.allow_global_items:
+            await ctx.send(_('❌ Items useage is disabled on this channel.'))
+            return
 
         try:
             item = db_user.inventory.pop(item_number - 1)
