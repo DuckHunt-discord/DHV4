@@ -105,7 +105,6 @@ class Community(Cog):
             try:
                 monitored_player_id = int(embed.author.icon_url.split("/")[4])  # ID
             except ValueError:
-                print(embed.author.icon_url.split("/"))
                 await message.add_reaction("❌")
                 return
             monitored_player: discord.Member = await ctx.guild.fetch_member(monitored_player_id)
