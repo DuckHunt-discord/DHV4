@@ -142,10 +142,10 @@ class AccessLevel(IntEnum):
                 try:
                     return getattr(cls, argument.upper())
                 except AttributeError:
-                    raise commands.BadArgument(_("This is not a valid level. Choose between {levels}.",
+                    raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
                                                  levels=babel.lists.format_list(list(AccessLevel.__members__), locale=await ctx.get_language_code())))
             else:
-                raise commands.BadArgument(_("Can't set such a high level."))
+                raise commands.BadArgument(_("Can't set such a high level"))
 
 
 class DiscordUser(Model):

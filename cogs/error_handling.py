@@ -80,7 +80,7 @@ class CommandErrorHandler(Cog):
                                     command_invoke_help=command_invoke_help)
 
                 elif isinstance(exception, commands.BadArgument):
-                    message = _("An argument passed was incorrect. `{exception}`."
+                    message = _("An argument passed was incorrect. `{exception}`. "
                                 "Please check that you are using the correct syntax: `{command_invoke_help}`.",
                                 command_invoke_help=command_invoke_help,
                                 exception=exception)
