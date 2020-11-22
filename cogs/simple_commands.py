@@ -31,4 +31,12 @@ class SimpleCommands(Cog):
 
         await ctx.send(_(wiki_url))
 
+    @commands.command()
+    async def invite(self, ctx: MyContext):
+        """
+        Get the URL to invite the bot
+        """
+
+        await ctx.send(f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
+
 setup = SimpleCommands.setup
