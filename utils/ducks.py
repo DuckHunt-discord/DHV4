@@ -41,17 +41,19 @@ class Duck:
         self.lives_left: Optional[int] = self._lives
 
     def serialize(self):
-        return {'category'  : self.category,
-                'spawned_at': self.spawned_at,
-                'lives_left': self.lives_left,
-                'lives'     : self._lives,}
+        return {'category'          : self.category,
+                'spawned_at'        : self.spawned_at,
+                'lives_left'        : self.lives_left,
+                'lives'             : self._lives,
+                'webhook_parameters': self._webhook_parameters}
 
     @classmethod
-    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data:dict):
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = cls(bot, channel)
         d.spawned_at = data['spawned_at']
         d.lives_left = data['lives_left']
         d._lives = data['lives']
+        d._webhook_parameters = data['webhook_parameters']
 
         return d
 
