@@ -50,11 +50,10 @@ class Duck:
     def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data:dict):
         d = cls(bot, channel)
         d.spawned_at = data['spawned_at']
-        d.spawned_at = data['lives_left']
-        d.spawned_at = data['lives']
+        d.lives_left = data['lives_left']
+        d._lives = data['lives']
 
         return d
-
 
     def get_cosmetics(self):
         return getattr(ducks_config, self.category)
@@ -203,10 +202,22 @@ class Duck:
 
     async def get_hurt_message(self, hurter, db_hurter, damage) -> str:
         _ = await self.get_translate_function()
+        db_channel = await self.get_db_channel()
 
-        return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
-                 hurter=hurter,
-                 damage=damage)
+        if db_channel.show_duck_lives:
+            total_lives = await self.get_lives()
+            lives_left = self.lives_left
+
+            return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**: {lives_left}/{total_lives}][**Damage** : -{damage}]",
+                     hurter=hurter,
+                     damage=damage,
+                     lives_left=lives_left,
+                     total_lives=total_lives,
+                     )
+        else:
+            return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
+                     hurter=hurter,
+                     damage=damage)
 
     async def get_resists_message(self, hurter, db_hurter) -> str:
         _ = await self.get_translate_function()
