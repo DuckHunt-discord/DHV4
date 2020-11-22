@@ -7,12 +7,16 @@ import time
 
 import discord
 import pytz
+from babel.dates import format_timedelta
 from discord.ext import commands, tasks
 
+from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages
 from babel import dates
+
+from utils.models import AccessLevel
 
 
 class SupportServerCommands(Cog):
@@ -28,6 +32,9 @@ class SupportServerCommands(Cog):
         ret = super().cog_check(ctx)
         ret = ret and ctx.guild.id == self.config()["support_server_id"]
         return ret
+
+    def get_bot_uptime(self):
+        return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
 
     @tasks.loop(minutes=15)
     async def background_loop(self):
@@ -56,12 +63,9 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Current ping", value=f"{ping}ms", inline=True)
         embed.add_field(name="Shards Count", value=f"{self.bot.shard_count}", inline=True)
 
-        def get_bot_uptime():
-            return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
-
         embed.add_field(name="Cogs loaded", value=f"{len(self.bot.cogs)}", inline=True)
         embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
-        embed.add_field(name="Uptime", value=f"{get_bot_uptime()}", inline=True)
+        embed.add_field(name="Uptime", value=f"{self.get_bot_uptime()}", inline=True)
 
         embed.timestamp = datetime.datetime.utcnow()
 
@@ -102,6 +106,24 @@ class SupportServerCommands(Cog):
         message += f"\n```\n\nAvg latency: {self.bot.latency}ms"
         if self.bot.is_ready():
             message += " (bot ready)"
+
+        await ctx.send(message)
+
+    @commands.command()
+    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
+    async def commands_used(self, ctx: MyContext):
+        """
+        See what commands are used
+        """
+
+        message = "```\n"
+
+        for command, uses in self.bot.commands_used.most_common():
+            message += f"**{command}**: {uses} uses\n"
+
+        message += "```\n"
+
+        message += "Up for " + self.get_bot_uptime()
 
         await ctx.send(message)
 

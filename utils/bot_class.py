@@ -67,6 +67,8 @@ class MyBot(AutoShardedBot):
         if db_user.first_use:
             _ = await ctx.get_translate_function(user_language=True)
 
+            ctx.logger.info(f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
+
             await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
                                     "and also provide you with links to the DuckHunt wiki.\n "
                                     "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "

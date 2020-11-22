@@ -53,6 +53,8 @@ def needs_access_level(required_access):
                 if ctx.author_permissions().administrator:
                     return True  # Override permissions for administrators
                 raise AccessTooLow(current_access=access, required_access=required_access)
+            else:
+                raise AccessTooLow(current_access=access, required_access=required_access)
 
     return commands.check(predicate)
 
