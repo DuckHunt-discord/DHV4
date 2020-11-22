@@ -343,7 +343,6 @@ class Duck:
         await db_hunter.save()
         await self.send(await self.get_frighten_message(hunter, db_hunter))
 
-
     async def kill(self, damage: int, args):
         """The duck was killed by the current target player"""
         self.despawn()
