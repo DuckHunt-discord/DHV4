@@ -23,7 +23,7 @@ class SimpleCommands(Cog):
     @commands.command()
     async def wiki(self, ctx: MyContext):
         """
-        Say hi with a customisable hello message. This is used to demonstrate cogs config usage
+        Returns the wiki URL
         """
         _ = await ctx.get_translate_function()
 
