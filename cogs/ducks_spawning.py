@@ -1,4 +1,5 @@
 import asyncio
+import json
 import random
 
 import discord
@@ -6,6 +7,7 @@ from utils.cog_class import Cog
 from utils import ducks
 from time import time
 
+from utils.ducks import deserialize_duck
 from utils.models import get_enabled_channels, DiscordChannel, get_from_db
 
 SECOND = 1
@@ -22,7 +24,11 @@ class DucksSpawning(Cog):
         self.interval = 1
 
     async def loop(self):
-        await self.before()
+        try:
+            await self.before()
+        except:
+            self.bot.logger.exception("Error in before_loop")
+            raise
         now = time()
         current_iteration = int(now)
         while not self.background_loop.cancelled():
@@ -63,10 +69,53 @@ class DucksSpawning(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
+        self.bot.logger.info(f"Saving ducks to cache...")
+
+        ducks_spawned = self.bot.ducks_spawned
+
+        ducks_count = 0
+
+        serialized = {}
+
+        for channel, ducks in ducks_spawned.items():
+            ducks_in_channel = []
+            for duck in ducks:
+                ducks_in_channel.append(duck.serialize())
+                ducks_count += 1
+            serialized[channel.id] = ducks_in_channel
+
+        with open("ducks_spawned_cache.json", "w") as f:
+            json.dump(serialized, f)
+
+        self.bot.logger.info(f"Saved {ducks_count} to ducks_spawned_cache.json")
+
     async def before(self):
+        self.bot.logger.info(f"Waiting for ready-ness to planify duck spawns...")
+
         await self.bot.wait_until_ready()
 
+        self.bot.logger.info(f"Restoring ducks from cache...")
+
+        ducks_count = 0
+
+        with open("ducks_spawned_cache.json", "r") as f:
+            serialized = json.load(f)
+
+        for channel_id, ducks in serialized.items():
+            channel = self.bot.get_channel(int(channel_id))
+
+            if channel:
+                for data in ducks:
+                    ducks_count += 1
+                    duck = deserialize_duck(self.bot, channel, data)
+                    await duck.spawn(loud=False)
+
+        self.bot.logger.info(f"{ducks_count} ducks restored!")
+
         db_channels = await get_enabled_channels()
+
+        self.bot.logger.info(f"Planifying ducks spawns for the rest of the day")
+
         for db_channel in db_channels:
             channel = self.bot.get_channel(db_channel.discord_id)
 
@@ -75,6 +124,8 @@ class DucksSpawning(Cog):
             else:
                 db_channel.enabled = False
                 await db_channel.save()
+
+        self.bot.logger.info(f"Ducks spawning started")
 
     async def calculate_ducks_per_day(self, db_channel: DiscordChannel, now: int):
         # TODO : Compute ducks sleep

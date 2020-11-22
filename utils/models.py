@@ -192,10 +192,8 @@ class Player(Model):
     last_giveback = fields.DatetimeField(auto_now_add=True)
 
     weapon_confiscated = fields.BooleanField(default=False)
-    weapon_confiscated_count = fields.IntField(default=0)
     weapon_jammed = fields.BooleanField(default=False)
     weapon_sabotaged_by = fields.ForeignKeyField('models.Player', null=True, on_delete=fields.SET_NULL)
-    sand_in_weapon = fields.BooleanField(default=False)
 
     is_dazzled = fields.BooleanField(default=False)
 
@@ -223,7 +221,6 @@ class Player(Model):
         else:
             return 0
 
-
     async def get_bonus_experience(self, given_experience):
         if self.is_powerup_active('clover'):
             return self.active_powerups['clover_exp']
@@ -244,8 +241,6 @@ class Player(Model):
     def is_powerup_active(self, powerup):
         now = time.time()
         return self.active_powerups[powerup] >= now
-
-
 
     class Meta:
         table = "players"

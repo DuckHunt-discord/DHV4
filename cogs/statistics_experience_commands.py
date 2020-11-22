@@ -37,6 +37,157 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
+
+    def add_fields_for_every_duck(self, _, embed, from_dict, not_found_message):
+        fields = [
+            (_("Normal ducks"), 'normal'),
+            (_("Ghost ducks"), 'ghost'),
+            (_("Professor ducks"), 'prof'),
+
+            (_("Baby ducks"), 'baby'),
+            (_("Golden ducks"), 'golden'),
+            (_("Plastic ducks"), 'plastic'),
+
+            (_("Kamikaze ducks"), 'kamikaze'),
+            (_("Mechanical ducks"), 'mechanical'),
+            (_("Super ducks"), 'super'),
+
+            (_("Mother of all ducks"), 'moad'),
+            (_("Armored ducks"), 'armored'),
+        ]
+
+        for field_name, field_key in fields:
+
+            value = from_dict.get(field_key, None)
+            if value:
+                embed.add_field(name=field_name, value=str(value), inline=True)
+            elif not_found_message:
+                embed.add_field(name=field_name, value=str(not_found_message), inline=True)
+
+    @commands.command(aliases=["times", "besttimes"])
+    @checks.channel_enabled()
+    async def best_times(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get best times to kill of ducks (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} best times.", target=target))
+
+        bt = db_hunter.best_times
+
+        bt = {k: str(round(v, 2)) + " s" for k, v in bt.items()}
+
+        no_kill_message = _("Never killed any")
+
+        self.add_fields_for_every_duck(_, embed, bt, no_kill_message)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(aliases=["kills", "killsstats", "killcounts", "kills_count", "kill_count", "killed"])
+    @checks.channel_enabled()
+    async def kills_stats(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get number of each type of duck killed (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} kill counts.", target=target))
+
+        killed = db_hunter.killed
+
+        no_kill_message = 0
+
+        self.add_fields_for_every_duck(_, embed, killed, no_kill_message)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(aliases=["hugs", "hugsstats", "hugged"])
+    @checks.channel_enabled()
+    async def hugs_stats(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get number of each type of duck hugged (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} hugs counts.", target=target))
+
+        self.add_fields_for_every_duck(_, embed, db_hunter.hugged, None)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(aliases=["hurted", "hurtstats"])
+    @checks.channel_enabled()
+    async def hurt_stats(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get number of each type of duck hurted (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} hurt counts.", target=target))
+
+        self.add_fields_for_every_duck(_, embed, db_hunter.hurted, None)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(aliases=["resisted", "resiststats"])
+    @checks.channel_enabled()
+    async def resist_stats(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get number of each type of duck that resisted a shot (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} resisted counts.", target=target))
+
+        self.add_fields_for_every_duck(_, embed, db_hunter.resisted, None)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(aliases=["fightened", "fightenstats", "fightened_stats", "fightenedstats", "frighten"])
+    @checks.channel_enabled()
+    async def frighten_stats(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Get number of each type of duck that fled following a shot (for you or someone else).
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} scared ducks.", target=target))
+
+        self.add_fields_for_every_duck(_, embed, db_hunter.frightened, None)
+
+        await ctx.send(embed=embed)
+
     @commands.command(aliases=["sendexp", "sendxp", "send_xp"])
     @checks.channel_enabled()
     async def send_exp(self, ctx: MyContext, target: discord.Member, amount: int):

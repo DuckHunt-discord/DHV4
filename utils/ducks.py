@@ -30,7 +30,7 @@ class Duck:
         self._db_channel: Optional[DiscordChannel] = None
 
         self._webhook_parameters = {'avatar_url': random.choice(self.get_cosmetics()['avatar_urls']),
-                                    'username': random.choice(self.get_cosmetics()['usernames'])}
+                                    'username'  : random.choice(self.get_cosmetics()['usernames'])}
 
         self.spawned_at: Optional[int] = None
         self.target_lock = asyncio.Lock()
@@ -39,6 +39,22 @@ class Duck:
 
         self._lives: Optional[int] = None
         self.lives_left: Optional[int] = self._lives
+
+    def serialize(self):
+        return {'category'  : self.category,
+                'spawned_at': self.spawned_at,
+                'lives_left': self.lives_left,
+                'lives'     : self._lives,}
+
+    @classmethod
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data:dict):
+        d = cls(bot, channel)
+        d.spawned_at = data['spawned_at']
+        d.spawned_at = data['lives_left']
+        d.spawned_at = data['lives']
+
+        return d
+
 
     def get_cosmetics(self):
         return getattr(ducks_config, self.category)
@@ -183,7 +199,7 @@ class Duck:
         _ = await self.get_translate_function()
 
         return _("{hunter.mention} scared the duck.",
-                 hunter=hunter,)
+                 hunter=hunter, )
 
     async def get_hurt_message(self, hurter, db_hurter, damage) -> str:
         _ = await self.get_translate_function()
@@ -274,7 +290,7 @@ class Duck:
 
     # Entry Points #
 
-    async def spawn(self):
+    async def spawn(self, loud=True):
         total_lives = await self.get_lives()
 
         bot = self.bot
@@ -282,7 +298,8 @@ class Duck:
 
         self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
 
-        await self.send(message)
+        if loud:
+            await self.send(message)
 
         bot.ducks_spawned[self.channel].append(self)
 
@@ -442,6 +459,16 @@ class PrDuck(Duck):
         self.operation = f"{r1} + {r2}"
         self.answer = r1 + r2
 
+    def serialize(self):
+        return {**super().serialize(), 'operation': self.operation, 'answer': self.answer}
+
+    @classmethod
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
+        d = super().deserialize(bot, channel, data)
+        d.operation = data['operation']
+        d.answer = data['answer']
+        return d
+
     async def get_shout(self) -> str:
         _ = await self.get_translate_function()
 
@@ -524,6 +551,15 @@ class MechanicalDuck(Duck):
 
         self.creator = creator
 
+    def serialize(self):
+        return {**super().serialize(), 'creator': self.creator}
+
+    @classmethod
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
+        d = super().deserialize(bot, channel, data)
+        d.creator = data['creator']
+        return d
+
     async def get_exp_value(self):
         return -10
 
@@ -603,3 +639,5 @@ async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel):
     return DuckClass(bot, channel)
 
 
+def deserialize_duck(bot: MyBot, channel: discord.TextChannel, data: dict):
+    return DUCKS_CATEGORIES_TO_CLASSES[data['category']].deserialize(bot, channel, data)
