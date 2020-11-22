@@ -31,6 +31,11 @@ class DucksHuntingCommands(Cog):
         Shoot at the duck that appeared first on the channel.
         """
         _ = await ctx.get_translate_function()
+
+        if not self.bot.is_ready():
+            await ctx.reply(_("The bot is still starting up, please wait a minute and retry. Ducks haven't been lost."))
+            return False
+
         db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
         now = int(time.time())
 
@@ -273,6 +278,11 @@ class DucksHuntingCommands(Cog):
         Hug the duck that appeared first on the channel.
         """
         _ = await ctx.get_translate_function()
+
+        if not self.bot.is_ready():
+            await ctx.reply(_("The bot is still starting up, please wait a minute and retry. Ducks haven't been lost."))
+            return False
+
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
         channel = ctx.channel
