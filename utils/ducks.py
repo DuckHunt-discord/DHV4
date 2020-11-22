@@ -183,7 +183,7 @@ class Duck:
         _ = await self.get_translate_function()
 
         return _("{hunter.mention} scared the duck.",
-                 killer=hunter,)
+                 hunter=hunter,)
 
     async def get_hurt_message(self, hurter, db_hurter, damage) -> str:
         _ = await self.get_translate_function()

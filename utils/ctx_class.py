@@ -108,5 +108,8 @@ class MyContext(commands.Context):
 
     async def is_channel_enabled(self):
         db_channel = await get_from_db(self.channel)
-        return db_channel.enabled
+        if db_channel:
+            return db_channel.enabled
+        else:
+            return False
 
