@@ -45,7 +45,6 @@ class SimpleCommands(Cog):
 
         await ctx.send(f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
 
-
     @commands.command()
     async def freetime(self, ctx: MyContext):
         """
