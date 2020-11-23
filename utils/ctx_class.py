@@ -24,8 +24,10 @@ class MyContext(commands.Context):
 
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
-    async def reply(self, *args, **kwargs):  # When V2 releases...
-        return await self.send(*args, **kwargs)
+    async def reply(self, *args, **kwargs):
+        # pip3.9 install git+https://github.com/PikalaxALT/discord.py.git@reply
+
+        return await self.send(*args, **kwargs, reply=True)
 
     async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, reply=False, **kwargs) -> Message:
         # Case for a too-big message
@@ -49,7 +51,7 @@ class MyContext(commands.Context):
                 file = message_file
 
         if reply:
-            message = await self.reply(content, file=file, files=files, **kwargs)
+            message = await super().reply(content, file=file, files=files, **kwargs)
         else:
             message = await super().send(content, file=file, files=files, **kwargs)
 

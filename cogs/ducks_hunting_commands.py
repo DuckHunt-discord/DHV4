@@ -314,14 +314,14 @@ class DucksHuntingCommands(Cog):
         if target:
             db_hunter.hugged['players'] += 1
             await db_hunter.save()
-            await channel.send(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
+            await ctx.reply(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
             return
 
         duck = await ctx.target_next_duck()
         if duck:
             await duck.hug(args)
         else:
-            await channel.send(_("What are you trying to hug, exactly? A tree?"))
+            await ctx.reply(_("What are you trying to hug, exactly? A tree?"))
             db_hunter.hugged["nothing"] += 1
             await db_hunter.save()
 
