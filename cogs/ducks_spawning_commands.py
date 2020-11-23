@@ -19,6 +19,7 @@ class DucksSpawningCommands(Cog):
     @commands.group(aliases=["spawn", "spawnduck"])
     @checks.channel_enabled()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @commands.cooldown(5, 30, commands.BucketType.channel)
     async def coin(self, ctx: MyContext):
         """
         Spawns a random duck
@@ -32,6 +33,8 @@ class DucksSpawningCommands(Cog):
         """
         Spawns many ducks, of (at least) one is a mechanical one
         """
+        how_many_ducks = min(how_many_ducks, 14)
+
         ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks) + [MechanicalDuck]
 
         random.shuffle(ducks_classes)
