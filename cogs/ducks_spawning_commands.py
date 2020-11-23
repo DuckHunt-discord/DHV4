@@ -1,7 +1,9 @@
 import asyncio
+import datetime
 import random
 
 import discord
+from babel.dates import format_timedelta
 from discord.ext import commands
 
 from utils import checks, models
@@ -123,6 +125,56 @@ class DucksSpawningCommands(Cog):
         """
         myduck = KamikazeDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
+
+    @commands.group(aliases=["ducks"])
+    @checks.channel_enabled()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def ducks_list(self, ctx: MyContext):
+        """
+        Show ducks currently on the channel
+        """
+        if not ctx.invoked_subcommand:
+            _ = await ctx.get_translate_function(user_language=True)
+            language_code = await ctx.get_language_code(user_language=True)
+            ducks_spawned = self.bot.ducks_spawned[ctx.channel]
+            ducks_spawned_count = len(ducks_spawned)
+            ducks_left = self.bot.enabled_channels[ctx.channel]
+
+            message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to spawn today.", ducks_spawned_count=ducks_spawned_count, ducks_left=ducks_left),]
+
+            if ducks_spawned:
+                message.append(_("Here's the list of ducks spawned :"))
+                message.append('```')
+
+                for duck in ducks_spawned:
+                    spawned_for = datetime.timedelta(seconds=-duck.spawned_for)
+
+                    time_delta = format_timedelta(spawned_for, locale=language_code, add_direction=True)
+
+                    duck_lives = await duck.get_lives()
+
+                    message.append(_("{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}.",
+                                     duck=duck,
+                                     duck_lives=duck_lives,
+                                     time_delta=time_delta
+                                     ))
+                message.append('```')
+
+            await ctx.author.send(content='\n'.join(message))
+
+    @ducks_list.command()
+    async def clear(self, ctx: MyContext):
+        """
+        Removes all ducks from the channel
+        """
+        _ = await ctx.get_translate_function()
+        ducks_spawned = self.bot.ducks_spawned[ctx.channel]
+        ducks_spawned_count = len(ducks_spawned)
+
+        del self.bot.ducks_spawned[ctx.channel]
+
+        await ctx.send(_("{ducks_spawned_count} ducks removed.", ducks_spawned_count=ducks_spawned_count))
+
 
 
 setup = DucksSpawningCommands.setup
