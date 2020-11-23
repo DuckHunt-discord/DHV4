@@ -30,7 +30,6 @@ class DucksSpawningCommands(Cog):
             await spawn_random_weighted_duck(ctx.bot, ctx.channel)
 
     @coin.command()
-    @commands.cooldown(1, 60, type=commands.BucketType.channel)
     async def roulette(self, ctx: MyContext, how_many_ducks: int = 5):
         """
         Spawns many ducks, of which (at least) one is a mechanical one
