@@ -22,6 +22,7 @@ class DucksSpawning(Cog):
         self.index = 0
         self.background_loop = bot.loop.create_task(self.loop())
         self.interval = 1
+        self.last_planned_day = 0
 
     async def loop(self):
         try:
@@ -68,6 +69,10 @@ class DucksSpawning(Cog):
             for duck in ducks_queue.copy():
                 await duck.maybe_leave()
 
+        CURRENT_PLANNED_DAY = now - (now % DAY)
+        if CURRENT_PLANNED_DAY != self.last_planned_day:
+            await self.planify(now)
+
     def cog_unload(self):
         self.background_loop.cancel()
 
@@ -90,6 +95,23 @@ class DucksSpawning(Cog):
             json.dump(serialized, f)
 
         self.bot.logger.info(f"Saved {ducks_count} to ducks_spawned_cache.json")
+
+    async def planify(self, now=None):
+        if now is None:
+            now = int(time())
+
+        self.last_planned_day = now - (now % DAY)
+
+        db_channels = await get_enabled_channels()
+
+        for db_channel in db_channels:
+            channel = self.bot.get_channel(db_channel.discord_id)
+
+            if channel:
+                self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
+            else:
+                db_channel.enabled = False
+                await db_channel.save()
 
     async def before(self):
         self.bot.logger.info(f"Waiting for ready-ness to planify duck spawns...")
@@ -114,18 +136,10 @@ class DucksSpawning(Cog):
 
         self.bot.logger.info(f"{ducks_count} ducks restored!")
 
-        db_channels = await get_enabled_channels()
 
         self.bot.logger.info(f"Planifying ducks spawns for the rest of the day")
 
-        for db_channel in db_channels:
-            channel = self.bot.get_channel(db_channel.discord_id)
-
-            if channel:
-                self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=int(time()))
-            else:
-                db_channel.enabled = False
-                await db_channel.save()
+        await self.planify()
 
         self.bot.logger.info(f"Ducks spawning started")
 
