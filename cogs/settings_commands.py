@@ -646,7 +646,7 @@ class SettingsCommands(Cog):
                          channel=ctx.channel,
                          value=db_channel.super_ducks_max_life))
 
-    @settings.group()
+    @settings.group(aliases=["access"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def permissions(self, ctx: MyContext):
         """
