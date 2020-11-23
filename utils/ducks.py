@@ -210,14 +210,14 @@ class Duck:
             total_lives = await self.get_lives()
             lives_left = self.lives_left
 
-            return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**: {lives_left}/{total_lives}][**Damage** : -{damage}]",
+            return _("{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/{total_lives}][**Damage** : -{damage}]",
                      hurter=hurter,
                      damage=damage,
                      lives_left=lives_left,
                      total_lives=total_lives,
                      )
         else:
-            return _("{hurter.mention} hurted the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
+            return _("{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
                      hurter=hurter,
                      damage=damage)
 
