@@ -189,12 +189,20 @@ class Duck:
 
         return f"{trace} {face} {shout}"
 
-    async def get_kill_message(self, killer, db_killer: Player, won_experience: int) -> str:
+    async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int) -> str:
         _ = await self.get_translate_function()
 
-        return _("{killer.mention} killed the duck [**Killed**: +{won_experience} exp]",
-                 killer=killer,
-                 won_experience=won_experience)
+        if bonus_experience:
+            normal_exp = won_experience - bonus_experience
+
+            return _("{killer.mention} killed the duck [**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
+                     killer=killer,
+                     normal_exp=normal_exp,
+                     bonus_experience=bonus_experience)
+        else:
+            return _("{killer.mention} killed the duck [**Killed**: +{won_experience} exp]",
+                     killer=killer,
+                     won_experience=won_experience,)
 
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
         _ = await self.get_translate_function()
@@ -388,14 +396,16 @@ class Duck:
         # Increment killed by 1
         won_experience = await self.get_exp_value()
 
+        bonus_experience = 0
         if self.use_bonus_exp:
-            won_experience += await db_killer.get_bonus_experience(won_experience)
+            bonus_experience = await db_killer.get_bonus_experience(won_experience)
+            won_experience += bonus_experience
 
         db_killer.experience += won_experience
 
         await db_killer.save()
 
-        await self.send(await self.get_kill_message(killer, db_killer, won_experience))
+        await self.send(await self.get_kill_message(killer, db_killer, won_experience, bonus_experience))
         await self.post_kill()
 
     async def hurt(self, damage: int, args):
@@ -524,9 +534,9 @@ class BabyDuck(Duck):
     category = 'baby'
     leave_on_hug = True
 
-    async def get_kill_message(self, killer, db_killer: Player, won_experience: int):
+    async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int):
         _ = await self.get_translate_function()
-        return _("{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]", killer=killer, won_experience=won_experience)
+        return _("{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]", killer=killer, won_experience=won_experience, bonus_experience=bonus_experience)
 
     async def get_exp_value(self):
         return - await super().get_exp_value()
@@ -591,7 +601,7 @@ class MechanicalDuck(Duck):
     async def get_exp_value(self):
         return -10
 
-    async def get_kill_message(self, killer, db_killer, won_experience):
+    async def get_kill_message(self, killer, db_killer, won_experience, bonus_experience):
         _ = await self.get_translate_function()
 
         creator = self.creator
