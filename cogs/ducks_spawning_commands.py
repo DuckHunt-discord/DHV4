@@ -61,6 +61,8 @@ class DucksSpawningCommands(Cog):
         """
         Spawns a super duck
         """
+        if lives:
+            lives = min(max(lives, 2), 99)
         myduck = SuperDuck(ctx.bot, ctx.channel, lives=lives)
         await myduck.spawn()
 
@@ -89,11 +91,13 @@ class DucksSpawningCommands(Cog):
         await myduck.spawn()
 
     @coin.command(aliases=["mother", "mother_of_all_ducks"])
-    async def moad(self, ctx: MyContext):
+    async def moad(self, ctx: MyContext, lives: int = None):
         """
         Spawns a MOAD.
         """
-        myduck = MotherOfAllDucks(ctx.bot, ctx.channel)
+        if lives:
+            lives = min(max(lives, 2), 99)
+        myduck = MotherOfAllDucks(ctx.bot, ctx.channel, lives=lives)
         await myduck.spawn()
 
     @coin.command()
