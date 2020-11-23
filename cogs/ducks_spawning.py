@@ -104,6 +104,8 @@ class DucksSpawning(Cog):
 
         db_channels = await get_enabled_channels()
 
+        self.bot.logger.debug(f"Planifying ducks spawns on {len(db_channels)} channels")
+
         for db_channel in db_channels:
             channel = self.bot.get_channel(db_channel.discord_id)
 
