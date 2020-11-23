@@ -309,8 +309,6 @@ class DucksHuntingCommands(Cog):
                               ))
             return False
 
-        channel = ctx.channel
-
         if target:
             db_hunter.hugged['players'] += 1
             await db_hunter.save()
