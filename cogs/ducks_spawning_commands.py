@@ -35,7 +35,7 @@ class DucksSpawningCommands(Cog):
         """
         Spawns many ducks, of which (at least) one is a mechanical one
         """
-        how_many_ducks = min(how_many_ducks, 14)
+        how_many_ducks = max(2, min(how_many_ducks, 14))
 
         ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks)
 
