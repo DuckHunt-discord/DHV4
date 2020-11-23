@@ -37,9 +37,11 @@ class DucksSpawningCommands(Cog):
         """
         how_many_ducks = min(how_many_ducks, 14)
 
-        ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks) + [MechanicalDuck]
+        ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks)
 
         random.shuffle(ducks_classes)
+
+        ducks_classes += [MechanicalDuck]
 
         for duck_class in ducks_classes:
             myduck = duck_class(ctx.bot, ctx.channel)
