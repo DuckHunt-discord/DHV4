@@ -33,7 +33,7 @@ class DucksSpawningCommands(Cog):
     @commands.cooldown(1, 60, type=commands.BucketType.channel)
     async def roulette(self, ctx: MyContext, how_many_ducks: int = 5):
         """
-        Spawns many ducks, of (at least) one is a mechanical one
+        Spawns many ducks, of which (at least) one is a mechanical one
         """
         how_many_ducks = min(how_many_ducks, 14)
 
