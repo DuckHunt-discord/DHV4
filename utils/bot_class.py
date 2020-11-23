@@ -70,7 +70,7 @@ class MyBot(AutoShardedBot):
             ctx.logger.info(f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
 
             await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
-                                    "and also provide you with links to the DuckHunt wiki.\n "
+                                    "and also provide you with links to the DuckHunt wiki.\n"
                                     "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
                                     "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
                                     "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
