@@ -5,6 +5,7 @@ import discord
 
 from utils.config import load_config
 from utils.bot_class import MyBot
+from utils.custom_help import EmbedHelpCommand
 from utils.models import init_db_connection
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
@@ -38,7 +39,7 @@ allowed_mentions = discord.AllowedMentions(
 )
 
 
-bot = MyBot(description=config["bot"]["description"], intents=intents, allowed_mentions=allowed_mentions)
+bot = MyBot(description=config["bot"]["description"], intents=intents, allowed_mentions=allowed_mentions, help_command=EmbedHelpCommand())
 
 for cog_name in config["cogs"]["cogs_to_load"]:
     try:
