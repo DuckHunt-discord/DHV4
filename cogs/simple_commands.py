@@ -2,10 +2,12 @@ import datetime
 import time
 
 from babel.dates import format_timedelta
+from babel.lists import format_list
 from discord.ext import commands
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.models import get_from_db
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -62,5 +64,27 @@ class SimpleCommands(Cog):
         formatted_delta = format_timedelta(time_delta, add_direction=True, locale=language_code)
 
         await ctx.send(_("You'll get back your weapon and magazines {formatted_delta}", formatted_delta=formatted_delta))
+
+    @commands.command()
+    async def prefix(self, ctx: MyContext):
+        """
+        Get the bot prefixes
+        """
+        _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
+
+        global_prefixes = self.bot.config['bot']['prefixes']
+        local_prefix = (await get_from_db(ctx.guild)).prefix
+
+        global_prefixes_list = format_list(global_prefixes, locale=language_code)
+
+        if local_prefix:
+            await ctx.send(_("My prefix here is {local_prefix}. You can also call me with any of the global prefixes : {global_prefixes_list}",
+                             local_prefix=local_prefix,
+                             global_prefixes_list=global_prefixes_list))
+        else:
+            await ctx.send(_("You can call me with any of the global prefixes : {global_prefixes_list}",
+                             global_prefixes_list=global_prefixes_list))
+
 
 setup = SimpleCommands.setup

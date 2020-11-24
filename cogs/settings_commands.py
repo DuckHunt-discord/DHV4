@@ -150,7 +150,13 @@ class SettingsCommands(Cog):
                              prefix=escape_mentions(escape_markdown(db_guild.prefix))
                              ))
         else:
-            await ctx.send(_("There is no specific prefix set for this guild."))
+            global_prefixes = self.bot.config['bot']['prefixes']
+            language_code = await ctx.get_language_code()
+            global_prefixes_list = babel.lists.format_list(global_prefixes, locale=language_code)
+
+            await ctx.send(_("There is no specific prefix set for this guild.") + " " +
+                           _("You can call me with any of the global prefixes : {global_prefixes_list}",
+                             global_prefixes_list=global_prefixes_list))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.MODERATOR)
