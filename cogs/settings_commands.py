@@ -150,8 +150,9 @@ class SettingsCommands(Cog):
                              prefix=escape_mentions(escape_markdown(db_guild.prefix))
                              ))
         else:
-            global_prefixes = self.bot.config['bot']['prefixes']
             language_code = await ctx.get_language_code()
+
+            global_prefixes = self.bot.config['bot']['prefixes']
             global_prefixes_list = babel.lists.format_list(global_prefixes, locale=language_code)
 
             await ctx.send(_("There is no specific prefix set for this guild.") + " " +
