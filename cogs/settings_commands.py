@@ -700,6 +700,10 @@ class SettingsCommands(Cog):
 
         db_member: DiscordMember = await get_from_db(target)
 
+        if level == models.AccessLevel.BANNED and target.id == ctx.author.id:
+            await ctx.send(_("❌ {target.mention}, you cannot ban yourself !", target=target))
+            return False
+
         db_member.access_level = level
 
         await db_member.save()
