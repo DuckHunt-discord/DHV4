@@ -136,7 +136,11 @@ class AccessLevel(IntEnum):
         _ = await ctx.get_translate_function()
 
         if argument.isdigit():
-            return cls(min(int(argument), 300))
+            try:
+                return cls(min(int(argument), 300))
+            except ValueError:
+                raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
+                                             levels=babel.lists.format_list(list(AccessLevel.__members__), locale=await ctx.get_language_code())))
         else:
             if not argument.upper().startswith('BOT'):
                 try:
