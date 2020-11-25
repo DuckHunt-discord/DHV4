@@ -12,7 +12,7 @@ from discord.ext import commands
 from utils import config as config
 from utils.ctx_class import MyContext
 from utils.logger import FakeLogger
-from utils.models import get_from_db
+from utils.models import get_from_db, AccessLevel
 
 if typing.TYPE_CHECKING:
     # Prevent circular imports
@@ -60,7 +60,12 @@ class MyBot(AutoShardedBot):
 
         ctx = await self.get_context(message, cls=MyContext)
         if ctx.prefix is not None:
-            await self.invoke(ctx)
+            db_user = await get_from_db(ctx.author)
+
+            access = db_user.get_access_level()
+
+            if access != AccessLevel.BANNED:
+                await self.invoke(ctx)
 
     async def on_command(self, ctx: MyContext):
         db_user = await get_from_db(ctx.author, as_user=True)
