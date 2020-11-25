@@ -69,15 +69,18 @@ class DucksHuntingCommands(Cog):
             return False
 
         sabotage = db_hunter.weapon_sabotaged_by
+
         if sabotage:
+            sabotager = await db_hunter.weapon_sabotaged_by.get().prefetch_related("member__user").get()
+
             db_hunter.weapon_sabotaged_by = None
             db_hunter.weapon_jammed = True
             db_hunter.shooting_stats['shots_when_sabotaged'] += 1
             await db_hunter.save()
 
             await ctx.reply(_("💥 Your weapon was sabotaged and exploded in your face. You can thank "
-                              "{sabotager.member.user.name}#{sabotager.member.user.discriminator} for this bad joke.",
-                              sabotager=sabotage))
+                              "{sabotager.name}#{sabotager.discriminator} for this bad joke.",
+                              sabotager=sabotager.member.user))
             return False
 
         if db_hunter.weapon_jammed:
