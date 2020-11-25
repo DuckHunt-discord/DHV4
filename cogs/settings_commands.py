@@ -657,7 +657,15 @@ class SettingsCommands(Cog):
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def permissions(self, ctx: MyContext):
         """
-        Commands to edit permissions
+        Commands to edit permissions.
+
+        BANNED = 0
+        DEFAULT = 50
+        TRUSTED = 100
+        MODERATOR = 200
+        ADMIN = 300
+        BOT_MODERATOR = 500
+        BOT_OWNER = 600
         """
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
@@ -686,7 +694,7 @@ class SettingsCommands(Cog):
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def set(self, ctx: MyContext, target: discord.Member, level: models.AccessLevel):
         """
-        View the current permissions
+        Edit the current permissions for a specific user
         """
         _ = await ctx.get_translate_function()
 
