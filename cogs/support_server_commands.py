@@ -28,10 +28,10 @@ class SupportServerCommands(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
-    async def cog_check(self, ctx):
-        ret = super().cog_check(ctx)
-        ret = ret and ctx.guild.id == self.config()["support_server_id"]
-        return ret
+    #async def cog_check(self, ctx):
+    #    ret = super().cog_check(ctx)
+    #    ret = ret and ctx.guild.id == self.config()["support_server_id"]
+    #    return ret
 
     def get_bot_uptime(self):
         return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
