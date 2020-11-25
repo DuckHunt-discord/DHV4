@@ -292,7 +292,7 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
             return db_obj
         elif isinstance(discord_object, discord.Member) and not as_user:
-            db_obj = await DiscordMember.filter(user__discord_id=discord_object.id).first().prefetch_related("user", "guild")
+            db_obj = await DiscordMember.filter(user__discord_id=discord_object.id, guild__discord_id=discord_object.guild.id).first().prefetch_related("user", "guild")
             if not db_obj:
                 db_obj = DiscordMember(guild=await get_from_db(discord_object.guild), user=await get_from_db(discord_object, as_user=True))
                 await db_obj.save()
