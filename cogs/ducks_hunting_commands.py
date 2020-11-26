@@ -122,6 +122,39 @@ class DucksHuntingCommands(Cog):
         db_hunter.shooting_stats['bullets_used'] += 1
         db_channel = await get_from_db(ctx.channel)
 
+        homing = db_hunter.active_powerups["homing_bullets"] >= 1
+        if homing:
+            db_hunter.active_powerups["homing_bullets"] -= 1
+            target = ctx.author
+            db_hunter.shooting_stats['homing_kills'] += 1
+            db_hunter.shooting_stats['missed'] += 1
+            db_hunter.shooting_stats['killed'] += 1
+            db_hunter.shooting_stats['murders'] += 1
+            db_hunter.active_powerups["dead"] += 1
+            db_hunter.experience -= 2  # Missed
+
+            has_kill_licence = db_hunter.is_powerup_active('kill_licence')
+
+            if not has_kill_licence:
+                db_hunter.experience -= 15  # Kill
+                db_hunter.weapon_confiscated = True
+
+            await db_hunter.save()
+
+            await ctx.reply(_("✨ You take the new homing bullets outside of their packaging, place them in your weapon and shoot with your eyes closed...",
+                              ))
+            await asyncio.sleep(2)
+
+            if has_kill_licence:
+                await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
+                                  "You should send your complaints to the CACAC. At least, you had a ~~kill~~ suicide licence. [**MISSED**: -2 exp]",
+                                  ))
+            else:
+                await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
+                                  "You should send your complaints to the CACAC. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
+                                  ))
+            await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(ctx.author.name)}&top2={quote_plus(_('Signed up for the CACAC.'))}&top3=&top4=&sp=")
+
         # Missing
         accuracy = level_info['accuracy']
         if db_hunter.active_powerups['mirror'] > 0:
@@ -133,19 +166,11 @@ class DucksHuntingCommands(Cog):
             db_hunter.active_powerups['sight'] -= 1
 
         missed = not compute_luck(accuracy)
-        homing = db_hunter.active_powerups["homing_bullets"] >= 1
-
-        if homing:
-            db_hunter.active_powerups["homing_bullets"] -= 1
-            missed = False
-            target = ctx.author
 
         if (missed and not target) or (target and not missed):
+            murder = bool(target)
+
             if missed:
-                db_hunter.shooting_stats['missed'] += 1
-                db_hunter.experience -= 2
-            elif homing:
-                db_hunter.shooting_stats['homing_kills'] += 1
                 db_hunter.shooting_stats['missed'] += 1
                 db_hunter.experience -= 2
 
@@ -153,19 +178,22 @@ class DucksHuntingCommands(Cog):
             killed_someone = target or compute_luck(db_channel.kill_on_miss_chance)
 
             if killed_someone:
+                has_valid_kill_licence = db_hunter.is_powerup_active('kill_licence') and not murder
+
                 db_hunter.shooting_stats['killed'] += 1
-                db_hunter.experience -= 15
-                db_hunter.weapon_confiscated = True
+                if not has_valid_kill_licence:
+                    db_hunter.experience -= 15
+                    db_hunter.weapon_confiscated = True
 
-                if not target:
-                    db_target: Player = await get_random_player(db_channel)
-                else:
+                if murder:
                     db_target: Player = await get_player(target, ctx.channel)
-
-                    if db_target.id == db_hunter.id:
-                        db_target = db_hunter
-
                     db_hunter.shooting_stats['murders'] += 1
+                else:
+                    db_target: Player = await get_random_player(db_channel)
+
+                if db_target.id == db_hunter.id:
+                    db_target = db_hunter
+                    db_hunter.shooting_stats['suicides'] += 1
 
                 db_target.shooting_stats['got_killed'] += 1
                 db_target.active_powerups["dead"] += 1
@@ -180,14 +208,7 @@ class DucksHuntingCommands(Cog):
                 else:
                     player_name = db_target.member.user.name
 
-                if homing:
-                    await ctx.reply(_("✨ You take the new homing bullets outside of their packaging, place them in your weapon and shoot with your eyes closed...",
-                                      ))
-                    await asyncio.sleep(2)
-                    await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
-                                      "You should send your complaints to the CACAC. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
-                                      ))
-                elif target:
+                if murder:
                     if target.id == ctx.author.id:
                         await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
                                           ))
@@ -197,10 +218,26 @@ class DucksHuntingCommands(Cog):
                                           player_name=player_name,
                                           ))
                 else:
-                    await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing him on the spot. "
-                                      "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
-                                      player_name=player_name,
-                                      ))
+                    if has_valid_kill_licence:
+                        if target.id == ctx.author.id:
+                            await ctx.reply(_("🔫 You missed the duck... And shot yourself in the head. You died. "
+                                              "You are legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]",
+                                              ))
+                        else:
+                            await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing him on the spot. "
+                                              "You are legally allowed to kill people. [**MISSED**: -2 exp]",
+                                              player_name=player_name,
+                                              ))
+                    else:
+                        if target.id == ctx.author.id:
+                            await ctx.reply(_("🔫 You missed the duck... And shot yourself in the head, dying instantly. "
+                                              "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
+                                              ))
+                        else:
+                            await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing him on the spot. "
+                                            "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
+                                            player_name=player_name,
+                                            ))
 
                 await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(db_target.member.user.name)}&top2={quote_plus(_('Forgot to duck'))}&top3=&top4=&sp=")
             else:

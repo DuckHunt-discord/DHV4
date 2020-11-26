@@ -610,6 +610,28 @@ class ShoppingCommands(Cog):
         await ctx.reply(_("💸 You bought some a new coat. You don't look very good, but you are very much protected from water. "
                           "[Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
+    @shop.command(aliases=["29", "kill_permit", "permit", "licence_to_kill", "licencetokill", "kill_licence", "killlicence"])
+    async def licence(self, ctx: MyContext):
+        """
+        Avoid penalties if you accidentally kill another hunter for 24 hours
+        """
+        ITEM_COST = 15
+
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["kill_licence"] = int(time.time()) + DAY
+
+        db_hunter.bought_items['kill_licence'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You bought a kill licence. Accidental kills are now allowed. "
+                          "[Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
+
 
     @shop.command(aliases=["50", "homing"])
     async def homing_bullets(self, ctx: MyContext):
