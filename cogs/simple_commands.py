@@ -47,7 +47,7 @@ class SimpleCommands(Cog):
 
         await ctx.send(f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
 
-    @commands.command()
+    @commands.command(aliases=["giveback"])
     async def freetime(self, ctx: MyContext):
         """
         Get the time when you'll get free magazines and your weapon back from the police
