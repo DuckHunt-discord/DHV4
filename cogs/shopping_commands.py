@@ -632,6 +632,27 @@ class ShoppingCommands(Cog):
         await ctx.reply(_("💸 You bought a kill licence. Accidental kills are now allowed. "
                           "[Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
+    @shop.command(aliases=["30", "autoreload", "autoreloader", "automatic_reloader", "automaticreloader", "auto_reloader", "auto_reload"])
+    async def reloader(self, ctx: MyContext):
+        """
+        Automatically reloads your weapon every time it's necesarry for 24 hours
+        """
+        ITEM_COST = 35
+
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["reloader"] = int(time.time()) + DAY
+
+        db_hunter.bought_items['reloader'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You bought an auto reloader for your weapon. It'll reload automatically every time it's necessary for a day. "
+                          "[Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["50", "homing"])
     async def homing_bullets(self, ctx: MyContext):

@@ -91,16 +91,29 @@ class DucksHuntingCommands(Cog):
             return False
 
         if db_hunter.bullets <= 0:
-            db_hunter.shooting_stats['shots_with_empty_magazine'] += 1
-            await db_hunter.save()
-
             level_info = db_hunter.level_info()
 
-            await ctx.reply(_("🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | Magazines: {current_magazines}/{max_magazines}",
-                              max_bullets=level_info['bullets'],
-                              max_magazines=level_info['magazines'],
-                              current_magazines=db_hunter.magazines))
-            return False
+            if db_hunter.is_powerup_active('reloader'):
+                if db_hunter.magazines > 0:
+                    db_hunter.magazines -= 1
+                    db_hunter.bullets = level_info['bullets']
+                    db_hunter.shooting_stats['autoreloads'] += 1
+                else:
+                    db_hunter.shooting_stats['failed_autoreloads'] += 1
+                    await db_hunter.save()
+                    await ctx.reply(_("🦉 Backpack empty ! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: 0/{max_magazines} [**Autoreload failed**]",
+                                      max_bullets=level_info['bullets'],
+                                      max_magazines=level_info['magazines'],))
+                    return False
+            else:
+                db_hunter.shooting_stats['shots_with_empty_magazine'] += 1
+                await db_hunter.save()
+
+                await ctx.reply(_("🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | Magazines: {current_magazines}/{max_magazines}",
+                                  max_bullets=level_info['bullets'],
+                                  max_magazines=level_info['magazines'],
+                                  current_magazines=db_hunter.magazines))
+                return False
 
         # Jamming
         level_info = get_level_info(db_hunter.experience)
@@ -154,6 +167,7 @@ class DucksHuntingCommands(Cog):
                                   "You should send your complaints to the CACAC. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
                                   ))
             await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(ctx.author.name)}&top2={quote_plus(_('Signed up for the CACAC.'))}&top3=&top4=&sp=")
+            return False
 
         # Missing
         accuracy = level_info['accuracy']
