@@ -472,12 +472,20 @@ class ShoppingCommands(Cog):
 
         db_hunter.experience -= ITEM_COST
 
-        db_target.active_powerups["wet"] = int(time.time()) + HOUR
-        db_hunter.bought_items['bucket'] += 1
+        target_has_coat = db_target.is_powerup_active('coat')
+
+        if not target_has_coat:
+            db_hunter.bought_items['bucket'] += 1
+            db_target.active_powerups["wet"] = int(time.time()) + HOUR
+        else:
+            db_hunter.bought_items['useless_bucket'] += 1
 
         await asyncio.gather(db_hunter.save(), db_target.save())
 
-        await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
+        if target_has_coat:
+            await ctx.reply(_("💸 You threw water on {target.mention}... But he have a raincoat on. [Fail: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
+        else:
+            await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["17", "boom"])
     async def sabotage(self, ctx: MyContext, target: discord.Member):
@@ -579,7 +587,31 @@ class ShoppingCommands(Cog):
 
         await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
-    @shop.command(aliases=["30", "homing"])
+    @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
+    async def coat(self, ctx: MyContext):
+        """
+        Protect yourself from water for 24 hours. If you are already wet, it also can be used as a change.
+        """
+        ITEM_COST = 15
+
+        _ = await ctx.get_translate_function()
+
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
+
+        db_hunter.experience -= ITEM_COST
+        db_hunter.active_powerups["wet"] = 0
+        db_hunter.active_powerups["coat"] = int(time.time()) + HOUR
+
+        db_hunter.bought_items['coat'] += 1
+
+        await db_hunter.save()
+        await ctx.reply(_("💸 You bought some a new coat. You don't look very good, but you are very much protected from water. "
+                          "[Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
+
+
+    @shop.command(aliases=["50", "homing"])
     async def homing_bullets(self, ctx: MyContext):
         """
         Never miss a shot again with Homing Projectiles.
