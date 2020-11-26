@@ -8,6 +8,7 @@ from discord.ext import menus
 from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.ducks import spawn_random_weighted_duck
 from utils.models import get_from_db, get_player, DiscordUser, Player
 
 
@@ -16,25 +17,37 @@ def _(s):
 
 
 INV_COMMON_ITEMS = {
-    'welcome_package': {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open in the lootbox menu")},
-    'foie_gras': {"type": "lootbox", "action": "welcome", "name": _("A clean box of fois gras"), "description": _("The boss dropped that when he died")},
-    'vip_card': {"type": "item", "action": "set_vip", "uses": 1, "name": _("VIP Card"), "description": _("A nice and shiny card that allow you to set a server as VIP.")},
-    'boost_exp': {"type": "item", "action": "add_exp", "uses": 1, "amount": 50, "name": _("A book"), "description": _("Reading it will give you experience")},
-    'refill_magazines': {"type": "item", "action": "refill_magazines", "uses": 2, "name": _("A free card for magazines"), "description": _("Redeem it to refill your weapon.")}
+    'welcome_package':
+        {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open in the lootbox menu")},
+    'foie_gras':
+        {"type": "lootbox", "action": "fois_gras", "name": _("A clean box of fois gras"), "description": _("The boss dropped that when he died")},
+    'vip_card':
+        {"type": "item", "action": "set_vip", "uses": 1, "name": _("VIP Card"), "description": _("A nice and shiny card that allow you to set a server as VIP.")},
+    'boost_exp':
+        {"type": "item", "action": "add_exp", "uses": 1, "amount": lambda: random.randint(25, 50), "name": _("A book"), "description": _("Reading it will give you experience")},
+    'spawn_ducks':
+        {"type": "item", "action": "spawn_ducks", "uses": 1, "name": _("A good ol' egg"), "description": _("Crack it open !")},
+    'refill_magazines':
+        {"type": "item", "action": "refill_magazines", "uses": 2, "name": _("A free card for magazines"), "description": _("Redeem it to refill your weapon.")},
 }
 
 INV_LOOTBOX_ITEMS = {
-    'welcome': [{"luck": 100, "item": INV_COMMON_ITEMS['boost_exp']}, {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']}],
-    'foie_gras': [{"luck": 100, "item": INV_COMMON_ITEMS['boost_exp']}, {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']}],
-    'vote': [{"luck": 5, "item": INV_COMMON_ITEMS['boost_exp']}, {"luck": 100, "item": INV_COMMON_ITEMS["refill_magazines"]}]
-}
-
-BP_COMMON_ITEMS = {
-
-}
-
-BP_LOOTBOX_ITEMS = {
-
+    'welcome':
+        [
+            {"luck": 100, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']},
+        ],
+    'foie_gras':
+        [
+            {"luck": 35, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']},
+            {"luck": 10, "item": INV_COMMON_ITEMS['spawn_ducks']},
+        ],
+    'vote':
+        [
+            {"luck": 5, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 100, "item": INV_COMMON_ITEMS["refill_magazines"]},
+        ],
 }
 
 
@@ -93,7 +106,7 @@ class InventoryCommands(Cog):
         await db_target.save()
         await ctx.send(_("👌 Item has been given to {target.name}.", target=target))
 
-    @inventory.command(name="use")
+    @inventory.command(name="use", aliases=["open"])
     async def inv_use(self, ctx: MyContext, item_number: int):
         """
         Use one of your items
@@ -140,13 +153,22 @@ class InventoryCommands(Cog):
                 await ctx.send(_('✨ {guild.name} is now VIP! Thanks.', guild=ctx.guild))
             elif item_action == "add_exp":
                 amount = item.get("amount")
-                db_player.experience += amount
+                if not isinstance(amount, int):
+                    db_player.experience += amount()
+                else:
+                    db_player.experience += amount
                 await ctx.send(_('✨ You learned a lot, adding {amount} experience points to your profile.', amount=amount))
             elif item_action == "refill_magazines":
                 level_info = db_player.level_info()
                 db_player.magazines = level_info['magazines']
                 db_player.bullets = level_info['bullets']
                 await ctx.send(_('✨ Yay! Free ammo!'))
+            elif item_action == "spawn_ducks":
+                for i in range(2):
+                    await spawn_random_weighted_duck(self.bot, ctx.channel)
+
+                await ctx.send(_('✨ Oh look, ducks! Ducks are everywhere!'))
+
 
         await db_user.save()
         await db_player.save()
