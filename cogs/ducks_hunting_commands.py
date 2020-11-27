@@ -223,7 +223,7 @@ class DucksHuntingCommands(Cog):
                     player_name = db_target.member.user.name
 
                 if murder:
-                    if target.id == ctx.author.id:
+                    if db_target.id == db_hunter.id:
                         await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
                                           ))
                     else:
@@ -233,7 +233,7 @@ class DucksHuntingCommands(Cog):
                                           ))
                 else:
                     if has_valid_kill_licence:
-                        if target.id == ctx.author.id:
+                        if db_target.id == db_hunter.id:
                             await ctx.reply(_("🔫 You missed the duck... And shot yourself in the head. You died. "
                                               "You are legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]",
                                               ))
