@@ -62,8 +62,12 @@ class SimpleCommands(Cog):
         time_delta = datetime.timedelta(seconds=SECONDS_LEFT_TODAY)
 
         formatted_delta = format_timedelta(time_delta, add_direction=True, locale=language_code)
+        formatted_precise_delta = format_timedelta(time_delta, add_direction=True, locale=language_code, threshold=24)
 
-        await ctx.send(_("You'll get back your weapon and magazines {formatted_delta}", formatted_delta=formatted_delta))
+        await ctx.send(_("You'll get back your weapon and magazines {formatted_delta} ({formatted_precise_delta})",
+                         formatted_delta=formatted_delta,
+                         formatted_precise_delta=formatted_precise_delta,
+                         ))
 
     @commands.command()
     async def prefix(self, ctx: MyContext):
