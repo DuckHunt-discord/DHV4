@@ -180,6 +180,8 @@ class Player(Model):
     channel = fields.ForeignKeyField('models.DiscordChannel')
     member = fields.ForeignKeyField('models.DiscordMember')
 
+    prestige = fields.SmallIntField(default=0)
+
     # Inventories
     active_powerups = DefaultDictJSONField(default_factory=int)  # Until a timestamp.
     shooting_stats  = DefaultDictJSONField(default_factory=int)  # Count of times.
