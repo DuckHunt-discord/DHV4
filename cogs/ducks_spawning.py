@@ -43,7 +43,7 @@ class DucksSpawning(Cog):
             elif delay >= 5:
                 self.bot.logger.warning(f"Loop running with severe delays ({delay} seconds)!")
 
-            self.bot.logger.debug(f"Loop : [{int(current_iteration)}/{int(now)}]")
+            # self.bot.logger.debug(f"Loop : [{int(current_iteration)}/{int(now)}]")
 
             # Loop part
             try:
