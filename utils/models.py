@@ -254,6 +254,8 @@ class Player(Model):
     def is_powerup_active(self, powerup):
         if self.prestige >= 1 and powerup == "sunglasses":
             return True
+        elif self.prestige >= 5 and powerup == "coat":
+            return True
         elif self.prestige >= 7 and powerup == "kill_licence":
             return True
         elif powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead"]:
