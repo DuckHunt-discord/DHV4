@@ -483,7 +483,10 @@ class ShoppingCommands(Cog):
 
         if not target_has_coat:
             db_hunter.bought_items['bucket'] += 1
-            db_target.active_powerups["wet"] = int(time.time()) + HOUR
+            if db_hunter.prestige >= 4:
+                db_target.active_powerups["wet"] = int(time.time()) + 3 * HOUR
+            else:
+                db_target.active_powerups["wet"] = int(time.time()) + HOUR
         else:
             db_hunter.bought_items['useless_bucket'] += 1
 
@@ -491,6 +494,8 @@ class ShoppingCommands(Cog):
 
         if target_has_coat:
             await ctx.reply(_("💸 You threw water on {target.mention}... But he have a raincoat on. [Fail: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
+        elif db_hunter.prestige >= 4:
+            await ctx.reply(_("💸 You threw some icelandic water on {target.mention}... He can't hunt for **three** hours! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
         else:
             await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
 
