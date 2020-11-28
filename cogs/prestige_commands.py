@@ -1,3 +1,6 @@
+import datetime
+import random
+
 import discord
 from discord.ext import commands
 
@@ -58,7 +61,7 @@ class PrestigeCommands(Cog):
 
         e.add_field(name=_("Level 1"), value=_("**Unbreakable sunglasses**: Never buy sunglasses again"))
         e.add_field(name=_("Level 2"), value=_("**Coat colour**: Choose the colour of your coat"))  # TODO
-        e.add_field(name=_("Level 3"), value=_("**Daily command**: Get more experience every day"))  # TODO
+        e.add_field(name=_("Level 3"), value=_("**Daily command**: Get more experience every day"))
         e.add_field(name=_("Level 4"), value=_("**Icelandic water**: Wet others for longer"))
         e.add_field(name=_("Level 5"), value=_("**Untearable coat**: Buy it for life"))
         e.add_field(name=_("Level 6"), value=_("**Military grade silencer**: Better silencers that last twice as long"))
@@ -113,6 +116,35 @@ class PrestigeCommands(Cog):
             await new_db_hunter.save()
 
         await ctx.send(embed=e)
+
+    @prestige.command()
+    async def daily(self, ctx: MyContext):
+        """Get some more experience..."""
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        _ = await ctx.get_translate_function()
+        if db_hunter.prestige < 3:
+            await ctx.send(_("❌ Your prestige level is not high enough yet. "
+                             "See `{ctx.prefix}prestige info` to learn more."))
+            return False
+
+        now = datetime.datetime.now()
+        if db_hunter.prestige_last_daily.date() == now.date():
+            await ctx.send(_("❌ You already claimed your dailies today. Try again tomorrow."))
+            return False
+
+        min_experience = 5
+        max_experience = 15 * db_hunter.prestige
+
+        added_experience = random.randint(min_experience, max_experience)
+
+        db_hunter.experience += added_experience
+        db_hunter.prestige_last_daily = now
+        db_hunter.prestige_dailies += 1
+
+        await db_hunter.save()
+
+        await ctx.send(_("💰️ You took {exp} experience out of the prestige bank. Come back soon!", exp=added_experience))
 
 
 

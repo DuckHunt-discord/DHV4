@@ -181,6 +181,8 @@ class Player(Model):
     member = fields.ForeignKeyField('models.DiscordMember')
 
     prestige = fields.SmallIntField(default=0)
+    prestige_last_daily = fields.DatetimeField(auto_now_add=True)
+    prestige_dailies = fields.IntField(default=0)
 
     # Inventories
     active_powerups = DefaultDictJSONField(default_factory=int)  # Until a timestamp.
@@ -252,6 +254,7 @@ class Player(Model):
         if self.last_giveback.date() != now.date():
             level_info = self.level_info()
             self.last_giveback = now
+            self.givebacks += 1
             self.magazines = level_info["magazines"]
             self.weapon_confiscated = False
             await self.save()
