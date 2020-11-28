@@ -270,7 +270,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['bullets_used'] -= 1
             db_hunter.bullets += 1
             await db_hunter.save()
-            await ctx.reply(_("🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped the shot.", ))
+            await ctx.reply(_("🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped the shot."))
         else:
             db_hunter.shooting_stats['shots_without_ducks'] += 1
             db_hunter.experience -= 2

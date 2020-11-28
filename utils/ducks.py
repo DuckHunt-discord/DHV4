@@ -9,6 +9,7 @@ from discord.utils import escape_markdown
 
 from utils import config
 from utils.bot_class import MyBot
+from utils.bushes import bushes_objects, bushes_weights
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player
 from utils.translations import translate
@@ -254,13 +255,13 @@ class Duck:
 
         return f"{trace} {shout}"
 
-    async def send(self, message: str):
+    async def send(self, content: str, **kwargs):
         webhook = await get_webhook_if_possible(self.bot, self.channel)
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
             try:
-                await webhook.send(message, **this_webhook_parameters)
+                await webhook.send(content, **this_webhook_parameters, **kwargs)
                 return
             except discord.NotFound:
                 db_channel: DiscordChannel = await get_from_db(self.channel)
@@ -268,7 +269,8 @@ class Duck:
                 await db_channel.save()
 
                 pass
-        await self.channel.send(message)
+
+        await self.channel.send(content, **kwargs)
 
     # Parameters #
 
@@ -370,6 +372,32 @@ class Duck:
         else:
             return False
 
+    async def maybe_bushes_message(self, hunter, db_hunter) -> typing.Optional[typing.Callable]:
+        bush_chance = 13
+        if not random.randint(1, 100) <= bush_chance:
+            return None
+
+        db_channel = await self.get_db_channel()
+
+        item_found = random.choices(bushes_objects, bushes_weights)[0]()
+
+        gave_item = await item_found.give(db_channel, db_hunter)
+
+        if gave_item:
+            db_hunter.found_items['took_' + item_found.db] += 1
+        else:
+            db_hunter.found_items['left_' + item_found.db] += 1
+
+        _ = await self.get_translate_function()
+        args = await item_found.send_args(_, gave_item)
+
+        args['content'] = f"{hunter.mention} > " + args.get('content', '')
+
+        async def send_result():
+            await self.send(**args)
+
+        return send_result
+
     # Actions #
     async def frighten(self):
         hunter = self.target_lock_by
@@ -403,9 +431,14 @@ class Duck:
 
         db_killer.experience += won_experience
 
+        bushes_coro = await self.maybe_bushes_message(killer, db_killer)
+
         await db_killer.save()
 
         await self.send(await self.get_kill_message(killer, db_killer, won_experience, bonus_experience))
+        if bushes_coro is not None:
+            await bushes_coro()
+
         await self.post_kill()
 
     async def hurt(self, damage: int, args):
