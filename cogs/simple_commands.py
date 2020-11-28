@@ -1,18 +1,21 @@
 import datetime
 import time
 
+import discord
 from babel.dates import format_timedelta
 from babel.lists import format_list
 from discord.ext import commands
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.images import get_random_image
 from utils.models import get_from_db
 
 SECOND = 1
 MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
+
 
 class SimpleCommands(Cog):
     @commands.command()
@@ -26,7 +29,8 @@ class SimpleCommands(Cog):
         await ctx.trigger_typing()  # tell Discord that the bot is "typing", which is a very simple request
         t_2 = time.perf_counter()
         time_delta = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
-        await ctx.send(_("Pong. — Time taken: {miliseconds}ms", miliseconds=time_delta))  # send a message telling the user the calculated ping time
+        await ctx.send(_("Pong. — Time taken: {miliseconds}ms",
+                         miliseconds=time_delta))  # send a message telling the user the calculated ping time
 
     @commands.command()
     async def wiki(self, ctx: MyContext):
@@ -45,7 +49,8 @@ class SimpleCommands(Cog):
         Get the URL to invite the bot
         """
 
-        await ctx.send(f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
+        await ctx.send(
+            f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
 
     @commands.command(aliases=["giveback"])
     async def freetime(self, ctx: MyContext):
@@ -83,12 +88,36 @@ class SimpleCommands(Cog):
         global_prefixes_list = format_list(global_prefixes, locale=language_code)
 
         if local_prefix:
-            await ctx.send(_("My prefix here is {local_prefix}. You can also call me with any of the global prefixes : {global_prefixes_list}",
-                             local_prefix=local_prefix,
-                             global_prefixes_list=global_prefixes_list))
+            await ctx.send(_(
+                "My prefix here is {local_prefix}. You can also call me with any of the global prefixes : {global_prefixes_list}",
+                local_prefix=local_prefix,
+                global_prefixes_list=global_prefixes_list))
         else:
             await ctx.send(_("You can call me with any of the global prefixes : {global_prefixes_list}",
                              global_prefixes_list=global_prefixes_list))
+
+    @commands.command(aliases=["helpers", "whomadethis"])
+    async def credits(self, ctx: MyContext):
+        """
+        Thanks to those fine people who (helped) make the bot
+        """
+        _ = await ctx.get_translate_function()
+
+        embed = discord.Embed()
+
+        embed.color = discord.Color.green()
+        embed.description = _("The bot itself is made by Eyesofcreeper, but these fine people down there help with "
+                              "graphics, ideas, images, and more. Make sure to give them a wave if you see them.")
+
+        embed.add_field(name=_("Developer"), value=_("<@138751484517941259> (\"Eyesofcreeper\") made this bot."), inline=False)
+        embed.add_field(name=_("Designer"), value=_("<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."), inline=False)
+        embed.add_field(name=_("Designer"), value=_("<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit."), inline=False)
+        embed.add_field(name=_("Ideas"), value=_("Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"), inline=False)
+
+        f = discord.File("assets/Robot_Ducc_Globloxmen.jpg")
+        embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
+
+        await ctx.send(embed=embed, file=f)
 
 
 setup = SimpleCommands.setup
