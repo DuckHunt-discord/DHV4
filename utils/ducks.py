@@ -482,7 +482,7 @@ class Duck:
 
         total_lives = self._lives  # We can't await here, so try our best
 
-        return f"<{type(self).__name__}{' '.join(attributes)} lives={self.lives_left}/{total_lives}>"
+        return f"<{type(self).__name__} {self.category}{' '.join(attributes)} lives={self.lives_left}/{total_lives}>"
 
 
 # Standard ducks #
