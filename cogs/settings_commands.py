@@ -140,7 +140,7 @@ class SettingsCommands(Cog):
         db_guild = await get_from_db(ctx.guild)
         _ = await ctx.get_translate_function()
 
-        if new_prefix:
+        if new_prefix is not None:
             db_guild.prefix = new_prefix
 
             await db_guild.save()
@@ -298,7 +298,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.tax_on_user_send = value
             await db_channel.save()
 
@@ -359,7 +359,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.kill_on_miss_chance = value
             await db_channel.save()
 
@@ -382,7 +382,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             db_channel.duck_frighten_chance = value
             await db_channel.save()
 
@@ -403,7 +403,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < db_channel.base_duck_exp:
                 await ctx.send(_("⚠️ In some cases, users may get NEGATIVE experience when killing ducks with that low of a experience.",
                                  channel=ctx.channel,
@@ -431,7 +431,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < db_channel.clover_min_experience:
                 await ctx.send(_("❌️ You need to provide a higher value than the one set in `clover_min_experience` !",
                                  channel=ctx.channel,
@@ -455,7 +455,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < 0:
                 await ctx.send(_("⚠️ Giving negative experience when hunter kills ducks might be a bad idea.",
                                  channel=ctx.channel,
@@ -477,7 +477,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < 0:
                 await ctx.send(_("⚠️ Giving negative experience when hunter kills ducks might be a bad idea.",
                                  channel=ctx.channel,
@@ -501,7 +501,7 @@ class SettingsCommands(Cog):
 
         maximum_value = max_ducks_per_day(ctx.guild.member_count)
 
-        if value:
+        if value is not None:
             if value <= 0:
                 await ctx.send(_("❌️ To disable a channel, use `{prefix}settings enabled False`.",
                                  prefix=ctx.prefix,
@@ -553,7 +553,7 @@ class SettingsCommands(Cog):
             return
 
         attr = f"spawn_weight_{duck_type}_ducks"
-        if value:
+        if value is not None:
             if value < 0:
                 await ctx.send(_("❌ You cannot set a negative weight.", ))
                 return
@@ -577,7 +577,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < 30:
                 await ctx.send(_("❌️ Ducks need to settle for a while in the pond before leaving.",
                                  channel=ctx.channel,
@@ -605,7 +605,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < 1:
                 await ctx.send(_("❌️ Super ducks will live !",
                                  channel=ctx.channel,
@@ -634,7 +634,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if value:
+        if value is not None:
             if value < 1:
                 await ctx.send(_("❌️ Super ducks will live !",
                                  channel=ctx.channel,
@@ -709,7 +709,6 @@ class SettingsCommands(Cog):
         await db_member.save()
 
         await ctx.send(_("{target.mention} now has a access of {level.name}.", level=level, target=target))
-
 
 
 setup = SettingsCommands.setup
