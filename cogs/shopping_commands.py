@@ -266,10 +266,17 @@ class ShoppingCommands(Cog):
 
         db_hunter.experience -= ITEM_COST
         db_hunter.active_powerups["silencer"] = int(time.time()) + DAY
+
+        if db_hunter.prestige >= 6:
+            db_hunter.active_powerups["silencer"] += DAY
+
         db_hunter.bought_items['silencer'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
+        if db_hunter.prestige >= 6:
+            await ctx.reply(_("💸 You added a military-grade silencer to your weapon. You seem to know the game well. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
+        else:
+            await ctx.reply(_("💸 You added a silencer to your weapon. Ducks are still afraid of the noise, but you don't make any. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["10", "best", "freeexp", "freexp", "4-leaf", "4leaf", "🍀"])
     async def clover(self, ctx: MyContext):
