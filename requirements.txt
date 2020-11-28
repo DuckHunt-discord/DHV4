@@ -4,7 +4,8 @@ uvloop~=0.14.0
 parsedatetime~=2.6
 pytz~=2020.1
 discord.py-stubs
-discord.py[voice]>=1.5.0
+#discord.py[voice]>=1.5.0
+git+https://github.com/Rapptz/discord.py.git
 tortoise-orm[accel]>=0.16.18
 aerich
 asyncpg

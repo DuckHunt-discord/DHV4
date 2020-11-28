@@ -25,7 +25,7 @@ class MyContext(commands.Context):
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
     async def reply(self, *args, **kwargs):
-        # pip3.9 install git+https://github.com/PikalaxALT/discord.py.git@reply
+        # pip3.9 install git+https://github.com/Rapptz/discord.py.git
 
         return await self.send(*args, **kwargs, reply=True)
 
