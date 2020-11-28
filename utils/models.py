@@ -240,7 +240,12 @@ class Player(Model):
         return 0
 
     def level_info(self):
-        return get_level_info(self.experience)
+        li = get_level_info(self.experience).copy()
+
+        if self.prestige >= 8:
+            li['bullets'] *= 2
+
+        return li
 
     async def maybe_giveback(self):
         now = datetime.datetime.now()

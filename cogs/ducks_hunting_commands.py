@@ -14,7 +14,6 @@ from babel.dates import format_timedelta
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.levels import get_level_info
 from utils.models import get_from_db, get_player, Player, get_random_player
 
 
@@ -115,7 +114,7 @@ class DucksHuntingCommands(Cog):
                 return False
 
         # Jamming
-        level_info = get_level_info(db_hunter.experience)
+        level_info = db_hunter.level_info()
         lucky = compute_luck(level_info['reliability'])
         if db_hunter.is_powerup_active('grease'):
             lucky = lucky or compute_luck(level_info['reliability'])
@@ -303,7 +302,7 @@ class DucksHuntingCommands(Cog):
             await ctx.reply(_("☀️️ You unjam your weapon !"))
             return True
 
-        level_info = get_level_info(db_hunter.experience)
+        level_info = db_hunter.level_info()
 
         if db_hunter.bullets <= 0 and db_hunter.magazines >= 1:
             db_hunter.shooting_stats['reloads'] += 1
