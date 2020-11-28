@@ -62,7 +62,7 @@ class PrestigeCommands(Cog):
         e.add_field(name=_("Level 4"), value=_("**Icelandic water**: Wet others for longer"))  # TODO
         e.add_field(name=_("Level 5"), value=_("**Untearable coat**: Buy it for life"))
         e.add_field(name=_("Level 6"), value=_("**Military grade silencer**: Better silencers, make no noise"))  # TODO
-        e.add_field(name=_("Level 7"), value=_("**Permanent licence to kill**: Secret DuckHunt service"))  # TODO
+        e.add_field(name=_("Level 7"), value=_("**Permanent licence to kill**: Secret DuckHunt service"))
         e.add_field(name=_("Level 8"), value=_("**Bigger ammo pack**: Load twice as many bullets in your gun"))  # TODO
         e.add_field(name=_("Level 9"), value=_("**???**: Suggestions are welcome"))  # TODO
 
