@@ -41,7 +41,7 @@ class DucksHuntingCommands(Cog):
 
         language_code = await ctx.get_language_code()
 
-        if db_hunter.active_powerups["dead"] > 0:
+        if db_hunter.is_powerup_active("dead"):
             db_hunter.shooting_stats['shots_when_dead'] += 1
             await db_hunter.save()
             await ctx.reply(_("☠️ It's a little cold in there... Maybe because **you are DEAD**! have you tried eating BRAINS ? `{ctx.prefix}revive`...",
@@ -49,7 +49,7 @@ class DucksHuntingCommands(Cog):
                               ))
             return False
 
-        if db_hunter.active_powerups['wet'] > now:
+        if db_hunter.is_powerup_active('wet'):
             db_hunter.shooting_stats['shots_when_wet'] += 1
             await db_hunter.save()
 
@@ -119,7 +119,7 @@ class DucksHuntingCommands(Cog):
         lucky = compute_luck(level_info['reliability'])
         if db_hunter.is_powerup_active('grease'):
             lucky = lucky or compute_luck(level_info['reliability'])
-        elif db_hunter.active_powerups['sand'] > 0:
+        elif db_hunter.is_powerup_active('sand'):
             db_hunter.active_powerups['sand'] -= 1
             lucky = lucky and compute_luck(level_info['reliability'])
 
@@ -134,7 +134,7 @@ class DucksHuntingCommands(Cog):
         db_hunter.shooting_stats['bullets_used'] += 1
         db_channel = await get_from_db(ctx.channel)
 
-        homing = db_hunter.active_powerups["homing_bullets"] >= 1
+        homing = db_hunter.is_powerup_active('homing_bullets')
         if homing:
             db_hunter.active_powerups["homing_bullets"] -= 1
             db_hunter.shooting_stats['homing_kills'] += 1
@@ -169,11 +169,11 @@ class DucksHuntingCommands(Cog):
 
         # Missing
         accuracy = level_info['accuracy']
-        if db_hunter.active_powerups['mirror'] > 0:
+        if db_hunter.is_powerup_active('mirror'):
             accuracy /= 2
             db_hunter.active_powerups['mirror'] -= 1
 
-        if db_hunter.active_powerups['sight'] > 0:
+        if db_hunter.is_powerup_active('sight'):
             accuracy += int((100 - accuracy) / 3)
             db_hunter.active_powerups['sight'] -= 1
 
@@ -264,7 +264,7 @@ class DucksHuntingCommands(Cog):
         if duck:
             db_hunter.shooting_stats['shots_with_duck'] += 1
             await duck.shoot(args)
-        elif db_hunter.active_powerups['detector'] >= 1:
+        elif db_hunter.is_powerup_active('detector'):
             db_hunter.active_powerups['detector'] -= 1
             db_hunter.shooting_stats['shots_stopped_by_detector'] += 1
             db_hunter.shooting_stats['bullets_used'] -= 1
@@ -353,7 +353,7 @@ class DucksHuntingCommands(Cog):
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
-        if db_hunter.active_powerups["dead"] > 0:
+        if db_hunter.is_powerup_active("dead"):
             db_hunter.hugged['when_dead'] += 1
             await db_hunter.save()
             await ctx.reply(_("☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself",

@@ -252,8 +252,16 @@ class Player(Model):
             await self.save()
 
     def is_powerup_active(self, powerup):
-        now = time.time()
-        return self.active_powerups[powerup] >= now
+        if self.prestige >= 1 and powerup == "sunglasses":
+            return True
+        elif self.prestige >= 7 and powerup == "kill_licence":
+            return True
+
+        if powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead"]:
+            return self.active_powerups[powerup] >= 0
+        else:
+            now = time.time()
+            return self.active_powerups[powerup] >= now
 
     class Meta:
         table = "players"
