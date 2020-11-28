@@ -49,7 +49,6 @@ class DucksHuntingCommands(Cog):
                               ))
             return False
 
-
         if db_hunter.active_powerups['wet'] > now:
             db_hunter.shooting_stats['shots_when_wet'] += 1
             await db_hunter.save()
@@ -138,7 +137,6 @@ class DucksHuntingCommands(Cog):
         homing = db_hunter.active_powerups["homing_bullets"] >= 1
         if homing:
             db_hunter.active_powerups["homing_bullets"] -= 1
-            target = ctx.author
             db_hunter.shooting_stats['homing_kills'] += 1
             db_hunter.shooting_stats['missed'] += 1
             db_hunter.shooting_stats['killed'] += 1
@@ -243,7 +241,7 @@ class DucksHuntingCommands(Cog):
                                               player_name=player_name,
                                               ))
                     else:
-                        if target.id == ctx.author.id:
+                        if db_target.id == db_hunter.id:
                             await ctx.reply(_("🔫 You missed the duck... And shot yourself in the head, dying instantly. "
                                               "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
                                               ))
