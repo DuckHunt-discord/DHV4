@@ -6,6 +6,8 @@ from typing import Optional, List
 import aiohttp
 import discord
 import typing
+
+from discord.ext.commands import MaxConcurrency, BucketType
 from discord.ext.commands.bot import AutoShardedBot
 from discord.ext import commands
 
@@ -32,6 +34,7 @@ class MyBot(AutoShardedBot):
         self._client_session: Optional[aiohttp.ClientSession] = None
         self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
         self.enabled_channels: typing.Dict[discord.TextChannel, int] = {}
+        self.concurrency = MaxConcurrency(number=1, per=BucketType.channel, wait=True)
 
         asyncio.ensure_future(self.async_setup())
 
@@ -65,7 +68,9 @@ class MyBot(AutoShardedBot):
             access = db_user.get_access_level()
 
             if access != AccessLevel.BANNED:
+                await self.concurrency.acquire(message)
                 await self.invoke(ctx)
+                await self.concurrency.release(message)
 
     async def on_command(self, ctx: MyContext):
         db_user = await get_from_db(ctx.author, as_user=True)
