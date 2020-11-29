@@ -267,7 +267,7 @@ class Player(Model):
         elif self.prestige >= 7 and powerup == "kill_licence":
             return True
         elif powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead"]:
-            return self.active_powerups[powerup] >= 0
+            return self.active_powerups[powerup] > 0
         else:
             now = time.time()
             return self.active_powerups[powerup] >= now
