@@ -76,7 +76,7 @@ class PrestigeCommands(Cog):
 
     @prestige.command()
     async def confirm(self, ctx: MyContext):
-        """Execute the prestige process. Your data **WILL** be deleted."""
+        """Execute the prestige process. Almost all of your hunting data **WILL** be deleted."""
         old_db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
         _ = await ctx.get_translate_function()
@@ -108,6 +108,7 @@ class PrestigeCommands(Cog):
             new_db_hunter: Player = await get_player(ctx.author, ctx.channel)
             new_db_hunter.experience = kept_exp
             new_db_hunter.prestige = new_prestige
+            new_db_hunter.achievements = old_db_hunter.achievements
 
             level_info = new_db_hunter.level_info()
             new_db_hunter.magazines = level_info["magazines"]
