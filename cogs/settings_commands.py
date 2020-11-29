@@ -404,7 +404,7 @@ class SettingsCommands(Cog):
         _ = await ctx.get_translate_function()
 
         if value is not None:
-            if value < db_channel.base_duck_exp:
+            if value < 0:
                 await ctx.send(_("⚠️ In some cases, users may get NEGATIVE experience when killing ducks with that low of a experience.",
                                  channel=ctx.channel,
                                  ))
