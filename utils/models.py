@@ -112,6 +112,18 @@ class DiscordChannel(Model):
     super_ducks_min_life = fields.SmallIntField(default=2)
     super_ducks_max_life = fields.SmallIntField(default=7)
 
+    def serialize(self, serialize_fields=None):
+        DONT_SERIALIZE = {'guild', 'members', 'playerss', 'webhook_urls', 'api_key'}
+
+        ser = {}
+
+        if serialize_fields is None:
+            serialize_fields = self._meta.fields.copy() - DONT_SERIALIZE
+
+        for serialize_field in serialize_fields:
+            ser[serialize_field] = getattr(self, serialize_field)
+        return ser
+
     class Meta:
         table = "channels"
 
@@ -232,7 +244,7 @@ class Player(Model):
             "user_discriminator": db_user.discriminator,
             "member_access_level_override": db_member.get_access_level(),
         }
-        
+
         if serialize_fields is None:
             serialize_fields = self._meta.fields.copy() - DONT_SERIALIZE
 

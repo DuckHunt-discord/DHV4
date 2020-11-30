@@ -15,6 +15,7 @@ class RestAPI(Cog):
 
     `/api/channels`  [Global Authentication required] -> Returns some information about all channels enabled on the bot.
     `/api/channels/{channel_id}`  [Authentication required] -> Returns information about the channel, like the ducks currently spawned.
+    `/api/channels/{channel_id}/settings`  [Authentication required] -> Returns channel settings
     `/api/channels/{channel_id}/top` [No authentication required] -> Returns the top scores (all players on the channel and some info about players)
     `/api/channels/{channel_id}/player/{player_id}` [No authentication required] -> Returns *all* the data for a specific user
 
@@ -105,6 +106,23 @@ class RestAPI(Cog):
              'ducks_left_today': ducks_left,
              })
 
+    async def channel_settings(self, request):
+        """
+        /channels/<channel_id>/settings
+
+        Get information about a specific channel ID
+        """
+        channel = self.bot.get_channel(int(request.match_info['channel_id']))
+
+        if channel is None:
+            raise HTTPNotFound(reason="Unknown channel")
+
+        await self.authenticate_request(request, channel=channel)
+
+        db_channel = await get_from_db(channel)
+
+        return web.json_response(db_channel.serialize())
+
     async def channel_top(self, request):
         """
         /channels/<channel_id>/top
@@ -156,6 +174,7 @@ class RestAPI(Cog):
             web.get(f'{route_prefix}/channels', self.channels_list),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
+            web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/settings', self.channel_settings),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
         ])
         await self.runner.setup()
