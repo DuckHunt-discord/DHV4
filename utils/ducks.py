@@ -44,6 +44,7 @@ class Duck:
     def serialize(self):
         return {'category'          : self.category,
                 'spawned_at'        : self.spawned_at,
+                'spawned_for'       : self.spawned_for,
                 'lives_left'        : self.lives_left,
                 'lives'             : self._lives,
                 'webhook_parameters': self._webhook_parameters}
