@@ -13,9 +13,10 @@ class RestAPI(Cog):
 
     **Routes**:
 
+    `/api/channels`  [Global Authentication required] -> Returns some information about all channels enabled on the bot.
     `/api/channels/{channel_id}`  [Authentication required] -> Returns information about the channel, like the ducks currently spawned.
-    `/api/channels/{channel_id}/top` -> [No authentication required] Returns the top scores (all players on the channel and some info about players)
-    `/api/channels/{channel_id}/player/{player_id}` -> [No authentication required] Returns *all* the data for a specific user
+    `/api/channels/{channel_id}/top` [No authentication required] -> Returns the top scores (all players on the channel and some info about players)
+    `/api/channels/{channel_id}/player/{player_id}` [No authentication required] -> Returns *all* the data for a specific user
 
     **Authentication**:
 
@@ -60,6 +61,27 @@ class RestAPI(Cog):
             else:
                 return True
 
+    async def channels_list(self, request):
+        """
+        /channels/
+
+        Get all channels enabled on the bot
+        """
+
+        await self.authenticate_request(request)
+
+        channels = await DiscordChannel.filter(enabled=True).prefetch_related("guild").all()
+
+        return web.json_response([{
+            "channel_name": channel.name,
+            "channel_discord_id": channel.discord_id,
+            "guild_discord_id": channel.guild.discord_id,
+            "guild_name": channel.guild.name,
+            "prefix": channel.guild.prefix,
+            "vip": channel.guild.vip,
+            "language": channel.guild.language,
+        } for channel in channels])
+
     async def channel_info(self, request):
         """
         /channels/<channel_id>
@@ -74,11 +96,13 @@ class RestAPI(Cog):
         await self.authenticate_request(request, channel=channel)
 
         ducks_spawned = self.bot.ducks_spawned[channel]
+        ducks_left = self.bot.enabled_channels[channel]
 
         return web.json_response(
             {'id': channel.id,
              'name': channel.name,
-             'ducks': [duck.serialize() for duck in ducks_spawned]
+             'ducks': [duck.serialize() for duck in ducks_spawned],
+             'ducks_left_today': ducks_left,
              })
 
     async def channel_top(self, request):
@@ -129,6 +153,7 @@ class RestAPI(Cog):
         listen_port = self.config()['listen_port']
         route_prefix = self.config()['route_prefix']
         self.app.add_routes([
+            web.get(f'{route_prefix}/channels', self.channels_list),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
