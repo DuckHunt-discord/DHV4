@@ -169,7 +169,6 @@ class InventoryCommands(Cog):
 
                 await ctx.send(_('✨ Oh look, ducks! Ducks are everywhere!'))
 
-
         await db_user.save()
         await db_player.save()
 

@@ -177,7 +177,8 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['weapon'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bribed the police and brought back your weapon. The fun continues. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
+        f = discord.File("assets/bribes.gif")
+        await ctx.reply(_("💸 You bribed the police and brought back your weapon. The fun continues. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST), file=f)
 
     @shop.command(aliases=["6", "lubricant"])
     async def grease(self, ctx: MyContext):
