@@ -221,6 +221,29 @@ class Player(Model):
     resisted = DefaultDictJSONField()
     frightened = DefaultDictJSONField()
 
+    def serialize(self):
+        DONT_SERIALIZE = {'weapon_sabotaged_by', 'playerss', 'channel', 'member'}
+        db_member: DiscordMember = self.member
+        db_user: DiscordUser = db_member.user
+
+        ser = {
+            "user_id": db_user.discord_id,
+            "user_name": db_user.name,
+            "user_discriminator": db_user.discriminator,
+            "member_access_level_override": db_member.get_access_level(),
+        }
+        serialize_fields = self._meta.fields.copy() - DONT_SERIALIZE
+        for serialize_field in serialize_fields:
+            value = getattr(self, serialize_field)
+            if isinstance(value, datetime.datetime):
+                value = value.timestamp()
+            elif isinstance(value, datetime.timedelta):
+                value = value.total_seconds()
+
+            ser[serialize_field] = value
+
+        return ser
+
     @property
     def real_reliability(self):
         total_shots = self.shooting_stats["bullets_used"] + self.shooting_stats["shots_jamming_weapon"]
@@ -272,6 +295,8 @@ class Player(Model):
         else:
             now = time.time()
             return self.active_powerups[powerup] >= now
+
+
 
     class Meta:
         table = "players"
