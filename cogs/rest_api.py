@@ -13,9 +13,9 @@ class RestAPI(Cog):
 
     **Routes**:
 
-    `/api/channel/{channel_id}`  [Authentication required] -> Returns information about the channel, like the ducks currently spawned.
-    `/api/channel/{channel_id}/top` -> [No authentication required] Returns the top scores (all players on the channel and some info about players)
-    `/api/channel/{channel_id}/player/{player_id}` -> [No authentication required] Returns *all* the data for a specific user
+    `/api/channels/{channel_id}`  [Authentication required] -> Returns information about the channel, like the ducks currently spawned.
+    `/api/channels/{channel_id}/top` -> [No authentication required] Returns the top scores (all players on the channel and some info about players)
+    `/api/channels/{channel_id}/player/{player_id}` -> [No authentication required] Returns *all* the data for a specific user
 
     **Authentication**:
 
