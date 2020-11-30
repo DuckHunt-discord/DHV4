@@ -53,7 +53,7 @@ INV_LOOTBOX_ITEMS = {
 
 class ItemsMenusSource(menus.ListPageSource):
     def __init__(self, ctx: MyContext, data, title):
-        super().__init__(data, per_page=4)
+        super().__init__(data, per_page=6)
         self.ctx = ctx
         self.title = title
 
