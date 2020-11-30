@@ -69,16 +69,39 @@ class RestAPI(Cog):
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
 
-        if channel is None:
-            raise HTTPNotFound(reason="Unknown channel")
-
         await self.authenticate_request(request, channel=channel)
 
         players = await Player.all().filter(channel__discord_id=channel.id).order_by('-experience').prefetch_related("member__user")
 
+        if not players:
+            raise HTTPNotFound(reason="Unknown channel in database")
+
+        fields = ["experience", "best_times", "killed", "last_giveback"]
+
         return web.json_response([
-            player.serialize() for player in players
+            player.serialize(serialize_fields=fields) for player in players
         ])
+
+    async def player_info(self, request):
+        """
+        /channels/<channel_id>/player/<player_id>
+
+        Get players data, ordered by experience
+        """
+        channel = self.bot.get_channel(int(request.match_info['channel_id']))
+
+        await self.authenticate_request(request, channel=channel)
+
+        player = await Player\
+            .filter(channel__discord_id=channel.id,
+                    member__user__discord_id=int(request.match_info['player_id']))\
+            .first()\
+            .prefetch_related("member__user")
+
+        if not player:
+            raise HTTPNotFound(reason="Unknown player/channel/user")
+
+        return web.json_response(player.serialize())
 
     async def run(self):
         await self.bot.wait_until_ready()
@@ -88,6 +111,7 @@ class RestAPI(Cog):
         self.app.add_routes([
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
             web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
+            web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
         ])
         await self.runner.setup()
         self.site = web.TCPSite(self.runner, listen_ip, listen_port)

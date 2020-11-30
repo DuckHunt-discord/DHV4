@@ -221,7 +221,7 @@ class Player(Model):
     resisted = DefaultDictJSONField()
     frightened = DefaultDictJSONField()
 
-    def serialize(self):
+    def serialize(self, serialize_fields=None):
         DONT_SERIALIZE = {'weapon_sabotaged_by', 'playerss', 'channel', 'member'}
         db_member: DiscordMember = self.member
         db_user: DiscordUser = db_member.user
@@ -232,7 +232,10 @@ class Player(Model):
             "user_discriminator": db_user.discriminator,
             "member_access_level_override": db_member.get_access_level(),
         }
-        serialize_fields = self._meta.fields.copy() - DONT_SERIALIZE
+        
+        if serialize_fields is None:
+            serialize_fields = self._meta.fields.copy() - DONT_SERIALIZE
+
         for serialize_field in serialize_fields:
             value = getattr(self, serialize_field)
             if isinstance(value, datetime.datetime):
