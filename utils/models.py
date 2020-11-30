@@ -67,6 +67,7 @@ class DiscordChannel(Model):
     name = fields.TextField()
 
     webhook_urls = fields.JSONField(default=[])
+    api_key = fields.UUIDField(null=True)
 
     # Generic settings
     use_webhooks = fields.BooleanField(default=True)

@@ -37,6 +37,7 @@ cogs_to_load = ['jishaku',
                 'cogs.shopping_commands',
                 'cogs.duck_boss',
                 'cogs.prestige_commands',
+                'cogs.rest_api',
                 ]
 
 # The name after cogs is the name of the class
@@ -57,3 +58,13 @@ status_channel_id = 734879974842171474
 [cogs.Community]
 servers = [195260081036591104]
 rpg_role_name = "Ping me for RPG bot events"
+
+[cogs.RestAPI]
+listen_ip = "127.0.0.1"
+listen_port = "8080"
+route_prefix = "/api"
+# Access keys are actually GUIDs/UUIDs.
+# You can generate them easily. https://www.uuidgenerator.net/version4
+global_access_keys = [
+    "d84af260-c806-4066-8387-1d5144b7fa72", # DuckHunt WebInterface (exemple)
+]

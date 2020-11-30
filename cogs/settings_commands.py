@@ -4,6 +4,7 @@ Commands to change settings in a channel/server
 These commands act where they are typed!
 """
 from typing import Optional
+from uuid import uuid4
 
 import babel.lists
 import babel.numbers
@@ -652,6 +653,35 @@ class SettingsCommands(Cog):
         await ctx.send(_("On {channel.mention}, super ducks will get a minimum of {value} lives.",
                          channel=ctx.channel,
                          value=db_channel.super_ducks_max_life))
+
+    @settings.command()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
+    async def api_key(self, ctx: MyContext, enable: bool = None):
+        """
+        Enable/disabled the DuckHunt API for this channel. Will give you an API key, keep that private.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if enable is not None:
+            if not enable:
+                db_channel.api_key = None
+                await db_channel.save()
+                await ctx.send(_("👌️ Api disabled here, key deleted."))
+                return
+            else:
+                db_channel.api_key = uuid4()
+                await db_channel.save()
+                await ctx.send(_("👌️ Api is now ENABLED. Your API key will be DM'ed to you."))
+
+        api_key = db_channel.api_key
+        if api_key:
+            await ctx.author.send(_("{channel.mention} API key is `{api_key}`", channel=ctx.channel, api_key=api_key))
+        else:
+            await ctx.author.send(_("The API is disabled on {channel.mention}. "
+                                    "Enable it with `{ctx.prefix}set api_key True`", channel=ctx.channel))
+
 
     @settings.group(aliases=["access"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
