@@ -52,7 +52,7 @@ class Duck:
     @classmethod
     def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = cls(bot, channel)
-        d.spawned_at = data['spawned_at']
+        d.spawned_at = time.time() - data['spawned_for']
         d.lives_left = data['lives_left']
         d._lives = data['lives']
         d._webhook_parameters = data['webhook_parameters']
@@ -323,11 +323,10 @@ class Duck:
         self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
 
         if loud:
+            self.spawned_at = time.time()
             await self.send(message)
 
         bot.ducks_spawned[self.channel].append(self)
-
-        self.spawned_at = time.time()
 
     async def shoot(self, args):
         if await self.will_frighten():
