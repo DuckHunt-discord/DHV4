@@ -42,6 +42,8 @@ class RestAPI(Cog):
 
     async def channel_info(self, request):
         """
+        /channels/<channel_id>
+
         Get information about a specific channel ID
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
@@ -51,9 +53,12 @@ class RestAPI(Cog):
 
         await self.authenticate_request(request, channel=channel)
 
+        ducks_spawned = self.bot.ducks_spawned[channel]
+
         return web.json_response(
             {'id': channel.id,
              'name': channel.name,
+             'ducks': [duck.serialize() for duck in ducks_spawned]
              })
 
     async def run(self):
