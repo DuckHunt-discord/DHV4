@@ -2,13 +2,47 @@ import asyncio
 import time
 
 import discord
-from discord.ext import commands
+from discord.ext import commands, menus
 
 from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import Player, get_player, get_from_db
 
+
+class TopScoresSource(menus.ListPageSource):
+    def __init__(self, ctx: MyContext, data, title):
+        super().__init__(data, per_page=6)
+        self.ctx = ctx
+        self.title = title
+
+    async def format_page(self, menu, entries):
+        _ = await self.ctx.get_translate_function()
+        e = discord.Embed()
+        e.title = self.title
+        offset = menu.current_page * self.per_page
+
+        for i, item in enumerate(entries, start=offset):
+            item:Player
+            e.add_field(name=f"**{i + 1}** - {item.member.user.name}#{item.member.user.discriminator}", value=_("{exp} experience", exp=item.experience), inline=False)
+        return e
+
+
+async def show_topscores_pages(ctx, title: str):
+    pages = menus.MenuPages(
+        source=
+        TopScoresSource(
+            ctx,
+            await Player
+                .all()
+                .filter(channel__discord_id=ctx.channel.id)
+                .order_by('-experience')
+                .prefetch_related("member__user"),
+            title
+        ),
+        clear_reactions_after=True
+    )
+    await pages.start(ctx)
 
 class StatisticsCommands(Cog):
     @commands.command(aliases=["quick_stats", "quickstats"])
@@ -347,6 +381,16 @@ class StatisticsCommands(Cog):
         await ctx.reply(_("💰️ You gave {amount} experience to {reciver.mention}. ",
                           amount=amount,
                           reciver=target, ))
+
+    @commands.command(aliases=["best", "scores"])
+    @checks.channel_enabled()
+    async def top(self, ctx: MyContext):
+        """
+        Who's the best ?
+        """
+        _ = await ctx.get_translate_function()
+
+        await show_topscores_pages(ctx, _("Top Scores on #{channel}", channel=ctx.channel.name))
 
 
 setup = StatisticsCommands.setup
