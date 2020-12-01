@@ -24,7 +24,7 @@ INV_COMMON_ITEMS = {
     'vip_card':
         {"type": "item", "action": "set_vip", "uses": 1, "name": _("VIP Card"), "description": _("A nice and shiny card that allow you to set a server as VIP.")},
     'boost_exp':
-        {"type": "item", "action": "add_exp", "uses": 1, "amount": lambda: random.randint(25, 50), "name": _("A book"), "description": _("Reading it will give you experience")},
+        {"type": "item", "action": "add_exp", "uses": 1, "amount": 35, "name": _("A book"), "description": _("Reading it will give you experience")},
     'spawn_ducks':
         {"type": "item", "action": "spawn_ducks", "uses": 1, "name": _("A good ol' egg"), "description": _("Crack it open !")},
     'refill_magazines':
@@ -38,6 +38,12 @@ INV_LOOTBOX_ITEMS = {
             {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']},
         ],
     'foie_gras':
+        [
+            {"luck": 35, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']},
+            {"luck": 10, "item": INV_COMMON_ITEMS['spawn_ducks']},
+        ],
+    'fois_gras':
         [
             {"luck": 35, "item": INV_COMMON_ITEMS['boost_exp']},
             {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']},
@@ -153,10 +159,8 @@ class InventoryCommands(Cog):
                 await ctx.send(_('✨ {guild.name} is now VIP! Thanks.', guild=ctx.guild))
             elif item_action == "add_exp":
                 amount = item.get("amount")
-                if not isinstance(amount, int):
-                    db_player.experience += amount()
-                else:
-                    db_player.experience += amount
+                db_player.experience += amount
+
                 await ctx.send(_('✨ You learned a lot, adding {amount} experience points to your profile.', amount=amount))
             elif item_action == "refill_magazines":
                 level_info = db_player.level_info()
