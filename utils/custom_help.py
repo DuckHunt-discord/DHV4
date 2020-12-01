@@ -17,54 +17,60 @@ class EmbedHelpCommand(commands.HelpCommand):
     # Set the embed colour here
     COLOUR = discord.Colour.blurple()
 
-    def get_ending_note(self):
-        return 'Use {0}{1} [command] for more info on a command.'.format(self.clean_prefix, self.invoked_with)
+    def get_ending_note(self, _):
+        return _('Use {prefix}{help} [command] for more info on a command.', prefix=self.clean_prefix, help=self.invoked_with)
 
     def get_command_signature(self, command):
         return '{0.qualified_name} {0.signature}'.format(command)
 
     async def send_bot_help(self, mapping):
+        _ = await self.context.get_translate_function()
+
         embed = discord.Embed(title='Bot Commands', colour=self.COLOUR)
-        description = self.context.bot.description
+        description = _(self.context.bot.description)
         if description:
             embed.description = description
 
         for cog, commands in mapping.items():
-            name = 'No Category' if cog is None else cog.qualified_name
+            name = _('No Category') if cog is None else cog.qualified_name
             filtered = await self.filter_commands(commands, sort=True)
             if filtered:
                 value = '\u2002'.join(c.name for c in commands)
                 if cog and cog.description:
-                    value = '{0}\n{1}'.format(cog.description, value)
+                    value = '{0}\n{1}'.format(_(cog.description), _(value))
 
                 embed.add_field(name=name, value=value)
 
-        embed.set_footer(text=self.get_ending_note())
+        embed.set_footer(text=self.get_ending_note(_))
         await self.get_destination().send(embed=embed)
 
     async def send_cog_help(self, cog):
-        embed = discord.Embed(title='{0.qualified_name} Commands'.format(cog), colour=self.COLOUR)
+        _ = await self.context.get_translate_function()
+
+        embed = discord.Embed(title=_('{cog_name} Commands', cog_name=cog.qualified_name), colour=self.COLOUR)
         if cog.description:
-            embed.description = cog.description
+            embed.description = _(cog.description)
 
         filtered = await self.filter_commands(cog.get_commands(), sort=True)
         for command in filtered:
-            embed.add_field(name=self.get_command_signature(command), value=command.short_doc or '...', inline=False)
+            embed.add_field(name=self.get_command_signature(command), value=_(command.short_doc) or '...', inline=False)
 
-        embed.set_footer(text=self.get_ending_note())
+        embed.set_footer(text=self.get_ending_note(_))
         await self.get_destination().send(embed=embed)
 
     async def send_group_help(self, group):
+        _ = await self.context.get_translate_function()
+
         embed = discord.Embed(title=group.qualified_name, colour=self.COLOUR)
         if group.help:
-            embed.description = group.help
+            embed.description = _(group.help)
 
         if isinstance(group, commands.Group):
             filtered = await self.filter_commands(group.commands, sort=True)
             for command in filtered:
-                embed.add_field(name=self.get_command_signature(command), value=command.short_doc or '...', inline=False)
+                embed.add_field(name=self.get_command_signature(command), value=_(command.short_doc) or '...', inline=False)
 
-        embed.set_footer(text=self.get_ending_note())
+        embed.set_footer(text=self.get_ending_note(_))
         await self.get_destination().send(embed=embed)
 
     # This makes it so it uses the function above
