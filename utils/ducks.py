@@ -575,6 +575,7 @@ class BabyDuck(Duck):
     """
     category = 'baby'
     leave_on_hug = True
+    use_bonus_exp = False
 
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int):
         _ = await self.get_translate_function()
