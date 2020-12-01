@@ -20,7 +20,7 @@ INV_COMMON_ITEMS = {
     'welcome_package':
         {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open in the lootbox menu")},
     'foie_gras':
-        {"type": "lootbox", "action": "fois_gras", "name": _("A clean box of fois gras"), "description": _("The boss dropped that when he died")},
+        {"type": "lootbox", "action": "foie_gras", "name": _("A clean box of foie gras"), "description": _("The boss dropped that when he died")},
     'vip_card':
         {"type": "item", "action": "set_vip", "uses": 1, "name": _("VIP Card"), "description": _("A nice and shiny card that allow you to set a server as VIP.")},
     'boost_exp':
