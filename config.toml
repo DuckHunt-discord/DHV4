@@ -58,6 +58,7 @@ status_channel_id = 734879974842171474
 [cogs.Community]
 servers = [195260081036591104]
 rpg_role_name = "Ping me for RPG bot events"
+moderators_that_can_delete_with_reactions = [251996890369884161]
 
 [cogs.RestAPI]
 listen_ip = "127.0.0.1"

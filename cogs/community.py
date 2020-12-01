@@ -30,6 +30,23 @@ class Community(Cog):
         return message.guild and message.guild.id in self.config()["servers"]
 
     @Cog.listener()
+    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
+        if str(payload.emoji) != '❌':
+            return
+
+        if payload.guild_id not in self.config()["servers"]:
+            return
+
+        if payload.user_id not in self.config()["moderators_that_can_delete_with_reactions"]:
+            return
+
+        guild = self.bot.get_guild(payload.guild_id)
+        channel = guild.get_channel(payload.channel_id)
+        message = await channel.fetch_message(payload.message_id)
+        self.bot.logger.info(f"Deleting message from {message.author.name} in #{channel.name} ({guild.name}) because a mod reacted with ❌. ")
+        await message.delete()
+
+    @Cog.listener()
     async def on_message(self, message: discord.Message):
         if not await self.is_in_server(message):
             return
