@@ -8,6 +8,7 @@ import discord
 from discord.ext import commands
 
 from utils import checks
+from utils.events import Events
 from utils.interaction import get_timedelta
 
 from babel.dates import format_timedelta
@@ -168,6 +169,10 @@ class DucksHuntingCommands(Cog):
 
         # Missing
         accuracy = level_info['accuracy']
+        if self.bot.current_event == Events.WINDY:
+            # Gotta miss more
+            accuracy = max(60, accuracy*3/4)
+
         if db_hunter.is_powerup_active('mirror'):
             accuracy /= 2
             db_hunter.active_powerups['mirror'] -= 1
@@ -187,6 +192,10 @@ class DucksHuntingCommands(Cog):
 
             # Killing
             killed_someone = target or compute_luck(db_channel.kill_on_miss_chance)
+
+            if self.bot.current_event == Events.SAFETY:
+                # Double the kills
+                killed_someone = killed_someone or compute_luck(db_channel.kill_on_miss_chance)
 
             if killed_someone:
                 has_valid_kill_licence = db_hunter.is_powerup_active('kill_licence') and not murder

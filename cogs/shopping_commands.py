@@ -9,6 +9,7 @@ from discord.ext import commands
 from utils import checks, ducks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.events import Events
 from utils.interaction import get_timedelta
 from utils.models import get_player, Player, get_from_db, DiscordChannel
 
@@ -102,6 +103,11 @@ class ShoppingCommands(Cog):
 
         _ = await ctx.get_translate_function()
         language_code = await ctx.get_language_code()
+        if self.bot.current_event == Events.UN_TREATY:
+            await ctx.reply(_("❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, "
+                              "I can't sell that to you. (`{ctx.prefix}event`)",))
+            return False
+
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
@@ -136,6 +142,12 @@ class ShoppingCommands(Cog):
         ITEM_COST = 25
 
         _ = await ctx.get_translate_function()
+
+        if self.bot.current_event == Events.UN_TREATY:
+            await ctx.reply(_("❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, "
+                              "I can't sell that to you. (`{ctx.prefix}event`)",))
+            return False
+
         language_code = await ctx.get_language_code()
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
@@ -301,7 +313,11 @@ class ShoppingCommands(Cog):
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
-        clover_exp = random.randint(db_channel.clover_min_experience, db_channel.clover_max_experience)
+        max_experience = db_channel.clover_max_experience
+        if self.bot.current_event == Events.FLORIST:
+            max_experience *= 2
+
+        clover_exp = random.randint(db_channel.clover_min_experience, max_experience)
         db_hunter.experience -= ITEM_COST
         db_hunter.active_powerups["clover"] = int(time.time()) + DAY
         db_hunter.active_powerups["clover_exp"] = clover_exp

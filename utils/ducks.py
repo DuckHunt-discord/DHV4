@@ -10,6 +10,7 @@ from discord.utils import escape_markdown
 from utils import config
 from utils.bot_class import MyBot
 from utils.bushes import bushes_objects, bushes_weights
+from utils.events import Events
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player
 from utils.translations import translate
@@ -97,7 +98,13 @@ class Duck:
 
     async def get_exp_value(self) -> int:
         db_channel = await self.get_db_channel()
-        return db_channel.base_duck_exp + db_channel.per_life_exp * await self.get_lives()
+        lives = await self.get_lives()
+        exp = db_channel.base_duck_exp + db_channel.per_life_exp * (lives - 1)
+
+        if self.bot.current_event == Events.UN_TREATY:
+            exp += int(db_channel.per_life_exp/2 * (lives - 1))
+
+        return exp
 
     async def increment_hurts(self):
         db_hurter = self.db_target_lock_by
@@ -291,6 +298,8 @@ class Duck:
         return self._lives
 
     async def get_damage(self):
+        if self.bot.current_event == Events.UN_TREATY:
+            return 1
         db_hugger = self.db_target_lock_by
         if db_hugger.is_powerup_active('explosive_ammo'):
             return 3
@@ -665,7 +674,10 @@ class SuperDuck(Duck):
 
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
-        self._lives = random.randint(db_channel.super_ducks_min_life, db_channel.super_ducks_max_life)
+        max_life = db_channel.super_ducks_max_life
+        if self.bot.current_event == Events.MEGA_DUCKS:
+            max_life += 4
+        self._lives = random.randint(db_channel.super_ducks_min_life, max_life)
 
 
 class MotherOfAllDucks(SuperDuck):
@@ -686,6 +698,8 @@ class ArmoredDuck(SuperDuck):
     category = 'armored'
 
     async def get_damage(self):
+        if self.bot.current_event == Events.UN_TREATY:
+            return 1
         minus = 0
         if random.randint(0, 100) < 90:
             minus = 1
@@ -708,6 +722,9 @@ async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel):
     db_channel = await get_from_db(channel)
     weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_CATEGORIES]
     # noinspection PyPep8Naming
+    if bot.current_event == Events.STEROIDS:
+        weights[RANDOM_SPAWN_DUCKS_CLASSES.index(SuperDuck)] *= 2
+
     DuckClass: typing.Type[Duck] = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, weights)[0]
 
     return DuckClass(bot, channel)

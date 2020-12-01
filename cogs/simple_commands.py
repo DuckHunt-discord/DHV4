@@ -119,5 +119,26 @@ class SimpleCommands(Cog):
 
         await ctx.send(embed=embed, file=f)
 
+    @commands.command(aliases=["events"])
+    async def event(self, ctx: MyContext):
+        _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
+
+        now = time.time()
+        seconds_left = (60*60) - now % (60*60)
+
+        td = datetime.timedelta(seconds=seconds_left)
+
+        embed = discord.Embed(title=_("Current event: ") + _(self.bot.current_event.value[0]))
+        embed.description = _(self.bot.current_event.value[1])
+
+        formatted_td = format_timedelta(td, threshold=10, granularity='minute', locale=language_code)
+
+        embed.set_footer(text=_("Events last for one hour from the beginning to the end of the hour. Ending in {formatted_td}",
+                                formatted_td=formatted_td))
+
+        embed.color = discord.Color.dark_theme()
+
+        await ctx.send(embed=embed)
 
 setup = SimpleCommands.setup

@@ -62,7 +62,13 @@ class DucksSpawning(Cog):
 
         for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
             if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
+                if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
+                    continue
                 asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel))
+
+                if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
+                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel))
+
                 self.bot.enabled_channels[channel] -= 1
 
         for channel, ducks_queue in self.bot.ducks_spawned.items():
