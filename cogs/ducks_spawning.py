@@ -8,13 +8,13 @@ from utils import ducks
 from time import time
 
 from utils.ducks import deserialize_duck
+from utils.events import Events
 from utils.models import get_enabled_channels, DiscordChannel, get_from_db
 
 SECOND = 1
 MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
-
 
 class DucksSpawning(Cog):
     def __init__(self, bot, *args, **kwargs):
@@ -72,6 +72,9 @@ class DucksSpawning(Cog):
         CURRENT_PLANNED_DAY = now - (now % DAY)
         if CURRENT_PLANNED_DAY != self.last_planned_day:
             await self.planify(now)
+
+        if SECONDS_LEFT_TODAY % HOUR == 0:
+            await self.change_event()
 
     def cog_unload(self):
         self.background_loop.cancel()
@@ -138,7 +141,6 @@ class DucksSpawning(Cog):
 
         self.bot.logger.info(f"{ducks_count} ducks restored!")
 
-
         self.bot.logger.info(f"Planifying ducks spawns for the rest of the day")
 
         await self.planify()
@@ -163,6 +165,20 @@ class DucksSpawning(Cog):
     async def recompute_channel(self, channel: discord.TextChannel):
         db_channel = await get_from_db(channel)
         self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=int(time()))
+
+    async def change_event(self):
+        if random.randint(1, 12) != 1:
+            self.bot.logger.info("No new event this time!")
+            self.bot.current_event = Events.CALM
+        else:
+            self.bot.logger.debug("It's time for an EVENT!")
+            events = list(set(Events) - set(Events.CALM))
+            event_choosen:Events = random.choice(events)
+            self.bot.logger.info(f"New event : {event_choosen.name}")
+
+            self.bot.current_event = event_choosen
+        game = discord.Game(self.bot.current_event.value[0])
+        await self.bot.change_presence(status=discord.Status.online, activity=game)
 
 
 setup = DucksSpawning.setup

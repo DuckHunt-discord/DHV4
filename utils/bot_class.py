@@ -13,6 +13,7 @@ from discord.ext import commands
 
 from utils import config as config
 from utils.ctx_class import MyContext
+from utils.events import Events
 from utils.logger import FakeLogger
 from utils.models import get_from_db, AccessLevel
 
@@ -26,7 +27,9 @@ class MyBot(AutoShardedBot):
         self.logger = FakeLogger()
         self.config: dict = {}
         self.reload_config()
-        activity = discord.Game(self.config["bot"]["playing"])
+        #activity = discord.Game(self.config["bot"]["playing"])
+        self.current_event: Events = Events.CALM
+        activity = discord.Game(self.current_event.value[0])
         super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
