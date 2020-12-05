@@ -151,6 +151,10 @@ class DucksSpawning(Cog):
 
         await self.planify()
 
+        self.bot.logger.info(f"Rolling an event for the rest of the hour")
+
+        await self.change_event()
+
         self.bot.logger.info(f"Ducks spawning started")
 
     async def calculate_ducks_per_day(self, db_channel: DiscordChannel, now: int):
@@ -178,7 +182,7 @@ class DucksSpawning(Cog):
             self.bot.current_event = Events.CALM
         else:
             self.bot.logger.debug("It's time for an EVENT!")
-            events = list(set(Events) - set(Events.CALM))
+            events = [event for event in Events if event != Events.CALM]
             event_choosen:Events = random.choice(events)
             self.bot.logger.info(f"New event : {event_choosen.name}")
 
