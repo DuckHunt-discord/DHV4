@@ -131,6 +131,9 @@ class RestAPI(Cog):
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
 
+        if not channel:
+            raise HTTPNotFound(reason="Unknown channel")
+
         players = await Player.all().filter(channel__discord_id=channel.id).order_by('-experience').prefetch_related("member__user")
 
         if not players:
