@@ -1,5 +1,6 @@
 import datetime
 
+import aiohttp_cors
 from aiohttp import web
 from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
 from discord.ext import commands, tasks
@@ -33,6 +34,7 @@ class RestAPI(Cog):
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.app = web.Application()
+        self.cors = aiohttp_cors.setup(self.app)
         self.runner = web.AppRunner(self.app, access_log=self.bot.logger.logger)
         self.site = None
         bot.loop.create_task(self.run())
@@ -171,13 +173,24 @@ class RestAPI(Cog):
         listen_ip = self.config()['listen_ip']
         listen_port = self.config()['listen_port']
         route_prefix = self.config()['route_prefix']
-        self.app.add_routes([
-            web.get(f'{route_prefix}/channels', self.channels_list),
-            web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
-            web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
-            web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/settings', self.channel_settings),
-            web.get(f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
-        ])
+        routes = [
+            ('GET', f'{route_prefix}/channels', self.channels_list),
+            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
+            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
+            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/settings', self.channel_settings),
+            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
+        ]
+        for route_method, route_path, route_coro in routes:
+            resource = self.cors.add(self.app.router.add_resource(route_path))
+            route = self.cors.add(
+                    resource.add_route(route_method, route_coro), {
+                        "*": aiohttp_cors.ResourceOptions(
+                            allow_credentials=True,
+                            allow_headers=("X-Requested-With", "Content-Type", "Authorization",),
+                            max_age=3600,
+                        )
+                })
+
         await self.runner.setup()
         self.site = web.TCPSite(self.runner, listen_ip, listen_port)
         await self.site.start()
