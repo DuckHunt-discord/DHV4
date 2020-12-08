@@ -201,7 +201,7 @@ class RestAPI(Cog):
                     'description': command.description,
                     'parent': command.parent.name if command.parent else None,
                     'signature': command.signature,
-                    'invoke_with': f"{command.qualified_name} {command.signature}",
+                    'invoke_with': f"{command.qualified_name} {command.signature}" if command.signature else command.qualified_name,
                 }
         return commands
 
