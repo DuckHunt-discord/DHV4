@@ -60,7 +60,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ Whoops, you have too many bullets in your weapon already."))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.bullets += 1
         db_hunter.bought_items['bullets'] += 1
 
@@ -89,7 +89,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ Whoops, you have too many magazines in your backpack already... Try reloading !"))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.magazines += 1
         db_hunter.bought_items['magazines'] += 1
 
@@ -129,7 +129,7 @@ class ShoppingCommands(Cog):
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["ap_ammo"] = int(time.time()) + DAY
         db_hunter.bought_items['ap_ammo'] += 1
 
@@ -163,7 +163,7 @@ class ShoppingCommands(Cog):
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["explosive_ammo"] = int(time.time()) + DAY
         db_hunter.bought_items['explosive_ammo'] += 1
 
@@ -186,7 +186,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ Your gun isn't confiscated, why would you need a new one ?"))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.weapon_confiscated = False
         db_hunter.bought_items['weapon'] += 1
 
@@ -210,7 +210,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ Your gun is already perfectly greased, you don't need any more of that."))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["grease"] = int(time.time()) + DAY
         db_hunter.bought_items['grease'] += 1
 
@@ -233,7 +233,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ You added a new sight to your weapon recntly. You don't need a new one."))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["sight"] = 12  # 12 shots to go
         db_hunter.bought_items['sight'] += 1
 
@@ -256,7 +256,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ You already have that infrared detector on your weapon."))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["detector"] = 6
         db_hunter.bought_items['detector'] += 1
 
@@ -279,7 +279,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("❌ You already use a silencer."))
             return False
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["silencer"] = int(time.time()) + DAY
 
         if db_hunter.prestige >= 6:
@@ -320,7 +320,7 @@ class ShoppingCommands(Cog):
             max_experience *= 2
 
         clover_exp = random.randint(db_channel.clover_min_experience, max_experience)
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["clover"] = int(time.time()) + DAY
         db_hunter.active_powerups["clover_exp"] = clover_exp
 
@@ -347,7 +347,7 @@ class ShoppingCommands(Cog):
 
         previously_had = db_hunter.is_powerup_active('sunglasses')
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["sunglasses"] = int(time.time()) + DAY
         db_hunter.active_powerups["mirror"] = 0
 
@@ -375,7 +375,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["wet"] = 0
 
         db_hunter.bought_items['clothes'] += 1
@@ -396,7 +396,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["sand"] = 0
         db_hunter.weapon_sabotaged_by = None
 
@@ -426,7 +426,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         if not db_target.is_powerup_active('sunglasses'):
             db_target.active_powerups["mirror"] = 1
@@ -466,7 +466,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         db_target.active_powerups["sand"] = 1
         db_target.active_powerups["grease"] = 0
@@ -496,7 +496,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         target_has_coat = db_target.is_powerup_active('coat')
 
@@ -543,7 +543,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         db_target.weapon_sabotaged_by = db_hunter
         db_hunter.bought_items['sabotage'] += 1
@@ -570,7 +570,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         db_hunter.bought_items['decoy'] += 1
 
@@ -604,7 +604,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         db_hunter.bought_items['mechanical_duck'] += 1
 
@@ -631,7 +631,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["wet"] = 0
         db_hunter.active_powerups["coat"] = int(time.time()) + HOUR
 
@@ -654,7 +654,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["kill_licence"] = int(time.time()) + DAY
 
         db_hunter.bought_items['kill_licence'] += 1
@@ -676,7 +676,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["reloader"] = int(time.time()) + DAY
 
         db_hunter.bought_items['reloader'] += 1
@@ -698,7 +698,7 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        db_hunter.experience -= ITEM_COST
+        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
 
         db_hunter.bought_items['homing_bullets'] += 1
         db_hunter.active_powerups["homing_bullets"] = 1

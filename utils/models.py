@@ -301,6 +301,42 @@ class Player(Model):
             self.weapon_confiscated = False
             await self.save()
 
+    async def edit_experience_with_levelups(self, ctx, delta):
+        old_level_info = self.level_info()
+        self.experience += delta
+        new_level_info = self.level_info()
+
+        if old_level_info['level'] == new_level_info['level']:
+            return
+        else:
+            _ = await ctx.get_translate_function()
+            e = discord.Embed()
+            e.add_field(name=_("Experience"), value=f"{self.experience - delta} -> {self.experience}", inline=False)
+            e.add_field(name=_("Level"), value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}", inline=False)
+
+            if old_level_info['accuracy'] != new_level_info['accuracy']:
+                e.add_field(name=_("Accuracy"), value=f"{old_level_info['accuracy']}% -> {new_level_info['accuracy']}%", inline=False)
+
+            if old_level_info['reliability'] != new_level_info['reliability']:
+                e.add_field(name=_("Reliability"), value=f"{old_level_info['reliability']}% -> {new_level_info['reliability']}%", inline=False)
+
+            if old_level_info['bullets'] != new_level_info['bullets']:
+                e.add_field(name=_("Bullets"), value=f"{old_level_info['bullets']} -> {new_level_info['bullets']}")
+
+            if old_level_info['magazines'] != new_level_info['magazines']:
+                e.add_field(name=_("Magazines"), value=f"{old_level_info['magazines']} -> {new_level_info['magazines']}")
+
+            if old_level_info['level'] < new_level_info['level']:
+                # Level UP
+                e.title = _("You leveled up!")
+                e.color = discord.Colour.green()
+            else:
+                # Level DOWN
+                e.title = _("You leveled down!")
+                e.color = discord.Colour.red()
+
+            asyncio.ensure_future(ctx.send(embed=e))
+
     def is_powerup_active(self, powerup):
         if self.prestige >= 1 and powerup == "sunglasses":
             return True

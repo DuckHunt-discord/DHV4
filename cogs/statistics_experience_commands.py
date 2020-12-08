@@ -347,8 +347,8 @@ class StatisticsCommands(Cog):
 
         tax = int(amount * (db_channel.tax_on_user_send / 100) + 0.5)
 
-        db_sender.experience -= amount
-        db_reciver.experience += amount - tax
+        await db_sender.edit_experience_with_levelups(ctx, -amount)
+        await db_reciver.edit_experience_with_levelups(ctx, amount-tax)
 
         await asyncio.gather(db_sender.save(), db_reciver.save())
 
@@ -368,15 +368,15 @@ class StatisticsCommands(Cog):
         """
         Give some experience to another player. This is a cheat.
         """
-        _, db_reciver = await asyncio.gather(ctx.get_translate_function(), get_player(target, ctx.channel))
+        _, db_receiver = await asyncio.gather(ctx.get_translate_function(), get_player(target, ctx.channel))
 
         if target.bot:
             await ctx.reply(_("❌ I'm not sure that {target.mention} can play DuckHunt.", target=target))
             return False
 
-        db_reciver.experience += amount
+        await db_receiver.edit_experience_with_levelups(ctx, amount)
 
-        await db_reciver.save()
+        await db_receiver.save()
 
         await ctx.reply(_("💰️ You gave {amount} experience to {reciver.mention}. ",
                           amount=amount,

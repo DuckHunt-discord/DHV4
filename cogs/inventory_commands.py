@@ -159,7 +159,7 @@ class InventoryCommands(Cog):
                 await ctx.send(_('✨ {guild.name} is now VIP! Thanks.', guild=ctx.guild))
             elif item_action == "add_exp":
                 amount = item.get("amount")
-                db_player.experience += amount
+                await db_player.edit_experience_with_levelups(ctx, amount)
 
                 await ctx.send(_('✨ You learned a lot, adding {amount} experience points to your profile.', amount=amount))
             elif item_action == "refill_magazines":

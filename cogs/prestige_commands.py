@@ -139,7 +139,7 @@ class PrestigeCommands(Cog):
 
         added_experience = random.randint(min_experience, max_experience)
 
-        db_hunter.experience += added_experience
+        await db_hunter.edit_experience_with_levelups(ctx, added_experience)
         db_hunter.prestige_last_daily = now
         db_hunter.prestige_dailies += 1
 

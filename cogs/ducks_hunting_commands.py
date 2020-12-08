@@ -142,12 +142,12 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['killed'] += 1
             db_hunter.shooting_stats['murders'] += 1
             db_hunter.active_powerups["dead"] += 1
-            db_hunter.experience -= 2  # Missed
+            await db_hunter.edit_experience_with_levelups(ctx, -2)  # Missed
 
             has_kill_licence = db_hunter.is_powerup_active('kill_licence')
 
             if not has_kill_licence:
-                db_hunter.experience -= 15  # Kill
+                await db_hunter.edit_experience_with_levelups(ctx, -15)   # Kill
                 db_hunter.weapon_confiscated = True
 
             await db_hunter.save()
@@ -202,7 +202,7 @@ class DucksHuntingCommands(Cog):
 
                 db_hunter.shooting_stats['killed'] += 1
                 if not has_valid_kill_licence:
-                    db_hunter.experience -= 15
+                    await db_hunter.edit_experience_with_levelups(ctx, -15)
                     db_hunter.weapon_confiscated = True
 
                 if murder:
