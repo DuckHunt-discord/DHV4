@@ -1,9 +1,12 @@
 import datetime
+from typing import Union
 
 import aiohttp_cors
 from aiohttp import web
 from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
 from discord.ext import commands, tasks
+from discord.ext.commands import Command, Group
+
 from utils.cog_class import Cog
 from utils.models import get_enabled_channels, DiscordChannel, get_from_db, Player
 
@@ -176,6 +179,46 @@ class RestAPI(Cog):
 
         return web.json_response(player.serialize())
 
+    def get_help_dict(self, group: Union[Group, Cog]):
+        commands = {}
+        if isinstance(group, Group):
+            commands_list = group.commands
+        else:
+            commands_list = group.get_commands()
+
+        for command in commands_list:
+            if isinstance(command, Group):
+                commands[command.name] = self.get_help_dict(command)
+            elif not command.hidden:
+                commands[command.name] = {
+                    'name': command.qualified_name,
+                    'short_doc': command.short_doc,
+                    'brief': command.brief,
+                    'help': command.help,
+                    'usage': command.usage,
+                    'aliases': command.aliases,
+                    'enabled': command.enabled,
+                    'description': command.description,
+                    'parent': command.parent.name if command.parent else None,
+                    'signature': command.signature,
+                    'invoke_with': f"{command.qualified_name} {command.signature}",
+                }
+        return commands
+
+    async def commands(self, request):
+        """
+        /help/commands
+
+        Get list of commands
+        """
+
+        help_dict = {}
+
+        for cog_name, cog in self.bot.cogs.items():
+            help_dict = {**help_dict, **self.get_help_dict(cog)}
+
+        return web.json_response(help_dict)
+
     async def run(self):
         await self.bot.wait_until_ready()
         listen_ip = self.config()['listen_ip']
@@ -187,6 +230,7 @@ class RestAPI(Cog):
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/settings', self.channel_settings),
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
+            ('GET', f'{route_prefix}/help/commands', self.commands),
         ]
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))

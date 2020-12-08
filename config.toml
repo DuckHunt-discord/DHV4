@@ -22,8 +22,7 @@ token = ""
 
 [cogs]
 # Names of cogs to load. Usually cogs.file_name_without_py
-cogs_to_load = ['jishaku',
-                'cogs.error_handling',
+cogs_to_load = ['cogs.error_handling',
                 'cogs.simple_commands',
                 'cogs.background_loop',
                 'cogs.support_server_commands',
@@ -38,6 +37,7 @@ cogs_to_load = ['jishaku',
                 'cogs.duck_boss',
                 'cogs.prestige_commands',
                 'cogs.rest_api',
+                'jishaku',
                 ]
 
 # The name after cogs is the name of the class
