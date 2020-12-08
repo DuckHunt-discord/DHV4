@@ -86,7 +86,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_when_jammed'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("☁️ Your weapon is jammed. Reload it to clean it up !"))
+            await ctx.reply(_("☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"))
             return False
 
         if db_hunter.bullets <= 0:
@@ -127,7 +127,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_jamming_weapon'] += 1
             db_hunter.active_powerups['jammed'] = 1
             await db_hunter.save()
-            await ctx.reply(_("💥 Your weapon jammed. Consider buying grease next time."))
+            await ctx.reply(_("💥 Your weapon jammed. Reload it and consider buying grease next time."))
             return False
 
         db_hunter.bullets -= 1
