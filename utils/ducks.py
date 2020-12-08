@@ -605,7 +605,7 @@ class PlasticDuck(Duck):
     category = 'plastic'
 
     async def get_exp_value(self):
-        return await super().get_exp_value() * 0.5
+        return round(await super().get_exp_value() * 0.5)
 
 
 class KamikazeDuck(Duck):
