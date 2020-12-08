@@ -73,7 +73,7 @@ class DucksHuntingCommands(Cog):
             sabotager = await db_hunter.weapon_sabotaged_by.get().prefetch_related("member__user").get()
 
             db_hunter.weapon_sabotaged_by = None
-            db_hunter.active_powerups['jammed'] = True
+            db_hunter.active_powerups['jammed'] = 1
             db_hunter.shooting_stats['shots_when_sabotaged'] += 1
             await db_hunter.save()
 
