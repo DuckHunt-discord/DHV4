@@ -6,6 +6,7 @@ from babel.dates import format_timedelta
 from babel.lists import format_list
 from discord.ext import commands
 
+from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.images import get_random_image
@@ -53,6 +54,7 @@ class SimpleCommands(Cog):
             f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
 
     @commands.command(aliases=["giveback"])
+    @checks.channel_enabled()
     async def freetime(self, ctx: MyContext):
         """
         Get the time when you'll get free magazines and your weapon back from the police
@@ -75,6 +77,7 @@ class SimpleCommands(Cog):
                          ))
 
     @commands.command()
+    @checks.channel_enabled()
     async def prefix(self, ctx: MyContext):
         """
         Get the bot prefixes
@@ -97,6 +100,7 @@ class SimpleCommands(Cog):
                              global_prefixes_list=global_prefixes_list))
 
     @commands.command(aliases=["helpers", "whomadethis"])
+    @checks.channel_enabled()
     async def credits(self, ctx: MyContext):
         """
         Thanks to those fine people who (helped) make the bot
@@ -120,6 +124,7 @@ class SimpleCommands(Cog):
         await ctx.send(embed=embed, file=f)
 
     @commands.command(aliases=["events"])
+    @checks.channel_enabled()
     async def event(self, ctx: MyContext):
         _ = await ctx.get_translate_function()
         language_code = await ctx.get_language_code()

@@ -257,6 +257,9 @@ class Player(Model):
 
             ser[serialize_field] = value
 
+            if serialize_field == "killed":
+                ser["killed_total"] = sum(self.killed.values())
+
         return ser
 
     @property
