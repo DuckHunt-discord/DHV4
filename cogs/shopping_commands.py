@@ -38,6 +38,8 @@ class ShoppingCommands(Cog):
     def ensure_enough_experience(self, db_hunter, item_cost):
         if db_hunter.experience < item_cost:
             raise NotEnoughExperience(needed=item_cost, having=db_hunter.experience)
+        else:
+            db_hunter.spent_experience += item_cost
 
     @shop.command(aliases=["1"])
     async def bullet(self, ctx: MyContext):
