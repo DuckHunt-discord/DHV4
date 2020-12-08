@@ -182,12 +182,12 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        if not db_hunter.weapon_confiscated:
+        if not db_hunter.is_powerup_active('confiscated'):
             await ctx.reply(_("❌ Your gun isn't confiscated, why would you need a new one ?"))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.weapon_confiscated = False
+        db_hunter.active_powerups['confiscated'] = 0
         db_hunter.bought_items['weapon'] += 1
 
         await db_hunter.save()

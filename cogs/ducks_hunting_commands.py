@@ -59,7 +59,7 @@ class DucksHuntingCommands(Cog):
                               time_delta=format_timedelta(td, locale=language_code)))
             return False
 
-        if db_hunter.weapon_confiscated:
+        if db_hunter.is_powerup_active("confiscated"):
             db_hunter.shooting_stats['shots_when_confiscated'] += 1
             await db_hunter.save()
 
@@ -73,7 +73,7 @@ class DucksHuntingCommands(Cog):
             sabotager = await db_hunter.weapon_sabotaged_by.get().prefetch_related("member__user").get()
 
             db_hunter.weapon_sabotaged_by = None
-            db_hunter.weapon_jammed = True
+            db_hunter.active_powerups['jammed'] = True
             db_hunter.shooting_stats['shots_when_sabotaged'] += 1
             await db_hunter.save()
 
@@ -82,7 +82,7 @@ class DucksHuntingCommands(Cog):
                               sabotager=sabotager.member.user))
             return False
 
-        if db_hunter.weapon_jammed:
+        if db_hunter.is_powerup_active('jammed'):
             db_hunter.shooting_stats['shots_when_jammed'] += 1
             await db_hunter.save()
 
@@ -125,7 +125,7 @@ class DucksHuntingCommands(Cog):
 
         if not lucky:
             db_hunter.shooting_stats['shots_jamming_weapon'] += 1
-            db_hunter.weapon_jammed = True
+            db_hunter.active_powerups['jammed'] = 1
             await db_hunter.save()
             await ctx.reply(_("💥 Your weapon jammed. Consider buying grease next time."))
             return False
@@ -148,7 +148,7 @@ class DucksHuntingCommands(Cog):
 
             if not has_kill_licence:
                 await db_hunter.edit_experience_with_levelups(ctx, -15)   # Kill
-                db_hunter.weapon_confiscated = True
+                db_hunter.active_powerups["confiscated"] = 1
 
             await db_hunter.save()
 
@@ -203,7 +203,7 @@ class DucksHuntingCommands(Cog):
                 db_hunter.shooting_stats['killed'] += 1
                 if not has_valid_kill_licence:
                     await db_hunter.edit_experience_with_levelups(ctx, -15)
-                    db_hunter.weapon_confiscated = True
+                    db_hunter.active_powerups["confiscated"] = 1
 
                 if murder:
                     db_target: Player = await get_player(target, ctx.channel)
@@ -295,7 +295,7 @@ class DucksHuntingCommands(Cog):
         db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
         now = int(time.time())
 
-        if db_hunter.weapon_confiscated:
+        if db_hunter.is_powerup_active('confiscated'):
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1
             await db_hunter.save()
 
@@ -304,8 +304,8 @@ class DucksHuntingCommands(Cog):
                               ctx=ctx))
             return False
 
-        if db_hunter.weapon_jammed:
-            db_hunter.weapon_jammed = False
+        if db_hunter.is_powerup_active('jammed'):
+            db_hunter.active_powerups['jammed'] = 0
             await db_hunter.save()
 
             await ctx.reply(_("☀️️ You unjam your weapon !"))

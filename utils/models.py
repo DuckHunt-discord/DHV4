@@ -220,11 +220,7 @@ class Player(Model):
     # Weapon & Player status
     last_giveback = fields.DatetimeField(auto_now_add=True)
 
-    weapon_confiscated = fields.BooleanField(default=False)
-    weapon_jammed = fields.BooleanField(default=False)
     weapon_sabotaged_by = fields.ForeignKeyField('models.Player', null=True, on_delete=fields.SET_NULL)
-
-    is_dazzled = fields.BooleanField(default=False)
 
     # Killed ducks stats
     best_times = DefaultDictJSONField(default_factory=lambda: 660)
@@ -299,7 +295,7 @@ class Player(Model):
             self.last_giveback = now
             self.givebacks += 1
             self.magazines = level_info["magazines"]
-            self.weapon_confiscated = False
+            self.active_powerups['confiscated'] = 0
             await self.save()
 
     async def edit_experience_with_levelups(self, ctx, delta):
@@ -355,7 +351,7 @@ class Player(Model):
             return True
         elif self.prestige >= 7 and powerup == "kill_licence":
             return True
-        elif powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead"]:
+        elif powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead", "confiscated", "jammed"]:
             return self.active_powerups[powerup] > 0
         else:
             now = time.time()
