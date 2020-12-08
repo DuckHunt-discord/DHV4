@@ -438,7 +438,7 @@ class Duck:
             bonus_experience = await db_killer.get_bonus_experience(won_experience)
             won_experience += bonus_experience
 
-        db_killer.experience += won_experience
+        await db_killer.edit_experience_with_levelups(self.channel, won_experience)
 
         bushes_coro = await self.maybe_bushes_message(killer, db_killer)
 

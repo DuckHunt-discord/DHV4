@@ -14,6 +14,7 @@ from tortoise.models import Model
 
 from enum import IntEnum, unique
 from utils.levels import get_level_info
+from utils.translations import translate
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
 
@@ -309,7 +310,17 @@ class Player(Model):
         if old_level_info['level'] == new_level_info['level']:
             return
         else:
-            _ = await ctx.get_translate_function()
+            if isinstance(ctx, discord.TextChannel):
+                guild = ctx.guild
+                db_guild = await get_from_db(guild)
+                language_code = db_guild.language
+
+                def _(message):
+                    return translate(message, language_code)
+
+            else:
+                _ = await ctx.get_translate_function()
+
             e = discord.Embed()
             e.add_field(name=_("Experience"), value=f"{self.experience - delta} -> {self.experience}", inline=False)
             e.add_field(name=_("Level"), value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}", inline=False)

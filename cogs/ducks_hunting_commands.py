@@ -188,7 +188,7 @@ class DucksHuntingCommands(Cog):
 
             if missed:
                 db_hunter.shooting_stats['missed'] += 1
-                db_hunter.experience -= 2
+                await db_hunter.edit_experience_with_levelups(ctx, -2)
 
             # Killing
             killed_someone = target or compute_luck(db_channel.kill_on_miss_chance)
@@ -281,7 +281,7 @@ class DucksHuntingCommands(Cog):
             await ctx.reply(_("🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped the shot."))
         else:
             db_hunter.shooting_stats['shots_without_ducks'] += 1
-            db_hunter.experience -= 2
+            await db_hunter.edit_experience_with_levelups(ctx, -2)
             await db_hunter.save()
             await ctx.reply(_("❓️ What are you trying to kill exactly ? There are no ducks here. [**MISSED**: -2 exp]"))
 
