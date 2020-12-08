@@ -1,7 +1,7 @@
 import asyncio
 import random
 import time
-from typing import Optional
+from typing import Optional, Union
 from urllib.parse import quote_plus
 
 import discord
@@ -349,7 +349,7 @@ class DucksHuntingCommands(Cog):
 
     @commands.command()
     @checks.channel_enabled()
-    async def hug(self, ctx: MyContext, target: Optional[discord.Member], *args):
+    async def hug(self, ctx: MyContext, target: Optional[Union[discord.Member, str]], *args):
         """
         Hug the duck that appeared first on the channel.
         """
@@ -369,7 +369,17 @@ class DucksHuntingCommands(Cog):
                               ))
             return False
 
-        if target:
+        if isinstance(target, str):
+            if target.lower() not in ["tree", _("tree").lower()]:
+                await ctx.reply(_("❌ I have no idea what you want to hug..."))
+                return False
+            else:
+                await ctx.reply(_("🌳 You hugged the tree... Thanks!"))
+                db_hunter.hugged['trees'] += 1
+                await db_hunter.save()
+                return
+
+        elif target:
             db_hunter.hugged['players'] += 1
             await db_hunter.save()
             await ctx.reply(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
