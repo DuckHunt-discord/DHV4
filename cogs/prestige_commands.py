@@ -108,7 +108,7 @@ class PrestigeCommands(Cog):
             new_db_hunter: Player = await get_player(ctx.author, ctx.channel)
             new_db_hunter.experience = kept_exp
             new_db_hunter.prestige = new_prestige
-            new_db_hunter.achievements = old_db_hunter.achievements
+            new_db_hunter.stored_achievements = old_db_hunter.stored_achievements
 
             level_info = new_db_hunter.level_info()
             new_db_hunter.magazines = level_info["magazines"]

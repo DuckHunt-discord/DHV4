@@ -25,11 +25,13 @@ class DefaultDictJSONField(fields.JSONField):
         kwargs["default"] = collections.defaultdict(default_factory)
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[collections.defaultdict]:
+    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
+        collections.defaultdict]:
         ret = super().to_python_value(value)
         return collections.defaultdict(self.default_factory, ret)
 
-    def to_db_value(self, value: typing.Optional[collections.defaultdict], instance: typing.Union[typing.Type[Model], Model]) -> typing.Optional[str]:
+    def to_db_value(self, value: typing.Optional[collections.defaultdict],
+                    instance: typing.Union[typing.Type[Model], Model]) -> typing.Optional[str]:
         value = dict(value)
         return super().to_db_value(value, instance)
 
@@ -154,14 +156,16 @@ class AccessLevel(IntEnum):
                 return cls(min(int(argument), 300))
             except ValueError:
                 raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
-                                             levels=babel.lists.format_list(list(AccessLevel.__members__), locale=await ctx.get_language_code())))
+                                             levels=babel.lists.format_list(list(AccessLevel.__members__),
+                                                                            locale=await ctx.get_language_code())))
         else:
             if not argument.upper().startswith('BOT'):
                 try:
                     return getattr(cls, argument.upper())
                 except AttributeError:
                     raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
-                                                 levels=babel.lists.format_list(list(AccessLevel.__members__), locale=await ctx.get_language_code())))
+                                                 levels=babel.lists.format_list(list(AccessLevel.__members__),
+                                                                                locale=await ctx.get_language_code())))
             else:
                 raise commands.BadArgument(_("Can't set such a high level"))
 
@@ -200,9 +204,9 @@ class Player(Model):
 
     # Inventories
     active_powerups = DefaultDictJSONField(default_factory=int)  # Until a timestamp.
-    shooting_stats  = DefaultDictJSONField(default_factory=int)  # Count of times.
+    shooting_stats = DefaultDictJSONField(default_factory=int)  # Count of times.
 
-    achievements = DefaultDictJSONField(default_factory=bool)
+    stored_achievements = DefaultDictJSONField(default_factory=bool)
 
     experience = fields.BigIntField(default=0)
     spent_experience = fields.BigIntField(default=0)
@@ -275,6 +279,10 @@ class Player(Model):
         else:
             return 0
 
+    @property
+    def achievements(self):
+        return self.stored_achievements
+
     async def get_bonus_experience(self, given_experience):
         if self.is_powerup_active('clover'):
             return self.active_powerups['clover_exp']
@@ -319,19 +327,24 @@ class Player(Model):
 
             e = discord.Embed()
             e.add_field(name=_("Experience"), value=f"{self.experience - delta} -> {self.experience}", inline=False)
-            e.add_field(name=_("Level"), value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}", inline=False)
+            e.add_field(name=_("Level"),
+                        value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}",
+                        inline=False)
 
             if old_level_info['accuracy'] != new_level_info['accuracy']:
-                e.add_field(name=_("Accuracy"), value=f"{old_level_info['accuracy']}% -> {new_level_info['accuracy']}%", inline=False)
+                e.add_field(name=_("Accuracy"), value=f"{old_level_info['accuracy']}% -> {new_level_info['accuracy']}%",
+                            inline=False)
 
             if old_level_info['reliability'] != new_level_info['reliability']:
-                e.add_field(name=_("Reliability"), value=f"{old_level_info['reliability']}% -> {new_level_info['reliability']}%", inline=False)
+                e.add_field(name=_("Reliability"),
+                            value=f"{old_level_info['reliability']}% -> {new_level_info['reliability']}%", inline=False)
 
             if old_level_info['bullets'] != new_level_info['bullets']:
                 e.add_field(name=_("Bullets"), value=f"{old_level_info['bullets']} -> {new_level_info['bullets']}")
 
             if old_level_info['magazines'] != new_level_info['magazines']:
-                e.add_field(name=_("Magazines"), value=f"{old_level_info['magazines']} -> {new_level_info['magazines']}")
+                e.add_field(name=_("Magazines"),
+                            value=f"{old_level_info['magazines']} -> {new_level_info['magazines']}")
 
             if old_level_info['level'] < new_level_info['level']:
                 # Level UP
@@ -351,13 +364,12 @@ class Player(Model):
             return True
         elif self.prestige >= 7 and powerup == "kill_licence":
             return True
-        elif powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead", "confiscated", "jammed"]:
+        elif powerup in ["sight", "detector", "wet", "sand", "mirror", "homing_bullets", "dead", "confiscated",
+                         "jammed"]:
             return self.active_powerups[powerup] > 0
         else:
             now = time.time()
             return self.active_powerups[powerup] >= now
-
-
 
     class Meta:
         table = "players"
@@ -398,19 +410,24 @@ async def get_from_db(discord_object, as_user=False):
         elif isinstance(discord_object, discord.TextChannel):
             db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
             if not db_obj:
-                db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=await get_from_db(discord_object.guild))
+                db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name,
+                                        guild=await get_from_db(discord_object.guild))
                 await db_obj.save()
             return db_obj
         elif isinstance(discord_object, discord.Member) and not as_user:
-            db_obj = await DiscordMember.filter(user__discord_id=discord_object.id, guild__discord_id=discord_object.guild.id).first().prefetch_related("user", "guild")
+            db_obj = await DiscordMember.filter(user__discord_id=discord_object.id,
+                                                guild__discord_id=discord_object.guild.id).first().prefetch_related(
+                "user", "guild")
             if not db_obj:
-                db_obj = DiscordMember(guild=await get_from_db(discord_object.guild), user=await get_from_db(discord_object, as_user=True))
+                db_obj = DiscordMember(guild=await get_from_db(discord_object.guild),
+                                       user=await get_from_db(discord_object, as_user=True))
                 await db_obj.save()
             return db_obj
         elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.Member) and as_user:
             db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
             if not db_obj:
-                db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
+                db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name,
+                                     discriminator=discord_object.discriminator)
                 await db_obj.save()
 
             return db_obj
@@ -427,13 +444,13 @@ async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextCh
 
 async def get_player(member: discord.Member, channel: discord.TextChannel, giveback=False):
     async with DB_LOCKS[(member, channel)]:
-        db_obj = await Player.filter(member__user__discord_id=member.id, channel__discord_id=channel.id).prefetch_related('member__user').first()
+        db_obj = await Player.filter(member__user__discord_id=member.id,
+                                     channel__discord_id=channel.id).prefetch_related('member__user').first()
         if not db_obj:
             db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
             await db_obj.save()
         elif giveback:
             await db_obj.maybe_giveback()
-
 
         return db_obj
 
@@ -447,19 +464,19 @@ async def init_db_connection(config):
         'connections': {
             # Dict format for connection
             'default': {
-                'engine'     : 'tortoise.backends.asyncpg',
+                'engine': 'tortoise.backends.asyncpg',
                 'credentials': {
-                    'host'    : config['host'],
-                    'port'    : config['port'],
-                    'user'    : config['user'],
+                    'host': config['host'],
+                    'port': config['port'],
+                    'user': config['user'],
                     'password': config['password'],
                     'database': config['database'],
                 }
             },
         },
-        'apps'       : {
+        'apps': {
             'models': {
-                'models'            : ["utils.models", "aerich.models"],
+                'models': ["utils.models", "aerich.models"],
                 'default_connection': 'default',
             }
         }
