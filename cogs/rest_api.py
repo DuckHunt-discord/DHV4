@@ -96,7 +96,14 @@ class RestAPI(Cog):
         if channel is None:
             raise HTTPNotFound(reason="Unknown channel")
 
-        await self.authenticate_request(request, channel=channel)
+        try:
+            await self.authenticate_request(request, channel=channel)
+        except HTTPForbidden:
+            return web.json_response(
+                {'id': channel.id,
+                 'name': channel.name,
+                 'authentication': False,
+                 })
 
         ducks_spawned = self.bot.ducks_spawned[channel]
         ducks_left = self.bot.enabled_channels[channel]
@@ -106,6 +113,7 @@ class RestAPI(Cog):
              'name': channel.name,
              'ducks': [duck.serialize() for duck in ducks_spawned],
              'ducks_left_today': ducks_left,
+             'authentication': True,
              })
 
     async def channel_settings(self, request):
