@@ -773,6 +773,9 @@ async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun
     if bot.current_event == Events.STEROIDS and SuperDuck in ducks:
         weights[ducks.index(SuperDuck)] *= 2
 
+    if sum(weights) <= 0:  # Channel config is fucked anyways
+        return Duck(bot, channel)
+
     DuckClass: typing.Type[Duck] = random.choices(ducks, weights)[0]
 
     return DuckClass(bot, channel)
