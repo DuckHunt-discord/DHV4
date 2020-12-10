@@ -20,6 +20,7 @@ DUCKS_IMAGES = {
     'armored': 'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
     'baby': 'https://media.discordapp.net/attachments/737978240966066177/738490902762225704/baby_duck.png',
     'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
+    'normal': 'https://cdn.discordapp.com/attachments/737978240966066177/786674722854797352/normal.png'
 }
 
 DUCKS_EMOJIS = {
@@ -72,7 +73,7 @@ normal = {
             _("The duck chickened out.")],
     'bye_traces': ["·°'`'°-.,¸¸.·°'`"],
     'usernames': [_("A duck"), _("Mr. Duck"), _("ISO Duck")],
-    'avatar_urls': [DUCKS_IMAGES['emoji']],
+    'avatar_urls': [DUCKS_IMAGES['normal']],
 }
 
 ghost = {
@@ -146,6 +147,16 @@ moad = {
 armored = {**super,
            'avatar_urls': [DUCKS_IMAGES['armored']],
            }
+
+night = {
+    **normal,
+    'shouts': [_("*coin*"), _("*Don't make a noise, it's nighttime*"), _("*Shhhhh*")],
+}
+
+sleeping = {
+    **normal,
+    'shouts': ["💤", "ZzZzZz"],
+}
 
 
 def max_ducks_per_day(membercount):
