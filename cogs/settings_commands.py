@@ -171,7 +171,7 @@ class SettingsCommands(Cog):
                            _("You can call me with any of the global prefixes : {global_prefixes_list}",
                              global_prefixes_list=global_prefixes_list))
 
-    @settings.command()
+    @settings.command(aliases=["lang", "speak"])
     @checks.needs_access_level(models.AccessLevel.MODERATOR)
     @checks.channel_enabled()
     async def language(self, ctx: MyContext, language_code: Optional[str] = None):
@@ -670,7 +670,10 @@ class SettingsCommands(Cog):
     @checks.channel_enabled()
     async def night_time(self, ctx: MyContext, night_start: str = None, night_end: str = None):
         """
-        Set the night time. Only some exclusive ducks spawn during the night
+        Set the night time. Only some exclusive ducks spawn during the night.
+
+        Times are specified in UTC. The bot does *not* honor daylight savings time (DST). You might need to edit this
+        setting twice a year if you care about DST
         """
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
