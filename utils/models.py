@@ -98,6 +98,9 @@ class DiscordChannel(Model):
     # Spawn rates
     ducks_per_day = fields.SmallIntField(default=96)
 
+    night_start_at = fields.IntField(default=0)  # Seconds from midnight UTC
+    night_end_at = fields.IntField(default=0)  # Seconds from midnight UTC
+
     spawn_weight_normal_ducks = fields.SmallIntField(default=100)
     spawn_weight_super_ducks = fields.SmallIntField(default=15)
     spawn_weight_baby_ducks = fields.SmallIntField(default=7)

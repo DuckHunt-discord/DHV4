@@ -3,6 +3,8 @@ Commands to change settings in a channel/server
 
 These commands act where they are typed!
 """
+import datetime
+import time
 from typing import Optional
 from uuid import uuid4
 
@@ -11,6 +13,7 @@ import babel.numbers
 import discord
 
 from babel import Locale
+from babel.dates import parse_time, format_timedelta, get_time_format, format_time
 
 from discord.ext import commands
 from discord.utils import escape_markdown, escape_mentions
@@ -18,9 +21,15 @@ from discord.utils import escape_markdown, escape_mentions
 from utils import checks, ducks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.ducks import compute_sun_state
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
 from utils.models import get_from_db, DiscordMember
+
+SECOND = 1
+MINUTE = 60 * SECOND
+HOUR = 60 * MINUTE
+DAY = 24 * HOUR
 
 
 class SettingsCommands(Cog):
@@ -655,6 +664,69 @@ class SettingsCommands(Cog):
         await ctx.send(_("On {channel.mention}, super ducks will get a minimum of {value} lives.",
                          channel=ctx.channel,
                          value=db_channel.super_ducks_max_life))
+
+    @settings.command(aliases=["night", "sleep", "sleeping_ducks"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
+    async def night_time(self, ctx: MyContext, night_start: str = None, night_end: str = None):
+        """
+        Set the night time. Only some exclusive ducks spawn during the night
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
+
+        if night_start is not None and night_end is not None:
+            time_format = str(get_time_format(locale=language_code, format='medium'))
+            time_example = format_time(datetime.datetime.now(), locale=language_code, format='medium')
+            try:
+                parsed_night_start = parse_time(night_start, locale=language_code)
+            except IndexError:
+                await ctx.send(_("❌ I'm sorry, I couldn't understand the time you entered for night_start. "
+                                 "I'm looking for something following this format: `{time_format}` (ex: `{time_example}`)",
+                                 time_format=time_format,
+                                 time_example=time_example))
+                return False
+
+            seconds_night_start = parsed_night_start.hour * HOUR + parsed_night_start.minute * MINUTE + parsed_night_start.second * SECOND
+
+            try:
+                parsed_night_end = parse_time(night_end, locale=language_code)
+            except IndexError:
+                await ctx.send(_("❌ I'm sorry, I couldn't understand the time you entered for night_end. "
+                                 "I'm looking for something following this format: `{time_format}` (ex: `{time_example}`)",
+                                 time_format=time_format,
+                                 time_example=time_example))
+                return False
+
+            seconds_night_end = parsed_night_end.hour * HOUR + parsed_night_end.minute * MINUTE + parsed_night_end.second * SECOND
+
+            db_channel.night_start_at = seconds_night_start
+            db_channel.night_end_at = seconds_night_end
+
+            await db_channel.save()
+
+        sun, duration_of_night, time_left_sun = await compute_sun_state(ctx.channel)
+
+        duration_of_night_td = format_timedelta(datetime.timedelta(seconds=duration_of_night), locale=language_code)
+        time_left_sun_td = format_timedelta(datetime.timedelta(seconds=time_left_sun), locale=language_code, add_direction=True)
+
+        if duration_of_night == 0:
+            await ctx.send(_("On {channel.mention}, it's currently daytime. The day will last forever.",
+                             channel=ctx.channel,))
+        elif sun == "day":
+            await ctx.send(_("On {channel.mention}, it's currently daytime, and night will fall {time_left_sun_td}. "
+                             "Night will last for {duration_of_night_td}.",
+                             channel=ctx.channel,
+                             time_left_sun_td=time_left_sun_td,
+                             duration_of_night_td=duration_of_night_td))
+        else:
+            await ctx.send(
+                _("On {channel.mention}, it's currently nighttime, and the sun will rise {time_left_sun_td}. "
+                  "A full night will last for {duration_of_night_td}.",
+                  channel=ctx.channel,
+                  time_left_sun_td=time_left_sun_td,
+                  duration_of_night_td=duration_of_night_td))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)

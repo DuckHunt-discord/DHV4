@@ -7,7 +7,7 @@ from utils.cog_class import Cog
 from utils import ducks
 from time import time
 
-from utils.ducks import deserialize_duck
+from utils.ducks import deserialize_duck, compute_sun_state
 from utils.events import Events
 from utils.models import get_enabled_channels, DiscordChannel, get_from_db
 
@@ -64,10 +64,13 @@ class DucksSpawning(Cog):
             if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
                 if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
                     continue
-                asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel))
+
+                sun, duration_of_night, time_left_sun = await compute_sun_state(channel, SECONDS_SPENT_TODAY)
+
+                asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
 
                 if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
-                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel))
+                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
 
                 self.bot.enabled_channels[channel] -= 1
 

@@ -16,6 +16,10 @@ from utils.models import DiscordChannel, get_from_db, Player, get_player
 from utils.translations import translate
 import utils.ducks_config as ducks_config
 
+SECOND = 1
+MINUTE = 60 * SECOND
+HOUR = 60 * MINUTE
+DAY = 24 * HOUR
 
 class Duck:
     """
@@ -736,7 +740,7 @@ class SleepingDuck(Duck):
     """
     category = "sleeping"
 
-    def get_accuracy(self, base_accuracy) -> int:
+    async def get_accuracy(self, base_accuracy) -> int:
         return 100
 
 
@@ -753,13 +757,16 @@ DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLAS
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun="day"):
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun=None):
     duck = await get_random_weighted_duck(bot, channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun="day"):
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun=None):
+    if sun is None:
+        sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
+
     assert sun in ["day", "night"]
     db_channel = await get_from_db(channel)
 
@@ -783,3 +790,54 @@ async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun
 
 def deserialize_duck(bot: MyBot, channel: discord.TextChannel, data: dict):
     return DUCKS_CATEGORIES_TO_CLASSES[data['category']].deserialize(bot, channel, data)
+
+
+async def compute_sun_state(channel, seconds_spent_today=None):
+    if seconds_spent_today is None:
+        now = int(time.time())
+        first_second = now - now % DAY
+        seconds_spent_today = now - first_second
+
+    db_channel = await get_from_db(channel)
+    night_start_at = db_channel.night_start_at
+    night_end_at = db_channel.night_end_at
+
+    if night_start_at == night_end_at:
+        # Fastpath: No night defined
+        sun = "day"
+        duration_of_night = 0
+        time_left_sun = DAY
+    elif night_start_at <= seconds_spent_today <= night_end_at:
+        # Case where night is from small to big
+        # Ex : 0        <= 30                  <= 60
+        sun = "night"
+        duration_of_night = night_end_at - night_start_at
+        time_left_sun = night_end_at - seconds_spent_today
+    elif night_end_at <= night_start_at <= seconds_spent_today:
+        # Case where the nights rolls over the next day
+        # Ex : 25         <= 30                  <= 2
+        sun = "night"
+        duration_of_night = DAY - night_start_at + night_end_at
+        time_left_sun = DAY - seconds_spent_today + night_end_at
+    elif night_start_at >= night_end_at >= seconds_spent_today:
+        # Case where the night rolls over the previous day
+        # Ex : 25         <= 1                   <= 2
+        sun = "night"
+        duration_of_night = DAY - night_start_at + night_end_at
+        time_left_sun = night_end_at - seconds_spent_today
+    else:
+        sun = "day"
+        if night_start_at <= night_end_at:
+            duration_of_night = night_end_at - night_start_at
+            if seconds_spent_today <= night_start_at:
+                time_left_sun = night_start_at - seconds_spent_today
+            else:
+                time_left_sun = DAY - seconds_spent_today + night_start_at
+
+        else:  # night_end_at <= night_start_at:
+            duration_of_night = DAY - night_start_at + night_end_at
+
+            time_left_sun = night_start_at - seconds_spent_today
+
+    return sun, duration_of_night, time_left_sun
+
