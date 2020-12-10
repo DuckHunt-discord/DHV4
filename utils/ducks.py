@@ -106,6 +106,24 @@ class Duck:
 
         return exp
 
+    async def get_accuracy(self, base_accuracy) -> int:
+        db_hunter = self.db_target_lock_by
+
+        accuracy = base_accuracy
+        if self.bot.current_event == Events.WINDY:
+            # Gotta miss more
+            accuracy = max(60, accuracy * 3 / 4)
+
+        if db_hunter.is_powerup_active('mirror'):
+            accuracy /= 2
+            db_hunter.active_powerups['mirror'] -= 1
+
+        if db_hunter.is_powerup_active('sight'):
+            accuracy += int((100 - accuracy) / 3)
+            db_hunter.active_powerups['sight'] -= 1
+
+        return accuracy
+
     async def increment_hurts(self):
         db_hurter = self.db_target_lock_by
         db_hurter.hurted[self.category] += 1

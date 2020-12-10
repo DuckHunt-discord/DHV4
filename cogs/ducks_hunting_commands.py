@@ -75,6 +75,7 @@ class DucksHuntingCommands(Cog):
 
             if target and sabotager.member.user.discord_id == target.id and target.id != ctx.author.id:
                 db_sabotager.stored_achievements['prevention'] = True
+                await db_sabotager.save()
 
             db_hunter.weapon_sabotaged_by = None
             db_hunter.active_powerups['jammed'] = 1
@@ -171,23 +172,22 @@ class DucksHuntingCommands(Cog):
             await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(ctx.author.name)}&top2={quote_plus(_('Signed up for the CACAC.'))}&top3=&top4=&sp=")
             return False
 
+        # Maybe a duck there
+        await db_hunter.save()
+        duck = await ctx.target_next_duck()
+
         # Missing
-        accuracy = level_info['accuracy']
-        if self.bot.current_event == Events.WINDY:
-            # Gotta miss more
-            accuracy = max(60, accuracy*3/4)
 
-        if db_hunter.is_powerup_active('mirror'):
-            accuracy /= 2
-            db_hunter.active_powerups['mirror'] -= 1
-
-        if db_hunter.is_powerup_active('sight'):
-            accuracy += int((100 - accuracy) / 3)
-            db_hunter.active_powerups['sight'] -= 1
+        if duck:
+            accuracy = await duck.get_accuracy(level_info['accuracy'])
+        else:
+            accuracy = 90  # 90% chance of knowing there is no duck.
 
         missed = not compute_luck(accuracy)
 
         if (missed and not target) or (target and not missed):
+            if duck:
+                duck.release()
             murder = bool(target)
 
             if missed:
@@ -269,9 +269,6 @@ class DucksHuntingCommands(Cog):
                 await ctx.reply(_("🌲 What did you try to aim at ? I guess you shot that tree, over here. [**MISSED**: -2 exp]",))
 
             return False
-
-        await db_hunter.save()
-        duck = await ctx.target_next_duck()
 
         if duck:
             db_hunter.shooting_stats['shots_with_duck'] += 1
