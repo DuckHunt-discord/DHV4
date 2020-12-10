@@ -180,6 +180,18 @@ class DucksHuntingCommands(Cog):
 
         if duck:
             accuracy = await duck.get_accuracy(level_info['accuracy'])
+
+            if self.bot.current_event == Events.WINDY:
+                # Gotta miss more
+                accuracy = max(60, accuracy * 3 / 4)
+
+            if db_hunter.is_powerup_active('mirror'):
+                accuracy /= 2
+                db_hunter.active_powerups['mirror'] -= 1
+
+            if db_hunter.is_powerup_active('sight'):
+                accuracy += int((100 - accuracy) / 3)
+                db_hunter.active_powerups['sight'] -= 1
         else:
             accuracy = 90  # 90% chance of knowing there is no duck.
 
