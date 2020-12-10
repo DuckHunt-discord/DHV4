@@ -199,7 +199,7 @@ class DucksHuntingCommands(Cog):
 
         if (missed and not target) or (target and not missed):
             if duck:
-                duck.release()
+                await duck.release()
             murder = bool(target)
 
             if missed:
