@@ -723,25 +723,57 @@ class ArmoredDuck(SuperDuck):
         return await super().get_damage() - minus
 
 
-RANDOM_SPAWN_DUCKS_CLASSES = [Duck, GhostDuck, PrDuck, BabyDuck, GoldenDuck, PlasticDuck, KamikazeDuck, MechanicalDuck, SuperDuck, MotherOfAllDucks, ArmoredDuck]
+class NightDuck(Duck):
+    """
+    A normal duck that only spawns at night.
+    """
+    category = 'night'
+
+
+class SleepingDuck(Duck):
+    """
+    An un-miss-able duck that you can only shot at night
+    """
+    category = "sleeping"
+
+    def get_accuracy(self, base_accuracy) -> int:
+        return 100
+
+
+RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES = [Duck, GhostDuck, PrDuck, BabyDuck, GoldenDuck, PlasticDuck, KamikazeDuck, MechanicalDuck, SuperDuck, MotherOfAllDucks, ArmoredDuck]
+DUCKS_DAYTIME_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES}
+DUCKS_DAYTIME_CATEGORIES = [dc.category for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES]
+
+RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES = [NightDuck, SleepingDuck]
+DUCKS_NIGHTTIME_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES}
+DUCKS_NIGHTTIME_CATEGORIES = [dc.category for dc in RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES]
+
+RANDOM_SPAWN_DUCKS_CLASSES = RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES + RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
 DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLASSES}
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel):
-    duck = await get_random_weighted_duck(bot, channel)
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun="day"):
+    duck = await get_random_weighted_duck(bot, channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel):
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun="day"):
+    assert sun in ["day", "night"]
     db_channel = await get_from_db(channel)
-    weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_CATEGORIES]
-    # noinspection PyPep8Naming
-    if bot.current_event == Events.STEROIDS:
-        weights[RANDOM_SPAWN_DUCKS_CLASSES.index(SuperDuck)] *= 2
 
-    DuckClass: typing.Type[Duck] = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, weights)[0]
+    if sun == "day":
+        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_DAYTIME_CATEGORIES]
+        ducks = RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES
+    else:
+        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_NIGHTTIME_CATEGORIES]
+        ducks = RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
+
+    if bot.current_event == Events.STEROIDS and SuperDuck in ducks:
+        weights[ducks.index(SuperDuck)] *= 2
+
+    DuckClass: typing.Type[Duck] = random.choices(ducks, weights)[0]
 
     return DuckClass(bot, channel)
 
