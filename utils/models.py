@@ -177,6 +177,7 @@ class DiscordUser(Model):
     times_ran_example_command = fields.IntField(default=0)
 
     inventory = fields.JSONField(default=[])
+    trophys = fields.JSONField(default={})
 
     language = fields.CharField(6, default="en")
     first_use = fields.BooleanField(default=True)
@@ -210,7 +211,6 @@ class Player(Model):
 
     experience = fields.BigIntField(default=0)
     spent_experience = fields.BigIntField(default=0)
-    murders = fields.SmallIntField(default=0)
 
     givebacks = fields.IntField(default=0)
 
@@ -281,7 +281,19 @@ class Player(Model):
 
     @property
     def achievements(self):
-        return self.stored_achievements
+        return {
+            'murderer': self.shooting_stats.get('murders', 0) >= 1,
+            'big_spender': self.spent_experience >= 2000,
+            'first_week': self.givebacks >= 7,
+            'first_month': self.givebacks >= 30,
+            'first_year': self.givebacks >= 365,
+            'i_dont_want_bullets': self.found_items.get('left_bullet', 0) >= 1,
+            'baby_killer': self.killed.get('baby', 0) >= 5,
+            'maths': self.killed.get('prof', 0) >= 5,
+            'brains': self.shooting_stats.get('brains_eaten', 0) >= 5,
+            'sentry_gun': self.shooting_stats.get('bullets_used', 0) >= 1000,
+            **self.stored_achievements
+        }
 
     async def get_bonus_experience(self, given_experience):
         if self.is_powerup_active('clover'):
