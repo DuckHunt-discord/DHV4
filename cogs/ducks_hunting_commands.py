@@ -70,7 +70,11 @@ class DucksHuntingCommands(Cog):
         sabotage = db_hunter.weapon_sabotaged_by
 
         if sabotage:
-            sabotager = await db_hunter.weapon_sabotaged_by.get().prefetch_related("member__user").get()
+            db_sabotager = await db_hunter.weapon_sabotaged_by.get()
+            sabotager = db_sabotager.prefetch_related("member__user").get()
+
+            if target and sabotager.member.user.discord_id == target.id and target.id != ctx.author.id:
+                db_sabotager.stored_achievements['prevention'] = True
 
             db_hunter.weapon_sabotaged_by = None
             db_hunter.active_powerups['jammed'] = 1

@@ -56,7 +56,7 @@ achievements = \
         },
         "gun_insurer": {
             "name": _("Gun insurer"),
-            "description": _("Give at least 40 exp to an hunter that lost his gun."),
+            "description": _("Give at least 30 exp to an hunter that lost his gun."),
         },
         "short_memory": {
             "name": _("Short memory"),

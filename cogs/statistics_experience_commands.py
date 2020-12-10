@@ -345,6 +345,9 @@ class StatisticsCommands(Cog):
             await ctx.reply(_("❌ You don't have enough experience 🤣."))
             return False
 
+        if amount >= 30 and db_reciver.is_powerup_active('confiscated'):
+            db_sender.stored_achievements['gun_insurer'] = True
+
         tax = int(amount * (db_channel.tax_on_user_send / 100) + 0.5)
 
         await db_sender.edit_experience_with_levelups(ctx, -amount)

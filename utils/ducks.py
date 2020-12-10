@@ -442,13 +442,11 @@ class Duck:
 
         bushes_coro = await self.maybe_bushes_message(killer, db_killer)
 
-        await db_killer.save()
-
         await self.send(await self.get_kill_message(killer, db_killer, won_experience, bonus_experience))
         if bushes_coro is not None:
             await bushes_coro()
 
-        await self.post_kill()
+        await self.post_kill(killer, db_killer, won_experience, bonus_experience)
 
     async def hurt(self, damage: int, args):
         hurter = self.target_lock_by
@@ -476,10 +474,12 @@ class Duck:
         self.lives_left = self.lives_left - lives
         return await self.is_killed()
 
-    async def post_kill(self):
+    async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         """
         Just in case you want to do something after a duck died.
         """
+        await db_killer.save()
+
 
     def __repr__(self):
         attributes = []
@@ -658,6 +658,12 @@ class MechanicalDuck(Duck):
                      won_experience=won_experience,
                      creator=creator)
 
+    async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
+        if killer.id == self.creator.id:
+            db_killer.stored_achievements['short_memory'] = True
+
+        await super().post_kill(killer, db_killer, won_experience, bonus_experience)
+
 
 # Super ducks #
 
@@ -687,9 +693,13 @@ class MotherOfAllDucks(SuperDuck):
     """
     category = 'moad'
 
-    async def post_kill(self):
+    async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         for i in range(2):
-            await spawn_random_weighted_duck(self.bot, self.channel)
+            d = await spawn_random_weighted_duck(self.bot, self.channel)
+            if d.category == "baby":
+                db_killer.stored_achievements['you_monster'] = True
+
+        await super().post_kill(killer, db_killer, won_experience, bonus_experience)
 
 
 class ArmoredDuck(SuperDuck):
