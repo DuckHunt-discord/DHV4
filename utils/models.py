@@ -280,7 +280,7 @@ class Player(Model):
             return 0
 
     @property
-    def achievements(self):
+    def computed_achievements(self):
         return {
             'murderer': self.shooting_stats.get('murders', 0) >= 1,
             'big_spender': self.spent_experience >= 2000,
@@ -292,7 +292,13 @@ class Player(Model):
             'maths': self.killed.get('prof', 0) >= 5,
             'brains': self.shooting_stats.get('brains_eaten', 0) >= 5,
             'sentry_gun': self.shooting_stats.get('bullets_used', 0) >= 1000,
-            **self.stored_achievements
+        }
+
+    @property
+    def achievements(self):
+        return {
+            **self.computed_achievements,
+            **self.stored_achievements,
         }
 
     async def get_bonus_experience(self, given_experience):
