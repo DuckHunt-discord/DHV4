@@ -2,6 +2,9 @@ import asyncio
 import datetime
 
 import discord
+from discord.ext import commands
+
+from utils import checks, models
 from utils.bot_class import MyBot
 from utils.human_time import ShortTime
 
@@ -25,6 +28,18 @@ class Community(Cog):
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.epic_rpg_cd_coros = {}
+
+    @commands.command()
+    @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
+    async def beta_invite(self, ctx: MyContext):
+        beta_server = self.bot.get_guild(734810932529856652)
+        beta_channel = beta_server.get_channel(734810933091762188)
+
+        _ = await ctx.get_translate_function()
+
+        invite = await beta_channel.create_invite(reason=f"{ctx.author.name} created an invite on #{ctx.channel.name} ({ctx.guild.name})", max_uses=1, max_age=120, unique=True)
+
+        await ctx.reply(_(f"Here's the invite you requested {invite}", invite=invite.url))
 
     async def is_in_server(self, message):
         return message.guild and message.guild.id in self.config()["servers"]
