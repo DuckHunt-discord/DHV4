@@ -20,6 +20,7 @@ database = "mybot"
 # Your bot token. You can find it on the Bot page of the Developper portal
 token = ""
 
+
 [cogs]
 # Names of cogs to load. Usually cogs.file_name_without_py
 cogs_to_load = ['cogs.error_handling',
