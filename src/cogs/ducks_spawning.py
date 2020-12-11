@@ -103,10 +103,10 @@ class DucksSpawning(Cog):
                 ducks_count += 1
             serialized[channel.id] = ducks_in_channel
 
-        with open("ducks_spawned_cache.json", "w") as f:
+        with open("cache/ducks_spawned_cache.json", "w") as f:
             json.dump(serialized, f)
 
-        self.bot.logger.info(f"Saved {ducks_count} to ducks_spawned_cache.json")
+        self.bot.logger.info(f"Saved {ducks_count} to cache/ducks_spawned_cache.json")
 
     async def planify(self, now=None):
         if now is None:
@@ -136,7 +136,7 @@ class DucksSpawning(Cog):
 
         ducks_count = 0
         try:
-            with open("ducks_spawned_cache.json", "r") as f:
+            with open("cache/ducks_spawned_cache.json", "r") as f:
                 serialized = json.load(f)
         except FileNotFoundError:
             self.bot.logger.warning("No ducks_spawned_cache.json found. Normal on first run.")
