@@ -146,4 +146,5 @@ class SimpleCommands(Cog):
 
         await ctx.send(embed=embed)
 
+
 setup = SimpleCommands.setup
