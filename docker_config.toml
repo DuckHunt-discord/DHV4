@@ -60,7 +60,7 @@ rpg_role_name = "Ping me for RPG bot events"
 moderators_that_can_delete_with_reactions = [251996890369884161]
 
 [cogs.RestAPI]
-listen_ip = "127.0.0.1"
+listen_ip = "0.0.0.0"
 listen_port = "8080"
 route_prefix = "/api"
 # Access keys are actually GUIDs/UUIDs.
