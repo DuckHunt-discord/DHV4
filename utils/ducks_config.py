@@ -58,7 +58,7 @@ normal = {
                _("The duck right."), _("STOP! It's not what you think!"),
                _("Killing me will cost you 1562 experience points."),
                _("I have a secret plan to kill all hunters but I'm already short on breath I don't think I'll be able to explain it all to you before..."),
-               _("[INSERT DUCK NOISE HERE]"), "<https://youtu.be/JZGjyxPc41o>",
+               _("[INSERT DUCK NOISE HERE]"), "<https://youtu.be/JZGjyxPc41o>",  _("What happened after DuckHunt was created? ||The big bang||."),
                "https://tenor.com/4nwy.gif", _("It's rabbit season."), _("Got a spare cape?"), _("Which side of a duck has more feathers? ||The outside||."),
                _("I steal money. I'm a robber ducky."), _("I'm a very special duck."), _("**DuckHunt ProTip®**: use clovers to get more experience."),
                _("**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."), _("**DuckHunt ProTip®**: use grease to prevent weapon jams"),
