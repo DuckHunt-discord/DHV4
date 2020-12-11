@@ -51,7 +51,8 @@ class MyContext(commands.Context):
                 file = message_file
 
         if reply:
-            message = await super().reply(content, file=file, files=files, **kwargs)
+            db_user = await get_from_db(self.author, as_user=True)
+            message = await super().reply(content, file=file, files=files, allowed_mentions=discord.AllowedMentions(replied_user=db_user.ping_friendly), **kwargs)
         else:
             message = await super().send(content, file=file, files=files, **kwargs)
 

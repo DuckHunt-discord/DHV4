@@ -32,6 +32,9 @@ class Community(Cog):
     @commands.command()
     @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
     async def beta_invite(self, ctx: MyContext):
+        """
+        Invite someone to the beta server, letting them try the bot before the others
+        """
         beta_server = self.bot.get_guild(734810932529856652)
         beta_channel = beta_server.get_channel(734810933091762188)
 

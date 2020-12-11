@@ -179,7 +179,7 @@ class SettingsCommands(Cog):
         Change/view the server language.
 
         Specify the server language as a 2/5 letters code. For example, if you live in France, you'd use fr or fr_FR.
-        In Québec, you could use fr_QC.
+        In Québec, you could use fr_CA.
         """
         db_guild = await get_from_db(ctx.guild)
         if language_code:
@@ -188,8 +188,11 @@ class SettingsCommands(Cog):
             except babel.UnknownLocaleError:
                 _ = await ctx.get_translate_function()
                 # Send it twice, in english and the original language.
-                await ctx.send(f"❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
-                await ctx.send(_("❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`", ctx=ctx))
+                await ctx.send(
+                    f"❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
+                await ctx.send(_(
+                    "❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`",
+                    ctx=ctx))
                 return
 
             db_guild.language = language_code
@@ -204,7 +207,8 @@ class SettingsCommands(Cog):
                              ))
 
             # Do not translate
-            await ctx.send(f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
+            await ctx.send(
+                f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
         else:
             await ctx.send(_("There is no specific language set for this guild."))
 
@@ -242,15 +246,17 @@ class SettingsCommands(Cog):
         _ = await ctx.get_translate_function()
 
         if not db_channel.use_webhooks:
-            await ctx.send(_("Webhooks are not used in this channel. Please enable them first. You can use `{command}` to do it.",
-                             command=f"{ctx.prefix}settings use_webhooks True"))
+            await ctx.send(
+                _("Webhooks are not used in this channel. Please enable them first. You can use `{command}` to do it.",
+                  command=f"{ctx.prefix}settings use_webhooks True"))
             return
 
         webhooks_count = len(db_channel.webhook_urls)
 
         webhook = await create_and_save_webhook(ctx.bot, ctx.channel, force=True)
         if webhook:
-            await ctx.send(_("Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks.", n=webhooks_count + 1))
+            await ctx.send(
+                _("Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks.", n=webhooks_count + 1))
         else:
             await ctx.send(_("I couldn't create a webhook. Double-check my permissions and try again."))
 
@@ -315,11 +321,13 @@ class SettingsCommands(Cog):
             await db_channel.save()
 
         if db_channel.tax_on_user_send:
-            await ctx.send(_("On {channel.mention}, players will pay {tax}% of tax to the bot when they share some experience.",
-                             channel=ctx.channel,
-                             tax=db_channel.tax_on_user_send))
+            await ctx.send(
+                _("On {channel.mention}, players will pay {tax}% of tax to the bot when they share some experience.",
+                  channel=ctx.channel,
+                  tax=db_channel.tax_on_user_send))
         else:
-            await ctx.send(_("Players won't have to pay any tax when sending experience to others in {channel.mention}", channel=ctx.channel))
+            await ctx.send(_("Players won't have to pay any tax when sending experience to others in {channel.mention}",
+                             channel=ctx.channel))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -339,7 +347,8 @@ class SettingsCommands(Cog):
             await ctx.send(_("On {channel.mention}, players will be mentionned when they get killed.",
                              channel=ctx.channel))
         else:
-            await ctx.send(_("Players won't get mentions when they get killed in {channel.mention}", channel=ctx.channel))
+            await ctx.send(
+                _("Players won't get mentions when they get killed in {channel.mention}", channel=ctx.channel))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -403,7 +412,8 @@ class SettingsCommands(Cog):
                              channel=ctx.channel,
                              pct=db_channel.duck_frighten_chance))
         else:
-            await ctx.send(_("Players won't frighten ducks, making the silencer useless on {channel.mention}.", channel=ctx.channel))
+            await ctx.send(_("Players won't frighten ducks, making the silencer useless on {channel.mention}.",
+                             channel=ctx.channel))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -417,9 +427,10 @@ class SettingsCommands(Cog):
 
         if value is not None:
             if value < 0:
-                await ctx.send(_("⚠️ In some cases, users may get NEGATIVE experience when killing ducks with that low of a experience.",
-                                 channel=ctx.channel,
-                                 ))
+                await ctx.send(_(
+                    "⚠️ In some cases, users may get NEGATIVE experience when killing ducks with that low of a experience.",
+                    channel=ctx.channel,
+                    ))
             elif value > db_channel.clover_max_experience:
                 await ctx.send(_("❌️ You need to provide a lower value than the one set in `clover_max_experience` !",
                                  channel=ctx.channel,
@@ -429,9 +440,10 @@ class SettingsCommands(Cog):
             db_channel.clover_min_experience = value
             await db_channel.save()
 
-        await ctx.send(_("On {channel.mention}, when a hunter buy a clover, the minimum experience given per duck kill will be of {value} for every life the duck has.",
-                         channel=ctx.channel,
-                         value=db_channel.clover_min_experience))
+        await ctx.send(_(
+            "On {channel.mention}, when a hunter buy a clover, the minimum experience given per duck kill will be of {value} for every life the duck has.",
+            channel=ctx.channel,
+            value=db_channel.clover_min_experience))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -453,9 +465,10 @@ class SettingsCommands(Cog):
             db_channel.clover_max_experience = value
             await db_channel.save()
 
-        await ctx.send(_("On {channel.mention}, when a hunter buy a clover, the maximum experience given per duck kill will be of {value}.",
-                         channel=ctx.channel,
-                         value=db_channel.clover_max_experience))
+        await ctx.send(_(
+            "On {channel.mention}, when a hunter buy a clover, the maximum experience given per duck kill will be of {value}.",
+            channel=ctx.channel,
+            value=db_channel.clover_max_experience))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -522,12 +535,13 @@ class SettingsCommands(Cog):
             elif value > maximum_value:
                 db_member = await get_from_db(ctx.author)
                 if db_member.get_access_level() >= models.AccessLevel.BOT_MODERATOR:
-                    await ctx.send(_("⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
-                                     "The number of ducks per day is limited to ensure resources are used fairly.\n "
-                                     "I'm proceeding anyway as requested, with {value} ducks per day on the channel.",
-                                     maximum_value=maximum_value,
-                                     value=int(value),
-                                     ))
+                    await ctx.send(_(
+                        "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
+                        "The number of ducks per day is limited to ensure resources are used fairly.\n "
+                        "I'm proceeding anyway as requested, with {value} ducks per day on the channel.",
+                        maximum_value=maximum_value,
+                        value=int(value),
+                        ))
                 else:
                     await ctx.send(_("⚠️️ You cannot set that higher than {maximum_value}. "
                                      "The number of ducks per day is limited to ensure resources are used fairly. "
@@ -558,10 +572,11 @@ class SettingsCommands(Cog):
         allowed_ducks_types = ducks.DUCKS_CATEGORIES
 
         if duck_type not in allowed_ducks_types:
-            await ctx.send(_("❌ I don't know what type of duck you are talking about. Choose one in {allowed_ducks_types}.",
-                             channel=ctx.channel,
-                             allowed_ducks_types=babel.lists.format_list(allowed_ducks_types, locale=await ctx.get_language_code())
-                             ))
+            await ctx.send(
+                _("❌ I don't know what type of duck you are talking about. Choose one in {allowed_ducks_types}.",
+                  channel=ctx.channel,
+                  allowed_ducks_types=babel.lists.format_list(allowed_ducks_types, locale=await ctx.get_language_code())
+                  ))
             return
 
         attr = f"spawn_weight_{duck_type}_ducks"
@@ -605,7 +620,8 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("On {channel.mention}, ducks will stay for {value} seconds.",
                          channel=ctx.channel,
-                         value=babel.numbers.format_decimal(db_channel.ducks_time_to_live, locale=await ctx.get_language_code())))
+                         value=babel.numbers.format_decimal(db_channel.ducks_time_to_live,
+                                                            locale=await ctx.get_language_code())))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -712,11 +728,12 @@ class SettingsCommands(Cog):
         sun, duration_of_night, time_left_sun = await compute_sun_state(ctx.channel)
 
         duration_of_night_td = format_timedelta(datetime.timedelta(seconds=duration_of_night), locale=language_code)
-        time_left_sun_td = format_timedelta(datetime.timedelta(seconds=time_left_sun), locale=language_code, add_direction=True)
+        time_left_sun_td = format_timedelta(datetime.timedelta(seconds=time_left_sun), locale=language_code,
+                                            add_direction=True)
 
         if duration_of_night == 0:
             await ctx.send(_("On {channel.mention}, it's currently daytime. The day will last forever.",
-                             channel=ctx.channel,))
+                             channel=ctx.channel, ))
         elif sun == "day":
             await ctx.send(_("On {channel.mention}, it's currently daytime, and night will fall {time_left_sun_td}. "
                              "Night will last for {duration_of_night_td}.",
@@ -759,7 +776,6 @@ class SettingsCommands(Cog):
             await ctx.author.send(_("The API is disabled on {channel.mention}. "
                                     "Enable it with `{ctx.prefix}set api_key True`", channel=ctx.channel))
 
-
     @settings.group(aliases=["access"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def permissions(self, ctx: MyContext):
@@ -785,13 +801,16 @@ class SettingsCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        members_with_rights = await DiscordMember.filter(access_level__not=models.AccessLevel.DEFAULT, guild__discord_id=ctx.guild.id).prefetch_related("user").all()
+        members_with_rights = await DiscordMember.filter(access_level__not=models.AccessLevel.DEFAULT,
+                                                         guild__discord_id=ctx.guild.id).prefetch_related("user").all()
 
         if members_with_rights:
             message = []
             for db_member in sorted(members_with_rights, key=lambda u: u.access_level):
                 user = await self.bot.fetch_user(db_member.user.discord_id)
-                message.append(_("{level} - {user.name}#{user.discriminator} [`{user.id}`]", level=db_member.access_level.name, user=user))
+                message.append(
+                    _("{level} - {user.name}#{user.discriminator} [`{user.id}`]", level=db_member.access_level.name,
+                      user=user))
 
             await ctx.send('\n'.join(message))
         else:
@@ -816,6 +835,70 @@ class SettingsCommands(Cog):
         await db_member.save()
 
         await ctx.send(_("{target.mention} now has a access of {level.name}.", level=level, target=target))
+
+    # User settings #
+
+    @settings.command(aliases=["ping_friendly", "i_luv_pings"])
+    @checks.channel_enabled()
+    async def ping(self, ctx: MyContext, value: bool = None):
+        """
+        Set your preference on whether replies from the bot should ping you
+        """
+        db_user = await get_from_db(ctx.author, as_user=True)
+        _ = await ctx.get_translate_function(user_language=True)
+
+        if value is not None:
+            db_user.ping_friendly = value
+            await db_user.save()
+
+        if db_user.ping_friendly:
+            await ctx.reply(_("You'll now be pinged in replies from the bot."))
+        else:
+            await ctx.reply(_("You wont be pinged anymore in replies from the bot."))
+
+    @settings.command(aliases=["my_lang"])
+    @checks.channel_enabled()
+    async def my_language(self, ctx: MyContext, language_code: str = None):
+        """
+        Change/view your own language.
+
+        Specify your language as a 2/5 letters code. For example, if you live in France, you'd use fr or fr_FR.
+        In Québec, you could use fr_CA.
+
+        Some messages will use your prefered language, usually when the bot communicates with you in DM.
+        """
+        db_user = await get_from_db(ctx.author, as_user=True)
+        if language_code:
+            try:
+                locale_data = Locale.parse(language_code)
+            except babel.UnknownLocaleError:
+                _ = await ctx.get_translate_function()
+                # Send it twice, in english and the original language.
+                await ctx.reply(
+                    f"❌ Unknown locale. If you wish to go back to the default, english language, "
+                    f"use `{ctx.prefix}{ctx.command.qualified_name} en`")
+                await ctx.reply(_(
+                    "❌ Unknown locale. If you wish to go back to the default, english language, "
+                    "use `{ctx.prefix}{ctx.command.qualified_name} en`",
+                    ctx=ctx))
+                return
+
+            db_user.language = language_code
+            await db_user.save()
+
+        _ = await ctx.get_translate_function(user_language=True)  # Deferered for the new language
+        if db_user.language:
+            locale_data = Locale.parse(db_user.language)
+            await ctx.reply(_("Your language is set to `{language}` [{language_name}].",
+                              language=escape_mentions(db_user.language),
+                              language_name=locale_data.get_display_name()
+                              ))
+
+            # Do not translate
+            await ctx.reply(
+                f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
+        else:
+            await ctx.reply(_("There is no specific language set for this guild."))
 
 
 setup = SettingsCommands.setup

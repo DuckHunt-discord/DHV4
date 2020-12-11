@@ -184,6 +184,8 @@ class DiscordUser(Model):
     inventory = fields.JSONField(default=[])
     trophys = fields.JSONField(default={})
 
+    ping_friendly = fields.BooleanField(default=True)
+
     language = fields.CharField(6, default="en")
     first_use = fields.BooleanField(default=True)
 
