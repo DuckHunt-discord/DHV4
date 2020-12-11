@@ -31,4 +31,6 @@ WORKDIR /bot/
 ENTRYPOINT ["sh"]
 CMD ["/run.sh"]
 
+STOPSIGNAL SIGINT
+
 EXPOSE 8080/tcp
