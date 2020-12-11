@@ -26,10 +26,8 @@ ENV GLOBAL_API_KEY=""
 COPY docker_config.toml /docker_config.toml
 COPY generate_config_from_env.py /generate_config_from_env.py
 
-RUN python /generate_config_from_env.py /docker_config.toml /bot/config.toml
-
 WORKDIR /bot/
-ENTRYPOINT ["python"]
-CMD ["/bot/main.py"]
+ENTRYPOINT ["sh"]
+CMD ["/docker_run.sh"]
 
 EXPOSE 8080/tcp
