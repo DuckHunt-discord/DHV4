@@ -838,7 +838,7 @@ class SettingsCommands(Cog):
 
     # User settings #
 
-    @settings.command(aliases=["ping_friendly", "i_luv_pings"])
+    @settings.command(aliases=["ping_friendly", "i_luv_pings", "pings", "my_pings", "my_ping"])
     @checks.channel_enabled()
     async def ping(self, ctx: MyContext, value: bool = None):
         """
