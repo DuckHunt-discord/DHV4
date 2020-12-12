@@ -84,7 +84,10 @@ class InventoryCommands(Cog):
     @checks.channel_enabled()
     async def inventory(self, ctx: MyContext):
         """
-        Show your inventory content (The global backpack)
+        Show your inventory content.
+
+        The inventory is global. It means that all items you can store in it can be used on (almost) every server.
+        Server administrators can disable inventory usage on specific channels.
         """
         if not ctx.invoked_subcommand:
             _ = await ctx.get_translate_function(user_language=True)
@@ -124,7 +127,7 @@ class InventoryCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
 
         if not db_channel.allow_global_items:
-            await ctx.send(_('❌ Items useage is disabled on this channel.'))
+            await ctx.send(_('❌ Items usage is disabled on this channel.'))
             return
 
         try:

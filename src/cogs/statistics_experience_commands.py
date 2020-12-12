@@ -263,11 +263,11 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["hurted", "hurtstats"])
+    @commands.command(aliases=["hurt", "hurtstats"])
     @checks.channel_enabled()
     async def hurt_stats(self, ctx: MyContext, target: discord.Member = None):
         """
-        Get number of each type of duck hurted (for you or someone else).
+        Get number of each type of duck hurt (for you or someone else).
         """
         if not target:
             target = ctx.author

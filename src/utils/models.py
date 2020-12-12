@@ -25,8 +25,7 @@ class DefaultDictJSONField(fields.JSONField):
         kwargs["default"] = collections.defaultdict(default_factory)
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
-        collections.defaultdict]:
+    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[collections.defaultdict]:
         ret = super().to_python_value(value)
         return collections.defaultdict(self.default_factory, ret)
 

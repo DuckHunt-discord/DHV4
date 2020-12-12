@@ -187,9 +187,7 @@ class RestAPI(Cog):
             commands_list = group.get_commands()
 
         for command in commands_list:
-            if isinstance(command, Group):
-                commands[command.name] = self.get_help_dict(command)
-            elif not command.hidden:
+            if not command.hidden:
                 commands[command.name] = {
                     'name': command.qualified_name,
                     'short_doc': command.short_doc,
@@ -199,10 +197,12 @@ class RestAPI(Cog):
                     'aliases': command.aliases,
                     'enabled': command.enabled,
                     'description': command.description,
-                    'parent': command.parent.name if command.parent else None,
                     'signature': command.signature,
                     'invoke_with': f"{command.qualified_name} {command.signature}" if command.signature else command.qualified_name,
                 }
+                if isinstance(command, Group):
+                    commands[command.name]['subcommands'] = self.get_help_dict(command)
+
         return commands
 
     async def commands(self, request):
