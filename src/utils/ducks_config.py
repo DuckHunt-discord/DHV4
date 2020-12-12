@@ -14,13 +14,14 @@ DUCKS_IMAGES = {
     'golden': 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e43a852-2160-46bd-a515-8e7fbfb35c8d/d3bjtk8-926fdfba-e78f-4167-ae27-4a7011e905eb.jpg/v1/fill/w_900,h_1182,q_75,strp/golden_duck_logo_by_demonicneko-d3bjtk8.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8wZTQzYTg1Mi0yMTYwLTQ2YmQtYTUxNS04ZTdmYmZiMzVjOGQvZDNianRrOC05MjZmZGZiYS1lNzhmLTQxNjctYWUyNy00YTcwMTFlOTA1ZWIuanBnIiwid2lkdGgiOiI8PTkwMCIsImhlaWdodCI6Ijw9MTE4MiJ9XV19.FUnroTGc7BKGNBvYgSgR0jOVTOEXxNojQA7Nt4dQa_U',
     'plastic': 'https://i1.wp.com/amsterdamduckstore.com/wp-content/uploads/2016/08/Marathon-Rubber-Duck.jpg?resize=400%2C400&ssl=1',
 
-    'ghost_3': 'https://cdn.discordapp.com/attachments/737978240966066177/737978506763567114/ghost_duck3.png',
-    'ghost_2': 'https://cdn.discordapp.com/attachments/737978240966066177/737980172107644969/ghost_duck2.png',
-    'ghost_1': 'https://cdn.discordapp.com/attachments/737978240966066177/737978554754793524/ghost_duck1.png',
+    'ghost_3': 'https://media.discordapp.com/attachments/737978240966066177/737978506763567114/ghost_duck3.png',
+    'ghost_2': 'https://media.discordapp.com/attachments/737978240966066177/737980172107644969/ghost_duck2.png',
+    'ghost_1': 'https://media.discordapp.com/attachments/737978240966066177/737978554754793524/ghost_duck1.png',
     'armored': 'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
     'baby': 'https://media.discordapp.net/attachments/737978240966066177/738490902762225704/baby_duck.png',
     'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
-    'normal': 'https://cdn.discordapp.com/attachments/737978240966066177/786674722854797352/normal.png'
+    'normal': 'https://media.discordapp.com/attachments/737978240966066177/786674722854797352/normal.png',
+    'super': 'https://media.discordapp.net/attachments/737978240966066177/745635356992602254/strong_duck.png',
 }
 
 DUCKS_EMOJIS = {
@@ -136,7 +137,7 @@ mechanical = {
 super = {
     **normal,
     'usernames': [_("Big Duck"), _("Strong Duck"), _("Heavy Duck")],
-    'avatar_urls': [DUCKS_IMAGES['glare'], DUCKS_IMAGES['eyebrows']],
+    'avatar_urls': [DUCKS_IMAGES['super']],
 }
 
 moad = {
