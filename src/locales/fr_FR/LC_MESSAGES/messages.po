@@ -1,0 +1,1949 @@
+# Translations template for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-23 01:02+0100\n"
+"PO-Revision-Date: 2020-11-23 01:03+0100\n"
+"Last-Translator: Arthur <arthur@jovart.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../cogs/community.py:21
+#, python-brace-format
+msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
+msgstr ""
+
+#: ../cogs/community.py:94
+#, python-brace-format
+msgid ""
+"{rpg_role.mention}, you might want to click the reaction above/do what the bot "
+"says."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:36 ../cogs/ducks_hunting_commands.py:299
+msgid ""
+"The bot is still starting up, please wait a minute and retry. Ducks haven't "
+"been lost."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:47
+#, python-brace-format
+msgid ""
+"☠️ It's a little cold in there... Maybe because **you are DEAD**! have you "
+"tried eating BRAINS ? `{ctx.prefix}revive`..."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:58
+#, python-brace-format
+msgid ""
+"🚰 Dude... Your clothes are wet, at least dry them (for **{time_delta}**) or "
+"something, or buy new ones (`{ctx.prefix}shop clothes`)"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:67
+#, python-brace-format
+msgid ""
+"⛔️ Dude... Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}"
+"freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:78
+#, python-brace-format
+msgid ""
+"💥 Your weapon was sabotaged and exploded in your face. You can thank "
+"{sabotager.member.user.name}#{sabotager.member.user.discriminator} for this "
+"bad joke."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:87
+msgid "☁️ Your weapon is jammed. Reload it to clean it up !"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:96
+#, python-brace-format
+msgid ""
+"🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | "
+"Magazines: {current_magazines}/{max_magazines}"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:115
+msgid "💥 Your weapon jammed. Consider buying grease next time."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:181
+msgid ""
+"✨ You take the new homing bullets outside of their packaging, place them in "
+"your weapon and shoot with your eyes closed..."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:184
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAC. [**WEAPON CONFISCATED**][**MISSED**: "
+"-2 exp][**MURDER**: -15 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:189
+msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:192
+#, python-brace-format
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, and "
+"pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:197
+#, python-brace-format
+msgid ""
+"🔫 You missed the duck... And shot {player_name} in the head, killing him on "
+"the spot. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:205
+msgid ""
+"🌲 What did you try to aim at ? I guess you shot that tree, over here. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:221
+msgid ""
+"🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped "
+"the shot."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:226
+msgid ""
+"❓️ What are you trying to kill exactly ? There are no ducks here. [**MISSED**: "
+"-2 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:242
+#, python-brace-format
+msgid ""
+"Dude... You don't have a weapon, it has been confiscated. Wait for freetime "
+"(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
+"weapon`)"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:251
+msgid "☀️️ You unjam your weapon !"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:263
+#, python-brace-format
+msgid ""
+"🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
+"Magazines: {current_magazines}/{max_magazines} "
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:273
+#, python-brace-format
+msgid ""
+"🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/"
+"{max_bullets} | Magazines: {current_magazines}/{max_magazines} "
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:282
+#, python-brace-format
+msgid ""
+"🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: "
+"{current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/"
+"{max_magazines} "
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:307
+#, python-brace-format
+msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:317
+#, python-brace-format
+msgid "{you.mention} hugged {other.mention}. They feel loved."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:324
+msgid "What are you trying to hug, exactly? A tree?"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:343
+msgid "You are already alive and well."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:353
+#, python-brace-format
+msgid "You eat {brains} 🧠 and regain consiousness."
+msgstr "Vous mangez {brains} 🧠 et reprenez conscience."
+
+#: ../cogs/error_handling.py:46
+#, python-brace-format
+msgid ""
+"There was an error converting one of your arguments with {exception."
+"converter}. The correct syntax would be `{command_invoke_help}`. The converter "
+"returned the following error: {original}"
+msgstr ""
+"Une erreur s'est produite lors de la conversion de l'un de vos arguments avec "
+"{exception.converter}. La syntaxe correcte pour cette commande est "
+"`{command_invoke_help}`. Le convertisseur a renvoyé l'erreur suivante: "
+"{original}"
+
+#: ../cogs/error_handling.py:53
+#, python-brace-format
+msgid ""
+"This command is missing an argument. The correct syntax would be "
+"`{command_invoke_help}`."
+msgstr ""
+"Il manque un argument à cette commande. La syntaxe correcte pour cette "
+"commande est `{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:57
+#, python-brace-format
+msgid ""
+"Too many quotes were provided in your message: don't forget to escape your "
+"quotes like this `\\{exception.quote}`. The correct syntax for the command is "
+"`{command_invoke_help}`."
+msgstr ""
+"Trop de guillemets ont été fournis dans votre message. Pensez à escaper vos "
+"guillemets en les tapant comme ceci : `\\{exception.quote}`. La syntaxe "
+"correcte pour cette commande est `{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:63
+#, python-brace-format
+msgid ""
+"A space was expected after a closing quote, but I found {exception.char}. "
+"Please check that you are using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Un espace était attendu après un guillemet fermant, mais j'ai trouvé "
+"{exception.char}. Veuillez vérifier que vous utilisez la syntaxe correcte: "
+"`{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:68
+#, python-brace-format
+msgid ""
+"A closing quote was expected, but wasn't found. Don't forget to close your "
+"quotes with `{exception.close_quote}` at the end of your argument. Please "
+"check that you are using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Un guillemet était attendu, mais n'a pas été trouvé. N'oubliez pas de fermer "
+"vos guillemets avec `{exception.close_quote}` à la fin de vos arguments. "
+"Veuillez vérifier que vous utilisez la syntaxe correcte: `{command_invoke_help}"
+"`."
+
+#: ../cogs/error_handling.py:74
+#, python-brace-format
+msgid ""
+"Too many arguments were passed in this command. Please check that you are "
+"using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Trop d'arguments ont été passés dans cette commande. Veuillez vérifier que "
+"vous utilisez la syntaxe correcte: `{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:78
+#, python-brace-format
+msgid ""
+"The way you are invoking this command is confusing me. The correct syntax "
+"would be `{command_invoke_help}`."
+msgstr ""
+"La façon dont vous invoquez cette commande me déroute. La syntaxe correcte est "
+"`{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:83
+#, python-brace-format
+msgid ""
+"An argument passed was incorrect. `{exception}`. Please check that you are "
+"using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Un argument passé était incorrect. `{exception}`. La syntaxe correcte pour "
+"cette commande est `{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:88
+#, python-brace-format
+msgid ""
+"{exception} Please check that you are using the correct syntax: "
+"`{command_invoke_help}`."
+msgstr ""
+"{exception} Veuillez vérifier que vous utilisez la syntaxe correcte: "
+"`{command_invoke_help}`."
+
+#: ../cogs/error_handling.py:97
+msgid "This command can only be used in a private message."
+msgstr "Cette commande ne peut être utilisée que dans un message privé."
+
+#: ../cogs/error_handling.py:99
+msgid "This command cannot be used in a private message."
+msgstr "Cette commande ne peut pas être utilisée dans un message privé."
+
+#: ../cogs/error_handling.py:101
+#, python-brace-format
+msgid ""
+"Multiple errors were encountered when running your command : {exception.errors}"
+msgstr ""
+"Plusieurs erreurs ont été rencontrées lors de l'exécution de votre commande: "
+"{exception.errors}"
+
+#: ../cogs/error_handling.py:104
+msgid "You need to be the owner of the bot to run that."
+msgstr "Vous devez être le propriétaire du bot pour l'exécuter."
+
+#: ../cogs/error_handling.py:119
+msgid "You need to be in a NSFW channel to run that."
+msgstr "Vous devez être dans un canal NSFW pour exécuter cette commander."
+
+#: ../cogs/error_handling.py:125
+#, python-brace-format
+msgid ""
+"You need to be in the {correct_guild.name} server (`{exception."
+"must_be_in_guild_id}`)."
+msgstr ""
+"Vous devez être sur le serveur {correct_guild.name} (`{exception."
+"must_be_in_guild_id}`)."
+
+#: ../cogs/error_handling.py:129
+#, python-brace-format
+msgid "You need to be in a server with ID {exception.must_be_in_guild_id}."
+msgstr ""
+"Vous devez être sur un serveur avec l'ID {exception.must_be_in_guild_id}."
+
+#: ../cogs/error_handling.py:133
+#, python-brace-format
+msgid ""
+"You don't have enough experience to enjoy this item. You'd need at least "
+"{exception.needed} exp, but you only have {exception.having}."
+msgstr ""
+
+#: ../cogs/error_handling.py:137
+#, python-brace-format
+msgid ""
+"Your access level is too low : you have an access level of {exception."
+"current_access.name}, and you need at least {exception.required_access.name}."
+msgstr ""
+
+#: ../cogs/error_handling.py:150
+msgid "The provided command was not found."
+msgstr "Cette commande est introuvable."
+
+#: ../cogs/error_handling.py:152
+msgid "That command has been disabled."
+msgstr "Cette commande a été désactivée."
+
+#: ../cogs/error_handling.py:154
+msgid "There was an error running the specified command. Contact the bot admins."
+msgstr ""
+"Une erreur s'est produite lors de l'exécution de cette commande. Contactez les "
+"administrateurs du bot."
+
+#: ../cogs/error_handling.py:164
+#, python-brace-format
+msgid "This command is overused. Please try again {some_time}."
+msgstr ""
+"Cette commande est sur-utilisée. Veuillez essayer de nouveau {some_time}."
+
+#: ../cogs/error_handling.py:173
+#, python-brace-format
+msgid ""
+"You are above the limits of DuckHunt database. Try to reduce your "
+"expectations. Database message: `{exception}`"
+msgstr ""
+
+#: ../cogs/error_handling.py:176
+#, fuzzy
+#| msgid ""
+#| "This should not have happened. A command raised an error that does not "
+#| "comes from CommandError. Please inform the owner."
+msgid ""
+"This should not have happened. A command raised an error that does not comes "
+"from CommandError, and isn't handled by our error handler. Please inform the "
+"owner."
+msgstr ""
+"Cela n'aurait pas dû arriver. Une commande a généré une erreur qui ne provient "
+"pas de CommandError. Veuillez informer le propriétaire du bot."
+
+#: ../cogs/inventory_commands.py:19
+msgid "A welcome gift"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:19
+msgid "Open in the lootbox menu"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:20
+msgid "A clean box of fois gras"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:20
+msgid "The boss dropped that when he died"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:21
+msgid "VIP Card"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:21
+msgid "A nice and shiny card that allow you to set a server as VIP."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:22
+msgid "A book"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:22
+msgid "Reading it will give you experience"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:23
+msgid "A free card for magazines"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:23
+msgid "Redeem it to refill your weapon."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:76
+msgid "Your inventory"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:89
+msgid "❌ Unknown item."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:94
+#, python-brace-format
+msgid "👌 Item has been given to {target.name}."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:108
+msgid "❌ Items useage is disabled on this channel."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:114
+msgid "❌ Unknown item number."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:128
+msgid "Lootbox opened"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:140
+#, python-brace-format
+msgid "✨ {guild.name} is now VIP! Thanks."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:144
+#, python-brace-format
+msgid "✨ You learned a lot, adding {amount} experience points to your profile."
+msgstr ""
+
+#: ../cogs/inventory_commands.py:149
+msgid "✨ Yay! Free ammo!"
+msgstr ""
+
+#: ../cogs/settings_commands.py:81
+msgid "DHV3-Like settings have been applied to this channel."
+msgstr ""
+
+#: ../cogs/settings_commands.py:128
+msgid "Casual mode settings have been applied to this channel."
+msgstr ""
+
+#: ../cogs/settings_commands.py:149
+#, python-brace-format
+msgid "The server prefix is set to `{prefix}`."
+msgstr "Le préfixe du serveur est défini à `{prefix}`."
+
+#: ../cogs/settings_commands.py:153
+msgid "There is no specific prefix set for this guild."
+msgstr "Il n'y a pas de préfixe spécifique dans ce serveur."
+
+#: ../cogs/settings_commands.py:173
+#, python-brace-format
+msgid ""
+"❌ Unknown locale. If you wish to go back to the default, english language, use "
+"`{ctx.prefix}{ctx.command.qualified_name} en`"
+msgstr ""
+
+#: ../cogs/settings_commands.py:182
+#, fuzzy, python-brace-format
+#| msgid "The server language is set to `{language}`."
+msgid "This server language is set to `{language}` [{language_name}]."
+msgstr "La langue du serveur est défini à `{Language}`."
+
+#: ../cogs/settings_commands.py:190
+msgid "There is no specific language set for this guild."
+msgstr "Il n’y a pas de langue spécifique définie sur le serveur."
+
+#: ../cogs/settings_commands.py:211
+msgid "Webhooks are used in this channel."
+msgstr ""
+
+#: ../cogs/settings_commands.py:213
+#, fuzzy
+#| msgid "There are no specific permissions set in this channel."
+msgid "Webhooks are not used in this channel."
+msgstr "Il n'y a pas de permissions spécifiques définies dans ce canal."
+
+#: ../cogs/settings_commands.py:226
+#, python-brace-format
+msgid ""
+"Webhooks are not used in this channel. Please enable them first. You can use "
+"`{command}` to do it."
+msgstr ""
+
+#: ../cogs/settings_commands.py:234
+#, python-brace-format
+msgid "Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks."
+msgstr ""
+
+#: ../cogs/settings_commands.py:236
+msgid "I couldn't create a webhook. Double-check my permissions and try again."
+msgstr ""
+
+#: ../cogs/settings_commands.py:253
+msgid "That channel uses emojis to spawn ducks."
+msgstr ""
+
+#: ../cogs/settings_commands.py:255
+msgid ""
+"That channel uses pure-text ducks. How does it feels to live in the IRC world ?"
+msgstr ""
+
+#: ../cogs/settings_commands.py:271
+#, python-brace-format
+msgid "Ducks will spawn on {channel.mention}"
+msgstr ""
+
+#: ../cogs/settings_commands.py:274
+#, python-brace-format
+msgid "Ducks won't spawn on {channel.mention}"
+msgstr ""
+
+#: ../cogs/settings_commands.py:299
+#, python-format, python-brace-format
+msgid ""
+"On {channel.mention}, players will pay {tax}% of tax to the bot when they "
+"share some experience."
+msgstr ""
+
+#: ../cogs/settings_commands.py:303
+#, python-brace-format
+msgid ""
+"Players won't have to pay any tax when sending experience to others in "
+"{channel.mention}"
+msgstr ""
+
+#: ../cogs/settings_commands.py:320
+#, python-brace-format
+msgid "On {channel.mention}, players will be mentionned when they get killed."
+msgstr ""
+
+#: ../cogs/settings_commands.py:323
+#, python-brace-format
+msgid "Players won't get mentions when they get killed in {channel.mention}"
+msgstr ""
+
+#: ../cogs/settings_commands.py:340
+#, python-brace-format
+msgid "On {channel.mention}, players will see the lives count of super ducks."
+msgstr ""
+
+#: ../cogs/settings_commands.py:343
+#, python-brace-format
+msgid "Players won't see lives of super ducks on {channel.mention}"
+msgstr ""
+
+#: ../cogs/settings_commands.py:360
+#, python-format, python-brace-format
+msgid ""
+"On {channel.mention}, players will kill people {pct}% of the time when missing "
+"a shot."
+msgstr ""
+
+#: ../cogs/settings_commands.py:364
+#, python-brace-format
+msgid ""
+"Players won't kill people randomly when missing shots on {channel.mention}. "
+"They can still kill people volontarly."
+msgstr ""
+
+#: ../cogs/settings_commands.py:383
+#, python-format, python-brace-format
+msgid ""
+"On {channel.mention}, players will frighten ducks {pct}% of the time when "
+"shooting."
+msgstr ""
+
+#: ../cogs/settings_commands.py:387
+#, python-brace-format
+msgid ""
+"Players won't frighten ducks, making the silencer useless on {channel.mention}."
+msgstr ""
+
+#: ../cogs/settings_commands.py:401
+msgid ""
+"⚠️ In some cases, users may get NEGATIVE experience when killing ducks with "
+"that low of a experience."
+msgstr ""
+
+#: ../cogs/settings_commands.py:405
+msgid ""
+"❌️ You need to provide a lower value than the one set in "
+"`clover_max_experience` !"
+msgstr ""
+
+#: ../cogs/settings_commands.py:413
+#, python-brace-format
+msgid ""
+"On {channel.mention}, when a hunter buy a clover, the minimum experience given "
+"per duck kill will be of {value} for every life the duck has."
+msgstr ""
+
+#: ../cogs/settings_commands.py:429
+msgid ""
+"❌️ You need to provide a higher value than the one set in "
+"`clover_min_experience` !"
+msgstr ""
+
+#: ../cogs/settings_commands.py:437
+#, python-brace-format
+msgid ""
+"On {channel.mention}, when a hunter buy a clover, the maximum experience given "
+"per duck kill will be of {value}."
+msgstr ""
+
+#: ../cogs/settings_commands.py:453 ../cogs/settings_commands.py:475
+msgid "⚠️ Giving negative experience when hunter kills ducks might be a bad idea."
+msgstr ""
+
+#: ../cogs/settings_commands.py:459 ../cogs/settings_commands.py:481
+#, python-brace-format
+msgid ""
+"On {channel.mention}, when a hunter kills a duck, the experience given will be "
+"of {value}."
+msgstr ""
+
+#: ../cogs/settings_commands.py:499
+#, python-brace-format
+msgid "❌️ To disable a channel, use `{prefix}settings enabled False`."
+msgstr ""
+
+#: ../cogs/settings_commands.py:506
+#, python-brace-format
+msgid ""
+"⚠️️ You should not set that higher than {maximum_value}, however, you have the "
+"required permissions to proceed. The number of ducks per day is limited to "
+"ensure resources are used fairly.\n"
+" I'm proceeding anyway as requested, with {value} ducks per day on the channel."
+msgstr ""
+
+#: ../cogs/settings_commands.py:513
+#, python-brace-format
+msgid ""
+"⚠️️ You cannot set that higher than {maximum_value}. The number of ducks per day "
+"is limited to ensure resources are used fairly. If you donated towards the "
+"bot, contact Eyesofcreeper#0001 to lift the limit. If not, consider donating "
+"to support me : {donor_url}."
+msgstr ""
+
+#: ../cogs/settings_commands.py:525
+#, python-brace-format
+msgid "On {channel.mention}, {value} ducks will spawn every day."
+msgstr ""
+
+#: ../cogs/settings_commands.py:542
+#, python-brace-format
+msgid ""
+"❌ I don't know what type of duck you are talking about. Choose one in "
+"{allowed_ducks_types}."
+msgstr ""
+
+#: ../cogs/settings_commands.py:551
+msgid "❌ You cannot set a negative weight."
+msgstr ""
+
+#: ../cogs/settings_commands.py:557
+#, python-brace-format
+msgid "🦆 Weight for the {duck_type} is set to {value} in {channel.mention}."
+msgstr ""
+
+#: ../cogs/settings_commands.py:575
+msgid "❌️ Ducks need to settle for a while in the pond before leaving."
+msgstr ""
+
+#: ../cogs/settings_commands.py:580
+msgid "❌️ Ducks will get bored long before that."
+msgstr ""
+
+#: ../cogs/settings_commands.py:587
+#, python-brace-format
+msgid "On {channel.mention}, ducks will stay for {value} seconds."
+msgstr ""
+
+#: ../cogs/settings_commands.py:603 ../cogs/settings_commands.py:632
+msgid "❌️ Super ducks will live !"
+msgstr ""
+
+#: ../cogs/settings_commands.py:608
+msgid ""
+"❌️ You need to provide a lower value than the one set in "
+"`super_ducks_max_life` !"
+msgstr ""
+
+#: ../cogs/settings_commands.py:616 ../cogs/settings_commands.py:645
+#, python-brace-format
+msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
+msgstr ""
+
+#: ../cogs/settings_commands.py:637
+msgid ""
+"❌️ You need to provide a higher value than the one set in "
+"`super_ducks_min_life` !"
+msgstr ""
+
+#: ../cogs/settings_commands.py:672
+#, fuzzy, python-brace-format
+#| msgid "**{member.name}#{member.discriminator} permissions**"
+msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
+msgstr "**Permissions de {member.name}#{member.discriminator}**"
+
+#: ../cogs/settings_commands.py:676
+#, fuzzy
+#| msgid "There are no specific permissions for this member."
+msgid "No members have any specific rights in the server."
+msgstr "Il n'y a pas de permissions spécifiques pour ce membre."
+
+#: ../cogs/settings_commands.py:692
+#, python-brace-format
+msgid "{target.mention} now has a access of {level.name}."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:57
+msgid "❌ Whoops, you have too many bullets in your weapon already."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:65
+#, python-brace-format
+msgid "💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:68
+msgid "💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:86
+msgid ""
+"❌ Whoops, you have too many magazines in your backpack already... Try "
+"reloading !"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:94
+#, python-brace-format
+msgid ""
+"💸 You added a magazine in your weapon. Time to reload! [Bought: -{ITEM_COST} "
+"exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:113
+#, python-brace-format
+msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:120
+#, python-brace-format
+msgid "❌ Your gun is using some even better explosive ammo for {time_delta} !"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:129
+#, python-brace-format
+msgid ""
+"💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:148
+#, python-brace-format
+msgid "❌ Your gun is already using explosive ammo for {time_delta}!"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:157
+#, python-brace-format
+msgid ""
+"💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
+"[Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:172
+msgid "❌ Your gun isn't confiscated, why would you need a new one ?"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:180
+#, python-brace-format
+msgid ""
+"💸 You bribed the police and brought back your weapon. The fun continues. "
+"[Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:195
+msgid "❌ Your gun is already perfectly greased, you don't need any more of that."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:203
+#, python-brace-format
+msgid ""
+"💸 You added some grease to your weapon to reduce jamming for a day. [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:218
+msgid "❌ You added a new sight to your weapon recntly. You don't need a new one."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:226
+#, python-brace-format
+msgid ""
+"💸 You added a sight to your weapon to improve your accuracy for the next few "
+"shots. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:241
+msgid "❌ You already have that infrared detector on your weapon."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:249
+#, python-brace-format
+msgid ""
+"💸 You added an infrared detector to your weapon. If you can't see ducks, you "
+"can't shoot them. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:264
+msgid "❌ You already use a silencer."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:272
+#, python-brace-format
+msgid ""
+"💸 You added a silencer to your weapon. Ducks are still afraid of the noise, "
+"but you don't make any. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:292
+#, python-brace-format
+msgid "❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:305
+#, python-brace-format
+msgid ""
+"🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
+"{clover_exp} experience points more. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:335
+#, python-brace-format
+msgid ""
+"🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:337
+#, python-brace-format
+msgid "🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:358
+#, python-brace-format
+msgid ""
+"💸 You bought some new clothes. You look very good. Maybe the ducks will like "
+"your outfit. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:380
+#, python-brace-format
+msgid ""
+"💸 You've just cleaned your weapon. Could've just shot once, but heh ¯\\_(ツ)_/"
+"¯. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:392 ../cogs/shopping_commands.py:432
+#: ../cogs/shopping_commands.py:462 ../cogs/shopping_commands.py:491
+msgid "❌ Don't play with fire, kid ! Go somewhere else."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:395 ../cogs/shopping_commands.py:435
+#: ../cogs/shopping_commands.py:465 ../cogs/shopping_commands.py:494
+#, python-brace-format
+msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
+msgstr ""
+
+#: ../cogs/shopping_commands.py:417
+#, python-brace-format
+msgid ""
+"💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your "
+"mirror. That was kinda stupid, since they have sunglasses 🕶️. [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:420
+#, python-brace-format
+msgid ""
+"💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your "
+"mirror. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:451
+#, python-brace-format
+msgid ""
+"💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -{ITEM_COST} "
+"exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:480
+#, python-brace-format
+msgid ""
+"💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:514
+#, python-brace-format
+msgid ""
+"💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:548
+#, python-brace-format
+msgid ""
+"💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:580
+#, python-brace-format
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/shopping_commands.py:602
+#, python-brace-format
+msgid ""
+"💸 You are now using the brand new Homing Bullets made by CACAC (Comitee "
+"Against the Comitee Against the Ducks) in China. Try them soon! [Bought: -"
+"{ITEM_COST} exp]"
+msgstr ""
+
+#: ../cogs/simple_commands.py:21
+#, python-brace-format
+msgid "Pong. — Time taken: {miliseconds}ms"
+msgstr "Pong. - Temps mis: {miliseconds} ms"
+
+#: ../cogs/statistics_experience_commands.py:27
+#, python-brace-format
+msgid "{target.name} statistics."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:31
+msgid "Bullets"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:32
+msgid "Magazines"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:33
+msgid "Experience"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:34
+msgid "Level"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:35
+msgid "Accuracy"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:36
+#: ../cogs/statistics_experience_commands.py:39
+#, python-brace-format
+msgid "{level_reliability} % (Real: {real_reliability} %)"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:38
+msgid "Reliability"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:57
+#, python-brace-format
+msgid "{target.name} shooting stats."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:65
+msgid "🧠"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:65
+#, python-brace-format
+msgid ""
+"{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
+"life {revives} times eating a total of {brains_eaten} brains"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:74
+msgid "🚰"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:74
+#, python-brace-format
+msgid "{shots} shots attempted when wet."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:78
+msgid "⛔️"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:78
+#, python-brace-format
+msgid "{shots} shots attempted when {target.mention} gun was confiscated."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:82
+#: ../cogs/statistics_experience_commands.py:94
+msgid "💥"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:82
+#, python-brace-format
+msgid "{shots} shots attempted with a sabotaged gun."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:86
+msgid "☁"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:86
+#, python-brace-format
+msgid "{shots} shots attempted with a jammed weapon."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:90
+msgid "🦉"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:90
+#, python-brace-format
+msgid "{shots} shots attempted without bullets."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:94
+#, python-brace-format
+msgid "{shots} shots jamming {target.mention} weapon."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:98
+msgid "🔫"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:98
+#, python-brace-format
+msgid "{bullets} bullets used in a duck killing madness."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:102
+msgid "🎯"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:102
+#, python-brace-format
+msgid "{shots} shots missing a target."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:107
+msgid "☠️"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:107
+#, python-brace-format
+msgid "{shots} shots killing someone ({murders} were murders)."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:111
+msgid "🧟"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:111
+#, python-brace-format
+msgid "{target.mention} was killed {times} times."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:115
+msgid "🏆️"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:115
+#, python-brace-format
+msgid "{shots} shots using homing bullets."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:119
+msgid "🦆"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:119
+#, python-brace-format
+msgid "{shots} shots going towards ducks."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:123
+msgid "🕵"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:123
+#, python-brace-format
+msgid "{shots} shots stopped by the infrared detector."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:127
+msgid "❓"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:127
+#, python-brace-format
+msgid "{shots} shots without any duck in sight."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:133
+msgid "Normal ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:134
+msgid "Ghost ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:135
+msgid "Professor ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:137
+msgid "Baby ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:138
+msgid "Golden ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:139
+msgid "Plastic ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:141
+msgid "Kamikaze ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:142
+msgid "Mechanical ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:143
+msgid "Super ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:145
+msgid "Mother of all ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:146
+msgid "Armored ducks"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:170
+#, python-brace-format
+msgid "{target.name} best times."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:176
+msgid "Never killed any"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:195
+#, python-brace-format
+msgid "{target.name} kill counts."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:218
+#, python-brace-format
+msgid "{target.name} hugs counts."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:224
+msgid "Players"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:228
+msgid "Hugs when dead"
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:245
+#, python-brace-format
+msgid "{target.name} hurt counts."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:264
+#, python-brace-format
+msgid "{target.name} resisted counts."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:283
+#, python-brace-format
+msgid "{target.name} scared ducks."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:299
+msgid "❌ You cant send experience to yourself."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:303
+#: ../cogs/statistics_experience_commands.py:340
+#, python-brace-format
+msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:307
+msgid "❌ You need to send more experience than this."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:311
+#, fuzzy
+#| msgid "☹️ You don't have that permission."
+msgid "❌ You don't have enough experience 🤣."
+msgstr "☹️ Vous n'avez pas cette permission."
+
+#: ../cogs/statistics_experience_commands.py:321
+#, python-brace-format
+msgid ""
+"🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
+"tax_on_user_send}% was applied to this transaction (taking {tax} exp out of "
+"the total sent)."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:347
+#, python-brace-format
+msgid "💰️ You gave {amount} experience to {reciver.mention}. "
+msgstr ""
+
+#: ../locales/additional_strings.py:10
+msgid "Hello there!"
+msgstr "Bien le bonjour !"
+
+#: ../utils/bot_class.py:80
+msgid "https://discord.gg/G4skWae"
+msgstr ""
+
+#: ../utils/bot_class.py:81
+msgid "https://docs.duckhunt.me/players-guide/players-quickstart"
+msgstr ""
+
+#: ../utils/bot_class.py:72
+#, python-brace-format
+msgid ""
+"Hello! The following message (written by the owner of DuckHunt) will give you "
+"a brief introduction to the bot, and also provide you with links to the "
+"DuckHunt wiki.\n"
+" First of all, thank you for using my bot! If you have any unanswered "
+"questions after reading this message and the wiki, you are more than welcome "
+"to ask for help in the support channels at <{support_server_link}>.\n"
+"\n"
+"When a duck spawns you shoot at it by using the `dh!bang` command.\n"
+"However, if the duck says **COIN** it's a **baby duck** and you should hug it "
+"with `dh!hug`.\n"
+"You can reload your ammunition with `dh!reload` and buy new magazines with `dh!"
+"shop magazine` or `dh!shop 2`.\n"
+"If you want to learn more about the game, use the wiki! <{wiki_link}>"
+msgstr ""
+
+#: ../utils/ducks.py:195
+#, python-brace-format
+msgid "{killer.mention} killed the duck [**Killed**: +{won_experience} exp]"
+msgstr ""
+
+#: ../utils/ducks.py:202
+#, python-brace-format
+msgid "{hunter.mention} scared the duck."
+msgstr ""
+
+#: ../utils/ducks.py:213
+#, python-brace-format
+msgid ""
+"{hurter.mention} hurted the duck [**SUPER DUCK detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+
+#: ../utils/ducks.py:220
+#, python-brace-format
+msgid ""
+"{hurter.mention} hurted the duck [**SUPER DUCK detected**][**Damage** : -"
+"{damage}]"
+msgstr ""
+
+#: ../utils/ducks.py:227
+#, python-brace-format
+msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
+msgstr ""
+
+#: ../utils/ducks.py:233
+#, python-brace-format
+msgid "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
+msgstr ""
+
+#: ../utils/ducks.py:238
+#, python-brace-format
+msgid ""
+"{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates "
+"you, because you killed all his family. [**FAIL**: {experience} exp]"
+msgstr ""
+
+#: ../utils/ducks.py:491
+#, python-brace-format
+msgid "Huh, quick question, what's {operation} ?"
+msgstr ""
+
+#: ../utils/ducks.py:500
+#, python-brace-format
+msgid "{hurter.mention}, I asked you a question ! What's {operation} ?"
+msgstr ""
+
+#: ../utils/ducks.py:506
+#, python-brace-format
+msgid "{hurter.mention}, Just give me digits !"
+msgstr ""
+
+#: ../utils/ducks.py:512
+#, python-brace-format
+msgid "{hurter.mention}, that's not the correct answer !"
+msgstr ""
+
+#: ../utils/ducks.py:529
+#, python-brace-format
+msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
+msgstr ""
+
+#: ../utils/ducks.py:599
+#, python-brace-format
+msgid ""
+"Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
+"made it? [exp: {won_experience}]"
+msgstr ""
+
+#: ../utils/ducks.py:603
+#, python-brace-format
+msgid ""
+"Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this is "
+"{creator.mention}'s fault! [exp: {won_experience}]"
+msgstr ""
+
+#: ../utils/ducks_config.py:51
+msgid "*cries*"
+msgstr ""
+
+#: ../utils/ducks_config.py:51
+#, fuzzy
+#| msgid "Hello there!"
+msgid "Hello world"
+msgstr "Bien le bonjour !"
+
+#: ../utils/ducks_config.py:51
+msgid "How are you today?"
+msgstr ""
+
+#: ../utils/ducks_config.py:51
+msgid "Please don't kill me..."
+msgstr ""
+
+#: ../utils/ducks_config.py:52
+msgid "I love you too!"
+msgstr ""
+
+#: ../utils/ducks_config.py:52
+msgid "Don't shoot me! I'm a fake duck!"
+msgstr ""
+
+#: ../utils/ducks_config.py:53
+msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
+msgstr ""
+
+#: ../utils/ducks_config.py:53
+msgid "**Duck fact**: The feathers on a ducks back are waterproof."
+msgstr ""
+
+#: ../utils/ducks_config.py:54
+msgid "**Duck fact**: Ducks have three eyelids!"
+msgstr ""
+
+#: ../utils/ducks_config.py:55
+msgid ""
+"**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
+"years. Not the ducks on this game tho..."
+msgstr ""
+
+#: ../utils/ducks_config.py:56
+msgid "I am invisible, don't bother killing me"
+msgstr ""
+
+#: ../utils/ducks_config.py:56
+msgid "Who is the little ████ here that killed my friend ?"
+msgstr ""
+
+#: ../utils/ducks_config.py:56
+msgid "You can't aim for good..."
+msgstr ""
+
+#: ../utils/ducks_config.py:56 ../utils/ducks_config.py:69
+msgid "The duck left."
+msgstr ""
+
+#: ../utils/ducks_config.py:57
+msgid "The duck right."
+msgstr ""
+
+#: ../utils/ducks_config.py:57
+msgid "STOP! It's not what you think!"
+msgstr ""
+
+#: ../utils/ducks_config.py:58
+msgid "Killing me will cost you 1562 experience points."
+msgstr ""
+
+#: ../utils/ducks_config.py:59
+msgid ""
+"I have a secret plan to kill all hunters but I'm already short on breath I "
+"don't think I'll be able to explain it all to you before..."
+msgstr ""
+
+#: ../utils/ducks_config.py:60
+msgid "[INSERT DUCK NOISE HERE]"
+msgstr ""
+
+#: ../utils/ducks_config.py:61
+msgid "It's rabbit season."
+msgstr ""
+
+#: ../utils/ducks_config.py:61
+msgid "Got a spare cape?"
+msgstr ""
+
+#: ../utils/ducks_config.py:61
+msgid "Which side of a duck has more feathers? The outside."
+msgstr ""
+
+#: ../utils/ducks_config.py:62
+msgid "I steal money. I'm a robber ducky."
+msgstr ""
+
+#: ../utils/ducks_config.py:62
+msgid "I'm a very special duck."
+msgstr ""
+
+#: ../utils/ducks_config.py:62 ../utils/ducks_config.py:64
+msgid "**DuckHunt ProTip®**: use clovers to get more experience."
+msgstr ""
+
+#: ../utils/ducks_config.py:63
+msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
+msgstr ""
+
+#: ../utils/ducks_config.py:63
+msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
+msgstr ""
+
+#: ../utils/ducks_config.py:64
+msgid "*Slurp*"
+msgstr ""
+
+#: ../utils/ducks_config.py:64
+msgid "Hopefully you are all AFK..."
+msgstr ""
+
+#: ../utils/ducks_config.py:65
+msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
+msgstr ""
+
+#: ../utils/ducks_config.py:66
+msgid "I'm just doing my job..."
+msgstr ""
+
+#: ../utils/ducks_config.py:66
+msgid ""
+"Hey there, DuckHunt quality insurance duck here. How would you rate your "
+"experience killing ducks so far ?"
+msgstr ""
+
+#: ../utils/ducks_config.py:67
+msgid "YoU hAvE bEeN cOrRuPtEd."
+msgstr ""
+
+#: ../utils/ducks_config.py:68
+msgid "The duck went away."
+msgstr ""
+
+#: ../utils/ducks_config.py:68
+msgid "The duck went to another world."
+msgstr ""
+
+#: ../utils/ducks_config.py:68
+msgid "The duck didn't have time for this."
+msgstr ""
+
+#: ../utils/ducks_config.py:69
+msgid "The duck dissipated in space and time."
+msgstr ""
+
+#: ../utils/ducks_config.py:69
+msgid "The duck left out of boredom."
+msgstr ""
+
+#: ../utils/ducks_config.py:70
+msgid "The duck doesn't want to be sniped."
+msgstr ""
+
+#: ../utils/ducks_config.py:70
+msgid "The duck walked up to the lemonade stand."
+msgstr ""
+
+#: ../utils/ducks_config.py:71
+msgid "The duck flew over a disproportionately small gap."
+msgstr ""
+
+#: ../utils/ducks_config.py:72
+msgid "The duck chickened out."
+msgstr ""
+
+#: ../utils/ducks_config.py:74
+msgid "A duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:74
+msgid "Mr. Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:74
+msgid "ISO Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:84
+msgid "The ghost never appeared."
+msgstr ""
+
+#: ../utils/ducks_config.py:85
+msgid "Invisible Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:85
+msgid "Ghost Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:85
+msgid "Boooo Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:94
+msgid "Pr. Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:94
+msgid "EnsDuck"
+msgstr ""
+
+#: ../utils/ducks_config.py:100
+msgid "Smol Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:100
+msgid "Mini Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:100
+msgid "Ducky"
+msgstr ""
+
+#: ../utils/ducks_config.py:100
+msgid "Duckie"
+msgstr ""
+
+#: ../utils/ducks_config.py:106
+msgid "Free money !"
+msgstr ""
+
+#: ../utils/ducks_config.py:106
+msgid "It's free money"
+msgstr ""
+
+#: ../utils/ducks_config.py:107
+msgid "Golden Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:107
+msgid "Golden Goose"
+msgstr ""
+
+#: ../utils/ducks_config.py:107
+msgid "Shiny Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:107
+msgid "Rich Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:113
+msgid "Have any money ?"
+msgstr ""
+
+#: ../utils/ducks_config.py:113
+msgid "It's paid money"
+msgstr ""
+
+#: ../utils/ducks_config.py:114
+msgid "Plastic Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:114
+msgid "Poor Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:114
+msgid "Slimey Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:120
+msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
+msgstr ""
+
+#: ../utils/ducks_config.py:120
+msgid "Gonna kill y'all !"
+msgstr ""
+
+#: ../utils/ducks_config.py:121
+msgid "The Kamikaze Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:121
+msgid "Explosive Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:121
+msgid "Boom Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:121
+msgid "Dynamite Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:124
+msgid "The kamikaze duck exploded, killing every duck on the channel."
+msgstr ""
+
+#: ../utils/ducks_config.py:131
+msgid "Duck 2000"
+msgstr ""
+
+#: ../utils/ducks_config.py:131
+msgid "Omega Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:137
+msgid "Big Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:137
+msgid "Strong Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:137
+msgid "Heavy Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:143
+msgid "**I am your mother...**"
+msgstr ""
+
+#: ../utils/levels.py:5
+msgid "public danger"
+msgstr ""
+
+#: ../utils/levels.py:6
+msgid "tourist"
+msgstr ""
+
+#: ../utils/levels.py:7
+msgid "noob"
+msgstr ""
+
+#: ../utils/levels.py:8
+msgid "trainee"
+msgstr ""
+
+#: ../utils/levels.py:9
+msgid "duck misser"
+msgstr ""
+
+#: ../utils/levels.py:10
+msgid "member of the Comitee Against Ducks"
+msgstr ""
+
+#: ../utils/levels.py:11
+msgid "duck hater"
+msgstr ""
+
+#: ../utils/levels.py:12
+msgid "duck pest"
+msgstr ""
+
+#: ../utils/levels.py:13
+msgid "duck hassler"
+msgstr ""
+
+#: ../utils/levels.py:14
+msgid "duck plucker"
+msgstr ""
+
+#: ../utils/levels.py:15
+msgid "hunter"
+msgstr ""
+
+#: ../utils/levels.py:16
+msgid "duck inside out turner"
+msgstr ""
+
+#: ../utils/levels.py:17
+msgid "duck clobber"
+msgstr ""
+
+#: ../utils/levels.py:18
+msgid "duck chewer"
+msgstr ""
+
+#: ../utils/levels.py:19
+msgid "duck eater"
+msgstr ""
+
+#: ../utils/levels.py:20
+msgid "duck flattener"
+msgstr ""
+
+#: ../utils/levels.py:21
+msgid "duck disassembler"
+msgstr ""
+
+#: ../utils/levels.py:22
+msgid "duck demolisher"
+msgstr ""
+
+#: ../utils/levels.py:23
+msgid "duck killer"
+msgstr ""
+
+#: ../utils/levels.py:24
+msgid "duck skinner"
+msgstr ""
+
+#: ../utils/levels.py:25
+msgid "duck predator"
+msgstr ""
+
+#: ../utils/levels.py:26
+msgid "duck chopper"
+msgstr ""
+
+#: ../utils/levels.py:27
+msgid "duck decorticator"
+msgstr ""
+
+#: ../utils/levels.py:28
+msgid "duck fragger"
+msgstr ""
+
+#: ../utils/levels.py:29
+msgid "duck shatterer"
+msgstr ""
+
+#: ../utils/levels.py:30
+msgid "duck smasher"
+msgstr ""
+
+#: ../utils/levels.py:31
+msgid "duck breaker"
+msgstr ""
+
+#: ../utils/levels.py:32
+msgid "duck wrecker"
+msgstr ""
+
+#: ../utils/levels.py:33
+msgid "duck impaler"
+msgstr ""
+
+#: ../utils/levels.py:34
+msgid "duck eviscerator"
+msgstr ""
+
+#: ../utils/levels.py:35
+msgid "ducks terror"
+msgstr ""
+
+#: ../utils/levels.py:36
+msgid "duck exploder"
+msgstr ""
+
+#: ../utils/levels.py:37
+msgid "duck destructor"
+msgstr ""
+
+#: ../utils/levels.py:38
+msgid "duck blaster"
+msgstr ""
+
+#: ../utils/levels.py:39
+msgid "duck pulverizer"
+msgstr ""
+
+#: ../utils/levels.py:40
+msgid "duck disintegrator"
+msgstr ""
+
+#: ../utils/levels.py:41
+msgid "duck atomizer"
+msgstr ""
+
+#: ../utils/levels.py:42
+msgid "duck annihilator"
+msgstr ""
+
+#: ../utils/levels.py:43
+msgid "serial duck killer"
+msgstr ""
+
+#: ../utils/levels.py:44
+msgid "duck genocider"
+msgstr ""
+
+#: ../utils/levels.py:45
+msgid "old noob"
+msgstr ""
+
+#: ../utils/levels.py:46
+msgid "duck toaster"
+msgstr ""
+
+#: ../utils/levels.py:47
+msgid "unemployed due to extinction of the duck species"
+msgstr ""
+
+#: ../utils/models.py:145
+#, python-brace-format
+msgid "This is not a valid level. Choose between {levels}"
+msgstr ""
+
+#: ../utils/models.py:148
+msgid "Can't set such a high level"
+msgstr ""
+
+#~ msgid "You ran that command {times_ran_example_command} times already!"
+#~ msgstr ""
+#~ "Vous avez déjà exécuté cette commande {times_ran_example_command} fois!"
+
+#~ msgid "You have the `{exception.permission}` permission."
+#~ msgstr "Vous avez l'autorisation `{exception.permission}`."
+
+#~ msgid "You need the `{exception.permission}` permission."
+#~ msgstr "Vous avez besoin de l'autorisation `{exception.permission}`."
+
+#~ msgid ""
+#~ "You have {exception.required} or more of the following permissions : "
+#~ "`{exception.permissions}`."
+#~ msgstr ""
+#~ "Vous disposez de {exception.required} ou plus des autorisations suivantes: "
+#~ "`{exception.permissions}`."
+
+#~ msgid ""
+#~ "You need {exception.required} or more of the following permissions : "
+#~ "`{exception.permissions}`."
+#~ msgstr ""
+#~ "Vous avez besoin de {exception.required} ou de plusieurs des autorisations "
+#~ "suivantes: `{exception.permissions}`."
+
+#~ msgid "😃 You have that permission."
+#~ msgstr "😃 Vous avez cette permission."
+
+#~ msgid "Details of permissions hierarchy"
+#~ msgstr "Détails de la hiérarchie des permissions"
+
+#~ msgid "{sign} Default (from {sign}{by})"
+#~ msgstr "{sign} Défaut (par {sign}{by})"
+
+#~ msgid "{sign} Guild role {role} (from {sign}{by})"
+#~ msgstr "{sign} Role de serveur {role} (par {sign}{by})"
+
+#~ msgid "{sign} Channel role {role} (from {sign}{by})"
+#~ msgstr "{sign} Role de channel {role} (par {sign}{by})"
+
+#~ msgid "{sign} Member (from {sign}{by})"
+#~ msgstr "{sign} Membre (par {sign}{by})"
+
+#~ msgid "{sign} Fixed (from {sign}{by})"
+#~ msgstr "{sign} Fixé (par {sign}{by})"
+
+#~ msgid "{sign} User (from {sign}{by})"
+#~ msgstr "{sign} Utilisateur (par {sign}{by})"
+
+#~ msgid "**{role} permissions**"
+#~ msgstr "**permissions pour {role}**"
+
+#~ msgid "There are no specific permissions set in this guild."
+#~ msgstr "Il n'y a pas de permissions spécifiques définies dans ce serveur."
+
+#~ msgid ""
+#~ "👌 Permission {permission} for user {user.name}#{user.discriminator} has "
+#~ "been set to {value} globally."
+#~ msgstr ""
+#~ "👌 La permission {permission} de l'utilisateur {user.name}#{user."
+#~ "discriminator} a été définie sur {value} globalement."
+
+#~ msgid ""
+#~ "👌 Permission {permission} for member {member.name}#{member.discriminator} "
+#~ "has been set to {value} globally."
+#~ msgstr ""
+#~ "👌 La permission {permission} du membre {member.name}#{member.discriminator} "
+#~ "a été définie sur {value} globalement."
+
+#~ msgid "❌ Can't set permissions in a channel that is not in this guild."
+#~ msgstr ""
+#~ "❌ Impossible de définir des autorisations dans un canal qui ne fait pas "
+#~ "partie de ce serveur."
+
+#~ msgid "❌ Can't set permissions for a role that does not exist in this guild."
+#~ msgstr ""
+#~ "❌ Impossible de définir des autorisations pour un rôle qui n'existe pas "
+#~ "dans ce serveur."
+
+#~ msgid ""
+#~ "👌 Permission {permission} for role {role_name} [`{role_id}`] has been set "
+#~ "to {value} in this channel."
+#~ msgstr ""
+#~ "👌 La permission {permission} pour le rôle {role_name} [`{role_id}`] a été "
+#~ "définie sur {value} dans ce canal."
+
+#~ msgid ""
+#~ "👌 Permission {permission} for role {role_name} [`{role_id}`] has been set "
+#~ "to {value} in this guild."
+#~ msgstr ""
+#~ "👌 La permission {permission} pour le rôle {role_name} [`{role_id}`] a été "
+#~ "définie sur {value} dans ce serveur."
