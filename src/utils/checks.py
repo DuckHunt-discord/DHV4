@@ -56,6 +56,8 @@ def needs_access_level(required_access):
             else:
                 raise AccessTooLow(current_access=access, required_access=required_access)
 
+    predicate.access = required_access
+
     return commands.check(predicate)
 
 

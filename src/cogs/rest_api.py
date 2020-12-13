@@ -1,5 +1,5 @@
 import datetime
-from typing import Union
+from typing import Union, Optional
 
 import aiohttp_cors
 from aiohttp import web
@@ -8,7 +8,7 @@ from discord.ext import commands, tasks
 from discord.ext.commands import Command, Group
 
 from utils.cog_class import Cog
-from utils.models import get_enabled_channels, DiscordChannel, get_from_db, Player
+from utils.models import get_enabled_channels, DiscordChannel, get_from_db, Player, AccessLevel
 
 
 class RestAPI(Cog):
@@ -187,6 +187,12 @@ class RestAPI(Cog):
             commands_list = group.get_commands()
 
         for command in commands_list:
+            access: Optional[AccessLevel] = None
+            for check in command.checks:
+                if hasattr(check, "access"):
+                    access = check.access
+                    break
+
             if not command.hidden:
                 commands[command.name] = {
                     'name': command.qualified_name,
@@ -202,6 +208,10 @@ class RestAPI(Cog):
                 }
                 if isinstance(command, Group):
                     commands[command.name]['subcommands'] = self.get_help_dict(command)
+
+                if access:
+                    commands[command.name]['access_value'] = access.value
+                    commands[command.name]['access_name'] = access.name
 
         return commands
 
