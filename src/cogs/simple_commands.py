@@ -2,20 +2,66 @@ import datetime
 import time
 
 import discord
+from babel import Locale
 from babel.dates import format_timedelta
 from babel.lists import format_list
-from discord.ext import commands
+from discord.ext import commands, menus
 
 from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.images import get_random_image
 from utils.models import get_from_db
+from utils.translations import TRANSLATORS, get_pct_complete
 
 SECOND = 1
 MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
+
+
+class TranslatorsMenusSource(menus.ListPageSource):
+    def __init__(self, ctx: MyContext):
+        super().__init__(list(TRANSLATORS.items()), per_page=6)
+        self.ctx = ctx
+
+    async def format_page(self, menu, entries):
+        _ = await self.ctx.get_translate_function()
+        language_code = await self.ctx.get_language_code()
+
+        embed = discord.Embed(title=_("The beloved DuckHunt translators"))
+
+        embed.color = discord.Color.green()
+        embed.description = _("The bot itself is made by Eyesofcreeper, with contributions from people mentionned in "
+                              "`{ctx.prefix}credits`. **You want to help translate this bot ?** "
+                              "Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). Thanks!")
+
+        offset = menu.current_page * self.per_page
+        for i, item in enumerate(entries, start=offset):
+            locale, translators_ids = item
+
+            parsed_translators = []
+
+            for translator_id in translators_ids:
+                try:
+                    user = await self.ctx.bot.fetch_user(translator_id)
+                except discord.NotFound:
+                    self.ctx.logger.warning(f"Translator {translator_id} for language {locale} can't be found on discord.")
+                    continue
+                parsed_translators.append(f"{user.name}#{user.discriminator}")
+
+            locale_data = Locale.parse(locale)
+
+            embed.add_field(name=f"{locale_data.get_display_name(language_code)}: `{locale}` - {round(get_pct_complete(locale))}%",
+                            value=format_list(parsed_translators, locale=language_code),
+                            inline=False)
+
+        return embed
+
+
+async def show_translators_menu(ctx):
+    pages = menus.MenuPages(source=TranslatorsMenusSource(ctx), clear_reactions_after=True)
+    await pages.start(ctx)
 
 
 class SimpleCommands(Cog):
@@ -52,6 +98,13 @@ class SimpleCommands(Cog):
 
         await ctx.send(
             f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
+
+    @commands.command()
+    async def invite(self, ctx: MyContext):
+        """
+        Get a discord invite to the support server.
+        """
+        await ctx.send(f"<https://discordapp.com/invite/2BksEkV>")
 
     @commands.command(aliases=["giveback"])
     @checks.channel_enabled()
@@ -117,11 +170,22 @@ class SimpleCommands(Cog):
         embed.add_field(name=_("Designer"), value=_("<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."), inline=False)
         embed.add_field(name=_("Designer"), value=_("<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit."), inline=False)
         embed.add_field(name=_("Ideas"), value=_("Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"), inline=False)
+        embed.add_field(name=_("Translations"), value=_("The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."), inline=False)
 
         f = discord.File("assets/Robot_Ducc_Globloxmen.jpg")
         embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
 
         await ctx.send(embed=embed, file=f)
+
+    @commands.command(aliases=["translate"])
+    @checks.channel_enabled()
+    async def translators(self, ctx: MyContext):
+        """
+        Thanks to those fine people who (helped) translate the bot
+        """
+        _ = await ctx.get_translate_function()
+
+        await show_translators_menu(ctx)
 
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
