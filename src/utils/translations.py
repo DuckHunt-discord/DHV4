@@ -1,5 +1,5 @@
 import gettext
-from typing import Iterable
+from typing import Iterable, Optional
 
 from babel.messages import Catalog, Message
 from babel.messages.mofile import read_mo
@@ -26,13 +26,19 @@ def fake_translation(message, language_code=None):
     return message
 
 
-def get_catalog(language_code) -> Catalog:
-    with open(f"locales/{language_code}/LC_MESSAGES/messages.mo", "rb") as f:
-        return read_mo(f)
+def get_catalog(language_code) -> Optional[Catalog]:
+    try:
+        with open(f"locales/{language_code}/LC_MESSAGES/messages.mo", "rb") as f:
+            return read_mo(f)
+    except FileNotFoundError:
+        return None
 
 
 def get_pct_complete(language_code) -> float:
     catalog = get_catalog(language_code)
+
+    if not catalog:
+        return float('NaN')
 
     filled = 0
 
