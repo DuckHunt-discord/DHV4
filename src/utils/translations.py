@@ -27,7 +27,7 @@ def fake_translation(message, language_code=None):
 
 
 def get_catalog(language_code) -> Catalog:
-    with open(f"locales/{language_code}/LC_MESSAGES/messages.mo") as f:
+    with open(f"locales/{language_code}/LC_MESSAGES/messages.mo", "rb") as f:
         return read_mo(f)
 
 
