@@ -105,7 +105,13 @@ class MyContext(commands.Context):
 
         def _(message, **kwargs):
             kwargs = {'ctx': self, **kwargs}
-            return translate(message, language_code).format(**kwargs)
+            translated_message = translate(message, language_code)
+            try:
+                formatted_message = translated_message.format(**kwargs)
+            except KeyError:
+                self.logger.exception(f"Error formatting message {message} // {translated_message}")
+                raise
+            return formatted_message
 
         return _
 
