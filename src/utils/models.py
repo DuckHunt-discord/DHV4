@@ -265,6 +265,8 @@ class Player(Model):
                 value = value.timestamp()
             elif isinstance(value, datetime.timedelta):
                 value = value.total_seconds()
+            elif serialize_field == "channel_id":
+                value = str(value)
 
             ser[serialize_field] = value
 
