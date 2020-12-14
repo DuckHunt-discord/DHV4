@@ -152,7 +152,7 @@ class RestAPI(Cog):
         if not players:
             raise HTTPNotFound(reason="Unknown channel in database")
 
-        fields = ["experience", "best_times", "killed", "last_giveback"]
+        fields = ["experience", "best_times", "killed", "last_giveback", "shooting_stats"]
 
         return web.json_response([
             player.serialize(serialize_fields=fields) for player in players
