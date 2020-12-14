@@ -52,7 +52,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
 
             locale_data = Locale.parse(locale)
 
-            embed.add_field(name=f"{locale_data.get_display_name(language_code)}: `{locale}` - {round(get_pct_complete(locale))}%",
+            embed.add_field(name=f"{locale_data.get_display_name(language_code)}: `{locale}` - {get_pct_complete(locale)}%",
                             value=format_list(parsed_translators, locale=language_code),
                             inline=False)
 

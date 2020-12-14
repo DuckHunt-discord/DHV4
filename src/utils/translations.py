@@ -46,4 +46,4 @@ def get_pct_complete(language_code) -> float:
         if len(message.string.strip()):
             filled += 1
 
-    return filled / len(catalog) * 100
+    return round(filled / len(catalog) * 100)
