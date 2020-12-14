@@ -1,8 +1,7 @@
 import gettext
 from typing import Iterable, Optional
 
-from babel.messages import Catalog, Message
-from babel.messages.mofile import read_mo
+import polib
 
 # Oldest first
 TRANSLATORS = {
@@ -26,10 +25,9 @@ def fake_translation(message, language_code=None):
     return message
 
 
-def get_catalog(language_code) -> Optional[Catalog]:
+def get_catalog(language_code) -> Optional[polib.POFile]:
     try:
-        with open(f"locales/{language_code}/LC_MESSAGES/messages.mo", "rb") as f:
-            return read_mo(f)
+        return polib.pofile(f"locales/{language_code}/LC_MESSAGES/messages.mo")
     except FileNotFoundError:
         return None
 
@@ -40,10 +38,4 @@ def get_pct_complete(language_code) -> float:
     if not catalog:
         return float('NaN')
 
-    filled = 0
-
-    for message in catalog:
-        if len(message.string.strip()):
-            filled += 1
-
-    return round(filled / len(catalog) * 100)
+    return round(catalog.percent_translated())
