@@ -128,7 +128,11 @@ class DiscordChannel(Model):
             serialize_fields = self._meta.fields.copy() - DONT_SERIALIZE
 
         for serialize_field in serialize_fields:
+            if serialize_field == "discord_id":
+                ser[serialize_field] = str(getattr(self, serialize_field))
+
             ser[serialize_field] = getattr(self, serialize_field)
+
         return ser
 
     class Meta:
@@ -246,7 +250,7 @@ class Player(Model):
         db_user: DiscordUser = db_member.user
 
         ser = {
-            "user_id": db_user.discord_id,
+            "user_id": str(db_user.discord_id),
             "user_name": db_user.name,
             "user_discriminator": db_user.discriminator,
             "member_access_level_override": db_member.get_access_level(),
