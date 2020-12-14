@@ -8,6 +8,7 @@ from babel.lists import format_list
 from discord.ext import commands, menus
 
 from utils import checks
+from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.images import get_random_image
@@ -21,9 +22,10 @@ DAY = 24 * HOUR
 
 
 class TranslatorsMenusSource(menus.ListPageSource):
-    def __init__(self, ctx: MyContext):
-        super().__init__(list(TRANSLATORS.items()), per_page=6)
+    def __init__(self, ctx: MyContext, translators):
+        super().__init__(list(translators.items()), per_page=6)
         self.ctx = ctx
+        self.translators_cache = None
 
     async def format_page(self, menu, entries):
         _ = await self.ctx.get_translate_function()
@@ -38,16 +40,11 @@ class TranslatorsMenusSource(menus.ListPageSource):
 
         offset = menu.current_page * self.per_page
         for i, item in enumerate(entries, start=offset):
-            locale, translators_ids = item
+            locale, translators = item
 
             parsed_translators = []
 
-            for translator_id in translators_ids:
-                try:
-                    user = await self.ctx.bot.fetch_user(translator_id)
-                except discord.NotFound:
-                    self.ctx.logger.warning(f"Translator {translator_id} for language {locale} can't be found on discord.")
-                    continue
+            for user in translators:
                 parsed_translators.append(f"{user.name}#{user.discriminator}")
 
             locale_data = Locale.parse(locale)
@@ -59,12 +56,16 @@ class TranslatorsMenusSource(menus.ListPageSource):
         return embed
 
 
-async def show_translators_menu(ctx):
-    pages = menus.MenuPages(source=TranslatorsMenusSource(ctx), clear_reactions_after=True)
+async def show_translators_menu(ctx, translators):
+    pages = menus.MenuPages(source=TranslatorsMenusSource(ctx, translators), clear_reactions_after=True)
     await pages.start(ctx)
 
 
 class SimpleCommands(Cog):
+    def __init__(self, bot: MyBot, *args, **kwargs):
+        super().__init__(bot, *args, **kwargs)
+        self.translators_cache = {}
+
     @commands.command()
     async def ping(self, ctx: MyContext):
         """
@@ -185,7 +186,17 @@ class SimpleCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        await show_translators_menu(ctx)
+        if not len(self.translators_cache):
+            for locale, translators_ids in TRANSLATORS.items():
+                self.translators_cache[locale] = []
+                for translator_id in translators_ids:
+                    try:
+                        self.translators_cache[locale].append(await ctx.bot.fetch_user(translator_id))
+                    except discord.NotFound:
+                        ctx.logger.warning(f"Translator {translator_id} for language {locale} can't be found on discord.")
+                        continue
+
+        await show_translators_menu(ctx, self.translators_cache)
 
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
