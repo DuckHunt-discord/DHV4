@@ -1,3 +1,5 @@
+website_url = "https://v4.duckhunt.me/"
+
 [bot]
 prefixes = ["c!", "d!", "C!", "D!"]
 description = """Discord Version 4 of DuckHunt, the popular game bot"""

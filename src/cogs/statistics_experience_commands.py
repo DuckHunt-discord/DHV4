@@ -60,6 +60,8 @@ class StatisticsCommands(Cog):
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} statistics.", target=target))
 
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
+
         level_info = db_hunter.level_info()
 
         embed.add_field(name=_("Bullets"), value=f"{db_hunter.bullets}/{level_info['bullets']}", inline=True)
@@ -89,6 +91,8 @@ class StatisticsCommands(Cog):
 
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} shooting stats.", target=target))
+
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
 
         shooting_stats = db_hunter.shooting_stats
 
@@ -203,6 +207,8 @@ class StatisticsCommands(Cog):
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} best times.", target=target))
 
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
+
         bt = db_hunter.best_times
 
         bt = {k: str(round(v, 2)) + " s" for k, v in bt.items()}
@@ -228,6 +234,8 @@ class StatisticsCommands(Cog):
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} kill counts.", target=target))
 
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
+
         killed = db_hunter.killed
 
         no_kill_message = 0
@@ -250,6 +258,8 @@ class StatisticsCommands(Cog):
 
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} hugs counts.", target=target))
+
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
 
         self.add_fields_for_every_duck(_, embed, db_hunter.hugged, None)
 
@@ -278,6 +288,8 @@ class StatisticsCommands(Cog):
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} hurt counts.", target=target))
 
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
+
         self.add_fields_for_every_duck(_, embed, db_hunter.hurted, None)
 
         await ctx.send(embed=embed)
@@ -297,6 +309,8 @@ class StatisticsCommands(Cog):
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} resisted counts.", target=target))
 
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
+
         self.add_fields_for_every_duck(_, embed, db_hunter.resisted, None)
 
         await ctx.send(embed=embed)
@@ -315,6 +329,8 @@ class StatisticsCommands(Cog):
 
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} scared ducks.", target=target))
+
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
 
         self.add_fields_for_every_duck(_, embed, db_hunter.frightened, None)
 
