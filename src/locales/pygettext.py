@@ -14,6 +14,8 @@
 #
 
 # for selftesting
+import inspect
+
 try:
     import fintl
     _ = fintl.gettext
@@ -510,6 +512,7 @@ class TokenEater:
                         print(locline, file=fp)
                 if isdocstring:
                     print('#, docstring', file=fp)
+                    k = inspect.cleandoc(k)
                 print('msgid', normalize(k, encoding), file=fp)
                 print('msgstr ""\n', file=fp)
 

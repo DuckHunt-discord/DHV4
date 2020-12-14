@@ -110,7 +110,7 @@ class MyContext(commands.Context):
                 formatted_message = translated_message.format(**kwargs)
             except KeyError:
                 self.logger.exception(f"Error formatting message {message} // {translated_message}")
-                raise
+                formatted_message = message.format(**kwargs)
             return formatted_message
 
         return _

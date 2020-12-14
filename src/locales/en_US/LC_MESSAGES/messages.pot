@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 11:50+0100\n"
+"POT-Creation-Date: 2020-12-14 22:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,177 +19,104 @@ msgstr ""
 
 #: ../cogs/community.py:35
 msgid ""
-"\n"
-"        Invite someone to the beta server, letting them try the bot before "
-"the others\n"
-"        "
+"Invite someone to the beta server, letting them try the bot before the others"
 msgstr ""
 
 #: ../cogs/ducks_hunting_commands.py:30
-msgid ""
-"\n"
-"        Shoot at the duck that appeared first on the channel.\n"
-"        "
+msgid "Shoot at the duck that appeared first on the channel."
 msgstr ""
 
 #: ../cogs/ducks_hunting_commands.py:304
-msgid ""
-"\n"
-"        Reload your gun.\n"
-"        "
+msgid "Reload your gun."
 msgstr ""
 
 #: ../cogs/ducks_hunting_commands.py:366
-msgid ""
-"\n"
-"        Hug the duck that appeared first on the channel.\n"
-"        "
+msgid "Hug the duck that appeared first on the channel."
 msgstr ""
 
 #: ../cogs/ducks_hunting_commands.py:412
-msgid ""
-"\n"
-"        Revive yourself by eating brains\n"
-"        "
+msgid "Revive yourself by eating brains"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:26
-msgid ""
-"\n"
-"        Spawns a random duck\n"
-"        "
+msgid "Spawns a random duck"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:34
-msgid ""
-"\n"
-"        Spawns many ducks, of which (at least) one is a mechanical one\n"
-"        "
+msgid "Spawns many ducks, of which (at least) one is a mechanical one"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:52
-msgid ""
-"\n"
-"        Spawns a normal duck\n"
-"        "
+msgid "Spawns a normal duck"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:60
-msgid ""
-"\n"
-"        Spawns a super duck\n"
-"        "
+msgid "Spawns a super duck"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:70
-msgid ""
-"\n"
-"        Spawns a baby duck\n"
-"        "
+msgid "Spawns a baby duck"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:78
-msgid ""
-"\n"
-"        Spawns a professor Duck.\n"
-"        "
+msgid "Spawns a professor Duck."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:86
-msgid ""
-"\n"
-"        Spawns a ghost duck. There will be no spawn message, obviously.\n"
-"        "
+msgid "Spawns a ghost duck. There will be no spawn message, obviously."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:94
-msgid ""
-"\n"
-"        Spawns a MOAD.\n"
-"        "
+msgid "Spawns a MOAD."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:104
-msgid ""
-"\n"
-"        Spawns an armored duck, that will resist most 1 dmg hits.\n"
-"        "
+msgid "Spawns an armored duck, that will resist most 1 dmg hits."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:112
-msgid ""
-"\n"
-"        Spawns a golden duck.\n"
-"        "
+msgid "Spawns a golden duck."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:120
-msgid ""
-"\n"
-"        Spawns a plastic duck.\n"
-"        "
+msgid "Spawns a plastic duck."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:128
-msgid ""
-"\n"
-"        Spawns a kamikaze duck.\n"
-"        "
+msgid "Spawns a kamikaze duck."
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:138
-msgid ""
-"\n"
-"        Show ducks currently on the channel\n"
-"        "
+msgid "Show ducks currently on the channel"
 msgstr ""
 
 #: ../cogs/ducks_spawning_commands.py:172
-msgid ""
-"\n"
-"        Removes all ducks from the channel\n"
-"        "
+msgid "Removes all ducks from the channel"
 msgstr ""
 
 #: ../cogs/inventory_commands.py:86
 msgid ""
+"Show your inventory content.\n"
 "\n"
-"        Show your inventory content.\n"
-"\n"
-"        The inventory is global. It means that all items you can store in it "
-"can be used on (almost) every server.\n"
-"        Server administrators can disable inventory usage on specific "
-"channels.\n"
-"        "
+"The inventory is global. It means that all items you can store in it can be "
+"used on (almost) every server.\n"
+"Server administrators can disable inventory usage on specific channels."
 msgstr ""
 
 #: ../cogs/inventory_commands.py:103
-msgid ""
-"\n"
-"        Give something to some player.\n"
-"        "
+msgid "Give something to some player."
 msgstr ""
 
 #: ../cogs/inventory_commands.py:120
-msgid ""
-"\n"
-"        Use one of your items\n"
-"        "
+msgid "Use one of your items"
 msgstr ""
 
 #: ../cogs/prestige_commands.py:18
-msgid ""
-"\n"
-"        Prestige related commands. Reset your adventure for exclusive "
-"bonuses.\n"
-"        "
+msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
 
 #: ../cogs/prestige_commands.py:26
-msgid ""
-"\n"
-"        More info about prestige\n"
-"        "
+msgid "More info about prestige"
 msgstr ""
 
 #: ../cogs/prestige_commands.py:79
@@ -204,664 +131,453 @@ msgstr ""
 
 #: ../cogs/rest_api.py:15
 msgid ""
+"If someone wants to do a dashboard or something to control DuckHunt, there "
+"are a few api routes already. They all return JSON or HTTP404/403/500.\n"
 "\n"
-"    If someone wants to do a dashboard or something to control DuckHunt, "
-"there are a few api routes already. They all return JSON or "
-"HTTP404/403/500.\n"
+"**Routes**:\n"
 "\n"
-"    **Routes**:\n"
-"\n"
-"    `/api/channels`  [Global Authentication required] -> Returns some "
+"`/api/channels`  [Global Authentication required] -> Returns some "
 "information about all channels enabled on the bot.\n"
-"    `/api/channels/{channel_id}`  [Authentication required] -> Returns "
+"`/api/channels/{channel_id}`  [Authentication required] -> Returns "
 "information about the channel, like the ducks currently spawned.\n"
-"    `/api/channels/{channel_id}/settings`  [Authentication required] -> "
-"Returns channel settings\n"
-"    `/api/channels/{channel_id}/top` [No authentication required] -> Returns "
-"the top scores (all players on the channel and some info about players)\n"
-"    `/api/channels/{channel_id}/player/{player_id}` [No authentication "
-"required] -> Returns *all* the data for a specific user\n"
+"`/api/channels/{channel_id}/settings`  [Authentication required] -> Returns "
+"channel settings\n"
+"`/api/channels/{channel_id}/top` [No authentication required] -> Returns the "
+"top scores (all players on the channel and some info about players)\n"
+"`/api/channels/{channel_id}/player/{player_id}` [No authentication required] "
+"-> Returns *all* the data for a specific user\n"
 "\n"
-"    **Authentication**:\n"
+"**Authentication**:\n"
 "\n"
-"    If you have one, pass the API key on the Authorization HTTP header.\n"
+"If you have one, pass the API key on the Authorization HTTP header.\n"
 "\n"
-"    Two types of keys exist :\n"
+"Two types of keys exist :\n"
 "\n"
-"    - Channel specific keys, available with `settings api_key`. They only "
-"work for a specific channel data.\n"
-"    - Global keys, that allow UNLIMITED access to every channel data. They "
-"are available on request with me.\n"
+"- Channel specific keys, available with `settings api_key`. They only work "
+"for a specific channel data.\n"
+"- Global keys, that allow UNLIMITED access to every channel data. They are "
+"available on request with me.\n"
 "\n"
-"    Api keys (local or global) are uuid4, and look like this : `d84af260-"
-"c806-4066-8387-1d5144b7fa72`\n"
-"    "
+"Api keys (local or global) are uuid4, and look like this : `d84af260-"
+"c806-4066-8387-1d5144b7fa72`"
 msgstr ""
 
 #: ../cogs/rest_api.py:71
 msgid ""
+"/channels/\n"
 "\n"
-"        /channels/\n"
-"\n"
-"        Get all channels enabled on the bot\n"
-"        "
+"Get all channels enabled on the bot"
 msgstr ""
 
 #: ../cogs/rest_api.py:92
 msgid ""
+"/channels/<channel_id>\n"
 "\n"
-"        /channels/<channel_id>\n"
-"\n"
-"        Get information about a specific channel ID\n"
-"        "
+"Get information about a specific channel ID"
 msgstr ""
 
 #: ../cogs/rest_api.py:123
 msgid ""
+"/channels/<channel_id>/settings\n"
 "\n"
-"        /channels/<channel_id>/settings\n"
-"\n"
-"        Get information about a specific channel ID\n"
-"        "
+"Get information about a specific channel ID"
 msgstr ""
 
 #: ../cogs/rest_api.py:140
 msgid ""
+"/channels/<channel_id>/top\n"
 "\n"
-"        /channels/<channel_id>/top\n"
-"\n"
-"        Get players data, ordered by experience\n"
-"        "
+"Get players data, ordered by experience"
 msgstr ""
 
 #: ../cogs/rest_api.py:162
 msgid ""
+"/channels/<channel_id>/player/<player_id>\n"
 "\n"
-"        /channels/<channel_id>/player/<player_id>\n"
-"\n"
-"        Get players data, ordered by experience\n"
-"        "
+"Get players data, ordered by experience"
 msgstr ""
 
 #: ../cogs/rest_api.py:219
 msgid ""
+"/help/commands\n"
 "\n"
-"        /help/commands\n"
-"\n"
-"        Get list of commands\n"
-"        "
+"Get list of commands"
 msgstr ""
 
 #: ../cogs/settings_commands.py:38
-msgid ""
-"\n"
-"        Commands to view and edit settings\n"
-"        "
+msgid "Commands to view and edit settings"
 msgstr ""
 
 #: ../cogs/settings_commands.py:47
-msgid ""
-"\n"
-"        Set your server settings to specific, designed modes\n"
-"        "
+msgid "Set your server settings to specific, designed modes"
 msgstr ""
 
 #: ../cogs/settings_commands.py:58
-msgid ""
-"\n"
-"        Restore similar settings to DuckHunt V3, if that's your thing.\n"
-"        "
+msgid "Restore similar settings to DuckHunt V3, if that's your thing."
 msgstr ""
 
 #: ../cogs/settings_commands.py:98
-msgid ""
-"\n"
-"        Set the bot for a more casual experience.\n"
-"        "
+msgid "Set the bot for a more casual experience."
 msgstr ""
 
 #: ../cogs/settings_commands.py:147
 msgid ""
+"Change/view the server prefix.\n"
 "\n"
-"        Change/view the server prefix.\n"
-"\n"
-"        Note that some prefixes are global and can't be edited.\n"
-"        "
+"Note that some prefixes are global and can't be edited."
 msgstr ""
 
 #: ../cogs/settings_commands.py:178
 msgid ""
+"Change/view the server language.\n"
 "\n"
-"        Change/view the server language.\n"
-"\n"
-"        Specify the server language as a 2/5 letters code. For example, if "
-"you live in France, you'd use fr or fr_FR.\n"
-"        In Québec, you could use fr_CA.\n"
-"        "
+"Specify the server language as a 2/5 letters code. For example, if you live "
+"in France, you'd use fr or fr_FR.\n"
+"In Québec, you could use fr_CA."
 msgstr ""
 
 #: ../cogs/settings_commands.py:221
 msgid ""
+"Specify wether the bot should use webhooks to communicate in this channel.\n"
 "\n"
-"        Specify wether the bot should use webhooks to communicate in this "
-"channel.\n"
-"\n"
-"        Webhooks allow for custom avatars and usernames. However, there is a "
-"Discord limit of 10 webhooks per channel.\n"
-"        "
+"Webhooks allow for custom avatars and usernames. However, there is a Discord "
+"limit of 10 webhooks per channel."
 msgstr ""
 
 #: ../cogs/settings_commands.py:242
 msgid ""
-"\n"
-"        Add a new webhook to the channel, to get better rate limits "
-"handling. Remember the 10 webhooks/channel limit.\n"
-"        "
+"Add a new webhook to the channel, to get better rate limits handling. "
+"Remember the 10 webhooks/channel limit."
 msgstr ""
 
 #: ../cogs/settings_commands.py:267
-msgid ""
-"\n"
-"        Allow ducks to use emojis when they spawn.\n"
-"        "
+msgid "Allow ducks to use emojis when they spawn."
 msgstr ""
 
 #: ../cogs/settings_commands.py:285
-msgid ""
-"\n"
-"        Allow ducks to spawn.\n"
-"        "
+msgid "Allow ducks to spawn."
 msgstr ""
 
 #: ../cogs/settings_commands.py:313
 msgid ""
-"\n"
-"        Change the tax taken from users when they *send* some experience to "
-"another player.\n"
-"        "
+"Change the tax taken from users when they *send* some experience to another "
+"player."
 msgstr ""
 
 #: ../cogs/settings_commands.py:336
 msgid ""
-"\n"
-"        Control if users might be pinged when they get killed. It's "
-"recommanded to set this to False on big servers.\n"
-"        "
+"Control if users might be pinged when they get killed. It's recommanded to "
+"set this to False on big servers."
 msgstr ""
 
 #: ../cogs/settings_commands.py:357
 msgid ""
-"\n"
-"        When killing super ducks and the like, show how many lives the ducks "
-"have left.\n"
-"        "
+"When killing super ducks and the like, show how many lives the ducks have "
+"left."
 msgstr ""
 
 #: ../cogs/settings_commands.py:377
 msgid ""
-"\n"
-"        Set how likely it is that a hunter will kill someone when missing a "
-"shot.\n"
-"        "
+"Set how likely it is that a hunter will kill someone when missing a shot."
 msgstr ""
 
 #: ../cogs/settings_commands.py:399
 msgid ""
-"\n"
-"        Set how likely it is that a hunter will frighten a duck when "
-"shooting.\n"
-"        Remember, the silencer sets this to 0% for a hunter.\n"
-"        "
+"Set how likely it is that a hunter will frighten a duck when shooting.\n"
+"Remember, the silencer sets this to 0% for a hunter."
 msgstr ""
 
 #: ../cogs/settings_commands.py:422
 msgid ""
-"\n"
-"        Set the minimum experience a clover will give. Might be negative for "
-"funsies :)\n"
-"        "
+"Set the minimum experience a clover will give. Might be negative for "
+"funsies :)"
 msgstr ""
 
 #: ../cogs/settings_commands.py:452
 msgid ""
-"\n"
-"        Set the maximum experience a clover will give. Might be negative for "
-"funsies :)\n"
-"        "
+"Set the maximum experience a clover will give. Might be negative for "
+"funsies :)"
 msgstr ""
 
 #: ../cogs/settings_commands.py:477
-msgid ""
-"\n"
-"        Set the normal amount of experience a duck will give when killed.\n"
-"        "
+msgid "Set the normal amount of experience a duck will give when killed."
 msgstr ""
 
 #: ../cogs/settings_commands.py:499
 msgid ""
-"\n"
-"        Set the additional amount of experience given for every life of a "
-"super duck.\n"
-"        "
+"Set the additional amount of experience given for every life of a super duck."
 msgstr ""
 
 #: ../cogs/settings_commands.py:521
-msgid ""
-"\n"
-"        Set the amount of ducks that will spawn every day\n"
-"        "
+msgid "Set the amount of ducks that will spawn every day"
 msgstr ""
 
 #: ../cogs/settings_commands.py:566
 msgid ""
-"\n"
-"        Set a duck probably to spawn to a certain weight. The higher the "
-"weight, the more probability for it to spawn.\n"
-"        "
+"Set a duck probably to spawn to a certain weight. The higher the weight, the "
+"more probability for it to spawn."
 msgstr ""
 
 #: ../cogs/settings_commands.py:601
-msgid ""
-"\n"
-"        Set for how many seconds a duck will stay on the channel before "
-"leaving\n"
-"        "
+msgid "Set for how many seconds a duck will stay on the channel before leaving"
 msgstr ""
 
 #: ../cogs/settings_commands.py:630
-msgid ""
-"\n"
-"        Set the minimum lives of a super duck\n"
-"        "
+msgid "Set the minimum lives of a super duck"
 msgstr ""
 
 #: ../cogs/settings_commands.py:659
-msgid ""
-"\n"
-"        Set the maximum lives of a super duck\n"
-"        "
+msgid "Set the maximum lives of a super duck"
 msgstr ""
 
 #: ../cogs/settings_commands.py:688
 msgid ""
+"Set the night time. Only some exclusive ducks spawn during the night.\n"
 "\n"
-"        Set the night time. Only some exclusive ducks spawn during the "
-"night.\n"
-"\n"
-"        Times are specified in UTC. The bot does *not* honor daylight "
-"savings time (DST). You might need to edit this\n"
-"        setting twice a year if you care about DST\n"
-"        "
+"Times are specified in UTC. The bot does *not* honor daylight savings time "
+"(DST). You might need to edit this\n"
+"setting twice a year if you care about DST"
 msgstr ""
 
 #: ../cogs/settings_commands.py:755
 msgid ""
-"\n"
-"        Enable/disabled the DuckHunt API for this channel. Will give you an "
-"API key, keep that private.\n"
-"        "
+"Enable/disabled the DuckHunt API for this channel. Will give you an API key, "
+"keep that private."
 msgstr ""
 
 #: ../cogs/settings_commands.py:782
 msgid ""
+"Commands to edit permissions.\n"
 "\n"
-"        Commands to edit permissions.\n"
-"\n"
-"        BANNED = 0\n"
-"        DEFAULT = 50\n"
-"        TRUSTED = 100\n"
-"        MODERATOR = 200\n"
-"        ADMIN = 300\n"
-"        BOT_MODERATOR = 500\n"
-"        BOT_OWNER = 600\n"
-"        "
+"BANNED = 0\n"
+"DEFAULT = 50\n"
+"TRUSTED = 100\n"
+"MODERATOR = 200\n"
+"ADMIN = 300\n"
+"BOT_MODERATOR = 500\n"
+"BOT_OWNER = 600"
 msgstr ""
 
 #: ../cogs/settings_commands.py:799
-msgid ""
-"\n"
-"        View the current permissions\n"
-"        "
+msgid "View the current permissions"
 msgstr ""
 
 #: ../cogs/settings_commands.py:822
-msgid ""
-"\n"
-"        Edit the current permissions for a specific user\n"
-"        "
+msgid "Edit the current permissions for a specific user"
 msgstr ""
 
 #: ../cogs/settings_commands.py:844
-msgid ""
-"\n"
-"        Set your preference on whether replies from the bot should ping you\n"
-"        "
+msgid "Set your preference on whether replies from the bot should ping you"
 msgstr ""
 
 #: ../cogs/settings_commands.py:862
 msgid ""
+"Change/view your own language.\n"
 "\n"
-"        Change/view your own language.\n"
+"Specify your language as a 2/5 letters code. For example, if you live in "
+"France, you'd use fr or fr_FR.\n"
+"In Québec, you could use fr_CA.\n"
 "\n"
-"        Specify your language as a 2/5 letters code. For example, if you "
-"live in France, you'd use fr or fr_FR.\n"
-"        In Québec, you could use fr_CA.\n"
-"\n"
-"        Some messages will use your prefered language, usually when the bot "
-"communicates with you in DM.\n"
-"        "
+"Some messages will use your prefered language, usually when the bot "
+"communicates with you in DM."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:32
-msgid ""
-"\n"
-"        Buy items here\n"
-"        "
+msgid "Buy items here"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:46
-msgid ""
-"\n"
-"        Adds a bullet to your current magazine\n"
-"        "
+msgid "Adds a bullet to your current magazine"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:75
-msgid ""
-"\n"
-"        Adds a magazine in your backpack.\n"
-"        "
+msgid "Adds a magazine in your backpack."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:101
-msgid ""
-"\n"
-"        Buy AP ammo to double the damage you do to super ducks for 24 hours\n"
-"        "
+msgid "Buy AP ammo to double the damage you do to super ducks for 24 hours"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:141
 msgid ""
-"\n"
-"        Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 "
-"hours\n"
-"        "
+"Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 hours"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:175
-msgid ""
-"\n"
-"        Buy back your weapon from the police if it was confiscated.\n"
-"        "
+msgid "Buy back your weapon from the police if it was confiscated."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:199
-msgid ""
-"\n"
-"        Add some grease in your weapon to prevent jamming.\n"
-"        "
+msgid "Add some grease in your weapon to prevent jamming."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:222
-msgid ""
-"\n"
-"        Add a sight to your weapon to improve accuracy.\n"
-"        "
+msgid "Add a sight to your weapon to improve accuracy."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:245
-msgid ""
-"\n"
-"        Add an infrared detector to your weapon. Save bullets and shots.\n"
-"        "
+msgid "Add an infrared detector to your weapon. Save bullets and shots."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:268
-msgid ""
-"\n"
-"        Add a silencer to your weapon to prevent scaring ducks.\n"
-"        "
+msgid "Add a silencer to your weapon to prevent scaring ducks."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:298
-msgid ""
-"\n"
-"        Buy a 4-Leaf clover to get more exp for every duck you kill :)\n"
-"        "
+msgid "Buy a 4-Leaf clover to get more exp for every duck you kill :)"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:336
-msgid ""
-"\n"
-"        Protects from mirror-induced glare for 24h.\n"
-"        "
+msgid "Protects from mirror-induced glare for 24h."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:367
-msgid ""
-"\n"
-"        A new set of clothes. Useful if you are wet.\n"
-"        "
+msgid "A new set of clothes. Useful if you are wet."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:388
-msgid ""
-"\n"
-"        Clean your gun, removing sabotage and sand.\n"
-"        "
+msgid "Clean your gun, removing sabotage and sand."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:410
-msgid ""
-"\n"
-"        Dazzle another hunter using the power of sunlight\n"
-"        "
+msgid "Dazzle another hunter using the power of sunlight"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:450
 msgid ""
-"\n"
-"        Throw sand into another player weapon. This will increase their "
-"jamming chances for their next shot.\n"
-"        "
+"Throw sand into another player weapon. This will increase their jamming "
+"chances for their next shot."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:481
 msgid ""
-"\n"
-"        Throw a bucket of water on the hunter of your choice, forcing them "
-"to wait 1h for their clothes to dry before hunting again.\n"
-"        "
+"Throw a bucket of water on the hunter of your choice, forcing them to wait "
+"1h for their clothes to dry before hunting again."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:523
 msgid ""
-"\n"
-"        Sabotage the weapon of another player. Their gun will jam and "
-"explode in their face the next time they press the trigger.\n"
-"        "
+"Sabotage the weapon of another player. Their gun will jam and explode in "
+"their face the next time they press the trigger."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:557
-msgid ""
-"\n"
-"        Place a decoy to make a duck spawn in the next 10 minutes.\n"
-"        "
+msgid "Place a decoy to make a duck spawn in the next 10 minutes."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:591
-msgid ""
-"\n"
-"        Spawn a fake duck in exactly 90 seconds\n"
-"        "
+msgid "Spawn a fake duck in exactly 90 seconds"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:623
 msgid ""
-"\n"
-"        Protect yourself from water for 24 hours. If you are already wet, it "
-"also can be used as a change.\n"
-"        "
+"Protect yourself from water for 24 hours. If you are already wet, it also "
+"can be used as a change."
 msgstr ""
 
 #: ../cogs/shopping_commands.py:646
-msgid ""
-"\n"
-"        Avoid penalties if you accidentally kill another hunter for 24 "
-"hours\n"
-"        "
+msgid "Avoid penalties if you accidentally kill another hunter for 24 hours"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:668
 msgid ""
-"\n"
-"        Automatically reloads your weapon every time it's necesarry for 24 "
-"hours\n"
-"        "
+"Automatically reloads your weapon every time it's necesarry for 24 hours"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:690
-msgid ""
-"\n"
-"        Never miss a shot again with Homing Projectiles.\n"
-"        "
+msgid "Never miss a shot again with Homing Projectiles."
 msgstr ""
 
-#: ../cogs/simple_commands.py:24
+#: ../cogs/simple_commands.py:71
 msgid ""
-"\n"
-"        Check that the bot is online, give the latency between the bot and "
-"discord servers.\n"
-"        "
+"Check that the bot is online, give the latency between the bot and discord "
+"servers."
 msgstr ""
 
-#: ../cogs/simple_commands.py:38
-msgid ""
-"\n"
-"        Returns the wiki URL\n"
-"        "
+#: ../cogs/simple_commands.py:85
+msgid "Returns the wiki URL"
 msgstr ""
 
-#: ../cogs/simple_commands.py:49
-msgid ""
-"\n"
-"        Get the URL to invite the bot\n"
-"        "
-msgstr ""
-
-#: ../cogs/simple_commands.py:59
-msgid ""
-"\n"
-"        Get the time when you'll get free magazines and your weapon back "
-"from the police\n"
-"        "
-msgstr ""
-
-#: ../cogs/simple_commands.py:82
-msgid ""
-"\n"
-"        Get the bot prefixes\n"
-"        "
+#: ../cogs/simple_commands.py:96
+msgid "Get the URL to invite the bot"
 msgstr ""
 
 #: ../cogs/simple_commands.py:105
+msgid "Get a discord invite to the support server."
+msgstr ""
+
+#: ../cogs/simple_commands.py:113
 msgid ""
-"\n"
-"        Thanks to those fine people who (helped) make the bot\n"
-"        "
+"Get the time when you'll get free magazines and your weapon back from the "
+"police"
+msgstr ""
+
+#: ../cogs/simple_commands.py:136
+msgid "Get the bot prefixes"
+msgstr ""
+
+#: ../cogs/simple_commands.py:159
+msgid "Thanks to those fine people who (helped) make the bot"
+msgstr ""
+
+#: ../cogs/simple_commands.py:184
+msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:51
-msgid ""
-"\n"
-"        Get some quickstats about yourself (or someone else).\n"
-"        "
+msgid "Get some quickstats about yourself (or someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:81
-msgid ""
-"\n"
-"        Get shooting stats (for you or someone else).\n"
-"        "
+msgid "Get shooting stats (for you or someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:194
-msgid ""
-"\n"
-"        Get best times to kill of ducks (for you or someone else).\n"
-"        "
+msgid "Get best times to kill of ducks (for you or someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:219
-msgid ""
-"\n"
-"        Get number of each type of duck killed (for you or someone else).\n"
-"        "
+msgid "Get number of each type of duck killed (for you or someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:242
-msgid ""
-"\n"
-"        Get number of each type of duck hugged (for you or someone else).\n"
-"        "
+msgid "Get number of each type of duck hugged (for you or someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:269
-msgid ""
-"\n"
-"        Get number of each type of duck hurt (for you or someone else).\n"
-"        "
+msgid "Get number of each type of duck hurt (for you or someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:288
 msgid ""
-"\n"
-"        Get number of each type of duck that resisted a shot (for you or "
-"someone else).\n"
-"        "
+"Get number of each type of duck that resisted a shot (for you or someone "
+"else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:307
 msgid ""
-"\n"
-"        Get number of each type of duck that fled following a shot (for you "
-"or someone else).\n"
-"        "
+"Get number of each type of duck that fled following a shot (for you or "
+"someone else)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:326
-msgid ""
-"\n"
-"        Send some of your experience to another player.\n"
-"        "
+msgid "Send some of your experience to another player."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:371
-msgid ""
-"\n"
-"        Give some experience to another player. This is a cheat.\n"
-"        "
+msgid "Give some experience to another player. This is a cheat."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:391
-msgid ""
-"\n"
-"        Who's the best ?\n"
-"        "
+msgid "Who's the best ?"
 msgstr ""
 
 #: ../cogs/support_server_commands.py:86
-msgid ""
-"\n"
-"        Check the status of every shard the bot is hosting.\n"
-"        "
+msgid "Check the status of every shard the bot is hosting."
 msgstr ""
 
 #: ../cogs/support_server_commands.py:115
-msgid ""
-"\n"
-"        See what commands are used\n"
-"        "
+msgid "See what commands are used"
 msgstr ""
 
 #: ../cogs/community.py:24
@@ -1515,7 +1231,7 @@ msgstr ""
 msgid "There is no specific prefix set for this guild."
 msgstr ""
 
-#: ../cogs/settings_commands.py:171 ../cogs/simple_commands.py:99
+#: ../cogs/settings_commands.py:171 ../cogs/simple_commands.py:153
 #, python-brace-format
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
@@ -2123,70 +1839,94 @@ msgid ""
 "{ITEM_COST} exp]"
 msgstr ""
 
-#: ../cogs/simple_commands.py:33
+#: ../cogs/simple_commands.py:34
+msgid "The beloved DuckHunt translators"
+msgstr ""
+
+#: ../cogs/simple_commands.py:37
+#, python-brace-format
+msgid ""
+"The bot itself is made by Eyesofcreeper, with contributions from people "
+"mentionned in `{ctx.prefix}credits`. **You want to help translate this bot ?"
+"** Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). "
+"Thanks!"
+msgstr ""
+
+#: ../cogs/simple_commands.py:80
 #, python-brace-format
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr ""
 
-#: ../cogs/simple_commands.py:74
+#: ../cogs/simple_commands.py:128
 #, python-brace-format
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
 "({formatted_precise_delta})"
 msgstr ""
 
-#: ../cogs/simple_commands.py:95
+#: ../cogs/simple_commands.py:149
 #, python-brace-format
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
 "global prefixes : {global_prefixes_list}"
 msgstr ""
 
-#: ../cogs/simple_commands.py:113
+#: ../cogs/simple_commands.py:167
 msgid ""
 "The bot itself is made by Eyesofcreeper, but these fine people down there "
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
 
-#: ../cogs/simple_commands.py:116
+#: ../cogs/simple_commands.py:170
 msgid "Developer"
 msgstr ""
 
-#: ../cogs/simple_commands.py:116
+#: ../cogs/simple_commands.py:170
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
 msgstr ""
 
-#: ../cogs/simple_commands.py:117 ../cogs/simple_commands.py:118
+#: ../cogs/simple_commands.py:171 ../cogs/simple_commands.py:172
 msgid "Designer"
 msgstr ""
 
-#: ../cogs/simple_commands.py:117
+#: ../cogs/simple_commands.py:171
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
 
-#: ../cogs/simple_commands.py:118
+#: ../cogs/simple_commands.py:172
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
 
-#: ../cogs/simple_commands.py:119
+#: ../cogs/simple_commands.py:173
 msgid "Ideas"
 msgstr ""
 
-#: ../cogs/simple_commands.py:119
+#: ../cogs/simple_commands.py:173
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
 "Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 msgstr ""
 
-#: ../cogs/simple_commands.py:137
+#: ../cogs/simple_commands.py:174
+msgid "Translations"
+msgstr ""
+
+#: ../cogs/simple_commands.py:174
+#, python-brace-format
+msgid ""
+"The bot is translated in MANY languages! Translators are listed in `{ctx."
+"prefix}translators`."
+msgstr ""
+
+#: ../cogs/simple_commands.py:212
 msgid "Current event: "
 msgstr ""
 
-#: ../cogs/simple_commands.py:142
+#: ../cogs/simple_commands.py:217
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
@@ -2203,23 +1943,23 @@ msgstr ""
 msgid "{target.name} statistics."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:65 ../utils/models.py:367
+#: ../cogs/statistics_experience_commands.py:65 ../utils/models.py:373
 msgid "Bullets"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:66 ../utils/models.py:370
+#: ../cogs/statistics_experience_commands.py:66 ../utils/models.py:376
 msgid "Magazines"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:67 ../utils/models.py:353
+#: ../cogs/statistics_experience_commands.py:67 ../utils/models.py:359
 msgid "Experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:68 ../utils/models.py:354
+#: ../cogs/statistics_experience_commands.py:68 ../utils/models.py:360
 msgid "Level"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:69 ../utils/models.py:359
+#: ../cogs/statistics_experience_commands.py:69 ../utils/models.py:365
 msgid "Accuracy"
 msgstr ""
 
@@ -2229,7 +1969,7 @@ msgstr ""
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:363
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:369
 msgid "Reliability"
 msgstr ""
 
@@ -3399,19 +3139,19 @@ msgstr ""
 msgid "unemployed due to extinction of the duck species"
 msgstr ""
 
-#: ../utils/models.py:162 ../utils/models.py:170
+#: ../utils/models.py:166 ../utils/models.py:174
 #, python-brace-format
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
 
-#: ../utils/models.py:174
+#: ../utils/models.py:178
 msgid "Can't set such a high level"
 msgstr ""
 
-#: ../utils/models.py:375
+#: ../utils/models.py:381
 msgid "You leveled up!"
 msgstr ""
 
-#: ../utils/models.py:379
+#: ../utils/models.py:385
 msgid "You leveled down!"
 msgstr ""
