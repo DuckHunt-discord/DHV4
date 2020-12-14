@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # pybabel extract -o messages.pot ../
 
-# Just extract docstrings
-python3 ./pygettext.py -X EXCLUDES --docstrings --no-default-keywords --output=./messages.pot --verbose ../
+# Just extract docstrings from cogs and only cogs
+python3 ./pygettext.py -X EXCLUDES --docstrings --no-default-keywords --output=./messages.pot --verbose ../cogs/
 
 # Add messages
 xgettext --language=Python --add-comments=TRANSLATORS: --force-po -o ./messages.pot --join-existing -vvv ../cogs/*.py
