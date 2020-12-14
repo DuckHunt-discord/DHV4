@@ -506,7 +506,7 @@ async def init_db_connection(config):
         }
     }
 
-    # This would create the databases, something that should be handled by Django.
-    # await Tortoise.init(tortoise_config)
+    await Tortoise.init(tortoise_config)
 
-    await Tortoise.generate_schemas()
+    # This would create the databases, something that should be handled by Django.
+    # await Tortoise.generate_schemas()
