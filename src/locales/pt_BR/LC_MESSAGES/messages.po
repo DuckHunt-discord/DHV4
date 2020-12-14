@@ -6,7 +6,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Content-Type: text/plain; charset=UTF-8"
@@ -94,11 +94,9 @@ msgid ""
 "Execute the prestige process. Almost all of your hunting data **WILL** be "
 "deleted."
 msgstr ""
-"Exécute le processus de prestige. Presque toutes vos données de chasse "
-"serons **SUPPRIMÉES**"
 
 msgid "Get some more experience..."
-msgstr "Donne plus d'expérience..."
+msgstr ""
 
 msgid ""
 "If someone wants to do a dashboard or something to control DuckHunt, there "
@@ -626,7 +624,7 @@ msgid "You are already alive and well."
 msgstr ""
 
 msgid "You eat {brains} 🧠 and regain consiousness."
-msgstr "Vous mangez {brains} 🧠 et reprenez conscience."
+msgstr ""
 
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
@@ -648,102 +646,73 @@ msgid ""
 "converter}. The correct syntax would be `{command_invoke_help}`. The "
 "converter returned the following error: {original}"
 msgstr ""
-"Une erreur s'est produite lors de la conversion de l'un de vos arguments "
-"avec {exception.converter}. La syntaxe correcte pour cette commande est "
-"`{command_invoke_help}`. Le convertisseur a renvoyé l'erreur suivante: "
-"{original}"
 
 msgid ""
 "This command is missing an argument. The correct syntax would be "
 "`{command_invoke_help}`."
 msgstr ""
-"Il manque un argument à cette commande. La syntaxe correcte pour cette "
-"commande est `{command_invoke_help}`."
 
 msgid ""
 "Too many quotes were provided in your message: don't forget to escape your "
 "quotes like this `\\{exception.quote}`. The correct syntax for the command "
 "is `{command_invoke_help}`."
 msgstr ""
-"Trop de guillemets ont été fournis dans votre message. Pensez à echapper vos "
-"guillemets en les tapant comme ceci : `\\{exception.quote}`. La syntaxe "
-"correcte pour cette commande est `{command_invoke_help}`."
 
 msgid ""
 "A space was expected after a closing quote, but I found {exception.char}. "
 "Please check that you are using the correct syntax: `{command_invoke_help}`."
 msgstr ""
-"Un espace était attendu après un guillemet fermant, mais j'ai trouvé "
-"{exception.char}. Veuillez vérifier que vous utilisez la syntaxe correcte: "
-"`{command_invoke_help}`."
 
 msgid ""
 "A closing quote was expected, but wasn't found. Don't forget to close your "
 "quotes with `{exception.close_quote}` at the end of your argument. Please "
 "check that you are using the correct syntax: `{command_invoke_help}`."
 msgstr ""
-"Un guillemet était attendu, mais n'a pas été trouvé. N'oubliez pas de fermer "
-"vos guillemets avec `{exception.close_quote}` à la fin de vos arguments. "
-"Veuillez vérifier que vous utilisez la syntaxe correcte: "
-"`{command_invoke_help}`."
 
 msgid ""
 "Too many arguments were passed in this command. Please check that you are "
 "using the correct syntax: `{command_invoke_help}`."
 msgstr ""
-"Trop d'arguments ont été passés dans cette commande. Veuillez vérifier que "
-"vous utilisez la syntaxe correcte: `{command_invoke_help}`."
 
 msgid ""
 "The way you are invoking this command is confusing me. The correct syntax "
 "would be `{command_invoke_help}`."
 msgstr ""
-"La façon dont vous invoquez cette commande me déroute. La syntaxe correcte "
-"est `{command_invoke_help}`."
 
 msgid ""
 "An argument passed was incorrect. `{exception}`. Please check that you are "
 "using the correct syntax: `{command_invoke_help}`."
 msgstr ""
-"Un argument passé était incorrect. `{exception}`. La syntaxe correcte pour "
-"cette commande est `{command_invoke_help}`."
 
 msgid ""
 "{exception} Please check that you are using the correct syntax: "
 "`{command_invoke_help}`."
 msgstr ""
-"{exception} Veuillez vérifier que vous utilisez la syntaxe correcte: "
-"`{command_invoke_help}`."
 
 msgid "This command can only be used in a private message."
-msgstr "Cette commande ne peut être utilisée que dans un message privé."
+msgstr ""
 
 msgid "This command cannot be used in a private message."
-msgstr "Cette commande ne peut pas être utilisée dans un message privé."
+msgstr ""
 
 msgid ""
 "Multiple errors were encountered when running your command : {exception."
 "errors}"
 msgstr ""
-"Plusieurs erreurs ont été rencontrées lors de l'exécution de votre commande: "
-"{exception.errors}"
 
 msgid "You need to be the owner of the bot to run that."
-msgstr "Vous devez être le propriétaire du bot pour l'exécuter."
+msgstr ""
 
 msgid "You need to be in a NSFW channel to run that."
-msgstr "Vous devez être dans un canal NSFW pour exécuter cette commander."
+msgstr ""
 
 msgid ""
 "You need to be in the {correct_guild.name} server (`{exception."
 "must_be_in_guild_id}`)."
 msgstr ""
-"Vous devez être sur le serveur {correct_guild.name} (`{exception."
-"must_be_in_guild_id}`)."
 
 msgid "You need to be in a server with ID {exception.must_be_in_guild_id}."
 msgstr ""
-"Vous devez être sur un serveur avec l'ID {exception.must_be_in_guild_id}."
 
 msgid ""
 "You don't have enough experience to enjoy this item. You'd need at least "
@@ -757,20 +726,17 @@ msgid ""
 msgstr ""
 
 msgid "The provided command was not found."
-msgstr "Cette commande est introuvable."
+msgstr ""
 
 msgid "That command has been disabled."
-msgstr "Cette commande a été désactivée."
+msgstr ""
 
 msgid ""
 "There was an error running the specified command. Contact the bot admins."
 msgstr ""
-"Une erreur s'est produite lors de l'exécution de cette commande. Contactez "
-"les administrateurs du bot."
 
 msgid "This command is overused. Please try again {some_time}."
 msgstr ""
-"Cette commande est sur-utilisée. Veuillez essayer de nouveau {some_time}."
 
 msgid ""
 "You are above the limits of DuckHunt database. Try to reduce your "
@@ -782,8 +748,6 @@ msgid ""
 "from CommandError, and isn't handled by our error handler. Please inform the "
 "owner."
 msgstr ""
-"Cela n'aurait pas dû arriver. Une commande a généré une erreur qui ne "
-"provient pas de CommandError. Veuillez informer le propriétaire du bot."
 
 msgid "A welcome gift"
 msgstr ""
@@ -973,10 +937,10 @@ msgid "Casual mode settings have been applied to this channel."
 msgstr ""
 
 msgid "The server prefix is set to `{prefix}`."
-msgstr "Le préfixe du serveur est défini à `{prefix}`."
+msgstr ""
 
 msgid "There is no specific prefix set for this guild."
-msgstr "Il n'y a pas de préfixe spécifique dans ce serveur."
+msgstr ""
 
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
@@ -986,20 +950,18 @@ msgid ""
 "❌ Unknown locale. If you wish to go back to the default, english language, "
 "use `{ctx.prefix}{ctx.command.qualified_name} en`"
 msgstr ""
-"❌  Langue/locale inconnue. Pour revenir en langue anglaise, tapez `{ctx."
-"prefix}{ctx.command.qualified_name} en`"
 
 msgid "This server language is set to `{language}` [{language_name}]."
-msgstr "La langue du serveur est définie à `{language}` [{language_name}]."
+msgstr ""
 
 msgid "There is no specific language set for this guild."
-msgstr "Il n’y a pas de langue spécifique définie sur le serveur."
+msgstr ""
 
 msgid "Webhooks are used in this channel."
 msgstr ""
 
 msgid "Webhooks are not used in this channel."
-msgstr "Il n'y a pas de permissions spécifiques définies dans ce canal."
+msgstr ""
 
 msgid ""
 "Webhooks are not used in this channel. Please enable them first. You can use "
@@ -1202,10 +1164,10 @@ msgid ""
 msgstr ""
 
 msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
-msgstr "**Permissions de {member.name}#{member.discriminator}**"
+msgstr ""
 
 msgid "No members have any specific rights in the server."
-msgstr "Il n'y a pas de permissions spécifiques pour ce membre."
+msgstr ""
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
 msgstr ""
@@ -1220,7 +1182,7 @@ msgid "You wont be pinged anymore in replies from the bot."
 msgstr ""
 
 msgid "Your language is set to `{language}` [{language_name}]."
-msgstr "Ta langue est définie à `{language}` [{language_name}]."
+msgstr ""
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
 msgstr ""
@@ -1423,7 +1385,7 @@ msgid ""
 msgstr ""
 
 msgid "Pong. — Time taken: {miliseconds}ms"
-msgstr "Pong. - Temps mis: {miliseconds} ms"
+msgstr ""
 
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
@@ -1672,7 +1634,7 @@ msgid "❌ You need to send more experience than this."
 msgstr ""
 
 msgid "❌ You don't have enough experience 🤣."
-msgstr "❌ Vous n'avez pas assez d'expérience 🤣."
+msgstr ""
 
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
@@ -1922,112 +1884,125 @@ msgid ""
 msgstr ""
 
 msgid "*cries*"
-msgstr ""
+msgstr "*chora*"
 
 msgid "Hello world"
-msgstr "Bien le bonjour !"
+msgstr "Olá mundo"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "E aí, turu bom?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Por favor, não me mate..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Te amo também!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Não atire em mim! Eu sou um pato falso!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
+"**Fato Patístico**: Alguns patos podem voar por mais de 322 milhas em apenas "
+"um dia!"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "**Fato Patístico**: As penas nas costas dos patos são à prova d'água."
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "**Fato Patístico**: Patos têm três pálpebras!"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
+"**Fato Patístico**: Dependendo da espécie, um pato pode viver entre 2 e 12 "
+"anos. Não os patos que vivem nesse jogo, é claro..."
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "Eu estou invisível, não se incomode em me matar!"
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Quem é o filho da ████ que matou meu amigo?"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "A sua mira não é das melhores..."
 
 msgid "The duck left."
-msgstr ""
+msgstr "O pato à esquerda."
 
 msgid "The duck right."
-msgstr ""
+msgstr "O pato à direita."
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "PARE! Isso não é o que você está pensando!"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "Quem me matar vai perder 1562 pontos de experiência."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
+"Eu tenho um plano secreto para matar todos os caçadores, mas eu já estou com "
+"falta de ar, acho que não vou conseguir te explicar tudo antes que..."
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr ""
+msgstr "[INSIRA UM GRITO DE PATO AQUI]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr ""
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "É temporada de caça ao coelho."
 
 msgid "Got a spare cape?"
-msgstr ""
+msgstr "Você tem uma jaqueta sobrando?"
 
 msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr ""
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Eu roubo dinheiro. Eu sou um patinho ladrão."
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Eu sou um pato muito especial."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
-msgstr ""
+msgstr "**DuckHunt Dica de Pro®**: Use trevos para ganhar mais experiência."
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
+"**DuckHunt Dica de Pro®**: Use óculos de Sol para aumentar a sua precisão se "
+"quiser sair dos níveis iniciais. "
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr ""
+"**DuckHunt Dica de Pro®**: Use graxa para impedir que as suas armas travem."
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*Glub Glub*"
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "Espero que todos vocês estejam dando um rolê..."
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
+"**DuckHunt Dica de Pro®**: Use detectores infra-vermelho para não atirar sem "
+"necessidade."
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Eu estou apenas fazendo meu trabalho..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
 msgstr ""
+"Olá, aqui quem fala é o seguro de qualidade do DuckHunt. Como você avalia "
+"sua experiência matando patos até agora? "
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "VoCê fOi CoRrOmPiDo."
 
 msgid "The duck went away."
 msgstr ""
@@ -2177,34 +2152,39 @@ msgid "*Shhhhh*"
 msgstr ""
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Tudo está calmo."
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "Nada está acontecendo agora."
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "Patos estão migrando."
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "Prepare-se para ver mais patos na próxima hora."
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "Esteróides no lago"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"Uma empresa de resíduos médicos despejou esteróides no lago. Os patos "
+"sofreram mutações, e você verá muito mais super patos. Mas tenha cuidado e "
+"não beba essa água."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "Aula de segurança cancelada"
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
+"A aula de segurança foi cancelada, cuidado para não atirar em outros "
+"caçadores!"
 
 msgid "Connection problems"
-msgstr ""
+msgstr "Problemas na conexão."
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
@@ -2212,21 +2192,24 @@ msgid ""
 msgstr ""
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Um novo florista na cidade"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"Uma floricultura abriu na cidade, e você agora pode procurar trevos de "
+"quatro-folhas. Vá lá conferir."
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Mega-patos"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
 msgstr ""
+"Alguém inflou um super-pato, e agora seus filhos estão MUITO MAIORES!!"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "Tempo ventoso"
 
 msgid "Bullets are deflected by some strong wind."
 msgstr ""
@@ -2240,133 +2223,133 @@ msgid ""
 msgstr ""
 
 msgid "public danger"
-msgstr ""
+msgstr "perigo público"
 
 msgid "tourist"
-msgstr ""
+msgstr "turista"
 
 msgid "noob"
-msgstr ""
+msgstr "noob"
 
 msgid "trainee"
-msgstr ""
+msgstr "estagiário"
 
 msgid "duck misser"
-msgstr ""
+msgstr "errador de patos"
 
 msgid "member of the Comitee Against Ducks"
-msgstr ""
+msgstr "membro do Comitê Contra Patos"
 
 msgid "duck hater"
-msgstr ""
+msgstr "odiador de patos"
 
 msgid "duck pest"
-msgstr ""
+msgstr "peste negra dos patos"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "causador de problema para patos"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "depenador"
 
 msgid "hunter"
-msgstr ""
+msgstr "caçador"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "virador de patos ao avesso"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "espancador de patos"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "mastigador de patos"
 
 msgid "duck eater"
-msgstr ""
+msgstr "comedor de patos"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "nivelador de patos"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "desmembrador de patos"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "demolidor de patos"
 
 msgid "duck killer"
-msgstr ""
+msgstr "assassino de patos"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "esfolador de patos"
 
 msgid "duck predator"
-msgstr ""
+msgstr "predador de patos"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "decepador de patos"
 
 msgid "duck decorticator"
-msgstr "Décortiqueur de canards"
+msgstr "decorticador de patos"
 
 msgid "duck fragger"
-msgstr "Exploseur de canards"
+msgstr "fragger de pato"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "estilhaçador de patos"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "esmagador de patos"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "quebrador de patos"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr " maníaco de patos"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "impalador de patos"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "esvicerador de patos"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "terror dos patos"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "explodidor de patos"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "destruidor de patos"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "vaporizador de patos"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "pulverizador de patos"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "desintegrador de patos"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "atomizador de patos"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "aniquilador de patos"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "serial killer de patos"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "genocida de patos"
 
 msgid "old noob"
-msgstr ""
+msgstr "velho de caça"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "torradeira de pato"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "desempregado devido à extinção dos patos"
 
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
@@ -2375,7 +2358,7 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Você subiu de nível!"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Você desceu de nível!"
