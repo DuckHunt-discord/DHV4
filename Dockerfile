@@ -16,6 +16,9 @@ RUN pip install --use-deprecated=legacy-resolver -U -r requirements.txt
 # Fix for babel stupid parsing
 RUN curl https://raw.githubusercontent.com/paris-ci/babel/master/babel/dates.py > /usr/local/lib/python3.9/site-packages/babel/dates.py
 
+# Compile messages catalogs
+RUN pybabel compile -d locales/
+
 COPY src/ /bot
 
 ENV BOT_TOKEN=""
