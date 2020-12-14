@@ -27,7 +27,7 @@ def fake_translation(message, language_code=None):
 
 def get_catalog(language_code) -> Optional[polib.POFile]:
     try:
-        return polib.pofile(f"locales/{language_code}/LC_MESSAGES/messages.mo")
+        return polib.pofile(f"locales/{language_code}/LC_MESSAGES/messages.po")
     except FileNotFoundError:
         return None
 
