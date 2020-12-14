@@ -4,6 +4,7 @@ RUN apt-get update; \
     apt-get install -y --no-install-recommends \
         # To fetch from pip
         git \
+        gettext \
        ; \
     rm -rf /var/lib/apt/lists/*;
 
@@ -34,7 +35,8 @@ COPY docker_run.sh /run.sh
 WORKDIR /bot/
 
 # Compile messages catalogs
-RUN pybabel compile -d locales/
+#RUN pybabel compile -d locales/
+RUN for dirr in ./locales/*/LC_MESSAGES/ ; do msgfmt ${dirr}messages.po -o ${dirr}messages.mo ; echo ${dirr} compiled; done
 
 ENTRYPOINT ["sh"]
 CMD ["/run.sh"]
