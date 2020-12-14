@@ -6,7 +6,7 @@ msgstr ""
 "PO-Revision-Date: 2020-11-23 01:03+0100\n"
 "Last-Translator: Arthur <arthur@jovart.com>\n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
@@ -20,104 +20,103 @@ msgid ""
 "the others\n"
 "        "
 msgstr ""
-"\n"
-"        Laden Sie jemanden auf den Betaserver ein, damit er den Bot vor den "
-"anderen ausprobieren kann\n"
-"        "
+"Nodig iemand uit naar de betaserver, om hun de bot te laten uittesten voor "
+"anderen dat kunnen."
 
 msgid ""
 "\n"
 "        Shoot at the duck that appeared first on the channel.\n"
 "        "
-msgstr ""
+msgstr "Schiet op de eend die het eerste op het kanaal is verschenen."
 
 msgid "\n"
 "        Reload your gun.\n"
 "        "
-msgstr ""
+msgstr "Herlaad je wapen"
 
 msgid "\n"
 "        Hug the duck that appeared first on the channel.\n"
 "        "
-msgstr ""
+msgstr "Knuffel de eend die als eerste is verschenen op het kanaal"
 
 msgid "\n"
 "        Revive yourself by eating brains\n"
 "        "
-msgstr ""
+msgstr "Word weer levend door hersenen op te eten"
 
 msgid "\n"
 "        Spawns a random duck\n"
 "        "
-msgstr ""
+msgstr "Spawnt een willekeurige eend"
 
 msgid ""
 "\n"
 "        Spawns many ducks, of which (at least) one is a mechanical one\n"
 "        "
-msgstr ""
+msgstr "Spawnt veel eenden, waarvan minstens 1 een mechanische eend is"
 
 msgid "\n"
 "        Spawns a normal duck\n"
 "        "
-msgstr ""
+msgstr "Spawnt een normale eend"
 
 msgid "\n"
 "        Spawns a super duck\n"
 "        "
-msgstr ""
+msgstr "Spawnt een supereend"
 
 msgid "\n"
 "        Spawns a baby duck\n"
 "        "
-msgstr ""
+msgstr "Spawnt een babyeend"
 
 msgid "\n"
 "        Spawns a professor Duck.\n"
 "        "
-msgstr ""
+msgstr "Spawnt een professoreend"
 
 msgid ""
 "\n"
 "        Spawns a ghost duck. There will be no spawn message, obviously.\n"
 "        "
-msgstr ""
+msgstr "Spawnt een spookeend, er is geen spawnbericht natuurlijk"
 
 msgid "\n"
 "        Spawns a MOAD.\n"
 "        "
-msgstr ""
+msgstr "Spawnt een MDAE (MOAD)"
 
 msgid ""
 "\n"
 "        Spawns an armored duck, that will resist most 1 dmg hits.\n"
 "        "
 msgstr ""
+"spawnt een gepantserde eend, dat meeste schoten van 1 schade weerstaat."
 
 msgid "\n"
 "        Spawns a golden duck.\n"
 "        "
-msgstr ""
+msgstr "Spawnt een gouden eend"
 
 msgid "\n"
 "        Spawns a plastic duck.\n"
 "        "
-msgstr ""
+msgstr "Spawnt een plastic eend"
 
 msgid "\n"
 "        Spawns a kamikaze duck.\n"
 "        "
-msgstr ""
+msgstr "Spawnt een kamikaze-eend"
 
 msgid "\n"
 "        Show ducks currently on the channel\n"
 "        "
-msgstr ""
+msgstr "Laat de eenden zien die nu op het kanaal zijn"
 
 msgid "\n"
 "        Removes all ducks from the channel\n"
 "        "
-msgstr ""
+msgstr "Verwikdert alle eenden van het kanaal"
 
 msgid ""
 "\n"
@@ -129,16 +128,21 @@ msgid ""
 "channels.\n"
 "        "
 msgstr ""
+"Laat de inhoud van je inventaris zien.\n"
+"\n"
+"De inventaris is globaal. Dat betekent dat alle spullen dat erin zit in "
+"(bijna) elke server gebruikt kan worden.\n"
+"Serveradmins kunnen het gebruik van de inventaris op een kanaal verbieden."
 
 msgid "\n"
 "        Give something to some player.\n"
 "        "
-msgstr ""
+msgstr "Geef iets aan een speler"
 
 msgid "\n"
 "        Use one of your items\n"
 "        "
-msgstr ""
+msgstr "Gebruik een van je spullen"
 
 msgid ""
 "\n"
@@ -146,19 +150,22 @@ msgid ""
 "bonuses.\n"
 "        "
 msgstr ""
+"Prestige gerelateerde commands. Resets je avontuur voor exclusieve bonusen."
 
 msgid "\n"
 "        More info about prestige\n"
 "        "
-msgstr ""
+msgstr "Meer info over prestige"
 
 msgid ""
 "Execute the prestige process. Almost all of your hunting data **WILL** be "
 "deleted."
 msgstr ""
+"Voer het prestige proces uit. Bijna al je jaagdata **ZAL** verwijderd worden."
+""
 
 msgid "Get some more experience..."
-msgstr ""
+msgstr "Krijg wat ervaring..."
 
 msgid ""
 "\n"
@@ -192,7 +199,7 @@ msgid ""
 "    Api keys (local or global) are uuid4, and look like this : `d84af260-"
 "c806-4066-8387-1d5144b7fa72`\n"
 "    "
-msgstr ""
+msgstr "Oh no thats long"
 
 msgid ""
 "\n"
@@ -244,23 +251,24 @@ msgstr ""
 msgid "\n"
 "        Commands to view and edit settings\n"
 "        "
-msgstr ""
+msgstr "Commandos om instellingen te zien en aan te passen."
 
 msgid "\n"
 "        Set your server settings to specific, designed modes\n"
 "        "
-msgstr ""
+msgstr "Stel je serverinstellingen in op specifiek ontworpen modussen."
 
 msgid ""
 "\n"
 "        Restore similar settings to DuckHunt V3, if that's your thing.\n"
 "        "
 msgstr ""
+"Herstel gelijksoortige instellingen als Duckhunt V3, als dat je ding is."
 
 msgid "\n"
 "        Set the bot for a more casual experience.\n"
 "        "
-msgstr ""
+msgstr "Stel de bot in voor een \"casual\" ervaring"
 
 msgid ""
 "\n"
@@ -2111,112 +2119,122 @@ msgid ""
 msgstr ""
 
 msgid "*cries*"
-msgstr ""
+msgstr "*huilt*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "Hallo wereld"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Hoe gaat het vandaag met je?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Dood me alsjeblieft niet..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Ik hou ook van jou!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Schiet me niet neer! Ik ben een nepeend!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "** Eenden feit **: De veren op de rug van eenden zijn waterdicht."
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "** Eenden feit **: Eenden hebben drie oogleden!"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
+"** Eenden feit **: Afhankelijk van de soort kan een eend tussen de 2 en 12 "
+"jaar oud worden. Maar niet de eenden in dit spel ..."
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "Ik ben onzichtbaar. Probeer me niet eens te vermoorden."
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Wie is de kleine ████ hier die mijn vriend heeft vermoord?"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "Je bent echt slecht in richten..."
 
 msgid "The duck left."
-msgstr ""
+msgstr "De eend is vertrokken.  ·°'\\`'°-.,¸¸.·°'\\`"
 
 msgid "The duck right."
-msgstr ""
+msgstr "Dat Ente heeft gelijk.  ·°'\\`'°-.,¸¸.·°'\\`"
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "HOU OP! Het is niet wat je denkt!"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "Mij vermoorden kost je 1562 ervaringspunten."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
+"Ik heb een geheim plan om alle jagers te doden, maar ik ben al kortademig. "
+"Ik denk niet dat ik het allemaal kan uitleggen voordat ..."
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr ""
+msgstr "[VOEG HIER EENDGELUIDEN IN]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr ""
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "Het is konijnenseizoen."
 
 msgid "Got a spare cape?"
-msgstr ""
+msgstr "Heb je een reserve onzichtbare cape?"
 
 msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr ""
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Ik steel auto's. Ik ben een rover ducky."
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Ik ben een heel speciale eend."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
-msgstr ""
+msgstr "**DuckHunt ProWenk® **: gebruik klavers om meer ervaring op te doen."
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
+"**DuckHunt ProWenk® **: Gebruik vizieren om de nauwkeurigheid op lagere "
+"levels te verbeteren."
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
-msgstr ""
+msgstr "** DuckHunt ProWenk® **: gebruik vet om wapenstoringen te voorkomen"
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*Slurp*"
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "Hopelijk zijn jullie allemaal AFK ..."
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
+"** DuckHunt ProWenk® **: gebruik infrarooddetectors om nutteloze opnamen te "
+"voorkomen."
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Ik doe gewoon mijn werk hier..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
 msgstr ""
+"Hallo daar, DuckHunt kwaliteitsverzekering eend hier. Hoe zou u uw ervaring "
+"beoordelen met het doden van eenden tot nu toe?"
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "Je BeNt CoRrUpT."
 
 msgid "The duck went away."
 msgstr ""
@@ -2366,34 +2384,39 @@ msgid "*Shhhhh*"
 msgstr ""
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Alles is rustig"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "Er gebeurt op dit moment niets."
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "Eenden zijn aan het migreren"
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "Bereid je voor om meer eenden te zien in het komende uur."
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "Steroïden in het meer"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"Een bedrijf voor medisch afval heeft steroïden in het meer gedumpt. Eenden "
+"zijn gemuteerd en je zult veel meer super eenden zien. Maar wees voorzichtig "
+"en drink dat water niet."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "Veiligheidsles geannuleerd"
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
+"De veiligheidsles is geannuleerd, pas op dat je niet op andere jagers "
+"schiet!"
 
 msgid "Connection problems"
-msgstr ""
+msgstr "Verbindingsproblemen"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
@@ -2401,21 +2424,23 @@ msgid ""
 msgstr ""
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Een nieuwe bloemist in de stad"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"Er is een bloemistenwinkel in de stad geopend, en je kunt nu betere "
+"klavertjesvier vinden. Ga ze bekijken!"
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Mega-eenden"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
-msgstr ""
+msgstr "Iemand heeft een super eend opgeblazen, en nu zijn ze NOG GROTER!!"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "Winderig weer"
 
 msgid "Bullets are deflected by some strong wind."
 msgstr ""
@@ -2429,133 +2454,133 @@ msgid ""
 msgstr ""
 
 msgid "public danger"
-msgstr ""
+msgstr "publiek gevaar"
 
 msgid "tourist"
-msgstr ""
+msgstr "toerist"
 
 msgid "noob"
-msgstr ""
+msgstr "noob"
 
 msgid "trainee"
-msgstr ""
+msgstr "stagiair"
 
 msgid "duck misser"
-msgstr ""
+msgstr "eendenmisser"
 
 msgid "member of the Comitee Against Ducks"
-msgstr ""
+msgstr "lid van het Comité Tegen Eenden"
 
 msgid "duck hater"
-msgstr ""
+msgstr "eendenhater"
 
 msgid "duck pest"
-msgstr ""
+msgstr "eendenplager"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "eendenhinderaar"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "eendenplukker"
 
 msgid "hunter"
-msgstr ""
+msgstr "jager"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "eenden-binnenstebuitendraaier"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "eendenomklemmer"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "eendenkauwer"
 
 msgid "duck eater"
-msgstr ""
+msgstr "eendeneter"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "eenden-platmaker"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "eenden-uit-elkaar-haler"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "eendensloper"
 
 msgid "duck killer"
-msgstr ""
+msgstr "eendendoder"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "eendenvilder"
 
 msgid "duck predator"
-msgstr ""
+msgstr "eenden-rover"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "eendenhakker"
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "eendenverscheurder"
 
 msgid "duck fragger"
-msgstr ""
+msgstr "eendenfragger"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "eendenbreker"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "eendenverpletteraar"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "eendenbreker"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "eendenverwoester"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "eendenspieser"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "eendenontleder"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "eendenterreur"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "eendenontploffer"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "eendenvernietiger"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "eendenblaster"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "eendenverpulzeraar"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "eendenhakmachine"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "eendenverstuiver"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "eendenuitroeier"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "serie-eendenmoordenaar"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "eendengenocide-veroorzaker"
 
 msgid "old noob"
-msgstr ""
+msgstr "oude noob"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "eendentoaster"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "werkloos vanwege de uitsterving van de eendensoort"
 
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
@@ -2564,7 +2589,7 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Je bent een niveau omhoog gegaan!"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Je bent een niveau omlaag gegaan!"
