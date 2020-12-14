@@ -166,7 +166,7 @@ class RestAPI(Cog):
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
 
-        await self.authenticate_request(request, channel=channel)
+        # await self.authenticate_request(request, channel=channel)
 
         player = await Player\
             .filter(channel__discord_id=channel.id,
