@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 22:47+0100\n"
+"POT-Creation-Date: 2020-12-15 13:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -272,7 +272,7 @@ msgstr ""
 
 #: ../cogs/settings_commands.py:357
 msgid ""
-"When killing super ducks and the like, show how many lives the ducks have "
+"When hurting super ducks and the like, show how many lives the ducks have "
 "left."
 msgstr ""
 
@@ -528,47 +528,47 @@ msgstr ""
 msgid "Get some quickstats about yourself (or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:81
+#: ../cogs/statistics_experience_commands.py:83
 msgid "Get shooting stats (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:194
+#: ../cogs/statistics_experience_commands.py:198
 msgid "Get best times to kill of ducks (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:219
+#: ../cogs/statistics_experience_commands.py:225
 msgid "Get number of each type of duck killed (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:242
+#: ../cogs/statistics_experience_commands.py:250
 msgid "Get number of each type of duck hugged (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:269
+#: ../cogs/statistics_experience_commands.py:279
 msgid "Get number of each type of duck hurt (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:288
+#: ../cogs/statistics_experience_commands.py:300
 msgid ""
 "Get number of each type of duck that resisted a shot (for you or someone "
 "else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:307
+#: ../cogs/statistics_experience_commands.py:321
 msgid ""
 "Get number of each type of duck that fled following a shot (for you or "
 "someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:326
+#: ../cogs/statistics_experience_commands.py:342
 msgid "Send some of your experience to another player."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:371
+#: ../cogs/statistics_experience_commands.py:387
 msgid "Give some experience to another player. This is a cheat."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:391
+#: ../cogs/statistics_experience_commands.py:407
 msgid "Who's the best ?"
 msgstr ""
 
@@ -1943,280 +1943,280 @@ msgstr ""
 msgid "{target.name} statistics."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:65 ../utils/models.py:373
+#: ../cogs/statistics_experience_commands.py:67 ../utils/models.py:373
 msgid "Bullets"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:66 ../utils/models.py:376
+#: ../cogs/statistics_experience_commands.py:68 ../utils/models.py:376
 msgid "Magazines"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:67 ../utils/models.py:359
+#: ../cogs/statistics_experience_commands.py:69 ../utils/models.py:359
 msgid "Experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:68 ../utils/models.py:360
+#: ../cogs/statistics_experience_commands.py:70 ../utils/models.py:360
 msgid "Level"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:69 ../utils/models.py:365
+#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:365
 msgid "Accuracy"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:70
-#: ../cogs/statistics_experience_commands.py:73
+#: ../cogs/statistics_experience_commands.py:72
+#: ../cogs/statistics_experience_commands.py:75
 #, python-brace-format
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:369
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:369
 msgid "Reliability"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:91
+#: ../cogs/statistics_experience_commands.py:93
 #, python-brace-format
 msgid "{target.name} shooting stats."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:99
+#: ../cogs/statistics_experience_commands.py:103
 msgid "🧠"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:99
+#: ../cogs/statistics_experience_commands.py:103
 #, python-brace-format
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
 "life {revives} times eating a total of {brains_eaten} brains"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:108
+#: ../cogs/statistics_experience_commands.py:112
 msgid "🚰"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:108
+#: ../cogs/statistics_experience_commands.py:112
 #, python-brace-format
 msgid "{shots} shots attempted when wet."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:112
+#: ../cogs/statistics_experience_commands.py:116
 msgid "⛔️"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:112
+#: ../cogs/statistics_experience_commands.py:116
 #, python-brace-format
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:116
-#: ../cogs/statistics_experience_commands.py:128
+#: ../cogs/statistics_experience_commands.py:120
+#: ../cogs/statistics_experience_commands.py:132
 msgid "💥"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:116
+#: ../cogs/statistics_experience_commands.py:120
 #, python-brace-format
 msgid "{shots} shots attempted with a sabotaged gun."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:120
+#: ../cogs/statistics_experience_commands.py:124
 msgid "☁"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:120
+#: ../cogs/statistics_experience_commands.py:124
 #, python-brace-format
 msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:124
+#: ../cogs/statistics_experience_commands.py:128
 msgid "🦉"
-msgstr ""
-
-#: ../cogs/statistics_experience_commands.py:124
-#, python-brace-format
-msgid "{shots} shots attempted without bullets."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:128
 #, python-brace-format
+msgid "{shots} shots attempted without bullets."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:132
+#, python-brace-format
 msgid "{shots} shots jamming {target.mention} weapon."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:132
+#: ../cogs/statistics_experience_commands.py:136
 msgid "🔫"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:132
+#: ../cogs/statistics_experience_commands.py:136
 #, python-brace-format
 msgid "{bullets} bullets used in a duck killing madness."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:136
+#: ../cogs/statistics_experience_commands.py:140
 msgid "🎯"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:136
+#: ../cogs/statistics_experience_commands.py:140
 #, python-brace-format
 msgid "{shots} shots missing a target."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:141
+#: ../cogs/statistics_experience_commands.py:145
 msgid "☠️"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:141
+#: ../cogs/statistics_experience_commands.py:145
 #, python-brace-format
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:145
+#: ../cogs/statistics_experience_commands.py:149
 msgid "🧟"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:145
+#: ../cogs/statistics_experience_commands.py:149
 #, python-brace-format
 msgid "{target.mention} was killed {times} times."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:149
+#: ../cogs/statistics_experience_commands.py:153
 msgid "🏆️"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:149
+#: ../cogs/statistics_experience_commands.py:153
 #, python-brace-format
 msgid "{shots} shots using homing bullets."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:153
+#: ../cogs/statistics_experience_commands.py:157
 msgid "🦆"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:153
+#: ../cogs/statistics_experience_commands.py:157
 #, python-brace-format
 msgid "{shots} shots going towards ducks."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:157
+#: ../cogs/statistics_experience_commands.py:161
 msgid "🕵"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:157
+#: ../cogs/statistics_experience_commands.py:161
 #, python-brace-format
 msgid "{shots} shots stopped by the infrared detector."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:161
+#: ../cogs/statistics_experience_commands.py:165
 msgid "❓"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:161
+#: ../cogs/statistics_experience_commands.py:165
 #, python-brace-format
 msgid "{shots} shots without any duck in sight."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:167
+#: ../cogs/statistics_experience_commands.py:171
 msgid "Normal ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:168
+#: ../cogs/statistics_experience_commands.py:172
 msgid "Ghost ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:169
+#: ../cogs/statistics_experience_commands.py:173
 msgid "Professor ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:171
+#: ../cogs/statistics_experience_commands.py:175
 msgid "Baby ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:172
+#: ../cogs/statistics_experience_commands.py:176
 msgid "Golden ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:173
+#: ../cogs/statistics_experience_commands.py:177
 msgid "Plastic ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:175
+#: ../cogs/statistics_experience_commands.py:179
 msgid "Kamikaze ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:176
+#: ../cogs/statistics_experience_commands.py:180
 msgid "Mechanical ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:177
+#: ../cogs/statistics_experience_commands.py:181
 msgid "Super ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:179
+#: ../cogs/statistics_experience_commands.py:183
 msgid "Mother of all ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:180
+#: ../cogs/statistics_experience_commands.py:184
 msgid "Armored ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:204
+#: ../cogs/statistics_experience_commands.py:208
 #, python-brace-format
 msgid "{target.name} best times."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:210
+#: ../cogs/statistics_experience_commands.py:216
 msgid "Never killed any"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:229
+#: ../cogs/statistics_experience_commands.py:235
 #, python-brace-format
 msgid "{target.name} kill counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:252
+#: ../cogs/statistics_experience_commands.py:260
 #, python-brace-format
 msgid "{target.name} hugs counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:258
+#: ../cogs/statistics_experience_commands.py:268
 msgid "Players"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:262
+#: ../cogs/statistics_experience_commands.py:272
 msgid "Hugs when dead"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:279
+#: ../cogs/statistics_experience_commands.py:289
 #, python-brace-format
 msgid "{target.name} hurt counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:298
+#: ../cogs/statistics_experience_commands.py:310
 #, python-brace-format
 msgid "{target.name} resisted counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:317
+#: ../cogs/statistics_experience_commands.py:331
 #, python-brace-format
 msgid "{target.name} scared ducks."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:333
+#: ../cogs/statistics_experience_commands.py:349
 msgid "❌ You cant send experience to yourself."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:337
-#: ../cogs/statistics_experience_commands.py:377
+#: ../cogs/statistics_experience_commands.py:353
+#: ../cogs/statistics_experience_commands.py:393
 #, python-brace-format
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:341
+#: ../cogs/statistics_experience_commands.py:357
 msgid "❌ You need to send more experience than this."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:345
+#: ../cogs/statistics_experience_commands.py:361
 msgid "❌ You don't have enough experience 🤣."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:358
+#: ../cogs/statistics_experience_commands.py:374
 #, python-brace-format
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
@@ -2224,12 +2224,12 @@ msgid ""
 "the total sent)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:384
+#: ../cogs/statistics_experience_commands.py:400
 #, python-brace-format
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:396
+#: ../cogs/statistics_experience_commands.py:412
 #, python-brace-format
 msgid "Top Scores on #{channel}"
 msgstr ""
