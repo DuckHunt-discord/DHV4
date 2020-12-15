@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-14 22:47+0100\n"
+"POT-Creation-Date: 2020-12-15 13:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgid "Shoot at the duck that appeared first on the channel."
 msgstr ""
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "Újratölti a fegyvered."
 
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
@@ -29,37 +29,37 @@ msgid "Revive yourself by eating brains"
 msgstr ""
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "Leidéz egy véletlenszerű kacsát."
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
-msgstr ""
+msgstr "Leidéz sok kacsát, amelyekből legalább 1 mechanikus kacsa lesz."
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "Leidéz egy normál kacsát."
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "Leidéz egy szuperkacsát."
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "Leidéz egy babakacsát."
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "Leidéz egy professzorkacsát."
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
-msgstr ""
+msgstr "Leidéz egy szellemkacsát. Értelemszerűen nem lesz leidéződési üzenet."
 
 msgid "Spawns a MOAD."
-msgstr ""
+msgstr "Leidéz egy MOAD-ot."
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
 msgstr ""
 
 msgid "Spawns a golden duck."
-msgstr ""
+msgstr "Leidéz egy aranykacsát."
 
 msgid "Spawns a plastic duck."
-msgstr ""
+msgstr "Leidéz egy műanyag kacsát."
 
 msgid "Spawns a kamikaze duck."
 msgstr ""
@@ -88,7 +88,7 @@ msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
 
 msgid "More info about prestige"
-msgstr ""
+msgstr "Több információ a"
 
 msgid ""
 "Execute the prestige process. Almost all of your hunting data **WILL** be "
@@ -166,7 +166,7 @@ msgid "Commands to view and edit settings"
 msgstr ""
 
 msgid "Set your server settings to specific, designed modes"
-msgstr ""
+msgstr "Beállítja a szervered beállításait bizonyos, tervezett módokra."
 
 msgid "Restore similar settings to DuckHunt V3, if that's your thing."
 msgstr ""
@@ -187,6 +187,11 @@ msgid ""
 "in France, you'd use fr or fr_FR.\n"
 "In Québec, you could use fr_CA."
 msgstr ""
+"Megjeleníti vagy -változtatja a szerver nyelvét.\n"
+"\n"
+"Add meg a nyelvet 2/5 karakteres kódként. Például, ha magyar nyelvet "
+"szeretnél, akkor hu-t vagy hu_HU-t kell megadnod.\n"
+"Francia nyelvhez pedig használhatsz fr_FR-t."
 
 msgid ""
 "Specify wether the bot should use webhooks to communicate in this channel.\n"
@@ -201,10 +206,10 @@ msgid ""
 msgstr ""
 
 msgid "Allow ducks to use emojis when they spawn."
-msgstr ""
+msgstr "Engedélyezi, hogy a kacsák használjanak emojikat leidéződéskor."
 
 msgid "Allow ducks to spawn."
-msgstr ""
+msgstr "Engedélyezi, hogy kacsák leidéződjenek."
 
 msgid ""
 "Change the tax taken from users when they *send* some experience to another "
@@ -217,7 +222,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"When killing super ducks and the like, show how many lives the ducks have "
+"When hurting super ducks and the like, show how many lives the ducks have "
 "left."
 msgstr ""
 
