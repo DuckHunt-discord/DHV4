@@ -355,7 +355,7 @@ class SettingsCommands(Cog):
     @checks.channel_enabled()
     async def show_duck_lives(self, ctx: MyContext, value: bool = None):
         """
-        When killing super ducks and the like, show how many lives the ducks have left.
+        When hurting super ducks and the like, show how many lives the ducks have left.
         """
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
