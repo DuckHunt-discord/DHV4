@@ -47,9 +47,13 @@ class TranslatorsMenusSource(menus.ListPageSource):
             for user in translators:
                 parsed_translators.append(f"{user.name}#{user.discriminator}")
 
-            locale_data = Locale.parse(locale)
+            try:
+                locale_data = Locale.parse(locale)
+                locale_display_name = locale_data.get_display_name(language_code)
+            except ValueError:
+                locale_display_name = locale
 
-            embed.add_field(name=f"{locale_data.get_display_name(language_code)}: `{locale}` - {get_pct_complete(locale)}%",
+            embed.add_field(name=f"{locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
                             value=format_list(parsed_translators, locale=language_code),
                             inline=False)
 

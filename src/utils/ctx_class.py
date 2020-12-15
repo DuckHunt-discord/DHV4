@@ -94,6 +94,9 @@ class MyContext(commands.Context):
             db_user = await get_from_db(self.author, as_user=True)
             language = db_user.language
 
+        if language == "zh-Hans":
+            return "zh"  # Babel don't know about Simplified Chinese
+
         return language
 
     async def translate(self, message):

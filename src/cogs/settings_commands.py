@@ -182,7 +182,10 @@ class SettingsCommands(Cog):
         In Québec, you could use fr_CA.
         """
         db_guild = await get_from_db(ctx.guild)
-        if language_code:
+
+        if language_code == "zh-Hans":
+            locale_data = Locale.parse("zh")
+        elif language_code:
             try:
                 locale_data = Locale.parse(language_code)
             except babel.UnknownLocaleError:
