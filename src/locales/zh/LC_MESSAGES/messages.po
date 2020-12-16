@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-15 13:27+0100\n"
+"POT-Creation-Date: 2020-12-15 15:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,61 +14,61 @@ msgstr ""
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
-msgstr ""
+msgstr "邀請某人使用測試服務器，讓他們早於其他人嘗試機械人。"
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "對著頻道里最先出現的鴨子開槍。"
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "重新裝彈"
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr ""
+msgstr "抱起頻道里最先出現的鴨子。"
 
 msgid "Revive yourself by eating brains"
-msgstr ""
+msgstr "吃腦子讓自己恢復生命值。"
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "隨機生成一隻鴨子"
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
-msgstr ""
+msgstr "生成許多鴨子，其中（至少）有一隻是機械鴨。"
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "生成一隻普通的鴨子"
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "生成一隻超級鴨子"
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "生成一隻小鴨子"
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "生成一个教授鴨。"
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
-msgstr ""
+msgstr "生成一只鬼鴨。顯然不會有生成信息。"
 
 msgid "Spawns a MOAD."
-msgstr ""
+msgstr "生成一個MOAD。"
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
-msgstr ""
+msgstr "生成一隻裝甲鴨，可以抵擋最多的1dmg傷害。"
 
 msgid "Spawns a golden duck."
-msgstr ""
+msgstr "生成一隻金鴨子。"
 
 msgid "Spawns a plastic duck."
-msgstr ""
+msgstr "生成一隻塑料鴨子。"
 
 msgid "Spawns a kamikaze duck."
 msgstr ""
 
 msgid "Show ducks currently on the channel"
-msgstr ""
+msgstr "顯示當前頻道上的鴨子"
 
 msgid "Removes all ducks from the channel"
-msgstr ""
+msgstr "將所有鴨子從頻道中移出"
 
 msgid ""
 "Show your inventory content.\n"
@@ -76,27 +76,27 @@ msgid ""
 "The inventory is global. It means that all items you can store in it can be "
 "used on (almost) every server.\n"
 "Server administrators can disable inventory usage on specific channels."
-msgstr ""
+msgstr "顯示你的庫存內容。"
 
 msgid "Give something to some player."
-msgstr ""
+msgstr "給某個玩家一些東西。"
 
 msgid "Use one of your items"
-msgstr ""
+msgstr "使用你的一個物品"
 
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
-msgstr ""
+msgstr "重生相關命令。重置你的冒險，獲得專屬獎勵。"
 
 msgid "More info about prestige"
-msgstr ""
+msgstr "更多關於重生的信息"
 
 msgid ""
 "Execute the prestige process. Almost all of your hunting data **WILL** be "
 "deleted."
-msgstr ""
+msgstr "執行重生程序。所有的狩獵數據都幾乎會被**刪除**。"
 
 msgid "Get some more experience..."
-msgstr ""
+msgstr "獲取點經驗值..."
 
 msgid ""
 "If someone wants to do a dashboard or something to control DuckHunt, there "
@@ -129,6 +129,8 @@ msgid ""
 "Api keys (local or global) are uuid4, and look like this : `d84af260-c806-"
 "4066-8387-1d5144b7fa72`"
 msgstr ""
+"如果有人想做一個儀錶盤或者什麼東西來控制DuckHunt，已經有一些api路由了，他們都是返回JSON或者HTTP404/403/"
+"500。他們都返回JSON或HTTP404/403/500。"
 
 msgid "/channels/\n"
 "\n"
