@@ -25,7 +25,8 @@ class DefaultDictJSONField(fields.JSONField):
         kwargs["default"] = collections.defaultdict(default_factory)
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[collections.defaultdict]:
+    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
+        collections.defaultdict]:
         ret = super().to_python_value(value)
         return collections.defaultdict(self.default_factory, ret)
 
@@ -489,7 +490,7 @@ async def get_enabled_channels():
     return await DiscordChannel.filter(enabled=True).all()
 
 
-async def init_db_connection(config):
+async def init_db_connection(config, create_dbs=False):
     tortoise_config = {
         'connections': {
             # Dict format for connection
@@ -514,5 +515,6 @@ async def init_db_connection(config):
 
     await Tortoise.init(tortoise_config)
 
-    # This would create the databases, something that should be handled by Django.
-    # await Tortoise.generate_schemas()
+    if create_dbs:
+        # This would create the databases, something that should be handled by Django.
+        await Tortoise.generate_schemas()

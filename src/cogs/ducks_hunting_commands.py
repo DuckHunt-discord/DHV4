@@ -350,7 +350,7 @@ class DucksHuntingCommands(Cog):
                               max_magazines=level_info["magazines"]))
             return False
         elif db_hunter.magazines <= 0:
-            db_hunter.shooting_stats['unneeded_reloads'] += 1
+            db_hunter.shooting_stats['empty_reloads'] += 1
             await db_hunter.save()
             await ctx.reply(_("🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | "
                               "Bullets: {current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/{max_magazines} ",

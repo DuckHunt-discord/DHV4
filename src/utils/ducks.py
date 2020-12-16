@@ -445,6 +445,7 @@ class Duck:
         bonus_experience = 0
         if self.use_bonus_exp:
             bonus_experience = await db_killer.get_bonus_experience(won_experience)
+            db_killer.shooting_stats['bonus_experience_earned'] += bonus_experience
             won_experience += bonus_experience
 
         await db_killer.edit_experience_with_levelups(self.channel, won_experience)
