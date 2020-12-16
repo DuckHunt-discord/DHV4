@@ -205,6 +205,13 @@ class SimpleCommands(Cog):
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
     async def event(self, ctx: MyContext):
+        """
+        See the current global event.
+
+        Events are rolled by the bot at the start of each hour, and last for one full hour.
+        Many events exist, and you will want to take advantage of seeing them, as they can bring you luck, money or even
+        better : EXPERIENCE !
+        """
         _ = await ctx.get_translate_function()
         language_code = await ctx.get_language_code()
 
