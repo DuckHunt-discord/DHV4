@@ -756,7 +756,7 @@ class SettingsCommands(Cog):
     @checks.channel_enabled()
     async def api_key(self, ctx: MyContext, enable: bool = None):
         """
-        Enable/disabled the DuckHunt API for this channel. Will give you an API key, keep that private.
+        Enable/disable the DuckHunt API for this channel. Will give you an API key, keep that private.
         """
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()

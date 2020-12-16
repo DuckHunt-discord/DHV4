@@ -18,7 +18,7 @@ def _(s):
 
 INV_COMMON_ITEMS = {
     'welcome_package':
-        {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open in the lootbox menu")},
+        {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open it in your inventory")},
     'foie_gras':
         {"type": "lootbox", "action": "foie_gras", "name": _("A clean box of foie gras"), "description": _("The boss dropped that when he died")},
     'vip_card':
