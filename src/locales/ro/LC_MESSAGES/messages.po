@@ -275,7 +275,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enable/disabled the DuckHunt API for this channel. Will give you an API key, "
+"Enable/disable the DuckHunt API for this channel. Will give you an API key, "
 "keep that private."
 msgstr ""
 
@@ -752,7 +752,7 @@ msgstr ""
 msgid "A welcome gift"
 msgstr ""
 
-msgid "Open in the lootbox menu"
+msgid "Open it in your inventory"
 msgstr ""
 
 msgid "A clean box of foie gras"

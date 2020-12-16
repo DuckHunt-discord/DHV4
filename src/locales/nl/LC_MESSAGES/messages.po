@@ -376,10 +376,10 @@ msgstr ""
 "om zomertijd geeft."
 
 msgid ""
-"Enable/disabled the DuckHunt API for this channel. Will give you an API key, "
+"Enable/disable the DuckHunt API for this channel. Will give you an API key, "
 "keep that private."
 msgstr ""
-"Schakel de DuckHunt API in / uit voor dit kanaal. Geeft je een API-sleutel, "
+"Schakel de DuckHunt-API in / uit voor dit kanaal. Geeft je een API-sleutel, "
 "houd die privé."
 
 msgid ""
@@ -990,89 +990,99 @@ msgid ""
 "You are above the limits of DuckHunt database. Try to reduce your "
 "expectations. Database message: `{exception}`"
 msgstr ""
+"Je bent boven de limieten van de DuckHunt-database. Probeer je verwachtingen "
+"te verminderen. Databasebericht: '{exception}'"
 
 msgid ""
 "This should not have happened. A command raised an error that does not comes "
 "from CommandError, and isn't handled by our error handler. Please inform the "
 "owner."
 msgstr ""
+"Dit had niet mogen gebeuren. Een commando heeft een fout gegenereerd die "
+"niet afkomstig is van CommandError en niet wordt afgehandeld door onze "
+"foutbehandelaar. Informeer de eigenaar."
 
 msgid "A welcome gift"
-msgstr ""
+msgstr "Een welkomst-cadeau."
 
-msgid "Open in the lootbox menu"
-msgstr ""
+msgid "Open it in your inventory"
+msgstr "Open het in je inventaris."
 
 msgid "A clean box of foie gras"
-msgstr ""
+msgstr "Een nieuwe doos van foie gras."
 
 msgid "The boss dropped that when he died"
-msgstr ""
+msgstr "De baas liet het vallen toen hij stierf."
 
 msgid "VIP Card"
-msgstr ""
+msgstr "VIP-kaart."
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
+"Een mooie en glimmede kaart die je toestaat om een server tot VIP-server te "
+"maken."
 
 msgid "A book"
-msgstr ""
+msgstr "Een boek."
 
 msgid "Reading it will give you experience"
-msgstr ""
+msgstr "Als je dit leest krijg je was ervaring."
 
 msgid "A good ol' egg"
-msgstr ""
+msgstr "Een albekend ei."
 
 msgid "Crack it open !"
-msgstr ""
+msgstr "Breek het open!"
 
 msgid "A free card for magazines"
-msgstr ""
+msgstr "Een gratis kaart voor magazijnen."
 
 msgid "Redeem it to refill your weapon."
-msgstr ""
+msgstr "Verzukver het om je wapen bij te vullen."
 
 msgid "Your inventory"
-msgstr ""
+msgstr "Je inventaris."
 
 msgid "❌ Unknown item."
-msgstr ""
+msgstr "❌Onbekend item."
 
 msgid "👌 Item has been given to {target.name}."
-msgstr ""
+msgstr "👌 Item is gegeven aan {target.name}."
 
 msgid "❌ Items usage is disabled on this channel."
-msgstr ""
+msgstr "❌ Het gebruik van items is uitgeschakeld op dit kanaal."
 
 msgid "❌ Unknown item number."
-msgstr ""
+msgstr "❌ Onbekend itemnummer."
 
 msgid "Lootbox opened"
-msgstr ""
+msgstr "Lootbox geopend"
 
 msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr ""
+msgstr "✨ {guild.name} is nu VIP! Bedankt."
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
 msgstr ""
+"✨ Je hebt veel geleerd, waardoor je {amount} ervaringspunten aan je profiel "
+"hebt toegevoegd."
 
 msgid "✨ Yay! Free ammo!"
-msgstr ""
+msgstr "✨ yey! Gratis munitie!"
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
-msgstr ""
+msgstr "✨ Oh kijk, eenden! Eenden zijn overal!"
 
 msgid "Prestige Information"
-msgstr ""
+msgstr "Prestige informatie."
 
 msgid ""
 "Prestige is a way for you to restart the DuckHunt adventure, resetting your "
 "account (experience, statistics, ...)\n"
 "In exchange for the reset, you'll get new items to help you progress faster.\n"
 "\n"
-msgstr ""
+msgstr "\n"
+"\n"
 
 msgid ""
 "Prestige will be unlocked when you reach the maximum level. You are at "
