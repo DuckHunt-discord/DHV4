@@ -920,7 +920,7 @@ msgid ""
 "would be `{command_invoke_help}`."
 msgstr ""
 "De manier waarop je dit commando aanroept, brengt me in de war. De juiste "
-"syntaxis zou '{command_invoke_help}' zijn."
+"syntax zou '{command_invoke_help}' zijn."
 
 msgid ""
 "An argument passed was incorrect. `{exception}`. Please check that you are "
@@ -1019,7 +1019,7 @@ msgid "Open it in your inventory"
 msgstr "Open het in je inventaris."
 
 msgid "A clean box of foie gras"
-msgstr "Een nieuwe doos van foie gras."
+msgstr "Een nieuwe doos van foie gras. (eendenlever)"
 
 msgid "The boss dropped that when he died"
 msgstr "De baas liet het vallen toen hij stierf."
@@ -1029,7 +1029,7 @@ msgstr "VIP-kaart."
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
-"Een mooie en glimmede kaart die je toestaat om een server tot VIP-server te "
+"Een mooie en glimmende kaart die je toestaat om een server tot VIP-server te "
 "maken."
 
 msgid "A book"
@@ -1091,80 +1091,92 @@ msgid ""
 "account (experience, statistics, ...)\n"
 "In exchange for the reset, you'll get new items to help you progress faster.\n"
 "\n"
-msgstr "\n"
+msgstr ""
+"Prestige is een manier om het DuckHunt-avontuur opnieuw te starten door je "
+"account te resetten (ervaring, statistieken, ...)\n"
+"In ruil voor de reset ontvang je nieuwe items waarmee je sneller vooruitgang "
+"kunt boeken.\n"
 "\n"
 
 msgid ""
 "Prestige will be unlocked when you reach the maximum level. You are at "
 "{pct}% there (you need {missing_exp} more experience)."
 msgstr ""
+"Prestige wordt ontgrendeld wanneer je het maximale niveau bereikt. Je bent "
+"op {pct}% (je hebt {missing_exp} meer ervaring nodig)."
 
 msgid ""
 "Prestige is available for you now ! Go ahead and use `{ctx.prefix}prestige "
 "confirm`. By using it now, you'll keep {kept_exp} exp."
 msgstr ""
+"Prestige is nu voor u beschikbaar! Ga je gang en gebruik `{ctx."
+"prefix}prestige confirm`. Door het nu te gebruiken, behoudt je {keep_exp} "
+"exp."
 
 msgid "✨ Current prestige level ✨️"
-msgstr ""
+msgstr "✨ Huidig prestige-niveau ✨️"
 
 msgid "You have reached level {level}"
-msgstr ""
+msgstr "Je hebt niveau {level} bereikt"
 
 msgid ""
 "**Remember**, using prestige means losing your statistics and most of your "
 "experience. However, you'll get the following items to help you"
 msgstr ""
+"**Onthoud** dat prestige uitvoeren betekent dat je jouw statistieken en het "
+"grootste deel van je ervaring verliest. Je krijgt echter de volgende items "
+"om Je te helpen"
 
 msgid "Level 1"
-msgstr ""
+msgstr "Level 1"
 
 msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
-msgstr ""
+msgstr "**Onbreekbare zonnebril**: Koop nooit meer een zonnebril"
 
 msgid "Level 2"
-msgstr ""
+msgstr "Level 2"
 
 msgid "**Coat colour**: Choose the colour of your coat"
-msgstr ""
+msgstr "**Jaskleur**: Kies de kleur van uw jas"
 
 msgid "Level 3"
-msgstr ""
+msgstr "Level 3"
 
 msgid "**Daily command**: Get more experience every day"
-msgstr ""
+msgstr "**Dagelijks commando**: doe elke dag meer ervaring op"
 
 msgid "Level 4"
-msgstr ""
+msgstr "Level 4"
 
 msgid "**Icelandic water**: Wet others for longer"
-msgstr ""
+msgstr "**IJslands water**: maak anderen langer nat"
 
 msgid "Level 5"
-msgstr ""
+msgstr "Level 5"
 
 msgid "**Untearable coat**: Buy it for life"
-msgstr ""
+msgstr "**Onscheurbare jas**: Koop hem voor het leven"
 
 msgid "Level 6"
-msgstr ""
+msgstr "Level 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
 
 msgid "Level 7"
-msgstr ""
+msgstr "Level 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
 msgstr ""
 
 msgid "Level 8"
-msgstr ""
+msgstr "Level 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
 msgstr ""
 
 msgid "Level 9"
-msgstr ""
+msgstr "Level 9"
 
 msgid "**???**: Suggestions are welcome"
 msgstr ""
