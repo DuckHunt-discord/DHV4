@@ -1162,69 +1162,82 @@ msgstr "Level 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
+"**Geluiddemper van militaire kwaliteit**: Betere geluiddempers die twee keer "
+"zo lang meegaan"
 
 msgid "Level 7"
 msgstr "Level 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
-msgstr ""
+msgstr "**Permanente licentie om te doden**: Secret DuckHunt-service"
 
 msgid "Level 8"
 msgstr "Level 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
-msgstr ""
+msgstr "**Groter munitiepakket**: Laad twee keer zoveel kogels in je pistool"
 
 msgid "Level 9"
 msgstr "Level 9"
 
 msgid "**???**: Suggestions are welcome"
-msgstr ""
+msgstr "**???**: Suggesties zijn welkom"
 
 msgid ""
 "❌ You haven't unlocked prestige yet. See `{ctx.prefix}prestige info` to "
 "learn more."
 msgstr ""
+"❌ Je hebt nog geen prestige ontgrendeld. Zie '{ctx.prefix}prestige info' "
+"voor meer informatie."
 
 msgid "Prestige {old_prestige} -> {new_prestige}"
-msgstr ""
+msgstr "Prestige {old_prestige} -> {new_prestige}"
 
 msgid "You used prestige after reaching {pct}% of the required threshold."
 msgstr ""
+"Je hebt de prestige gedaan nadat je {pct}% van de vereiste drempel had "
+"bereikt."
 
 msgid "✨ New run"
-msgstr ""
+msgstr "✨ Nieuw begin"
 
 msgid "You'll restart the game with {kept_exp} experience."
-msgstr ""
+msgstr "Je herstart het spel met {keep_exp} ervaring."
 
 msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
 msgstr ""
+"❌ Je prestige-niveau is nog niet hoog genoeg. Zie '{ctx.prefix}prestige "
+"info' voor meer informatie."
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr ""
+"❌ Je hebt je dagelijkse ervaring vandaag al geclaimd. Probeer het morgen "
+"opnieuw."
 
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 msgstr ""
+"💰️ Je hebt {exp} ervaring uit de prestigebank gehaald. Kom snel terug!"
 
 msgid "DHV3-Like settings have been applied to this channel."
-msgstr ""
+msgstr "Instellingen gelijk aan DHV3 zijn toegepast op dit kanaal."
 
 msgid "Casual mode settings have been applied to this channel."
-msgstr ""
+msgstr "Instellingen voor casual modus zijn op dit kanaal toegepast."
 
 msgid "The server prefix is set to `{prefix}`."
-msgstr ""
+msgstr "Het servervoorvoegsel is ingesteld op '{prefix}'."
 
 msgid "There is no specific prefix set for this guild."
-msgstr ""
+msgstr "Er is geen specifiek voorvoegsel ingesteld voor deze guild."
 
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
 msgstr ""
+"Je kunt me oproepen met een van de algemene voorvoegsels: "
+"{global_prefixes_list}"
 
 msgid ""
 "❌ Unknown locale. If you wish to go back to the default, english language, "
