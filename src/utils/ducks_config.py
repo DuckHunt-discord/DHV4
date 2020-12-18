@@ -22,6 +22,7 @@ DUCKS_IMAGES = {
     'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
     'normal': 'https://media.discordapp.net/attachments/737978240966066177/786674722854797352/normal.png',
     'super': 'https://media.discordapp.net/attachments/737978240966066177/745635356992602254/strong_duck.png',
+    'prof': 'https://media.discordapp.net/attachments/737978240966066177/789491557908217856/prof.png',
 }
 
 DUCKS_EMOJIS = {
@@ -94,7 +95,7 @@ ghost = {
 prof = {**normal,
         'shouts': [],
         'usernames': [_("Pr. Duck"), _("EnsDuck")],
-        'avatar_urls': [DUCKS_IMAGES['glare']],
+        'avatar_urls': [DUCKS_IMAGES['prof']],
         }
 
 baby = {**normal,
