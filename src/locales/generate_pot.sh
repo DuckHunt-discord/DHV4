@@ -10,7 +10,7 @@ xgettext --language=Python --add-comments=TRANSLATORS: --force-po -o ./messages.
 xgettext --language=Python --add-comments=TRANSLATORS: --force-po -o ./messages.pot --join-existing -vvv ../main.py
 
 mv ./messages.pot ./en_US/LC_MESSAGES/messages.pot
-cp ./en_US/LC_MESSAGES/messages.pot ./en_US/LC_MESSAGES/messages.po
+#cp ./en_US/LC_MESSAGES/messages.pot ./en_US/LC_MESSAGES/messages.po
 
 # pybabel init -l en -i ./messages.pot -d ./
 # pybabel compile -d ./
