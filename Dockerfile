@@ -27,6 +27,9 @@ ENV DB_USER=""
 ENV DB_PASSWORD=""
 ENV DB_NAME=""
 ENV GLOBAL_API_KEY=""
+ENV JISHAKU_HIDE="True"
+ENV JISHAKU_NO_DM_TRACEBACK="True"
+ENV JISHAKU_NO_UNDERSCORE="True
 
 COPY docker_config.toml /docker_config.toml
 COPY generate_config_from_env.py /generate_config_from_env.py
