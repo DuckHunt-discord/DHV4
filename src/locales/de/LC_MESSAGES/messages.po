@@ -1486,7 +1486,7 @@ msgid "{target.name} shooting stats."
 msgstr ""
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
@@ -1494,31 +1494,31 @@ msgid ""
 msgstr ""
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
 msgstr ""
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
 msgstr ""
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
 msgstr ""
@@ -1527,49 +1527,49 @@ msgid "{shots} shots jamming {target.mention} weapon."
 msgstr ""
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
 msgstr ""
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
 msgstr ""
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr ""
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
 msgstr ""
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
 msgstr ""
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
 msgstr ""
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵"
 
 msgid "{shots} shots stopped by the infrared detector."
 msgstr ""
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
 msgstr ""
