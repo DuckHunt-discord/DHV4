@@ -1,4 +1,5 @@
 import datetime
+from collections import defaultdict
 from typing import Union, Optional
 
 import aiohttp_cors
@@ -229,6 +230,37 @@ class RestAPI(Cog):
 
         return web.json_response(help_dict)
 
+    async def status(self, request):
+        """
+        /status
+
+        Check the status of every shard the bot is hosting.
+        """
+        shards_status = []
+        latencies = sorted(self.bot.latencies, key=lambda l: l[0])  # Sort by shard n°
+
+        guilds_by_shard = defaultdict(list)
+        for guild in self.bot.guilds:
+            guilds_by_shard[guild.shard_id].append(guild.id)
+
+        for shard, latency in latencies:
+            shards_status.append(
+                {
+                    "shard_id": shard,
+                    "latency": latency,
+                    "ready": shard in self.bot.shards_ready,
+                    "guilds": guilds_by_shard[shard]
+                }
+            )
+
+        return web.json_response(
+            {
+                "bot_latency": self.bot.latency,
+                "shards_status": shards_status,
+                "unsharded_guilds": guilds_by_shard[None]
+            }
+        )
+
     async def run(self):
         await self.bot.wait_until_ready()
         listen_ip = self.config()['listen_ip']
@@ -241,6 +273,7 @@ class RestAPI(Cog):
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/settings', self.channel_settings),
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
             ('GET', f'{route_prefix}/help/commands', self.commands),
+            ('GET', f'{route_prefix}/status', self.status),
         ]
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))

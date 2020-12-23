@@ -59,6 +59,15 @@ async def get_or_create_member(user_id: int, guild_id: int, **kwargs):
         return member
 
 
+def remove_empty_data(dct: dict):
+    cleaned = {}
+    for key, value in dct.items():
+        if value:
+            cleaned[key] = value
+
+    return cleaned
+
+
 async def main():
     print(f"Loading data from {DHV3_SETTINGS_FILE}...")
 
@@ -85,7 +94,8 @@ async def main():
         if len(prefix) >= 10:
             prefix = "toolong"
 
-        guild = await get_or_create_guild(setting["server_id"], name="Imported from V3", prefix=prefix, language=language)
+        guild = await get_or_create_guild(setting["server_id"], name="Imported from V3", prefix=prefix,
+                                          language=language)
 
         channel = DiscordChannel(
             discord_id=setting["channel"],
@@ -152,7 +162,7 @@ async def main():
         player = Player(
             channel=channel,
             member=member,
-            active_powerups={
+            active_powerups=remove_empty_data({
                 "confiscated": int(player_obj["confisque"]),
                 "mirror": 6 if int(player_obj["dazzled"]) > now else 0,
                 "jammed": int(player_obj["enrayee"]),
@@ -166,8 +176,8 @@ async def main():
                 "sight": 12 if int(player_obj["sight"]) > now else 0,
                 "silencer": int(player_obj["silencieux"]),
                 "sunglasses": int(player_obj["sunglasses"])
-            },
-            shooting_stats={
+            }),
+            shooting_stats=remove_empty_data({
                 "suicides": player_obj["self_killing_shoots"],
                 "shots_stopped_by_detector": player_obj["shoots_infrared_detector"],
                 "shots_jamming_weapon": player_obj["shoots_jamming_weapon"],
@@ -185,11 +195,11 @@ async def main():
                 "reloads": player_obj["reloads"],
                 "empty_reloads": player_obj["reloads_without_chargers"],
                 "unneeded_reloads": player_obj["unneeded_reloads"],
-            },
+            }),
             experience=player_obj["exp"],
             spent_experience=player_obj["used_exp"],
             givebacks=player_obj["givebacks"],
-            found_items={
+            found_items=remove_empty_data({
                 "took_trash_v3": player_obj["trashFound"],
                 "took_explosive_ammo": player_obj["found_explosive_ammo"],
                 "took_partial_explosive_ammo": player_obj["found_almost_empty_explosive_ammo"],
@@ -200,30 +210,29 @@ async def main():
                 "took_silencer": player_obj["found_silencers"],
                 "took_detector": player_obj["found_infrared_detectors"],
                 "took_grease": player_obj["found_grease"],
-
-            },
+            }),
             bullets=player_obj["balles"],
             magazines=player_obj["chargeurs"],
             last_giveback=datetime.datetime.fromtimestamp(player_obj["lastGiveback"]),
-            killed={
+            killed=remove_empty_data({
                 "normal": player_obj["killed_normal_ducks"],
                 "super": player_obj["killed_super_ducks"],
                 "baby": player_obj["killed_baby_ducks"],
                 "moad": player_obj["killed_mother_of_all_ducks"],
                 "mechanical": player_obj["killed_mechanical_ducks"],
-            },
-            hugged={
+            }),
+            hugged=remove_empty_data({
                 "baby": player_obj["hugged_baby_ducks"],
                 "nothing": player_obj["hugs_no_duck"],
                 "v3_nohug": player_obj["hugged_nohug_ducks"],
                 "players": player_obj["hugs_human"],
-            },
-            harmed={
+            }),
+            harmed=remove_empty_data({
                 "super": player_obj["shoots_harmed_duck"]
-            },
-            frightened={
+            }),
+            frightened=remove_empty_data({
                 "v3": player_obj["shoots_frightened"]
-            },
+            }),
         )
 
         await player.save()
