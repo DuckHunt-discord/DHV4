@@ -240,8 +240,8 @@ class RestAPI(Cog):
         latencies = sorted(self.bot.latencies, key=lambda l: l[0])  # Sort by shard n°
 
         guilds_by_shard = defaultdict(list)
-        for guild in self.bot.guilds:
-            guilds_by_shard[guild.shard_id].append(guild.id)
+        for guild in sorted(self.bot.guilds, key=lambda g: -g.member_count):
+            guilds_by_shard[guild.shard_id].append({"id": guild.id, "name": guild.name, "members": guild.member_count})
 
         for shard, latency in latencies:
             shards_status.append(
