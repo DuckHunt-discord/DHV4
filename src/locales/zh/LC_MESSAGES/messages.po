@@ -318,7 +318,7 @@ msgid "Edit the current permissions for a specific user"
 msgstr "編輯特定用戶的權限"
 
 msgid "Set your preference on whether replies from the bot should ping you"
-msgstr ""
+msgstr "設置您的機器人是否應該ping您的偏好。"
 
 msgid ""
 "Change/view your own language.\n"
@@ -329,47 +329,49 @@ msgid ""
 "\n"
 "Some messages will use your prefered language, usually when the bot "
 "communicates with you in DM."
-msgstr ""
+msgstr "更改/查看自己的語言。\n"
+"\n"
+"指定您的語言為2/5字母代碼。例如，如果您住在法國，您可以使用fr或fr_FR。"
 
 msgid "Buy items here"
-msgstr ""
+msgstr "在這裡購買商品"
 
 msgid "Adds a bullet to your current magazine"
-msgstr ""
+msgstr "為您當前的彈夾添加一顆子彈"
 
 msgid "Adds a magazine in your backpack."
-msgstr ""
+msgstr "在你的背包里增加一個彈夾。"
 
 msgid "Buy AP ammo to double the damage you do to super ducks for 24 hours"
-msgstr ""
+msgstr "購買加強彈藥對超級鴨子的傷害翻倍，持續24小時。"
 
 msgid ""
 "Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 hours"
-msgstr ""
+msgstr "購買爆炸彈藥可使你對超級鴨子造成的傷害增加三倍，持續24小時。"
 
 msgid "Buy back your weapon from the police if it was confiscated."
-msgstr ""
+msgstr "如果你的武器被沒收了，就從警察那裡買回來。"
 
 msgid "Add some grease in your weapon to prevent jamming."
-msgstr ""
+msgstr "在武器上加點潤滑油，防止卡殼。"
 
 msgid "Add a sight to your weapon to improve accuracy."
-msgstr ""
+msgstr "在你的武器上加裝一個瞄准器，以提高準確性。"
 
 msgid "Add an infrared detector to your weapon. Save bullets and shots."
-msgstr ""
+msgstr "在你的武器上加裝一個紅外探測器。節省子彈和射擊。"
 
 msgid "Add a silencer to your weapon to prevent scaring ducks."
-msgstr ""
+msgstr "在武器上加一個消音器，防止嚇走鴨子。"
 
 msgid "Buy a 4-Leaf clover to get more exp for every duck you kill :)"
 msgstr ""
 
 msgid "Protects from mirror-induced glare for 24h."
-msgstr ""
+msgstr "防止鏡面引起的反光24小時。"
 
 msgid "A new set of clothes. Useful if you are wet."
-msgstr ""
+msgstr "一套新衣服。在你被淋濕時很有用。"
 
 msgid "Clean your gun, removing sabotage and sand."
 msgstr ""
