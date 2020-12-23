@@ -247,7 +247,7 @@ class RestAPI(Cog):
             shards_status.append(
                 {
                     "shard_id": shard,
-                    "latency": latency,
+                    "latency": round(latency, 2),
                     "ready": shard in self.bot.shards_ready,
                     "guilds": guilds_by_shard[shard]
                 }
@@ -255,7 +255,7 @@ class RestAPI(Cog):
 
         return web.json_response(
             {
-                "bot_latency": self.bot.latency,
+                "bot_latency": round(self.bot.latency, 2),
                 "shards_status": shards_status,
                 "unsharded_guilds": guilds_by_shard[None]
             }
