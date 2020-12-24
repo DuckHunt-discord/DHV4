@@ -15,36 +15,41 @@ msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
 msgstr ""
+"Invite quelqu'un sur le serveur beta, ce qui les laisse essayer le bot avant "
+"les autres.\n"
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "Tire sur le plus vieux canard à être apparu dans le salon.\n"
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "Recharge l'arme.\n"
 
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
+"Fait un câlin au plus ancien bébé canard à être apparu dans le salon.\n"
 
 msgid "Revive yourself by eating brains"
-msgstr ""
+msgstr "Ressusciter en mangeant un cerveau.\n"
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "Fait apparaître un canard aléatoire.\n"
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
 msgstr ""
+"Fait apparaître plusieurs canards, dont (au moins) un est un canard "
+"mécanique.\n"
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "Fait apparaître un canard normal.\n"
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "Fait apparaître un super-canard.\n"
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "Fait apparaître un bébé canard.\n"
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "Fait apparaître un Professeur Canard.\n"
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
 msgstr ""
