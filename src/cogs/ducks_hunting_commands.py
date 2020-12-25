@@ -163,11 +163,11 @@ class DucksHuntingCommands(Cog):
 
             if has_kill_licence:
                 await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
-                                  "You should send your complaints to the CACAC. At least, you had a ~~kill~~ suicide licence. [**MISSED**: -2 exp]",
+                                  "You should send your complaints to the CACAD. At least, you had a ~~kill~~ suicide licence. [**MISSED**: -2 exp]",
                                   ))
             else:
                 await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
-                                  "You should send your complaints to the CACAC. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
+                                  "You should send your complaints to the CACAD. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
                                   ))
             await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(ctx.author.name)}&top2={quote_plus(_('Signed up for the CACAC.'))}&top3=&top4=&sp=")
             return False
