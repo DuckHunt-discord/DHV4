@@ -73,7 +73,7 @@ class SimpleCommands(Cog):
     @commands.command()
     async def ping(self, ctx: MyContext):
         """
-        Check that the bot is online, give the latency between the bot and discord servers.
+        Check that the bot is online, give the latency between the bot and Discord servers.
         """
         _ = await ctx.get_translate_function()
 
