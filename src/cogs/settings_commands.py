@@ -444,7 +444,7 @@ class SettingsCommands(Cog):
             await db_channel.save()
 
         await ctx.send(_(
-            "On {channel.mention}, when a hunter buy a clover, the minimum experience given per duck kill will be of {value} for every life the duck has.",
+            "On {channel.mention}, when a hunter buy a clover, the minimum experience given per duck kill will be of {value}.",
             channel=ctx.channel,
             value=db_channel.clover_min_experience))
 
