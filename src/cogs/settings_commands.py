@@ -567,7 +567,7 @@ class SettingsCommands(Cog):
     @checks.channel_enabled()
     async def weights(self, ctx: MyContext, duck_type: str, value: int = None):
         """
-        Set a duck probably to spawn to a certain weight. The higher the weight, the more probability for it to spawn.
+        Set a duck probability to spawn to a certain weight. The higher the weight, the more probability for it to spawn.
         """
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
