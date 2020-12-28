@@ -437,6 +437,10 @@ async def get_from_db(discord_object, as_user=False):
             if not db_obj:
                 db_obj = DiscordGuild(discord_id=discord_object.id, name=discord_object.name)
                 await db_obj.save()
+            if discord_object.name != db_obj.name:
+                db_obj.name = discord_object.name
+                await db_obj.save()
+
             return db_obj
         elif isinstance(discord_object, discord.TextChannel):
             db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
@@ -444,6 +448,11 @@ async def get_from_db(discord_object, as_user=False):
                 db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name,
                                         guild=await get_from_db(discord_object.guild))
                 await db_obj.save()
+
+            if discord_object.name != db_obj.name:
+                db_obj.name = discord_object.name
+                await db_obj.save()
+
             return db_obj
         elif isinstance(discord_object, discord.Member) and not as_user:
             db_obj = await DiscordMember.filter(user__discord_id=discord_object.id,
@@ -459,6 +468,11 @@ async def get_from_db(discord_object, as_user=False):
             if not db_obj:
                 db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name,
                                      discriminator=discord_object.discriminator)
+                await db_obj.save()
+
+            if discord_object.name != db_obj.name or discord_object.discriminator != db_obj.discriminator:
+                db_obj.name = discord_object.name
+                db_obj.discriminator = discord_object.discriminator
                 await db_obj.save()
 
             return db_obj
