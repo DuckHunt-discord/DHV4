@@ -118,14 +118,34 @@ class DucksSpawning(Cog):
 
         self.bot.logger.debug(f"Planifying ducks spawns on {len(db_channels)} channels")
 
+        channels_to_disable = []
+
         for db_channel in db_channels:
             channel = self.bot.get_channel(db_channel.discord_id)
 
             if channel:
                 self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
             else:
+                self.bot.logger.warning()
+                channels_to_disable.append(db_channel)
+
+        if 0 < len(channels_to_disable) < 100:
+            self.bot.logger.warning(f"Disabling {len(channels_to_disable)} channels "
+                                    f"that are no longer avaiable to the bot.")
+            for db_channel in channels_to_disable:
+                # TODO : We can probably only do 1 big query here, but for that I'd have to learn Tortoise.
+                # To be honest, improvement would be limited since 100 queries max isn't that slow and there obviously
+                # aren't that many channels that get disabled during a reboot...
                 db_channel.enabled = False
-                await db_channel.save()
+                db_channel.save()
+        elif len(channels_to_disable) >= 100:
+            self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
+                                  f"to disable them. Is discord healthy ?")
+            self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
+        else:
+            self.bot.logger.debug(f"All the channels are available :)")
+
+
 
     async def before(self):
         self.bot.logger.info(f"Waiting for ready-ness to planify duck spawns...")
