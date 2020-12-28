@@ -173,7 +173,6 @@ class DucksHuntingCommands(Cog):
             return False
 
         # Maybe a duck there
-        await db_hunter.save()
         duck = await ctx.target_next_duck()
 
         # Missing
