@@ -118,7 +118,7 @@ class InventoryCommands(Cog):
     @inventory.command(name="use", aliases=["open"])
     async def inv_use(self, ctx: MyContext, item_number: int):
         """
-        Use one of your items
+        Use one of the items in your inventory.
         """
         _ = await ctx.get_translate_function(user_language=True)
 
