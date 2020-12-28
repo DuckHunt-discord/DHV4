@@ -70,12 +70,13 @@ class DucksHuntingCommands(Cog):
         sabotage = db_hunter.weapon_sabotaged_by
 
         if sabotage:
-            db_sabotager = await db_hunter.weapon_sabotaged_by.prefetch_related("member__user")
-            sabotager = await db_sabotager.first()
+            sabotager = await db_hunter.weapon_sabotaged_by.get()
+            member = await sabotager.member
+            user = await member.user
 
-            if target and sabotager.member.user.discord_id == target.id and target.id != ctx.author.id:
-                db_sabotager.stored_achievements['prevention'] = True
-                await db_sabotager.save()
+            if target and user.discord_id == target.id and target.id != ctx.author.id:
+                sabotager.stored_achievements['prevention'] = True
+                await sabotager.save()
 
             db_hunter.weapon_sabotaged_by = None
             db_hunter.active_powerups['jammed'] = 1
@@ -84,7 +85,7 @@ class DucksHuntingCommands(Cog):
 
             await ctx.reply(_("💥 Your weapon was sabotaged and exploded in your face. You can thank "
                               "{sabotager.name}#{sabotager.discriminator} for this bad joke.",
-                              sabotager=sabotager.member.user))
+                              sabotager=user))
             return False
 
         if db_hunter.is_powerup_active('jammed'):
