@@ -173,6 +173,7 @@ class DucksHuntingCommands(Cog):
             return False
 
         # Maybe a duck there
+        await db_hunter.save()
         duck = await ctx.target_next_duck()
 
         # Missing
@@ -283,7 +284,7 @@ class DucksHuntingCommands(Cog):
 
         if duck:
             db_hunter.shooting_stats['shots_with_duck'] += 1
-            await db_hunter.save()
+            duck.db_target_lock_by = db_hunter  # Since we have unsaved data
             await duck.shoot(args)
         elif db_hunter.is_powerup_active('detector'):
             db_hunter.active_powerups['detector'] -= 1
