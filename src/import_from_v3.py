@@ -181,7 +181,7 @@ async def main():
                 "suicides": player_obj["self_killing_shoots"],
                 "shots_stopped_by_detector": player_obj["shoots_infrared_detector"],
                 "shots_jamming_weapon": player_obj["shoots_jamming_weapon"],
-                "shots_without_duck": player_obj["shoots_no_duck"],
+                "shots_without_ducks": player_obj["shoots_no_duck"],
                 "shots_when_sabotaged": player_obj["shoots_sabotaged"],
                 "shots_when_wet": player_obj["shoots_tried_while_wet"],
                 "shots_when_jammed": player_obj["shoots_with_jammed_weapon"],
@@ -200,7 +200,7 @@ async def main():
             spent_experience=player_obj["used_exp"],
             givebacks=player_obj["givebacks"],
             found_items=remove_empty_data({
-                "took_trash_v3": player_obj["trashFound"],
+                "took_trash_old_items": player_obj["trashFound"],
                 "took_explosive_ammo": player_obj["found_explosive_ammo"],
                 "took_partial_explosive_ammo": player_obj["found_almost_empty_explosive_ammo"],
                 "took_magazine": player_obj["found_chargers"],

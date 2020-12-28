@@ -284,6 +284,7 @@ class DucksHuntingCommands(Cog):
 
         if duck:
             db_hunter.shooting_stats['shots_with_duck'] += 1
+            await db_hunter.save()
             await duck.shoot(args)
         elif db_hunter.is_powerup_active('detector'):
             db_hunter.active_powerups['detector'] -= 1
