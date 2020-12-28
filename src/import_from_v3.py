@@ -102,7 +102,7 @@ async def main():
             guild=guild,
             name=setting["channel_name"],
             enabled=bool(int(setting["enabled"])),
-            tax_on_user_send=max(min(setting["tax_on_user_give"], 100), 0) if not setting["user_can_give_exp"] else 100,
+            tax_on_user_send=max(min(setting["tax_on_user_give"], 100), 0) if setting["user_can_give_exp"] else 100,
             mentions_when_killed=bool(setting["killed_mentions"]),
             show_duck_lives=bool(setting["show_super_ducks_life"]),
             kill_on_miss_chance=setting["chance_to_kill_on_missed"],
