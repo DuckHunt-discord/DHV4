@@ -1,4 +1,4 @@
-website_url = "https://v4.duckhunt.me/"
+website_url = "https://duckhunt.me/"
 
 [bot]
 prefixes = ["c!", "d!", "C!", "D!"]
