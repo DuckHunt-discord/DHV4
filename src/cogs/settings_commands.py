@@ -39,8 +39,9 @@ class SettingsCommands(Cog):
         Commands to view and edit settings
         """
         if not ctx.invoked_subcommand:
+            _ = await ctx.get_translate_function()
             await ctx.send_help(ctx.command)
-            await ctx.send(f"You can view the channel settings here: "
+            await ctx.send(_("You can view the channel settings here: ") +
                            f"<{self.bot.config['website_url']}data/channels/{ctx.channel.id}/settings>")
 
     @settings.group(aliases=["template", "preset", "presets"])
