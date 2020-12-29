@@ -40,6 +40,8 @@ class SettingsCommands(Cog):
         """
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
+            await ctx.send(f"You can view the channel settings here: "
+                           f"<{self.bot.config['website_url']}/data/channels/{ctx.channel.id}/settings>")
 
     @settings.group(aliases=["template", "preset", "presets"])
     @checks.channel_enabled()
