@@ -20,6 +20,7 @@ class TopScoresSource(menus.ListPageSource):
         _ = await self.ctx.get_translate_function()
         e = discord.Embed()
         e.title = self.title
+        e.url = f"{self.ctx.bot.config['website_url']}data/channels/{self.ctx.channel.id}"
         offset = menu.current_page * self.per_page
 
         for i, item in enumerate(entries, start=offset):
@@ -43,6 +44,7 @@ async def show_topscores_pages(ctx, title: str):
         clear_reactions_after=True
     )
     await pages.start(ctx)
+
 
 class StatisticsCommands(Cog):
     @commands.command(aliases=["quick_stats", "quickstats"])
