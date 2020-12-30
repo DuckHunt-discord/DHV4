@@ -65,7 +65,7 @@ class EmbedHelpCommand(commands.HelpCommand):
         _ = await self.context.get_translate_function()
 
         embed = discord.Embed(title=group.qualified_name, colour=self.COLOUR)
-        embed.url = self.context.bot.config['website_url'] + f"commands?command={group.qualified_name}"
+        embed.url = self.context.bot.config['website_url'] + f"commands?command={group.qualified_name.replace(' ', '%20')}"
 
         if group.help:
             embed.description = _(group.help)
