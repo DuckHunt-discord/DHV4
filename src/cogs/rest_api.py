@@ -261,6 +261,25 @@ class RestAPI(Cog):
             }
         )
 
+    async def stats(self, request):
+        """
+        /stats
+
+        Get some global statistics about the bot.
+        """
+        return web.json_response(
+            {
+                "members_count": sum((g.member_count for g in self.bot.guilds)),
+                "guilds_count": len(self.bot.guilds),
+                "channels_count": sum((len(g.channels) for g in self.bot.guilds)),
+                "players_count": await Player.all().count(),
+                "alive_ducks_count": sum(len(v) for v in self.bot.ducks_spawned.values()),
+                "uptime": int((datetime.datetime.now() - self.bot.uptime).timestamp()),
+                "current_event_name": self.bot.current_event.name,
+                "current_event_value": self.bot.current_event.value,
+            }
+        )
+
     async def run(self):
         await self.bot.wait_until_ready()
         listen_ip = self.config()['listen_ip']
@@ -274,6 +293,7 @@ class RestAPI(Cog):
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
             ('GET', f'{route_prefix}/help/commands', self.commands),
             ('GET', f'{route_prefix}/status', self.status),
+            ('GET', f'{route_prefix}/stats', self.stats),
         ]
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
