@@ -24,6 +24,7 @@ DUCKS_IMAGES = {
     'super': 'https://media.discordapp.net/attachments/737978240966066177/745635356992602254/strong_duck.png',
     'prof': 'https://media.discordapp.net/attachments/737978240966066177/789491557908217856/prof.png',
     'mechanical': 'https://media.discordapp.net/attachments/737978240966066177/745568605063872513/mechanical_duck.png',
+    'moad': 'https://media.discordapp.net/attachments/737978240966066177/793973351299153950/mother_of_all_ducks_Calgeka.png'
 }
 
 DUCKS_EMOJIS = {
@@ -146,6 +147,7 @@ super = {
 moad = {
     **normal,
     'shouts': [_("**I am your mother...**")],
+    'avatar_urls': [DUCKS_IMAGES['moad']],
 }
 
 armored = {**super,
