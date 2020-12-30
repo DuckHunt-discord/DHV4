@@ -239,7 +239,30 @@ class SettingsCommands(Cog):
         if db_channel.use_webhooks:
             await ctx.send(_("Webhooks are used in this channel."))
         else:
-            await ctx.send(_("Webhooks are not used in this channel."))
+            await ctx.send(_("Webhooks are not used in this channel."))\
+
+
+    @settings.command()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
+    async def allow_global_items(self, ctx: MyContext, value: Optional[bool] = None):
+        """
+        This controls if hunters can use special items they earned somewhere else on this channel...
+
+        For example, this will allow/deny use of the "box of foie gras" dropped by the boss on the Official Support
+        Server.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if value is not None:
+            db_channel.allow_global_items = value
+            await db_channel.save()
+
+        if db_channel.allow_global_items:
+            await ctx.send(_("Global items can be used in this channel."))
+        else:
+            await ctx.send(_("Global items can't be used in this channel."))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.MODERATOR)
