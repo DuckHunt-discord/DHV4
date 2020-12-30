@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 14:16+0100\n"
+"POT-Creation-Date: 2020-12-30 00:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgid "Give something to some player."
 msgstr "Geef iets aan een speler."
 
 msgid "Use one of the items in your inventory."
-msgstr ""
+msgstr "Gebruik een van de spullen uit je inventaris."
 
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
@@ -221,7 +221,9 @@ msgstr "/help/commands\n"
 msgid "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
-msgstr ""
+msgstr "/status\n"
+"\n"
+"Controleer de status van elke shard die de bot host."
 
 msgid "Commands to view and edit settings"
 msgstr "Commando's om de instellingen te zien en aan te passen"
@@ -351,6 +353,9 @@ msgid ""
 "Set a duck probability to spawn to a certain weight. The higher the weight, "
 "the more probability for it to spawn."
 msgstr ""
+"Stel de kans in om een eend te spawnen, op een bepaald gewicht. Hoe hoger "
+"het gewicht, hoe groter de kans dat het gaat spawnen.\n"
+"(bv. 50 gewicht /200 totaal = 25%)"
 
 msgid ""
 "Set for how many seconds a duck will stay on the channel before leaving"
@@ -535,6 +540,8 @@ msgid ""
 "Check that the bot is online, give the latency between the bot and Discord "
 "servers."
 msgstr ""
+"Controleer of de bot online is, geef de latentie tussen de bot en discord-"
+"servers."
 
 msgid "Returns the wiki URL"
 msgstr "Retourneert de wiki-URL."
@@ -710,12 +717,18 @@ msgid ""
 "should send your complaints to the CACAD. At least, you had a ~~kill~~ "
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
+"... En de kogel vloog recht in je gezicht en doodde je onmiddellijk. Je moet "
+"je klachten doorsturen naar het CACAD. Je had tenminste een ~~moord~~ "
+"__zelfmoord__vergunning. [** GEMIST **: -2 exp]"
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. [**WEAPON "
 "CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
+"... En de kogel vloog recht in je gezicht en doodde je onmiddellijk. Je moet "
+"je klachten doorsturen naar het CACAD. [** WAPEN GECONFISQUEERD**] [** "
+"GEMIST **: -2 exp] [** MOORD **: -15 exp]"
 
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
@@ -1215,6 +1228,9 @@ msgid ""
 msgstr ""
 "💰️ Je hebt {exp} ervaring uit de prestigebank gehaald. Kom snel terug!"
 
+msgid "You can view the channel settings here: "
+msgstr ""
+
 msgid "DHV3-Like settings have been applied to this channel."
 msgstr "Instellingen gelijk aan DHV3 zijn toegepast op dit kanaal."
 
@@ -1363,6 +1379,8 @@ msgid ""
 "On {channel.mention}, when a hunter buy a clover, the minimum experience "
 "given per duck kill will be of {value}."
 msgstr ""
+"Op {channel.mention}, als een jager een klavertje vier koopt, is de minimale "
+"ervaring per gedode eend {waarde}."
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
@@ -1827,349 +1845,372 @@ msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
 "global prefixes : {global_prefixes_list}"
 msgstr ""
-"Mijn voorvoegsel hier is {lokaal_prefix}. Je kunt me ook bellen met een van "
-"de globale voorvoegsels : {global_prefixes_list}"
+"Mijn voorvoegsel hier is {lokaal_prefix}. Je kunt me ook oproepen met een "
+"van de globale voorvoegsels : {global_prefixes_list}"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, but these fine people down there "
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
+"De bot zelf is gemaakt door Eyesofcreeper, maar deze fijne mensen daar "
+"beneden hielpen met graphics, ideeën, plaatjes en meer. Zorg ervoor dat je "
+"ze een gedagje zecht als je ze ziet."
 
 msgid "Developer"
-msgstr ""
+msgstr "Ontwikkelaar"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
-msgstr ""
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") heeft deze bot gemaakt."
 
 msgid "Designer"
-msgstr ""
+msgstr "Ontwerper"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
+"<@465207298890006529> (\"Calgeka\") maakte veel van de avatars de eenden "
+"gebruiken."
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
+"<@376052158573051906> (\"Globloxmen\") maakte een heleboel eenden die je "
+"overal in het spel kunt vinden. Doe mee met de /r/dailyducks subreddit."
 
 msgid "Ideas"
-msgstr ""
+msgstr "Ideeën"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
 "Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 msgstr ""
+"Bot gebaseerd op een origineel idee van MenzAgitat (op IRC, #boulets "
+"EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 
 msgid "Translations"
-msgstr ""
+msgstr "Vertalingen"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
 msgstr ""
+"De bot is vertaald in VELE talen! De vertalers staan vermeld in `{ctx."
+"prefix}translators`."
 
 msgid "Current event: "
-msgstr ""
+msgstr "Huidig event:"
 
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
 msgstr ""
+"Gebeurtenissen duren een uur, van het begin tot het einde van het uur. "
+"Eindigend in {geformatteerd_td}"
 
 msgid "{exp} experience"
-msgstr ""
+msgstr "{exp} ervaring"
 
 msgid "{target.name} statistics."
-msgstr ""
+msgstr "{target.name} statistieken."
 
 msgid "Bullets"
-msgstr ""
+msgstr "Kogels"
 
 msgid "Magazines"
-msgstr ""
+msgstr "Magazijnen"
 
 msgid "Experience"
-msgstr ""
+msgstr "Ervaring"
 
 msgid "Level"
-msgstr ""
+msgstr "Level"
 
 msgid "Accuracy"
-msgstr ""
+msgstr "Nauwkeurigheid"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
-msgstr ""
+msgstr "{level_reliability} % (Werkelijk: {real_reliability} %)"
 
 msgid "Reliability"
-msgstr ""
+msgstr "Betrouwbaarheid"
 
 msgid "{target.name} shooting stats."
-msgstr ""
+msgstr "{target.name}schietstatistieken."
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
 "life {revives} times eating a total of {brains_eaten} brains"
 msgstr ""
+"{shots_when_dead} schoten geprobeerd in de DOOD. {target.mention} ging terug "
+"naar het leven {revives} keer, na het eten van een totaal van "
+"{brains_eaten}hersenen"
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
-msgstr ""
+msgstr "{shots}schoten geprobeerd wanneer nat."
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
+"{shots}schoten geprobeerd wanneer {target.mention}  jun pistool "
+"geconfisqueerd was."
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
-msgstr ""
+msgstr "{shots}schoten geprobeerd met een gesaboteerd geweer."
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
-msgstr ""
+msgstr "{shots}schoten geprobeerd met een vastgelopen wapen."
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
-msgstr ""
+msgstr "{shots}schoten geprobeerd zonder kogels."
 
 msgid "{shots} shots jamming {target.mention} weapon."
-msgstr ""
+msgstr "{shots}schoten storen {target.mention}wapen."
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
-msgstr ""
+msgstr "{bullets} kogels die gebruikt zijn in een eend dodende waanzin."
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
-msgstr ""
+msgstr "{shots} schoten die een doelwit misten."
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
-msgstr ""
+msgstr "{shots}schoten die iemand vermoordden ({murders} waren moorden)."
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
-msgstr ""
+msgstr "{target.mention} werd {times} keer gedood."
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
-msgstr ""
+msgstr "{shots} schoten met behulp van doelzoekende kogels."
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
-msgstr ""
+msgstr "{shots} schoten in de richting van eenden."
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵"
 
 msgid "{shots} shots stopped by the infrared detector."
-msgstr ""
+msgstr "{shots} schoten gestopt door de infrarooddetector."
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
-msgstr ""
+msgstr "{shots} schoten zonder eend in het zicht."
 
 msgid "Normal ducks"
-msgstr ""
+msgstr "Normale eenden"
 
 msgid "Ghost ducks"
-msgstr ""
+msgstr "Spookeenden"
 
 msgid "Professor ducks"
-msgstr ""
+msgstr "Professor eenden"
 
 msgid "Baby ducks"
-msgstr ""
+msgstr "Babyeenden"
 
 msgid "Golden ducks"
-msgstr ""
+msgstr "Gouden eenden"
 
 msgid "Plastic ducks"
-msgstr ""
+msgstr "Plastic eenden"
 
 msgid "Kamikaze ducks"
-msgstr ""
+msgstr "Kamikaze-eenden"
 
 msgid "Mechanical ducks"
-msgstr ""
+msgstr "Mechanische eenden"
 
 msgid "Super ducks"
-msgstr ""
+msgstr "Supereenden"
 
 msgid "Mother of all ducks"
-msgstr ""
+msgstr "Moeder der alle eenden"
 
 msgid "Armored ducks"
-msgstr ""
+msgstr "Gepantserde eenden"
 
 msgid "{target.name} best times."
-msgstr ""
+msgstr "{target.name} beste tijden."
 
 msgid "Never killed any"
-msgstr ""
+msgstr "Nooit een gedood"
 
 msgid "{target.name} kill counts."
-msgstr ""
+msgstr "{target.name} gedode eenden aantallen."
 
 msgid "{target.name} hugs counts."
-msgstr ""
+msgstr "{target.name} geknuffelde eenden aantallen."
 
 msgid "Players"
-msgstr ""
+msgstr "Spelers"
 
 msgid "Hugs when dead"
-msgstr ""
+msgstr "Knuffels wanneer dood"
 
 msgid "{target.name} hurt counts."
-msgstr ""
+msgstr "{target.name} schade aantallen."
 
 msgid "{target.name} resisted counts."
-msgstr ""
+msgstr "{target.name} weerstaande aantallen."
 
 msgid "{target.name} scared ducks."
-msgstr ""
+msgstr "{target.name} banggemaakte eenden."
 
 msgid "❌ You cant send experience to yourself."
-msgstr ""
+msgstr "❌ Je kunt geen ervaring naar jezelf sturen."
 
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
-msgstr ""
+msgstr "❌ Ik weet niet zeker of {target.mention} DuckHunt kan spelen."
 
 msgid "❌ You need to send more experience than this."
-msgstr ""
+msgstr "❌ Je moet meer ervaring sturen dan dit."
 
 msgid "❌ You don't have enough experience 🤣."
-msgstr ""
+msgstr "❌ Je hebt niet genoeg ervaring 🤣."
 
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
 "tax_on_user_send}% was applied to this transaction (taking {tax} exp out of "
 "the total sent)."
 msgstr ""
+"🏦 Je stuurde {recived} ervaring naar {reciver.mention}. Een belasting van "
+"{db_channel.tax_on_send}% werd toegepast op deze transactie (waarbij {tax} "
+"exp van het totaal verzonden is geheven)."
 
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
-msgstr ""
+msgstr "💰️ Je gaf {amount} ervaring aan {reciver.mention} "
 
 msgid "Top Scores on #{channel}"
-msgstr ""
+msgstr "Topscores op #{channel}"
 
 msgid "Murderer"
-msgstr ""
+msgstr "Moordenaar"
 
 msgid "Kill another hunter."
-msgstr ""
+msgstr "Dood een andere jager."
 
 msgid "Big spender"
-msgstr ""
+msgstr "Gat in de hand"
 
 msgid "Spend more than 2000 experience."
-msgstr ""
+msgstr "Besteed meer dan 2000 ervaring."
 
 msgid "A hunter joined the chat"
-msgstr ""
+msgstr "Een jager heeft zich aangesloten bij de chat"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "Speel voor meer dan een week."
 
 msgid "We are starting to know each other"
-msgstr ""
+msgstr "We beginnen elkaar te kennen"
 
 msgid "Play for more than a month."
-msgstr ""
+msgstr "Speel voor meer dan een maand."
 
 msgid "Wanna be friends ?"
-msgstr ""
+msgstr "Wil je vrienden zijn ?"
 
 msgid "Play for more than a year."
-msgstr ""
+msgstr "Speel voor meer dan een jaar."
 
 msgid "I don't want your damn bullets!"
-msgstr ""
+msgstr "Ik wil je verdomde kogels niet!"
 
 msgid "Leave a bullet you found in the bushes."
-msgstr ""
+msgstr "Laat een kogel die je in de struiken hebt gevonden liggen."
 
 msgid "Mommy is crying"
-msgstr ""
+msgstr "Mama huilt"
 
 msgid "Kill a few baby ducks."
-msgstr ""
+msgstr "Dood een paar babyeenden."
 
 msgid "MATHS 101"
-msgstr ""
+msgstr "WISKUNDE 101"
 
 msgid "Solve equations given by the Pr. Duck."
-msgstr ""
+msgstr "Los vergelijkingen op die door Prof. Eend zijn gegeven."
 
 msgid "BRAAAAAINS!"
-msgstr ""
+msgstr "HERSENEN!!!"
 
 msgid "Eat some brains and come back to life."
-msgstr ""
+msgstr "Eet wat hersenen en kom weer tot leven."
 
 msgid "Sentry gun"
-msgstr ""
+msgstr "machinegeweer"
 
 msgid "Use more than 1000 bullets."
-msgstr ""
+msgstr "Gebruik meer dan 1000 kogels."
 
 msgid "You monster"
-msgstr ""
+msgstr "Jij monster"
 
 msgid "Kill a MOAD that spawns a baby duck."
-msgstr ""
+msgstr "Dood een MOAD die een baby-eend inspawnt."
 
 msgid "Gun insurer"
-msgstr ""
+msgstr "Wapenverzekeraar"
 
 msgid "Give at least 30 exp to an hunter that lost his gun."
 msgstr ""
+"Geef tenminste 30 exp expiraties aan een jager die zijn geweer is "
+"kwijtgeraakt."
 
 msgid "Short memory"
-msgstr ""
+msgstr "Kort geheugen"
 
 msgid "Shoot at your own mechanical duck."
-msgstr ""
+msgstr "Schiet op je eigen mechanische eend."
 
 msgid "An ounce of prevention is worth a pound of cure"
-msgstr ""
+msgstr "Een onsje preventie is een pondje genezing waard.."
 
 msgid "Sabotage the gun of someone that planned to shoot at you."
-msgstr ""
+msgstr "Sabotage het geweer van iemand die van plan was op je te schieten."
 
 msgid "https://discord.gg/G4skWae"
-msgstr ""
+msgstr "https://discord.gg/G4skWae"
 
 msgid "https://docs.duckhunt.me/players-guide/players-quickstart"
-msgstr ""
+msgstr "https://docs.duckhunt.me/players-guide/players-quickstart"
 
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "
@@ -2186,591 +2227,673 @@ msgid ""
 "`dh!shop magazine` or `dh!shop 2`.\n"
 "If you want to learn more about the game, use the wiki! <{wiki_link}>"
 msgstr ""
+"Hallo! Het volgende bericht (geschreven door de eigenaar van DuckHunt) zal "
+"je een korte introductie tot de bot geven.\n"
+"Ten eerste, bedankt voor het gebruik van mijn bot! Als je na het lezen van "
+"dit bericht en de wiki nog vragen hebt, ben je meer dan welkom om hulp te "
+"vragen in de supportkanalen op <{support_server_link}>.\n"
+"\n"
+"Als er een eend spawnt, schiet je op hem met het `dh!bang` commando.\n"
+"Echter, als de eend **COIN** zegt is het een **babyeend** en moet je hem "
+"knuffelen met `dh!hug`.\n"
+"Je kunt je munitie herladen met `dh! reload` en nieuwe magazijnen kopen met "
+"`dh! shop magazine` of `dh! shop 2`.\n"
+"Als je meer wilt weten over het spel, gebruik dan de wiki! <{wiki_link}></"
+"{support_server_link}>"
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Wat rondslingerend "
+"afval**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**. You didn't take it, you had already too many..."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Wat rondslingerend "
+"afval**.  Je hebt het niet genomen, je had al te veel...\n"
 
 msgid "Searching the bushes around the duck, you found... **Nothing**."
-msgstr ""
+msgstr "Als je de struiken rond de eend doorzoekt, vind je... **Niks**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A lot of bushes**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Veel struiken**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een zeldzame "
+"eendenspeld**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een foto van een "
+"eend**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
-msgstr ""
+msgstr "Als je de struiken rond de eend doorzoekt, vind je... **Een kogel**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A bullet**. You didn't "
 "take it, you had already too many in your magazine anyway..."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een kogel**. Je nam "
+"hem niet, je had er toch al te veel in je magazijn...\n"
+"\n"
 
 msgid "Searching the bushes around the duck, you found... **A magazine**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een magazijn**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A magazine**. You "
 "didn't take it, you had already too many in your backpack..."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een magazijn**. Je "
+"nam hem niet, je had er toch al te veel in je rugzak..."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A box of explosive "
 "ammo**. 💥"
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een doos explosieve "
+"kogels**.💥"
 
 msgid ""
 "Searching the bushes around the duck, you found... **An almost empty box of "
 "explosive ammo**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een bijna-lege doos "
+"explosieve kogels**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Tons of Duck Grease**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Veel smeerolie**."
 
 msgid "Searching the bushes around the duck, you found... **A new silencer**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een nieuwe "
+"geluiddemper**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
 msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een "
+"infrarooddetector**."
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
+"Gebruik {prefix}{help} [commando] voor meer informatie over een commando."
 
 msgid "No Category"
-msgstr ""
+msgstr "Geen categorie"
 
 msgid "{cog_name} Commands"
-msgstr ""
+msgstr "{cog_name} Commando's"
 
 msgid ""
 "{killer.mention} killed the duck [**Killed**: {normal_exp} exp + "
 "{bonus_experience} **clover**]"
 msgstr ""
+"{killer.mention} doodde de eend [**Killed**: {normal_exp} exp + "
+"{bonus_experience} **clover**]"
 
 msgid "{killer.mention} killed the duck [**Killed**: +{won_experience} exp]"
-msgstr ""
+msgstr "{killer.mention} doodde de eend [**Killed**: {won_experience} exp]"
 
 msgid "{hunter.mention} scared the duck."
-msgstr ""
+msgstr "{hunter.mention} liet de eend schrikken."
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
+"{hurter.mention} deed de eend pijn [**SUPEREEND gedetecteerd**: {lives_left}/"
+"{total_lives}][**Schade** : -{damage}]"
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
+"{hurter.mention} deed de eend pijn [**SUPEREEND gedetecteerd**][**Schade** : "
+"-{damage}]"
 
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
 msgstr ""
+"{hurter.mention}, de eend WEERSTOND de kogel. [**GEPANTSERDE EEND "
+"gedetecteerd**]"
 
 msgid ""
 "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
+"{hugger.mention} knuffelde de eend. Zo schattig! [**Knuffel**: +{experience} "
+"exp]"
 
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
+"{hugger.mention} probeerde de eend te omhelzen. Zo schattig! Helaas, de eend "
+"haat je, omdat je al zijn familie hebt vermoord. [**GEFAALD**: {experience} "
+"exp]"
 
 msgid "Huh, quick question, what's {operation} ?"
-msgstr ""
+msgstr "Huh, snelle vraag, wat is {operation} ?"
 
 msgid "{hurter.mention}, I asked you a question ! What's {operation} ?"
-msgstr ""
+msgstr "{hurter.mention}, ik heb je een vraag gesteld ! Wat is {operation} ?"
 
 msgid "{hurter.mention}, Just give me digits !"
-msgstr ""
+msgstr "{hurter.mention}, geef me gewoon cijfers!"
 
 msgid "{hurter.mention}, that's not the correct answer !"
-msgstr ""
+msgstr "{hurter.mention}, dat is niet het juiste antwoord!"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
-msgstr ""
+msgstr "{killer.mention} doodde de babyeend [**Baby**: {won_experience} exp]"
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 msgstr ""
+"Verdomme, {killer.mention}, je bakt er niks van! Je hebt een mechanische "
+"eend gedood! Ik vraag me af wie het gemaakt heeft? [exp: {won_experience}]"
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 msgstr ""
+"Verdomme, {killer.mention}, je bakt er niks van! Je hebt een mechanische "
+"eend gedood! Dit is allemaal de schuld van {creator.mention}! [exp: "
+"{won_experience}]"
 
 msgid "*cries*"
-msgstr ""
+msgstr "*kreten*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "Hallo wereld"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Hoe gaat het vandaag met je?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Vermoord me alsjeblieft niet..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Ik hou ook van jou!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Schiet me niet neer! Ik ben een nep-eend!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
+"**Eendenfeit**: Sommige eenden kunnen tot 535 kilometer vliegen in een "
+"enkele dag!"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "**Eendenfeitt**: De veren op de rug van een eend zijn waterdicht."
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "**Eendenfeit**: Eenden hebben drie oogleden!"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
+"**Eendenfeit**: Afhankelijk van de soort kan een eend tussen 2 en 12 jaar "
+"oud worden. Hoewel niet de eenden op dit spel..."
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "Ik ben onzichtbaar, doe geen moeite om me te doden.."
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Wie is de kleine ████ hier die mijn vriend heeft vermoord ?"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "Je kunt niet goed mikken..."
 
 msgid "The duck left."
-msgstr ""
+msgstr "De eend vertrok."
 
 msgid "The duck right."
-msgstr ""
+msgstr "Vers uit Eendhoven"
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "STOP! Het is niet wat je denkt!"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "Mij vermoorden kost je 1562 ervaringspunten."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
+"Ik heb een geheim plan om alle jagers te doden, maar ik ben al kortademig. "
+"Ik denk niet dat ik het je eerder kan uitleggen..."
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr ""
+msgstr "[VOEG HIER EENDENGELUID IN]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
-msgstr ""
+msgstr "Wat gebeurde er na het maken van DuckHunt? ||De oerknal||."
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "Het is konijnenseizoen."
 
 msgid "Got a spare cape?"
-msgstr ""
+msgstr "Heb je een reservecape?"
 
 msgid "Which side of a duck has more feathers? ||The outside||."
-msgstr ""
+msgstr "Welke kant van een eend heeft meer veren? ||De buitenkant||."
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Ik steel geld. Ik ben een roofeendje."
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Ik ben een heel speciale eend."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
+"**DuckHunt ProTip®**: gebruik klavertjes-4 om meer ervaring op te doen."
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
+"**DuckHunt ProTip®**: gebruik een richtkijker om de nauwkeurigheid op lagere "
+"niveaus te verbeteren."
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr ""
+"**DuckHunt ProTip®**: gebruik smeermiddel om vastlopen van wapens te "
+"voorkomen"
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*Slurp*"
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "Hopelijk zijn jullie allemaal AFK..."
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
+"**DuckHunt ProTip®**: gebruik infrarooddetectors om nutteloze schoten te "
+"voorkomen."
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Ik doe gewoon mijn werk..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
 msgstr ""
+"Hé daar, DuckHunt kwaliteitsverzekering eend hier. Hoe zou je jouw ervaring "
+"met het doden van eenden tot nu toe beoordelen ?"
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "Je BenT gEcOrRuPt."
 
 msgid "The duck went away."
-msgstr ""
+msgstr "De eend ging weg."
 
 msgid "The duck went to another world."
-msgstr ""
+msgstr "De eend ging naar een andere wereld."
 
 msgid "The duck didn't have time for this."
-msgstr ""
+msgstr "De eend had hier geen tijd voor."
 
 msgid "The duck dissipated in space and time."
-msgstr ""
+msgstr "De eend verdween in ruimte en tijd."
 
 msgid "The duck left out of boredom."
-msgstr ""
+msgstr "De eend is uit verveling vertrokken."
 
 msgid "The duck doesn't want to be sniped."
-msgstr ""
+msgstr "De eend wil niet gesniped worden."
 
 msgid "The duck walked up to the lemonade stand."
-msgstr ""
+msgstr "De eend liep naar de limonadekraam."
 
 msgid "The duck flew over a disproportionately small gap."
-msgstr ""
+msgstr "De eend vloog over een onevenredig klein gat."
 
 msgid "The duck chickened out."
-msgstr ""
+msgstr "De eend is durfte niet meer."
 
 msgid "A duck"
-msgstr ""
+msgstr "Een eend"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "Mr. Eend"
 
 msgid "ISO Duck"
-msgstr ""
+msgstr "ISO Eend"
 
 msgid "The ghost never appeared."
-msgstr ""
+msgstr "Het spook is nooit verschenen."
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Onzichtbare Eend"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Spookeend"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Boooooe Eend"
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "Prof. Eend"
 
 msgid "EnsDuck"
-msgstr ""
+msgstr "EinsEend"
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "klein eendje"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "minieend"
 
 msgid "Ducky"
-msgstr ""
+msgstr "Eendje!"
 
 msgid "Duckie"
-msgstr ""
+msgstr "Eendje?"
 
 msgid "Free money !"
-msgstr ""
+msgstr "Gratis geld !"
 
 msgid "It's free money"
-msgstr ""
+msgstr "Het is gratis geld"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "Gouden Eend"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "Gouden Gans"
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Glanzende Eend"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Rijke Eend"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Heb je geld?"
 
 msgid "It's paid money"
-msgstr ""
+msgstr "Het is gratis geld"
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Plastic Eend"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Arme eend"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "Slijmende eend"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
-msgstr ""
+msgstr "**BEWEEG JE NIET OF ALLES ZAL EXPLODEREN!***"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "Ik ga jullie allemaal vermoorden!"
 
 msgid "The Kamikaze Duck"
-msgstr ""
+msgstr "De Kamikaze-eend"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "Explosieve Eend"
 
 msgid "Boom Duck"
-msgstr ""
+msgstr "Boemeend"
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "Dynamiet Eend"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
-msgstr ""
+msgstr "De kamikaze-eend explodeerde en doodde elke eend op het kanaal."
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "Eend 2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "Omega-eend"
 
 msgid "Big Duck"
-msgstr ""
+msgstr "Grote Eend"
 
 msgid "Strong Duck"
-msgstr ""
+msgstr "Sterke Eend"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "Zware Eend"
 
 msgid "**I am your mother...**"
-msgstr ""
+msgstr "**Ik ben je moeder...**"
 
 msgid "*coin*"
-msgstr ""
+msgstr "*coin*"
 
 msgid "*Don't make a noise, it's nighttime*"
-msgstr ""
+msgstr "*Maak geen lawaai, het is nacht*"
 
 msgid "*Shhhhh*"
-msgstr ""
+msgstr "*Shhhhh*"
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Alles is rustig"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "Er gebeurt nu niets."
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "Eenden zijn aan het migreren"
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "Bereid je voor om meer eenden te zien in het komende uur."
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "Steroïden in het meer"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"Een medisch afvalbedrijf dumpte steroïden in het meer. Eenden zijn "
+"gemuteerd, en je zult nog veel meer supereenden zien. Maar, wees "
+"voorzichtig, en drink dat water niet."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "Veiligheidsklas geannuleerd"
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
+"De veiligheidsklas werd geannuleerd, pas op dat je niet op andere jagers "
+"schiet!"
 
 msgid "Connection problems"
-msgstr ""
+msgstr "Verbindingsproblemen"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
 "less of them until it's repaired."
 msgstr ""
+"Eenden kunnen uw computer niet vinden door verbindingsproblemen, en er "
+"zullen er minder zijn totdat het gerepareerd is."
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Een nieuwe bloemist in de stad"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"Een bloemist opende in de stad, en je kunt nu betere klavertjes-4 vinden. Ga "
+"ze bekijken!"
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Mega-eenden"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
-msgstr ""
+msgstr "Iemand heeft een supereend opgeblazen, en nu zijn ze NOG GROTER!!"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "Winderig weer"
 
 msgid "Bullets are deflected by some strong wind."
-msgstr ""
+msgstr "Kogels worden afgebogen door een sterke wind."
 
 msgid "A UN treaty bans damaging ammo"
-msgstr ""
+msgstr "Een VN-verdrag verbiedt schadelijke munitie"
 
 msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
 "they are getting rare."
 msgstr ""
+"AP en Explosieve munitie zijn uitgeschakeld. Supereenden zijn meer waard, "
+"omdat ze zeldzaam worden."
 
 msgid "public danger"
-msgstr ""
+msgstr "publiek gevaar"
 
 msgid "tourist"
-msgstr ""
+msgstr "toerist"
 
 msgid "noob"
-msgstr ""
+msgstr "noob"
 
 msgid "trainee"
-msgstr ""
+msgstr "stagiair"
 
 msgid "duck misser"
-msgstr ""
+msgstr "eendenmisser"
 
 msgid "member of the Comitee Against Ducks"
-msgstr ""
+msgstr "lid van het Comité Tegen Eenden"
 
 msgid "duck hater"
-msgstr ""
+msgstr "eendenhater"
 
 msgid "duck pest"
-msgstr ""
+msgstr "eendenplaag"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "eendenoplichter"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "eendenplukker"
 
 msgid "hunter"
-msgstr ""
+msgstr "jager"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "eend binnenstebuitenkantelaar"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "eendenafranselaar"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "eendenkauwer"
 
 msgid "duck eater"
-msgstr ""
+msgstr "eendeneter"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "eendenpletter"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "eendenafbreker"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "eendensloper"
 
 msgid "duck killer"
-msgstr ""
+msgstr "eendenmoordenaar"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "eendenviller"
 
 msgid "duck predator"
-msgstr ""
+msgstr "eendenroofdier"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "eendenhakker"
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "eendenontcijferaar"
 
 msgid "duck fragger"
-msgstr ""
+msgstr "eendenfragmenteerder"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "eendenverbrijzelaar"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "eendenvernietiger"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "eendenbreker"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "Eendenwrakmaker"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "Eendenspiesmaker"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "eendenontstopper"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "eendenangst"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "eendexplodeerder"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "eendenuitwisser"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "eendenblazer"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "eendenverpulveraar"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "eenden-uiteenvaller"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "eendenverstuiver"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "eenden annihilator"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "serie-eendenmoordenaar"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "eendengenocideraar"
 
 msgid "old noob"
-msgstr ""
+msgstr "oude noob"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "eendenrooster"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "werkeloos door het uitsterven van de eendensoort"
 
 msgid "This is not a valid level. Choose between {levels}"
-msgstr ""
+msgstr "Dit is geen geldig niveau. Kies tussen {niveaus}"
 
 msgid "Can't set such a high level"
-msgstr ""
+msgstr "Kan niet zo'n hoog niveau instellen"
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Je bent een level omhoog gegaan!"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Je bent een level omlaag gegaan!"

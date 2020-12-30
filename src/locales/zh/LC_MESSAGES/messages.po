@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 14:16+0100\n"
+"POT-Creation-Date: 2020-12-30 00:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -302,7 +302,7 @@ msgstr "設置夜間時間。只有一些專屬的鴨子才會在夜間產生。
 msgid ""
 "Enable/disable the DuckHunt API for this channel. Will give you an API key, "
 "keep that private."
-msgstr ""
+msgstr "啓用/禁用這個頻道的DuckHunt API。會給你一個API密鑰，保持其私密性。"
 
 msgid ""
 "Commands to edit permissions.\n"
@@ -379,43 +379,43 @@ msgid "A new set of clothes. Useful if you are wet."
 msgstr "一套新衣服。在你被淋濕時很有用。"
 
 msgid "Clean your gun, removing sabotage and sand."
-msgstr ""
+msgstr "清潔你的枪，去除破坏物和沙子。"
 
 msgid "Dazzle another hunter using the power of sunlight"
-msgstr ""
+msgstr "使用陽光讓另一個獵人眼花繚亂。"
 
 msgid ""
 "Throw sand into another player weapon. This will increase their jamming "
 "chances for their next shot."
-msgstr ""
+msgstr "把沙子扔進另一個玩家的武器里。這將增加他們下一次射擊時的卡彈機會。"
 
 msgid ""
 "Throw a bucket of water on the hunter of your choice, forcing them to wait "
 "1h for their clothes to dry before hunting again."
-msgstr ""
+msgstr "將一桶水潑向你所選擇的獵人，強迫他們等一小時衣服乾了再打獵。"
 
 msgid ""
 "Sabotage the weapon of another player. Their gun will jam and explode in "
 "their face the next time they press the trigger."
-msgstr ""
+msgstr "破壞其他玩家的武器。他們的槍會卡住，下一次按下扳機時，會在他們的臉上爆炸。"
 
 msgid "Place a decoy to make a duck spawn in the next 10 minutes."
-msgstr ""
+msgstr "放置誘餌，使鴨子在未來10分鐘內產生。"
 
 msgid "Spawn a fake duck in exactly 90 seconds"
-msgstr ""
+msgstr "在90秒內生成一隻假鴨子。"
 
 msgid ""
 "Protect yourself from water for 24 hours. If you are already wet, it also "
 "can be used as a change."
-msgstr ""
+msgstr "保護自己24小時不沾水。如果你已經濕了，也可以用它來更換。"
 
 msgid "Avoid penalties if you accidentally kill another hunter for 24 hours"
-msgstr ""
+msgstr "如果你在24小時不會因為不小心殺死了另一個獵人而受到懲罰。如果你在24小時不會因為不小心殺死了另一個獵人而受到懲罰"
 
 msgid ""
 "Automatically reloads your weapon every time it's necesarry for 24 hours"
-msgstr ""
+msgstr "在24小時內，每次需要時，自動為你的武器重新裝填子彈。"
 
 msgid "Never miss a shot again with Homing Projectiles."
 msgstr ""
@@ -423,16 +423,16 @@ msgstr ""
 msgid ""
 "Check that the bot is online, give the latency between the bot and Discord "
 "servers."
-msgstr ""
+msgstr "檢查機器人是否在線，給出機器人與Discord服務器之間的延遲。"
 
 msgid "Returns the wiki URL"
-msgstr ""
+msgstr "返回wiki的URL"
 
 msgid "Get the URL to invite the bot"
-msgstr ""
+msgstr "獲取邀請機器人的URL"
 
 msgid "Get a discord invite to the support server."
-msgstr ""
+msgstr "獲得支持服務器的discord邀請。"
 
 msgid ""
 "Get the time when you'll get free magazines and your weapon back from the "
@@ -440,10 +440,10 @@ msgid ""
 msgstr ""
 
 msgid "Get the bot prefixes"
-msgstr ""
+msgstr "獲取機器人前綴"
 
 msgid "Thanks to those fine people who (helped) make the bot"
-msgstr ""
+msgstr "感謝那些（幫助）製造機械人的好心人。"
 
 msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr "感謝那些（幫助）翻譯机械人的好心人。"
@@ -459,10 +459,10 @@ msgid ""
 msgstr ""
 
 msgid "Get some quickstats about yourself (or someone else)."
-msgstr ""
+msgstr "獲取一些關於你自己（或別人）的快速統計。"
 
 msgid "Get shooting stats (for you or someone else)."
-msgstr ""
+msgstr "獲取開槍數據（為你或別人）。"
 
 msgid "Get best times to kill of ducks (for you or someone else)."
 msgstr ""
@@ -965,6 +965,9 @@ msgstr ""
 
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
+msgstr ""
+
+msgid "You can view the channel settings here: "
 msgstr ""
 
 msgid "DHV3-Like settings have been applied to this channel."

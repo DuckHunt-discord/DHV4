@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 14:16+0100\n"
+"POT-Creation-Date: 2020-12-30 00:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -945,6 +945,9 @@ msgstr ""
 
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
+msgstr ""
+
+msgid "You can view the channel settings here: "
 msgstr ""
 
 msgid "DHV3-Like settings have been applied to this channel."
