@@ -46,6 +46,8 @@ class PercentageField(fields.SmallIntField):
 # TODO : https://github.com/long2ice/aerich
 class DiscordGuild(Model):
     discord_id = fields.BigIntField(pk=True)
+    first_seen = fields.DatetimeField(auto_now_add=True)
+
     name = fields.TextField()
     prefix = fields.CharField(20, null=True)
 
@@ -65,6 +67,7 @@ class DiscordGuild(Model):
 
 class DiscordChannel(Model):
     discord_id = fields.BigIntField(pk=True)
+    first_seen = fields.DatetimeField(auto_now_add=True)
 
     guild = fields.ForeignKeyField('models.DiscordGuild')
     name = fields.TextField()
@@ -181,6 +184,8 @@ class AccessLevel(IntEnum):
 
 class DiscordUser(Model):
     discord_id = fields.BigIntField(pk=True)
+    first_seen = fields.DatetimeField(auto_now_add=True)
+
     name = fields.TextField()
     discriminator = fields.CharField(4)
     times_ran_example_command = fields.IntField(default=0)
@@ -207,6 +212,8 @@ class DiscordUser(Model):
 
 class Player(Model):
     id = fields.IntField(pk=True)
+    first_seen = fields.DatetimeField(auto_now_add=True)
+
     channel = fields.ForeignKeyField('models.DiscordChannel')
     member = fields.ForeignKeyField('models.DiscordMember')
 
