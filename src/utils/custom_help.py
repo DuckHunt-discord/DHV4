@@ -27,6 +27,7 @@ class EmbedHelpCommand(commands.HelpCommand):
         _ = await self.context.get_translate_function()
 
         embed = discord.Embed(title='Bot Commands', colour=self.COLOUR)
+        embed.url = self.context.bot.config['website_url'] + "commands"
         description = _(self.context.bot.description)
         if description:
             embed.description = description
@@ -48,6 +49,8 @@ class EmbedHelpCommand(commands.HelpCommand):
         _ = await self.context.get_translate_function()
 
         embed = discord.Embed(title=_('{cog_name} Commands', cog_name=cog.qualified_name), colour=self.COLOUR)
+        embed.url = self.context.bot.config['website_url'] + "commands"
+
         if cog.description:
             embed.description = _(cog.description)
 
@@ -62,6 +65,8 @@ class EmbedHelpCommand(commands.HelpCommand):
         _ = await self.context.get_translate_function()
 
         embed = discord.Embed(title=group.qualified_name, colour=self.COLOUR)
+        embed.url = self.context.bot.config['website_url'] + f"commands?command={group.qualified_name}"
+
         if group.help:
             embed.description = _(group.help)
 
