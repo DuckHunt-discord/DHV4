@@ -23,6 +23,7 @@ DUCKS_IMAGES = {
     'normal': 'https://media.discordapp.net/attachments/737978240966066177/786674722854797352/normal.png',
     'super': 'https://media.discordapp.net/attachments/737978240966066177/745635356992602254/strong_duck.png',
     'prof': 'https://media.discordapp.net/attachments/737978240966066177/789491557908217856/prof.png',
+    'mechanical': 'https://media.discordapp.net/attachments/737978240966066177/745568605063872513/mechanical_duck.png',
 }
 
 DUCKS_EMOJIS = {
@@ -131,6 +132,7 @@ mechanical = {
     **normal,
     'faces': ['%_%', '%>%', "% _ %", '• _ %', '% _ •'],
     'emojis': [DUCKS_EMOJIS['ascii_duck']],
+    'avatar_urls': [DUCKS_IMAGES['mechanical']],
     'usernames': normal['usernames'] + [_("Duck 2000"), _("Omega Duck")],
     'shouts': ["BZZZZZAAAAK", "BZAAAACK", "BZAACK"],
 }
