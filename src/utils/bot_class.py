@@ -91,7 +91,7 @@ class MyBot(AutoShardedBot):
                                     "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
                                     "If you want to learn more about the game, use the wiki! <{wiki_link}>",
                                     support_server_link=_("https://discord.gg/G4skWae"),
-                                    wiki_link=_("https://docs.duckhunt.me/players-guide/players-quickstart"),
+                                    wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
             ))
 
             db_user.first_use = False

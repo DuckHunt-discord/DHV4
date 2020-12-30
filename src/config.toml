@@ -45,7 +45,7 @@ cogs_to_load = ['cogs.error_handling',
 
 # The name after cogs is the name of the class
 [cogs.SimpleCommands]
-wiki_url = "https://docs.duckhunt.me"
+wiki_url = "https://duckhunt.me/docs/"
 
 [cogs.DuckBoss]
 boss_channel_id = 779506107428241450
