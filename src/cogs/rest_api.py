@@ -274,7 +274,7 @@ class RestAPI(Cog):
                 "channels_count": sum((len(g.channels) for g in self.bot.guilds)),
                 "players_count": await Player.all().count(),
                 "alive_ducks_count": sum(len(v) for v in self.bot.ducks_spawned.values()),
-                "uptime": int((datetime.datetime.now() - self.bot.uptime).total_seconds()),
+                "uptime": int(self.bot.uptime.timestamp()),
                 "current_event_name": self.bot.current_event.name,
                 "current_event_value": self.bot.current_event.value,
             }
