@@ -277,6 +277,7 @@ class RestAPI(Cog):
                 "uptime": int(self.bot.uptime.timestamp()),
                 "current_event_name": self.bot.current_event.name,
                 "current_event_value": self.bot.current_event.value,
+                "global_ready": self.bot.is_ready()
             }
         )
 
