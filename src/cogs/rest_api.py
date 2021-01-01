@@ -195,13 +195,21 @@ class RestAPI(Cog):
                     break
 
             if not command.hidden:
+                aliases = []
+                for alias in command.aliases:
+                    try:
+                        alias.encode('ascii')
+                    except UnicodeEncodeError:
+                        continue
+                    aliases.append(alias)
+
                 commands[command.name] = {
                     'name': command.qualified_name,
                     'short_doc': command.short_doc,
                     'brief': command.brief,
                     'help': command.help,
                     'usage': command.usage,
-                    'aliases': command.aliases,
+                    'aliases': aliases,
                     'enabled': command.enabled,
                     'description': command.description,
                     'signature': command.signature,
