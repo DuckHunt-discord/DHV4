@@ -125,9 +125,8 @@ class SupportServerCommands(Cog):
     @manage_bot.command(aliases=["replan", "replanning", "replanify", "plan_spawns"])
     async def planify(self, ctx: MyContext):
         """
-        Allow ducks spawning again, everywhere. Ducks will spawn more quickly than usual if a planification isn't done.
-
-        Note that ducks leaves are controlled separately.
+        Reset ducks planning, setting the ducks left to spawn counts to a value proportional to the time left spawning
+        ducks today. This is executed everyday at midnight.
         """
 
         ducks_spawning_cog = self.bot.get_cog('DucksSpawning')
