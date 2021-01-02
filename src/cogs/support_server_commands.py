@@ -116,7 +116,7 @@ class SupportServerCommands(Cog):
         Manage the bot current state by starting and stopping ducks spawning, leaving, and planning ducks spawn for the
         day.
 
-        This commands do not use the translation system, and will always show in english
+        These commands do not use the translation system, and will always show in english
         """
 
         if not ctx.invoked_subcommand:
