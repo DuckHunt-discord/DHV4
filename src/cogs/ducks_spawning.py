@@ -82,6 +82,23 @@ class DucksSpawning(Cog):
 
         CURRENT_PLANNED_DAY = now - (now % DAY)
         if CURRENT_PLANNED_DAY != self.last_planned_day:
+            if self.last_planned_day == 0:
+                embed = discord.Embed()
+
+                embed.colour = discord.Colour.dark_green()
+                embed.title = f"Bot restarted"
+                embed.description = f"The bot restarted and is now ready to spawn ducks. Get your rifles out!"
+                embed.set_footer(text="Apologies for the short downtime")
+                await self.bot.log_to_channel(embed=embed)
+            else:
+                embed = discord.Embed()
+
+                embed.colour = discord.Colour.green()
+                embed.title = f"It's freetime !"
+                embed.description = f"Your magazines have been refilled, and confiscated weapons have just been released"
+                embed.set_footer(text="Freetime happen every 24 hours.")
+                await self.bot.log_to_channel(embed=embed)
+
             await self.planify(now)
 
         if SECONDS_LEFT_TODAY % HOUR == 0:

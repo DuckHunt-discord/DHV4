@@ -149,6 +149,17 @@ class SupportServerCommands(Cog):
         await ctx.reply(f"Ducks will no longer spawn until the lock is removed with "
                         f"`{ctx.prefix}manage_bot start_spawns`.")
 
+        embed = discord.Embed()
+
+        embed.colour = discord.Colour.dark_red()
+        embed.title = f"Maintenance: ducks won't spawn for now"
+        embed.description = f"{ctx.author.mention} has stopped ducks from appearing for now, due to maintenance " \
+                            f"requirements.\nStand by for a new message announcing the return of the spawns"
+
+        embed.set_footer(text="Ducks will come back stronger than ever")
+
+        await self.bot.log_to_channel(embed=embed)
+
     @manage_bot.command(aliases=["restart_spawns", "enable_spawns"])
     async def start_spawns(self, ctx: MyContext):
         """
@@ -160,5 +171,12 @@ class SupportServerCommands(Cog):
         await ctx.reply(f"Ducks will now spawn. Consider planning again if they have been stopped for a while :"
                         f"`{ctx.prefix}manage_bot planify`.")
 
+        embed = discord.Embed()
+
+        embed.colour = discord.Colour.dark_green()
+        embed.title = f"Maintenance: ducks are able to spawn"
+        embed.description = f"{ctx.author.mention} has re-enabled ducks spawns."
+
+        await self.bot.log_to_channel(embed=embed)
 
 setup = SupportServerCommands.setup
