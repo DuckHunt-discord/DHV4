@@ -17,6 +17,10 @@ user = ""
 password = ""
 database = ""
 
+[duckhunt_public_log]
+server_id = 734810932529856652
+channel_id = 793563942416416788
+
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal
 token = ""
