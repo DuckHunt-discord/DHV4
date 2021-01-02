@@ -142,6 +142,49 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("Casual mode settings have been applied to this channel.", ))
 
+    @templates.command()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def hardcore(self, ctx: MyContext):
+        """
+        Set the bot for a more hardcore experience : less experience and more difficult ducks.
+
+        For experienced hunters only.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        db_channel.tax_on_user_send = 15
+        db_channel.show_duck_lives = False
+
+        db_channel.kill_on_miss_chance = 3
+        db_channel.duck_frighten_chance = 6
+
+        db_channel.clover_min_experience = -1
+        db_channel.clover_max_experience = 10
+
+        db_channel.base_duck_exp = 8
+        db_channel.per_life_exp = 8
+
+        db_channel.spawn_weight_normal_ducks = 100
+        db_channel.spawn_weight_super_ducks = 15
+        db_channel.spawn_weight_baby_ducks = 6
+        db_channel.spawn_weight_prof_ducks = 15
+        db_channel.spawn_weight_ghost_ducks = 10
+        db_channel.spawn_weight_moad_ducks = 10
+        db_channel.spawn_weight_mechanical_ducks = 10
+        db_channel.spawn_weight_armored_ducks = 6
+        db_channel.spawn_weight_golden_ducks = 7
+        db_channel.spawn_weight_plastic_ducks = 5
+        db_channel.spawn_weight_kamikaze_ducks = 10
+
+        db_channel.ducks_time_to_live = 666
+        db_channel.super_ducks_min_life = 4
+        db_channel.super_ducks_max_life = 9
+
+        await db_channel.save()
+
+        await ctx.send(_("Hardcore mode settings have been applied to this channel.", ))
+
     # Guild settings #
 
     @settings.command()
