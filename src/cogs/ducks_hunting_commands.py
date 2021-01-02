@@ -24,7 +24,7 @@ def compute_luck(luck_pct):
 
 
 class DucksHuntingCommands(Cog):
-    @commands.command(aliases=["pan", "pew", "pow", "pang", "shoot", "bong", "bonk", "kill", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
+    @commands.command(aliases=["pan", "pew", "pow", "pang", "shoot", "bong", "bonk", "kill", "kablam", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
     @checks.channel_enabled()
     async def bang(self, ctx: MyContext, target: Optional[discord.Member], *args):
         """
