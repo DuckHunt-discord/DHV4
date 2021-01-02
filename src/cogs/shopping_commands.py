@@ -86,7 +86,7 @@ class ShoppingCommands(Cog):
 
         max_magazines = level_info['magazines']
         if db_hunter.magazines >= max_magazines:
-            await ctx.reply(_("❌ Whoops, you have too many magazines in your backpack already... Try reloading !"))
+            await ctx.reply(_("❌ Whoops, you have too many magazines in your backpack already... Try reloading!"))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
@@ -125,7 +125,7 @@ class ShoppingCommands(Cog):
             time_delta = get_timedelta(db_hunter.active_powerups['explosive_ammo'],
                                        time.time())
 
-            await ctx.reply(_("❌ Your gun is using some even better explosive ammo for {time_delta} !",
+            await ctx.reply(_("❌ Your gun is using some even better explosive ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
@@ -415,7 +415,7 @@ class ShoppingCommands(Cog):
         _ = await ctx.get_translate_function()
 
         if target.id == ctx.author.id:
-            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            await ctx.reply(_("❌ Don't play with fire, kid! Go somewhere else."))
             return False
         elif target.bot:
             await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
@@ -455,7 +455,7 @@ class ShoppingCommands(Cog):
         _ = await ctx.get_translate_function()
 
         if target.id == ctx.author.id:
-            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            await ctx.reply(_("❌ Don't play with fire, kid! Go somewhere else."))
             return False
         elif target.bot:
             await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
@@ -485,7 +485,7 @@ class ShoppingCommands(Cog):
 
         _ = await ctx.get_translate_function()
         if target.id == ctx.author.id:
-            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            await ctx.reply(_("❌ Don't play with fire, kid! Go somewhere else."))
             return False
         elif target.bot:
             await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
@@ -527,7 +527,7 @@ class ShoppingCommands(Cog):
 
         _ = await ctx.get_translate_function(user_language=True)
         if target.id == ctx.author.id:
-            await ctx.reply(_("❌ Don't play with fire, kid ! Go somewhere else."))
+            await ctx.reply(_("❌ Don't play with fire, kid! Go somewhere else."))
             return False
         elif target.bot:
             await ctx.reply(_("❌ I don't think {target.mention} can play DuckHunt yet...", target=target))
