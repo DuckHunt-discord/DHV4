@@ -51,8 +51,8 @@ cogs_to_load = ['cogs.error_handling',
 wiki_url = "https://duckhunt.me/docs/"
 
 [cogs.DuckBoss]
-boss_channel_id = 779506107428241450
-required_bangs = 450
+boss_channel_id = 794950988845940768
+required_bangs = 75
 
 
 [cogs.SupportServerCommands]
