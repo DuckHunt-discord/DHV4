@@ -40,6 +40,8 @@ class MyBot(AutoShardedBot):
         self.concurrency = MaxConcurrency(number=1, per=BucketType.channel, wait=True)
         self.allow_ducks_spawning = True
 
+        self._duckhunt_public_log = None
+
         asyncio.ensure_future(self.async_setup())
 
     @property
@@ -57,6 +59,13 @@ class MyBot(AutoShardedBot):
         This funtcion is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
         self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
+
+    def get_logging_channel(self):
+        if not self._duckhunt_public_log:
+            config = self.config['duckhunt_public_log']
+            self._duckhunt_public_log = self.get_guild(config['server_id']).get_channel(config['channel_id'])
+
+        return self._duckhunt_public_log
 
     async def on_message(self, message):
         if not self.is_ready():
