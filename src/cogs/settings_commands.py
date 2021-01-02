@@ -225,7 +225,7 @@ class SettingsCommands(Cog):
     @checks.channel_enabled()
     async def use_webhooks(self, ctx: MyContext, value: Optional[bool] = None):
         """
-        Specify wether the bot should use webhooks to communicate in this channel.
+        Specify whether the bot should use webhooks to communicate in this channel.
 
         Webhooks allow for custom avatars and usernames. However, there is a Discord limit of 10 webhooks per channel.
         """
