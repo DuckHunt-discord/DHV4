@@ -28,7 +28,7 @@ class SupportServerCommands(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
-    #async def cog_check(self, ctx):
+    # async def cog_check(self, ctx):
     #    ret = super().cog_check(ctx)
     #    ret = ret and ctx.guild.id == self.config()["support_server_id"]
     #    return ret
@@ -109,23 +109,57 @@ class SupportServerCommands(Cog):
 
         await ctx.send(message)
 
-    @commands.command()
+    @commands.group(aliases=["bot_administration", "emergencies"])
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
-    async def commands_used(self, ctx: MyContext):
+    async def manage_bot(self, ctx: MyContext):
         """
-        See what commands are used
+        Manage the bot current state by starting and stopping ducks spawning, leaving, and planning ducks spawn for the
+        day.
+
+        This commands do not use the translation system, and will always show in english
         """
 
-        message = "```\n"
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
 
-        for command, uses in self.bot.commands_used.most_common():
-            message += f"**{command}**: {uses} uses\n"
+    @manage_bot.command(aliases=["replan", "replanning", "replanify", "plan_spawns"])
+    async def planify(self, ctx: MyContext):
+        """
+        Allow ducks spawning again, everywhere. Ducks will spawn more quickly than usual if a planification isn't done.
 
-        message += "```\n"
+        Note that ducks leaves are controlled separately.
+        """
 
-        message += "Up for " + self.get_bot_uptime()
+        ducks_spawning_cog = self.bot.get_cog('DucksSpawning')
 
-        await ctx.send(message)
+        await ducks_spawning_cog.planify()
+
+        await ctx.reply(f"Ducks spawns have been reset based on the current time of the day.")
+
+    @manage_bot.command(aliases=["disable_spawns"])
+    async def stop_spawns(self, ctx: MyContext):
+        """
+        Stop ducks from spawning immediately, everywhere. Ducks don't get removed from the planification,
+        so once the stop is over, ducks will spawn more quickly than usual.
+
+        Duck will still be able to leave, even if this lock is set.
+        """
+
+        self.bot.allow_ducks_spawning = False
+
+        await ctx.reply(f"Ducks will no longer spawn until the lock is removed with "
+                        f"`{ctx.prefix}manage_bot start_spawns`.")
+
+    @manage_bot.command(aliases=["restart_spawns", "enable_spawns"])
+    async def start_spawns(self, ctx: MyContext):
+        """
+        Allow ducks spawning again, everywhere. Ducks will spawn more quickly than usual if a planification isn't done.
+        """
+
+        self.bot.allow_ducks_spawning = True
+
+        await ctx.reply(f"Ducks will now spawn. Consider planning again if they have been stopped for a while :"
+                        f"`{ctx.prefix}manage_bot planify`.")
 
 
 setup = SupportServerCommands.setup

@@ -38,6 +38,7 @@ class MyBot(AutoShardedBot):
         self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
         self.enabled_channels: typing.Dict[discord.TextChannel, int] = {}
         self.concurrency = MaxConcurrency(number=1, per=BucketType.channel, wait=True)
+        self.allow_ducks_spawning = True
 
         asyncio.ensure_future(self.async_setup())
 

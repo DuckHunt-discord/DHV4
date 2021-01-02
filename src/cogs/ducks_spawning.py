@@ -16,6 +16,7 @@ MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
+
 class DucksSpawning(Cog):
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
@@ -60,19 +61,20 @@ class DucksSpawning(Cog):
         SECONDS_SPENT_TODAY = now % 86400
         SECONDS_LEFT_TODAY = 86400 - SECONDS_SPENT_TODAY
 
-        for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
-            if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
-                if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
-                    continue
+        if self.bot.allow_ducks_spawning:
+            for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
+                if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
+                    if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
+                        continue
 
-                sun, duration_of_night, time_left_sun = await compute_sun_state(channel, SECONDS_SPENT_TODAY)
+                    sun, duration_of_night, time_left_sun = await compute_sun_state(channel, SECONDS_SPENT_TODAY)
 
-                asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
-
-                if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
                     asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
 
-                self.bot.enabled_channels[channel] -= 1
+                    if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
+                        asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
+
+                    self.bot.enabled_channels[channel] -= 1
 
         for channel, ducks_queue in self.bot.ducks_spawned.items():
             for duck in ducks_queue.copy():
@@ -144,8 +146,6 @@ class DucksSpawning(Cog):
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
         else:
             self.bot.logger.debug(f"All the channels are available :)")
-
-
 
     async def before(self):
         self.bot.logger.info(f"Waiting for ready-ness to planify duck spawns...")
