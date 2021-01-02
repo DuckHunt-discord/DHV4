@@ -18,7 +18,7 @@ password = ""
 database = ""
 
 [duckhunt_public_log]
-server_id = 734810932529856652
+server_id = 195260081036591104
 channel_id = 793563942416416788
 
 [auth.discord]
