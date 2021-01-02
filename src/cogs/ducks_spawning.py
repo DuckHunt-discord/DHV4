@@ -219,7 +219,8 @@ class DucksSpawning(Cog):
         embed = discord.Embed()
         if self.bot.current_event == Events.CALM:
             embed.colour = discord.Colour.green()
-            embed.title = f"No event this hour : {self.bot.current_event.value[0]}"
+            embed.title = f"{self.bot.current_event.value[0]} (no event for now)"
+            embed.description = self.bot.current_event.value[1]
         else:
             embed.colour = discord.Colour.orange()
             embed.title = f"New event : {self.bot.current_event.value[0]}"
@@ -227,7 +228,7 @@ class DucksSpawning(Cog):
 
         embed.set_footer(text="Events change every hour")
 
-        await self.bot.get_logging_channel().send(embed=embed)
+        await self.bot.log_to_channel(embed=embed)
 
 
 setup = DucksSpawning.setup

@@ -67,6 +67,21 @@ class MyBot(AutoShardedBot):
 
         return self._duckhunt_public_log
 
+    async def log_to_channel(self, *args, **kwargs):
+        channel = self.get_logging_channel()
+        message = await channel.send(*args, **kwargs)
+        try:
+            await message.publish()
+            return True
+        except discord.Forbidden:
+            self.logger.warning("Couldn't publish message to announcement channel, I don't have the required permissions")
+            return False
+        except discord.HTTPException as e:
+            self.logger.exception(f"Couldn't publish message to announcement channel: {e}. "
+                                  f"Too many messages published recently ?")
+            return False
+
+
     async def on_message(self, message):
         if not self.is_ready():
             return  # Ignoring messages when not ready
