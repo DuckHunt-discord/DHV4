@@ -102,10 +102,10 @@ class SimpleCommands(Cog):
         """
 
         await ctx.send(
-            f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=204856385>")
+            f"<https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&scope=bot&permissions=741735489>")
 
     @commands.command()
-    async def invite(self, ctx: MyContext):
+    async def support(self, ctx: MyContext):
         """
         Get a discord invite to the support server.
         """
