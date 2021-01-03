@@ -44,18 +44,23 @@ class DuckBoss(Cog):
     @tasks.loop(minutes=1)
     async def background_loop(self):
         channel = self.bot.get_channel(self.config()['boss_channel_id'])
-        latest_message = (await channel.history(limit=1).flatten())[0]
+        latest_messages = await channel.history(limit=1).flatten()
 
-        if latest_message.author.id != self.bot.user.id:
-            boss_message = None
-        elif len(latest_message.embeds) == 0:
+        if not latest_messages:
             boss_message = None
         else:
-            latest_message_embed = latest_message.embeds[0]
-            if latest_message_embed.color == discord.Color.green():
-                boss_message = latest_message
-            else:
+            latest_message = latest_messages[0]
+
+            if latest_message.author.id != self.bot.user.id:
                 boss_message = None
+            elif len(latest_message.embeds) == 0:
+                boss_message = None
+            else:
+                latest_message_embed = latest_message.embeds[0]
+                if latest_message_embed.color == discord.Color.green():
+                    boss_message = latest_message
+                else:
+                    boss_message = None
 
         if boss_message:
             reaction: discord.Reaction = boss_message.reactions[0]
