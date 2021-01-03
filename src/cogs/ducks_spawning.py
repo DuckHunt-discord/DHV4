@@ -44,7 +44,7 @@ class DucksSpawning(Cog):
             elif delay >= 5:
                 self.bot.logger.warning(f"Loop running with severe delays ({delay} seconds)!")
 
-            # self.bot.logger.debug(f"Loop : [{int(current_iteration)}/{int(now)}]")
+            self.bot.logger.debug(f"Ducks spawning loop : [{int(current_iteration)}/{int(now)}]")
 
             # Loop part
             try:
@@ -62,6 +62,8 @@ class DucksSpawning(Cog):
         SECONDS_LEFT_TODAY = 86400 - SECONDS_SPENT_TODAY
 
         if self.bot.allow_ducks_spawning:
+            start_spawning = time()
+            ducks_spawned = 0
             for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
                 if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
                     if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
@@ -70,15 +72,28 @@ class DucksSpawning(Cog):
                     sun, duration_of_night, time_left_sun = await compute_sun_state(channel, SECONDS_SPENT_TODAY)
 
                     asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
+                    ducks_spawned += 1
 
                     if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
                         asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
+                        ducks_spawned += 1
 
                     self.bot.enabled_channels[channel] -= 1
+            end_spawning = time()
 
+            if end_spawning-start_spawning > 0.7:
+                duration = round(end_spawning-start_spawning, 2)
+                self.bot.logger.error(f"Spawning {ducks_spawned} ducks took more than {duration} seconds...")
+
+        start_leaving = time()
         for channel, ducks_queue in self.bot.ducks_spawned.copy().items():
             for duck in ducks_queue.copy():
                 await duck.maybe_leave()
+        end_leaving = time()
+
+        if start_leaving - end_leaving > 0.7:
+            duration = round(end_leaving - start_leaving, 2)
+            self.bot.logger.error(f"Leaving ducks took more than {duration} seconds...")
 
         CURRENT_PLANNED_DAY = now - (now % DAY)
         if CURRENT_PLANNED_DAY != self.last_planned_day:
