@@ -175,8 +175,8 @@ sleeping = {
 
 def max_ducks_per_day(membercount):
     # Plots :
-    # 100 members : https://www.wolframalpha.com/input/?i=plot+100+%2B+%28x+%2F+%285+%2B+x+%2F+450%29++%29+from+1+to+100
-    # 5000 members : https://www.wolframalpha.com/input/?i=plot+100+%2B+%28x+%2F+%285+%2B+x+%2F+450%29++%29+from+1+to+5000
-    # 50000 members : https://www.wolframalpha.com/input/?i=plot+100+%2B+%28x+%2F+%285+%2B+x+%2F+450%29++%29+from+1+to+50000
+    # 100 members : https://www.wolframalpha.com/input/?i=plot+125+%2B+%28x+%2F+%285+%2B+x+%2F+450%29++%29+from+1+to+100
+    # 5000 members : https://www.wolframalpha.com/input/?i=plot+125+%2B+%28x+%2F+%285+%2B+x+%2F+450%29++%29+from+1+to+5000
+    # 50000 members : https://www.wolframalpha.com/input/?i=plot+125+%2B+%28x+%2F+%285+%2B+x+%2F+450%29++%29+from+1+to+50000
 
-    return int(100 + (membercount / (5 + membercount / 450)))
+    return int(125 + (membercount / (5 + membercount / 450)))
