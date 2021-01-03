@@ -52,7 +52,11 @@ class MyContext(commands.Context):
 
         if reply:
             db_user = await get_from_db(self.author, as_user=True)
-            message = await super().reply(content, file=file, files=files, allowed_mentions=discord.AllowedMentions(replied_user=db_user.ping_friendly), **kwargs)
+            try:
+                message = await super().reply(content, file=file, files=files, allowed_mentions=discord.AllowedMentions(replied_user=db_user.ping_friendly), **kwargs)
+            except discord.errors.HTTPException:
+                # Can't reply, probably that the message we are replying to was deleted.
+                message = await super().send(content, file=file, files=files, **kwargs)
         else:
             message = await super().send(content, file=file, files=files, **kwargs)
 

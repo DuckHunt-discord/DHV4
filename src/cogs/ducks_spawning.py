@@ -76,7 +76,7 @@ class DucksSpawning(Cog):
 
                     self.bot.enabled_channels[channel] -= 1
 
-        for channel, ducks_queue in self.bot.ducks_spawned.items():
+        for channel, ducks_queue in self.bot.ducks_spawned.copy().items():
             for duck in ducks_queue.copy():
                 await duck.maybe_leave()
 
