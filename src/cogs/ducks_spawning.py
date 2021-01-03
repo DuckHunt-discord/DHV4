@@ -88,10 +88,12 @@ class DucksSpawning(Cog):
         start_leaving = time()
         for channel, ducks_queue in self.bot.ducks_spawned.copy().items():
             for duck in ducks_queue.copy():
-                await duck.maybe_leave()
+                if not await duck.maybe_leave():
+                    break
+
         end_leaving = time()
 
-        if start_leaving - end_leaving > 0.7:
+        if end_leaving-start_leaving > 0.7:
             duration = round(end_leaving - start_leaving, 2)
             self.bot.logger.error(f"Leaving ducks took more than {duration} seconds...")
 

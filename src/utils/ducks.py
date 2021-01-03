@@ -273,12 +273,12 @@ class Duck:
         return f"{trace} {shout}"
 
     async def send(self, content: str, **kwargs):
-        webhook = await get_webhook_if_possible(self.bot, self.channel)
+        webhook = await get_webhook_if_possible(self.bot, await self.get_db_channel())
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
             try:
-                await webhook.send(content, **this_webhook_parameters, **kwargs)
+                asyncio.ensure_future(webhook.send(content, **this_webhook_parameters, **kwargs))
                 return
             except discord.NotFound:
                 db_channel: DiscordChannel = await get_from_db(self.channel)
@@ -287,7 +287,7 @@ class Duck:
 
                 pass
 
-        await self.channel.send(content, **kwargs)
+        asyncio.ensure_future(self.channel.send(content, **kwargs))
 
     # Parameters #
 
