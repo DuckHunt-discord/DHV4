@@ -153,6 +153,7 @@ moad = {
     'shouts': [_("**I am your mother...**")],
     'avatar_urls': [DUCKS_IMAGES['moad']],
     'emojis': [DUCKS_EMOJIS['moad']],
+    'usernames': [_("Ms. Duck"), _("Mom"), _("Mommy"), _("MOAD"), _("Mooooom")],
 }
 
 armored = {**super,

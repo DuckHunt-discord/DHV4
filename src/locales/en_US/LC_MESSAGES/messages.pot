@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-03 22:43+0100\n"
+"POT-Creation-Date: 2021-01-03 23:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2988,15 +2988,35 @@ msgstr ""
 msgid "**I am your mother...**"
 msgstr ""
 
-#: ../utils/ducks_config.py:165
+#: ../utils/ducks_config.py:156
+msgid "Ms. Duck"
+msgstr ""
+
+#: ../utils/ducks_config.py:156
+msgid "Mom"
+msgstr ""
+
+#: ../utils/ducks_config.py:156
+msgid "Mommy"
+msgstr ""
+
+#: ../utils/ducks_config.py:156
+msgid "MOAD"
+msgstr ""
+
+#: ../utils/ducks_config.py:156
+msgid "Mooooom"
+msgstr ""
+
+#: ../utils/ducks_config.py:166
 msgid "*coin*"
 msgstr ""
 
-#: ../utils/ducks_config.py:165
+#: ../utils/ducks_config.py:166
 msgid "*Don't make a noise, it's nighttime*"
 msgstr ""
 
-#: ../utils/ducks_config.py:165
+#: ../utils/ducks_config.py:166
 msgid "*Shhhhh*"
 msgstr ""
 
