@@ -203,6 +203,9 @@ class DiscordUser(Model):
     class Meta:
         table = "users"
 
+    def get_access_level(self):
+        return self.access_level_override
+
     def __str__(self):
         return self.name
 
