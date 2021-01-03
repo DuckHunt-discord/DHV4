@@ -150,7 +150,7 @@ class DucksSpawning(Cog):
 
         if 0 < len(channels_to_disable) < 100 or True:
             self.bot.logger.warning(f"Disabling {len(channels_to_disable)} channels "
-                                    f"that are no longer avaiable to the bot.")
+                                    f"that are no longer available to the bot.")
             for db_channel in channels_to_disable:
                 # TODO : We can probably only do 1 big query here, but for that I'd have to learn Tortoise.
                 # To be honest, improvement would be limited since 100 queries max isn't that slow and there obviously
@@ -158,6 +158,8 @@ class DucksSpawning(Cog):
                 db_channel.enabled = False
                 await db_channel.save()
                 await asyncio.sleep(0)  # Just in case
+            self.bot.logger.warning(f"Disabled {len(channels_to_disable)} channels "
+                                    f"that are no longer available to the bot.")
         elif len(channels_to_disable) >= 100:
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
