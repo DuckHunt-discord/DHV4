@@ -135,7 +135,7 @@ class DucksSpawning(Cog):
             if channel:
                 self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
             else:
-                self.bot.logger.warning(f"Channel {channel.name} is unknown, marking for disable")
+                self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
                 channels_to_disable.append(db_channel)
 
         if 0 < len(channels_to_disable) < 100:
