@@ -499,11 +499,11 @@ class Duck:
         if ll is not None and ll <= 0:
             attributes.append("killed")
         if self in self.bot.ducks_spawned[self.channel]:
-            attributes.append("spawned")
+            attributes.append(f"spawned-{self.spawned_for}s")
 
         total_lives = self._lives  # We can't await here, so try our best
 
-        return f"<{type(self).__name__} {self.category}{' '.join(attributes)} lives={self.lives_left}/{total_lives}>"
+        return f"<{type(self).__name__} {self.category} {' '.join(attributes)} lives={self.lives_left}/{total_lives}>"
 
 
 # Standard ducks #
