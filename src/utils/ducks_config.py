@@ -3,7 +3,6 @@ def _(s):
 
 
 DUCKS_IMAGES = {
-    'plastic': 'https://i1.wp.com/amsterdamduckstore.com/wp-content/uploads/2016/08/Marathon-Rubber-Duck.jpg?resize=400%2C400&ssl=1',
     'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
 
     'ghost':        'https://media.discordapp.net/attachments/795225915248214036/795259576085643284/ghost_duck2_calgeka.png',
@@ -17,6 +16,7 @@ DUCKS_IMAGES = {
     'kamikaze':     'https://media.discordapp.net/attachments/795225915248214036/795259581660004412/kamikaze_duck_calgeka.png',
     'golden':       'https://media.discordapp.net/attachments/795225915248214036/795259578475610112/golden_duck_calgeka.png',
     'night':        'https://media.discordapp.net/attachments/795225915248214036/795259589930778634/night_duck_calgeka.png',
+    'plastic':      'https://media.discordapp.net/attachments/795225915248214036/795369328694001664/plastic_duck_Calgeka.png',
 }
 
 DUCKS_EMOJIS = {
