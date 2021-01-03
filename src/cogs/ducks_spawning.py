@@ -105,7 +105,9 @@ class DucksSpawning(Cog):
 
         serialized = {}
 
-        for channel, ducks in ducks_spawned.items():
+        # Copy to avoid
+        # RuntimeError: dictionary changed size during iteration
+        for channel, ducks in ducks_spawned.copy().items():
             ducks_in_channel = []
             for duck in ducks:
                 ducks_in_channel.append(duck.serialize())
@@ -135,7 +137,7 @@ class DucksSpawning(Cog):
             if channel:
                 self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
             else:
-                self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
+                # self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
                 channels_to_disable.append(db_channel)
 
         if 0 < len(channels_to_disable) < 100:
@@ -151,6 +153,7 @@ class DucksSpawning(Cog):
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
+            self.bot.logger.error("Bad examples : " + ', '.join([c.discord_id for c in channels_to_disable[:10]]))
         else:
             self.bot.logger.debug(f"All the channels are available :)")
 
@@ -179,6 +182,8 @@ class DucksSpawning(Cog):
                     await duck.spawn(loud=False)
 
         self.bot.logger.info(f"{ducks_count} ducks restored!")
+
+        await asyncio.sleep(1)
 
         self.bot.logger.info(f"Planifying ducks spawns for the rest of the day")
 
@@ -212,7 +217,7 @@ class DucksSpawning(Cog):
 
         ducks = int((seconds_left_in_day * ducks_per_day) / DAY)
 
-        self.bot.logger.debug(f"Recomputing : {pct_day}% day done, {ducks}/{ducks_per_day} ducks to spawn today")
+        # self.bot.logger.debug(f"Recomputing : {pct_day}% day done, {ducks}/{ducks_per_day} ducks to spawn today")
 
         return ducks
 
