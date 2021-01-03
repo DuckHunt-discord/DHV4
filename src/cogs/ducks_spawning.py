@@ -156,7 +156,7 @@ class DucksSpawning(Cog):
                 # To be honest, improvement would be limited since 100 queries max isn't that slow and there obviously
                 # aren't that many channels that get disabled during a reboot...
                 db_channel.enabled = False
-                db_channel.save()
+                await db_channel.save()
                 await asyncio.sleep(0)  # Just in case
         elif len(channels_to_disable) >= 100:
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
