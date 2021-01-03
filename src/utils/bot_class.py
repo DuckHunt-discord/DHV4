@@ -81,7 +81,6 @@ class MyBot(AutoShardedBot):
                                   f"Too many messages published recently ?")
             return False
 
-
     async def on_message(self, message):
         if not self.is_ready():
             return  # Ignoring messages when not ready

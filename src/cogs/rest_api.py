@@ -290,7 +290,8 @@ class RestAPI(Cog):
         )
 
     async def run(self):
-        await self.bot.wait_until_ready()
+        # Don't wait for ready to avoid blocking the website
+        # await self.bot.wait_until_ready()
         listen_ip = self.config()['listen_ip']
         listen_port = self.config()['listen_port']
         route_prefix = self.config()['route_prefix']
