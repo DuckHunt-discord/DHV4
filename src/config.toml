@@ -57,9 +57,9 @@ required_bangs = 75
 
 [cogs.SupportServerCommands]
 # That's the ID of your server where the command will be ran
-support_server_id = 734810932529856652
+support_server_id = 195260081036591104
 # ID of an empty channel that will be used as a status dashboard.
-status_channel_id = 734879974842171474
+status_channel_id = 795389911163338775
 
 [cogs.Community]
 servers = [195260081036591104]
