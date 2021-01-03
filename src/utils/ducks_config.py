@@ -41,7 +41,7 @@ DUCKS_EMOJIS = {
     'plastic':      '<:plastic:795261503870861334>',
     'prof':         '<:prof:795261503778979871>',
     'super':        '<:super:795261503476465695>',
-
+    'normal':       '<:normal:795261503753945099>',
 }
 
 normal = {
