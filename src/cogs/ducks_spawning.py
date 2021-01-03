@@ -148,7 +148,7 @@ class DucksSpawning(Cog):
                 # self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
                 channels_to_disable.append(db_channel)
 
-        if 0 < len(channels_to_disable) < 100:
+        if 0 < len(channels_to_disable) < 100 or True:
             self.bot.logger.warning(f"Disabling {len(channels_to_disable)} channels "
                                     f"that are no longer avaiable to the bot.")
             for db_channel in channels_to_disable:
@@ -157,6 +157,7 @@ class DucksSpawning(Cog):
                 # aren't that many channels that get disabled during a reboot...
                 db_channel.enabled = False
                 db_channel.save()
+                await asyncio.sleep(0)  # Just in case
         elif len(channels_to_disable) >= 100:
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
