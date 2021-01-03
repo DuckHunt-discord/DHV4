@@ -145,10 +145,10 @@ class DucksSpawning(Cog):
             if channel:
                 self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
             else:
-                # self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
+                self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
                 channels_to_disable.append(db_channel)
 
-        if 0 < len(channels_to_disable) < 100 or True:
+        if 0 < len(channels_to_disable) < 100:
             self.bot.logger.warning(f"Disabling {len(channels_to_disable)} channels "
                                     f"that are no longer available to the bot.")
             for db_channel in channels_to_disable:
@@ -160,7 +160,7 @@ class DucksSpawning(Cog):
                 await asyncio.sleep(0)  # Just in case
             self.bot.logger.warning(f"Disabled {len(channels_to_disable)} channels "
                                     f"that are no longer available to the bot.")
-        elif len(channels_to_disable) >= 100:
+        elif len(channels_to_disable) >= 30:
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")

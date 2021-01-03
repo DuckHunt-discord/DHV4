@@ -31,7 +31,7 @@ class DuckBoss(Cog):
             description="React with 🔫 to kill it.",
         )
 
-        new_embed.set_image(url="https://media.discordapp.net/attachments/734810933091762188/779515302382796870/boss.png")
+        new_embed.set_image(url="https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png")
         new_embed.add_field(name="Health", value=f"{boss_life - bangs}/{boss_life}")
         if boss_message:
             time_delta = datetime.datetime.now() - boss_message.created_at
