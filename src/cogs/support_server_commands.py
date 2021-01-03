@@ -179,4 +179,15 @@ class SupportServerCommands(Cog):
 
         await self.bot.log_to_channel(embed=embed)
 
+    @manage_bot.command(aliases=["spawn_boss", "boss", "boss_spawn"])
+    async def force_boss_spawn(self, ctx: MyContext):
+        """
+        Force a boss to spawn
+        """
+        boss_cog = self.bot.get_cog('DuckBoss')
+
+        await boss_cog.spawn_boss()
+
+        await ctx.reply(f"A boss has been spawned.")
+
 setup = SupportServerCommands.setup

@@ -100,6 +100,12 @@ class DuckBoss(Cog):
                 boss_message = await channel.send(embed=await self.create_boss_embed(),)
                 await boss_message.add_reaction("🔫")
 
+    async def spawn_boss(self):
+        channel = self.bot.get_channel(self.config()['boss_channel_id'])
+
+        boss_message = await channel.send(embed=await self.create_boss_embed(), )
+        await boss_message.add_reaction("🔫")
+
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
