@@ -474,7 +474,10 @@ class Duck:
     # Utilities #
 
     def despawn(self):
-        self.bot.ducks_spawned[self.channel].remove(self)
+        try:
+            self.bot.ducks_spawned[self.channel].remove(self)
+        except ValueError:
+            pass
 
     async def damage(self, lives):
         """
