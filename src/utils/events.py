@@ -19,7 +19,7 @@ class Events(Enum):
     SAFETY     = _("Safety class canceled"), \
                  _("The safety class was canceled, beware not to shoot others hunters!")
 
-    CONNECTION = _("Connection problems"), \
+    CONNECTION = _("Connection problem"), \
                  _("Ducks cant find your computer due to connection problems, and there will be less of them until it's repaired.")
 
     FLORIST    = _("A new florist in town"), \
