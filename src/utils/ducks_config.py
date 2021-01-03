@@ -3,15 +3,6 @@ def _(s):
 
 
 DUCKS_IMAGES = {
-    'emoji': "https://media.discordapp.net/attachments/734810933091762188/735596788408385750/PicsArt_07-22-03.38.37.png",
-    'glare': "https://cdn.discordapp.com/emojis/436542355257163777.png",
-    'eyebrows': "https://cdn.discordapp.com/emojis/436542355504627712.png",
-    'wave': "https://cdn.discordapp.com/emojis/436542355345113091.png",
-    'lurk': "https://cdn.discordapp.com/emojis/436542355030409219.png",
-    'sip': "https://cdn.discordapp.com/emojis/436548864170786836.png",
-    'ghost': "https://cdn.discordapp.com/emojis/660287926902718504.gif",
-    # 'armored': 'http://worth1000.s3.amazonaws.com/submissions/14291000/14291206_4e56_625x1000.jpg',
-    'golden': 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e43a852-2160-46bd-a515-8e7fbfb35c8d/d3bjtk8-926fdfba-e78f-4167-ae27-4a7011e905eb.jpg/v1/fill/w_900,h_1182,q_75,strp/golden_duck_logo_by_demonicneko-d3bjtk8.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8wZTQzYTg1Mi0yMTYwLTQ2YmQtYTUxNS04ZTdmYmZiMzVjOGQvZDNianRrOC05MjZmZGZiYS1lNzhmLTQxNjctYWUyNy00YTcwMTFlOTA1ZWIuanBnIiwid2lkdGgiOiI8PTkwMCIsImhlaWdodCI6Ijw9MTE4MiJ9XV19.FUnroTGc7BKGNBvYgSgR0jOVTOEXxNojQA7Nt4dQa_U',
     'plastic': 'https://i1.wp.com/amsterdamduckstore.com/wp-content/uploads/2016/08/Marathon-Rubber-Duck.jpg?resize=400%2C400&ssl=1',
 
     'ghost_3': 'https://media.discordapp.net/attachments/737978240966066177/737978506763567114/ghost_duck3.png',
@@ -24,7 +15,10 @@ DUCKS_IMAGES = {
     'super': 'https://media.discordapp.net/attachments/737978240966066177/745635356992602254/strong_duck.png',
     'prof': 'https://media.discordapp.net/attachments/737978240966066177/789491557908217856/prof.png',
     'mechanical': 'https://media.discordapp.net/attachments/737978240966066177/745568605063872513/mechanical_duck.png',
-    'moad': 'https://media.discordapp.net/attachments/737978240966066177/793973351299153950/mother_of_all_ducks_Calgeka.png'
+    'moad': 'https://media.discordapp.net/attachments/737978240966066177/793973351299153950/mother_of_all_ducks_Calgeka.png',
+    'kamikaze': 'https://media.discordapp.net/attachments/737978240966066177/795088747649695764/Sans_titre_11_20210103013846.png',
+    'golden': 'https://media.discordapp.net/attachments/737978240966066177/795127797952675850/Sans_titre_14_20210103041240.png',
+    'night': 'https://media.discordapp.net/attachments/737978240966066177/795108528204808272/Sans_titre_13_20210103025526.png',
 }
 
 DUCKS_EMOJIS = {
@@ -124,7 +118,7 @@ plastic = {**normal,
 kamikaze = {**normal,
             'shouts': [_("**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"), _("Gonna kill y'all !")],
             'usernames': [_("The Kamikaze Duck"), _("Explosive Duck"), _("Boom Duck"), _("Dynamite Duck")],
-            'avatar_urls': [DUCKS_IMAGES['golden']],
+            'avatar_urls': [DUCKS_IMAGES['kamikaze']],
             'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']],
             'bye_shouts': [_("The kamikaze duck exploded, killing every duck on the channel.")]
             }
@@ -157,11 +151,13 @@ armored = {**super,
 night = {
     **normal,
     'shouts': [_("*coin*"), _("*Don't make a noise, it's nighttime*"), _("*Shhhhh*")],
+    'avatar_urls': [DUCKS_IMAGES['night']],
 }
 
 sleeping = {
     **normal,
     'shouts': ["💤", "ZzZzZz"],
+    'avatar_urls': [DUCKS_IMAGES['night']],
 }
 
 
