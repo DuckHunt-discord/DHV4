@@ -1,7 +1,7 @@
 website_url = "https://duckhunt.me/"
 
 [bot]
-prefixes = ["c!", "d!", "C!", "D!"]
+prefixes = ["duckhunt", "dh!", "dh", "Dh", "Dh!", "dH!", "dH", "DH!", "DH"]
 description = """Discord Version 4 of DuckHunt, the popular game bot"""
 playing = "Ducks are everywhere"
 commands_are_case_insensitive = true
