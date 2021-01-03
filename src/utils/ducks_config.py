@@ -4,33 +4,44 @@ def _(s):
 
 DUCKS_IMAGES = {
     'plastic': 'https://i1.wp.com/amsterdamduckstore.com/wp-content/uploads/2016/08/Marathon-Rubber-Duck.jpg?resize=400%2C400&ssl=1',
-
-    'ghost_3': 'https://media.discordapp.net/attachments/737978240966066177/737978506763567114/ghost_duck3.png',
-    'ghost_2': 'https://media.discordapp.net/attachments/737978240966066177/737980172107644969/ghost_duck2.png',
-    'ghost_1': 'https://media.discordapp.net/attachments/737978240966066177/737978554754793524/ghost_duck1.png',
-    'armored': 'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
-    'baby': 'https://media.discordapp.net/attachments/737978240966066177/738490902762225704/baby_duck.png',
     'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
-    'normal': 'https://media.discordapp.net/attachments/737978240966066177/786674722854797352/normal.png',
-    'super': 'https://media.discordapp.net/attachments/737978240966066177/745635356992602254/strong_duck.png',
-    'prof': 'https://media.discordapp.net/attachments/737978240966066177/789491557908217856/prof.png',
-    'mechanical': 'https://media.discordapp.net/attachments/737978240966066177/745568605063872513/mechanical_duck.png',
-    'moad': 'https://media.discordapp.net/attachments/737978240966066177/793973351299153950/mother_of_all_ducks_Calgeka.png',
-    'kamikaze': 'https://media.discordapp.net/attachments/737978240966066177/795088747649695764/Sans_titre_11_20210103013846.png',
-    'golden': 'https://media.discordapp.net/attachments/737978240966066177/795127797952675850/Sans_titre_14_20210103041240.png',
-    'night': 'https://media.discordapp.net/attachments/737978240966066177/795108528204808272/Sans_titre_13_20210103025526.png',
+
+    'ghost':        'https://media.discordapp.net/attachments/795225915248214036/795259576085643284/ghost_duck2_calgeka.png',
+    'armored':      'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
+    'baby':         'https://media.discordapp.net/attachments/795225915248214036/795259573115289600/baby_duck_calgeka.png',
+    'normal':       'https://media.discordapp.net/attachments/795225915248214036/795259592786313246/normal_duck_calgeka.png',
+    'super':        'https://media.discordapp.net/attachments/795225915248214036/795259598247297044/super_duck_calgeka.png',
+    'prof':         'https://media.discordapp.net/attachments/795225915248214036/795259596091949116/prof_duck_calgeka.png',
+    'mechanical':   'https://media.discordapp.net/attachments/795225915248214036/795259584528646154/mechanical_duck_calgeka.png',
+    'moad':         'https://media.discordapp.net/attachments/795225915248214036/795259587480780880/mother_of_all_ducks_calgeka.png',
+    'kamikaze':     'https://media.discordapp.net/attachments/795225915248214036/795259581660004412/kamikaze_duck_calgeka.png',
+    'golden':       'https://media.discordapp.net/attachments/795225915248214036/795259578475610112/golden_duck_calgeka.png',
+    'night':        'https://media.discordapp.net/attachments/795225915248214036/795259589930778634/night_duck_calgeka.png',
 }
 
 DUCKS_EMOJIS = {
     'walking_duck': '<a:a_Duck_01:439546956986187777>',
-    'right_side_duck': '<:official_Duck_01_reversed:439576463436546050>',
     'ascii_duck': '<a:Duck_ducks:477799859894878208>',
-    'baby_unicode': '🐤',
     'baby_in_egg': '<:BabyDuck_01:439546718263050241>',
     'plastic_baby': '<:BabyDuck_02:439551472762355724>',
     'shiny_duck': '<:Golden_Duck:477800276082950145>',
     'golden_duck': '<:DuckGolden:439393970028806144>',
     'meh_duck': '<:Duck_Meh:477800274036129793>',
+
+    'baby_unicode': '🐤',
+    'right_side_duck': '<:official_Duck_01_reversed:439576463436546050>',
+
+    'armored':      '<:armored:795261503984238602>',
+    'baby':         '<:baby:795261503963529216>',
+    'golden':       '<:golden:795261503766921247>',
+    'kamikaze':     '<:kamikaze:795261503635980299>',
+    'mechanical':   '<:mechanical:795261503691030549>',
+    'moad':         '<:moad:795261503863128115>',
+    'night':        '<:night:795261503808471050>',
+    'plastic':      '<:plastic:795261503870861334>',
+    'prof':         '<:prof:795261503778979871>',
+    'super':        '<:super:795261503476465695>',
+
 }
 
 normal = {
@@ -44,7 +55,7 @@ normal = {
               "\\_Õ{", "\\_õ{", "\\_Ô{", "\\_ô{", "\\_Ö{", "\\_ö{", "\\_Ø{", "\\_ø{", "\\_Ò{", "\\_ò{", "\\_Ó{", "\\_ó{", "\\_0{", "\\_©{", "\\_@{", "\\_º{", "\\_°{", "\\_^{",
               "/_O{", "/_o{", "/_Õ{", "/_õ{", "/_Ô{", "/_ô{", "/_Ö{", "/_ö{", "/_Ø{", "/_ø{", "/_Ò{", "/_ò{", "/_Ó{", "/_ó{", "/_0{", "/_©{", "/_@{", "/_^{", "§_O{", "§_o{",
               "§_Õ{", "§_õ{", "§_Ô{", "§_ô{", "§_Ö{", "§_ö{", "§_Ø{", "§_ø{", "§_Ò{", "§_ò{", "§_Ó{", "§_ó{", "§_0{", "§_©{", "§_@{", "§_º{", "§_°{", "§_^{"],
-    'emojis': [DUCKS_EMOJIS['walking_duck'], DUCKS_EMOJIS['right_side_duck']],
+    'emojis': [DUCKS_EMOJIS['normal'], DUCKS_EMOJIS['right_side_duck']],
     'shouts': ["COIN", "COIN", "COIN", "COIN", "COIN", "KWAK", "KWAK", "KWAAK", "KWAAK", "KWAAAK", "KWAAAK", "COUAK", "COUAK", "COUAAK", "COUAAK", "COUAAAK", "COUAAAK", "QUAK",
                "QUAK", "QUAAK", "QUAAK", "QUAAAK", "QUAAAK", "QUACK", "QUACK", "QUAACK", "QUAACK", "QUAAACK", "QUAAACK", "COUAC", "COUAC", "COUAAC", "COUAAC", "COUAAAC", "COUAAAC",
                "COUACK", "COUACK", _("*cries*"), _("Hello world"), _("How are you today?"), _("Please don't kill me..."), "<https://youtu.be/r8EBoX9iUw4?t=25>",
@@ -70,7 +81,7 @@ normal = {
             _("The duck flew over a disproportionately small gap."),
             _("The duck chickened out.")],
     'bye_traces': ["·°'`'°-.,¸¸.·°'`"],
-    'usernames': [_("A duck"), _("Mr. Duck"), _("ISO Duck")],
+    'usernames': [_("A duck"), _("Mr. Duck"), _("RealDuck")],
     'avatar_urls': [DUCKS_IMAGES['normal']],
 }
 
@@ -82,51 +93,49 @@ ghost = {
     'shouts': [],
     'bye_shouts': [_("The ghost never appeared.")],
     'usernames': [_('Invisible Duck'), _('Ghost Duck'), _('Boooo Duck')],
-    'avatar_urls': [DUCKS_IMAGES['ghost_1'],
-                    DUCKS_IMAGES['ghost_2'],
-                    DUCKS_IMAGES['ghost_3'],
-                    ],
+    'avatar_urls': [DUCKS_IMAGES['ghost'],],
 }
 
 prof = {**normal,
         'shouts': [],
         'usernames': [_("Pr. Duck"), _("EnsDuck")],
         'avatar_urls': [DUCKS_IMAGES['prof']],
+        'emojis': [DUCKS_EMOJIS['prof']],
         }
 
 baby = {**normal,
         'shouts': ["COIN", "Piou ?", "Coin ?", "Coin!", "COIIIIIINNNNNN!"],
         'usernames': [_("Smol Duck"), _("Mini Duck"), _("Ducky"), _("Duckie")],
         'avatar_urls': [DUCKS_IMAGES['baby']],
-        'emojis': [DUCKS_EMOJIS['baby_in_egg'], DUCKS_EMOJIS['baby_unicode'], DUCKS_EMOJIS['plastic_baby']]
+        'emojis': [DUCKS_EMOJIS['baby'], DUCKS_EMOJIS['baby_unicode']],
         }
 
 golden = {**normal,
           'shouts': ["€!", "$!", "£!", _("Free money !"), _("It's free money")],
           'usernames': [_("Golden Duck"), _("Golden Goose"), _("Shiny Duck"), _("Rich Duck")],
           'avatar_urls': [DUCKS_IMAGES['golden']],
-          'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']]
+          'emojis': [DUCKS_EMOJIS['golden']]
           }
 
 plastic = {**normal,
            'shouts': ["€?", "$?", "£?", _("Have any money ?"), _("It's paid money")],
            'usernames': [_("Plastic Duck"), _("Poor Duck"), _("Slimey Duck")],
            'avatar_urls': [DUCKS_IMAGES['plastic']],
-           'emojis': [DUCKS_EMOJIS['meh_duck']]
+           'emojis': [DUCKS_EMOJIS['plastic']]
            }
 
 kamikaze = {**normal,
             'shouts': [_("**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"), _("Gonna kill y'all !")],
             'usernames': [_("The Kamikaze Duck"), _("Explosive Duck"), _("Boom Duck"), _("Dynamite Duck")],
             'avatar_urls': [DUCKS_IMAGES['kamikaze']],
-            'emojis': [DUCKS_EMOJIS['golden_duck'], DUCKS_EMOJIS['shiny_duck']],
+            'emojis': [DUCKS_EMOJIS['kamikaze']],
             'bye_shouts': [_("The kamikaze duck exploded, killing every duck on the channel.")]
             }
 
 mechanical = {
     **normal,
     'faces': ['%_%', '%>%', "% _ %", '• _ %', '% _ •'],
-    'emojis': [DUCKS_EMOJIS['ascii_duck']],
+    'emojis': [DUCKS_EMOJIS['mechanical']],
     'avatar_urls': [DUCKS_IMAGES['mechanical']],
     'usernames': normal['usernames'] + [_("Duck 2000"), _("Omega Duck")],
     'shouts': ["BZZZZZAAAAK", "BZAAAACK", "BZAACK"],
@@ -136,28 +145,31 @@ super = {
     **normal,
     'usernames': [_("Big Duck"), _("Strong Duck"), _("Heavy Duck")],
     'avatar_urls': [DUCKS_IMAGES['super']],
+    'emojis': [DUCKS_EMOJIS['super']],
 }
 
 moad = {
     **normal,
     'shouts': [_("**I am your mother...**")],
     'avatar_urls': [DUCKS_IMAGES['moad']],
+    'emojis': [DUCKS_EMOJIS['moad']],
 }
 
 armored = {**super,
            'avatar_urls': [DUCKS_IMAGES['armored']],
+           'emojis': [DUCKS_EMOJIS['armored']],
            }
 
 night = {
     **normal,
     'shouts': [_("*coin*"), _("*Don't make a noise, it's nighttime*"), _("*Shhhhh*")],
     'avatar_urls': [DUCKS_IMAGES['night']],
+    'emojis': [DUCKS_EMOJIS['night']],
 }
 
 sleeping = {
-    **normal,
+    **night,
     'shouts': ["💤", "ZzZzZz"],
-    'avatar_urls': [DUCKS_IMAGES['night']],
 }
 
 
