@@ -1,6 +1,8 @@
 import datetime
 import traceback
 
+import babel
+import discord
 import tortoise
 from discord.ext import commands
 
@@ -172,6 +174,10 @@ class CommandErrorHandler(Cog):
             if isinstance(exception, tortoise.exceptions.OperationalError):
                 message = _("You are above the limits of DuckHunt database. Try to reduce your expectations. Database message: `{exception}`",
                             exception=exception)
+            elif isinstance(exception, babel.core.UnknownLocaleError):
+                message = f"Unknown server language. Fix with `{ctx.prefix}set lang en`"
+            elif isinstance(exception, discord.Forbidden):
+                message = _("Missing permissions, please check I can embed links here.")
             else:
                 message = _("This should not have happened. A command raised an error that does not comes from CommandError, and isn't handled by our error handler. "
                             "Please inform the owner.")
