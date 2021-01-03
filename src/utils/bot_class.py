@@ -56,7 +56,7 @@ class MyBot(AutoShardedBot):
 
     async def async_setup(self):
         """
-        This funtcion is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
+        This function is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
         self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
 
@@ -107,17 +107,21 @@ class MyBot(AutoShardedBot):
 
             ctx.logger.info(f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
 
-            await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
-                                    "and also provide you with links to the DuckHunt wiki.\n"
-                                    "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
-                                    "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
-                                    "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
-                                    "However, if the duck says **COIN** it's a **baby duck** and you should hug it with `dh!hug`.\n"
-                                    "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
-                                    "If you want to learn more about the game, use the wiki! <{wiki_link}>",
-                                    support_server_link=_("https://discord.gg/G4skWae"),
-                                    wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
-            ))
+            try:
+                await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
+                                        "and also provide you with links to the DuckHunt wiki.\n"
+                                        "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
+                                        "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
+                                        "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
+                                        "However, if the duck says **COIN** it's a **baby duck** and you should hug it with `dh!hug`.\n"
+                                        "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
+                                        "If you want to learn more about the game, use the wiki! <{wiki_link}>",
+                                        support_server_link=_("https://discord.gg/G4skWae"),
+                                        wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
+                ))
+            except discord.Forbidden:
+                ctx.logger.debug(
+                    f"Couldn't send the welcome DM, forbidden.")
 
             db_user.first_use = False
             await db_user.save()
