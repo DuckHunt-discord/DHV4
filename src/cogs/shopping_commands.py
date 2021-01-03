@@ -550,7 +550,11 @@ class ShoppingCommands(Cog):
 
         await asyncio.gather(db_hunter.save(), db_target.save())
 
-        await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target, ))
+        try:
+            await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target, ))
+        except discord.Forbidden:
+            await ctx.reply(_("I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target.name} weapon... "
+                              "He doesn't know... yet! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target,))
 
     @shop.command(aliases=["20", "duck"])
     async def decoy(self, ctx: MyContext):
@@ -584,7 +588,7 @@ class ShoppingCommands(Cog):
 
         asyncio.ensure_future(spawn())
 
-        await ctx.author.send(_("💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, ))
+        await ctx.reply(_("💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, ))
 
     @shop.command(aliases=["23", "mecha"])
     async def mechanical(self, ctx: MyContext):
@@ -616,7 +620,12 @@ class ShoppingCommands(Cog):
 
         asyncio.ensure_future(spawn())
 
-        await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, channel=ctx.channel))
+        try:
+            await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, channel=ctx.channel))
+        except discord.Forbidden:
+            await ctx.reply(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp].\n**I couldn't DM you this message**", ITEM_COST=ITEM_COST, channel=ctx.channel))
+
+
 
     @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
     async def coat(self, ctx: MyContext):

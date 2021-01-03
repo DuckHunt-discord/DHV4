@@ -842,11 +842,14 @@ class SettingsCommands(Cog):
                 await ctx.send(_("👌️ Api is now ENABLED. Your API key will be DM'ed to you."))
 
         api_key = db_channel.api_key
-        if api_key:
-            await ctx.author.send(_("{channel.mention} API key is `{api_key}`", channel=ctx.channel, api_key=api_key))
-        else:
-            await ctx.author.send(_("The API is disabled on {channel.mention}. "
-                                    "Enable it with `{ctx.prefix}set api_key True`", channel=ctx.channel))
+        try:
+            if api_key:
+                await ctx.author.send(_("{channel.mention} API key is `{api_key}`", channel=ctx.channel, api_key=api_key))
+            else:
+                await ctx.author.send(_("The API is disabled on {channel.mention}. "
+                                        "Enable it with `{ctx.prefix}set api_key True`", channel=ctx.channel))
+        except discord.Forbidden:
+            await ctx.reply(_("I couldn't DM you... Are your DMs blocked ?"))
 
     @settings.group(aliases=["access"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)

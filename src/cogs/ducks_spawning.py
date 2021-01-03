@@ -131,8 +131,16 @@ class DucksSpawning(Cog):
 
         channels_to_disable = []
 
+        channels = {c.id: c for c in self.bot.get_all_channels()}
+        i = 0
+
         for db_channel in db_channels:
-            channel = self.bot.get_channel(db_channel.discord_id)
+            i += 1
+            channel = channels.get(db_channel.discord_id)
+
+            if i % 100 == 0:
+                await asyncio.sleep(.1)
+                self.bot.logger.debug(f"Planifying ducks spawns on {i}/{len(db_channels)} channels")
 
             if channel:
                 self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
@@ -153,7 +161,7 @@ class DucksSpawning(Cog):
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
-            self.bot.logger.error("Bad examples : " + ', '.join([c.discord_id for c in channels_to_disable[:10]]))
+            self.bot.logger.error("Bad examples : " + ', '.join([str(c.discord_id) for c in channels_to_disable[:10]]))
         else:
             self.bot.logger.debug(f"All the channels are available :)")
 

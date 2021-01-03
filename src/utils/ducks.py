@@ -338,9 +338,8 @@ class Duck:
         bot = self.bot
         message = await self.get_spawn_message()
 
-        self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
-
         if loud:
+            self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
             self.spawned_at = time.time()
             await self.send(message)
 

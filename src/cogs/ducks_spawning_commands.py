@@ -164,8 +164,10 @@ class DucksSpawningCommands(Cog):
                                      time_delta=time_delta
                                      ))
                 message.append('```')
-
-            await ctx.author.send(content='\n'.join(message))
+            try:
+                await ctx.author.send(content='\n'.join(message))
+            except discord.Forbidden:
+                await ctx.reply("I couldn't DM you... Are your DMs blocked ?")
 
     @ducks_list.command()
     async def clear(self, ctx: MyContext):
