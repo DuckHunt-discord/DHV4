@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-30 00:21+0100\n"
+"POT-Creation-Date: 2021-01-02 19:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,6 +226,11 @@ msgid "/status\n"
 "Check the status of every shard the bot is hosting."
 msgstr ""
 
+msgid "/stats\n"
+"\n"
+"Get some global statistics about the bot."
+msgstr ""
+
 msgid "Commands to view and edit settings"
 msgstr "Parancsok a beállítások megjelenítéséhez és módosításához."
 
@@ -237,6 +242,13 @@ msgstr "Beállít hasonló dolgokat a DuckHunt V3-hoz, ha úgy szereted."
 
 msgid "Set the bot for a more casual experience."
 msgstr "Beállítja a botot egy ….. élményhez."
+
+msgid ""
+"Set the bot for a more hardcore experience : less experience and more "
+"difficult ducks.\n"
+"\n"
+"For experienced hunters only."
+msgstr ""
 
 msgid ""
 "Change/view the server prefix.\n"
@@ -261,10 +273,19 @@ msgstr ""
 "Francia nyelvhez pedig használhatsz fr_FR-t."
 
 msgid ""
-"Specify wether the bot should use webhooks to communicate in this channel.\n"
+"Specify whether the bot should use webhooks to communicate in this channel.\n"
 "\n"
 "Webhooks allow for custom avatars and usernames. However, there is a Discord "
 "limit of 10 webhooks per channel."
+msgstr ""
+
+msgid ""
+"This controls if hunters can use special items they earned somewhere else on "
+"this channel...\n"
+"\n"
+"For example, this will allow/deny use of the \"box of foie gras\" dropped by "
+"the boss on the Official Support\n"
+"Server."
 msgstr ""
 
 msgid ""
@@ -556,7 +577,32 @@ msgstr ""
 msgid "Check the status of every shard the bot is hosting."
 msgstr ""
 
-msgid "See what commands are used"
+msgid ""
+"Manage the bot current state by starting and stopping ducks spawning, "
+"leaving, and planning ducks spawn for the\n"
+"day.\n"
+"\n"
+"These commands do not use the translation system, and will always show in "
+"english"
+msgstr ""
+
+msgid ""
+"Reset ducks planning, setting the ducks left to spawn counts to a value "
+"proportional to the time left spawning\n"
+"ducks today. This is executed everyday at midnight."
+msgstr ""
+
+msgid ""
+"Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
+"from the planification,\n"
+"so once the stop is over, ducks will spawn more quickly than usual.\n"
+"\n"
+"Duck will still be able to leave, even if this lock is set."
+msgstr ""
+
+msgid ""
+"Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
+"usual if a planification isn't done."
 msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
@@ -1034,6 +1080,9 @@ msgstr ""
 msgid "Casual mode settings have been applied to this channel."
 msgstr ""
 
+msgid "Hardcore mode settings have been applied to this channel."
+msgstr ""
+
 msgid "The server prefix is set to `{prefix}`."
 msgstr ""
 
@@ -1059,6 +1108,12 @@ msgid "Webhooks are used in this channel."
 msgstr ""
 
 msgid "Webhooks are not used in this channel."
+msgstr ""
+
+msgid "Global items can be used in this channel."
+msgstr ""
+
+msgid "Global items can't be used in this channel."
 msgstr ""
 
 msgid ""
@@ -1294,7 +1349,7 @@ msgstr ""
 
 msgid ""
 "❌ Whoops, you have too many magazines in your backpack already... Try "
-"reloading !"
+"reloading!"
 msgstr ""
 
 msgid ""
@@ -1310,7 +1365,7 @@ msgstr ""
 msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
 msgstr ""
 
-msgid "❌ Your gun is using some even better explosive ammo for {time_delta} !"
+msgid "❌ Your gun is using some even better explosive ammo for {time_delta}!"
 msgstr ""
 
 msgid ""
@@ -1399,7 +1454,7 @@ msgid ""
 "¯\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp]"
 msgstr ""
 
-msgid "❌ Don't play with fire, kid ! Go somewhere else."
+msgid "❌ Don't play with fire, kid! Go somewhere else."
 msgstr ""
 
 msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
@@ -1833,7 +1888,7 @@ msgstr ""
 msgid "https://discord.gg/G4skWae"
 msgstr ""
 
-msgid "https://docs.duckhunt.me/players-guide/players-quickstart"
+msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr ""
 
 msgid ""
