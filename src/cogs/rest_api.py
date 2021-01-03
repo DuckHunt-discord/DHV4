@@ -275,9 +275,16 @@ class RestAPI(Cog):
 
         Get some global statistics about the bot.
         """
+
+        try:
+            total_members = sum((g.member_count for g in self.bot.guilds))
+        except:
+            self.bot.logger.exception("Couldn't get total member count.")
+            total_members = 0
+
         return web.json_response(
             {
-                "members_count": sum((g.member_count for g in self.bot.guilds)),
+                "members_count": total_members,
                 "guilds_count": len(self.bot.guilds),
                 "channels_count": sum((len(g.channels) for g in self.bot.guilds)),
                 "players_count": await Player.all().count(),
