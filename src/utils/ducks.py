@@ -671,7 +671,7 @@ class MechanicalDuck(Duck):
                      creator=creator)
 
     async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
-        if killer.id == self.creator.id:
+        if self.creator and killer.id == self.creator.id:
             db_killer.stored_achievements['short_memory'] = True
 
         await super().post_kill(killer, db_killer, won_experience, bonus_experience)
