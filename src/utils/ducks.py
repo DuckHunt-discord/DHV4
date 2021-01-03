@@ -273,7 +273,11 @@ class Duck:
         return f"{trace} {shout}"
 
     async def send(self, content: str, **kwargs):
-        webhook = await get_webhook_if_possible(self.bot, await self.get_db_channel())
+        db_channel = await self.get_db_channel()
+        if db_channel.use_webhooks:
+            webhook = await get_webhook_if_possible(self.bot, db_channel)
+        else:
+            webhook = None
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
