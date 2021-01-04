@@ -64,6 +64,8 @@ async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordCha
 
     except discord.Forbidden:
         db_channel.use_webhooks = False
+    except discord.HTTPException:
+        db_channel.use_webhooks = False
 
     await db_channel.save()
     return webhook
