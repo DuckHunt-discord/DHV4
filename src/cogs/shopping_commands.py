@@ -650,8 +650,10 @@ class ShoppingCommands(Cog):
         await ctx.reply(_("💸 You bought some a new coat. You don't look very good, but you are very much protected from water. "
                           "[Bought: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST))
 
-    @shop.command(aliases=["29", "kill_permit", "permit", "licence_to_kill", "licencetokill", "kill_licence", "killlicence"])
-    async def licence(self, ctx: MyContext):
+    @shop.command(aliases=["29", "licence", "kill_permit", "permit", "licence_to_kill", "license_to_kill",
+                           "licencetokill", "licensetokill", "kill_licence", "kill_license",
+                           "killlicence", "killlicense"])
+    async def license(self, ctx: MyContext):
         """
         Avoid penalties if you accidentally kill another hunter for 24 hours
         """
