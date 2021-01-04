@@ -314,7 +314,6 @@ class Duck:
                     await db_channel.save()
                     asyncio.ensure_future(self.channel.send(content, **kwargs))
 
-
             asyncio.ensure_future(sendit())
             return
 
