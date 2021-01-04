@@ -158,7 +158,6 @@ class SimpleCommands(Cog):
                              global_prefixes_list=global_prefixes_list))
 
     @commands.command(aliases=["helpers", "whomadethis"])
-    @checks.channel_enabled()
     async def credits(self, ctx: MyContext):
         """
         Thanks to those fine people who (helped) make the bot
@@ -183,7 +182,6 @@ class SimpleCommands(Cog):
         await ctx.send(embed=embed, file=f)
 
     @commands.command(aliases=["translate"])
-    @checks.channel_enabled()
     async def translators(self, ctx: MyContext):
         """
         Thanks to those fine people who (helped) translate the bot

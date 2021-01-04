@@ -39,7 +39,10 @@ def get_catalog(language_code) -> Optional[polib.POFile]:
 
 
 def get_pct_complete(language_code) -> float:
-    catalog = get_catalog(language_code)
+    try:
+        catalog = get_catalog(language_code)
+    except OSError:
+        catalog = None
 
     if not catalog:
         return float('NaN')
