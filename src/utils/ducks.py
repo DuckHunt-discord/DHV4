@@ -1,10 +1,13 @@
 import asyncio
+import datetime
 import random
 import time
 from typing import Optional
 
 import discord
 import typing
+
+from babel.dates import format_timedelta
 from discord.utils import escape_markdown
 
 from utils import config
@@ -45,6 +48,7 @@ class Duck:
 
         self._lives: Optional[int] = None
         self.lives_left: Optional[int] = self._lives
+        self._translate_function = None
 
     def serialize(self):
         return {'category'          : self.category,
@@ -80,13 +84,15 @@ class Duck:
     # Database #
 
     async def get_translate_function(self):
-        db_guild = await get_from_db(self.channel.guild)
-        language = db_guild.language
+        if not self._translate_function:
+            db_guild = await get_from_db(self.channel.guild)
+            language = db_guild.language
 
-        def _(message, **kwargs):
-            return translate(message, language).format(**kwargs)
+            def _(message, **kwargs):
+                return translate(message, language).format(**kwargs)
+            self._translate_function = _
 
-        return _
+        return self._translate_function
 
     async def get_db_channel(self):
         if not self._db_channel:
@@ -138,6 +144,7 @@ class Duck:
     async def set_best_time(self):
         db_hunter = self.db_target_lock_by
         db_hunter.best_times[self.category] = min(self.spawned_for, db_hunter.best_times[self.category])
+
 
     # Locks #
 
@@ -209,18 +216,28 @@ class Duck:
 
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int) -> str:
         _ = await self.get_translate_function()
+        db_guild = await get_from_db(self.channel.guild)
+
+        locale = db_guild.language
+
+        spawned_for = datetime.timedelta(seconds=self.spawned_for)
+        spawned_for_str = format_timedelta(spawned_for, locale=locale)
 
         if bonus_experience:
             normal_exp = won_experience - bonus_experience
 
-            return _("{killer.mention} killed the duck [**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
+            return _("{killer.mention} killed the duck in {spawned_for_str} [**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
                      killer=killer,
                      normal_exp=normal_exp,
-                     bonus_experience=bonus_experience)
+                     bonus_experience=bonus_experience,
+                     spawned_for_str=spawned_for_str,
+                     )
         else:
-            return _("{killer.mention} killed the duck [**Killed**: +{won_experience} exp]",
+            return _("{killer.mention} killed the duck in {spawned_for_str} [**Killed**: +{won_experience} exp]",
                      killer=killer,
-                     won_experience=won_experience,)
+                     won_experience=won_experience,
+                     spawned_for_str=spawned_for_str,
+                     )
 
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
         _ = await self.get_translate_function()
