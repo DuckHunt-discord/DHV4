@@ -5,6 +5,7 @@ import discord
 from discord.ext import commands, menus
 
 from utils import checks, models
+from utils.achievements import achievements
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import Player, get_player, get_from_db
@@ -335,6 +336,30 @@ class StatisticsCommands(Cog):
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
 
         self.add_fields_for_every_duck(_, embed, db_hunter.frightened, None)
+
+        await ctx.send(embed=embed)
+
+    @commands.command(aliases=["ach"])
+    @checks.channel_enabled()
+    async def achievements(self, ctx: MyContext, target: discord.Member = None):
+        """
+        Show your/someone else achievements in the channel
+        """
+        if not target:
+            target = ctx.author
+
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        embed = discord.Embed(colour=discord.Color.blurple(),
+                              title=_("{target.name} achievements.", target=target))
+
+        embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
+
+        for achievement, completed in db_hunter.achievements.items():
+            if completed:
+                ach = achievements[achievement]
+                embed.add_field(name=_(ach['name']), value=_(ach['description']))
 
         await ctx.send(embed=embed)
 
