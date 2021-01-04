@@ -190,4 +190,15 @@ class SupportServerCommands(Cog):
 
         await ctx.reply(f"A boss has been spawned.")
 
+    @manage_bot.command(aliases=["event", "reroll_event", "change_event"])
+    async def update_event(self, ctx: MyContext, force=True):
+        """
+        Force the current event to change, and reroll a new one.
+        """
+        ducks_spawning_cog = self.bot.get_cog('DucksSpawning')
+
+        await ducks_spawning_cog.change_event(force=force)
+
+        await ctx.reply(f"New event rolled.")
+
 setup = SupportServerCommands.setup

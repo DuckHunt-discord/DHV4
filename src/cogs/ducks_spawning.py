@@ -253,8 +253,8 @@ class DucksSpawning(Cog):
         db_channel = await get_from_db(channel)
         self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=int(time()))
 
-    async def change_event(self):
-        if random.randint(1, 12) != 1:
+    async def change_event(self, force=False):
+        if random.randint(1, 12) != 1 and not force:
             self.bot.logger.info("No new event this time!")
             self.bot.current_event = Events.CALM
         else:
