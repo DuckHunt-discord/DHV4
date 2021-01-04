@@ -65,7 +65,7 @@ class DucksSpawning(Cog):
             start_spawning = time()
             ducks_spawned = 0
             for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
-                if random.randint(1, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
+                if random.randint(0, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
                     if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
                         continue
 
