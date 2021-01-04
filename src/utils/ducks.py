@@ -270,7 +270,7 @@ class Duck:
         trace = await self.get_bye_trace()
         shout = await self.get_bye_shout()
 
-        return f"{trace} {shout}"
+        return f"{shout} {trace}"
 
     async def send(self, content: str, **kwargs):
         db_channel = await self.get_db_channel()
