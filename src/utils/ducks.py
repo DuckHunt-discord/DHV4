@@ -303,12 +303,7 @@ class Duck:
                 try:
                     await webhook.send(content, **this_webhook_parameters, **kwargs)
                     return
-                except discord.NotFound:
-                    db_channel: DiscordChannel = await get_from_db(self.channel)
-                    db_channel.webhook_urls.remove(webhook.url)
-                    await db_channel.save()
-                    asyncio.ensure_future(self.channel.send(content, **kwargs))
-                except discord.InvalidArgument:
+                except (discord.NotFound, discord.InvalidArgument):
                     db_channel: DiscordChannel = await get_from_db(self.channel)
                     db_channel.webhook_urls.remove(webhook.url)
                     await db_channel.save()
