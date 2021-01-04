@@ -700,7 +700,10 @@ class SuperDuck(Duck):
         max_life = db_channel.super_ducks_max_life
         if self.bot.current_event == Events.MEGA_DUCKS:
             max_life += 4
-        self._lives = random.randint(db_channel.super_ducks_min_life, max_life)
+
+        min_lives, max_lives = db_channel.super_ducks_min_life, max_life
+
+        self._lives = random.randint(min(min_lives, max_lives), max(min_lives, max_lives))
 
 
 class MotherOfAllDucks(SuperDuck):
