@@ -71,11 +71,11 @@ class DucksSpawning(Cog):
 
                     sun, duration_of_night, time_left_sun = await compute_sun_state(channel, SECONDS_SPENT_TODAY)
 
-                    await ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun)
+                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
                     ducks_spawned += 1
 
                     if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
-                        await ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun)
+                        asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
                         ducks_spawned += 1
 
                     self.bot.enabled_channels[channel] -= 1
