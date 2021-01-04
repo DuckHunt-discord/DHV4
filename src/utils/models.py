@@ -21,12 +21,14 @@ DB_LOCKS = collections.defaultdict(asyncio.Lock)
 
 class DefaultDictJSONField(fields.JSONField):
     def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
+        def make_default():
+            return collections.defaultdict(default_factory)
+
         self.default_factory = default_factory
-        kwargs["default"] = collections.defaultdict(default_factory)
+        kwargs["default"] = make_default
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
-        collections.defaultdict]:
+    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[collections.defaultdict]:
         ret = super().to_python_value(value)
         return collections.defaultdict(self.default_factory, ret)
 
