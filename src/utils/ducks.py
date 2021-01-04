@@ -290,8 +290,10 @@ class Duck:
                     db_channel: DiscordChannel = await get_from_db(self.channel)
                     db_channel.webhook_urls.remove(webhook.url)
                     await db_channel.save()
+                    asyncio.ensure_future(self.channel.send(content, **kwargs))
 
             asyncio.ensure_future(sendit())
+            return
 
         asyncio.ensure_future(self.channel.send(content, **kwargs))
 
