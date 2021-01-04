@@ -281,15 +281,17 @@ class Duck:
 
         if webhook:
             this_webhook_parameters = await self.get_webhook_parameters()
-            try:
-                asyncio.ensure_future(webhook.send(content, **this_webhook_parameters, **kwargs))
-                return
-            except discord.NotFound:
-                db_channel: DiscordChannel = await get_from_db(self.channel)
-                db_channel.webhook_urls.remove(webhook.url)
-                await db_channel.save()
 
-                pass
+            async def sendit():
+                try:
+                    await webhook.send(content, **this_webhook_parameters, **kwargs)
+                    return
+                except discord.NotFound:
+                    db_channel: DiscordChannel = await get_from_db(self.channel)
+                    db_channel.webhook_urls.remove(webhook.url)
+                    await db_channel.save()
+
+            asyncio.ensure_future(sendit())
 
         asyncio.ensure_future(self.channel.send(content, **kwargs))
 
