@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-02 19:05+0100\n"
+"POT-Creation-Date: 2021-01-03 23:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -527,6 +527,9 @@ msgid ""
 "usual if a planification isn't done."
 msgstr ""
 
+msgid "Force a boss to spawn"
+msgstr ""
+
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr ""
 
@@ -804,6 +807,9 @@ msgstr ""
 msgid ""
 "You are above the limits of DuckHunt database. Try to reduce your "
 "expectations. Database message: `{exception}`"
+msgstr ""
+
+msgid "Missing permissions, please check I can embed links here."
 msgstr ""
 
 msgid ""
@@ -1238,6 +1244,9 @@ msgid ""
 "api_key True`"
 msgstr ""
 
+msgid "I couldn't DM you... Are your DMs blocked ?"
+msgstr ""
+
 msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 msgstr ""
 
@@ -1419,6 +1428,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
+"name} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
 "{ITEM_COST} exp]"
 msgstr ""
@@ -1426,6 +1440,12 @@ msgstr ""
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
 "seconds. [Bought: -{ITEM_COST} exp]"
+msgstr ""
+
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp].\n"
+"**I couldn't DM you this message**"
 msgstr ""
 
 msgid ""
@@ -2109,7 +2129,7 @@ msgstr ""
 msgid "Mr. Duck"
 msgstr ""
 
-msgid "ISO Duck"
+msgid "RealDuck"
 msgstr ""
 
 msgid "The ghost never appeared."
@@ -2214,6 +2234,21 @@ msgstr ""
 msgid "**I am your mother...**"
 msgstr ""
 
+msgid "Ms. Duck"
+msgstr ""
+
+msgid "Mom"
+msgstr ""
+
+msgid "Mommy"
+msgstr ""
+
+msgid "MOAD"
+msgstr ""
+
+msgid "Mooooom"
+msgstr ""
+
 msgid "*coin*"
 msgstr ""
 
@@ -2255,8 +2290,8 @@ msgstr ""
 "De veiligheidsles is geannuleerd, pas op dat je niet op andere jagers "
 "schiet!"
 
-msgid "Connection problems"
-msgstr "Verbindingsproblemen"
+msgid "Connection problem"
+msgstr ""
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "

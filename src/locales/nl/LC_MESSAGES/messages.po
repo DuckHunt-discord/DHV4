@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-02 19:05+0100\n"
+"POT-Creation-Date: 2021-01-03 23:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -705,6 +705,9 @@ msgstr ""
 "Laat eenden weer spawnen, overal. Eenden zullen sneller dan normaal spawnen "
 "als er geen planificatie is gedaan."
 
+msgid "Force a boss to spawn"
+msgstr "Dwing een baas om te spawnen"
+
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 
@@ -1082,6 +1085,9 @@ msgid ""
 msgstr ""
 "Je bent boven de limieten van de DuckHunt-database. Probeer je verwachtingen "
 "te verminderen. Databasebericht: '{exception}'"
+
+msgid "Missing permissions, please check I can embed links here."
+msgstr "Ontbrekende rechten, controleer of ik hier links kan insluiten."
 
 msgid ""
 "This should not have happened. A command raised an error that does not comes "
@@ -1622,6 +1628,9 @@ msgstr ""
 "De API is uitgeschakeld op {channel.mention}. Schakel het in met `{ctx."
 "prefix} set api_key True`"
 
+msgid "I couldn't DM you... Are your DMs blocked ?"
+msgstr "Ik kon je niet DM'en... Zijn je DM's geblokkeerd ?"
+
 msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 msgstr "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 
@@ -1856,6 +1865,14 @@ msgstr ""
 " nog niet! Gekocht: -{ITEM_COST} exp]"
 
 msgid ""
+"I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
+"name} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp]"
+msgstr ""
+"Ik kon je niet DM'en... Zijn je DM's geblokkeerd ? Hoe dan ook, je "
+"saboteerde {target.name} wapen... Hij weet het niet... nog niet! Gekocht: -"
+"{ITEM_COST} exp]"
+
+msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
 "{ITEM_COST} exp]"
 msgstr ""
@@ -1868,6 +1885,12 @@ msgid ""
 msgstr ""
 "💸 Je hebt een mechanische eend gestart op {channel.mention}, hij zal in 90 "
 "seconden spawnen. Gekocht: -{ITEM_COST} exp]"
+
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp].\n"
+"**I couldn't DM you this message**"
+msgstr ""
 
 msgid ""
 "💸 You bought some a new coat. You don't look very good, but you are very "
@@ -2651,8 +2674,8 @@ msgstr "Een eend"
 msgid "Mr. Duck"
 msgstr "Mr. Eend"
 
-msgid "ISO Duck"
-msgstr "ISO Eend"
+msgid "RealDuck"
+msgstr ""
 
 msgid "The ghost never appeared."
 msgstr "Het spook is nooit verschenen."
@@ -2756,6 +2779,21 @@ msgstr "Zware Eend"
 msgid "**I am your mother...**"
 msgstr "**Ik ben je moeder...**"
 
+msgid "Ms. Duck"
+msgstr ""
+
+msgid "Mom"
+msgstr ""
+
+msgid "Mommy"
+msgstr ""
+
+msgid "MOAD"
+msgstr ""
+
+msgid "Mooooom"
+msgstr ""
+
 msgid "*coin*"
 msgstr "*coin*"
 
@@ -2797,8 +2835,8 @@ msgstr ""
 "De veiligheidsklas werd geannuleerd, pas op dat je niet op andere jagers "
 "schiet!"
 
-msgid "Connection problems"
-msgstr "Verbindingsproblemen"
+msgid "Connection problem"
+msgstr ""
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
