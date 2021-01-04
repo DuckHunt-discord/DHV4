@@ -4,7 +4,7 @@ import traceback
 import babel
 import discord
 import tortoise
-from discord.ext import commands
+from discord.ext import commands, menus
 
 from cogs.shopping_commands import NotEnoughExperience
 from utils import checks
@@ -178,6 +178,8 @@ class CommandErrorHandler(Cog):
                 message = f"Unknown server language. Fix with `{ctx.prefix}set lang en`"
             elif isinstance(exception, discord.Forbidden):
                 message = _("Missing permissions, please check I can embed links here.")
+            elif isinstance(exception, menus.CannotAddReactions):
+                message = _("Missing permissions, please check I can add reactions here.")
             else:
                 message = _("This should not have happened. A command raised an error that does not comes from CommandError, and isn't handled by our error handler. "
                             "Please inform the owner.")
