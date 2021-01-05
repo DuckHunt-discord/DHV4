@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 20:31+0100\n"
+"POT-Creation-Date: 2021-01-05 23:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2069,23 +2069,23 @@ msgstr ""
 msgid "{target.name} statistics."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:70 ../utils/models.py:384
+#: ../cogs/statistics_experience_commands.py:70 ../utils/models.py:386
 msgid "Bullets"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:387
+#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:389
 msgid "Magazines"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:370
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:372
 msgid "Experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:371
+#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:373
 msgid "Level"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:376
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:378
 msgid "Accuracy"
 msgstr ""
 
@@ -2095,7 +2095,7 @@ msgstr ""
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:77 ../utils/models.py:380
+#: ../cogs/statistics_experience_commands.py:77 ../utils/models.py:382
 msgid "Reliability"
 msgstr ""
 
@@ -2592,91 +2592,93 @@ msgstr ""
 msgid "{cog_name} Commands"
 msgstr ""
 
-#: ../utils/ducks.py:229
+#: ../utils/ducks.py:231
 #, python-brace-format
 msgid ""
-"{killer.mention} killed the duck in {spawned_for_str} [**Killed**: "
-"{normal_exp} exp + {bonus_experience} **clover**]"
+"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
+"{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
+"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
 msgstr ""
 
-#: ../utils/ducks.py:236
+#: ../utils/ducks.py:244
 #, python-brace-format
 msgid ""
-"{killer.mention} killed the duck in {spawned_for_str} [**Killed**: "
-"+{won_experience} exp]"
+"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
+"{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
+"[**Killed**: +{won_experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:245
+#: ../utils/ducks.py:259
 #, python-brace-format
 msgid "{hunter.mention} scared the duck."
 msgstr ""
 
-#: ../utils/ducks.py:256
+#: ../utils/ducks.py:270
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:263
+#: ../utils/ducks.py:277
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:270
+#: ../utils/ducks.py:284
 #, python-brace-format
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
 msgstr ""
 
-#: ../utils/ducks.py:276
+#: ../utils/ducks.py:290
 #, python-brace-format
 msgid "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:281
+#: ../utils/ducks.py:295
 #, python-brace-format
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:580
+#: ../utils/ducks.py:594
 #, python-brace-format
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
 
-#: ../utils/ducks.py:589
+#: ../utils/ducks.py:603
 #, python-brace-format
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
 "`dh!bang <answer>`."
 msgstr ""
 
-#: ../utils/ducks.py:595
+#: ../utils/ducks.py:609
 #, python-brace-format
 msgid "{hurter.mention}, Just give me digits !"
 msgstr ""
 
-#: ../utils/ducks.py:601
+#: ../utils/ducks.py:615
 #, python-brace-format
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
-#: ../utils/ducks.py:619
+#: ../utils/ducks.py:633
 #, python-brace-format
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:689
+#: ../utils/ducks.py:703
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:693
+#: ../utils/ducks.py:707
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
@@ -3294,19 +3296,19 @@ msgstr ""
 msgid "unemployed due to extinction of the duck species"
 msgstr ""
 
-#: ../utils/models.py:170 ../utils/models.py:178
+#: ../utils/models.py:172 ../utils/models.py:180
 #, python-brace-format
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
 
-#: ../utils/models.py:182
+#: ../utils/models.py:184
 msgid "Can't set such a high level"
 msgstr ""
 
-#: ../utils/models.py:392
+#: ../utils/models.py:394
 msgid "You leveled up!"
 msgstr ""
 
-#: ../utils/models.py:396
+#: ../utils/models.py:398
 msgid "You leveled down!"
 msgstr ""
