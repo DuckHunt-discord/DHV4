@@ -47,6 +47,8 @@ async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwa
 async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordChannel, discord.TextChannel], force=False):
     if isinstance(channel, DiscordChannel):
         channel = bot.get_channel(channel.discord_id)
+        if channel is None:
+            return None
         db_channel = await get_from_db(channel)
     else:
         db_channel: DiscordChannel = await get_from_db(channel)
