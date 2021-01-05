@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 23:23+0100\n"
+"POT-Creation-Date: 2021-01-05 23:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1688,7 +1688,9 @@ msgstr ""
 
 #: ../cogs/shopping_commands.py:68
 #, python-brace-format
-msgid "💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp]"
+msgid ""
+"💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:71
@@ -1706,7 +1708,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You added a magazine in your weapon. Time to reload! [Bought: -{ITEM_COST} "
-"exp]"
+"exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:109 ../cogs/shopping_commands.py:149
@@ -1730,7 +1732,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:162
@@ -1742,7 +1744,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
-"[Bought: -{ITEM_COST} exp]"
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:186
@@ -1753,7 +1755,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You bribed the police and bought back your weapon. The fun continues. "
-"[Bought: -{ITEM_COST} exp]"
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:210
@@ -1765,7 +1767,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You added some grease to your weapon to reduce jamming for a day. [Bought: "
-"-{ITEM_COST} exp]"
+"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:233
@@ -1777,7 +1779,7 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You added a sight to your weapon to improve your accuracy for the next few "
-"shots. [Bought: -{ITEM_COST} exp]"
+"shots. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:256
@@ -1788,7 +1790,8 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You added an infrared detector to your weapon. If you can't see ducks, you "
-"can't shoot them. [Bought: -{ITEM_COST} exp]"
+"can't shoot them. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:279
@@ -1799,14 +1802,15 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
-"game well. [Bought: -{ITEM_COST} exp]"
+"game well. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:294
 #, python-brace-format
 msgid ""
 "💸 You added a silencer to your weapon. Ducks are still afraid of the noise, "
-"but you don't make any. [Bought: -{ITEM_COST} exp]"
+"but you don't make any. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:314
@@ -1818,32 +1822,36 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
-"{clover_exp} experience points more. [Bought: -{ITEM_COST} exp]"
+"{clover_exp} experience points more. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:361
 #, python-brace-format
 msgid ""
-"🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp]"
+"🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:363
 #, python-brace-format
-msgid "🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp]"
+msgid ""
+"🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:384
 #, python-brace-format
 msgid ""
 "💸 You bought some new clothes. You look very good. Maybe the ducks will like "
-"your outfit. [Bought: -{ITEM_COST} exp]"
+"your outfit. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:406
 #, python-brace-format
 msgid ""
 "💸 You've just cleaned your weapon. Could've just shot once, but heh ¯"
-"\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp]"
+"\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:418 ../cogs/shopping_commands.py:458
@@ -1862,21 +1870,21 @@ msgstr ""
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your "
 "mirror. That was kinda stupid, since they have sunglasses 🕶️. [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:446
 #, python-brace-format
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your "
-"mirror. [Bought: -{ITEM_COST} exp]"
+"mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:477
 #, python-brace-format
 msgid ""
 "💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:515
@@ -1890,42 +1898,43 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You threw some icelandic water on {target.mention}... He can't hunt for "
-"**three** hours! [Bought: -{ITEM_COST} exp]"
+"**three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:519
 #, python-brace-format
 msgid ""
 "💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: "
-"-{ITEM_COST} exp]"
+"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:554
 #, python-brace-format
 msgid ""
 "💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:556
 #, python-brace-format
 msgid ""
 "I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
-"name} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp]"
+"name} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:591
 #, python-brace-format
 msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:624
 #, python-brace-format
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
-"seconds. [Bought: -{ITEM_COST} exp]"
+"seconds. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:626
@@ -1940,21 +1949,23 @@ msgstr ""
 #, python-brace-format
 msgid ""
 "💸 You bought some a new coat. You don't look very good, but you are very "
-"much protected from water. [Bought: -{ITEM_COST} exp]"
+"much protected from water. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:674
 #, python-brace-format
 msgid ""
 "💸 You bought a kill licence. Accidental kills are now allowed. [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:696
 #, python-brace-format
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
-"every time it's necessary for a day. [Bought: -{ITEM_COST} exp]"
+"every time it's necessary for a day. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/shopping_commands.py:719
@@ -1962,7 +1973,7 @@ msgstr ""
 msgid ""
 "💸 You are now using the brand new Homing Bullets made by CACAC (the Comitee "
 "Against the Comitee Against Ducks) in China. Try them soon! [Bought: -"
-"{ITEM_COST} exp]"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 #: ../cogs/simple_commands.py:34
