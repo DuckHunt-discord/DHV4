@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-03 23:37+0100\n"
+"POT-Creation-Date: 2021-01-04 20:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -563,6 +563,9 @@ msgid ""
 "someone else)."
 msgstr ""
 
+msgid "Show your/someone else achievements in the channel"
+msgstr ""
+
 msgid "Send some of your experience to another player."
 msgstr ""
 
@@ -604,6 +607,9 @@ msgid ""
 msgstr ""
 
 msgid "Force a boss to spawn"
+msgstr ""
+
+msgid "Force the current event to change, and reroll a new one."
 msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
@@ -886,6 +892,9 @@ msgid ""
 msgstr ""
 
 msgid "Missing permissions, please check I can embed links here."
+msgstr ""
+
+msgid "Missing permissions, please check I can add reactions here."
 msgstr ""
 
 msgid ""
@@ -1795,6 +1804,9 @@ msgstr ""
 msgid "{target.name} scared ducks."
 msgstr ""
 
+msgid "{target.name} achievements."
+msgstr ""
+
 msgid "❌ You cant send experience to yourself."
 msgstr ""
 
@@ -1997,11 +2009,13 @@ msgid "{cog_name} Commands"
 msgstr ""
 
 msgid ""
-"{killer.mention} killed the duck [**Killed**: {normal_exp} exp + "
-"{bonus_experience} **clover**]"
+"{killer.mention} killed the duck in {spawned_for_str} [**Killed**: "
+"{normal_exp} exp + {bonus_experience} **clover**]"
 msgstr ""
 
-msgid "{killer.mention} killed the duck [**Killed**: +{won_experience} exp]"
+msgid ""
+"{killer.mention} killed the duck in {spawned_for_str} [**Killed**: "
+"+{won_experience} exp]"
 msgstr ""
 
 msgid "{hunter.mention} scared the duck."
@@ -2032,7 +2046,9 @@ msgstr ""
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
 
-msgid "{hurter.mention}, I asked you a question ! What's {operation} ?"
+msgid ""
+"{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
+"`dh!bang <answer>`."
 msgstr ""
 
 msgid "{hurter.mention}, Just give me digits !"
