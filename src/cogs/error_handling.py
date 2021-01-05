@@ -164,7 +164,7 @@ class CommandErrorHandler(Cog):
                     # NOTE : This message uses a formatted, direction date in some_time. Formatted, it'll give something like :
                     # "This command is overused. Please try again *in 4 seconds*"
                     message = _("This command is overused. Please try again {some_time}.",
-                                some_time=dates.format_timedelta(delta, add_direction=True, locale=await ctx.get_language_code()))
+                                some_time=dates.format_timedelta(delta, add_direction=True, locale=(await ctx.get_language_code())))
             elif isinstance(exception, commands.errors.MaxConcurrencyReached):
                 message = f"{str(exception)}"  # The message from the lib is great.
             else:

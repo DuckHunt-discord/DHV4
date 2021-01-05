@@ -100,6 +100,8 @@ class MyContext(commands.Context):
 
         if language == "zh-Hans":
             return "zh"  # Babel don't know about Simplified Chinese
+        else:
+            language = language.replace('-', '_')
 
         return language
 
