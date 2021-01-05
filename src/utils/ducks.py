@@ -145,7 +145,6 @@ class Duck:
         db_hunter = self.db_target_lock_by
         db_hunter.best_times[self.category] = min(self.spawned_for, db_hunter.best_times[self.category])
 
-
     # Locks #
 
     async def target(self, member: discord.Member = None):
@@ -223,20 +222,35 @@ class Duck:
         spawned_for = datetime.timedelta(seconds=self.spawned_for)
         spawned_for_str = format_timedelta(spawned_for, locale=locale)
 
+        total_ducks_killed = sum(db_killer.killed.values())
+        this_ducks_killed = db_killer.killed.get(self.category)
+
         if bonus_experience:
             normal_exp = won_experience - bonus_experience
 
-            return _("{killer.mention} killed the duck in {spawned_for_str} [**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
+            return _("{killer.mention} killed the duck in {spawned_for_str}, "
+                     "for a total of {total_ducks_killed} "
+                     "(of which {this_ducks_killed} are {category}-ducks) "
+                     "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
                      killer=killer,
                      normal_exp=normal_exp,
                      bonus_experience=bonus_experience,
                      spawned_for_str=spawned_for_str,
+                     total_ducks_killed=total_ducks_killed,
+                     this_ducks_killed=this_ducks_killed,
+                     category=self.category,
                      )
         else:
-            return _("{killer.mention} killed the duck in {spawned_for_str} [**Killed**: +{won_experience} exp]",
+            return _("{killer.mention} killed the duck in {spawned_for_str}, "
+                     "for a total of {total_ducks_killed} "
+                     "(of which {this_ducks_killed} are {category}-ducks) "
+                     "[**Killed**: +{won_experience} exp]",
                      killer=killer,
                      won_experience=won_experience,
                      spawned_for_str=spawned_for_str,
+                     total_ducks_killed=total_ducks_killed,
+                     this_ducks_killed=this_ducks_killed,
+                     category=self.category,
                      )
 
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
