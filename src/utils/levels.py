@@ -4,6 +4,9 @@ from utils.translations import fake_translation as _
 
 
 LEVELS = [
+    {"level": -3, "expMin": -999999,  "name": _("Negative cheater ?"), "accuracy": 95, "reliability": 85, "bullets": 6, "magazines": 1}, # Beginner's luck
+    {"level": -2, "expMin": -99999,  "name": _("Duck Hugger ?"), "accuracy": 95, "reliability": 85, "bullets": 6, "magazines": 1}, # Beginner's luck
+    {"level": -1, "expMin": -9999,  "name": _("What are you doing ?"), "accuracy": 95, "reliability": 85, "bullets": 6, "magazines": 1}, # Beginner's luck
     {"level": 0, "expMin": -999,  "name": _("public danger"), "accuracy": 95, "reliability": 85, "bullets": 6, "magazines": 1}, # Beginner's luck
     {"level": 1, "expMin": -6,    "name": _("tourist"), "accuracy": 90, "reliability": 85, "bullets": 6, "magazines": 2},  # Beginner's luck
     {"level": 2, "expMin": 20,    "name": _("noob"), "accuracy": 70, "reliability": 86, "bullets": 6, "magazines": 2},     # Beginner's luck
