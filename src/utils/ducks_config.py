@@ -56,7 +56,7 @@ normal = {
               "/_O{", "/_o{", "/_Õ{", "/_õ{", "/_Ô{", "/_ô{", "/_Ö{", "/_ö{", "/_Ø{", "/_ø{", "/_Ò{", "/_ò{", "/_Ó{", "/_ó{", "/_0{", "/_©{", "/_@{", "/_^{", "§_O{", "§_o{",
               "§_Õ{", "§_õ{", "§_Ô{", "§_ô{", "§_Ö{", "§_ö{", "§_Ø{", "§_ø{", "§_Ò{", "§_ò{", "§_Ó{", "§_ó{", "§_0{", "§_©{", "§_@{", "§_º{", "§_°{", "§_^{"],
     'emojis': [DUCKS_EMOJIS['normal'], DUCKS_EMOJIS['right_side_duck']],
-    'shouts': ["COIN", "COIN", "COIN", "COIN", "COIN", "KWAK", "KWAK", "KWAAK", "KWAAK", "KWAAAK", "KWAAAK", "COUAK", "COUAK", "COUAAK", "COUAAK", "COUAAAK", "COUAAAK", "QUAK",
+    'shouts': ["KWAK", "KWAK", "KWAAK", "KWAAK", "KWAAAK", "KWAAAK", "COUAK", "COUAK", "COUAAK", "COUAAK", "COUAAAK", "COUAAAK", "QUAK",
                "QUAK", "QUAAK", "QUAAK", "QUAAAK", "QUAAAK", "QUACK", "QUACK", "QUAACK", "QUAACK", "QUAAACK", "QUAAACK", "COUAC", "COUAC", "COUAAC", "COUAAC", "COUAAAC", "COUAAAC",
                "COUACK", "COUACK", _("*cries*"), _("Hello world"), _("How are you today?"), _("Please don't kill me..."), "<https://youtu.be/r8EBoX9iUw4?t=25>",
                _("I love you too!"), _("Don't shoot me! I'm a fake duck!"), "<https://youtu.be/_0AAbWqxIs8>",
@@ -104,7 +104,7 @@ prof = {**normal,
         }
 
 baby = {**normal,
-        'shouts': ["COIN", "Piou ?", "Coin ?", "Coin!", "COIIIIIINNNNNN!"],
+        'shouts': ["**COIN**", "**COIN**", "**COIN**", "**Piou** ?", "**Coin** ?", "**Coin**!", "**COIIIIIINNNNNN**!"],
         'usernames': [_("Smol Duck"), _("Mini Duck"), _("Ducky"), _("Duckie")],
         'avatar_urls': [DUCKS_IMAGES['baby']],
         'emojis': [DUCKS_EMOJIS['baby'], DUCKS_EMOJIS['baby_unicode']],

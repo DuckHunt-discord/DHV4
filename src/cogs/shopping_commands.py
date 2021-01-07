@@ -67,7 +67,7 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
         await ctx.reply(_("💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
 
-        if max_bullets > 1:
+        if max_bullets > 2:
             await ctx.reply(_("💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"))
 
     @shop.command(aliases=["2", "charger", "mag"])
