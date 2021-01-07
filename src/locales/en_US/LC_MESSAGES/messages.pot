@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-07 17:44+0100\n"
+"POT-Creation-Date: 2021-01-07 17:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2621,7 +2621,7 @@ msgstr ""
 
 #: ../utils/ducks.py:259
 #, python-brace-format
-msgid "{hunter.mention} scared the duck."
+msgid "{hunter.mention} scared the duck away."
 msgstr ""
 
 #: ../utils/ducks.py:270
