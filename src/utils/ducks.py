@@ -771,6 +771,25 @@ class ArmoredDuck(SuperDuck):
 
         return await super().get_damage() - minus
 
+    async def get_hurt_message(self, hurter, db_hurter, damage) -> str:
+        _ = await self.get_translate_function()
+        db_channel = await self.get_db_channel()
+
+        if db_channel.show_duck_lives:
+            total_lives = await self.get_lives()
+            lives_left = self.lives_left
+
+            return _("{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/{total_lives}][**Damage** : -{damage}]",
+                     hurter=hurter,
+                     damage=damage,
+                     lives_left=lives_left,
+                     total_lives=total_lives,
+                     )
+        else:
+            return _("{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -{damage}]",
+                     hurter=hurter,
+                     damage=damage)
+
 
 class NightDuck(Duck):
     """
