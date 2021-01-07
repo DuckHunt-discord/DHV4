@@ -44,7 +44,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["1"])
     async def bullet(self, ctx: MyContext):
         """
-        Adds a bullet to your current magazine
+        Adds a bullet to your current magazine. [7 exp]
         """
         ITEM_COST = 7
 
@@ -73,7 +73,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["2", "charger", "mag"])
     async def magazine(self, ctx: MyContext):
         """
-        Adds a magazine in your backpack.
+        Adds a magazine in your backpack. [13 exp]
         """
         ITEM_COST = 13
 
@@ -99,7 +99,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["3", "ap_ammo"])
     async def ap(self, ctx: MyContext):
         """
-        Buy AP ammo to double the damage you do to super ducks for 24 hours
+        Buy AP ammo to double the damage you do to super ducks. [15 exp/24 hrs]
         """
         ITEM_COST = 15
 
@@ -139,7 +139,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["4", "explosive_ammo", "explo"])
     async def explosive(self, ctx: MyContext):
         """
-        Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 hours
+        Buy Explosive ammo to TRIPLE the damage you do to super ducks. [15 exp/24 hrs]
         """
         ITEM_COST = 25
 
@@ -173,7 +173,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["5", "gun", ])
     async def weapon(self, ctx: MyContext):
         """
-        Buy back your weapon from the police if it was confiscated.
+        Buy back your weapon from the police if it was confiscated. [30 exp]
         """
         ITEM_COST = 30
 
@@ -197,7 +197,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["6", "lubricant"])
     async def grease(self, ctx: MyContext):
         """
-        Add some grease in your weapon to prevent jamming.
+        Add some grease in your weapon to prevent jamming. [8 exp/24 hrs]
         """
         ITEM_COST = 8
 
@@ -220,7 +220,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["7", ])
     async def sight(self, ctx: MyContext):
         """
-        Add a sight to your weapon to improve accuracy.
+        Add a sight to your weapon to improve accuracy. [6 exp/12 shots]
         """
         ITEM_COST = 6
 
@@ -243,7 +243,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["8", "ir", "infrared", "ir_detector", "infrared_detector"])
     async def detector(self, ctx: MyContext):
         """
-        Add an infrared detector to your weapon. Save bullets and shots.
+        Add an infrared detector to your weapon. Save bullets and shots. [15 exp/6 shots]
         """
         ITEM_COST = 15
 
@@ -266,7 +266,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["9", "shhh", "silence"])
     async def silencer(self, ctx: MyContext):
         """
-        Add a silencer to your weapon to prevent scaring ducks.
+        Add a silencer to your weapon to prevent scaring ducks. [5 exp/24* hrs]
         """
         ITEM_COST = 5
 
@@ -296,7 +296,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["10", "best", "freeexp", "freexp", "4-leaf", "4leaf", "🍀"])
     async def clover(self, ctx: MyContext):
         """
-        Buy a 4-Leaf clover to get more exp for every duck you kill :)
+        Buy a 4-Leaf clover to get more exp for every duck you kill :). [13 exp/24 hrs]
         """
         ITEM_COST = 13
 
@@ -334,12 +334,11 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["11", "glasses", "👓️", "🕶️"])
     async def sunglasses(self, ctx: MyContext):
         """
-        Protects from mirror-induced glare for 24h.
+        Protects from mirror-induced glare. [5 exp/24 hrs]
         """
         ITEM_COST = 5
 
         _ = await ctx.get_translate_function()
-        language_code = await ctx.get_language_code()
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
@@ -365,7 +364,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["12", "shirt", "dry"])
     async def clothes(self, ctx: MyContext):
         """
-        A new set of clothes. Useful if you are wet.
+        A new set of clothes. Useful if you are wet. [7 exp]
         """
         ITEM_COST = 7
 
@@ -386,7 +385,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["13", "clean"])
     async def brush(self, ctx: MyContext):
         """
-        Clean your gun, removing sabotage and sand.
+        Clean your gun, removing sabotage and sand. [7 exp]
         """
         ITEM_COST = 7
 
@@ -408,7 +407,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["14"])
     async def mirror(self, ctx: MyContext, target: discord.Member):
         """
-        Dazzle another hunter using the power of sunlight
+        Dazzle another hunter using the power of sunlight. [7 exp]
         """
         ITEM_COST = 7
 
@@ -448,7 +447,8 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["15", "handful_of_sand"])
     async def sand(self, ctx: MyContext, target: discord.Member):
         """
-        Throw sand into another player weapon. This will increase their jamming chances for their next shot.
+        Throw sand into another player weapon.
+        This will increase their jamming chances for their next shot. [7 exp]
         """
         ITEM_COST = 7
 
@@ -479,7 +479,8 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["16", "water", "water_bucket", "bukkit", "spigot"])
     async def bucket(self, ctx: MyContext, target: discord.Member):
         """
-        Throw a bucket of water on the hunter of your choice, forcing them to wait 1h for their clothes to dry before hunting again.
+        Throw a bucket of water on the hunter of your choice,
+        forcing them to wait 1h for their clothes to dry before hunting again. [10 exp/1* hrs]
         """
         ITEM_COST = 10
 
@@ -521,7 +522,8 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["17", "boom"])
     async def sabotage(self, ctx: MyContext, target: discord.Member):
         """
-        Sabotage the weapon of another player. Their gun will jam and explode in their face the next time they press the trigger.
+        Sabotage the weapon of another player.
+        Their gun will jam and explode in their face the next time they press the trigger. [14 exp]
         """
         ITEM_COST = 14
 
@@ -559,7 +561,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["20", "duck"])
     async def decoy(self, ctx: MyContext):
         """
-        Place a decoy to make a duck spawn in the next 10 minutes.
+        Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]
         """
         ITEM_COST = 8
 
@@ -593,7 +595,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["23", "mecha"])
     async def mechanical(self, ctx: MyContext):
         """
-        Spawn a fake duck in exactly 90 seconds
+        Spawn a fake duck in exactly 90 seconds. [15 exp]
         """
         ITEM_COST = 15
 
@@ -630,7 +632,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
     async def coat(self, ctx: MyContext):
         """
-        Protect yourself from water for 24 hours. If you are already wet, it also can be used as a change.
+        Protect yourself from water. If you are already wet, it also can be used as a change. [15 exp/24 hrs]
         """
         ITEM_COST = 15
 
@@ -655,7 +657,7 @@ class ShoppingCommands(Cog):
                            "killlicence", "killlicense"])
     async def license(self, ctx: MyContext):
         """
-        Avoid penalties if you accidentally kill another hunter for 24 hours
+        Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]
         """
         ITEM_COST = 15
 
@@ -677,7 +679,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["30", "autoreload", "autoreloader", "automatic_reloader", "automaticreloader", "auto_reloader", "auto_reload"])
     async def reloader(self, ctx: MyContext):
         """
-        Automatically reloads your weapon every time it's necesarry for 24 hours
+        Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]
         """
         ITEM_COST = 35
 
@@ -699,7 +701,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["50", "homing"])
     async def homing_bullets(self, ctx: MyContext):
         """
-        Never miss a shot again with Homing Projectiles.
+        Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]
         """
         ITEM_COST = 150
 
