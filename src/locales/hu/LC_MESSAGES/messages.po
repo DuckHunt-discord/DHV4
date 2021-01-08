@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 23:32+0100\n"
+"POT-Creation-Date: 2021-01-07 18:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "Reload your gun."
 msgstr "Újratölti a fegyvered."
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr "Megöleli az első kacsát, ami leidéződött a csatornán."
+msgstr "Megöleli a csatornán elsőnek leidéződött kacsát."
 
 msgid "Revive yourself by eating brains"
 msgstr "Éleszd fel magad agyak evésével"
@@ -94,21 +94,21 @@ msgstr ""
 
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
-"A prestige-el kapcsolatos parancsok. Állítsd vissza a kalandod exkluzív "
+"A presztízzsel kapcsolatos parancsok. Állítsd vissza a kalandod exkluzív "
 "bónuszokért."
 
 msgid "More info about prestige"
-msgstr "Több információ a prestige-ről"
+msgstr "Több információ a presztízsről"
 
 msgid ""
 "Execute the prestige process. Almost all of your hunting data **WILL** be "
 "deleted."
 msgstr ""
-"Végrehajtja a prestige folyamatát. Majdnem minden vadászati adatod **TÖRÖLVE "
-"LESZ**."
+"Végrehajtja a presztízs folyamatát. Majdnem minden vadászati adatod "
+"**TÖRÖLVE LESZ**."
 
 msgid "Get some more experience..."
-msgstr "Szerezz több tapasztalati pontot."
+msgstr "Szerezz több tapasztalati pontot..."
 
 msgid ""
 "If someone wants to do a dashboard or something to control DuckHunt, there "
@@ -186,7 +186,7 @@ msgid "/channels/<channel_id>\n"
 msgstr ""
 "/channels/<channel_id>\n"
 "\n"
-"Lekér információt egy bizonyos csatorna ID-ről"
+"Lekér információt egy bizonyos csatornáról ID alapján."
 
 msgid ""
 "/channels/<channel_id>/settings\n"
@@ -195,7 +195,7 @@ msgid ""
 msgstr ""
 "/channels/<channel_id>/settings\n"
 "\n"
-"Lekér információt egy bizonyos csatorna ID-ről"
+"Lekér információt egy bizonyos csatornáról ID alapján."
 
 msgid "/channels/<channel_id>/top\n"
 "\n"
@@ -229,7 +229,9 @@ msgstr ""
 msgid "/stats\n"
 "\n"
 "Get some global statistics about the bot."
-msgstr ""
+msgstr "/stats\n"
+"\n"
+"Lekér globális statisztikát a botról."
 
 msgid "Commands to view and edit settings"
 msgstr "Parancsok a beállítások megjelenítéséhez és módosításához."
@@ -241,7 +243,7 @@ msgid "Restore similar settings to DuckHunt V3, if that's your thing."
 msgstr "Beállít hasonló dolgokat a DuckHunt V3-hoz, ha úgy szereted."
 
 msgid "Set the bot for a more casual experience."
-msgstr "Beállítja a botot egy ….. élményhez."
+msgstr "Beállítja a botot egy alkalmi élményhez."
 
 msgid ""
 "Set the bot for a more hardcore experience : less experience and more "
@@ -266,7 +268,7 @@ msgid ""
 "in France, you'd use fr or fr_FR.\n"
 "In Québec, you could use fr_CA."
 msgstr ""
-"Megjeleníti vagy -változtatja a szerver nyelvét.\n"
+"Megjeleníti vagy megváltoztatja a szerver nyelvét.\n"
 "\n"
 "Add meg a nyelvet 2/5 karakteres kódként. Például, ha magyar nyelvet "
 "szeretnél, akkor hu-t vagy hu_HU-t kell megadnod.\n"
@@ -308,6 +310,8 @@ msgid ""
 "Control if users might be pinged when they get killed. It's recommanded to "
 "set this to False on big servers."
 msgstr ""
+"Irányítja, hogy a felhasználók meg legyenek-e említve, ha megölik őket. Nem "
+"ajánlott nagy szervereken."
 
 msgid ""
 "When hurting super ducks and the like, show how many lives the ducks have "
@@ -346,7 +350,7 @@ msgid ""
 msgstr ""
 
 msgid "Set the amount of ducks that will spawn every day"
-msgstr ""
+msgstr "Add meg, hogy hány kacsa fog megidéződni naponta"
 
 msgid ""
 "Set a duck probability to spawn to a certain weight. The higher the weight, "
@@ -389,13 +393,13 @@ msgid ""
 msgstr ""
 "Parancsok a jogosultságok szerkesztéséhez.\n"
 "\n"
-"BANNED = 0\n"
-"DEFAULT = 50\n"
-"TRUSTED = 100\n"
-"MODERATOR = 200\n"
-"ADMIN = 300\n"
-"BOT_MODERATOR = 500\n"
-"BOT_OWNER = 600"
+"BANNED (Kitiltott) = 0\n"
+"DEFAULT (Alapértelmezett) = 50\n"
+"TRUSTED (Megbízható) = 100\n"
+"MODERATOR (Moderátor) = 200\n"
+"ADMIN (Adminisztrátor) = 300\n"
+"BOT_MODERATOR (Bot Moderátor) = 500\n"
+"BOT_OWNER (Bot Tulajdonos) = 600"
 
 msgid "View the current permissions"
 msgstr ""
@@ -420,83 +424,94 @@ msgstr ""
 msgid "Buy items here"
 msgstr ""
 
-msgid "Adds a bullet to your current magazine"
+msgid "Adds a bullet to your current magazine. [7 exp]"
 msgstr ""
 
-msgid "Adds a magazine in your backpack."
-msgstr ""
-
-msgid "Buy AP ammo to double the damage you do to super ducks for 24 hours"
+msgid "Adds a magazine in your backpack. [13 exp]"
 msgstr ""
 
 msgid ""
-"Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 hours"
-msgstr ""
-
-msgid "Buy back your weapon from the police if it was confiscated."
-msgstr ""
-
-msgid "Add some grease in your weapon to prevent jamming."
-msgstr ""
-
-msgid "Add a sight to your weapon to improve accuracy."
-msgstr ""
-
-msgid "Add an infrared detector to your weapon. Save bullets and shots."
-msgstr ""
-
-msgid "Add a silencer to your weapon to prevent scaring ducks."
-msgstr ""
-
-msgid "Buy a 4-Leaf clover to get more exp for every duck you kill :)"
-msgstr ""
-
-msgid "Protects from mirror-induced glare for 24h."
-msgstr ""
-
-msgid "A new set of clothes. Useful if you are wet."
-msgstr ""
-
-msgid "Clean your gun, removing sabotage and sand."
-msgstr ""
-
-msgid "Dazzle another hunter using the power of sunlight"
+"Buy AP ammo to double the damage you do to super ducks. [15 exp/24 hrs]"
 msgstr ""
 
 msgid ""
-"Throw sand into another player weapon. This will increase their jamming "
-"chances for their next shot."
+"Buy Explosive ammo to TRIPLE the damage you do to super ducks. [15 exp/24 "
+"hrs]"
+msgstr ""
+
+msgid "Buy back your weapon from the police if it was confiscated. [30 exp]"
+msgstr ""
+
+msgid "Add some grease in your weapon to prevent jamming. [8 exp/24 hrs]"
+msgstr ""
+
+msgid "Add a sight to your weapon to improve accuracy. [6 exp/12 shots]"
 msgstr ""
 
 msgid ""
-"Throw a bucket of water on the hunter of your choice, forcing them to wait "
-"1h for their clothes to dry before hunting again."
+"Add an infrared detector to your weapon. Save bullets and shots. [15 exp/6 "
+"shots]"
 msgstr ""
 
 msgid ""
-"Sabotage the weapon of another player. Their gun will jam and explode in "
-"their face the next time they press the trigger."
-msgstr ""
-
-msgid "Place a decoy to make a duck spawn in the next 10 minutes."
-msgstr ""
-
-msgid "Spawn a fake duck in exactly 90 seconds"
+"Add a silencer to your weapon to prevent scaring ducks. [5 exp/24* hrs]"
 msgstr ""
 
 msgid ""
-"Protect yourself from water for 24 hours. If you are already wet, it also "
-"can be used as a change."
+"Buy a 4-Leaf clover to get more exp for every duck you kill :). [13 exp/24 "
+"hrs]"
 msgstr ""
 
-msgid "Avoid penalties if you accidentally kill another hunter for 24 hours"
+msgid "Protects from mirror-induced glare. [5 exp/24 hrs]"
+msgstr ""
+
+msgid "A new set of clothes. Useful if you are wet. [7 exp]"
+msgstr ""
+
+msgid "Clean your gun, removing sabotage and sand. [7 exp]"
+msgstr ""
+
+msgid "Dazzle another hunter using the power of sunlight. [7 exp]"
 msgstr ""
 
 msgid ""
-"Automatically reloads your weapon every time it's necesarry for 24 hours"
+"Throw sand into another player weapon.\n"
+"This will increase their jamming chances for their next shot. [7 exp]"
 msgstr ""
 
-msgid "Never miss a shot again with Homing Projectiles."
+msgid ""
+"Throw a bucket of water on the hunter of your choice,\n"
+"forcing them to wait 1h for their clothes to dry before hunting again. [10 "
+"exp/1* hrs]"
+msgstr ""
+
+msgid ""
+"Sabotage the weapon of another player.\n"
+"Their gun will jam and explode in their face the next time they press the "
+"trigger. [14 exp]"
+msgstr ""
+
+msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
+msgstr ""
+
+msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
+msgstr ""
+
+msgid ""
+"Protect yourself from water. If you are already wet, it also can be used as "
+"a change. [15 exp/24 hrs]"
+msgstr ""
+
+msgid ""
+"Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
+msgstr ""
+
+msgid ""
+"Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
+msgstr ""
+
+msgid ""
+"Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
 msgstr ""
 
 msgid ""
@@ -716,6 +731,8 @@ msgid ""
 "🌲 What did you try to aim at ? I guess you shot that tree, over here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
+"🌲 Mire céloztál? Gondolom lelőtted azt a fát ott! [**FÉLRELÖVÉS**: -2 "
+"tapasztalat]"
 
 msgid ""
 "🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector "
@@ -726,6 +743,8 @@ msgid ""
 "❓️ What are you trying to kill exactly ? There are no ducks here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
+"❓️ Pontosan mit akarsz itt megölni? Nincsenek itt kacsák most. [**FÉLRE "
+"LÖVÉS**: -2 tapasztalat]"
 
 msgid ""
 "Dude... You don't have a weapon, it has been confiscated. Wait for freetime "
@@ -759,10 +778,10 @@ msgid "tree"
 msgstr ""
 
 msgid "❌ I have no idea what you want to hug..."
-msgstr ""
+msgstr "❌ Nincs ötletem arra, hogy mit akarsz megölelni..."
 
 msgid "🌳 You hugged the tree... Thanks!"
-msgstr ""
+msgstr "🌳 Megölelted a fát... Köszi!"
 
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
@@ -879,7 +898,7 @@ msgid "The provided command was not found."
 msgstr ""
 
 msgid "That command has been disabled."
-msgstr ""
+msgstr "Az a parancs le lett tiltva."
 
 msgid ""
 "There was an error running the specified command. Contact the bot admins."
@@ -906,10 +925,10 @@ msgid ""
 msgstr ""
 
 msgid "A welcome gift"
-msgstr ""
+msgstr "Egy üdvözlő ajándék"
 
 msgid "Open it in your inventory"
-msgstr ""
+msgstr "Nyisd ki az eszköztáradban."
 
 msgid "A clean box of foie gras"
 msgstr ""
@@ -918,13 +937,13 @@ msgid "The boss dropped that when he died"
 msgstr ""
 
 msgid "VIP Card"
-msgstr ""
+msgstr "VIP Kártya"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
 
 msgid "A book"
-msgstr ""
+msgstr "Egy könyv"
 
 msgid "Reading it will give you experience"
 msgstr ""
@@ -942,16 +961,16 @@ msgid "Redeem it to refill your weapon."
 msgstr ""
 
 msgid "Your inventory"
-msgstr ""
+msgstr "A te eszköztárad"
 
 msgid "❌ Unknown item."
-msgstr ""
+msgstr "❌ Ismeretlen tárgy."
 
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
 
 msgid "❌ Items usage is disabled on this channel."
-msgstr ""
+msgstr "❌ A tárgyhasználat ki van kapcsolva ezen a csatornán."
 
 msgid "❌ Unknown item number."
 msgstr ""
@@ -1004,25 +1023,25 @@ msgid ""
 msgstr ""
 
 msgid "Level 1"
-msgstr ""
+msgstr "1. szint"
 
 msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
-msgstr ""
+msgstr "**Törhetetlen napszemüveg**: Soha ne vásárold meg újra!"
 
 msgid "Level 2"
-msgstr ""
+msgstr "2. szint"
 
 msgid "**Coat colour**: Choose the colour of your coat"
-msgstr ""
+msgstr "**Kabát szín**: Válaszd ki a kabátod színét"
 
 msgid "Level 3"
-msgstr ""
+msgstr "3. szint"
 
 msgid "**Daily command**: Get more experience every day"
 msgstr ""
 
 msgid "Level 4"
-msgstr ""
+msgstr "4. szint"
 
 msgid "**Icelandic water**: Wet others for longer"
 msgstr ""
@@ -1120,16 +1139,16 @@ msgid "There is no specific language set for this guild."
 msgstr ""
 
 msgid "Webhooks are used in this channel."
-msgstr ""
+msgstr "A webhookok használatban vannak ezen a csatornán."
 
 msgid "Webhooks are not used in this channel."
-msgstr ""
+msgstr "A webhookok nincsenek használatban ezen a csatornán."
 
 msgid "Global items can be used in this channel."
-msgstr ""
+msgstr "A globális tárgyak használhatóak ezen a csatornán."
 
 msgid "Global items can't be used in this channel."
-msgstr ""
+msgstr "A globális tárgyak nem használhatóak ezen a csatornán."
 
 msgid ""
 "Webhooks are not used in this channel. Please enable them first. You can use "
@@ -1570,7 +1589,7 @@ msgid ""
 msgstr ""
 
 msgid "The beloved DuckHunt translators"
-msgstr ""
+msgstr "A szeretett DuckHunt fordítók"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -1580,7 +1599,7 @@ msgid ""
 msgstr ""
 
 msgid "Pong. — Time taken: {miliseconds}ms"
-msgstr ""
+msgstr "Pong. — Felhasznált idő: [miliseconds] ms"
 
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
@@ -1599,13 +1618,13 @@ msgid ""
 msgstr ""
 
 msgid "Developer"
-msgstr ""
+msgstr "Fejlesztő"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
 msgstr ""
 
 msgid "Designer"
-msgstr ""
+msgstr "Tervező"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
@@ -1617,7 +1636,7 @@ msgid ""
 msgstr ""
 
 msgid "Ideas"
-msgstr ""
+msgstr "Ötletek"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
@@ -1625,7 +1644,7 @@ msgid ""
 msgstr ""
 
 msgid "Translations"
-msgstr ""
+msgstr "Fordítók"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
@@ -1633,7 +1652,7 @@ msgid ""
 msgstr ""
 
 msgid "Current event: "
-msgstr ""
+msgstr "Jelenlegi esemény:"
 
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
@@ -1641,31 +1660,31 @@ msgid ""
 msgstr ""
 
 msgid "{exp} experience"
-msgstr ""
+msgstr "{exp} tapasztalati pont"
 
 msgid "{target.name} statistics."
-msgstr ""
+msgstr "{target.name} statisztikái."
 
 msgid "Bullets"
-msgstr ""
+msgstr "Golyók"
 
 msgid "Magazines"
 msgstr ""
 
 msgid "Experience"
-msgstr ""
+msgstr "Tapasztalat"
 
 msgid "Level"
-msgstr ""
+msgstr "Szint"
 
 msgid "Accuracy"
-msgstr ""
+msgstr "Pontosság"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
-msgstr ""
+msgstr "{level_reliability} % (Valódi: {real_reliability} %)"
 
 msgid "Reliability"
-msgstr ""
+msgstr "Megbízhatóság"
 
 msgid "{target.name} shooting stats."
 msgstr ""
@@ -1679,49 +1698,50 @@ msgid ""
 msgstr ""
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
-msgstr ""
+msgstr "{shots} lövési kísérlet vizesen."
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
+"{shots} lövési kísérlet amikor {target.mention} fegyverét elkobozták. "
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
-msgstr ""
+msgstr "{shots} szabotált fegyverrel megkísérelt lövés."
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
-msgstr ""
+msgstr "{shots}"
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
-msgstr ""
+msgstr "{shots}"
 
 msgid "{shots} shots jamming {target.mention} weapon."
-msgstr ""
+msgstr "{shots} lövés ami bezavarta {target.mention} fegyverét."
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
-msgstr ""
+msgstr "{shots}"
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
-msgstr ""
+msgstr "{shots}"
 
 msgid "☠️"
 msgstr ""
@@ -2035,7 +2055,7 @@ msgid ""
 "[**Killed**: +{won_experience} exp]"
 msgstr ""
 
-msgid "{hunter.mention} scared the duck."
+msgid "{hunter.mention} scared the duck away."
 msgstr ""
 
 msgid ""
@@ -2085,6 +2105,16 @@ msgstr ""
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
+msgstr ""
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
+"{damage}]"
 msgstr ""
 
 msgid "*cries*"

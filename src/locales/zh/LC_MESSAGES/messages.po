@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-05 23:32+0100\n"
+"POT-Creation-Date: 2021-01-07 18:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -359,83 +359,94 @@ msgstr "更改/查看自己的語言。\n"
 msgid "Buy items here"
 msgstr "在這裡購買商品"
 
-msgid "Adds a bullet to your current magazine"
-msgstr "為您當前的彈夾添加一顆子彈"
-
-msgid "Adds a magazine in your backpack."
-msgstr "在你的背包里增加一個彈夾。"
-
-msgid "Buy AP ammo to double the damage you do to super ducks for 24 hours"
-msgstr "購買加強彈藥對超級鴨子的傷害翻倍，持續24小時。"
-
-msgid ""
-"Buy Explosive ammo to TRIPLE the damage you do to super ducks for 24 hours"
-msgstr "購買爆炸彈藥可使你對超級鴨子造成的傷害增加三倍，持續24小時。"
-
-msgid "Buy back your weapon from the police if it was confiscated."
-msgstr "如果你的武器被沒收了，就從警察那裡買回來。"
-
-msgid "Add some grease in your weapon to prevent jamming."
-msgstr "在武器上加點潤滑油，防止卡殼。"
-
-msgid "Add a sight to your weapon to improve accuracy."
-msgstr "在你的武器上加裝一個瞄准器，以提高準確性。"
-
-msgid "Add an infrared detector to your weapon. Save bullets and shots."
-msgstr "在你的武器上加裝一個紅外探測器。節省子彈和射擊。"
-
-msgid "Add a silencer to your weapon to prevent scaring ducks."
-msgstr "在武器上加一個消音器，防止嚇走鴨子。"
-
-msgid "Buy a 4-Leaf clover to get more exp for every duck you kill :)"
+msgid "Adds a bullet to your current magazine. [7 exp]"
 msgstr ""
 
-msgid "Protects from mirror-induced glare for 24h."
-msgstr "防止鏡面引起的反光24小時。"
-
-msgid "A new set of clothes. Useful if you are wet."
-msgstr "一套新衣服。在你被淋濕時很有用。"
-
-msgid "Clean your gun, removing sabotage and sand."
-msgstr "清潔你的枪，去除破坏物和沙子。"
-
-msgid "Dazzle another hunter using the power of sunlight"
-msgstr "使用陽光讓另一個獵人眼花繚亂。"
+msgid "Adds a magazine in your backpack. [13 exp]"
+msgstr ""
 
 msgid ""
-"Throw sand into another player weapon. This will increase their jamming "
-"chances for their next shot."
-msgstr "把沙子扔進另一個玩家的武器里。這將增加他們下一次射擊時的卡彈機會。"
+"Buy AP ammo to double the damage you do to super ducks. [15 exp/24 hrs]"
+msgstr ""
 
 msgid ""
-"Throw a bucket of water on the hunter of your choice, forcing them to wait "
-"1h for their clothes to dry before hunting again."
-msgstr "將一桶水潑向你所選擇的獵人，強迫他們等一小時衣服乾了再打獵。"
+"Buy Explosive ammo to TRIPLE the damage you do to super ducks. [15 exp/24 "
+"hrs]"
+msgstr ""
+
+msgid "Buy back your weapon from the police if it was confiscated. [30 exp]"
+msgstr ""
+
+msgid "Add some grease in your weapon to prevent jamming. [8 exp/24 hrs]"
+msgstr ""
+
+msgid "Add a sight to your weapon to improve accuracy. [6 exp/12 shots]"
+msgstr ""
 
 msgid ""
-"Sabotage the weapon of another player. Their gun will jam and explode in "
-"their face the next time they press the trigger."
-msgstr "破壞其他玩家的武器。他們的槍會卡住，下一次按下扳機時，會在他們的臉上爆炸。"
-
-msgid "Place a decoy to make a duck spawn in the next 10 minutes."
-msgstr "放置誘餌，使鴨子在未來10分鐘內產生。"
-
-msgid "Spawn a fake duck in exactly 90 seconds"
-msgstr "在90秒內生成一隻假鴨子。"
+"Add an infrared detector to your weapon. Save bullets and shots. [15 exp/6 "
+"shots]"
+msgstr ""
 
 msgid ""
-"Protect yourself from water for 24 hours. If you are already wet, it also "
-"can be used as a change."
-msgstr "保護自己24小時不沾水。如果你已經濕了，也可以用它來更換。"
-
-msgid "Avoid penalties if you accidentally kill another hunter for 24 hours"
-msgstr "如果你在24小時不會因為不小心殺死了另一個獵人而受到懲罰。如果你在24小時不會因為不小心殺死了另一個獵人而受到懲罰"
+"Add a silencer to your weapon to prevent scaring ducks. [5 exp/24* hrs]"
+msgstr ""
 
 msgid ""
-"Automatically reloads your weapon every time it's necesarry for 24 hours"
-msgstr "在24小時內，每次需要時，自動為你的武器重新裝填子彈。"
+"Buy a 4-Leaf clover to get more exp for every duck you kill :). [13 exp/24 "
+"hrs]"
+msgstr ""
 
-msgid "Never miss a shot again with Homing Projectiles."
+msgid "Protects from mirror-induced glare. [5 exp/24 hrs]"
+msgstr ""
+
+msgid "A new set of clothes. Useful if you are wet. [7 exp]"
+msgstr ""
+
+msgid "Clean your gun, removing sabotage and sand. [7 exp]"
+msgstr ""
+
+msgid "Dazzle another hunter using the power of sunlight. [7 exp]"
+msgstr ""
+
+msgid ""
+"Throw sand into another player weapon.\n"
+"This will increase their jamming chances for their next shot. [7 exp]"
+msgstr ""
+
+msgid ""
+"Throw a bucket of water on the hunter of your choice,\n"
+"forcing them to wait 1h for their clothes to dry before hunting again. [10 "
+"exp/1* hrs]"
+msgstr ""
+
+msgid ""
+"Sabotage the weapon of another player.\n"
+"Their gun will jam and explode in their face the next time they press the "
+"trigger. [14 exp]"
+msgstr ""
+
+msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
+msgstr ""
+
+msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
+msgstr ""
+
+msgid ""
+"Protect yourself from water. If you are already wet, it also can be used as "
+"a change. [15 exp/24 hrs]"
+msgstr ""
+
+msgid ""
+"Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
+msgstr ""
+
+msgid ""
+"Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
+msgstr ""
+
+msgid ""
+"Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
 msgstr ""
 
 msgid ""
@@ -1976,7 +1987,7 @@ msgid ""
 "[**Killed**: +{won_experience} exp]"
 msgstr ""
 
-msgid "{hunter.mention} scared the duck."
+msgid "{hunter.mention} scared the duck away."
 msgstr ""
 
 msgid ""
@@ -2026,6 +2037,16 @@ msgstr ""
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
+msgstr ""
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
+"{damage}]"
 msgstr ""
 
 msgid "*cries*"
