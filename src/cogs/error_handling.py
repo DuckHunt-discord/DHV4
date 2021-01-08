@@ -177,7 +177,8 @@ class CommandErrorHandler(Cog):
             elif isinstance(exception, babel.core.UnknownLocaleError):
                 message = f"Unknown server language. Fix with `{ctx.prefix}set lang en`"
             elif isinstance(exception, discord.Forbidden):
-                message = _("Missing permissions, please check I can embed links here.")
+                message = _("Missing permissions, please check I can embed links here. `{exception}`",
+                            exception=exception)
             elif isinstance(exception, menus.CannotAddReactions):
                 message = _("Missing permissions, please check I can add reactions here.")
             else:

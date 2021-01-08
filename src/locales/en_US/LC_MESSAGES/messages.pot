@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-07 18:00+0100\n"
+"POT-Creation-Date: 2021-01-08 23:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -566,6 +566,14 @@ msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
 
 #: ../cogs/simple_commands.py:206
+msgid "For when you misspell the pan command."
+msgstr ""
+
+#: ../cogs/simple_commands.py:214
+msgid "For when you misspell the reload command."
+msgstr ""
+
+#: ../cogs/simple_commands.py:222
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -670,6 +678,10 @@ msgstr ""
 
 #: ../cogs/support_server_commands.py:195
 msgid "Force the current event to change, and reroll a new one."
+msgstr ""
+
+#: ../cogs/support_server_commands.py:206
+msgid "Congratulate an user giving him a trophy."
 msgstr ""
 
 #: ../cogs/community.py:24
@@ -1053,16 +1065,17 @@ msgid ""
 msgstr ""
 
 #: ../cogs/error_handling.py:180
-msgid "Missing permissions, please check I can embed links here."
+#, python-brace-format
+msgid "Missing permissions, please check I can embed links here. `{exception}`"
 msgstr ""
 
-#: ../cogs/error_handling.py:182
+#: ../cogs/error_handling.py:183
 msgid "Missing permissions, please check I can add reactions here."
 msgstr ""
 
-#: ../cogs/error_handling.py:184
+#: ../cogs/error_handling.py:185
 msgid ""
-"This should not have happened. A command raised an error that does not comes "
+"This should not have happened. A command raised an error that does not come "
 "from CommandError, and isn't handled by our error handler. Please inform the "
 "owner."
 msgstr ""
@@ -2068,11 +2081,11 @@ msgid ""
 "prefix}translators`."
 msgstr ""
 
-#: ../cogs/simple_commands.py:221
+#: ../cogs/simple_commands.py:237
 msgid "Current event: "
 msgstr ""
 
-#: ../cogs/simple_commands.py:226
+#: ../cogs/simple_commands.py:242
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
@@ -3159,174 +3172,186 @@ msgid ""
 msgstr ""
 
 #: ../utils/levels.py:7
-msgid "public danger"
+msgid "Negative cheater ?"
 msgstr ""
 
 #: ../utils/levels.py:8
-msgid "tourist"
+msgid "Duck Hugger ?"
 msgstr ""
 
 #: ../utils/levels.py:9
-msgid "noob"
+msgid "What are you doing ?"
 msgstr ""
 
 #: ../utils/levels.py:10
-msgid "trainee"
+msgid "public danger"
 msgstr ""
 
 #: ../utils/levels.py:11
-msgid "duck misser"
+msgid "tourist"
 msgstr ""
 
 #: ../utils/levels.py:12
-msgid "member of the Comitee Against Ducks"
+msgid "noob"
 msgstr ""
 
 #: ../utils/levels.py:13
-msgid "duck hater"
+msgid "trainee"
 msgstr ""
 
 #: ../utils/levels.py:14
-msgid "duck pest"
+msgid "duck misser"
 msgstr ""
 
 #: ../utils/levels.py:15
-msgid "duck hassler"
+msgid "member of the Comitee Against Ducks"
 msgstr ""
 
 #: ../utils/levels.py:16
-msgid "duck plucker"
+msgid "duck hater"
 msgstr ""
 
 #: ../utils/levels.py:17
-msgid "hunter"
+msgid "duck pest"
 msgstr ""
 
 #: ../utils/levels.py:18
-msgid "duck inside out turner"
+msgid "duck hassler"
 msgstr ""
 
 #: ../utils/levels.py:19
-msgid "duck clobber"
+msgid "duck plucker"
 msgstr ""
 
 #: ../utils/levels.py:20
-msgid "duck chewer"
+msgid "hunter"
 msgstr ""
 
 #: ../utils/levels.py:21
-msgid "duck eater"
+msgid "duck inside out turner"
 msgstr ""
 
 #: ../utils/levels.py:22
-msgid "duck flattener"
+msgid "duck clobber"
 msgstr ""
 
 #: ../utils/levels.py:23
-msgid "duck disassembler"
+msgid "duck chewer"
 msgstr ""
 
 #: ../utils/levels.py:24
-msgid "duck demolisher"
+msgid "duck eater"
 msgstr ""
 
 #: ../utils/levels.py:25
-msgid "duck killer"
+msgid "duck flattener"
 msgstr ""
 
 #: ../utils/levels.py:26
-msgid "duck skinner"
+msgid "duck disassembler"
 msgstr ""
 
 #: ../utils/levels.py:27
-msgid "duck predator"
+msgid "duck demolisher"
 msgstr ""
 
 #: ../utils/levels.py:28
-msgid "duck chopper"
+msgid "duck killer"
 msgstr ""
 
 #: ../utils/levels.py:29
-msgid "duck decorticator"
+msgid "duck skinner"
 msgstr ""
 
 #: ../utils/levels.py:30
-msgid "duck fragger"
+msgid "duck predator"
 msgstr ""
 
 #: ../utils/levels.py:31
-msgid "duck shatterer"
+msgid "duck chopper"
 msgstr ""
 
 #: ../utils/levels.py:32
-msgid "duck smasher"
+msgid "duck decorticator"
 msgstr ""
 
 #: ../utils/levels.py:33
-msgid "duck breaker"
+msgid "duck fragger"
 msgstr ""
 
 #: ../utils/levels.py:34
-msgid "duck wrecker"
+msgid "duck shatterer"
 msgstr ""
 
 #: ../utils/levels.py:35
-msgid "duck impaler"
+msgid "duck smasher"
 msgstr ""
 
 #: ../utils/levels.py:36
-msgid "duck eviscerator"
+msgid "duck breaker"
 msgstr ""
 
 #: ../utils/levels.py:37
-msgid "ducks terror"
+msgid "duck wrecker"
 msgstr ""
 
 #: ../utils/levels.py:38
-msgid "duck exploder"
+msgid "duck impaler"
 msgstr ""
 
 #: ../utils/levels.py:39
-msgid "duck destructor"
+msgid "duck eviscerator"
 msgstr ""
 
 #: ../utils/levels.py:40
-msgid "duck blaster"
+msgid "ducks terror"
 msgstr ""
 
 #: ../utils/levels.py:41
-msgid "duck pulverizer"
+msgid "duck exploder"
 msgstr ""
 
 #: ../utils/levels.py:42
-msgid "duck disintegrator"
+msgid "duck destructor"
 msgstr ""
 
 #: ../utils/levels.py:43
-msgid "duck atomizer"
+msgid "duck blaster"
 msgstr ""
 
 #: ../utils/levels.py:44
-msgid "duck annihilator"
+msgid "duck pulverizer"
 msgstr ""
 
 #: ../utils/levels.py:45
-msgid "serial duck killer"
+msgid "duck disintegrator"
 msgstr ""
 
 #: ../utils/levels.py:46
-msgid "duck genocider"
+msgid "duck atomizer"
 msgstr ""
 
 #: ../utils/levels.py:47
-msgid "old noob"
+msgid "duck annihilator"
 msgstr ""
 
 #: ../utils/levels.py:48
-msgid "duck toaster"
+msgid "serial duck killer"
 msgstr ""
 
 #: ../utils/levels.py:49
+msgid "duck genocider"
+msgstr ""
+
+#: ../utils/levels.py:50
+msgid "old noob"
+msgstr ""
+
+#: ../utils/levels.py:51
+msgid "duck toaster"
+msgstr ""
+
+#: ../utils/levels.py:52
 msgid "unemployed due to extinction of the duck species"
 msgstr ""
 
