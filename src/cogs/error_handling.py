@@ -181,7 +181,7 @@ class CommandErrorHandler(Cog):
             elif isinstance(exception, menus.CannotAddReactions):
                 message = _("Missing permissions, please check I can add reactions here.")
             else:
-                message = _("This should not have happened. A command raised an error that does not comes from CommandError, and isn't handled by our error handler. "
+                message = _("This should not have happened. A command raised an error that does not come from CommandError, and isn't handled by our error handler. "
                             "Please inform the owner.")
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
