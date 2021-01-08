@@ -200,6 +200,22 @@ class SimpleCommands(Cog):
 
         await show_translators_menu(ctx, self.translators_cache)
 
+    @commands.command(hidden=True)
+    @checks.channel_enabled()
+    async def pee(self, ctx: MyContext):
+        """
+        For when you misspell the pan command.
+        """
+        await ctx.reply("You don't have to go right now")
+
+    @commands.command(hidden=True)
+    @checks.channel_enabled()
+    async def reloaf(self, ctx: MyContext):
+        """
+        For when you misspell the reload command.
+        """
+        await ctx.reply("🍞")
+
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
     async def event(self, ctx: MyContext):
