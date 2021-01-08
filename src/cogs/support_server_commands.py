@@ -217,7 +217,7 @@ class SupportServerCommands(Cog):
 
             await db_user.save()
 
-        await ctx.reply(f"User {db_user.id} updated.")
+        await ctx.reply(f"User {user.name}#{user.discriminator} (`{user.id}`) updated.")
 
 
 setup = SupportServerCommands.setup
