@@ -16,7 +16,7 @@ from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages
 from babel import dates
 
-from utils.models import AccessLevel
+from utils.models import AccessLevel, get_from_db
 
 
 class SupportServerCommands(Cog):
@@ -200,5 +200,24 @@ class SupportServerCommands(Cog):
         await ducks_spawning_cog.change_event(force=force)
 
         await ctx.reply(f"New event rolled.")
+
+    @manage_bot.command()
+    async def give_trophy(self, ctx: MyContext, trophy_key: str, user: discord.User, value: bool = True):
+        """
+        Congratulate an user giving him a trophy.
+        """
+
+        async with ctx.typing():
+            db_user = await get_from_db(user, as_user=True)
+
+            if value:
+                db_user.trophys[trophy_key] = True
+            else:
+                del db_user.trophys[trophy_key]
+
+            await db_user.save()
+
+        await ctx.reply(f"User {db_user.id} updated.")
+
 
 setup = SupportServerCommands.setup
