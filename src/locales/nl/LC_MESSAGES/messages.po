@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-07 18:00+0100\n"
+"POT-Creation-Date: 2021-01-08 23:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -595,6 +595,12 @@ msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
 "Dank aan die fijne mensen die (hebben geholpen) met het vertalen van de bot,"
 
+msgid "For when you misspell the pan command."
+msgstr ""
+
+msgid "For when you misspell the reload command."
+msgstr ""
+
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -706,6 +712,9 @@ msgstr "Dwing een baas om te spawnen"
 
 msgid "Force the current event to change, and reroll a new one."
 msgstr "Dwing de huidige gebeurtenis te veranderen, en rol een nieuwe."
+
+msgid "Congratulate an user giving him a trophy."
+msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr "{monitored_player.mention}, RPG cooldown: **{name}** expired."
@@ -1085,20 +1094,18 @@ msgstr ""
 "Je bent boven de limieten van de DuckHunt-database. Probeer je verwachtingen "
 "te verminderen. Databasebericht: '{exception}'"
 
-msgid "Missing permissions, please check I can embed links here."
-msgstr "Ontbrekende rechten, controleer of ik hier links kan insluiten."
+msgid ""
+"Missing permissions, please check I can embed links here. `{exception}`"
+msgstr ""
 
 msgid "Missing permissions, please check I can add reactions here."
 msgstr "Ontbrekende rechten, controleer of ik hier reacties kan toevoegen."
 
 msgid ""
-"This should not have happened. A command raised an error that does not comes "
+"This should not have happened. A command raised an error that does not come "
 "from CommandError, and isn't handled by our error handler. Please inform the "
 "owner."
 msgstr ""
-"Dit had niet mogen gebeuren. Een commando heeft een fout gegenereerd die "
-"niet afkomstig is van CommandError en niet wordt afgehandeld door onze "
-"foutbehandelaar. Informeer de eigenaar."
 
 msgid "A welcome gift"
 msgstr "Een welkomst-cadeau."
@@ -2936,6 +2943,15 @@ msgid ""
 msgstr ""
 "AP en Explosieve munitie zijn uitgeschakeld. Supereenden zijn meer waard, "
 "omdat ze zeldzaam worden."
+
+msgid "Negative cheater ?"
+msgstr ""
+
+msgid "Duck Hugger ?"
+msgstr ""
+
+msgid "What are you doing ?"
+msgstr ""
 
 msgid "public danger"
 msgstr "publiek gevaar"

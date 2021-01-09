@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-07 18:00+0100\n"
+"POT-Creation-Date: 2021-01-08 23:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -460,6 +460,12 @@ msgstr ""
 msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
 
+msgid "For when you misspell the pan command."
+msgstr ""
+
+msgid "For when you misspell the reload command."
+msgstr ""
+
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -545,6 +551,9 @@ msgid "Force a boss to spawn"
 msgstr ""
 
 msgid "Force the current event to change, and reroll a new one."
+msgstr ""
+
+msgid "Congratulate an user giving him a trophy."
 msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
@@ -826,14 +835,15 @@ msgid ""
 "expectations. Database message: `{exception}`"
 msgstr ""
 
-msgid "Missing permissions, please check I can embed links here."
+msgid ""
+"Missing permissions, please check I can embed links here. `{exception}`"
 msgstr ""
 
 msgid "Missing permissions, please check I can add reactions here."
 msgstr ""
 
 msgid ""
-"This should not have happened. A command raised an error that does not comes "
+"This should not have happened. A command raised an error that does not come "
 "from CommandError, and isn't handled by our error handler. Please inform the "
 "owner."
 msgstr ""
@@ -2378,6 +2388,15 @@ msgstr ""
 msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
 "they are getting rare."
+msgstr ""
+
+msgid "Negative cheater ?"
+msgstr ""
+
+msgid "Duck Hugger ?"
+msgstr ""
+
+msgid "What are you doing ?"
 msgstr ""
 
 msgid "public danger"
