@@ -230,7 +230,7 @@ class ShoppingCommands(Cog):
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         if db_hunter.is_powerup_active("sight"):
-            await ctx.reply(_("❌ You added a new sight to your weapon recntly. You don't need a new one."))
+            await ctx.reply(_("❌ You added a new sight to your weapon recently. You don't need a new one."))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
