@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-08 23:31+0100\n"
+"POT-Creation-Date: 2021-01-09 14:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -839,8 +839,7 @@ msgid ""
 "Magazines: {current_magazines}/{max_magazines}"
 msgstr ""
 "🦉 Sac à dos vide ! Rechargez ou achetez des balles ! | **Balles** : 0/"
-"{max_bullets} | Chargeurs : 0/{max_magazines} [**Echec du rechargement "
-"automatique**]"
+"{max_bullets} | Chargeurs : {current_magazines}/{max_magazines}"
 
 msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
@@ -1396,7 +1395,7 @@ msgid "DHV3-Like settings have been applied to this channel."
 msgstr ""
 
 msgid "Casual mode settings have been applied to this channel."
-msgstr "Les paramètres normaux ont été appliqués à cette chaîne."
+msgstr "Les paramètres normaux ont été appliqués à ce salon."
 
 msgid "Hardcore mode settings have been applied to this channel."
 msgstr "Les réglages \"hardcore\" ont été définis sur ce channel"
@@ -1448,6 +1447,8 @@ msgstr ""
 msgid ""
 "Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks."
 msgstr ""
+"Votre webhook a été créé. Ce bot utilise maintenant {n} webhook(s) pour "
+"faire apparaître des canards."
 
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
@@ -1575,9 +1576,12 @@ msgid ""
 "On {channel.mention}, when a hunter kills a duck, the experience given will "
 "be of {value}."
 msgstr ""
+"Sur {channel.mention}, lorsqu'un chasseur achète un trèfle, l'expérience "
+"maximale donnée par canard tué sera de {value}."
 
 msgid "❌️ To disable a channel, use `{prefix}settings enabled False`."
 msgstr ""
+"❌️ Pour désactiver un canal, utilisez `{prefix}settings enabled False`."
 
 msgid ""
 "⚠️️ You should not set that higher than {maximum_value}, however, you have "
@@ -1586,6 +1590,12 @@ msgid ""
 " I'm proceeding anyway as requested, with {value} ducks per day on the "
 "channel."
 msgstr ""
+"⚠️️ Vous ne devez pas fixer cette valeur à un niveau supérieur à "
+"{maximum_value}, mais vous avez les autorisations nécessaires pour "
+"poursuivre. Le nombre de canards par jour est limité afin de garantir une "
+"utilisation équitable des ressources.\n"
+" Je procède de toute façon comme demandé, avec {valeur} canards par jour sur "
+"le canal."
 
 msgid ""
 "⚠️️ You cannot set that higher than {maximum_value}. The number of ducks per "
@@ -1593,14 +1603,21 @@ msgid ""
 "the bot, contact Eyesofcreeper#0001 to lift the limit. If not, consider "
 "donating to support me : {donor_url}."
 msgstr ""
+"⚠️️ Vous ne pouvez pas fixer cette valeur à un niveau supérieur à "
+"{maximum_value}. Le nombre de canards par jour est limité afin de garantir "
+"une utilisation équitable des ressources. Si vous avez aidé ce bot, "
+"contactez Eyesofcreeper#0001 pour lever la limite. Sinon, n'hésitez pas à "
+"donner de l'argent me soutenir  : {donor_url}."
 
 msgid "On {channel.mention}, {value} ducks will spawn every day."
-msgstr ""
+msgstr "Sur {channel.mention}, les canards apparaîtrons tous les jours."
 
 msgid ""
 "❌ I don't know what type of duck you are talking about. Choose one in "
 "{allowed_ducks_types}."
 msgstr ""
+"❌ Je ne sais pas de quel type de canard vous parlez. Choisissez-en un dans "
+"{allowed_ducks_types}."
 
 msgid "❌ You cannot set a negative weight."
 msgstr ""
@@ -1610,28 +1627,37 @@ msgstr ""
 
 msgid "❌️ Ducks need to settle for a while in the pond before leaving."
 msgstr ""
+"❌️ Les canards ont besoin de s'installer un moment dans l'étang avant de "
+"partir."
 
 msgid "❌️ Ducks will get bored long before that."
-msgstr ""
+msgstr "❌️ Les canards s'ennuieront bien avant cela."
 
 msgid "On {channel.mention}, ducks will stay for {value} seconds."
 msgstr ""
+"Sur {channel.mention}, les canards resteront pendant {value} secondes."
 
 msgid "❌️ Super ducks will live !"
-msgstr ""
+msgstr "❌️ Les super canards vivront !"
 
 msgid ""
 "❌️ You need to provide a lower value than the one set in "
 "`super_ducks_max_life` !"
 msgstr ""
+"❌️ Vous devez fournir une valeur inférieure à celle fixée dans "
+"`super_ducks_max_life` !"
 
 msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
 msgstr ""
+"Sur {channel.mention}, les super canards auront un minimum de {value} de vie."
+""
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
 "`super_ducks_min_life` !"
 msgstr ""
+"❌️ Vous devez fournir une valeur plus élevée que celle définie dans "
+"`super_ducks_min_life` !"
 
 msgid ""
 "❌ I'm sorry, I couldn't understand the time you entered for night_start. I'm "
@@ -1648,16 +1674,21 @@ msgstr ""
 msgid ""
 "On {channel.mention}, it's currently daytime. The day will last forever."
 msgstr ""
+"Sur {channel.mention}, il fait actuellement jour. La journée sera éternelle."
 
 msgid ""
 "On {channel.mention}, it's currently daytime, and night will fall "
 "{time_left_sun_td}. Night will last for {duration_of_night_td}."
 msgstr ""
+"Sur {channel.mention}, il fait actuellement jour et la nuit tombera dans "
+"{time_left_sun_td}. La nuit durera {duration_of_night_td}."
 
 msgid ""
 "On {channel.mention}, it's currently nighttime, and the sun will rise "
 "{time_left_sun_td}. A full night will last for {duration_of_night_td}."
 msgstr ""
+"Sur {channel.mention}, il fait actuellement nuit et le jour se lèvera dans "
+"{time_left_sun_td}. Une nuit entière dure {duration_of_night_td}."
 
 msgid "👌️ Api disabled here, key deleted."
 msgstr "👌️ API désactivé ici, clé supprimée."
@@ -1666,12 +1697,14 @@ msgid "👌️ Api is now ENABLED. Your API key will be DM'ed to you."
 msgstr "👌️ L'API est maintenant ACTIVE. Votre clé API vous sera transmise."
 
 msgid "{channel.mention} API key is `{api_key}`"
-msgstr ""
+msgstr "{channel.mention} la clé API est `{api_key}`"
 
 msgid ""
 "The API is disabled on {channel.mention}. Enable it with `{ctx.prefix}set "
 "api_key True`"
 msgstr ""
+"L'API est désactivé sur {channel.mention}. Active la avec`{ctx.prefix}set "
+"api_key True`"
 
 msgid "I couldn't DM you... Are your DMs blocked ?"
 msgstr "Je n'ai pas pu vous envoyer de MP... Sont-ils bloqués ?"
@@ -1683,10 +1716,10 @@ msgid "No members have any specific rights in the server."
 msgstr "Aucun membre n'a de droits spécifiques sur le serveur."
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
-msgstr ""
+msgstr "❌ {target.mention}, vous ne pouvez pas vous bannir !"
 
 msgid "{target.mention} now has a access of {level.name}."
-msgstr ""
+msgstr "{target.mention} a maintenant un accès équivalent à {level.name}."
 
 msgid "You'll now be pinged in replies from the bot."
 msgstr "Vous serez maintenant mentionné par les réponses du bot."
@@ -1698,17 +1731,19 @@ msgid "Your language is set to `{language}` [{language_name}]."
 msgstr "Ta langue est définie sur `{language}` [{language_name}]."
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
-msgstr "❌ Oops, vous avez déjà trop de balles dans votre arme."
+msgstr "❌ Oups, vous avez déjà trop de balles dans votre arme."
 
 msgid ""
 "💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté une balle dans votre arme. [Acheté : -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
 
 msgid ""
 "💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
 msgstr ""
-"💡 La prochaine fois vous pourriez acheter un magazine, ce serait moins cher "
+"💡 La prochaine fois vous pourriez acheter un chargeur, ce serait moins cher "
 "pour vous 😁"
 
 msgid ""
@@ -1722,56 +1757,86 @@ msgid ""
 "💸 You added a magazine in your weapon. Time to reload! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté un chargeur dans votre arme. Il est temps de recharger ! "
+"[Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, I "
 "can't sell that to you. (`{ctx.prefix}event`)"
 msgstr ""
+"❌ Un traité des Nations unies interdit l'utilisation de munitions AP et "
+"explosives pour l'instant, je ne peux pas vous les vendre. (`{ctx."
+"prefix}event`)"
 
 msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
 msgstr ""
+"❌ Oups, votre arme utilise déjà des munitions AP pour encore {time_delta} !"
 
 msgid "❌ Your gun is using some even better explosive ammo for {time_delta}!"
 msgstr ""
+"❌ Votre arme utilise des munitions explosives encore meilleures pour encore "
+"{time_delta} !"
 
 msgid ""
 "💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez acheté des munitions AP. Deux fois plus de dégâts, deux fois "
+"plus de plaisir ! [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
 
 msgid "❌ Your gun is already using explosive ammo for {time_delta}!"
 msgstr ""
+"❌ Votre arme utilise déjà des munitions explosives pour encore {time_delta} "
+"!"
 
 msgid ""
 "💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez acheté des munitions EXPLOSIVES. Triple les dommages, ça va "
+"être sanglant ! [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
 
 msgid "❌ Your gun isn't confiscated, why would you need a new one ?"
 msgstr ""
+"❌ Ton arme n'est pas confisquée, pourquoi en aurais tu besoin d'une nouvelle "
+"?"
 
 msgid ""
 "💸 You bribed the police and bought back your weapon. The fun continues. "
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez soudoyé la police et racheté votre arme. Le fun continue. "
+"[Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "❌ Your gun is already perfectly greased, you don't need any more of that."
 msgstr ""
+"❌ Ton arme est parfaitement bien graissée, tu n'as pas besoin de plus de "
+"graisse"
 
 msgid ""
 "💸 You added some grease to your weapon to reduce jamming for a day. [Bought:"
 " -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté un peu de graisse à votre arme pour réduire les risques "
+"d'enrayage pour un jour. [Acheté : -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
 
 msgid ""
-"❌ You added a new sight to your weapon recntly. You don't need a new one."
+"❌ You added a new sight to your weapon recently. You don't need a new one."
 msgstr ""
+"❌ Vous avez déjà ajouté un viseur à votre arme récemment. Vous n'avez pas "
+"besoin d'un nouveau viseur."
 
 msgid ""
 "💸 You added a sight to your weapon to improve your accuracy for the next "
 "few shots. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté un viseur à votre arme pour améliorer la précision pour "
+"les prochains tirs. [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
 
 msgid "❌ You already have that infrared detector on your weapon."
 msgstr "❌ Vous avez déjà un détecteur infrarouge sur votre arme."
@@ -1781,84 +1846,121 @@ msgid ""
 "you can't shoot them. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté un détecteur infrarouge sur votre arme. [Acheté : -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid "❌ You already use a silencer."
-msgstr ""
+msgstr "❌ Vous utilisez déjà un silencieux."
 
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
 "game well. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté un silencieux militaire sur votre arme. [Acheté : -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "💸 You added a silencer to your weapon. Ducks are still afraid of the noise, "
 "but you don't make any. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
+"💸 Vous avez ajouté un silencieux sur votre arme. Les canards sont toujours "
+"effrayés par le bruit mais tu n'en fait pas [Acheté : -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
 
 msgid ""
 "❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
 msgstr ""
+"❌ Vous utilisez déjà un trèfle à 4 feuilles. Retentez votre chance dans "
+"{time_delta} !"
 
 msgid ""
 "🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
 "{clover_exp} experience points more. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"🍀 Vous avez acheté un trèfle à quatre feuilles. À chaque fois que vous tuez "
+"un canard, vous gagnerez {clover_exp} points d'expérience en plus. [Acheté: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
 "total {db_hunter.experience} exp]"
 msgstr ""
+"🕶️ Vous avez acheté des lunettes de soleil, encore... Quel gâchis. [Acheté :"
+" -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
+"🕶️ Vous avez acheté des lunettes de soleil. [Acheté : -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
 
 msgid ""
 "💸 You bought some new clothes. You look very good. Maybe the ducks will "
 "like your outfit. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
 "exp]"
 msgstr ""
+"💸Vous avez acheté de nouveaux vêtements. Vous avez un très beau look. Peut-"
+"être que les canards vont aimez votre tenue. [Acheté: -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
 
 msgid ""
 "💸 You've just cleaned your weapon. Could've just shot once, but heh "
 "¯\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous venez de nettoyer votre arme. Vous auriez pu juste tirer une fois, "
+"mais bon ¯\\_(ツ)_/¯. [Acheté : -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
 
 msgid "❌ Don't play with fire, kid! Go somewhere else."
-msgstr ""
+msgstr "❌ Ne joue pas avec le feu, gamin! Va ailleurs."
 
 msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
 msgstr ""
+"❌ Je ne pense pas que {target.mention} puisses jouer à DuckHunt pour le "
+"moment..."
 
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
 "your mirror. That was kinda stupid, since they have sunglasses 🕶️. [Bought: "
 "-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 tu rediriges la lumière du soleil ☀️ sur les yeux 👀 de {target.mention} "
+"avec ton miroir. C'était un peu stupide, vu qu'il a des lunettes de soleil "
+"🕶️. [Acheté: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
 "your mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 tu rediriges la lumière du soleil ☀️ sur les yeux 👀 de {target.mention} "
+"avec ton miroir. [Acheté: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
 
 msgid ""
 "💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous jetez su sable sur l'arme de {target.mention}... Pas cool! [Acheté : "
+"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "💸 You threw water on {target.mention}... But he have a raincoat on. [Fail: -"
 "{ITEM_COST} exp]"
 msgstr ""
+"💸 Tu jettes de l'eau sur {target.mention}... Mais il a un imperméable. "
+"[Echec: -{ITEM_COST} exp]"
 
 msgid ""
 "💸 You threw some icelandic water on {target.mention}... He can't hunt for "
 "**three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
 "exp]"
 msgstr ""
+"💸 Vous jetez de l'eau islandaise sur {target.mention}... Il ne peut plus "
+"chasser pendant **trois** heures ! [Achat : -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
 
 msgid ""
 "💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought:"
@@ -1867,10 +1969,15 @@ msgstr ""
 "💸 Vous jetez de l'eau sur {target.mention}... Il ne peut plus chasser pour "
 "une heure ! [Achat : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
+msgid "❌ That weapon is already sabotaged."
+msgstr "❌ Cette arme est déjà sabotée."
+
 msgid ""
 "💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: "
 "-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Vous avez saboté l'arme de {target.mention}... Il ne le sait pas... "
+"encore! [Acheté: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid ""
 "I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
@@ -1893,6 +2000,9 @@ msgid ""
 "seconds. [Bought: -{ITEM_COST} exp].\n"
 "**I couldn't DM you this message**"
 msgstr ""
+"💸 Vous avez initialisé un canard mécanique dans  {channel.mention}, il va "
+"apparaître dans 90 secondes. [Acheté: -{ITEM_COST} exp].**Je n'ai pas pu "
+"vous MP ce message**"
 
 msgid ""
 "💸 You bought some a new coat. You don't look very good, but you are very "
@@ -1900,15 +2010,24 @@ msgid ""
 "experience} exp]"
 msgstr ""
 
+msgid "❌ You already use a kill license."
+msgstr ""
+
 msgid ""
 "💸 You bought a kill licence. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+
+msgid "❌ You already have an automatic reloader."
 msgstr ""
 
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
 "every time it's necessary for a day. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
+msgstr ""
+
+msgid "❌ You already have homing bullets."
 msgstr ""
 
 msgid ""
@@ -1918,7 +2037,7 @@ msgid ""
 msgstr ""
 
 msgid "The beloved DuckHunt translators"
-msgstr ""
+msgstr "Les traducteurs DuckHunt adorés"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -1950,17 +2069,19 @@ msgstr ""
 "si vous les voyez !"
 
 msgid "Developer"
-msgstr ""
+msgstr "Développeur"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
-msgstr ""
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") a fait ce bot."
 
 msgid "Designer"
-msgstr ""
+msgstr "Designer"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
+"<@465207298890006529> (\"Calgeka\") a fait plusieurs des avatars utilisés "
+"pour les différents canards."
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
@@ -1976,7 +2097,7 @@ msgid ""
 msgstr ""
 
 msgid "Translations"
-msgstr ""
+msgstr "Traductions"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
@@ -1992,25 +2113,25 @@ msgid ""
 msgstr ""
 
 msgid "{exp} experience"
-msgstr ""
+msgstr "{exp} expérience"
 
 msgid "{target.name} statistics."
 msgstr ""
 
 msgid "Bullets"
-msgstr ""
+msgstr "Balles"
 
 msgid "Magazines"
-msgstr ""
+msgstr "Chargeurs"
 
 msgid "Experience"
-msgstr ""
+msgstr "Expérience"
 
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
 msgid "Accuracy"
-msgstr ""
+msgstr "Précision"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
@@ -2022,7 +2143,7 @@ msgid "{target.name} shooting stats."
 msgstr ""
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
@@ -2030,127 +2151,127 @@ msgid ""
 msgstr ""
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
 msgstr ""
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
 msgstr ""
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
-msgstr ""
+msgstr "{shots} tirs essayé sans balles."
 
 msgid "{shots} shots jamming {target.mention} weapon."
 msgstr ""
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
 msgstr ""
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
-msgstr ""
+msgstr "{shots} Tirs manquant une cible"
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr ""
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
 msgstr ""
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
 msgstr ""
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
 msgstr ""
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵"
 
 msgid "{shots} shots stopped by the infrared detector."
 msgstr ""
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
 msgstr ""
 
 msgid "Normal ducks"
-msgstr ""
+msgstr "Canards normaux"
 
 msgid "Ghost ducks"
-msgstr ""
+msgstr "Canards fantômes"
 
 msgid "Professor ducks"
-msgstr ""
+msgstr "Canards professeurs"
 
 msgid "Baby ducks"
-msgstr ""
+msgstr "Bébé canards"
 
 msgid "Golden ducks"
-msgstr ""
+msgstr "Canards dorés"
 
 msgid "Plastic ducks"
-msgstr ""
+msgstr "Canards en plastique"
 
 msgid "Kamikaze ducks"
-msgstr ""
+msgstr "Canards kamikaze"
 
 msgid "Mechanical ducks"
-msgstr ""
+msgstr "Canards méchaniques"
 
 msgid "Super ducks"
-msgstr ""
+msgstr "Super canards"
 
 msgid "Mother of all ducks"
-msgstr ""
+msgstr "Mère de tout les canards"
 
 msgid "Armored ducks"
-msgstr ""
+msgstr "Canards en armure"
 
 msgid "{target.name} best times."
 msgstr ""
 
 msgid "Never killed any"
-msgstr ""
+msgstr "N'en as jamais tué"
 
 msgid "{target.name} kill counts."
-msgstr ""
+msgstr "{target.name} nombre de mort"
 
 msgid "{target.name} hugs counts."
 msgstr ""
@@ -2192,31 +2313,31 @@ msgid ""
 msgstr ""
 
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
-msgstr ""
+msgstr "💰️ Vous avez donné {amount} d'expérience à {reciver.mention} "
 
 msgid "Top Scores on #{channel}"
-msgstr ""
+msgstr "Les meilleurs scores sur #{channel}"
 
 msgid "Murderer"
-msgstr ""
+msgstr "Meurtrier"
 
 msgid "Kill another hunter."
-msgstr ""
+msgstr "Tue un autre joueur."
 
 msgid "Big spender"
-msgstr ""
+msgstr "Grand dépensier"
 
 msgid "Spend more than 2000 experience."
-msgstr ""
+msgstr "Dépense plus de 2000 expérience."
 
 msgid "A hunter joined the chat"
-msgstr ""
+msgstr "Un chasseur a rejoint le tchat"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "Joue depuis plus d'une semaine"
 
 msgid "We are starting to know each other"
-msgstr ""
+msgstr "Nous commençons à nous connaitre"
 
 msgid "Play for more than a month."
 msgstr "Jouez pendant plus d'un mois."
@@ -2310,70 +2431,101 @@ msgid ""
 "around**."
 msgstr ""
 "En fouillant les buissons autour du canard, vous avez trouvé... **Des "
-"déchets qui trainaient*."
+"déchets qui trainent**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**. You didn't take it, you had already too many..."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé...**Des déchets "
+"qui trainent**. Vous ne les avez pas pris, vous en aviez déjà trop..."
 
 msgid "Searching the bushes around the duck, you found... **Nothing**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Rien**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A lot of bushes**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Beaucoup "
+"de buissons**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Une "
+"épingle à canard rare**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **La photo "
+"d'un canard**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Une "
+"balle**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A bullet**. You didn't "
 "take it, you had already too many in your magazine anyway..."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Une "
+"balle**. Vous ne l'avez pas prise, vous en aviez déjà trop dans votre "
+"magazine de toute façon..."
 
 msgid "Searching the bushes around the duck, you found... **A magazine**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Un "
+"chargeur**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A magazine**. You "
 "didn't take it, you had already too many in your backpack..."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Un "
+"chargeur**. Vous ne l'avez pas pris, vous en aviez déjà trop dans votre sac "
+"à dos..."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A box of explosive "
 "ammo**. 💥"
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Une boîte "
+"de munitions explosives**. 💥"
 
 msgid ""
 "Searching the bushes around the duck, you found... **An almost empty box of "
 "explosive ammo**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Une boîte "
+"presque vide de munitions explosives**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Tons of Duck Grease**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Des tonnes "
+"de graisse de canard**."
 
 msgid "Searching the bushes around the duck, you found... **A new silencer**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Un nouveau "
+"silencieux**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
 msgstr ""
+"En fouillant les buissons autour du canard, vous avez trouvé... **Un "
+"détecteur infrarouge**."
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
+"Utilisez le {prefix}{help} [commande] pour plus d'informations sur une "
+"commande."
 
 msgid "No Category"
-msgstr ""
+msgstr "Pas de catégorie"
 
 msgid "{cog_name} Commands"
 msgstr ""
@@ -2383,6 +2535,9 @@ msgid ""
 "{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
 "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
 msgstr ""
+"{killer.mention} a tué le canard sur {spawned_for_str}, pour un total de "
+"{total_ducks_killed} (dont {this_ducks_killed} sont des {category}-ducks) "
+"[**Tué** : {normal_exp} exp + {bonus_experience} **trèfle**]"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
@@ -2391,29 +2546,38 @@ msgid ""
 msgstr ""
 
 msgid "{hunter.mention} scared the duck away."
-msgstr ""
+msgstr "{hunter.mention} a fait fuir le canard."
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
+"{hurter.mention} a fait des dégâts au canard [**SUPER CANARD détecté** : "
+"{lives_left}/{total_lives}] [**Dégâts** : -{damage}]"
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
+"{hurter.mention} a fait des dégâts au canard [**SUPER CANARD détecté**] "
+"[**Dégâts** : - {damage}]"
 
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
-msgstr ""
+msgstr "{hurter.mention}, le canard a RESISTE. [**CANARD EN ARMURE détecté**]"
 
 msgid ""
 "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
+"{hugger.mention} a câliné le canard. Trop mignon ! [**Câlin** : "
+"+{experience} exp]"
 
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
+"{hugger.mention} a essayé de serrer le canard dans ses bras. Trop mignon ! "
+"Malheureusement, le canard te déteste, parce que tu as tué toute sa famille. "
+"[**ECHEC** : {expérience} exp]"
 
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
@@ -2459,10 +2623,10 @@ msgid "Hello world"
 msgstr "Bien le bonjour !"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Comment vas-tu aujourd'hui ?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "S'il-te-plaît ne me tues pas..."
 
 msgid "I love you too!"
 msgstr ""
@@ -2485,10 +2649,10 @@ msgid ""
 msgstr ""
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "Je suis invisible, ne t'embêtes pas à essyer de me tuer"
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Qui est le petit ████ ici qui a tué mon ami ?"
 
 msgid "You can't aim for good..."
 msgstr ""
@@ -2500,10 +2664,10 @@ msgid "The duck right."
 msgstr ""
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "STOP! Ce n'est pas ce que tu penses!"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "Me tuer te coutera 1562 points d'expérience."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
@@ -2526,10 +2690,10 @@ msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr ""
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Je vole de l'argent. Je suis "
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Je suis un canard très spécial"
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
@@ -2550,7 +2714,7 @@ msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Je fais juste mon job..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
@@ -2561,13 +2725,13 @@ msgid "YoU hAvE bEeN cOrRuPtEd."
 msgstr ""
 
 msgid "The duck went away."
-msgstr ""
+msgstr "Le canard est parti"
 
 msgid "The duck went to another world."
-msgstr ""
+msgstr "Le canard est allé dans un autre monde"
 
 msgid "The duck didn't have time for this."
-msgstr ""
+msgstr "Le canard n'avait pas le temps pour ça"
 
 msgid "The duck dissipated in space and time."
 msgstr ""
@@ -2588,37 +2752,37 @@ msgid "The duck chickened out."
 msgstr ""
 
 msgid "A duck"
-msgstr ""
+msgstr "Un canard"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "M. Canard"
 
 msgid "RealDuck"
 msgstr "VraiCanard"
 
 msgid "The ghost never appeared."
-msgstr ""
+msgstr "Le fantôme n'est jamais apparu"
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Canard invisible"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Canard fantôme"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Canard Bouh"
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "Professeur canard"
 
 msgid "EnsDuck"
-msgstr ""
+msgstr "EnsCanard"
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "Petit canard"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "Mini canard"
 
 msgid "Ducky"
 msgstr ""
@@ -2627,76 +2791,76 @@ msgid "Duckie"
 msgstr ""
 
 msgid "Free money !"
-msgstr ""
+msgstr "De l'argent gratuit !"
 
 msgid "It's free money"
-msgstr ""
+msgstr "C'est de l'argent gratuit"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "canard doré"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "Oie dorée"
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Canard brillant"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Canard riche"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Vous avez de l'argent ?"
 
 msgid "It's paid money"
 msgstr ""
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Canard en plastique"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Canard pauvre"
 
 msgid "Slimey Duck"
 msgstr ""
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
-msgstr ""
+msgstr "**QUE PERSONNE NE BOUGE OU TOUT EXPLOSERA!**"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "Je vais tous vous tuer !"
 
 msgid "The Kamikaze Duck"
-msgstr ""
+msgstr "Le canard kamikaze"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "Canard explosif"
 
 msgid "Boom Duck"
-msgstr ""
+msgstr "Canard boom"
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "Canard dynamité"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
-msgstr ""
+msgstr "Le canard kamikaze a explosé, tuant tous les canards dans ce canal"
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "Canard 2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "Omega canard"
 
 msgid "Big Duck"
-msgstr ""
+msgstr "Gros canard"
 
 msgid "Strong Duck"
-msgstr ""
+msgstr "Canard fort"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "Canard lourd"
 
 msgid "**I am your mother...**"
-msgstr ""
+msgstr "**Je suis ta mère...**"
 
 msgid "Ms. Duck"
 msgstr "Mme. Canard"
@@ -2714,40 +2878,45 @@ msgid "Mooooom"
 msgstr "Môman"
 
 msgid "*coin*"
-msgstr ""
+msgstr "*coin*"
 
 msgid "*Don't make a noise, it's nighttime*"
-msgstr ""
+msgstr "*Ne fait pas de bruit, c'est la nuit*"
 
 msgid "*Shhhhh*"
-msgstr ""
+msgstr "*Chuuuut*"
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Tout est calme"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "Rien ne se passe pour le moment."
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "Les canards migrent"
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "Préparez vous à voir plus de canard dans la prochain heure"
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "Stéroïdes dans le lac"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"Une compagnie pharmaceutique a relâché des stéroïdes dans le lac. Les "
+"canards ont mutés et tu verra beaucoup plus de super canards. Mais fait "
+"attention, et ne boit pas cette eau."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "Cours du maniement d'armes annulé"
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
+"Le cours du maniement d'armes a été annulé, faites attention à ne pas tirez "
+"sur d'autres chasseurs!"
 
 msgid "Connection problem"
 msgstr "Problèmes de connexion"
@@ -2756,181 +2925,191 @@ msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
 "less of them until it's repaired."
 msgstr ""
+"Les canards n'arrivent pas à trouver votre ordinateur à cause de problèmes "
+"de connexion, il y en aura donc moins jusqu'à ce que ce soit réparé."
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Un nouveau floriste en ville"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"Un floriste a ouvert des portes en ville, tu as maintenant plus de chances "
+"d'obtenir de meilleurs trèfles à quatre feuilles. Va donc voir."
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Méga-canards"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
 msgstr ""
+"Quelqu'un a gonflé un super canard et maintenant ils sont ENCORE PLUS GROS "
+"!!"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "Vent d'hiver"
 
 msgid "Bullets are deflected by some strong wind."
-msgstr ""
+msgstr "Les balles sont déviées par un vent puissant"
 
 msgid "A UN treaty bans damaging ammo"
 msgstr ""
+"Un traité des Nations unies banni l'utilisation de munitions perforantes et "
+"explosives"
 
 msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
 "they are getting rare."
 msgstr ""
+"La munition AP et Explosive sont désactivées. Les super canards valent plus "
+"d'expériences, puisqu'ils sont plus rares"
 
 msgid "Negative cheater ?"
-msgstr ""
+msgstr "Tricheur inversé ?"
 
 msgid "Duck Hugger ?"
-msgstr ""
+msgstr "Câlineur de canards ?"
 
 msgid "What are you doing ?"
-msgstr ""
+msgstr "Mais tu fais quoi ?"
 
 msgid "public danger"
-msgstr ""
+msgstr "danger public"
 
 msgid "tourist"
-msgstr ""
+msgstr "touriste"
 
 msgid "noob"
-msgstr ""
+msgstr "noob"
 
 msgid "trainee"
-msgstr ""
+msgstr "stagiaire"
 
 msgid "duck misser"
-msgstr ""
+msgstr "rateur de canards"
 
 msgid "member of the Comitee Against Ducks"
-msgstr ""
+msgstr "membre du Comité Contre les Canards"
 
 msgid "duck hater"
-msgstr ""
+msgstr "détesteur de canards"
 
 msgid "duck pest"
-msgstr ""
+msgstr "emmerdeur de canards"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "harceleur de canards"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "déplumeur de canards"
 
 msgid "hunter"
-msgstr ""
+msgstr "chasseur"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "retourneur de canards"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "assommeur de canards"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "mâchouilleur de canards"
 
 msgid "duck eater"
-msgstr ""
+msgstr "mangeur de canards"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "aplatisseur de canards"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "démonteur de canards"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "démolisseur de canards"
 
 msgid "duck killer"
-msgstr ""
+msgstr "tueur de canards"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "écorcheur de canards"
 
 msgid "duck predator"
-msgstr ""
+msgstr "prédateur"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "découpeur de canards"
 
 msgid "duck decorticator"
-msgstr "Décortiqueur de canards"
+msgstr "décortiqueur de canards"
 
 msgid "duck fragger"
-msgstr "Exploseur de canards"
+msgstr "exploseur de canards"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "éclateur de canards"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "défonceur de canards"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "bousilleur de canards"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "poutreur de canards"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "empaleur de canards"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "éventreur de canards"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "terreur des canards"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "exploseur de canards"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "destructeur de canards"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "démolécularisateur de canards"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "pulvérisateur de canards"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "désintégrateur de canards"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "atomiseur de canards"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "annihilateur de canards"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "serial duck killer"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "génocideur de canards"
 
 msgid "old noob"
-msgstr ""
+msgstr "vieux noob"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "Toasteur de canards"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "chômeur pour cause d'extinction de l'espèce des canards"
 
 msgid "This is not a valid level. Choose between {levels}"
-msgstr ""
+msgstr "Ce n'est pas un niveau valable. Choisissez entre les {niveaux}"
 
 msgid "Can't set such a high level"
-msgstr ""
+msgstr "On ne peut pas fixer un niveau aussi élevé"
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Tu a monté de niveau!"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Tu a baissé de niveau!"

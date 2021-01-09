@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-08 23:31+0100\n"
+"POT-Creation-Date: 2021-01-09 14:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1448,7 +1448,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"❌ You added a new sight to your weapon recntly. You don't need a new one."
+"❌ You added a new sight to your weapon recently. You don't need a new one."
 msgstr ""
 
 msgid ""
@@ -1548,6 +1548,9 @@ msgid ""
 " -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
+msgid "❌ That weapon is already sabotaged."
+msgstr ""
+
 msgid ""
 "💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: "
 "-{ITEM_COST} exp, total {db_hunter.experience} exp]"
@@ -1581,15 +1584,24 @@ msgid ""
 "experience} exp]"
 msgstr ""
 
+msgid "❌ You already use a kill license."
+msgstr ""
+
 msgid ""
 "💸 You bought a kill licence. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+
+msgid "❌ You already have an automatic reloader."
 msgstr ""
 
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
 "every time it's necessary for a day. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
+msgstr ""
+
+msgid "❌ You already have homing bullets."
 msgstr ""
 
 msgid ""
