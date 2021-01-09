@@ -321,7 +321,7 @@ class Duck:
                     db_channel.webhook_urls.remove(webhook.url)
                     try:
                         await self.channel.send(content, **kwargs)
-                    except discord.Forbidden:
+                    except (discord.Forbidden, discord.NotFound):
                         self.bot.logger.warning(f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
                         db_channel.enabled = False
 
@@ -333,7 +333,7 @@ class Duck:
         async def sendit():
             try:
                 await self.channel.send(content, **kwargs)
-            except discord.Forbidden:
+            except (discord.Forbidden, discord.NotFound):
                 db_channel.enabled = False
                 self.bot.logger.warning(f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
                 await db_channel.save()
