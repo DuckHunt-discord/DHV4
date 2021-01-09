@@ -618,6 +618,9 @@ class PrDuck(Duck):
         else:
             await super().shoot(args)
 
+    async def get_exp_value(self):
+        return round(await super().get_exp_value() * 1.2)
+
 
 class BabyDuck(Duck):
     """
