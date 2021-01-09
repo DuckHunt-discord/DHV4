@@ -319,13 +319,26 @@ class Duck:
                 except (discord.NotFound, discord.InvalidArgument):
                     db_channel: DiscordChannel = await get_from_db(self.channel)
                     db_channel.webhook_urls.remove(webhook.url)
+                    try:
+                        await self.channel.send(content, **kwargs)
+                    except discord.Forbidden:
+                        self.bot.logger.warning(f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
+                        db_channel.enabled = False
+
                     await db_channel.save()
-                    asyncio.ensure_future(self.channel.send(content, **kwargs))
 
             asyncio.ensure_future(sendit())
             return
 
-        asyncio.ensure_future(self.channel.send(content, **kwargs))
+        async def sendit():
+            try:
+                await self.channel.send(content, **kwargs)
+            except discord.Forbidden:
+                db_channel.enabled = False
+                self.bot.logger.warning(f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
+                await db_channel.save()
+
+        asyncio.ensure_future(sendit())
 
     # Parameters #
 
