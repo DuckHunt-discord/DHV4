@@ -266,7 +266,6 @@ class Duck:
         if db_channel.show_duck_lives:
             total_lives = await self.get_lives()
             lives_left = self.lives_left
-
             return _("{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/{total_lives}][**Damage** : -{damage}]",
                      hurter=hurter,
                      damage=damage,
