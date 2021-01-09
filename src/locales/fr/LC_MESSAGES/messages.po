@@ -2577,7 +2577,7 @@ msgid ""
 msgstr ""
 "{hugger.mention} a essayé de serrer le canard dans ses bras. Trop mignon ! "
 "Malheureusement, le canard te déteste, parce que tu as tué toute sa famille. "
-"[**ECHEC** : {expérience} exp]"
+"[**ECHEC** : {experience} exp]"
 
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
@@ -2629,10 +2629,10 @@ msgid "Please don't kill me..."
 msgstr "S'il-te-plaît ne me tues pas..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Je tâime moi aussi!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Ne me tires pas dessus! Je suis un faux canard!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
@@ -2678,7 +2678,7 @@ msgid "[INSERT DUCK NOISE HERE]"
 msgstr ""
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
-msgstr ""
+msgstr "Que s'est-il passé après que Duckhunt aie été créé? ||Le big bang||"
 
 msgid "It's rabbit season."
 msgstr ""
@@ -2690,7 +2690,7 @@ msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr ""
 
 msgid "I steal money. I'm a robber ducky."
-msgstr "Je vole de l'argent. Je suis "
+msgstr ""
 
 msgid "I'm a very special duck."
 msgstr "Je suis un canard très spécial"
