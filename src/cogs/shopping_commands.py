@@ -297,6 +297,8 @@ class ShoppingCommands(Cog):
     async def clover(self, ctx: MyContext):
         """
         Buy a 4-Leaf clover to get more exp for every duck you kill :). [13 exp/24 hrs]
+
+        You can always buy a new clover during the florist event, but the price will be doubled if you had a clover already.
         """
         ITEM_COST = 13
 
@@ -306,14 +308,32 @@ class ShoppingCommands(Cog):
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
         db_channel: DiscordChannel = await get_from_db(ctx.channel)
 
-        self.ensure_enough_experience(db_hunter, ITEM_COST)
-
         if db_hunter.is_powerup_active('clover'):
-            time_delta = get_timedelta(db_hunter.active_powerups['clover'],
-                                       time.time())
-            await ctx.reply(_("❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!",
-                              time_delta=format_timedelta(time_delta, locale=language_code)))
-            return False
+            if self.bot.current_event == Events.FLORIST:
+                try:
+                    self.ensure_enough_experience(db_hunter, ITEM_COST * 2)
+                except NotEnoughExperience:
+                    db_hunter.shooting_stats['cops_seen'] += 1
+                    await db_hunter.save()
+                    await ctx.reply(_("❌ You tried to throw your old clover to buy a new one at the new florist. "
+                                      "Unfortunately, there is a cop around and you don't have enough exp to pay a "
+                                      "littering fine of {fine} exp.",
+                                      fine=ITEM_COST))
+                    return False
+                db_hunter.shooting_stats['thrown_clovers'] += 1
+                await ctx.reply(_("🍀 You throw your old clover to buy a new one at the new florist. "
+                                  "Unfortunately, a cop catches you and fines you {fine} exp for littering.",
+                                  fine=ITEM_COST))
+            else:
+                time_delta = get_timedelta(db_hunter.active_powerups['clover'],
+                                           time.time())
+                await ctx.reply(_("❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!",
+                                  time_delta=format_timedelta(time_delta, locale=language_code)))
+                return False
+
+        ITEM_COST *= 2
+
+        self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         max_experience = db_channel.clover_max_experience
         if self.bot.current_event == Events.FLORIST:
@@ -328,7 +348,8 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
         await ctx.reply(
-            _("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} experience points more. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST,
+            _("🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} more experience points."
+              " [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST,
               clover_exp=clover_exp))
 
     @shop.command(aliases=["11", "glasses", "👓️", "🕶️"])
