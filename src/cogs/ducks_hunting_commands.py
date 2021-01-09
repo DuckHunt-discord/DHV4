@@ -194,7 +194,10 @@ class DucksHuntingCommands(Cog):
                 accuracy += int((100 - accuracy) / 3)
                 db_hunter.active_powerups['sight'] -= 1
         else:
-            accuracy = 90  # 90% chance of knowing there is no duck.
+            if db_hunter.is_powerup_active('detector'):
+                accuracy = 100
+            else:
+                accuracy = 90  # 90% chance of knowing there is no duck.
 
         missed = not compute_luck(accuracy)
 
