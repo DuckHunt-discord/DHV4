@@ -543,6 +543,10 @@ class ShoppingCommands(Cog):
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
         db_target: Player = await get_player(target, ctx.channel)
 
+        if db_target.weapon_sabotaged_by:
+            await ctx.reply(_("❌ That weapon is already sabotaged."))
+            return False
+
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
@@ -627,8 +631,6 @@ class ShoppingCommands(Cog):
         except discord.Forbidden:
             await ctx.reply(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp].\n**I couldn't DM you this message**", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
-
-
     @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
     async def coat(self, ctx: MyContext):
         """
@@ -667,6 +669,10 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
+        if db_hunter.is_powerup_active('kill_licence'):
+            await ctx.reply(_("❌ You already use a kill license."))
+            return False
+
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["kill_licence"] = int(time.time()) + DAY
 
@@ -686,6 +692,11 @@ class ShoppingCommands(Cog):
         _ = await ctx.get_translate_function()
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        if db_hunter.is_powerup_active('reloader'):
+            await ctx.reply(_("❌ You already have an automatic reloader."))
+            return False
+
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
@@ -708,6 +719,10 @@ class ShoppingCommands(Cog):
         _ = await ctx.get_translate_function(user_language=True)
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        if db_hunter.is_powerup_active('homing_bullets'):
+            await ctx.reply(_("❌ You already have homing bullets."))
+            return False
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
