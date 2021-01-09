@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-09 23:19+0100\n"
+"POT-Creation-Date: 2021-01-09 23:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -432,7 +432,7 @@ msgstr ""
 
 #: ../cogs/shopping_commands.py:141
 msgid ""
-"Buy Explosive ammo to TRIPLE the damage you do to super ducks. [15 exp/24 "
+"Buy Explosive ammo to TRIPLE the damage you do to super ducks. [25 exp/24 "
 "hrs]"
 msgstr ""
 

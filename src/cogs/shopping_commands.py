@@ -139,7 +139,7 @@ class ShoppingCommands(Cog):
     @shop.command(aliases=["4", "explosive_ammo", "explo"])
     async def explosive(self, ctx: MyContext):
         """
-        Buy Explosive ammo to TRIPLE the damage you do to super ducks. [15 exp/24 hrs]
+        Buy Explosive ammo to TRIPLE the damage you do to super ducks. [25 exp/24 hrs]
         """
         ITEM_COST = 25
 
