@@ -324,6 +324,14 @@ class Duck:
                     except (discord.Forbidden, discord.NotFound):
                         self.bot.logger.warning(f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
                         db_channel.enabled = False
+                        try:
+                            del self.bot.enabled_channels[self.channel]
+                        except KeyError:
+                            pass
+                        try:
+                            del self.bot.ducks_spawned[self.channel]
+                        except KeyError:
+                            pass
 
                     await db_channel.save()
 
@@ -337,6 +345,15 @@ class Duck:
                 db_channel.enabled = False
                 self.bot.logger.warning(f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
                 await db_channel.save()
+
+                try:
+                    del self.bot.enabled_channels[self.channel]
+                except KeyError:
+                    pass
+                try:
+                    del self.bot.ducks_spawned[self.channel]
+                except KeyError:
+                    pass
 
         asyncio.ensure_future(sendit())
 
