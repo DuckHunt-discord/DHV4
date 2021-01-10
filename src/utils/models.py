@@ -51,7 +51,7 @@ class DiscordGuild(Model):
     first_seen = fields.DatetimeField(auto_now_add=True)
 
     name = fields.TextField()
-    prefix = fields.CharField(20, null=True)
+    prefix = fields.CharField(20, null=True, default="!")
 
     vip = fields.BooleanField(default=False)
 
