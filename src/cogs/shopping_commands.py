@@ -324,14 +324,13 @@ class ShoppingCommands(Cog):
                 await ctx.reply(_("🍀 You throw your old clover to buy a new one at the new florist. "
                                   "Unfortunately, a cop catches you and fines you {fine} exp for littering.",
                                   fine=ITEM_COST))
+                ITEM_COST *= 2
             else:
                 time_delta = get_timedelta(db_hunter.active_powerups['clover'],
                                            time.time())
                 await ctx.reply(_("❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!",
                                   time_delta=format_timedelta(time_delta, locale=language_code)))
                 return False
-
-        ITEM_COST *= 2
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
