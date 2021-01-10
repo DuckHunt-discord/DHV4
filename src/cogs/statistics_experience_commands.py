@@ -1,5 +1,6 @@
 import asyncio
 import time
+from typing import Union
 
 import discord
 from discord.ext import commands, menus
@@ -437,6 +438,25 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
 
         await show_topscores_pages(ctx, _("Top Scores on #{channel}", channel=ctx.channel.name))
+
+    @commands.command(aliases=["delete_user", "del_user", "del_user_id", "rem_user", "rem_user_id"])
+    @checks.needs_access_level(models.AccessLevel.MODERATOR)
+    @checks.channel_enabled()
+    async def remove_user(self, ctx: MyContext, target: Union[discord.Member, discord.User]):
+        """
+        Delete scores for a specific user from the channel. The target can be an ID or a mention.
+
+        Use an ID if the user you want to remove has since left the server.
+        Data will not be recoverable, and there is no confirmation dialog. Type with caution.
+
+        If you need a backup of the user data, you can use the DuckHunt API to download the scores and statistics.
+        """
+        _ = await ctx.get_translate_function()
+        db_hunter: Player = await get_player(target, ctx.channel)
+
+        await db_hunter.delete()
+
+        await ctx.send(_("{target.name}#{target.discriminator} data was deleted from this channel.", target=target))
 
 
 setup = StatisticsCommands.setup
