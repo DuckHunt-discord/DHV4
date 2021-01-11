@@ -2056,7 +2056,7 @@ msgid ""
 msgstr ""
 
 msgid "Huh, quick question, what's {operation} ?"
-msgstr ""
+msgstr "Hm, kurze Frage, wie viel ist {operation}?"
 
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
@@ -2067,7 +2067,7 @@ msgid "{hurter.mention}, Just give me digits !"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer !"
-msgstr ""
+msgstr "{hurter.mention}, das ist nicht die richtige Antwort!"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
@@ -2096,16 +2096,16 @@ msgid "*cries*"
 msgstr ""
 
 msgid "Hello world"
-msgstr ""
+msgstr "Guten Tag"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Wie geht es dir heute?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Bitte töte mich nicht..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Ich liebe dich auch!"
 
 msgid "Don't shoot me! I'm a fake duck!"
 msgstr ""
@@ -2128,7 +2128,7 @@ msgid "I am invisible, don't bother killing me"
 msgstr ""
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Wer ist der kleine ████ hier, der meinen Freund getötet hat?"
 
 msgid "You can't aim for good..."
 msgstr ""
@@ -2140,10 +2140,10 @@ msgid "The duck right."
 msgstr ""
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "STOPP! Es ist nicht das, was Sie denken!"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "Wenn Sie mich töten, kostet Sie das 1562 Erfahrungspunkte."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
@@ -2163,16 +2163,18 @@ msgid "Got a spare cape?"
 msgstr ""
 
 msgid "Which side of a duck has more feathers? ||The outside||."
-msgstr ""
+msgstr "Welche Seite einer Ente hat mehr Federn? ||Die Außenseite||."
 
 msgid "I steal money. I'm a robber ducky."
 msgstr ""
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Ich bin eine ganz besondere Ente."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
+"**DuckHunt ProTip®**: Verwenden Sie Kleeblätter, um mehr Erfahrung zu "
+"erhalten."
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
@@ -2184,13 +2186,13 @@ msgid "*Slurp*"
 msgstr ""
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "Hoffentlich sind Sie alle AFK..."
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Ich mache nur meinen Job..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
@@ -2198,7 +2200,7 @@ msgid ""
 msgstr ""
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "Du WuRdEsT kOrRuMpIeRt"
 
 msgid "The duck went away."
 msgstr ""
@@ -2228,37 +2230,37 @@ msgid "The duck chickened out."
 msgstr ""
 
 msgid "A duck"
-msgstr ""
+msgstr "Eine Ente"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "Herr Ente"
 
 msgid "RealDuck"
-msgstr ""
+msgstr "EchteEnte"
 
 msgid "The ghost never appeared."
 msgstr ""
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Unsichtbare Ente"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Gespenster-Ente"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Buuuuh Ente"
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "Prof. Ente"
 
 msgid "EnsDuck"
-msgstr ""
+msgstr "EnsEnte"
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "Kleine Ente"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "Mini-Ente"
 
 msgid "Ducky"
 msgstr ""
@@ -2267,43 +2269,43 @@ msgid "Duckie"
 msgstr ""
 
 msgid "Free money !"
-msgstr ""
+msgstr "Kostenloses Geld!"
 
 msgid "It's free money"
-msgstr ""
+msgstr "Es ist kostenloses Geld"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "Goldene Ente"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "Goldene Gans"
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Glänzende Ente"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Reiche Ente"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Haben Sie Geld?"
 
 msgid "It's paid money"
-msgstr ""
+msgstr "Es ist bezahltes Geld"
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Plastik Ente"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Arme Ente"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "Schleim Ente"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
-msgstr ""
+msgstr "**SIE MÜSSEN NICHT BEWEGEN ODER ALLES EXPLODIERT!**"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "Ich werde euch alle töten!"
 
 msgid "The Kamikaze Duck"
 msgstr ""
@@ -2312,7 +2314,7 @@ msgid "Explosive Duck"
 msgstr ""
 
 msgid "Boom Duck"
-msgstr ""
+msgstr "Boom-Ente"
 
 msgid "Dynamite Duck"
 msgstr ""
@@ -2321,13 +2323,13 @@ msgid "The kamikaze duck exploded, killing every duck on the channel."
 msgstr ""
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "Ente 2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "Omega-Ente"
 
 msgid "Big Duck"
-msgstr ""
+msgstr "Groß Ente"
 
 msgid "Strong Duck"
 msgstr ""
@@ -2336,31 +2338,31 @@ msgid "Heavy Duck"
 msgstr ""
 
 msgid "**I am your mother...**"
-msgstr ""
+msgstr "**Ich bin deine Mutter...**"
 
 msgid "Ms. Duck"
-msgstr ""
+msgstr "Frau. Ente"
 
 msgid "Mom"
-msgstr ""
+msgstr "Mutti"
 
 msgid "Mommy"
-msgstr ""
+msgstr "Muttchen"
 
 msgid "MOAD"
-msgstr ""
+msgstr "MAL"
 
 msgid "Mooooom"
-msgstr ""
+msgstr "Muttiiiii"
 
 msgid "*coin*"
 msgstr ""
 
 msgid "*Don't make a noise, it's nighttime*"
-msgstr ""
+msgstr "*Keinen Lärm machen, es ist Nacht*"
 
 msgid "*Shhhhh*"
-msgstr ""
+msgstr "*Schhhhhh*"
 
 msgid "Everything is calm"
 msgstr ""
@@ -2390,7 +2392,7 @@ msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
 
 msgid "Connection problem"
-msgstr ""
+msgstr "Verbindungsproblem"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
@@ -2406,7 +2408,7 @@ msgid ""
 msgstr ""
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Mega-Entchen"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
 msgstr ""
@@ -2432,7 +2434,7 @@ msgid "Duck Hugger ?"
 msgstr ""
 
 msgid "What are you doing ?"
-msgstr ""
+msgstr "Was machen Sie da?"
 
 msgid "public danger"
 msgstr ""
@@ -2441,7 +2443,7 @@ msgid "tourist"
 msgstr ""
 
 msgid "noob"
-msgstr ""
+msgstr "Neuling"
 
 msgid "trainee"
 msgstr ""
@@ -2465,7 +2467,7 @@ msgid "duck plucker"
 msgstr ""
 
 msgid "hunter"
-msgstr ""
+msgstr "jäger"
 
 msgid "duck inside out turner"
 msgstr ""
@@ -2570,7 +2572,7 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Sie haben eine höhere Ebene erreicht"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Sie haben eine niedrigere Ebene erreicht"
