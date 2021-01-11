@@ -458,5 +458,27 @@ class StatisticsCommands(Cog):
 
         await ctx.send(_("{target.name}#{target.discriminator} data was deleted from this channel.", target=target))
 
+    @commands.command()
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @checks.channel_enabled()
+    async def remove_all_scores_and_stats_on_this_channel(self, ctx: MyContext):
+        """
+        Delete scores for all users on this channel.
+
+        Data will not be recoverable, and there is no confirmation dialog. Type with caution.
+        This command will execute on the *current channel*. There is no way to pass another channel to the command.
+
+        If you need a backup of the channel data, you can use the DuckHunt API to download the scores and statistics for
+        everyone who ever played.
+        """
+        _ = await ctx.get_translate_function()
+
+        db_channel = await get_from_db(ctx.channel)
+
+        await Player.filter(channel=db_channel).delete()
+
+        await ctx.send(_("Scores and hunters data were removed from the game, but the game wasn't stopped... "
+                         "You can use `{ctx.prefix}settings enabled False` to stop the game."))
+
 
 setup = StatisticsCommands.setup
