@@ -71,6 +71,10 @@ class ItemsMenusSource(menus.ListPageSource):
 
         for i, item in enumerate(entries, start=offset):
             e.add_field(name=f"**{i + 1}** - " + _(item["name"]), value=_(item["description"]), inline=False)
+
+        if not entries:
+            e.description = _("A lot of air and a starved mosquito.")
+
         return e
 
 
