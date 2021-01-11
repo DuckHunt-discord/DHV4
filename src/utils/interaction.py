@@ -6,10 +6,21 @@ import typing
 from typing import List
 import random
 
+from discord.ext.commands import MemberConverter
+
 from utils.models import get_from_db, DiscordChannel
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
+
+
+class SmartMemberConverter(MemberConverter):
+    async def query_member_named(self, guild, argument):
+        if len(argument) > 5 and argument[-5] == '#':
+            await super().query_member_named(guild, argument)
+        else:
+            # Don't use names to convert. It's fucking stupid.
+            return None
 
 
 def get_timedelta(event, now):
@@ -20,7 +31,8 @@ def escape_everything(mystr: str):
     return discord.utils.escape_mentions(discord.utils.escape_markdown(mystr))
 
 
-async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message, message_to_delete: discord.Message):
+async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message,
+                                             message_to_delete: discord.Message):
     def check(message: discord.RawMessageDeleteEvent):
         return message.message_id == watch_message.id
 
@@ -44,7 +56,8 @@ async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwa
     return await channel.purge(check=check, **kwargs)
 
 
-async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordChannel, discord.TextChannel], force=False):
+async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordChannel, discord.TextChannel],
+                                  force=False):
     if isinstance(channel, DiscordChannel):
         channel = bot.get_channel(channel.discord_id)
         if channel is None:
@@ -98,10 +111,11 @@ def anti_bot_zero_width(mystr: str):
 
     addings = [
         "​",  # ZWSP
-        ]
+    ]
 
     replacements = {
-        " ": [" "]  # ['\u00A0', '\u1680', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005', '\u2006', '\u2007', '\u2008', '\u2009', '\u200A', '\u202F', '\u205F']
+        " ": [" "]
+        # ['\u00A0', '\u1680', '\u2000', '\u2001', '\u2002', '\u2003', '\u2004', '\u2005', '\u2006', '\u2007', '\u2008', '\u2009', '\u200A', '\u202F', '\u205F']
     }
 
     out = []

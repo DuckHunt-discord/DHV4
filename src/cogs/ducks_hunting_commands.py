@@ -9,7 +9,7 @@ from discord.ext import commands
 
 from utils import checks
 from utils.events import Events
-from utils.interaction import get_timedelta
+from utils.interaction import get_timedelta, SmartMemberConverter
 
 from babel.dates import format_timedelta
 
@@ -26,7 +26,7 @@ def compute_luck(luck_pct):
 class DucksHuntingCommands(Cog):
     @commands.command(aliases=["pan", "pew", "pow", "pang", "shoot", "bong", "bonk", "kill", "kablam", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
     @checks.channel_enabled()
-    async def bang(self, ctx: MyContext, target: Optional[discord.Member], *args):
+    async def bang(self, ctx: MyContext, target: Optional[SmartMemberConverter], *args):
         """
         Shoot at the duck that appeared first on the channel.
         """
