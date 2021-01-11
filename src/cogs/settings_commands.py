@@ -462,7 +462,7 @@ class SettingsCommands(Cog):
                              pct=db_channel.kill_on_miss_chance))
         else:
             await ctx.send(_("Players won't kill people randomly when missing shots on {channel.mention}. "
-                             "They can still kill people volontarly.", channel=ctx.channel))
+                             "They can still kill people voluntarily.", channel=ctx.channel))
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
