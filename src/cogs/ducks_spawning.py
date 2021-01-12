@@ -200,6 +200,8 @@ class DucksSpawning(Cog):
             self.bot.logger.warning("No ducks_spawned_cache.json found. Normal on first run.")
             serialized = {}
 
+        self.bot.logger.info(f"Loaded JSON file...")
+
         for channel_id, ducks in serialized.items():
             channel = self.bot.get_channel(int(channel_id))
 
