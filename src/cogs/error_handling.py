@@ -183,7 +183,7 @@ class CommandErrorHandler(Cog):
                 message = _("Missing permissions, please check I can add reactions here.")
             else:
                 message = _("This should not have happened. A command raised an error that does not come from CommandError, and isn't handled by our error handler. "
-                            "Please inform the owner.")
+                            "Please inform the owner.") + "\n```py\n" + "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)) + "\n```"
                 ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
