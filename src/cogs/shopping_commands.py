@@ -351,7 +351,7 @@ class ShoppingCommands(Cog):
               " [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST,
               clover_exp=clover_exp))
 
-    @shop.command(aliases=["11", "glasses", "👓️", "🕶️"])
+    @shop.command(aliases=["11", "glasses", "👓️", "🕶️", "😎"])
     async def sunglasses(self, ctx: MyContext):
         """
         Protects from mirror-induced glare. [5 exp/24 hrs]
@@ -377,9 +377,9 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
         if previously_had:
-            await ctx.reply(_("🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
+            await ctx.reply(_("😎 You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
         else:
-            await ctx.reply(_("🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
+            await ctx.reply(_("😎 You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["12", "shirt", "dry"])
     async def clothes(self, ctx: MyContext):
@@ -460,7 +460,7 @@ class ShoppingCommands(Cog):
         if stupid:
             await ctx.reply(
                 _("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. "
-                  "That was kinda stupid, since they have sunglasses 🕶️. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
+                  "That was kinda stupid, since they have sunglasses 😎. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
         else:
             await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
 
