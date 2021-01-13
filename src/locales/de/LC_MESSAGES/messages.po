@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 20:42+0100\n"
+"POT-Creation-Date: 2021-01-13 11:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1472,12 +1472,12 @@ msgid ""
 msgstr ""
 
 msgid ""
-"🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
+"😎 You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
 "total {db_hunter.experience} exp]"
 msgstr ""
 
 msgid ""
-"🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"😎 You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
 
@@ -1500,8 +1500,8 @@ msgstr ""
 
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
-"your mirror. That was kinda stupid, since they have sunglasses 🕶️. [Bought: "
-"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
+"your mirror. That was kinda stupid, since they have sunglasses 😎. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
 msgid ""
@@ -2403,7 +2403,7 @@ msgid "*Shhhhh*"
 msgstr "*Schhhhhh*"
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Alles ist ruhig"
 
 msgid "Nothing is happening right now."
 msgstr ""
@@ -2487,19 +2487,19 @@ msgid "trainee"
 msgstr ""
 
 msgid "duck misser"
-msgstr ""
+msgstr "Entenputzer"
 
 msgid "member of the Comitee Against Ducks"
 msgstr ""
 
 msgid "duck hater"
-msgstr ""
+msgstr "Entenhasser"
 
 msgid "duck pest"
-msgstr ""
+msgstr "Entenplage"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "Entenhaasler"
 
 msgid "duck plucker"
 msgstr ""
@@ -2517,7 +2517,7 @@ msgid "duck chewer"
 msgstr ""
 
 msgid "duck eater"
-msgstr ""
+msgstr "Entenfresser"
 
 msgid "duck flattener"
 msgstr ""
@@ -2532,10 +2532,10 @@ msgid "duck killer"
 msgstr ""
 
 msgid "duck skinner"
-msgstr ""
+msgstr "Entenschlüpfer"
 
 msgid "duck predator"
-msgstr ""
+msgstr "Entenraubtier"
 
 msgid "duck chopper"
 msgstr ""

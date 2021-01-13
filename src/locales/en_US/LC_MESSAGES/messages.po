@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-11 20:42+0100\n"
+"POT-Creation-Date: 2021-01-13 11:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2314,19 +2314,19 @@ msgstr ""
 #: ../cogs/shopping_commands.py:380
 #, python-brace-format
 msgid ""
-"🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
+"😎 You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
 "total {db_hunter.experience} exp]"
 msgstr ""
-"🕶️ You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
+"😎 You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
 "total {db_hunter.experience} exp]"
 
 #: ../cogs/shopping_commands.py:382
 #, python-brace-format
 msgid ""
-"🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"😎 You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
-"🕶️ You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"😎 You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 
 #: ../cogs/shopping_commands.py:403
@@ -2364,12 +2364,12 @@ msgstr "❌ I don't think {target.mention} can play DuckHunt yet..."
 #, python-brace-format
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
-"your mirror. That was kinda stupid, since they have sunglasses 🕶️. [Bought: "
-"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
+"your mirror. That was kinda stupid, since they have sunglasses 😎. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
-"your mirror. That was kinda stupid, since they have sunglasses 🕶️. [Bought: "
-"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
+"your mirror. That was kinda stupid, since they have sunglasses 😎. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 #: ../cogs/shopping_commands.py:465
 #, python-brace-format
