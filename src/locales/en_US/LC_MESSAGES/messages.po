@@ -8,14 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-13 15:50+0100\n"
+"POT-Creation-Date: 2021-01-13 11:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Content-Type: text/plain; charset=UTF-8"
 
 #: ../cogs/community.py:35
@@ -3229,26 +3228,18 @@ msgstr "No Category"
 msgid "{cog_name} Commands"
 msgstr "{cog_name} Commands"
 
-#: ../utils/ducks.py:248
+#: ../utils/ducks.py:231
 #, python-brace-format
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} is a {category} duck) "
+"{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
 "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
-msgid_plural ""
+msgstr ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} are {category} ducks) "
-"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
-msgstr[0] ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} is a {category} duck) "
-"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
-msgstr[1] ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} are {category} ducks) "
+"{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
 "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
 
-#: ../utils/ducks.py:269
+#: ../utils/ducks.py:244
 #, python-brace-format
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
@@ -3259,12 +3250,12 @@ msgstr ""
 "{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
 "[**Killed**: +{won_experience} exp]"
 
-#: ../utils/ducks.py:284
+#: ../utils/ducks.py:259
 #, python-brace-format
 msgid "{hunter.mention} scared the duck away."
 msgstr "{hunter.mention} scared the duck away."
 
-#: ../utils/ducks.py:295
+#: ../utils/ducks.py:269
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
@@ -3273,7 +3264,7 @@ msgstr ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 
-#: ../utils/ducks.py:302
+#: ../utils/ducks.py:276
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
@@ -3282,19 +3273,19 @@ msgstr ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 
-#: ../utils/ducks.py:309
+#: ../utils/ducks.py:283
 #, python-brace-format
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
 msgstr "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
 
-#: ../utils/ducks.py:315
+#: ../utils/ducks.py:289
 #, python-brace-format
 msgid ""
 "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
 "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 
-#: ../utils/ducks.py:321
+#: ../utils/ducks.py:294
 #, python-brace-format
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
@@ -3303,12 +3294,12 @@ msgstr ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 
-#: ../utils/ducks.py:651
+#: ../utils/ducks.py:623
 #, python-brace-format
 msgid "Huh, quick question, what's {operation} ?"
 msgstr "Huh, quick question, what's {operation} ?"
 
-#: ../utils/ducks.py:661
+#: ../utils/ducks.py:632
 #, python-brace-format
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
@@ -3317,23 +3308,23 @@ msgstr ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
 "`dh!bang <answer>`."
 
-#: ../utils/ducks.py:667
+#: ../utils/ducks.py:638
 #, python-brace-format
 msgid "{hurter.mention}, Just give me digits !"
 msgstr "{hurter.mention}, Just give me digits !"
 
-#: ../utils/ducks.py:673
+#: ../utils/ducks.py:644
 #, python-brace-format
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr "{hurter.mention}, that's not the correct answer !"
 
-#: ../utils/ducks.py:694
+#: ../utils/ducks.py:665
 #, python-brace-format
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 
-#: ../utils/ducks.py:766
+#: ../utils/ducks.py:735
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -3342,7 +3333,7 @@ msgstr ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 
-#: ../utils/ducks.py:771
+#: ../utils/ducks.py:739
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
@@ -3351,7 +3342,7 @@ msgstr ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 
-#: ../utils/ducks.py:847
+#: ../utils/ducks.py:814
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
@@ -3360,7 +3351,7 @@ msgstr ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 
-#: ../utils/ducks.py:854
+#: ../utils/ducks.py:821
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
