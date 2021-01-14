@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-14 13:52+0100\n"
+"POT-Creation-Date: 2021-01-14 17:14+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -830,18 +830,14 @@ msgstr ""
 "пробовали съесть МОЗГ? `{ctx.prefix}revive`..."
 
 msgid ""
-"🚰 Dude... Your clothes are wet, at least dry them (for **{time_delta}**) or "
-"something, or buy new ones (`{ctx.prefix}shop clothes`)"
+"🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) "
+"or something, or buy new ones (`{ctx.prefix}shop clothes`)"
 msgstr ""
-"🚰 Дружище... Вся одежда промокла. Придётся её сушить (в течение "
-"**{time_delta}**) или купить новую (`{ctx.prefix}shop clothes`)"
 
 msgid ""
-"⛔️ Dude... Your weapon has been confiscated. Wait for freetime (`{ctx."
+"⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx."
 "prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
 msgstr ""
-"⛔️ Дружище... Оружие конфисковано. Придётся ждать время халявы (`{ctx."
-"prefix}freetime`) или выкупить его через магазин (`{ctx.prefix}shop weapon`)"
 
 msgid ""
 "💥 Your weapon was sabotaged and exploded in your face. You can thank "
@@ -962,13 +958,10 @@ msgstr ""
 "опыта]"
 
 msgid ""
-"Dude... You don't have a weapon, it has been confiscated. Wait for freetime "
+"Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
 "(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
 "weapon`)"
 msgstr ""
-"Дружище... Оружия нет, его ж конфисковали! Ждём время халявы (`{ctx."
-"prefix}freetime`) или выкупаем оружие через магазин (`{ctx.prefix}shop "
-"weapon`)"
 
 msgid "☀️️ You unjam your weapon !"
 msgstr "☀️️ Вы разблокировали своё оружие!"
@@ -1463,10 +1456,13 @@ msgstr ""
 "`{command}`."
 
 msgid ""
-"Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks."
-msgstr ""
-"Ваш веб-перехватчик создан. Теперь бот использует {n} веб-перехватчик(ов) "
-"для создания уток."
+"Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
+"ducks."
+msgid_plural ""
+"Your webhook was created. The bot now uses {webhooks_count} webhooks to "
+"spawn ducks."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
@@ -2152,6 +2148,9 @@ msgstr ""
 "Бот переведён на МНОГИЕ языки! Список локализаторов вызывается командой "
 "`{ctx.prefix}translators`."
 
+msgid "You don't have to go right now"
+msgstr ""
+
 msgid "Current event: "
 msgstr "Текущее событие:"
 
@@ -2597,31 +2596,24 @@ msgstr "Без категории"
 msgid "{cog_name} Commands"
 msgstr "{cog_name} Команды"
 
-msgid ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} is a {category} duck) "
-"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
-msgid_plural ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} are {category} ducks) "
-"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
+msgid "normal"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a normal duck"
+msgid_plural "of which {this_ducks_killed} are normal ducks"
 msgstr[0] ""
-"{killer.mention} убил(а) утку за {spawned_for_str}. Всего убито "
-"{total_ducks_killed} (из которых {this_ducks_killed} вида {category}-утка) "
-"[**Утка убита**: {normal_exp} ед. опыта + {bonus_experience} **клевер**]"
 msgstr[1] ""
-"{killer.mention} убил(а) утку за {spawned_for_str}. Всего убито "
-"{total_ducks_killed} (из которых {this_ducks_killed} вида {category}-утка) "
-"[**Утка убита**: {normal_exp} ед. опыта + {bonus_experience} **клевер**]"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
-"[**Killed**: +{won_experience} exp]"
+"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
+"{bonus_experience} **clover**]"
 msgstr ""
-"{killer.mention} убил(а) утку за {spawned_for_str}. Всего убито "
-"{total_ducks_killed} (из которых {this_ducks_killed} вида {category}-утка) "
-"[**Утка убита**: +{won_experience} ед. опыта]"
+
+msgid ""
+"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
+"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
+msgstr ""
 
 msgid "{hunter.mention} scared the duck away."
 msgstr "{hunter.mention} напугал(а) утку, и она улетела."
@@ -2657,6 +2649,22 @@ msgstr ""
 "{hugger.mention} пробует обнять утёнка. Мило, но... Утёнок ненавидит вас, "
 "потому что вы убили всю его семью. [**НЕУДАЧА**: {experience} ед. опыта]"
 
+msgid "ghost"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "prof"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Huh, quick question, what's {operation} ?"
 msgstr "Так-с, вопрос по-быстрому... Сколько будет {operation} ?"
 
@@ -2673,9 +2681,49 @@ msgstr "{hurter.mention}, дайте мне цифры!"
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr "{hurter.mention}, это неверный ответ!"
 
+msgid "baby"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a baby duck"
+msgid_plural "of which {this_ducks_killed} are baby ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 "{killer.mention} убил(а) утёнка... [**Утёнок**: {won_experience} ед. опыта]"
+
+msgid "golden"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a golden duck"
+msgid_plural "of which {this_ducks_killed} are golden ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "plastic"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is made of plastic"
+msgid_plural "of which {this_ducks_killed} are made of plastic"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "kamikaze"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "mechanical"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a mechanical duck"
+msgid_plural "of which {this_ducks_killed} are mechanical ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -2691,6 +2739,30 @@ msgstr ""
 "{killer.mention}, простофиля! Вы убили механическую утку! Автор подставы - "
 "{creator.mention}! [Опыт: {won_experience}]"
 
+msgid "super"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a super duck"
+msgid_plural "of which {this_ducks_killed} are super ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "moad"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a MOAD"
+msgid_plural "of which {this_ducks_killed} are MOADs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "armored"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is an armored duck"
+msgid_plural "of which {this_ducks_killed} are armored ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
@@ -2704,6 +2776,70 @@ msgid ""
 msgstr ""
 "{hurter.mention} ранил(а) утку... [**Обнаружена БРОНИРОВАННАЯ "
 "утка**][**Урон** : -{damage}]"
+
+msgid "night"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a night duck"
+msgid_plural "of which {this_ducks_killed} are night ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "sleeping"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a sleeping duck"
+msgid_plural "of which {this_ducks_killed} are sleeping ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "KWAK"
+msgstr ""
+
+msgid "KWAAK"
+msgstr ""
+
+msgid "KWAAAK"
+msgstr ""
+
+msgid "COUAK"
+msgstr ""
+
+msgid "COUAAK"
+msgstr ""
+
+msgid "COUAAAK"
+msgstr ""
+
+msgid "QUAK"
+msgstr ""
+
+msgid "QUAAK"
+msgstr ""
+
+msgid "QUAAAK"
+msgstr ""
+
+msgid "QUACK"
+msgstr ""
+
+msgid "QUAACK"
+msgstr ""
+
+msgid "QUAAACK"
+msgstr ""
+
+msgid "COUAC"
+msgstr ""
+
+msgid "COUAAC"
+msgstr ""
+
+msgid "COUAAAC"
+msgstr ""
+
+msgid "COUACK"
+msgstr ""
 
 msgid "*cries*"
 msgstr "*крякает*"
@@ -2881,6 +3017,21 @@ msgstr "Проф. Уткин"
 msgid "EnsDuck"
 msgstr "Вумная вутка"
 
+msgid "**COIN**"
+msgstr ""
+
+msgid "**Piou** ?"
+msgstr ""
+
+msgid "**Coin** ?"
+msgstr ""
+
+msgid "**Coin**!"
+msgstr ""
+
+msgid "**COIIIIIINNNNNN**!"
+msgstr ""
+
 msgid "Smol Duck"
 msgstr "Масенькая утка"
 
@@ -2892,6 +3043,9 @@ msgstr "Уточка"
 
 msgid "Duckie"
 msgstr "Утя"
+
+msgid "£!"
+msgstr ""
 
 msgid "Free money !"
 msgstr "Халявные деньги!"
@@ -2910,6 +3064,9 @@ msgstr "Блестящая утка"
 
 msgid "Rich Duck"
 msgstr "Богатая утка"
+
+msgid "£?"
+msgstr ""
 
 msgid "Have any money ?"
 msgstr "Есть бабки?"
@@ -2988,6 +3145,9 @@ msgstr "*Не шумите, ночь на дворе!*"
 
 msgid "*Shhhhh*"
 msgstr "*Тссссс!*"
+
+msgid "ZzZzZz"
+msgstr ""
 
 msgid "Everything is calm"
 msgstr "Всё спокойно"

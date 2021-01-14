@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-14 13:52+0100\n"
+"POT-Creation-Date: 2021-01-14 17:14+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -620,12 +620,12 @@ msgid ""
 msgstr ""
 
 msgid ""
-"🚰 Dude... Your clothes are wet, at least dry them (for **{time_delta}**) or "
-"something, or buy new ones (`{ctx.prefix}shop clothes`)"
+"🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) "
+"or something, or buy new ones (`{ctx.prefix}shop clothes`)"
 msgstr ""
 
 msgid ""
-"⛔️ Dude... Your weapon has been confiscated. Wait for freetime (`{ctx."
+"⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx."
 "prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
 msgstr ""
 
@@ -712,7 +712,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Dude... You don't have a weapon, it has been confiscated. Wait for freetime "
+"Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
 "(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
 "weapon`)"
 msgstr ""
@@ -1125,8 +1125,13 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks."
-msgstr ""
+"Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
+"ducks."
+msgid_plural ""
+"Your webhook was created. The bot now uses {webhooks_count} webhooks to "
+"spawn ducks."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
@@ -1643,6 +1648,9 @@ msgid ""
 "prefix}translators`."
 msgstr ""
 
+msgid "You don't have to go right now"
+msgstr ""
+
 msgid "Current event: "
 msgstr ""
 
@@ -2044,21 +2052,23 @@ msgstr ""
 msgid "{cog_name} Commands"
 msgstr ""
 
-msgid ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} is a {category} duck) "
-"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
-msgid_plural ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} are {category} ducks) "
-"[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]"
+msgid "normal"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a normal duck"
+msgid_plural "of which {this_ducks_killed} are normal ducks"
 msgstr[0] ""
 msgstr[1] ""
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} (of which {this_ducks_killed} are {category}-ducks) "
-"[**Killed**: +{won_experience} exp]"
+"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
+"{bonus_experience} **clover**]"
+msgstr ""
+
+msgid ""
+"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
+"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
 msgstr ""
 
 msgid "{hunter.mention} scared the duck away."
@@ -2086,6 +2096,22 @@ msgid ""
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
 
+msgid "ghost"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "prof"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
 
@@ -2100,8 +2126,48 @@ msgstr ""
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
+msgid "baby"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a baby duck"
+msgid_plural "of which {this_ducks_killed} are baby ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
+
+msgid "golden"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a golden duck"
+msgid_plural "of which {this_ducks_killed} are golden ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "plastic"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is made of plastic"
+msgid_plural "of which {this_ducks_killed} are made of plastic"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "kamikaze"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "mechanical"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a mechanical duck"
+msgid_plural "of which {this_ducks_killed} are mechanical ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -2113,6 +2179,30 @@ msgid ""
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 msgstr ""
 
+msgid "super"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a super duck"
+msgid_plural "of which {this_ducks_killed} are super ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "moad"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a MOAD"
+msgid_plural "of which {this_ducks_killed} are MOADs"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "armored"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is an armored duck"
+msgid_plural "of which {this_ducks_killed} are armored ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
@@ -2121,6 +2211,70 @@ msgstr ""
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
 "{damage}]"
+msgstr ""
+
+msgid "night"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a night duck"
+msgid_plural "of which {this_ducks_killed} are night ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "sleeping"
+msgstr ""
+
+msgid "of which {this_ducks_killed} is a sleeping duck"
+msgid_plural "of which {this_ducks_killed} are sleeping ducks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "KWAK"
+msgstr ""
+
+msgid "KWAAK"
+msgstr ""
+
+msgid "KWAAAK"
+msgstr ""
+
+msgid "COUAK"
+msgstr ""
+
+msgid "COUAAK"
+msgstr ""
+
+msgid "COUAAAK"
+msgstr ""
+
+msgid "QUAK"
+msgstr ""
+
+msgid "QUAAK"
+msgstr ""
+
+msgid "QUAAAK"
+msgstr ""
+
+msgid "QUACK"
+msgstr ""
+
+msgid "QUAACK"
+msgstr ""
+
+msgid "QUAAACK"
+msgstr ""
+
+msgid "COUAC"
+msgstr ""
+
+msgid "COUAAC"
+msgstr ""
+
+msgid "COUAAAC"
+msgstr ""
+
+msgid "COUACK"
 msgstr ""
 
 msgid "*cries*"
@@ -2285,6 +2439,21 @@ msgstr ""
 msgid "EnsDuck"
 msgstr ""
 
+msgid "**COIN**"
+msgstr ""
+
+msgid "**Piou** ?"
+msgstr ""
+
+msgid "**Coin** ?"
+msgstr ""
+
+msgid "**Coin**!"
+msgstr ""
+
+msgid "**COIIIIIINNNNNN**!"
+msgstr ""
+
 msgid "Smol Duck"
 msgstr ""
 
@@ -2295,6 +2464,9 @@ msgid "Ducky"
 msgstr ""
 
 msgid "Duckie"
+msgstr ""
+
+msgid "£!"
 msgstr ""
 
 msgid "Free money !"
@@ -2313,6 +2485,9 @@ msgid "Shiny Duck"
 msgstr ""
 
 msgid "Rich Duck"
+msgstr ""
+
+msgid "£?"
 msgstr ""
 
 msgid "Have any money ?"
@@ -2391,6 +2566,9 @@ msgid "*Don't make a noise, it's nighttime*"
 msgstr ""
 
 msgid "*Shhhhh*"
+msgstr ""
+
+msgid "ZzZzZz"
 msgstr ""
 
 msgid "Everything is calm"
