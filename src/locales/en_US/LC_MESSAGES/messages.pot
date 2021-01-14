@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-14 16:51+0100\n"
+"POT-Creation-Date: 2021-01-14 17:14+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -565,11 +565,11 @@ msgstr ""
 msgid "For when you misspell the pan command."
 msgstr ""
 
-#: ../cogs/simple_commands.py:214
+#: ../cogs/simple_commands.py:216
 msgid "For when you misspell the reload command."
 msgstr ""
 
-#: ../cogs/simple_commands.py:222
+#: ../cogs/simple_commands.py:224
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -2144,11 +2144,15 @@ msgid ""
 "prefix}translators`."
 msgstr ""
 
-#: ../cogs/simple_commands.py:237
+#: ../cogs/simple_commands.py:211
+msgid "You don't have to go right now"
+msgstr ""
+
+#: ../cogs/simple_commands.py:239
 msgid "Current event: "
 msgstr ""
 
-#: ../cogs/simple_commands.py:242
+#: ../cogs/simple_commands.py:244
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
