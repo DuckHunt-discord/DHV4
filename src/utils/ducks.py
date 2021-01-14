@@ -955,7 +955,7 @@ async def compute_sun_state(channel, seconds_spent_today=None):
         time_left_sun = DAY
     elif night_start_at <= seconds_spent_today <= night_end_at:
         # Case where night is from small to big
-        # Ex : 0        <= 30                  <= 60
+        # Ex : 0          <= 30                  <= 60
         sun = "night"
         duration_of_night = night_end_at - night_start_at
         time_left_sun = night_end_at - seconds_spent_today
