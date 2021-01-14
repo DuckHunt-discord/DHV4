@@ -232,6 +232,14 @@ class Duck:
 
         return f"{trace} {face} {shout}"
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a normal duck",
+                        "of which {this_ducks_killed} are normal ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int) -> str:
         _ = await self.get_translate_function()
         ngettext = await self.get_ntranslate_function()
@@ -254,12 +262,12 @@ class Duck:
             return ngettext(
                 "{killer.mention} killed the duck in {spawned_for_str}, "
                 "for a total of {total_ducks_killed} "
-                "(of which {this_ducks_killed} is a {category} duck) "
+                "({ncategory_killed}) "
                 "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
 
                 "{killer.mention} killed the duck in {spawned_for_str}, "
                 "for a total of {total_ducks_killed} "
-                "(of which {this_ducks_killed} are {category} ducks) "
+                "({ncategory_killed}) "
                 "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
 
                 this_ducks_killed,
@@ -269,19 +277,19 @@ class Duck:
                 bonus_experience=bonus_experience,
                 spawned_for_str=spawned_for_str,
                 total_ducks_killed=total_ducks_killed,
-                this_ducks_killed=this_ducks_killed,
+                ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
                 category=_(self.category),
             )
         else:
             return ngettext(
                 "{killer.mention} killed the duck in {spawned_for_str}, "
                 "for a total of {total_ducks_killed} "
-                "(of which {this_ducks_killed} is a {category} duck) "
+                "({ncategory_killed}) "
                 "[**Killed**: {normal_exp} exp]",
 
                 "{killer.mention} killed the duck in {spawned_for_str}, "
                 "for a total of {total_ducks_killed} "
-                "(of which {this_ducks_killed} are {category} ducks) "
+                "({ncategory_killed}) "
                 "[**Killed**: {normal_exp} exp]",
 
                 this_ducks_killed,
@@ -290,7 +298,7 @@ class Duck:
                 normal_exp=won_experience,
                 spawned_for_str=spawned_for_str,
                 total_ducks_killed=total_ducks_killed,
-                this_ducks_killed=this_ducks_killed,
+                ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
                 category=_(self.category),
             )
 
@@ -628,6 +636,14 @@ class GhostDuck(Duck):
     category = _('ghost')
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a ghost duck",
+                        "of which {this_ducks_killed} are ghost ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def spawn(self, loud=True):
         total_lives = await self.get_lives()
 
@@ -660,6 +676,14 @@ class PrDuck(Duck):
         d.operation = data['operation']
         d.answer = data['answer']
         return d
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a professor duck",
+                        "of which {this_ducks_killed} are Pr. ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
 
     async def get_shout(self) -> str:
         _ = await self.get_translate_function()
@@ -705,6 +729,14 @@ class BabyDuck(Duck):
     leave_on_hug = True
     use_bonus_exp = False
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a baby duck",
+                        "of which {this_ducks_killed} are baby ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int):
         _ = await self.get_translate_function()
         return _("{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]", killer=killer,
@@ -723,6 +755,14 @@ class GoldenDuck(Duck):
     """
     category = _('golden')
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a golden duck",
+                        "of which {this_ducks_killed} are golden ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def get_exp_value(self):
         return await super().get_exp_value() * 2
 
@@ -733,6 +773,15 @@ class PlasticDuck(Duck):
     """
     category = _('plastic')
 
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is made of plastic",
+                        "of which {this_ducks_killed} are made of plastic",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def get_exp_value(self):
         return round(await super().get_exp_value() * 0.5)
 
@@ -742,6 +791,15 @@ class KamikazeDuck(Duck):
     This duck kills every other duck on the channel when leaving
     """
     category = _('kamikaze')
+
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a kamikaze duck",
+                        "of which {this_ducks_killed} are kamikaze ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
 
     async def leave(self):
         await self.send(await self.get_left_message())
@@ -772,6 +830,14 @@ class MechanicalDuck(Duck):
 
     async def get_exp_value(self):
         return -10
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a mechanical duck",
+                        "of which {this_ducks_killed} are mechanical ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
 
     async def get_kill_message(self, killer, db_killer, won_experience, bonus_experience):
         _ = await self.get_translate_function()
@@ -810,6 +876,14 @@ class SuperDuck(Duck):
         self._lives = lives
         self.lives_left = lives
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a super duck",
+                        "of which {this_ducks_killed} are super ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
         max_life = db_channel.super_ducks_max_life
@@ -827,6 +901,14 @@ class MotherOfAllDucks(SuperDuck):
     """
     category = _('moad')
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a MOAD",
+                        "of which {this_ducks_killed} are MOADs",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
     async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         for i in range(2):
             d = await spawn_random_weighted_duck(self.bot, self.channel)
@@ -841,6 +923,14 @@ class ArmoredDuck(SuperDuck):
     This duck will resist a damage of 1.
     """
     category = _('armored')
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is an armored duck",
+                        "of which {this_ducks_killed} are armored ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
 
     async def get_damage(self):
         if self.bot.current_event == Events.UN_TREATY:
@@ -879,11 +969,28 @@ class NightDuck(Duck):
     category = _('night')
 
 
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a night duck",
+                        "of which {this_ducks_killed} are night ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
+
 class SleepingDuck(Duck):
     """
     An un-miss-able duck that you can only shot at night
     """
     category = _('sleeping')
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which {this_ducks_killed} is a sleeping duck",
+                        "of which {this_ducks_killed} are sleeping ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
 
     async def get_accuracy(self, base_accuracy) -> int:
         return 100
