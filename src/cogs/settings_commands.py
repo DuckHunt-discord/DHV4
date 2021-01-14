@@ -327,8 +327,14 @@ class SettingsCommands(Cog):
 
         webhook = await create_and_save_webhook(ctx.bot, ctx.channel, force=True)
         if webhook:
+            ngettext = await ctx.get_ntranslate_function()
+
             await ctx.send(
-                _("Your webhook was created. The bot now uses {n} webhook(s) to spawn ducks.", n=webhooks_count + 1))
+                ngettext("Your webhook was created. The bot now uses {webhooks_count} webhook to spawn ducks.",
+                         "Your webhook was created. The bot now uses {webhooks_count} webhooks to spawn ducks.",
+                         webhooks_count + 1,
+
+                         webhooks_count=webhooks_count + 1))
         else:
             await ctx.send(_("I couldn't create a webhook. Double-check my permissions and try again."))
 
