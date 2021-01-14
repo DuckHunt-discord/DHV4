@@ -236,7 +236,10 @@ class Duck:
         locale = db_guild.language
 
         spawned_for = datetime.timedelta(seconds=self.spawned_for)
-        spawned_for_str = format_timedelta(spawned_for, locale=locale)
+        if locale.startswith("ru"):
+            spawned_for_str = format_timedelta(spawned_for, locale=locale, format="short")
+        else:
+            spawned_for_str = format_timedelta(spawned_for, locale=locale)
 
         total_ducks_killed = sum(db_killer.killed.values())
         this_ducks_killed = db_killer.killed.get(self.category)
