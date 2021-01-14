@@ -239,7 +239,7 @@ class Duck:
         if locale.startswith("ru"):
             spawned_for_str = format_timedelta(spawned_for, locale=locale, format="short")
         else:
-            spawned_for_str = format_timedelta(spawned_for, locale=locale)
+            spawned_for_str = format_timedelta(spawned_for, locale=locale, threshold=1.20)
 
         total_ducks_killed = sum(db_killer.killed.values())
         this_ducks_killed = db_killer.killed.get(self.category)
