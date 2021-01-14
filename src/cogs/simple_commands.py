@@ -206,7 +206,9 @@ class SimpleCommands(Cog):
         """
         For when you misspell the pan command.
         """
-        await ctx.reply("You don't have to go right now")
+        _ = await ctx.get_translate_function()
+
+        await ctx.reply(_("You don't have to go right now"))
 
     @commands.command(hidden=True)
     @checks.channel_enabled()
