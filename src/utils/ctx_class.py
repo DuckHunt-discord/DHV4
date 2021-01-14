@@ -8,7 +8,7 @@ from discord.errors import InvalidArgument
 from discord.ext import commands
 
 from utils.models import get_from_db
-from utils.translations import translate, ntranslate
+from utils.translations import translate
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
@@ -109,10 +109,6 @@ class MyContext(commands.Context):
         language_code = await self.get_language_code()
         return translate(message, language_code)
 
-    async def ntranslate(self, singular, plural, n):
-        language_code = await self.get_language_code()
-        return ntranslate(singular, plural, n, language_code)
-
     async def get_translate_function(self, user_language=False):
         language_code = await self.get_language_code(user_language=user_language)
 
@@ -127,26 +123,6 @@ class MyContext(commands.Context):
             return formatted_message
 
         return _
-
-    async def get_ntranslate_function(self, user_language=False):
-        language_code = await self.get_language_code(user_language=user_language)
-
-        def ngettext(singular, plural, n, **kwargs):
-            kwargs = {'ctx': self, "n": n, **kwargs}
-            translated_message = ntranslate(singular, plural, n, language_code)
-            try:
-                formatted_message = translated_message.format(**kwargs)
-            except KeyError:
-                if n > 1:
-                    self.logger.exception(f"Error formatting message (n={n}) {plural} // {translated_message}")
-                    formatted_message = plural.format(**kwargs)
-                else:
-                    self.logger.exception(f"Error formatting message (n={n}) {singular} // {translated_message}")
-                    formatted_message = singular.format(**kwargs)
-
-            return formatted_message
-
-        return ngettext
 
     async def is_channel_enabled(self):
         db_channel = await get_from_db(self.channel)

@@ -28,10 +28,6 @@ def translate(message, language_code):
     return get_translation(language_code).gettext(message)
 
 
-def ntranslate(singular, plural, n, language_code):
-    return get_translation(language_code).ngettext(singular, plural, n)
-
-
 def fake_translation(message, language_code=None):
     return message
 
