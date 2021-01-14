@@ -54,7 +54,7 @@ class DucksHuntingCommands(Cog):
             await db_hunter.save()
 
             td = get_timedelta(db_hunter.active_powerups['wet'], now)
-            await ctx.reply(_("🚰 Dude... Your clothes are wet, at least dry them (for **{time_delta}**) or something, or buy new ones (`{ctx.prefix}shop clothes`)",
+            await ctx.reply(_("🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) or something, or buy new ones (`{ctx.prefix}shop clothes`)",
                               ctx=ctx,
                               time_delta=format_timedelta(td, locale=language_code)))
             return False
@@ -63,7 +63,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_when_confiscated'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("⛔️ Dude... Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
+            await ctx.reply(_("⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
                               ctx=ctx))
             return False
 
@@ -317,7 +317,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("Dude... You don't have a weapon, it has been confiscated. "
+            await ctx.reply(_("Huh... You don't have a weapon, it has been confiscated. "
                               "Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
                               ctx=ctx))
             return False
