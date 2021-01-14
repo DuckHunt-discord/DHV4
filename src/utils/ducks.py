@@ -968,7 +968,6 @@ class NightDuck(Duck):
     """
     category = _('night')
 
-
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
         return ngettext("of which {this_ducks_killed} is a night duck",
