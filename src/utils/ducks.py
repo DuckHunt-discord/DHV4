@@ -259,47 +259,29 @@ class Duck:
         if bonus_experience:
             normal_exp = won_experience - bonus_experience
 
-            return ngettext(
+            return _(
                 "{killer.mention} killed the duck in {spawned_for_str}, "
                 "for a total of {total_ducks_killed} "
                 "({ncategory_killed}) "
                 "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
-
-                "{killer.mention} killed the duck in {spawned_for_str}, "
-                "for a total of {total_ducks_killed} "
-                "({ncategory_killed}) "
-                "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
-
-                this_ducks_killed,
-
                 killer=killer,
                 normal_exp=normal_exp,
                 bonus_experience=bonus_experience,
                 spawned_for_str=spawned_for_str,
                 total_ducks_killed=total_ducks_killed,
                 ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
-                category=_(self.category),
             )
         else:
-            return ngettext(
+            return _(
                 "{killer.mention} killed the duck in {spawned_for_str}, "
                 "for a total of {total_ducks_killed} "
                 "({ncategory_killed}) "
                 "[**Killed**: {normal_exp} exp]",
-
-                "{killer.mention} killed the duck in {spawned_for_str}, "
-                "for a total of {total_ducks_killed} "
-                "({ncategory_killed}) "
-                "[**Killed**: {normal_exp} exp]",
-
-                this_ducks_killed,
-
                 killer=killer,
                 normal_exp=won_experience,
                 spawned_for_str=spawned_for_str,
                 total_ducks_killed=total_ducks_killed,
                 ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
-                category=_(self.category),
             )
 
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
