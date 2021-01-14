@@ -189,6 +189,10 @@ class DucksSpawning(Cog):
         self.bot.logger.info(f"Waiting for ready-ness to planify duck spawns...")
 
         await self.bot.wait_until_ready()
+        # Wait 5 seconds because discord.py can send the ready event a little bit too early
+        await asyncio.sleep(5)
+        # Then try again to make sure we are still good.
+        await self.bot.wait_until_ready()
 
         self.bot.logger.info(f"Restoring ducks from cache...")
 
