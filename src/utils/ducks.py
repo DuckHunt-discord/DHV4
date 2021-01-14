@@ -25,11 +25,15 @@ HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
 
+def _(s):
+    return s
+
+
 class Duck:
     """
     The standard duck. Kill it with the pan command
     """
-    category = 'normal'
+    category = _('normal')
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
     use_bonus_exp = True
     leave_on_hug = False
@@ -266,20 +270,29 @@ class Duck:
                 spawned_for_str=spawned_for_str,
                 total_ducks_killed=total_ducks_killed,
                 this_ducks_killed=this_ducks_killed,
-                category=self.category,
+                category=_(self.category),
             )
         else:
-            return _("{killer.mention} killed the duck in {spawned_for_str}, "
-                     "for a total of {total_ducks_killed} "
-                     "(of which {this_ducks_killed} are {category}-ducks) "
-                     "[**Killed**: +{won_experience} exp]",
-                     killer=killer,
-                     won_experience=won_experience,
-                     spawned_for_str=spawned_for_str,
-                     total_ducks_killed=total_ducks_killed,
-                     this_ducks_killed=this_ducks_killed,
-                     category=self.category,
-                     )
+            return ngettext(
+                "{killer.mention} killed the duck in {spawned_for_str}, "
+                "for a total of {total_ducks_killed} "
+                "(of which {this_ducks_killed} is a {category} duck) "
+                "[**Killed**: {normal_exp} exp]",
+
+                "{killer.mention} killed the duck in {spawned_for_str}, "
+                "for a total of {total_ducks_killed} "
+                "(of which {this_ducks_killed} are {category} ducks) "
+                "[**Killed**: {normal_exp} exp]",
+
+                this_ducks_killed,
+
+                killer=killer,
+                normal_exp=won_experience,
+                spawned_for_str=spawned_for_str,
+                total_ducks_killed=total_ducks_killed,
+                this_ducks_killed=this_ducks_killed,
+                category=_(self.category),
+            )
 
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
         _ = await self.get_translate_function()
@@ -300,7 +313,7 @@ class Duck:
                 damage=damage,
                 lives_left=lives_left,
                 total_lives=total_lives,
-                )
+            )
         else:
             return _("{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
                      hurter=hurter,
@@ -324,7 +337,7 @@ class Duck:
                 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [**FAIL**: {experience} exp]",
                 hugger=hugger,
                 experience=experience,
-                )
+            )
 
     async def get_left_message(self) -> str:
         trace = await self.get_bye_trace()
@@ -612,7 +625,7 @@ class GhostDuck(Duck):
     """
     A rare duck that does *not* say anything when it spawns.
     """
-    category = 'ghost'
+    category = _('ghost')
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
 
     async def spawn(self, loud=True):
@@ -629,7 +642,7 @@ class PrDuck(Duck):
     """
     Duck that will ask a simple math question to be killed
     """
-    category = 'prof'
+    category = _('prof')
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
@@ -688,7 +701,7 @@ class BabyDuck(Duck):
     """
     A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
     """
-    category = 'baby'
+    category = _('baby')
     leave_on_hug = True
     use_bonus_exp = False
 
@@ -708,7 +721,7 @@ class GoldenDuck(Duck):
     """
     Duck worth twice the usual experience
     """
-    category = 'golden'
+    category = _('golden')
 
     async def get_exp_value(self):
         return await super().get_exp_value() * 2
@@ -718,7 +731,7 @@ class PlasticDuck(Duck):
     """
     Worthless duck (half the exp)
     """
-    category = 'plastic'
+    category = _('plastic')
 
     async def get_exp_value(self):
         return round(await super().get_exp_value() * 0.5)
@@ -728,7 +741,7 @@ class KamikazeDuck(Duck):
     """
     This duck kills every other duck on the channel when leaving
     """
-    category = 'kamikaze'
+    category = _('kamikaze')
 
     async def leave(self):
         await self.send(await self.get_left_message())
@@ -739,7 +752,7 @@ class MechanicalDuck(Duck):
     """
     This duck is not really a duck...
     """
-    category = 'mechanical'
+    category = _('mechanical')
     fake = True
     use_bonus_exp = False
 
@@ -789,7 +802,7 @@ class SuperDuck(Duck):
     """
     A duck with many lives to spare.
     """
-    category = 'super'
+    category = _('super')
 
     def __init__(self, *args, lives: int = None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -812,7 +825,7 @@ class MotherOfAllDucks(SuperDuck):
     """
     This duck will spawn two more when she dies.
     """
-    category = 'moad'
+    category = _('moad')
 
     async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         for i in range(2):
@@ -827,7 +840,7 @@ class ArmoredDuck(SuperDuck):
     """
     This duck will resist a damage of 1.
     """
-    category = 'armored'
+    category = _('armored')
 
     async def get_damage(self):
         if self.bot.current_event == Events.UN_TREATY:
@@ -852,7 +865,7 @@ class ArmoredDuck(SuperDuck):
                 damage=damage,
                 lives_left=lives_left,
                 total_lives=total_lives,
-                )
+            )
         else:
             return _("{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -{damage}]",
                      hurter=hurter,
@@ -863,14 +876,14 @@ class NightDuck(Duck):
     """
     A normal duck that only spawns at night.
     """
-    category = 'night'
+    category = _('night')
 
 
 class SleepingDuck(Duck):
     """
     An un-miss-able duck that you can only shot at night
     """
-    category = "sleeping"
+    category = _('sleeping')
 
     async def get_accuracy(self, base_accuracy) -> int:
         return 100
@@ -973,3 +986,6 @@ async def compute_sun_state(channel, seconds_spent_today=None):
             time_left_sun = night_start_at - seconds_spent_today
 
     return sun, duration_of_night, time_left_sun
+
+
+del _
