@@ -56,9 +56,11 @@ normal = {
               "/_O{", "/_o{", "/_Õ{", "/_õ{", "/_Ô{", "/_ô{", "/_Ö{", "/_ö{", "/_Ø{", "/_ø{", "/_Ò{", "/_ò{", "/_Ó{", "/_ó{", "/_0{", "/_©{", "/_@{", "/_^{", "§_O{", "§_o{",
               "§_Õ{", "§_õ{", "§_Ô{", "§_ô{", "§_Ö{", "§_ö{", "§_Ø{", "§_ø{", "§_Ò{", "§_ò{", "§_Ó{", "§_ó{", "§_0{", "§_©{", "§_@{", "§_º{", "§_°{", "§_^{"],
     'emojis': [DUCKS_EMOJIS['normal'], DUCKS_EMOJIS['right_side_duck']],
-    'shouts': ["KWAK", "KWAK", "KWAAK", "KWAAK", "KWAAAK", "KWAAAK", "COUAK", "COUAK", "COUAAK", "COUAAK", "COUAAAK", "COUAAAK", "QUAK",
-               "QUAK", "QUAAK", "QUAAK", "QUAAAK", "QUAAAK", "QUACK", "QUACK", "QUAACK", "QUAACK", "QUAAACK", "QUAAACK", "COUAC", "COUAC", "COUAAC", "COUAAC", "COUAAAC", "COUAAAC",
-               "COUACK", "COUACK", _("*cries*"), _("Hello world"), _("How are you today?"), _("Please don't kill me..."), "<https://youtu.be/r8EBoX9iUw4?t=25>",
+    'shouts': [_("KWAK"), _("KWAK"), _("KWAAK"), _("KWAAK"), _("KWAAAK"), _("KWAAAK"), _("COUAK"), _("COUAK"), _("COUAAK"), _("COUAAK"), _("COUAAAK"), _("COUAAAK"), _("QUAK"),
+               _("QUAK"), _("QUAAK"), _("QUAAK"), _("QUAAAK"), _("QUAAAK"), _("QUACK"), _("QUACK"), _("QUAACK"), _("QUAACK"), _("QUAAACK"), _("QUAAACK"), _("COUAC"), _("COUAC"), _("COUAAC"), _("COUAAC"), _("COUAAAC"), _("COUAAAC"),
+               _("COUACK"), _("COUACK"),
+
+               _("*cries*"), _("Hello world"), _("How are you today?"), _("Please don't kill me..."), "<https://youtu.be/r8EBoX9iUw4?t=25>",
                _("I love you too!"), _("Don't shoot me! I'm a fake duck!"), "<https://youtu.be/_0AAbWqxIs8>",
                _("**Duck fact**: Some ducks can fly up to 332 miles in a single day!"), _("**Duck fact**: The feathers on a ducks back are waterproof."),
                _("**Duck fact**: Ducks have three eyelids!"),
@@ -104,21 +106,21 @@ prof = {**normal,
         }
 
 baby = {**normal,
-        'shouts': ["**COIN**", "**COIN**", "**COIN**", "**Piou** ?", "**Coin** ?", "**Coin**!", "**COIIIIIINNNNNN**!"],
+        'shouts': [_("**COIN**"), _("**COIN**"), _("**COIN**"), _("**Piou** ?"), _("**Coin** ?"), _("**Coin**!"), _("**COIIIIIINNNNNN**!")],
         'usernames': [_("Smol Duck"), _("Mini Duck"), _("Ducky"), _("Duckie")],
         'avatar_urls': [DUCKS_IMAGES['baby']],
         'emojis': [DUCKS_EMOJIS['baby'], DUCKS_EMOJIS['baby_unicode']],
         }
 
 golden = {**normal,
-          'shouts': ["€!", "$!", "£!", _("Free money !"), _("It's free money")],
+          'shouts': ["€!", "$!", _("£!"), _("Free money !"), _("It's free money")],
           'usernames': [_("Golden Duck"), _("Golden Goose"), _("Shiny Duck"), _("Rich Duck")],
           'avatar_urls': [DUCKS_IMAGES['golden']],
           'emojis': [DUCKS_EMOJIS['golden']]
           }
 
 plastic = {**normal,
-           'shouts': ["€?", "$?", "£?", _("Have any money ?"), _("It's paid money")],
+           'shouts': ["€?", "$?", _("£?"), _("Have any money ?"), _("It's paid money")],
            'usernames': [_("Plastic Duck"), _("Poor Duck"), _("Slimey Duck")],
            'avatar_urls': [DUCKS_IMAGES['plastic']],
            'emojis': [DUCKS_EMOJIS['plastic']]
@@ -170,7 +172,7 @@ night = {
 
 sleeping = {
     **night,
-    'shouts': ["💤", "ZzZzZz"],
+    'shouts': ["💤", _("ZzZzZz")],
 }
 
 
