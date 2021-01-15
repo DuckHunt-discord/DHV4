@@ -63,7 +63,6 @@ class SettingsCommands(Cog):
 
         COPY_FIELDS = db_defaults._meta.fields.copy() - EXCLUDE
 
-        # TODO: Maybe use an exclude instead just like in channel.serialize()
         for field_name in COPY_FIELDS:
             setattr(db_channel, field_name, getattr(db_defaults, field_name))
 
