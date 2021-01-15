@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-14 17:14+0100\n"
+"POT-Creation-Date: 2021-01-15 10:38+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2169,23 +2169,23 @@ msgstr ""
 msgid "{target.name} statistics."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:386
+#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:387
 msgid "Bullets"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:389
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:390
 msgid "Magazines"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:372
+#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:373
 msgid "Experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:373
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:374
 msgid "Level"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:378
+#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:379
 msgid "Accuracy"
 msgstr ""
 
@@ -2195,7 +2195,7 @@ msgstr ""
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:382
+#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:383
 msgid "Reliability"
 msgstr ""
 
@@ -2558,35 +2558,43 @@ msgstr ""
 msgid "Use more than 1000 bullets."
 msgstr ""
 
-#: ../utils/achievements.py:54
-msgid "You monster"
+#: ../utils/achievements.py:52
+msgid "Homing kills (you)"
 msgstr ""
 
-#: ../utils/achievements.py:55
-msgid "Kill a MOAD that spawns a baby duck."
+#: ../utils/achievements.py:53
+msgid "Use the homing projectiles."
 msgstr ""
 
 #: ../utils/achievements.py:58
-msgid "Gun insurer"
+msgid "You monster"
 msgstr ""
 
 #: ../utils/achievements.py:59
-msgid "Give at least 30 exp to an hunter that lost his gun."
+msgid "Kill a MOAD that spawns a baby duck."
 msgstr ""
 
 #: ../utils/achievements.py:62
-msgid "Short memory"
+msgid "Gun insurer"
 msgstr ""
 
 #: ../utils/achievements.py:63
-msgid "Shoot at your own mechanical duck."
+msgid "Give at least 30 exp to an hunter that lost his gun."
 msgstr ""
 
 #: ../utils/achievements.py:66
-msgid "An ounce of prevention is worth a pound of cure"
+msgid "Short memory"
 msgstr ""
 
 #: ../utils/achievements.py:67
+msgid "Shoot at your own mechanical duck."
+msgstr ""
+
+#: ../utils/achievements.py:70
+msgid "An ounce of prevention is worth a pound of cure"
+msgstr ""
+
+#: ../utils/achievements.py:71
 msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
@@ -3682,10 +3690,10 @@ msgstr ""
 msgid "Can't set such a high level"
 msgstr ""
 
-#: ../utils/models.py:394
+#: ../utils/models.py:395
 msgid "You leveled up!"
 msgstr ""
 
-#: ../utils/models.py:398
+#: ../utils/models.py:399
 msgid "You leveled down!"
 msgstr ""

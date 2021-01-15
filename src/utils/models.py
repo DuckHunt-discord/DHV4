@@ -317,6 +317,7 @@ class Player(Model):
             'maths': self.killed.get('prof', 0) >= 5,
             'brains': self.shooting_stats.get('brains_eaten', 0) >= 5,
             'sentry_gun': self.shooting_stats.get('bullets_used', 0) >= 1000,
+            'homing_killed': self.shooting_stats.get('homing_kills', 0) >= 1,
         }
 
     @property
