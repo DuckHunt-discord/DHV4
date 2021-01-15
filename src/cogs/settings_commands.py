@@ -360,8 +360,6 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("☢ There will be very big ducks on this channel 🍀.", ))
 
-
-
     # Guild settings #
 
     @settings.command()
