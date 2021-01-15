@@ -404,6 +404,7 @@ class SettingsCommands(Cog):
         """
         db_guild = await get_from_db(ctx.guild)
 
+        # FIXME: This seems wrong
         if language_code == "zh-Hans":
             locale_data = Locale.parse("zh")
         elif language_code:
