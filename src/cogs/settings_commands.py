@@ -54,8 +54,8 @@ class SettingsCommands(Cog):
             await ctx.send_help(ctx.command)
 
     # Templates #
-    async def set_default(self, db_channel):
-        db_defaults = DiscordChannel(discord_id=db_channel.id, name=db_channel.name,
+    async def set_default(self, db_channel: DiscordChannel):
+        db_defaults = DiscordChannel(discord_id=db_channel.discord_id, name=db_channel.name,
                                      guild=db_channel.guild)
 
         EXCLUDE = {"discord_id", "first_seen", "guild", "name", "webhook_urls", "api_key", "use_webhooks",
