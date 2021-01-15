@@ -458,10 +458,10 @@ class StatisticsCommands(Cog):
 
         await ctx.send(_("{target.name}#{target.discriminator} data was deleted from this channel.", target=target))
 
-    @commands.command()
+    @commands.command(aliases=["remove_all_scores_and_stats_on_this_channel"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     @checks.channel_enabled()
-    async def remove_all_scores_and_stats_on_this_channel(self, ctx: MyContext):
+    async def remove_all_scores_stats(self, ctx: MyContext):
         """
         Delete scores for all users on this channel.
 
