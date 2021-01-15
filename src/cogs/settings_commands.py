@@ -24,7 +24,7 @@ from utils.ctx_class import MyContext
 from utils.ducks import compute_sun_state
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
-from utils.models import get_from_db, DiscordMember
+from utils.models import get_from_db, DiscordMember, DiscordChannel
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -54,6 +54,32 @@ class SettingsCommands(Cog):
             await ctx.send_help(ctx.command)
 
     # Templates #
+    async def set_default(self, db_channel):
+        db_defaults = DiscordChannel(discord_id=db_channel.id, name=db_channel.name,
+                                     guild=db_channel.guild)
+
+        EXCLUDE = {"discord_id", "first_seen", "guild", "name", "webhook_urls", "api_key", "use_webhooks",
+                   "use_emojis", "enabled"}
+
+        COPY_FIELDS = self._meta.fields.copy() - EXCLUDE
+
+        # TODO: Maybe use an exclude instead just like in channel.serialize()
+        for field_name in COPY_FIELDS:
+            setattr(db_channel, field_name, getattr(db_defaults, field_name))
+
+    @templates.command(aliases=["reset"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def default(self, ctx: MyContext):
+        """
+        Restore default settings for DuckHunt V4.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+        await self.set_default(db_channel)
+
+        await db_channel.save()
+
+        await ctx.send(_("Defaults settings have been restored.", ))
 
     @templates.command(aliases=["dhv3", "version3", "old"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
@@ -63,6 +89,8 @@ class SettingsCommands(Cog):
         """
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
 
         db_channel.use_webhooks = False
 
@@ -103,6 +131,8 @@ class SettingsCommands(Cog):
         """
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
 
         db_channel.use_webhooks = True
         db_channel.use_emojis = True
@@ -153,6 +183,8 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
+        await self.set_default(db_channel)
+
         db_channel.tax_on_user_send = 15
         db_channel.show_duck_lives = False
 
@@ -184,6 +216,151 @@ class SettingsCommands(Cog):
         await db_channel.save()
 
         await ctx.send(_("Hardcore mode settings have been applied to this channel.", ))
+
+    @templates.command(aliases=["haunted_house", "👻"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def haunted(self, ctx: MyContext):
+        """
+        Haunted house gamemode.
+
+        There will be almost only ghost ducks.
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.spawn_weight_normal_ducks = 1
+        db_channel.spawn_weight_super_ducks = 1
+        db_channel.spawn_weight_baby_ducks = 1
+        db_channel.spawn_weight_prof_ducks = 1
+        db_channel.spawn_weight_ghost_ducks = 100
+        db_channel.spawn_weight_moad_ducks = 1
+        db_channel.spawn_weight_mechanical_ducks = 1
+        db_channel.spawn_weight_armored_ducks = 1
+        db_channel.spawn_weight_golden_ducks = 1
+        db_channel.spawn_weight_plastic_ducks = 1
+        db_channel.spawn_weight_kamikaze_ducks = 1
+
+        await db_channel.save()
+
+        await ctx.send(_("👻 Haunted House settings have been applied to this channel.", ))
+
+    @templates.command(aliases=["robots_fest", "🤖"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def robots(self, ctx: MyContext):
+        """
+        Robots fest gamemode.
+
+        A lot of wild mechanical ducks will spawn in the channel.
+        This actually just set spawn_weight_mechanical_ducks to 100.
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.spawn_weight_mechanical_ducks = 100
+
+        await db_channel.save()
+
+        await ctx.send(_("🤖 Robot fest settings have been applied to this channel.", ))
+
+    @templates.command(aliases=["🐙"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def hydra(self, ctx: MyContext):
+        """
+        Hydra gamemode.
+
+        A lot of MOADs will spawn in the channel, and they'll make MOADs spawn too.
+        This actually just set spawn_weight_moad_ducks to 300.
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.spawn_weight_moad_ducks = 300
+
+        await db_channel.save()
+
+        await ctx.send(_("🐙 Hydra settings have been applied to this channel.", ))
+
+    @templates.command(aliases=["nuclear_radiation", "irradiation", "radiation", "radioactive", "☢️", "🍀"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def nuclear(self, ctx: MyContext):
+        """
+        Nuclear Radiation gamemode.
+
+        This make clovers be able to give negative experience too !
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.clover_min_experience = -20
+        db_channel.clover_max_experience = 20
+
+        await db_channel.save()
+
+        await ctx.send(_("☢ Nuclear radiation settings have been applied to this channel 🍀.", ))
+
+    @templates.command(aliases=["reverse", "◀️"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def australia(self, ctx: MyContext):
+        """
+        Australia (reverse) gamemode.
+
+        Babies must be killed but not the others !
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.base_duck_exp = - abs(db_channel.base_duck_exp)
+        db_channel.per_life_exp = - abs(db_channel.per_life_exp)
+        db_channel.spawn_weight_baby_ducks = db_channel.spawn_weight_normal_ducks
+        db_channel.spawn_weight_normal_ducks = db_channel.spawn_weight_baby_ducks
+
+        await db_channel.save()
+
+        await ctx.send(_("Australia settings have been applied to this channel.", ))
+
+    @templates.command(aliases=["VBD"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def very_big_ducks(self, ctx: MyContext):
+        """
+        Very Big Ducks gamemode.
+
+        Super ducks have tons of life !
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.super_ducks_min_life *= 2
+        db_channel.super_ducks_max_life *= 4
+
+        await db_channel.save()
+
+        await ctx.send(_("☢ There will be very big ducks on this channel 🍀.", ))
+
+
 
     # Guild settings #
 
