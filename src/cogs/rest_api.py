@@ -248,7 +248,7 @@ class RestAPI(Cog):
         latencies = sorted(self.bot.latencies, key=lambda l: l[0])  # Sort by shard n°
 
         guilds_by_shard = defaultdict(list)
-        for guild in sorted(self.bot.guilds, key=lambda g: -g.member_count):
+        for guild in sorted(self.bot.available_guilds, key=lambda g: -g.member_count):
             guilds_by_shard[guild.shard_id].append({"id": guild.id, "name": guild.name, "members": guild.member_count})
 
         for shard, latency in latencies:
@@ -277,7 +277,7 @@ class RestAPI(Cog):
         """
 
         try:
-            total_members = sum((g.member_count for g in self.bot.guilds))
+            total_members = sum((g.member_count for g in self.bot.available_guilds))
         except:
             self.bot.logger.exception("Couldn't get total member count.")
             total_members = 0
@@ -286,7 +286,7 @@ class RestAPI(Cog):
             {
                 "members_count": total_members,
                 "guilds_count": len(self.bot.guilds),
-                "channels_count": sum((len(g.channels) for g in self.bot.guilds)),
+                "channels_count": sum((len(g.channels) for g in self.bot.available_guilds)),
                 "players_count": await Player.all().count(),
                 "alive_ducks_count": sum(len(v) for v in self.bot.ducks_spawned.values()),
                 "uptime": int(self.bot.uptime.timestamp()),

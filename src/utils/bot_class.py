@@ -7,6 +7,7 @@ import aiohttp
 import discord
 import typing
 
+from discord import Guild
 from discord.ext.commands import MaxConcurrency, BucketType
 from discord.ext.commands.bot import AutoShardedBot
 from discord.ext import commands
@@ -50,6 +51,11 @@ class MyBot(AutoShardedBot):
             return self._client_session
         else:
             raise RuntimeError("The bot haven't been setup yet. Ensure you call bot.async_setup asap.")
+
+    @property
+    def available_guilds(self) -> typing.Iterable[Guild]:
+        return filter(lambda g: g.available, self.guilds)
+
 
     def reload_config(self):
         self.config = config.load_config()
