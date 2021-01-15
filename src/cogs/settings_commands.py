@@ -58,7 +58,7 @@ class SettingsCommands(Cog):
         db_defaults = DiscordChannel(discord_id=db_channel.discord_id, name=db_channel.name,
                                      guild=await db_channel.guild)
 
-        EXCLUDE = {"discord_id", "first_seen", "guild", "name", "webhook_urls", "api_key", "use_webhooks",
+        EXCLUDE = {"discord_id", "first_seen", "guild", "guild_id", "playerss", "name", "webhook_urls", "api_key", "use_webhooks",
                    "use_emojis", "enabled"}
 
         COPY_FIELDS = db_defaults._meta.fields.copy() - EXCLUDE
