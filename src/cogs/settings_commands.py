@@ -56,12 +56,12 @@ class SettingsCommands(Cog):
     # Templates #
     async def set_default(self, db_channel: DiscordChannel):
         db_defaults = DiscordChannel(discord_id=db_channel.discord_id, name=db_channel.name,
-                                     guild=db_channel.guild)
+                                     guild=await db_channel.guild)
 
         EXCLUDE = {"discord_id", "first_seen", "guild", "name", "webhook_urls", "api_key", "use_webhooks",
                    "use_emojis", "enabled"}
 
-        COPY_FIELDS = self._meta.fields.copy() - EXCLUDE
+        COPY_FIELDS = db_defaults._meta.fields.copy() - EXCLUDE
 
         # TODO: Maybe use an exclude instead just like in channel.serialize()
         for field_name in COPY_FIELDS:
