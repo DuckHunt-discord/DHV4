@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-14 17:14+0100\n"
+"POT-Creation-Date: 2021-01-15 10:38+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -2402,6 +2402,12 @@ msgstr "Torreta"
 
 msgid "Use more than 1000 bullets."
 msgstr "Usa más de 1000 balas."
+
+msgid "Homing kills (you)"
+msgstr ""
+
+msgid "Use the homing projectiles."
+msgstr ""
 
 msgid "You monster"
 msgstr "Monstruo.."
