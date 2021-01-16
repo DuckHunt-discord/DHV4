@@ -54,7 +54,7 @@ class MyBot(AutoShardedBot):
 
     @property
     def available_guilds(self) -> typing.Iterable[Guild]:
-        return filter(lambda g: g.available, self.guilds)
+        return filter(lambda g: not g.unavailable, self.guilds)
 
 
     def reload_config(self):
