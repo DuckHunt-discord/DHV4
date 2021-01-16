@@ -222,7 +222,7 @@ class SimpleCommands(Cog):
     @checks.channel_enabled()
     async def eyes(self, ctx: MyContext):
         """
-        Who doesn't needs eyes
+        Who doesn't need eyes
         """
         await ctx.reply("👀")
 
