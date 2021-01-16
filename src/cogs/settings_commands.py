@@ -313,7 +313,7 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("☢ Nuclear radiation settings have been applied to this channel 🍀.", ))
 
-    @templates.command(aliases=["reverse", "◀️"])
+    @templates.command(aliases=["reverse", "◀️", "🦘"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def australia(self, ctx: MyContext):
         """
@@ -335,7 +335,7 @@ class SettingsCommands(Cog):
 
         await db_channel.save()
 
-        await ctx.send(_("Australia settings have been applied to this channel.", ))
+        await ctx.send(_("🦘 Australia settings have been applied to this channel.", ))
 
     @templates.command(aliases=["VBD"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
