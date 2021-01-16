@@ -893,6 +893,11 @@ class MotherOfAllDucks(SuperDuck):
 
     async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         for i in range(2):
+            # Discord sucks
+            # When you send two messages (one after the other but close enough),
+            # they will be shown in the wrong order for *some*, but not all viewers of the channel.
+            # To fix that we sleep a bit before spawning ducks
+            await asyncio.sleep(.5)
             d = await spawn_random_weighted_duck(self.bot, self.channel)
             if d.category == "baby":
                 db_killer.stored_achievements['you_monster'] = True
