@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-15 22:29+0100\n"
+"POT-Creation-Date: 2021-01-16 01:16+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -630,6 +630,10 @@ msgid "For when you misspell the reload command."
 msgstr ""
 
 #: ../cogs/simple_commands.py:224
+msgid "Who doesn't needs eyes"
+msgstr ""
+
+#: ../cogs/simple_commands.py:232
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -2236,11 +2240,11 @@ msgstr ""
 msgid "You don't have to go right now"
 msgstr ""
 
-#: ../cogs/simple_commands.py:239
+#: ../cogs/simple_commands.py:247
 msgid "Current event: "
 msgstr ""
 
-#: ../cogs/simple_commands.py:244
+#: ../cogs/simple_commands.py:252
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
@@ -2686,15 +2690,15 @@ msgstr ""
 msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
-#: ../utils/bot_class.py:118
+#: ../utils/bot_class.py:124
 msgid "https://discord.gg/G4skWae"
 msgstr ""
 
-#: ../utils/bot_class.py:119
+#: ../utils/bot_class.py:125
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr ""
 
-#: ../utils/bot_class.py:110
+#: ../utils/bot_class.py:116
 #, python-brace-format
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "

@@ -218,6 +218,14 @@ class SimpleCommands(Cog):
         """
         await ctx.reply("🍞")
 
+    @commands.command(hidden=True)
+    @checks.channel_enabled()
+    async def eyes(self, ctx: MyContext):
+        """
+        Who doesn't needs eyes
+        """
+        await ctx.reply("👀")
+
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
     async def event(self, ctx: MyContext):
