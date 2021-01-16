@@ -59,7 +59,7 @@ class StatisticsCommands(Cog):
             target = ctx.author
 
         _ = await ctx.get_translate_function()
-        db_hunter: Player = await get_player(target, ctx.channel)
+        db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} statistics.", target=target))
@@ -350,7 +350,7 @@ class StatisticsCommands(Cog):
             target = ctx.author
 
         _ = await ctx.get_translate_function()
-        db_hunter: Player = await get_player(target, ctx.channel)
+        db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
         embed = discord.Embed(colour=discord.Color.blurple(),
                               title=_("{target.name} achievements.", target=target))

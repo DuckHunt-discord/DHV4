@@ -377,7 +377,7 @@ class DucksHuntingCommands(Cog):
             await ctx.reply(_("The bot is still starting up, please wait a minute and retry. Ducks haven't been lost."))
             return False
 
-        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
 
         if db_hunter.is_powerup_active("dead"):
             db_hunter.hugged['when_dead'] += 1
@@ -419,7 +419,7 @@ class DucksHuntingCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
 
         dead_times = db_hunter.active_powerups["dead"]
 
