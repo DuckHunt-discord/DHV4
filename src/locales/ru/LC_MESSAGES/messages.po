@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-15 21:28+0100\n"
+"POT-Creation-Date: 2021-01-16 01:16+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -718,6 +718,9 @@ msgstr "При неправильном вводе команды для про�
 
 msgid "For when you misspell the reload command."
 msgstr "При неправильном вводе команды для перезарядки оружия."
+
+msgid "Who doesn't needs eyes"
+msgstr "Кому не нужны глаза"
 
 msgid ""
 "See the current global event.\n"
@@ -1513,19 +1516,19 @@ msgstr ""
 ""
 
 msgid "🤖 Robot fest settings have been applied to this channel."
-msgstr ""
+msgstr "🤖 Применены настройки режима \"Фестиваль роботов\"."
 
 msgid "🐙 Hydra settings have been applied to this channel."
-msgstr ""
+msgstr "🐙 Применены настройки режима \"Гидра\"."
 
 msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
-msgstr ""
+msgstr "☢ Применены настройки режима \"Радиация\" 🍀."
 
 msgid "Australia settings have been applied to this channel."
-msgstr "Australia settings have been applied to this channel."
+msgstr "Применены настройки режима \"Австралия\"."
 
 msgid "There will be very big ducks on this channel."
-msgstr ""
+msgstr "На этом канале будут ну ооочень большие утки."
 
 msgid "The server prefix is set to `{prefix}`."
 msgstr "Префикс сервера - `{prefix}`."
@@ -2736,16 +2739,16 @@ msgid ""
 "{bonus_experience} **clover**]"
 msgstr ""
 "{killer.mention} убил(а) утку за {spawned_for_str}, всего "
-"{total_ducks_killed} класса ({ncategory_killed}) [**Утка убита**: "
-"{normal_exp} ед. опыта + {bonus_experience} **клевер**]"
+"{total_ducks_killed} ({ncategory_killed}) [**Утка убита**: {normal_exp} ед. "
+"опыта + {bonus_experience} **клевер**]"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
 msgstr ""
 "{killer.mention} убил(а) утку за {spawned_for_str}, всего "
-"{total_ducks_killed} класса ({ncategory_killed}) [**Утка убита**: "
-"{normal_exp} ед. опыта]"
+"{total_ducks_killed} ({ncategory_killed}) [**Утка убита**: {normal_exp} ед. "
+"опыта]"
 
 msgid "{hunter.mention} scared the duck away."
 msgstr "{hunter.mention} напугал(а) утку, и она улетела."
@@ -3018,10 +3021,10 @@ msgid "You can't aim for good..."
 msgstr "Мазила!.."
 
 msgid "The duck left."
-msgstr "Утиное право."
+msgstr "Утка взяла влево."
 
 msgid "The duck right."
-msgstr "Утиное лево."
+msgstr "Утка взяла вправо."
 
 msgid "STOP! It's not what you think!"
 msgstr "СТОП! Это не то, о чём вы подумали!"
@@ -3063,12 +3066,12 @@ msgstr ""
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
-"**Совет DuckHunt**: используйте оптику для повышения точности стрельбы на "
+"**Совет от DuckHunt**: используйте оптику для повышения точности стрельбы на "
 "более низких уровнях."
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr ""
-"**Совет DuckHunt**: используйте смазку для повышения отказоустойчивости "
+"**Совет от DuckHunt**: используйте смазку для повышения отказоустойчивости "
 "оружия."
 
 msgid "*Slurp*"
@@ -3337,7 +3340,8 @@ msgid "Mega-ducks"
 msgstr "Мега-утки"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
-msgstr "Кто-то откормил супер-утку, и теперь они ЕЩЁ БОЛЬШЕ!!!"
+msgstr ""
+"Кто-то подогнал супер-уткам много калорийной еды, и теперь они ЕЩЁ БОЛЬШЕ!!!"
 
 msgid "Windy weather"
 msgstr "Ветреная погода"

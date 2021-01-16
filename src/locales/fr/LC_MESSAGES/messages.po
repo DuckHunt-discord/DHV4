@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-15 21:28+0100\n"
+"POT-Creation-Date: 2021-01-16 01:16+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -729,6 +729,9 @@ msgstr "Pour quand tu écris mal la commande pan."
 
 msgid "For when you misspell the reload command."
 msgstr "Pour quand tu écris mal la commande reload."
+
+msgid "Who doesn't needs eyes"
+msgstr ""
 
 msgid ""
 "See the current global event.\n"
