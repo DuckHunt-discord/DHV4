@@ -349,15 +349,16 @@ class Duck:
                 try:
                     await webhook.send(content, **this_webhook_parameters, **kwargs)
                     return
-                except (discord.NotFound, discord.InvalidArgument):
+                except (discord.NotFound, discord.InvalidArgument) as e:
                     db_channel: DiscordChannel = await get_from_db(self.channel)
+                    self.bot.logger.warning(f"Removing webhook {webhook.url} on #{self.channel.name} on {self.channel.guild.id} from planification because {e}.")
                     db_channel.webhook_urls.remove(webhook.url)
+                    await db_channel.save()
                     try:
                         await self.channel.send(content, **kwargs)
                     except (discord.Forbidden, discord.NotFound):
                         self.bot.logger.warning(
-                            f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
-                        db_channel.enabled = False
+                            f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there {e}.")
                         try:
                             del self.bot.enabled_channels[self.channel]
                         except KeyError:
@@ -367,8 +368,6 @@ class Duck:
                         except KeyError:
                             pass
 
-                    await db_channel.save()
-
             asyncio.ensure_future(sendit())
             return
 
@@ -376,11 +375,8 @@ class Duck:
             try:
                 await self.channel.send(content, **kwargs)
             except (discord.Forbidden, discord.NotFound):
-                db_channel.enabled = False
                 self.bot.logger.warning(
-                    f"Removing #{self.channel.name} on {self.channel.guild.id} because I'm not allowed to send messages there.")
-                await db_channel.save()
-
+                    f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there.")
                 try:
                     del self.bot.enabled_channels[self.channel]
                 except KeyError:
