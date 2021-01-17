@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-16 01:16+0100\n"
+"POT-Creation-Date: 2021-01-16 12:18+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -682,7 +682,7 @@ msgstr ""
 msgid "For when you misspell the reload command."
 msgstr ""
 
-msgid "Who doesn't needs eyes"
+msgid "Who doesn't need eyes"
 msgstr ""
 
 msgid ""
@@ -1454,7 +1454,7 @@ msgstr ""
 msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
 msgstr ""
 
-msgid "Australia settings have been applied to this channel."
+msgid "🦘 Australia settings have been applied to this channel."
 msgstr ""
 
 msgid "There will be very big ducks on this channel."

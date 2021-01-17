@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-16 01:16+0100\n"
+"POT-Creation-Date: 2021-01-16 12:18+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -730,8 +730,8 @@ msgstr "Pour quand tu écris mal la commande pan."
 msgid "For when you misspell the reload command."
 msgstr "Pour quand tu écris mal la commande reload."
 
-msgid "Who doesn't needs eyes"
-msgstr ""
+msgid "Who doesn't need eyes"
+msgstr "Qui n'a pas besoin d'yeux"
 
 msgid ""
 "See the current global event.\n"
@@ -1076,7 +1076,7 @@ msgstr ""
 "weapon`)"
 
 msgid "☀️️ You unjam your weapon !"
-msgstr "☀️️ Tu débloques votre arme !"
+msgstr "☀️️ Tu débloques ton arme !"
 
 msgid ""
 "🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
@@ -1550,8 +1550,8 @@ msgstr ""
 "☢ Les paramètres de jeu \"radiation nucléaires\" ont été appliqués à ce "
 "canal 🍀."
 
-msgid "Australia settings have been applied to this channel."
-msgstr "Les paramètres de jeu \"Australie\" ont été appliqués à ce canal."
+msgid "🦘 Australia settings have been applied to this channel."
+msgstr "🦘 Les paramètres de jeu \"Australie\" ont été appliqués à ce canal."
 
 msgid "There will be very big ducks on this channel."
 msgstr ""
