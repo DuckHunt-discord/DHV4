@@ -23,7 +23,7 @@ msgid "Hug the duck that appeared first on the channel."
 msgstr "Объятие утки, которая появилась на канале первой."
 
 msgid "Revive yourself by eating brains"
-msgstr "Оживление путём поедания мозга."
+msgstr "Оживление посредством поедания мозга."
 
 msgid "Spawns a random duck"
 msgstr "Создаёт случайную утку."
@@ -720,7 +720,7 @@ msgid "For when you misspell the reload command."
 msgstr "При неправильном вводе команды для перезарядки оружия."
 
 msgid "Who doesn't need eyes"
-msgstr ""
+msgstr "Кому не нужны глаза"
 
 msgid ""
 "See the current global event.\n"
@@ -1525,7 +1525,7 @@ msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
 msgstr "☢ Применены настройки режима \"Радиация\" 🍀."
 
 msgid "🦘 Australia settings have been applied to this channel."
-msgstr ""
+msgstr "🦘 Применены настройки режима \"Австралия\"."
 
 msgid "There will be very big ducks on this channel."
 msgstr "На этом канале будут ну ооочень большие утки."
