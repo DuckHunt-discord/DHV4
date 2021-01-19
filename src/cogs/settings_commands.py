@@ -763,7 +763,8 @@ class SettingsCommands(Cog):
             db_channel.per_life_exp = value
             await db_channel.save()
 
-        await ctx.send(_("On {channel.mention}, when a hunter kills a duck, the experience given will be of {value}.",
+        await ctx.send(_("On {channel.mention}, when a hunter kills a super-duck, "
+                         "the experience given for every life the duck has will be of {value}.",
                          channel=ctx.channel,
                          value=db_channel.per_life_exp))
 
@@ -901,7 +902,7 @@ class SettingsCommands(Cog):
             db_channel.super_ducks_min_life = value
             await db_channel.save()
 
-        await ctx.send(_("On {channel.mention}, super ducks will get a minimum of {value} lives.",
+        await ctx.send(_("On {channel.mention}, super ducks will get a maximum of {value} lives.",
                          channel=ctx.channel,
                          value=db_channel.super_ducks_min_life))
 
