@@ -3137,7 +3137,7 @@ msgid "The duck chickened out."
 msgstr "Утка струсила."
 
 msgid "A duck"
-msgstr "Утка"
+msgstr "Просто утка"
 
 msgid "Mr. Duck"
 msgstr "Мистер Дак"
@@ -3197,16 +3197,16 @@ msgid "Free money !"
 msgstr "Халявные деньги!"
 
 msgid "It's free money"
-msgstr "Халявные деньги"
+msgstr "Халявное баблишко"
 
 msgid "Golden Duck"
 msgstr "Золотая утка"
 
 msgid "Golden Goose"
-msgstr "Золотой гусь"
+msgstr "Золотой гусяра"
 
 msgid "Shiny Duck"
-msgstr "Блестящая утка"
+msgstr "Навороченная утка"
 
 msgid "Rich Duck"
 msgstr "Богатая утка"
@@ -3263,16 +3263,16 @@ msgid "Strong Duck"
 msgstr "Утка-силач"
 
 msgid "Heavy Duck"
-msgstr "Сверхтяжёлая утка"
+msgstr "Утка-супертяжвес"
 
 msgid "**I am your mother...**"
-msgstr "**Я ваша мама...**"
+msgstr "**Ваша мама пришла...**"
 
 msgid "Ms. Duck"
 msgstr "Миссис Дак"
 
 msgid "Mom"
-msgstr "Мама"
+msgstr "Мамаша"
 
 msgid "Mommy"
 msgstr "Мамуля"
