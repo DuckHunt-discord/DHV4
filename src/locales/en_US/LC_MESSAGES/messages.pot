@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-19 13:59+0100\n"
+"POT-Creation-Date: 2021-01-21 13:32+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3308,215 +3308,251 @@ msgstr ""
 msgid "The duck chickened out."
 msgstr ""
 
+#: ../utils/ducks_config.py:84
+msgid "The duck went to the parallel universe"
+msgstr ""
+
+#: ../utils/ducks_config.py:84
+msgid "The duck teleported away from here"
+msgstr ""
+
+#: ../utils/ducks_config.py:85
+msgid "The duck went to look for a friend"
+msgstr ""
+
+#: ../utils/ducks_config.py:85
+msgid "The duck went to a better place"
+msgstr ""
+
+#: ../utils/ducks_config.py:85
+msgid "The duck went to a better party"
+msgstr ""
+
 #: ../utils/ducks_config.py:86
+msgid "The duck has some important business to take care of"
+msgstr ""
+
+#: ../utils/ducks_config.py:88
 msgid "A duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:86
+#: ../utils/ducks_config.py:88
 msgid "Mr. Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:86
+#: ../utils/ducks_config.py:88
 msgid "RealDuck"
 msgstr ""
 
-#: ../utils/ducks_config.py:96
+#: ../utils/ducks_config.py:98
 msgid "The ghost never appeared."
 msgstr ""
 
-#: ../utils/ducks_config.py:97
+#: ../utils/ducks_config.py:99
 msgid "Invisible Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:97
+#: ../utils/ducks_config.py:99
 msgid "Ghost Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:97
+#: ../utils/ducks_config.py:99
 msgid "Boooo Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:103
+#: ../utils/ducks_config.py:105
 msgid "Pr. Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:103
+#: ../utils/ducks_config.py:105
 msgid "EnsDuck"
 msgstr ""
 
-#: ../utils/ducks_config.py:109
+#: ../utils/ducks_config.py:111
 msgid "**COIN**"
 msgstr ""
 
-#: ../utils/ducks_config.py:109
+#: ../utils/ducks_config.py:111
 msgid "**Piou** ?"
 msgstr ""
 
-#: ../utils/ducks_config.py:109
+#: ../utils/ducks_config.py:111
 msgid "**Coin** ?"
 msgstr ""
 
-#: ../utils/ducks_config.py:109
+#: ../utils/ducks_config.py:111
 msgid "**Coin**!"
 msgstr ""
 
-#: ../utils/ducks_config.py:109
+#: ../utils/ducks_config.py:111
 msgid "**COIIIIIINNNNNN**!"
 msgstr ""
 
-#: ../utils/ducks_config.py:110
+#: ../utils/ducks_config.py:112
 msgid "Smol Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:110
+#: ../utils/ducks_config.py:112
 msgid "Mini Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:110
+#: ../utils/ducks_config.py:112
 msgid "Ducky"
 msgstr ""
 
-#: ../utils/ducks_config.py:110
+#: ../utils/ducks_config.py:112
 msgid "Duckie"
 msgstr ""
 
-#: ../utils/ducks_config.py:116
+#: ../utils/ducks_config.py:118
 msgid "£!"
 msgstr ""
 
-#: ../utils/ducks_config.py:116
+#: ../utils/ducks_config.py:118
 msgid "Free money !"
 msgstr ""
 
-#: ../utils/ducks_config.py:116
+#: ../utils/ducks_config.py:118
 msgid "It's free money"
 msgstr ""
 
-#: ../utils/ducks_config.py:117
+#: ../utils/ducks_config.py:119
 msgid "Golden Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:117
+#: ../utils/ducks_config.py:119
 msgid "Golden Goose"
 msgstr ""
 
-#: ../utils/ducks_config.py:117
+#: ../utils/ducks_config.py:119
 msgid "Shiny Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:117
+#: ../utils/ducks_config.py:119
 msgid "Rich Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:123
+#: ../utils/ducks_config.py:125
 msgid "£?"
 msgstr ""
 
-#: ../utils/ducks_config.py:123
+#: ../utils/ducks_config.py:125
 msgid "Have any money ?"
 msgstr ""
 
-#: ../utils/ducks_config.py:123
+#: ../utils/ducks_config.py:125
 msgid "It's paid money"
 msgstr ""
 
-#: ../utils/ducks_config.py:124
+#: ../utils/ducks_config.py:126
 msgid "Plastic Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:124
+#: ../utils/ducks_config.py:126
 msgid "Poor Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:124
+#: ../utils/ducks_config.py:126
 msgid "Slimey Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:130
+#: ../utils/ducks_config.py:132
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr ""
 
-#: ../utils/ducks_config.py:130
+#: ../utils/ducks_config.py:132
 msgid "Gonna kill y'all !"
 msgstr ""
 
-#: ../utils/ducks_config.py:131
+#: ../utils/ducks_config.py:133
 msgid "The Kamikaze Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:131
+#: ../utils/ducks_config.py:133
 msgid "Explosive Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:131
+#: ../utils/ducks_config.py:133
 msgid "Boom Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:131
+#: ../utils/ducks_config.py:133
 msgid "Dynamite Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:134
+#: ../utils/ducks_config.py:136
 msgid "The kamikaze duck exploded, killing every duck on the channel."
 msgstr ""
 
-#: ../utils/ducks_config.py:142
+#: ../utils/ducks_config.py:144
 msgid "Duck 2000"
 msgstr ""
 
-#: ../utils/ducks_config.py:142
+#: ../utils/ducks_config.py:144
 msgid "Omega Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:148
+#: ../utils/ducks_config.py:145
+msgid "BZZZZZAAAAK"
+msgstr ""
+
+#: ../utils/ducks_config.py:145
+msgid "BZAAAACK"
+msgstr ""
+
+#: ../utils/ducks_config.py:145
+msgid "BZAACK"
+msgstr ""
+
+#: ../utils/ducks_config.py:150
 msgid "Big Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:148
+#: ../utils/ducks_config.py:150
 msgid "Strong Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:148
+#: ../utils/ducks_config.py:150
 msgid "Heavy Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:155
+#: ../utils/ducks_config.py:157
 msgid "**I am your mother...**"
 msgstr ""
 
-#: ../utils/ducks_config.py:158
+#: ../utils/ducks_config.py:160
 msgid "Ms. Duck"
 msgstr ""
 
-#: ../utils/ducks_config.py:158
+#: ../utils/ducks_config.py:160
 msgid "Mom"
 msgstr ""
 
-#: ../utils/ducks_config.py:158
+#: ../utils/ducks_config.py:160
 msgid "Mommy"
 msgstr ""
 
-#: ../utils/ducks_config.py:158
+#: ../utils/ducks_config.py:160
 msgid "MOAD"
 msgstr ""
 
-#: ../utils/ducks_config.py:158
+#: ../utils/ducks_config.py:160
 msgid "Mooooom"
 msgstr ""
 
-#: ../utils/ducks_config.py:168
+#: ../utils/ducks_config.py:170
 msgid "*coin*"
 msgstr ""
 
-#: ../utils/ducks_config.py:168
+#: ../utils/ducks_config.py:170
 msgid "*Don't make a noise, it's nighttime*"
 msgstr ""
 
-#: ../utils/ducks_config.py:168
+#: ../utils/ducks_config.py:170
 msgid "*Shhhhh*"
 msgstr ""
 
-#: ../utils/ducks_config.py:175
+#: ../utils/ducks_config.py:177
 msgid "ZzZzZz"
 msgstr ""
 

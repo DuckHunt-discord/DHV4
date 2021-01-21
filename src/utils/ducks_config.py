@@ -81,7 +81,9 @@ normal = {
             _("The duck left."), _("The duck dissipated in space and time."), _("The duck left out of boredom."),
             _("The duck doesn't want to be sniped."), _("The duck walked up to the lemonade stand."),
             _("The duck flew over a disproportionately small gap."),
-            _("The duck chickened out.")],
+            _("The duck chickened out."), _("The duck went to the parallel universe"), _("The duck teleported away from here"),
+                   _("The duck went to look for a friend"), _("The duck went to a better place"), _("The duck went to a better party"),
+                   _("The duck has some important business to take care of")],
     'bye_traces': ["·°'`'°-.,¸¸.·°'`"],
     'usernames': [_("A duck"), _("Mr. Duck"), _("RealDuck")],
     'avatar_urls': [DUCKS_IMAGES['normal']],
@@ -140,7 +142,7 @@ mechanical = {
     'emojis': [DUCKS_EMOJIS['mechanical']],
     'avatar_urls': [DUCKS_IMAGES['mechanical']],
     'usernames': normal['usernames'] + [_("Duck 2000"), _("Omega Duck")],
-    'shouts': ["BZZZZZAAAAK", "BZAAAACK", "BZAACK"],
+    'shouts': [_("BZZZZZAAAAK"), _("BZAAAACK"), _("BZAACK")],
 }
 
 super = {
