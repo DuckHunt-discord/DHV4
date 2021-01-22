@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-19 13:59+0100\n"
+"POT-Creation-Date: 2021-01-21 13:32+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -3113,7 +3113,7 @@ msgid "The duck went away."
 msgstr "Утка уплыла."
 
 msgid "The duck went to another world."
-msgstr "Утка отправилась в параллельный мир."
+msgstr "Утка удирает в сторону заповедника."
 
 msgid "The duck didn't have time for this."
 msgstr "У утки нет на это времени."
@@ -3131,10 +3131,28 @@ msgid "The duck walked up to the lemonade stand."
 msgstr "Утка отправилась в места хлебные."
 
 msgid "The duck flew over a disproportionately small gap."
-msgstr "Утка телепортировалась подальше отсюда."
+msgstr "Утку поглотила чёрная дыра."
 
 msgid "The duck chickened out."
 msgstr "Утка струсила."
+
+msgid "The duck went to the parallel universe"
+msgstr "Утка исследует параллельный мир."
+
+msgid "The duck teleported away from here"
+msgstr "Утка телепортировалась подальше отсюда."
+
+msgid "The duck went to look for a friend"
+msgstr "Утка отправилась на поиски друзей."
+
+msgid "The duck went to a better place"
+msgstr "Утка знает места и получше."
+
+msgid "The duck went to a better party"
+msgstr "Утка почистила пёрышки и улетела тусить."
+
+msgid "The duck has some important business to take care of"
+msgstr "У утки появились срочные дела."
 
 msgid "A duck"
 msgstr "Просто утка"
@@ -3255,6 +3273,15 @@ msgstr "Утка 2000"
 
 msgid "Omega Duck"
 msgstr "Омега утка"
+
+msgid "BZZZZZAAAAK"
+msgstr "БЗЗЗАААААК"
+
+msgid "BZAAAACK"
+msgstr "БЗАААААК"
+
+msgid "BZAACK"
+msgstr "БЗАААК"
 
 msgid "Big Duck"
 msgstr "Большая утка"

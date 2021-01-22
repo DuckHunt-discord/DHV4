@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-19 13:59+0100\n"
+"POT-Creation-Date: 2021-01-21 13:32+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -3202,6 +3202,24 @@ msgstr "Le canard s'est envolé vers un trou disproportionnément petit."
 msgid "The duck chickened out."
 msgstr "Le canard a pris peur."
 
+msgid "The duck went to the parallel universe"
+msgstr ""
+
+msgid "The duck teleported away from here"
+msgstr ""
+
+msgid "The duck went to look for a friend"
+msgstr ""
+
+msgid "The duck went to a better place"
+msgstr ""
+
+msgid "The duck went to a better party"
+msgstr ""
+
+msgid "The duck has some important business to take care of"
+msgstr ""
+
 msgid "A duck"
 msgstr "Un canard"
 
@@ -3322,6 +3340,15 @@ msgstr "Canard 2000"
 
 msgid "Omega Duck"
 msgstr "Omega-nard"
+
+msgid "BZZZZZAAAAK"
+msgstr ""
+
+msgid "BZAAAACK"
+msgstr ""
+
+msgid "BZAACK"
+msgstr ""
 
 msgid "Big Duck"
 msgstr "Gros canard"
