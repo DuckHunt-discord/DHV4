@@ -398,6 +398,13 @@ class DucksHuntingCommands(Cog):
                 return
 
         elif target:
+            if target.id == self.bot.user.id:
+                db_hunter.hugged['duckhunt'] += 1
+                await db_hunter.save()
+                await ctx.reply(_("{you.mention} hugged {other.mention}. "
+                                  "The developper of the bot is really happy that you are loving it.", you=ctx.author, other=target))
+                return
+
             db_hunter.hugged['players'] += 1
             await db_hunter.save()
             await ctx.reply(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
