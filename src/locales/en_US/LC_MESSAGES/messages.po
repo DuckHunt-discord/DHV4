@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-21 13:32+0100\n"
+"POT-Creation-Date: 2021-01-22 14:48+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -29,7 +29,7 @@ msgstr "Reload your gun."
 msgid "Hug the duck that appeared first on the channel."
 msgstr "Hug the duck that appeared first on the channel."
 
-#: ../cogs/ducks_hunting_commands.py:417
+#: ../cogs/ducks_hunting_commands.py:424
 msgid "Revive yourself by eating brains"
 msgstr "Revive yourself by eating brains"
 
@@ -1252,20 +1252,29 @@ msgstr "❌ I have no idea what you want to hug..."
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 You hugged the tree... Thanks!"
 
-#: ../cogs/ducks_hunting_commands.py:403
+#: ../cogs/ducks_hunting_commands.py:404
+#, python-brace-format
+msgid ""
+"{you.mention} hugged {other.mention}. The developper of the bot is really "
+"happy that you are loving it."
+msgstr ""
+"{you.mention} hugged {other.mention}. The developper of the bot is really "
+"happy that you are loving it."
+
+#: ../cogs/ducks_hunting_commands.py:410
 #, python-brace-format
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr "{you.mention} hugged {other.mention}. They feel loved."
 
-#: ../cogs/ducks_hunting_commands.py:410
+#: ../cogs/ducks_hunting_commands.py:417
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr "What are you trying to hug, exactly? A tree?"
 
-#: ../cogs/ducks_hunting_commands.py:429
+#: ../cogs/ducks_hunting_commands.py:436
 msgid "You are already alive and well."
 msgstr "You are already alive and well."
 
-#: ../cogs/ducks_hunting_commands.py:439
+#: ../cogs/ducks_hunting_commands.py:446
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr "You eat {brains} 🧠 and regain consiousness."

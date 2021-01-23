@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "أطلق النار على البطة التي ظهرت أولاً في القناة."
 
 msgid "Reload your gun."
 msgstr ""
@@ -2353,125 +2353,112 @@ msgid "COUACK"
 msgstr ""
 
 msgid "*cries*"
-msgstr "*chora*"
+msgstr ""
 
 msgid "Hello world"
-msgstr "Olá mundo"
+msgstr ""
 
 msgid "How are you today?"
-msgstr "E aí, turu bom?"
+msgstr ""
 
 msgid "Please don't kill me..."
-msgstr "Por favor, não me mate..."
+msgstr ""
 
 msgid "I love you too!"
-msgstr "Te amo também!"
+msgstr ""
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr "Não atire em mim! Eu sou um pato falso!"
+msgstr ""
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
-"**Fato Patístico**: Alguns patos podem voar por mais de 322 milhas em apenas "
-"um dia!"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr "**Fato Patístico**: As penas nas costas dos patos são à prova d'água."
+msgstr ""
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr "**Fato Patístico**: Patos têm três pálpebras!"
+msgstr ""
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
-"**Fato Patístico**: Dependendo da espécie, um pato pode viver entre 2 e 12 "
-"anos. Não os patos que vivem nesse jogo, é claro..."
 
 msgid "I am invisible, don't bother killing me"
-msgstr "Eu estou invisível, não se incomode em me matar!"
+msgstr ""
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr "Quem é o filho da ████ que matou meu amigo?"
+msgstr ""
 
 msgid "You can't aim for good..."
-msgstr "A sua mira não é das melhores..."
+msgstr ""
 
 msgid "The duck left."
-msgstr "O pato à esquerda."
+msgstr ""
 
 msgid "The duck right."
-msgstr "O pato à direita."
+msgstr ""
 
 msgid "STOP! It's not what you think!"
-msgstr "PARE! Isso não é o que você está pensando!"
+msgstr ""
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr "Quem me matar vai perder 1562 pontos de experiência."
+msgstr ""
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
-"Eu tenho um plano secreto para matar todos os caçadores, mas eu já estou com "
-"falta de ar, acho que não vou conseguir te explicar tudo antes que..."
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr "[INSIRA UM GRITO DE PATO AQUI]"
+msgstr ""
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr ""
 
 msgid "It's rabbit season."
-msgstr "É temporada de caça ao coelho."
+msgstr ""
 
 msgid "Got a spare cape?"
-msgstr "Você tem uma jaqueta sobrando?"
+msgstr ""
 
 msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr ""
 
 msgid "I steal money. I'm a robber ducky."
-msgstr "Eu roubo dinheiro. Eu sou um patinho ladrão."
+msgstr ""
 
 msgid "I'm a very special duck."
-msgstr "Eu sou um pato muito especial."
+msgstr ""
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
-msgstr "**DuckHunt Dica de Pro®**: Use trevos para ganhar mais experiência."
+msgstr ""
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
-"**DuckHunt Dica de Pro®**: Use óculos de Sol para aumentar a sua precisão se "
-"quiser sair dos níveis iniciais. "
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr ""
-"**DuckHunt Dica de Pro®**: Use graxa para impedir que as suas armas travem."
 
 msgid "*Slurp*"
-msgstr "*Glub Glub*"
+msgstr ""
 
 msgid "Hopefully you are all AFK..."
-msgstr "Espero que todos vocês estejam dando um rolê..."
+msgstr ""
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
-"**DuckHunt Dica de Pro®**: Use detectores infra-vermelho para não atirar sem "
-"necessidade."
 
 msgid "I'm just doing my job..."
-msgstr "Eu estou apenas fazendo meu trabalho..."
+msgstr ""
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
 msgstr ""
-"Olá, aqui quem fala é o seguro de qualidade do DuckHunt. Como você avalia "
-"sua experiência matando patos até agora? "
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr "VoCê fOi CoRrOmPiDo."
+msgstr ""
 
 msgid "The duck went away."
 msgstr ""
@@ -2687,36 +2674,31 @@ msgid "ZzZzZz"
 msgstr ""
 
 msgid "Everything is calm"
-msgstr "Tudo está calmo."
+msgstr ""
 
 msgid "Nothing is happening right now."
-msgstr "Nada está acontecendo agora."
+msgstr ""
 
 msgid "Ducks are migrating"
-msgstr "Patos estão migrando."
+msgstr ""
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr "Prepare-se para ver mais patos na próxima hora."
+msgstr ""
 
 msgid "Steroids in the lake"
-msgstr "Esteróides no lago"
+msgstr ""
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
-"Uma empresa de resíduos médicos despejou esteróides no lago. Os patos "
-"sofreram mutações, e você verá muito mais super patos. Mas tenha cuidado e "
-"não beba essa água."
 
 msgid "Safety class canceled"
-msgstr "Aula de segurança cancelada"
+msgstr ""
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
-"A aula de segurança foi cancelada, cuidado para não atirar em outros "
-"caçadores!"
 
 msgid "Connection problem"
 msgstr ""
@@ -2727,24 +2709,21 @@ msgid ""
 msgstr ""
 
 msgid "A new florist in town"
-msgstr "Um novo florista na cidade"
+msgstr ""
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
-"Uma floricultura abriu na cidade, e você agora pode procurar trevos de "
-"quatro-folhas. Vá lá conferir."
 
 msgid "Mega-ducks"
-msgstr "Mega-patos"
+msgstr ""
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
 msgstr ""
-"Alguém inflou um super-pato, e agora seus filhos estão MUITO MAIORES!!"
 
 msgid "Windy weather"
-msgstr "Tempo ventoso"
+msgstr ""
 
 msgid "Bullets are deflected by some strong wind."
 msgstr ""
@@ -2767,133 +2746,133 @@ msgid "What are you doing ?"
 msgstr ""
 
 msgid "public danger"
-msgstr "perigo público"
+msgstr ""
 
 msgid "tourist"
-msgstr "turista"
+msgstr ""
 
 msgid "noob"
-msgstr "noob"
+msgstr ""
 
 msgid "trainee"
-msgstr "estagiário"
+msgstr ""
 
 msgid "duck misser"
-msgstr "errador de patos"
+msgstr ""
 
 msgid "member of the Comitee Against Ducks"
-msgstr "membro do Comitê Contra Patos"
+msgstr ""
 
 msgid "duck hater"
-msgstr "odiador de patos"
+msgstr ""
 
 msgid "duck pest"
-msgstr "peste negra dos patos"
+msgstr ""
 
 msgid "duck hassler"
-msgstr "causador de problema para patos"
+msgstr ""
 
 msgid "duck plucker"
-msgstr "depenador"
+msgstr ""
 
 msgid "hunter"
-msgstr "caçador"
+msgstr ""
 
 msgid "duck inside out turner"
-msgstr "virador de patos ao avesso"
+msgstr ""
 
 msgid "duck clobber"
-msgstr "espancador de patos"
+msgstr ""
 
 msgid "duck chewer"
-msgstr "mastigador de patos"
+msgstr ""
 
 msgid "duck eater"
-msgstr "comedor de patos"
+msgstr ""
 
 msgid "duck flattener"
-msgstr "nivelador de patos"
+msgstr ""
 
 msgid "duck disassembler"
-msgstr "desmembrador de patos"
+msgstr ""
 
 msgid "duck demolisher"
-msgstr "demolidor de patos"
+msgstr ""
 
 msgid "duck killer"
-msgstr "assassino de patos"
+msgstr ""
 
 msgid "duck skinner"
-msgstr "esfolador de patos"
+msgstr ""
 
 msgid "duck predator"
-msgstr "predador de patos"
+msgstr ""
 
 msgid "duck chopper"
-msgstr "decepador de patos"
+msgstr ""
 
 msgid "duck decorticator"
-msgstr "decorticador de patos"
+msgstr ""
 
 msgid "duck fragger"
-msgstr "fragger de pato"
+msgstr ""
 
 msgid "duck shatterer"
-msgstr "estilhaçador de patos"
+msgstr ""
 
 msgid "duck smasher"
-msgstr "esmagador de patos"
+msgstr ""
 
 msgid "duck breaker"
-msgstr "quebrador de patos"
+msgstr ""
 
 msgid "duck wrecker"
-msgstr " maníaco de patos"
+msgstr ""
 
 msgid "duck impaler"
-msgstr "impalador de patos"
+msgstr ""
 
 msgid "duck eviscerator"
-msgstr "esvicerador de patos"
+msgstr ""
 
 msgid "ducks terror"
-msgstr "terror dos patos"
+msgstr ""
 
 msgid "duck exploder"
-msgstr "explodidor de patos"
+msgstr ""
 
 msgid "duck destructor"
-msgstr "destruidor de patos"
+msgstr ""
 
 msgid "duck blaster"
-msgstr "vaporizador de patos"
+msgstr ""
 
 msgid "duck pulverizer"
-msgstr "pulverizador de patos"
+msgstr ""
 
 msgid "duck disintegrator"
-msgstr "desintegrador de patos"
+msgstr ""
 
 msgid "duck atomizer"
-msgstr "atomizador de patos"
+msgstr ""
 
 msgid "duck annihilator"
-msgstr "aniquilador de patos"
+msgstr ""
 
 msgid "serial duck killer"
-msgstr "serial killer de patos"
+msgstr ""
 
 msgid "duck genocider"
-msgstr "genocida de patos"
+msgstr ""
 
 msgid "old noob"
-msgstr "velho de caça"
+msgstr ""
 
 msgid "duck toaster"
-msgstr "torradeira de pato"
+msgstr ""
 
 msgid "unemployed due to extinction of the duck species"
-msgstr "desempregado devido à extinção dos patos"
+msgstr ""
 
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
@@ -2902,7 +2881,7 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr "Você subiu de nível!"
+msgstr ""
 
 msgid "You leveled down!"
-msgstr "Você desceu de nível!"
+msgstr ""
