@@ -62,7 +62,7 @@ class StatisticsCommands(Cog):
         db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
         embed = discord.Embed(colour=discord.Color.blurple(),
-                              title=_("{target.name} statistics.", target=target))
+                              title=_("{target.name} statistics (click me!).", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
 
