@@ -9,16 +9,16 @@ msgstr ""
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
-msgstr ""
+msgstr "قم بدعوة شخص ما إلى خادم بيتا ، والسماح له بتجربة الروبوت قبل الآخرين"
 
 msgid "Shoot at the duck that appeared first on the channel."
 msgstr "أطلق النار على البطة التي ظهرت أولاً في القناة."
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "أعد تحميل بندقيتك"
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr ""
+msgstr "عانق البطة التي ظهرت أولاً في القناة."
 
 msgid "Revive yourself by eating brains"
 msgstr ""
@@ -155,7 +155,7 @@ msgstr ""
 msgid "/help/commands\n"
 "\n"
 "Get list of commands"
-msgstr ""
+msgstr "احصل على قائمة من الأوامر"
 
 msgid "/status\n"
 "\n"
