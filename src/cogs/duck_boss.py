@@ -101,10 +101,12 @@ class DuckBoss(Cog):
                 await boss_message.add_reaction("🔫")
 
     async def spawn_boss(self):
+        self.bot.logger.info("Spawning duck boss...")
         channel = self.bot.get_channel(self.config()['boss_channel_id'])
 
         boss_message = await channel.send(embed=await self.create_boss_embed(), )
         await boss_message.add_reaction("🔫")
+        self.bot.logger.debug("Duck boss spawned, logging that to the channel logs...")
 
         ping_role_id = self.config()['role_ping_id']
 
@@ -117,6 +119,7 @@ class DuckBoss(Cog):
         log_embed.add_field(name="Subscribe/Unsubscribe", value="To (un)subscribe from these alerts, go to the #roles•for•all channel.")
 
         await self.bot.log_to_channel(content=f"<@&{ping_role_id}>", embed=log_embed, allowed_mentions=discord.AllowedMentions.roles)
+        self.bot.logger.info("Duck boss spawned, logging message sent!")
 
 
     @background_loop.before_loop
