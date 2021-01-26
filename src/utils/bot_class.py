@@ -131,7 +131,7 @@ class MyBot(AutoShardedBot):
             db_user.first_use = False
             await db_user.save()
 
-        self.commands_used[ctx.command.name] += 1
+        self.commands_used[ctx.command.qualified_name] += 1
         self.top_users[ctx.author.id] += 1
         ctx.logger.info(f"{ctx.message.clean_content}")
 
