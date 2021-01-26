@@ -113,7 +113,7 @@ class SupportServerCommands(Cog):
     async def commands_used(self, ctx: MyContext):
         """
         Shows a paginator with the most used commands on the bot. This is the poor version of the analytics.
-        The counters get reset every time the bot reboots.
+        The counters get reset every time the bot reboot.
         """
         _ = await ctx.get_translate_function()
 
@@ -128,7 +128,7 @@ class SupportServerCommands(Cog):
     async def bot_users(self, ctx: MyContext):
         """
         Shows a paginator with the users that have used the bot the most. This is the poor version of the analytics.
-        The counters get reset every time the bot reboots.
+        The counters get reset every time the bot reboot.
         """
         _ = await ctx.get_translate_function()
 
