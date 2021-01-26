@@ -124,8 +124,8 @@ class SupportServerCommands(Cog):
                                                      ))
         await menu.start(ctx)
 
-    @commands.command(aliases=["bot_topusers"])
-    async def bot_users(self, ctx: MyContext):
+    @commands.command(name="bot_users", aliases=["bot_topusers"])
+    async def c_bot_users(self, ctx: MyContext):
         """
         Shows a paginator with the users that have used the bot the most. This is again the poor version of a bot analytics.
         The counters get reset every time the bot reboot.
