@@ -120,7 +120,7 @@ class SupportServerCommands(Cog):
         menu = menus.MenuPages(EmbedCounterPaginator(self.bot.commands_used.most_common(), per_page=10,
                                                      embed_title=_("Most used commands"),
                                                      name_str="`dh!{elem}`",
-                                                     value_str=_("{n} uses"),
+                                                     value_str=_("{n} uses", n="{n}"),
                                                      ))
         await menu.start(ctx)
 
@@ -135,7 +135,7 @@ class SupportServerCommands(Cog):
         menu = menus.MenuPages(EmbedCounterPaginator(self.bot.top_users.most_common(), per_page=10,
                                                      embed_title=_("Top users"),
                                                      name_str="ID: `{elem}`",
-                                                     value_str=_("{n} commands used"),
+                                                     value_str=_("{n} commands used", n="{n}"),
                                                      field_inline=False
                                                      ))
         await menu.start(ctx)
