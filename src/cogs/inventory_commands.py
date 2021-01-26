@@ -58,10 +58,11 @@ INV_LOOTBOX_ITEMS = {
 
 
 class ItemsMenusSource(menus.ListPageSource):
-    def __init__(self, ctx: MyContext, data, title):
+    def __init__(self, ctx: MyContext, data, title, numbers):
         super().__init__(data, per_page=6)
         self.ctx = ctx
         self.title = title
+        self.numbers = numbers
 
     async def format_page(self, menu, entries):
         _ = await self.ctx.get_translate_function(user_language=True)
@@ -70,7 +71,10 @@ class ItemsMenusSource(menus.ListPageSource):
         offset = menu.current_page * self.per_page
 
         for i, item in enumerate(entries, start=offset):
-            e.add_field(name=f"**{i + 1}** - " + _(item["name"]), value=_(item["description"]), inline=False)
+            if self.numbers:
+                e.add_field(name=f"**{i + 1}** - " + _(item["name"]), value=_(item["description"]), inline=False)
+            else:
+                e.add_field(name=f"- " + _(item["name"]), value=_(item["description"]), inline=False)
 
         if not entries:
             e.description = _("A lot of air and a starved mosquito.")
@@ -78,8 +82,8 @@ class ItemsMenusSource(menus.ListPageSource):
         return e
 
 
-async def show_items_menu(ctx, items, title: str):
-    pages = menus.MenuPages(source=ItemsMenusSource(ctx, items, title), clear_reactions_after=True)
+async def show_items_menu(ctx, items, title: str, numbers=True):
+    pages = menus.MenuPages(source=ItemsMenusSource(ctx, items, title), clear_reactions_after=True, numbers=numbers)
     await pages.start(ctx)
 
 
@@ -151,7 +155,7 @@ class InventoryCommands(Cog):
                     items_given.append(item_to_give)
 
             db_user.inventory.extend(items_given)
-            await show_items_menu(ctx, items_given, title=_("Lootbox opened"))
+            await show_items_menu(ctx, items_given, title=_("Lootbox opened"), numbers=False)
 
         elif item_type == "item":
             if item.get("uses", 1) > 1:
