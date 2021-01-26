@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-22 14:48+0100\n"
+"POT-Creation-Date: 2021-01-26 09:02+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -975,7 +975,7 @@ msgstr ""
 #: ../cogs/ducks_hunting_commands.py:404
 #, python-brace-format
 msgid ""
-"{you.mention} hugged {other.mention}. The developper of the bot is really "
+"{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
 
@@ -2277,7 +2277,7 @@ msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:65
 #, python-brace-format
-msgid "{target.name} statistics."
+msgid "{target.name} statistics (click me!)."
 msgstr ""
 
 #: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:387
