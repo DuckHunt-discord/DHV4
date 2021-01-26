@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-22 14:48+0100\n"
+"POT-Creation-Date: 2021-01-26 09:02+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -946,7 +946,7 @@ msgid ""
 "Magazines: {current_magazines}/{max_magazines}"
 msgstr ""
 "🦉 Magazijn leeg! Herlaad of koop kogels | **Kogels**: 0 / {max_bullets} | "
-"Tijdschriften: {current_magazines} / {max_magazines}"
+"Magazijnen: {current_magazines} / {max_magazines}"
 
 msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
@@ -1091,9 +1091,11 @@ msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Je knuffelde de boom... Bedankt!"
 
 msgid ""
-"{you.mention} hugged {other.mention}. The developper of the bot is really "
+"{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
+"{you.mention} knuffelde {you.mention}. De ontwikkelaar van de bot is echt "
+"blij dat je er van houdt."
 
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr "{you.mention} knuffelde {other.mention}. Ze voelen zich geliefd."
@@ -2308,8 +2310,8 @@ msgstr ""
 msgid "{exp} experience"
 msgstr "{exp} ervaring"
 
-msgid "{target.name} statistics."
-msgstr "{target.name} statistieken."
+msgid "{target.name} statistics (click me!)."
+msgstr "{target.name} statistieken (klik me!)."
 
 msgid "Bullets"
 msgstr "Kogels"
@@ -3159,22 +3161,22 @@ msgid "The duck chickened out."
 msgstr "De eend durfde niet meer."
 
 msgid "The duck went to the parallel universe"
-msgstr ""
+msgstr "De eend ging naar een parallel universum"
 
 msgid "The duck teleported away from here"
-msgstr ""
+msgstr "De eend is van hier weggeteleporteerd"
 
 msgid "The duck went to look for a friend"
-msgstr ""
+msgstr "De eend ging op zoek naar een vriend"
 
 msgid "The duck went to a better place"
-msgstr ""
+msgstr "De eend ging naar een betere plek"
 
 msgid "The duck went to a better party"
-msgstr ""
+msgstr "De eend ging naar een beter feestje"
 
 msgid "The duck has some important business to take care of"
-msgstr ""
+msgstr "De eend heeft een aantal belangrijke zaken te regelen"
 
 msgid "A duck"
 msgstr "Een eend"
@@ -3297,13 +3299,13 @@ msgid "Omega Duck"
 msgstr "Omega-eend"
 
 msgid "BZZZZZAAAAK"
-msgstr ""
+msgstr "BZZZZAAAAK"
 
 msgid "BZAAAACK"
-msgstr ""
+msgstr "BZAAAACK"
 
 msgid "BZAACK"
-msgstr ""
+msgstr "BZAACK"
 
 msgid "Big Duck"
 msgstr "Grote Eend"
