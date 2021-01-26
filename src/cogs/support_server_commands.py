@@ -112,7 +112,7 @@ class SupportServerCommands(Cog):
     @commands.command(aliases=["used_commands"])
     async def commands_used(self, ctx: MyContext):
         """
-        Shows a paginator with the most used commands on the bot. This is the poor version of the analytics.
+        Shows a paginator with the most used commands on the bot. This is the poor version of a bot analytics.
         The counters get reset every time the bot reboot.
         """
         _ = await ctx.get_translate_function()
@@ -127,7 +127,7 @@ class SupportServerCommands(Cog):
     @commands.command(aliases=["bot_topusers"])
     async def bot_users(self, ctx: MyContext):
         """
-        Shows a paginator with the users that have used the bot the most. This is the poor version of the analytics.
+        Shows a paginator with the users that have used the bot the most. This is again the poor version of a bot analytics.
         The counters get reset every time the bot reboot.
         """
         _ = await ctx.get_translate_function()
