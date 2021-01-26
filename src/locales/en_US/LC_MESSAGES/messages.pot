@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-26 21:37+0100\n"
+"POT-Creation-Date: 2021-01-26 21:39+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -743,14 +743,14 @@ msgstr ""
 msgid ""
 "Shows a paginator with the most used commands on the bot. This is the poor "
 "version of the analytics.\n"
-"The counters get reset every time the bot reboots."
+"The counters get reset every time the bot reboot."
 msgstr ""
 
 #: ../cogs/support_server_commands.py:129
 msgid ""
 "Shows a paginator with the users that have used the bot the most. This is "
 "the poor version of the analytics.\n"
-"The counters get reset every time the bot reboots."
+"The counters get reset every time the bot reboot."
 msgstr ""
 
 #: ../cogs/support_server_commands.py:147
