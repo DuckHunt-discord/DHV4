@@ -118,7 +118,7 @@ class DuckBoss(Cog):
 
         log_embed.add_field(name="Subscribe/Unsubscribe", value="To (un)subscribe from these alerts, go to the #roles•for•all channel.")
 
-        await self.bot.log_to_channel(content=f"<@&{ping_role_id}>", embed=log_embed, allowed_mentions=discord.AllowedMentions.roles)
+        await self.bot.log_to_channel(content=f"<@&{ping_role_id}>", embed=log_embed, allowed_mentions=discord.AllowedMentions(roles=True, users=False, everyone=False))
         self.bot.logger.info("Duck boss spawned, logging message sent!")
 
 
