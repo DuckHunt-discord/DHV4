@@ -106,6 +106,19 @@ class DuckBoss(Cog):
         boss_message = await channel.send(embed=await self.create_boss_embed(), )
         await boss_message.add_reaction("🔫")
 
+        ping_role_id = self.config()['role_ping_id']
+
+        log_embed = discord.Embed(
+            title="A duck boss has spawned.",
+            color=discord.Color.dark_magenta(),
+            description=f"Go in the {channel.mention} and click the 🔫 reaction to get free inventory items."
+        )
+
+        log_embed.add_field(name="Subscribe/Unsubscribe", value="To (un)subscribe from these alerts, go to the #roles•for•all channel.")
+
+        await self.bot.log_to_channel(content=f"<@&{ping_role_id}>", embed=log_embed, allowed_mentions=discord.AllowedMentions.roles)
+
+
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()

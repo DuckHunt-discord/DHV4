@@ -52,8 +52,8 @@ wiki_url = "https://duckhunt.me/docs/"
 
 [cogs.DuckBoss]
 boss_channel_id = 794950988845940768
-required_bangs = 75
-
+required_bangs = 60
+role_ping_id = 803708518716014652
 
 [cogs.SupportServerCommands]
 # That's the ID of your server where the command will be ran
