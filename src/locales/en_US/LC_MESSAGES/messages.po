@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-26 09:02+0100\n"
+"POT-Creation-Date: 2021-01-26 21:41+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -33,63 +33,71 @@ msgstr "Hug the duck that appeared first on the channel."
 msgid "Revive yourself by eating brains"
 msgstr "Revive yourself by eating brains"
 
-#: ../cogs/ducks_spawning_commands.py:26
+#: ../cogs/ducks_spawning_commands.py:27
 msgid "Spawns a random duck"
 msgstr "Spawns a random duck"
 
-#: ../cogs/ducks_spawning_commands.py:34
+#: ../cogs/ducks_spawning_commands.py:35
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
 msgstr "Spawns many ducks, of which (at least) one is a mechanical one"
 
-#: ../cogs/ducks_spawning_commands.py:52
+#: ../cogs/ducks_spawning_commands.py:53
 msgid "Spawns a normal duck"
 msgstr "Spawns a normal duck"
 
-#: ../cogs/ducks_spawning_commands.py:60
+#: ../cogs/ducks_spawning_commands.py:61
 msgid "Spawns a super duck"
 msgstr "Spawns a super duck"
 
-#: ../cogs/ducks_spawning_commands.py:70
+#: ../cogs/ducks_spawning_commands.py:71
 msgid "Spawns a baby duck"
 msgstr "Spawns a baby duck"
 
-#: ../cogs/ducks_spawning_commands.py:78
+#: ../cogs/ducks_spawning_commands.py:79
 msgid "Spawns a professor Duck."
 msgstr "Spawns a professor Duck."
 
-#: ../cogs/ducks_spawning_commands.py:86
+#: ../cogs/ducks_spawning_commands.py:87
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
 msgstr "Spawns a ghost duck. There will be no spawn message, obviously."
 
-#: ../cogs/ducks_spawning_commands.py:94
+#: ../cogs/ducks_spawning_commands.py:95
 msgid "Spawns a MOAD."
 msgstr "Spawns a MOAD."
 
-#: ../cogs/ducks_spawning_commands.py:104
+#: ../cogs/ducks_spawning_commands.py:105
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
 msgstr "Spawns an armored duck, that will resist most 1 dmg hits."
 
-#: ../cogs/ducks_spawning_commands.py:112
+#: ../cogs/ducks_spawning_commands.py:113
 msgid "Spawns a golden duck."
 msgstr "Spawns a golden duck."
 
-#: ../cogs/ducks_spawning_commands.py:120
+#: ../cogs/ducks_spawning_commands.py:121
 msgid "Spawns a plastic duck."
 msgstr "Spawns a plastic duck."
 
-#: ../cogs/ducks_spawning_commands.py:128
+#: ../cogs/ducks_spawning_commands.py:129
 msgid "Spawns a kamikaze duck."
 msgstr "Spawns a kamikaze duck."
 
-#: ../cogs/ducks_spawning_commands.py:138
+#: ../cogs/ducks_spawning_commands.py:137
+msgid "Spawns a night duck."
+msgstr "Spawns a night duck."
+
+#: ../cogs/ducks_spawning_commands.py:145
+msgid "Spawns a sleeping duck."
+msgstr "Spawns a sleeping duck."
+
+#: ../cogs/ducks_spawning_commands.py:155
 msgid "Show ducks currently on the channel"
 msgstr "Show ducks currently on the channel"
 
-#: ../cogs/ducks_spawning_commands.py:174
+#: ../cogs/ducks_spawning_commands.py:191
 msgid "Removes all ducks from the channel"
 msgstr "Removes all ducks from the channel"
 
-#: ../cogs/inventory_commands.py:90
+#: ../cogs/inventory_commands.py:94
 msgid ""
 "Show your inventory content.\n"
 "\n"
@@ -103,11 +111,11 @@ msgstr ""
 "used on (almost) every server.\n"
 "Server administrators can disable inventory usage on specific channels."
 
-#: ../cogs/inventory_commands.py:107
+#: ../cogs/inventory_commands.py:111
 msgid "Give something to some player."
 msgstr "Give something to some player."
 
-#: ../cogs/inventory_commands.py:124
+#: ../cogs/inventory_commands.py:128
 msgid "Use one of the items in your inventory."
 msgstr "Use one of the items in your inventory."
 
@@ -815,6 +823,10 @@ msgid "Who doesn't need eyes"
 msgstr "Who doesn't need eyes"
 
 #: ../cogs/simple_commands.py:232
+msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr "I guess that just says ¯\\_(ツ)_/¯"
+
+#: ../cogs/simple_commands.py:240
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -938,7 +950,27 @@ msgstr ""
 msgid "Check the status of every shard the bot is hosting."
 msgstr "Check the status of every shard the bot is hosting."
 
-#: ../cogs/support_server_commands.py:115
+#: ../cogs/support_server_commands.py:114
+msgid ""
+"Shows a paginator with the most used commands on the bot. This is the poor "
+"version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+"Shows a paginator with the most used commands on the bot. This is the poor "
+"version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+
+#: ../cogs/support_server_commands.py:129
+msgid ""
+"Shows a paginator with the users that have used the bot the most. This is "
+"again the poor version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+"Shows a paginator with the users that have used the bot the most. This is "
+"again the poor version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+
+#: ../cogs/support_server_commands.py:147
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
 "leaving, and planning ducks spawn for the\n"
@@ -954,7 +986,7 @@ msgstr ""
 "These commands do not use the translation system, and will always show in "
 "english"
 
-#: ../cogs/support_server_commands.py:127
+#: ../cogs/support_server_commands.py:159
 msgid ""
 "Reset ducks planning, setting the ducks left to spawn counts to a value "
 "proportional to the time left spawning\n"
@@ -964,7 +996,7 @@ msgstr ""
 "proportional to the time left spawning\n"
 "ducks today. This is executed everyday at midnight."
 
-#: ../cogs/support_server_commands.py:140
+#: ../cogs/support_server_commands.py:172
 msgid ""
 "Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
 "from the planification,\n"
@@ -978,7 +1010,7 @@ msgstr ""
 "\n"
 "Duck will still be able to leave, even if this lock is set."
 
-#: ../cogs/support_server_commands.py:165
+#: ../cogs/support_server_commands.py:197
 msgid ""
 "Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
 "usual if a planification isn't done."
@@ -986,15 +1018,15 @@ msgstr ""
 "Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
 "usual if a planification isn't done."
 
-#: ../cogs/support_server_commands.py:184
+#: ../cogs/support_server_commands.py:216
 msgid "Force a boss to spawn"
 msgstr "Force a boss to spawn"
 
-#: ../cogs/support_server_commands.py:195
+#: ../cogs/support_server_commands.py:227
 msgid "Force the current event to change, and reroll a new one."
 msgstr "Force the current event to change, and reroll a new one."
 
-#: ../cogs/support_server_commands.py:206
+#: ../cogs/support_server_commands.py:238
 msgid "Congratulate an user giving him a trophy."
 msgstr "Congratulate an user giving him a trophy."
 
@@ -1279,7 +1311,7 @@ msgstr "You are already alive and well."
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr "You eat {brains} 🧠 and regain consiousness."
 
-#: ../cogs/ducks_spawning_commands.py:148
+#: ../cogs/ducks_spawning_commands.py:165
 #, python-brace-format
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
@@ -1288,18 +1320,18 @@ msgstr ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
 "spawn today."
 
-#: ../cogs/ducks_spawning_commands.py:151
+#: ../cogs/ducks_spawning_commands.py:168
 msgid "Here's the list of ducks spawned :"
 msgstr "Here's the list of ducks spawned :"
 
-#: ../cogs/ducks_spawning_commands.py:161
+#: ../cogs/ducks_spawning_commands.py:178
 #, python-brace-format
 msgid ""
 "{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}."
 msgstr ""
 "{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}."
 
-#: ../cogs/ducks_spawning_commands.py:183
+#: ../cogs/ducks_spawning_commands.py:200
 #, python-brace-format
 msgid "{ducks_spawned_count} ducks removed."
 msgstr "{ducks_spawned_count} ducks removed."
@@ -1547,52 +1579,52 @@ msgstr "A free card for magazines"
 msgid "Redeem it to refill your weapon."
 msgstr "Redeem it to refill your weapon."
 
-#: ../cogs/inventory_commands.py:76
+#: ../cogs/inventory_commands.py:80
 msgid "A lot of air and a starved mosquito."
 msgstr "A lot of air and a starved mosquito."
 
-#: ../cogs/inventory_commands.py:102
+#: ../cogs/inventory_commands.py:106
 msgid "Your inventory"
 msgstr "Your inventory"
 
-#: ../cogs/inventory_commands.py:115
+#: ../cogs/inventory_commands.py:119
 msgid "❌ Unknown item."
 msgstr "❌ Unknown item."
 
-#: ../cogs/inventory_commands.py:120
+#: ../cogs/inventory_commands.py:124
 #, python-brace-format
 msgid "👌 Item has been given to {target.name}."
 msgstr "👌 Item has been given to {target.name}."
 
-#: ../cogs/inventory_commands.py:134
+#: ../cogs/inventory_commands.py:138
 msgid "❌ Items usage is disabled on this channel."
 msgstr "❌ Items usage is disabled on this channel."
 
-#: ../cogs/inventory_commands.py:140
+#: ../cogs/inventory_commands.py:144
 msgid "❌ Unknown item number."
 msgstr "❌ Unknown item number."
 
-#: ../cogs/inventory_commands.py:154
+#: ../cogs/inventory_commands.py:158
 msgid "Lootbox opened"
 msgstr "Lootbox opened"
 
-#: ../cogs/inventory_commands.py:166
+#: ../cogs/inventory_commands.py:170
 #, python-brace-format
 msgid "✨ {guild.name} is now VIP! Thanks."
 msgstr "✨ {guild.name} is now VIP! Thanks."
 
-#: ../cogs/inventory_commands.py:171
+#: ../cogs/inventory_commands.py:175
 #, python-brace-format
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
 msgstr ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
 
-#: ../cogs/inventory_commands.py:176
+#: ../cogs/inventory_commands.py:180
 msgid "✨ Yay! Free ammo!"
 msgstr "✨ Yay! Free ammo!"
 
-#: ../cogs/inventory_commands.py:181
+#: ../cogs/inventory_commands.py:185
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr "✨ Oh look, ducks! Ducks are everywhere!"
 
@@ -2778,11 +2810,11 @@ msgstr ""
 msgid "You don't have to go right now"
 msgstr "You don't have to go right now"
 
-#: ../cogs/simple_commands.py:247
+#: ../cogs/simple_commands.py:255
 msgid "Current event: "
 msgstr "Current event: "
 
-#: ../cogs/simple_commands.py:252
+#: ../cogs/simple_commands.py:260
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
@@ -3119,6 +3151,24 @@ msgstr ""
 "Scores and hunters data were removed from the game, but the game wasn't "
 "stopped... You can use `{ctx.prefix}settings enabled False` to stop the game."
 ""
+
+#: ../cogs/support_server_commands.py:121
+msgid "Most used commands"
+msgstr "Most used commands"
+
+#: ../cogs/support_server_commands.py:123
+#, python-brace-format
+msgid "{n} uses"
+msgstr "{n} uses"
+
+#: ../cogs/support_server_commands.py:136
+msgid "Top users"
+msgstr "Top users"
+
+#: ../cogs/support_server_commands.py:138
+#, python-brace-format
+msgid "{n} commands used"
+msgstr "{n} commands used"
 
 #: ../utils/achievements.py:12
 msgid "Murderer"
@@ -3661,107 +3711,107 @@ msgid_plural "of which {this_ducks_killed} are sleeping ducks"
 msgstr[0] "of which {this_ducks_killed} is a sleeping duck"
 msgstr[1] "of which {this_ducks_killed} are sleeping ducks"
 
-#: ../utils/ducks_config.py:59
+#: ../utils/ducks_config.py:68
 msgid "KWAK"
 msgstr "KWAK"
 
-#: ../utils/ducks_config.py:59
+#: ../utils/ducks_config.py:68
 msgid "KWAAK"
 msgstr "KWAAK"
 
-#: ../utils/ducks_config.py:59
+#: ../utils/ducks_config.py:68
 msgid "KWAAAK"
 msgstr "KWAAAK"
 
-#: ../utils/ducks_config.py:59
+#: ../utils/ducks_config.py:68
 msgid "COUAK"
 msgstr "COUAK"
 
-#: ../utils/ducks_config.py:59
+#: ../utils/ducks_config.py:69
 msgid "COUAAK"
 msgstr "COUAAK"
 
-#: ../utils/ducks_config.py:59
+#: ../utils/ducks_config.py:69
 msgid "COUAAAK"
 msgstr "COUAAAK"
 
-#: ../utils/ducks_config.py:59 ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:69 ../utils/ducks_config.py:70
 msgid "QUAK"
 msgstr "QUAK"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:70
 msgid "QUAAK"
 msgstr "QUAAK"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:70
 msgid "QUAAAK"
 msgstr "QUAAAK"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:70
 msgid "QUACK"
 msgstr "QUACK"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:70 ../utils/ducks_config.py:71
 msgid "QUAACK"
 msgstr "QUAACK"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:71
 msgid "QUAAACK"
 msgstr "QUAAACK"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:71
 msgid "COUAC"
 msgstr "COUAC"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:71
 msgid "COUAAC"
 msgstr "COUAAC"
 
-#: ../utils/ducks_config.py:60
+#: ../utils/ducks_config.py:71 ../utils/ducks_config.py:72
 msgid "COUAAAC"
 msgstr "COUAAAC"
 
-#: ../utils/ducks_config.py:61
+#: ../utils/ducks_config.py:73
 msgid "COUACK"
 msgstr "COUACK"
 
-#: ../utils/ducks_config.py:63
+#: ../utils/ducks_config.py:75
 msgid "*cries*"
 msgstr "*cries*"
 
-#: ../utils/ducks_config.py:63
+#: ../utils/ducks_config.py:75
 msgid "Hello world"
 msgstr "Hello world"
 
-#: ../utils/ducks_config.py:63
+#: ../utils/ducks_config.py:75
 msgid "How are you today?"
 msgstr "How are you today?"
 
-#: ../utils/ducks_config.py:63
+#: ../utils/ducks_config.py:75
 msgid "Please don't kill me..."
 msgstr "Please don't kill me..."
 
-#: ../utils/ducks_config.py:64
+#: ../utils/ducks_config.py:77
 msgid "I love you too!"
 msgstr "I love you too!"
 
-#: ../utils/ducks_config.py:64
+#: ../utils/ducks_config.py:77
 msgid "Don't shoot me! I'm a fake duck!"
 msgstr "Don't shoot me! I'm a fake duck!"
 
-#: ../utils/ducks_config.py:65
+#: ../utils/ducks_config.py:78
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 
-#: ../utils/ducks_config.py:65
+#: ../utils/ducks_config.py:79
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
 msgstr "**Duck fact**: The feathers on a ducks back are waterproof."
 
-#: ../utils/ducks_config.py:66
+#: ../utils/ducks_config.py:80
 msgid "**Duck fact**: Ducks have three eyelids!"
 msgstr "**Duck fact**: Ducks have three eyelids!"
 
-#: ../utils/ducks_config.py:67
+#: ../utils/ducks_config.py:81
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
@@ -3769,35 +3819,35 @@ msgstr ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 
-#: ../utils/ducks_config.py:68
+#: ../utils/ducks_config.py:82
 msgid "I am invisible, don't bother killing me"
 msgstr "I am invisible, don't bother killing me"
 
-#: ../utils/ducks_config.py:68
+#: ../utils/ducks_config.py:82
 msgid "Who is the little ████ here that killed my friend ?"
 msgstr "Who is the little ████ here that killed my friend ?"
 
-#: ../utils/ducks_config.py:68
+#: ../utils/ducks_config.py:83
 msgid "You can't aim for good..."
 msgstr "You can't aim for good..."
 
-#: ../utils/ducks_config.py:68 ../utils/ducks_config.py:81
+#: ../utils/ducks_config.py:83 ../utils/ducks_config.py:103
 msgid "The duck left."
 msgstr "The duck left."
 
-#: ../utils/ducks_config.py:69
+#: ../utils/ducks_config.py:84
 msgid "The duck right."
 msgstr "The duck right."
 
-#: ../utils/ducks_config.py:69
+#: ../utils/ducks_config.py:84
 msgid "STOP! It's not what you think!"
 msgstr "STOP! It's not what you think!"
 
-#: ../utils/ducks_config.py:70
+#: ../utils/ducks_config.py:85
 msgid "Killing me will cost you 1562 experience points."
 msgstr "Killing me will cost you 1562 experience points."
 
-#: ../utils/ducks_config.py:71
+#: ../utils/ducks_config.py:86
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
@@ -3805,64 +3855,64 @@ msgstr ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 
-#: ../utils/ducks_config.py:72
+#: ../utils/ducks_config.py:87
 msgid "[INSERT DUCK NOISE HERE]"
 msgstr "[INSERT DUCK NOISE HERE]"
 
-#: ../utils/ducks_config.py:72
+#: ../utils/ducks_config.py:88
 msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr "What happened after DuckHunt was created? ||The big bang||."
 
-#: ../utils/ducks_config.py:73
+#: ../utils/ducks_config.py:89
 msgid "It's rabbit season."
 msgstr "It's rabbit season."
 
-#: ../utils/ducks_config.py:73
+#: ../utils/ducks_config.py:89
 msgid "Got a spare cape?"
 msgstr "Got a spare cape?"
 
-#: ../utils/ducks_config.py:73
+#: ../utils/ducks_config.py:90
 msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr "Which side of a duck has more feathers? ||The outside||."
 
-#: ../utils/ducks_config.py:74
+#: ../utils/ducks_config.py:91
 msgid "I steal money. I'm a robber ducky."
 msgstr "I steal money. I'm a robber ducky."
 
-#: ../utils/ducks_config.py:74
+#: ../utils/ducks_config.py:91
 msgid "I'm a very special duck."
 msgstr "I'm a very special duck."
 
-#: ../utils/ducks_config.py:74 ../utils/ducks_config.py:76
+#: ../utils/ducks_config.py:92 ../utils/ducks_config.py:95
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr "**DuckHunt ProTip®**: use clovers to get more experience."
 
-#: ../utils/ducks_config.py:75
+#: ../utils/ducks_config.py:93
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 
-#: ../utils/ducks_config.py:75
+#: ../utils/ducks_config.py:94
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 
-#: ../utils/ducks_config.py:76
+#: ../utils/ducks_config.py:95
 msgid "*Slurp*"
 msgstr "*Slurp*"
 
-#: ../utils/ducks_config.py:76
+#: ../utils/ducks_config.py:96
 msgid "Hopefully you are all AFK..."
 msgstr "Hopefully you are all AFK..."
 
-#: ../utils/ducks_config.py:77
+#: ../utils/ducks_config.py:97
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
 "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 
-#: ../utils/ducks_config.py:78
+#: ../utils/ducks_config.py:98
 msgid "I'm just doing my job..."
 msgstr "I'm just doing my job..."
 
-#: ../utils/ducks_config.py:78
+#: ../utils/ducks_config.py:99
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
@@ -3870,291 +3920,299 @@ msgstr ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
 
-#: ../utils/ducks_config.py:79
+#: ../utils/ducks_config.py:100
 msgid "YoU hAvE bEeN cOrRuPtEd."
 msgstr "YoU hAvE bEeN cOrRuPtEd."
 
-#: ../utils/ducks_config.py:80
+#: ../utils/ducks_config.py:101
 msgid "The duck went away."
 msgstr "The duck went away."
 
-#: ../utils/ducks_config.py:80
+#: ../utils/ducks_config.py:101
 msgid "The duck went to another world."
 msgstr "The duck went to another world."
 
-#: ../utils/ducks_config.py:80
+#: ../utils/ducks_config.py:102
 msgid "The duck didn't have time for this."
 msgstr "The duck didn't have time for this."
 
-#: ../utils/ducks_config.py:81
+#: ../utils/ducks_config.py:103
 msgid "The duck dissipated in space and time."
 msgstr "The duck dissipated in space and time."
 
-#: ../utils/ducks_config.py:81
+#: ../utils/ducks_config.py:103
 msgid "The duck left out of boredom."
 msgstr "The duck left out of boredom."
 
-#: ../utils/ducks_config.py:82
+#: ../utils/ducks_config.py:104
 msgid "The duck doesn't want to be sniped."
 msgstr "The duck doesn't want to be sniped."
 
-#: ../utils/ducks_config.py:82
+#: ../utils/ducks_config.py:104
 msgid "The duck walked up to the lemonade stand."
 msgstr "The duck walked up to the lemonade stand."
 
-#: ../utils/ducks_config.py:83
+#: ../utils/ducks_config.py:105
 msgid "The duck flew over a disproportionately small gap."
 msgstr "The duck flew over a disproportionately small gap."
 
-#: ../utils/ducks_config.py:84
+#: ../utils/ducks_config.py:106
 msgid "The duck chickened out."
 msgstr "The duck chickened out."
 
-#: ../utils/ducks_config.py:84
+#: ../utils/ducks_config.py:106
 msgid "The duck went to the parallel universe"
 msgstr "The duck went to the parallel universe"
 
-#: ../utils/ducks_config.py:84
+#: ../utils/ducks_config.py:107
+msgid "The duck went to a parallel universe"
+msgstr "The duck went to a parallel universe"
+
+#: ../utils/ducks_config.py:107
+msgid "The duck went the duckiverse"
+msgstr "The duck went the duckiverse"
+
+#: ../utils/ducks_config.py:108
 msgid "The duck teleported away from here"
 msgstr "The duck teleported away from here"
 
-#: ../utils/ducks_config.py:85
+#: ../utils/ducks_config.py:109
 msgid "The duck went to look for a friend"
 msgstr "The duck went to look for a friend"
 
-#: ../utils/ducks_config.py:85
+#: ../utils/ducks_config.py:109
 msgid "The duck went to a better place"
 msgstr "The duck went to a better place"
 
-#: ../utils/ducks_config.py:85
+#: ../utils/ducks_config.py:110
 msgid "The duck went to a better party"
 msgstr "The duck went to a better party"
 
-#: ../utils/ducks_config.py:86
+#: ../utils/ducks_config.py:111
 msgid "The duck has some important business to take care of"
 msgstr "The duck has some important business to take care of"
 
-#: ../utils/ducks_config.py:88
+#: ../utils/ducks_config.py:113
 msgid "A duck"
 msgstr "A duck"
 
-#: ../utils/ducks_config.py:88
+#: ../utils/ducks_config.py:113
 msgid "Mr. Duck"
 msgstr "Mr. Duck"
 
-#: ../utils/ducks_config.py:88
+#: ../utils/ducks_config.py:113
 msgid "RealDuck"
 msgstr "RealDuck"
 
-#: ../utils/ducks_config.py:98
+#: ../utils/ducks_config.py:123
 msgid "The ghost never appeared."
 msgstr "The ghost never appeared."
 
-#: ../utils/ducks_config.py:99
+#: ../utils/ducks_config.py:124
 msgid "Invisible Duck"
 msgstr "Invisible Duck"
 
-#: ../utils/ducks_config.py:99
+#: ../utils/ducks_config.py:124
 msgid "Ghost Duck"
 msgstr "Ghost Duck"
 
-#: ../utils/ducks_config.py:99
+#: ../utils/ducks_config.py:124
 msgid "Boooo Duck"
 msgstr "Boooo Duck"
 
-#: ../utils/ducks_config.py:105
+#: ../utils/ducks_config.py:130
 msgid "Pr. Duck"
 msgstr "Pr. Duck"
 
-#: ../utils/ducks_config.py:105
+#: ../utils/ducks_config.py:130
 msgid "EnsDuck"
 msgstr "EnsDuck"
 
-#: ../utils/ducks_config.py:111
+#: ../utils/ducks_config.py:136
 msgid "**COIN**"
 msgstr "**COIN**"
 
-#: ../utils/ducks_config.py:111
+#: ../utils/ducks_config.py:136
 msgid "**Piou** ?"
 msgstr "**Piou** ?"
 
-#: ../utils/ducks_config.py:111
+#: ../utils/ducks_config.py:136
 msgid "**Coin** ?"
 msgstr "**Coin** ?"
 
-#: ../utils/ducks_config.py:111
+#: ../utils/ducks_config.py:136
 msgid "**Coin**!"
 msgstr "**Coin**!"
 
-#: ../utils/ducks_config.py:111
+#: ../utils/ducks_config.py:137
 msgid "**COIIIIIINNNNNN**!"
 msgstr "**COIIIIIINNNNNN**!"
 
-#: ../utils/ducks_config.py:112
+#: ../utils/ducks_config.py:138
 msgid "Smol Duck"
 msgstr "Smol Duck"
 
-#: ../utils/ducks_config.py:112
+#: ../utils/ducks_config.py:138
 msgid "Mini Duck"
 msgstr "Mini Duck"
 
-#: ../utils/ducks_config.py:112
+#: ../utils/ducks_config.py:138
 msgid "Ducky"
 msgstr "Ducky"
 
-#: ../utils/ducks_config.py:112
+#: ../utils/ducks_config.py:138
 msgid "Duckie"
 msgstr "Duckie"
 
-#: ../utils/ducks_config.py:118
+#: ../utils/ducks_config.py:144
 msgid "£!"
 msgstr "£!"
 
-#: ../utils/ducks_config.py:118
+#: ../utils/ducks_config.py:144
 msgid "Free money !"
 msgstr "Free money !"
 
-#: ../utils/ducks_config.py:118
+#: ../utils/ducks_config.py:144
 msgid "It's free money"
 msgstr "It's free money"
 
-#: ../utils/ducks_config.py:119
+#: ../utils/ducks_config.py:145
 msgid "Golden Duck"
 msgstr "Golden Duck"
 
-#: ../utils/ducks_config.py:119
+#: ../utils/ducks_config.py:145
 msgid "Golden Goose"
 msgstr "Golden Goose"
 
-#: ../utils/ducks_config.py:119
+#: ../utils/ducks_config.py:145
 msgid "Shiny Duck"
 msgstr "Shiny Duck"
 
-#: ../utils/ducks_config.py:119
+#: ../utils/ducks_config.py:145
 msgid "Rich Duck"
 msgstr "Rich Duck"
 
-#: ../utils/ducks_config.py:125
+#: ../utils/ducks_config.py:151
 msgid "£?"
 msgstr "£?"
 
-#: ../utils/ducks_config.py:125
+#: ../utils/ducks_config.py:151
 msgid "Have any money ?"
 msgstr "Have any money ?"
 
-#: ../utils/ducks_config.py:125
+#: ../utils/ducks_config.py:151
 msgid "It's paid money"
 msgstr "It's paid money"
 
-#: ../utils/ducks_config.py:126
+#: ../utils/ducks_config.py:152
 msgid "Plastic Duck"
 msgstr "Plastic Duck"
 
-#: ../utils/ducks_config.py:126
+#: ../utils/ducks_config.py:152
 msgid "Poor Duck"
 msgstr "Poor Duck"
 
-#: ../utils/ducks_config.py:126
+#: ../utils/ducks_config.py:152
 msgid "Slimey Duck"
 msgstr "Slimey Duck"
 
-#: ../utils/ducks_config.py:132
+#: ../utils/ducks_config.py:158
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 
-#: ../utils/ducks_config.py:132
+#: ../utils/ducks_config.py:158
 msgid "Gonna kill y'all !"
 msgstr "Gonna kill y'all !"
 
-#: ../utils/ducks_config.py:133
+#: ../utils/ducks_config.py:159
 msgid "The Kamikaze Duck"
 msgstr "The Kamikaze Duck"
 
-#: ../utils/ducks_config.py:133
+#: ../utils/ducks_config.py:159
 msgid "Explosive Duck"
 msgstr "Explosive Duck"
 
-#: ../utils/ducks_config.py:133
+#: ../utils/ducks_config.py:159
 msgid "Boom Duck"
 msgstr "Boom Duck"
 
-#: ../utils/ducks_config.py:133
+#: ../utils/ducks_config.py:159
 msgid "Dynamite Duck"
 msgstr "Dynamite Duck"
 
-#: ../utils/ducks_config.py:136
+#: ../utils/ducks_config.py:162
 msgid "The kamikaze duck exploded, killing every duck on the channel."
 msgstr "The kamikaze duck exploded, killing every duck on the channel."
 
-#: ../utils/ducks_config.py:144
+#: ../utils/ducks_config.py:170
 msgid "Duck 2000"
 msgstr "Duck 2000"
 
-#: ../utils/ducks_config.py:144
+#: ../utils/ducks_config.py:170
 msgid "Omega Duck"
 msgstr "Omega Duck"
 
-#: ../utils/ducks_config.py:145
+#: ../utils/ducks_config.py:171
 msgid "BZZZZZAAAAK"
 msgstr "BZZZZZAAAAK"
 
-#: ../utils/ducks_config.py:145
+#: ../utils/ducks_config.py:171
 msgid "BZAAAACK"
 msgstr "BZAAAACK"
 
-#: ../utils/ducks_config.py:145
+#: ../utils/ducks_config.py:171
 msgid "BZAACK"
 msgstr "BZAACK"
 
-#: ../utils/ducks_config.py:150
+#: ../utils/ducks_config.py:176
 msgid "Big Duck"
 msgstr "Big Duck"
 
-#: ../utils/ducks_config.py:150
+#: ../utils/ducks_config.py:176
 msgid "Strong Duck"
 msgstr "Strong Duck"
 
-#: ../utils/ducks_config.py:150
+#: ../utils/ducks_config.py:176
 msgid "Heavy Duck"
 msgstr "Heavy Duck"
 
-#: ../utils/ducks_config.py:157
+#: ../utils/ducks_config.py:183
 msgid "**I am your mother...**"
 msgstr "**I am your mother...**"
 
-#: ../utils/ducks_config.py:160
+#: ../utils/ducks_config.py:186
 msgid "Ms. Duck"
 msgstr "Ms. Duck"
 
-#: ../utils/ducks_config.py:160
+#: ../utils/ducks_config.py:186
 msgid "Mom"
 msgstr "Mom"
 
-#: ../utils/ducks_config.py:160
+#: ../utils/ducks_config.py:186
 msgid "Mommy"
 msgstr "Mommy"
 
-#: ../utils/ducks_config.py:160
+#: ../utils/ducks_config.py:186
 msgid "MOAD"
 msgstr "MOAD"
 
-#: ../utils/ducks_config.py:160
+#: ../utils/ducks_config.py:186
 msgid "Mooooom"
 msgstr "Mooooom"
 
-#: ../utils/ducks_config.py:170
+#: ../utils/ducks_config.py:196
 msgid "*coin*"
 msgstr "*coin*"
 
-#: ../utils/ducks_config.py:170
+#: ../utils/ducks_config.py:196
 msgid "*Don't make a noise, it's nighttime*"
 msgstr "*Don't make a noise, it's nighttime*"
 
-#: ../utils/ducks_config.py:170
+#: ../utils/ducks_config.py:196
 msgid "*Shhhhh*"
 msgstr "*Shhhhh*"
 
-#: ../utils/ducks_config.py:177
+#: ../utils/ducks_config.py:203
 msgid "ZzZzZz"
 msgstr "ZzZzZz"
 

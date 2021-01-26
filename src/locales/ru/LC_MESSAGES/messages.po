@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-01-26 09:02+0100\n"
+"POT-Creation-Date: 2021-01-26 21:41+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -63,6 +63,12 @@ msgstr "Создаёт пластмассовую утку."
 
 msgid "Spawns a kamikaze duck."
 msgstr "Создаёт утку-камикадзе."
+
+msgid "Spawns a night duck."
+msgstr ""
+
+msgid "Spawns a sleeping duck."
+msgstr ""
 
 msgid "Show ducks currently on the channel"
 msgstr "Показывает уток, которые в настоящее время присутствуют на канале."
@@ -722,6 +728,9 @@ msgstr "При неправильном вводе команды для пер�
 msgid "Who doesn't need eyes"
 msgstr "Кому не нужны глаза"
 
+msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr ""
+
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -836,6 +845,18 @@ msgstr ""
 
 msgid "Check the status of every shard the bot is hosting."
 msgstr "Проверка статуса каждого шарда."
+
+msgid ""
+"Shows a paginator with the most used commands on the bot. This is the poor "
+"version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+
+msgid ""
+"Shows a paginator with the users that have used the bot the most. This is "
+"again the poor version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
 
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
@@ -2523,6 +2544,18 @@ msgstr ""
 "Результаты и данные охотников удалены, но сама игра не была остановлена... "
 "Используйте команду `{ctx.prefix}settings enabled False` для остановки игры."
 
+msgid "Most used commands"
+msgstr ""
+
+msgid "{n} uses"
+msgstr ""
+
+msgid "Top users"
+msgstr ""
+
+msgid "{n} commands used"
+msgstr ""
+
 msgid "Murderer"
 msgstr "Убийца"
 
@@ -3143,6 +3176,12 @@ msgstr "Утка струсила."
 
 msgid "The duck went to the parallel universe"
 msgstr "Утка исследует параллельный мир."
+
+msgid "The duck went to a parallel universe"
+msgstr ""
+
+msgid "The duck went the duckiverse"
+msgstr ""
 
 msgid "The duck teleported away from here"
 msgstr "Утка телепортировалась подальше отсюда."
