@@ -83,7 +83,7 @@ class ItemsMenusSource(menus.ListPageSource):
 
 
 async def show_items_menu(ctx, items, title: str, numbers=True):
-    pages = menus.MenuPages(source=ItemsMenusSource(ctx, items, title), clear_reactions_after=True, numbers=numbers)
+    pages = menus.MenuPages(source=ItemsMenusSource(ctx, items, title, numbers=numbers), clear_reactions_after=True)
     await pages.start(ctx)
 
 
