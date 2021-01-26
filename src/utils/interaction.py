@@ -6,12 +6,40 @@ import typing
 from typing import List
 import random
 
+from discord.ext import menus
 from discord.ext.commands import MemberConverter
 
 from utils.models import get_from_db, DiscordChannel
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
+
+
+class EmbedCounterPaginator(menus.ListPageSource):
+    def __init__(self, entries, *, per_page,
+                 embed_title="Counter paginator",
+                 embed_color=discord.Color.magenta(),
+                 name_str="{elem}",
+                 value_str="{n}",
+                 field_inline=True
+                 ):
+        super().__init__(entries, per_page=per_page)
+        self.embed_title = embed_title
+        self.embed_color = embed_color
+        self.name_str = name_str
+        self.value_str = value_str
+        self.field_inline = field_inline
+
+    async def format_page(self, menu, entries):
+        embed = discord.Embed(title=self.embed_title, colour=self.embed_color)
+
+        for elem, n in entries:
+            embed.add_field(name=self.name_str.format(elem=elem),
+                            value=self.value_str.format(n=n),
+                            inline=self.field_inline)
+
+        # you can format the embed however you'd like
+        return embed
 
 
 class SmartMemberConverter(MemberConverter):

@@ -33,6 +33,7 @@ class MyBot(AutoShardedBot):
         activity = discord.Game(self.current_event.value[0])
         super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
+        self.top_users = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
         self._client_session: Optional[aiohttp.ClientSession] = None
@@ -55,7 +56,6 @@ class MyBot(AutoShardedBot):
     @property
     def available_guilds(self) -> typing.Iterable[Guild]:
         return filter(lambda g: not g.unavailable, self.guilds)
-
 
     def reload_config(self):
         self.config = config.load_config()
@@ -132,6 +132,7 @@ class MyBot(AutoShardedBot):
             await db_user.save()
 
         self.commands_used[ctx.command.name] += 1
+        self.top_users[ctx.author.id] += 1
         ctx.logger.info(f"{ctx.message.clean_content}")
 
     async def on_shard_ready(self, shard_id):

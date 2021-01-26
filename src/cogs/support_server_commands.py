@@ -8,12 +8,12 @@ import time
 import discord
 import pytz
 from babel.dates import format_timedelta
-from discord.ext import commands, tasks
+from discord.ext import commands, tasks, menus
 
 from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.interaction import purge_channel_messages
+from utils.interaction import purge_channel_messages, EmbedCounterPaginator
 from babel import dates
 
 from utils.models import AccessLevel, get_from_db
@@ -108,6 +108,38 @@ class SupportServerCommands(Cog):
             message += " (bot ready)"
 
         await ctx.send(message)
+
+    @commands.command(aliases=["used_commands"])
+    async def commands_used(self, ctx: MyContext):
+        """
+        Shows a paginator with the most used commands on the bot. This is the poor version of the analytics.
+        The counters get reset every time the bot reboots.
+        """
+        _ = await ctx.get_translate_function()
+
+        menu = menus.MenuPages(EmbedCounterPaginator(self.bot.commands_used.most_common(), per_page=10,
+                                                     embed_title=_("Most used commands"),
+                                                     name_str="`dh!{elem}`",
+                                                     value_str=_("{n} uses"),
+                                                     ))
+        await menu.start(ctx)
+
+    @commands.command(aliases=["bot_topusers"])
+    async def bot_users(self, ctx: MyContext):
+        """
+        Shows a paginator with the users that have used the bot the most. This is the poor version of the analytics.
+        The counters get reset every time the bot reboots.
+        """
+        _ = await ctx.get_translate_function()
+
+        menu = menus.MenuPages(EmbedCounterPaginator(self.bot.top_users.most_common(), per_page=10,
+                                                     embed_title=_("Top users"),
+                                                     name_str="ID: `{elem}`",
+                                                     value_str=_("{n} commands used"),
+                                                     field_inline=False
+                                                     ))
+        await menu.start(ctx)
+
 
     @commands.group(aliases=["bot_administration", "emergencies"])
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
@@ -218,6 +250,7 @@ class SupportServerCommands(Cog):
             await db_user.save()
 
         await ctx.reply(f"User {user.name}#{user.discriminator} (`{user.id}`) updated.")
+
 
 
 setup = SupportServerCommands.setup
