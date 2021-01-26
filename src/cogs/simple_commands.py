@@ -230,9 +230,9 @@ class SimpleCommands(Cog):
     @checks.channel_enabled()
     async def huh(self, ctx: MyContext):
         """
-        ¯\_(ツ)_/¯
+        I guess that just says ¯\\_(ツ)_/¯
         """
-        await ctx.reply("¯\_(ツ)_/¯")
+        await ctx.reply(r"¯\_(ツ)_/¯")
 
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
