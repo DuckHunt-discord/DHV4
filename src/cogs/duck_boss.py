@@ -80,7 +80,7 @@ class DuckBoss(Cog):
                 new_embed = discord.Embed(
                     title=random.choice(["The boss was defeated !"]),
                     color=discord.Color.red(),
-                    description=f"Thanks to the {bangs} players who helped in this quest. Check your inventories with `d!inv` for these drops.",
+                    description=f"Thanks to the {bangs} players who helped in this quest. Check your inventories with `dh!inv` for these drops.",
                 )
 
                 new_embed.set_image(url="https://media.discordapp.net/attachments/734810933091762188/779515302382796870/boss.png")
