@@ -1118,6 +1118,8 @@ msgid ""
 "{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
+"{you.mention} embrassez {other.mention}. Le développeur du bot est vraiment "
+"heureux que vous l'aimiez."
 
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr "{you.mention} a câliné {other.mention}. Tant d'amour !"
@@ -2360,7 +2362,7 @@ msgid "{exp} experience"
 msgstr "{exp} expérience"
 
 msgid "{target.name} statistics (click me!)."
-msgstr ""
+msgstr "Statistiques de {target.name} (clique moi!)."
 
 msgid "Bullets"
 msgstr "Balles"
