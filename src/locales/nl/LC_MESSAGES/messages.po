@@ -738,6 +738,12 @@ msgid ""
 "they can bring you luck, money or even\n"
 "better : EXPERIENCE !"
 msgstr ""
+"Zie het huidige wereldwijde event.\n"
+"\n"
+"Events worden aan het begin van elk uur door de bot gerold en duren een heel "
+"uur.\n"
+"Er bestaan veel evenementen, en je zult willen profiteren van het zien "
+"ervan, want ze kunnen je geluk, geld of zelfs beter : ERVARING! brengen"
 
 msgid "Get some quickstats about yourself (or someone else)."
 msgstr "Krijg wat korte statistieken over jezelf (of iemand anders)."
@@ -2564,16 +2570,16 @@ msgstr ""
 "het spel te stoppen."
 
 msgid "Most used commands"
-msgstr ""
+msgstr "Meest gebruikte commando's"
 
 msgid "{n} uses"
-msgstr ""
+msgstr "{n} keren gebruikt"
 
 msgid "Top users"
-msgstr ""
+msgstr "Top gebruikers"
 
 msgid "{n} commands used"
-msgstr ""
+msgstr "{n} commando's gebruikt"
 
 msgid "Murderer"
 msgstr "Moordenaar"
