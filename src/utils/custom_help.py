@@ -79,7 +79,12 @@ class EmbedHelpCommand(commands.HelpCommand):
         if isinstance(group, commands.Group):
             filtered = await self.filter_commands(group.commands, sort=True)
             for command in filtered:
-                embed.add_field(name=self.get_command_signature(command), value=_(command.short_doc) or '...', inline=False)
+                value = '...'
+                if command.brief:
+                    value = _(command.brief)
+                elif command.help:
+                    value = _(command.help).split('\n', 1)[0]
+                embed.add_field(name=self.get_command_signature(command), value=value, inline=False)
 
         embed.set_footer(text=self.get_ending_note(_))
         await self.get_destination().send(embed=embed)
