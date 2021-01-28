@@ -297,7 +297,9 @@ class SettingsCommands(Cog):
         """
         Nuclear Radiation gamemode.
 
-        This make clovers be able to give negative experience too !
+        Watch out as the radiation seems to cause ducks to be stronger!
+        This means there are more, and stronger, super ducks. Get a rocket launcher or something QUICK!!!
+        The radiation makes clovers be able to give negative experience too !
 
         All the other settings are reset to their default values.
         """
