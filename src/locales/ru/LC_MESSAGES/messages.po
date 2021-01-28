@@ -65,10 +65,10 @@ msgid "Spawns a kamikaze duck."
 msgstr "Создаёт утку-камикадзе."
 
 msgid "Spawns a night duck."
-msgstr ""
+msgstr "Создаёт ночную утку."
 
 msgid "Spawns a sleeping duck."
-msgstr ""
+msgstr "Создаёт спящую утку."
 
 msgid "Show ducks currently on the channel"
 msgstr "Показывает уток, которые в настоящее время присутствуют на канале."
@@ -729,7 +729,7 @@ msgid "Who doesn't need eyes"
 msgstr "Кому не нужны глаза"
 
 msgid "I guess that just says ¯\\_(ツ)_/¯"
-msgstr ""
+msgstr "Просто выводит ¯\\_(ツ)_/¯"
 
 msgid ""
 "See the current global event.\n"
@@ -851,12 +851,18 @@ msgid ""
 "version of a bot analytics.\n"
 "The counters get reset every time the bot reboot."
 msgstr ""
+"Отображает наиболее часто используемые команды бота. Это кривая-косая версия "
+"аналитики.\n"
+"Счётчики обнуляются при каждой перезагрузке бота."
 
 msgid ""
 "Shows a paginator with the users that have used the bot the most. This is "
 "again the poor version of a bot analytics.\n"
 "The counters get reset every time the bot reboot."
 msgstr ""
+"Выводит информацию о наиболее активных пользователях бота. Это опять-таки "
+"кривая-косая версия аналитики.\n"
+"Счётчики обнуляются при каждой перезагрузке бота."
 
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
@@ -1124,6 +1130,8 @@ msgid ""
 "{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
+"{you.mention} обнял(а) {other.mention}. Разработчик нереально счастлив, что "
+"вам здесь уютно."
 
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
@@ -1344,7 +1352,7 @@ msgid "Crack it open !"
 msgstr "Разбейте его!"
 
 msgid "A free card for magazines"
-msgstr "Халявная карта для покупки обойм"
+msgstr "Карта для получения халявных обойм"
 
 msgid "Redeem it to refill your weapon."
 msgstr "Используйте её для пополнения боезапаса"
@@ -1375,8 +1383,7 @@ msgstr "✨ {guild.name} получает статус VIP! Спасибо!"
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
-msgstr ""
-"✨ Вы узнали много нового, получив {amount} ед. опыта для свого профиля."
+msgstr "✨ Вы узнали много нового и получили {amount} ед. опыта."
 
 msgid "✨ Yay! Free ammo!"
 msgstr "✨ Ура! Бесплатные патроны!"
@@ -2325,7 +2332,7 @@ msgid "{exp} experience"
 msgstr "{exp} ед. опыта"
 
 msgid "{target.name} statistics (click me!)."
-msgstr ""
+msgstr "Статистика: {target.name} (ссылка)."
 
 msgid "Bullets"
 msgstr "Патроны"
@@ -2545,16 +2552,16 @@ msgstr ""
 "Используйте команду `{ctx.prefix}settings enabled False` для остановки игры."
 
 msgid "Most used commands"
-msgstr ""
+msgstr "Наиболее часто используемые команды"
 
 msgid "{n} uses"
-msgstr ""
+msgstr "{n} раз(а)"
 
 msgid "Top users"
-msgstr ""
+msgstr "Топчик"
 
 msgid "{n} commands used"
-msgstr ""
+msgstr "Использовано {n} команд"
 
 msgid "Murderer"
 msgstr "Убийца"
@@ -3178,10 +3185,10 @@ msgid "The duck went to the parallel universe"
 msgstr "Утка исследует параллельный мир."
 
 msgid "The duck went to a parallel universe"
-msgstr ""
+msgstr "Утка исследует параллельный мир."
 
 msgid "The duck went the duckiverse"
-msgstr ""
+msgstr "Утка укатила на птичий рынок."
 
 msgid "The duck teleported away from here"
 msgstr "Утка телепортировалась подальше отсюда."
