@@ -97,8 +97,7 @@ class DuckBoss(Cog):
 
         else:
             if random.randint(1, 1440) == 1:
-                boss_message = await channel.send(embed=await self.create_boss_embed(),)
-                await boss_message.add_reaction("🔫")
+                await self.spawn_boss()
 
     async def spawn_boss(self):
         self.bot.logger.info("Spawning duck boss...")
