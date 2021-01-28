@@ -104,7 +104,7 @@ normal = {
                    _("The duck doesn't want to be sniped."), _("The duck walked up to the lemonade stand."),
                    _("The duck flew over a disproportionately small gap."),
                    _("The duck chickened out."), _("The duck went to the parallel universe"),
-                   _("The duck went to a parallel universe"), _("The duck went the duckiverse"),
+                   _("The duck went to a parallel universe"), _("The duck went into the duckiverse"),
                    _("The duck teleported away from here"),
                    _("The duck went to look for a friend"), _("The duck went to a better place"),
                    _("The duck went to a better party"),
