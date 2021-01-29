@@ -5,18 +5,25 @@ def _(s):
 DUCKS_IMAGES = {
     'ninja': 'https://media.discordapp.net/attachments/737978240966066177/744488520768421940/image0.png',
 
-    'ghost':        'https://media.discordapp.net/attachments/795225915248214036/795259576085643284/ghost_duck2_calgeka.png',
-    'armored':      'https://media.discordapp.net/attachments/737978240966066177/738378965294645289/armored_duck.png',
-    'baby':         'https://media.discordapp.net/attachments/795225915248214036/795259573115289600/baby_duck_calgeka.png',
-    'normal':       'https://media.discordapp.net/attachments/795225915248214036/795259592786313246/normal_duck_calgeka.png',
-    'super':        'https://media.discordapp.net/attachments/795225915248214036/795259598247297044/super_duck_calgeka.png',
-    'prof':         'https://media.discordapp.net/attachments/795225915248214036/795259596091949116/prof_duck_calgeka.png',
-    'mechanical':   'https://media.discordapp.net/attachments/795225915248214036/795259584528646154/mechanical_duck_calgeka.png',
-    'moad':         'https://media.discordapp.net/attachments/795225915248214036/795259587480780880/mother_of_all_ducks_calgeka.png',
-    'kamikaze':     'https://media.discordapp.net/attachments/795225915248214036/795259581660004412/kamikaze_duck_calgeka.png',
-    'golden':       'https://media.discordapp.net/attachments/795225915248214036/795259578475610112/golden_duck_calgeka.png',
-    'night':        'https://media.discordapp.net/attachments/795225915248214036/795259589930778634/night_duck_calgeka.png',
-    'plastic':      'https://media.discordapp.net/attachments/795225915248214036/795369328694001664/plastic_duck_Calgeka.png',
+    'ghost':        'https://cdn.discordapp.com/attachments/795225915248214036/795259576085643284/ghost_duck2_calgeka.png',
+    'armored':      'https://cdn.discordapp.com/attachments/737978240966066177/738378965294645289/armored_duck.png',
+    'baby':         'https://cdn.discordapp.com/attachments/795225915248214036/795259573115289600/baby_duck_calgeka.png',
+    'normal':       'https://cdn.discordapp.com/attachments/795225915248214036/795259592786313246/normal_duck_calgeka.png',
+    'normal_alt1':  'https://cdn.discordapp.com/attachments/795225915248214036/804671834624229396/normal_duck_Calgeka_Azadelia.png',
+    'normal_alt2':  'https://cdn.discordapp.com/attachments/795225915248214036/804671836998074428/normal_duck_Calgeka_Nausicaa.png',
+    'super':        'https://cdn.discordapp.com/attachments/795225915248214036/795259598247297044/super_duck_calgeka.png',
+    'super_alt1':   'https://cdn.discordapp.com/attachments/795225915248214036/804671999502581770/super_duck_Calgeka_Alunden.png',
+    'prof':         'https://cdn.discordapp.com/attachments/795225915248214036/795259596091949116/prof_duck_calgeka.png',
+    'mechanical':   'https://cdn.discordapp.com/attachments/795225915248214036/795259584528646154/mechanical_duck_calgeka.png',
+    'moad':         'https://cdn.discordapp.com/attachments/795225915248214036/795259587480780880/mother_of_all_ducks_calgeka.png',
+    'moad_alt1':    'https://cdn.discordapp.com/attachments/795225915248214036/804671584019152922/mother_of_all_ducks_Calgeka_Eleisya.png',
+    'moad_alt2':    'https://cdn.discordapp.com/attachments/795225915248214036/804671604725907466/mother_of_all_ducks_Calgeka_Eleisya_2.png',
+    'kamikaze':     'https://cdn.discordapp.com/attachments/795225915248214036/795259581660004412/kamikaze_duck_calgeka.png',
+    'golden':       'https://cdn.discordapp.com/attachments/795225915248214036/795259578475610112/golden_duck_calgeka.png',
+    'golden_alt1':  'https://cdn.discordapp.com/attachments/795225915248214036/804672092342976522/golden_duck_Calgeka_Alexender.png',
+    'night':        'https://cdn.discordapp.com/attachments/795225915248214036/795259589930778634/night_duck_calgeka.png',
+    'plastic':      'https://cdn.discordapp.com/attachments/795225915248214036/795369328694001664/plastic_duck_Calgeka.png',
+    'plastic_alt1': 'https://cdn.discordapp.com/attachments/795225915248214036/804672096411058237/plastic_duck_Calgeka_Iridius.png',
 }
 
 DUCKS_EMOJIS = {
@@ -111,7 +118,7 @@ normal = {
                    _("The duck has some important business to take care of")],
     'bye_traces': ["·°'`'°-.,¸¸.·°'`"],
     'usernames': [_("A duck"), _("Mr. Duck"), _("RealDuck")],
-    'avatar_urls': [DUCKS_IMAGES['normal']],
+    'avatar_urls': [DUCKS_IMAGES['normal'], DUCKS_IMAGES['normal_alt1'], DUCKS_IMAGES['normal_alt2']],
 }
 
 ghost = {
@@ -143,14 +150,14 @@ baby = {**normal,
 golden = {**normal,
           'shouts': ["€!", "$!", _("£!"), _("Free money !"), _("It's free money")],
           'usernames': [_("Golden Duck"), _("Golden Goose"), _("Shiny Duck"), _("Rich Duck")],
-          'avatar_urls': [DUCKS_IMAGES['golden']],
+          'avatar_urls': [DUCKS_IMAGES['golden'], DUCKS_IMAGES['golden_alt1']],
           'emojis': [DUCKS_EMOJIS['golden']]
           }
 
 plastic = {**normal,
            'shouts': ["€?", "$?", _("£?"), _("Have any money ?"), _("It's paid money")],
            'usernames': [_("Plastic Duck"), _("Poor Duck"), _("Slimey Duck")],
-           'avatar_urls': [DUCKS_IMAGES['plastic']],
+           'avatar_urls': [DUCKS_IMAGES['plastic'], DUCKS_IMAGES['plastic_alt1']],
            'emojis': [DUCKS_EMOJIS['plastic']]
            }
 
@@ -174,14 +181,14 @@ mechanical = {
 super = {
     **normal,
     'usernames': [_("Big Duck"), _("Strong Duck"), _("Heavy Duck")],
-    'avatar_urls': [DUCKS_IMAGES['super']],
+    'avatar_urls': [DUCKS_IMAGES['super'], DUCKS_IMAGES['super_alt1']],
     'emojis': [DUCKS_EMOJIS['super']],
 }
 
 moad = {
     **normal,
     'shouts': [_("**I am your mother...**")],
-    'avatar_urls': [DUCKS_IMAGES['moad']],
+    'avatar_urls': [DUCKS_IMAGES['moad'], DUCKS_IMAGES['moad_alt1'], DUCKS_IMAGES['moad_alt2']],
     'emojis': [DUCKS_EMOJIS['moad']],
     'usernames': [_("Ms. Duck"), _("Mom"), _("Mommy"), _("MOAD"), _("Mooooom")],
 }
