@@ -8,7 +8,7 @@ DUCKS_IMAGES = {
     'ghost':        'https://cdn.discordapp.com/attachments/795225915248214036/795259576085643284/ghost_duck2_calgeka.png',
     'armored':      'https://cdn.discordapp.com/attachments/737978240966066177/738378965294645289/armored_duck.png',
     'baby':         'https://cdn.discordapp.com/attachments/795225915248214036/795259573115289600/baby_duck_calgeka.png',
-    'normal':       'https://cdn.discordapp.com/attachments/795225915248214036/795259592786313246/normal_duck_calgeka.png',
+    'normal':       'https://cdn.discordapp.com/attachments/795225915248214036/804676034095218698/normal_duck_Calgeka.png',
     'normal_alt1':  'https://cdn.discordapp.com/attachments/795225915248214036/804671834624229396/normal_duck_Calgeka_Azadelia.png',
     'normal_alt2':  'https://cdn.discordapp.com/attachments/795225915248214036/804671836998074428/normal_duck_Calgeka_Nausicaa.png',
     'super':        'https://cdn.discordapp.com/attachments/795225915248214036/795259598247297044/super_duck_calgeka.png',
