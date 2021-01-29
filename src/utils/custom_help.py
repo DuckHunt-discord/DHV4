@@ -1,19 +1,37 @@
-from discord.ext import commands
+from discord.ext import commands, menus
 import discord
 
 
+class HelpGroupPaginator(menus.ListPageSource):
+    def __init__(self, help_: 'EmbedHelpCommand', group, entries):
+        super().__init__(entries, per_page=7)
+        self.group = group
+        self.help = help_
+
+    async def format_page(self, menu, entries):
+        _ = await self.help.context.get_translate_function()
+
+        embed = discord.Embed(title=self.group.qualified_name, colour=self.help.COLOUR)
+        embed.url = self.help.context.bot.config['website_url'] + f"commands/{self.group.qualified_name.replace(' ', '/')}"
+
+        if self.group.help:
+            embed.description = _(self.group.help)
+
+        for command in entries:
+            value = '...'
+            if command.brief:
+                value = _(command.brief)
+            elif command.help:
+                value = _(command.help).split('\n', 1)[0]
+            embed.add_field(name=self.help.get_command_signature(command), value=value, inline=False)
+
+        embed.set_footer(text=self.help.get_ending_note(_))
+
+        # you can format the embed however you'd like
+        return embed
+
+
 class EmbedHelpCommand(commands.HelpCommand):
-    """This is an example of a HelpCommand that utilizes embeds.
-    It's pretty basic but it lacks some nuances that people might expect.
-    1. It breaks if you have more than 25 cogs or more than 25 subcommands. (Most people don't reach this)
-    2. It doesn't DM users. To do this, you have to override `get_destination`. It's simple.
-    Other than those two things this is a basic skeleton to get you started. It should
-    be simple to modify if you desire some other behaviour.
-
-    To use this, pass it to the bot constructor e.g.:
-
-    bot = commands.Bot(help_command=EmbedHelpCommand())
-    """
     # Set the embed colour here
     COLOUR = discord.Colour.blurple()
 
@@ -68,28 +86,18 @@ class EmbedHelpCommand(commands.HelpCommand):
         await self.get_destination().send(embed=embed)
 
     async def send_group_help(self, group):
+        entries = await self.filter_commands(group.commands, sort=True)
+        menu = menus.MenuPages(HelpGroupPaginator(self, group, entries))
+        await menu.start(self.context)
+
+    async def send_command_help(self, command):
         _ = await self.context.get_translate_function()
 
-        embed = discord.Embed(title=group.qualified_name, colour=self.COLOUR)
-        embed.url = self.context.bot.config['website_url'] + f"commands/{group.qualified_name.replace(' ', '/')}"
+        embed = discord.Embed(title=command.qualified_name, colour=self.COLOUR)
+        embed.url = self.context.bot.config['website_url'] + f"commands/{command.qualified_name.replace(' ', '/')}"
 
-        if group.help:
-            embed.description = _(group.help)
-
-        if isinstance(group, commands.Group):
-            filtered = await self.filter_commands(group.commands, sort=True)
-            for command in filtered:
-                value = '...'
-                if command.brief:
-                    value = _(command.brief)
-                elif command.help:
-                    value = _(command.help).split('\n', 1)[0]
-                embed.add_field(name=self.get_command_signature(command), value=value, inline=False)
+        if command.help:
+            embed.description = _(command.help)
 
         embed.set_footer(text=self.get_ending_note(_))
         await self.get_destination().send(embed=embed)
-
-    # This makes it so it uses the function above
-    # Less work for us to do since they're both similar.
-    # If you want to make regular command help look different then override it
-    send_command_help = send_group_help
