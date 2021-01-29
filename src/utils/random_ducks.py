@@ -16,7 +16,7 @@ def get_random_asset_from_directory(directory_name) -> Image.Image:
 
     file_path = random.choice(list(directory.glob("*.png")))
 
-    return Image.open(file_path)
+    return Image.open(file_path).convert("RGBA")
 
 
 def create_random_duck(with_background=True) -> Image.Image:
@@ -31,4 +31,8 @@ def create_random_duck(with_background=True) -> Image.Image:
 
     return image
 
+
+if __name__ == '__main__':
+    im = create_random_duck()
+    im.show()
 
