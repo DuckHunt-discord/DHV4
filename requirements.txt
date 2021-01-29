@@ -19,3 +19,4 @@ aiohttp~=3.6.2
 aiohttp_cors~=0.7.0
 polib~=1.1.0
 tqdm~=4.54.1
+pillow>=8.0

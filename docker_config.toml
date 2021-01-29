@@ -73,3 +73,7 @@ route_prefix = "/api"
 # Access keys are actually GUIDs/UUIDs.
 # You can generate them easily. https://www.uuidgenerator.net/version4
 global_access_keys = []
+
+[random_ducks]
+assets_path = 'assets/Random Ducks'
+composite_order = ['Body', 'Neck', 'Face', 'Hats'] # Background is included

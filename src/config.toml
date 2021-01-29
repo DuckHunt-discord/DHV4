@@ -75,3 +75,7 @@ route_prefix = "/api"
 global_access_keys = [
     "d84af260-c806-4066-8387-1d5144b7fa72", # DuckHunt WebInterface (exemple)
 ]
+
+[random_ducks]
+assets_path = 'assets/Random Ducks'
+composite_order = ['Body', 'Neck', 'Face', 'Hats'] # Background is included
