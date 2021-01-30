@@ -297,7 +297,9 @@ class SettingsCommands(Cog):
         """
         Nuclear Radiation gamemode.
 
-        This make clovers be able to give negative experience too !
+        Watch out as the radiation seems to cause ducks to be stronger!
+        This means there are more, and stronger, super ducks. Get a rocket launcher or something QUICK!!!
+        The radiation makes clovers be able to give negative experience too !
 
         All the other settings are reset to their default values.
         """
@@ -308,6 +310,11 @@ class SettingsCommands(Cog):
 
         db_channel.clover_min_experience = -20
         db_channel.clover_max_experience = 20
+        db_channel.spawn_weight_moad_ducks *= 2
+        db_channel.spawn_weight_super_ducks *= 2
+        db_channel.spawn_weight_armored_ducks *= 2
+        db_channel.super_ducks_min_life = int(1.3 * db_channel.super_ducks_min_life)
+        db_channel.super_ducks_max_life = int(1.3 * db_channel.super_ducks_max_life)
 
         await db_channel.save()
 
