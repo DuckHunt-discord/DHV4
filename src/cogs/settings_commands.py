@@ -776,6 +776,7 @@ class SettingsCommands(Cog):
         Set the amount of ducks that will spawn every day
         """
         db_channel = await get_from_db(ctx.channel)
+        db_guild = await get_from_db(ctx.guild)
         _ = await ctx.get_translate_function()
 
         maximum_value = max_ducks_per_day(ctx.guild.member_count)
@@ -796,6 +797,16 @@ class SettingsCommands(Cog):
                         maximum_value=maximum_value,
                         value=int(value),
                         ))
+                elif db_guild.vip:
+                    value = min(maximum_value * 5, value)  # Limit to 5x max
+                    await ctx.send(_(
+                        "⚠️️ You should not set that higher than {maximum_value}, however, this is a VIP server "
+                        "so I'll allow much higher limits than usual. "
+                        "The number of ducks per day is limited to ensure resources are used fairly.\n "
+                        "I'm proceeding anyway as requested, with {value} ducks per day on the channel.",
+                        maximum_value=maximum_value,
+                        value=int(value),
+                    ))
                 else:
                     await ctx.send(_("⚠️️ You cannot set that higher than {maximum_value}. "
                                      "The number of ducks per day is limited to ensure resources are used fairly. "
