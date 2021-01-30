@@ -3212,7 +3212,7 @@ msgid "The duck went to a parallel universe"
 msgstr "De eend ging naar een parallel universum"
 
 msgid "The duck went into the duckiverse"
-msgstr ""
+msgstr "De eend ging het eendenuniversum in"
 
 msgid "The duck teleported away from here"
 msgstr "De eend is van hier weggeteleporteerd"

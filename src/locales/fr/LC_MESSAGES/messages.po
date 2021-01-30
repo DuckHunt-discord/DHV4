@@ -1145,7 +1145,7 @@ msgid ""
 "{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
-"{you.mention} embrassez {other.mention}. Le développeur du bot est vraiment "
+"{you.mention} a embrassé {other.mention}. Le développeur du bot est vraiment "
 "heureux que vous l'aimiez."
 
 msgid "{you.mention} hugged {other.mention}. They feel loved."
