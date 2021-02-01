@@ -161,7 +161,7 @@ msgstr ""
 msgid "/help/commands\n"
 "\n"
 "Get list of commands"
-msgstr "احصل على قائمة من الأوامر"
+msgstr ""
 
 msgid "/status\n"
 "\n"

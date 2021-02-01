@@ -2546,7 +2546,7 @@ msgid ""
 "{damage}]"
 msgstr ""
 "{hurter.mention} såret ænderne [**ARMORED ænder opdaget**] [**Skader**: -"
-"{skade}]"
+"{damage}]"
 
 msgid "night"
 msgstr ""
