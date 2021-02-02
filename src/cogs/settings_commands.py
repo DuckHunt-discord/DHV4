@@ -276,7 +276,7 @@ class SettingsCommands(Cog):
         Hydra gamemode.
 
         A lot of MOADs will spawn in the channel, and they'll make MOADs spawn too.
-        This actually just set spawn_weight_moad_ducks to 300.
+        This actually just set spawn_weight_moad_ducks to 100.
 
         All the other settings are reset to their default values.
         """
@@ -285,7 +285,7 @@ class SettingsCommands(Cog):
 
         await self.set_default(db_channel)
 
-        db_channel.spawn_weight_moad_ducks = 300
+        db_channel.spawn_weight_moad_ducks = 100
 
         await db_channel.save()
 
