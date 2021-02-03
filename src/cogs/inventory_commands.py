@@ -28,7 +28,7 @@ INV_COMMON_ITEMS = {
     'spawn_ducks':
         {"type": "item", "action": "spawn_ducks", "uses": 1, "name": _("A good ol' egg"), "description": _("Crack it open !")},
     'refill_magazines':
-        {"type": "item", "action": "refill_magazines", "uses": 2, "name": _("A free card for magazines"), "description": _("Redeem it to refill your weapon.")},
+        {"type": "item", "action": "refill_magazines", "uses": 1, "name": _("A free card for magazines"), "description": _("Redeem it to refill your weapon.")},
 }
 
 INV_LOOTBOX_ITEMS = {
