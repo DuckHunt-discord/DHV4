@@ -71,10 +71,16 @@ class ItemsMenusSource(menus.ListPageSource):
         offset = menu.current_page * self.per_page
 
         for i, item in enumerate(entries, start=offset):
-            if self.numbers:
-                e.add_field(name=f"**{i + 1}** - " + _(item["name"]), value=_(item["description"]), inline=False)
+            uses = item.get("uses", 1)
+            if uses > 1:
+                uses_str = f"{uses}x"
             else:
-                e.add_field(name=f"- " + _(item["name"]), value=_(item["description"]), inline=False)
+                uses_str = ""
+
+            if self.numbers:
+                e.add_field(name=f"**{i + 1}** - {uses_str}" + _(item["name"]), value=_(item["description"]), inline=False)
+            else:
+                e.add_field(name=f"- {uses_str}" + _(item["name"]), value=_(item["description"]), inline=False)
 
         if not entries:
             e.description = _("A lot of air and a starved mosquito.")
