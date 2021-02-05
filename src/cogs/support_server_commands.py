@@ -71,9 +71,9 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Uptime", value=f"{self.get_bot_uptime()}", inline=True)
 
         try:
-            mc_command_name, mc_command_uses = self.bot.commands_used.most_common(1)
+            mc_command_name, mc_command_uses = self.bot.commands_used.most_common(1)[0]
             embed.add_field(name="Commands (most used)", value=f"dh!{mc_command_name} ({mc_command_uses} uses)", inline=False)
-        except ValueError:
+        except (ValueError, IndexError):
             embed.add_field(name="Commands", value=f"❌", inline=False)
 
         ds_cog = self.bot.get_cog("DucksSpawning")
@@ -82,7 +82,9 @@ class SupportServerCommands(Cog):
             loop_time = ds_cog.current_iteration_public
             diff = now - loop_time
             diff_str = round(diff, 2)
-            if diff < 2:
+            if loop_time == 0:
+                embed.add_field(name="Ducks Loop", value=f"⚠️ Restoring ducks...", inline=True)
+            elif diff < 2:
                 embed.add_field(name="Ducks Loop", value=f"✅ {diff_str}s off", inline=True)
             else:
                 embed.add_field(name="Ducks Loop", value=f"⚠️ {diff_str}s off", inline=True)
