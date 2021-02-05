@@ -92,9 +92,9 @@ class SupportServerCommands(Cog):
         boss_cog = self.bot.get_cog("DuckBoss")
         if boss_cog:
             if boss_cog.background_loop.failed():
-                embed.add_field(name="Ducks Loop", value=f"❌ Failed", inline=True)
+                embed.add_field(name="Boss Loop", value=f"❌ Failed", inline=True)
             else:
-                embed.add_field(name="Ducks Loop", value=f"✅ {boss_cog.background_loop.current_loop} it", inline=True)
+                embed.add_field(name="Boss Loop", value=f"✅ {boss_cog.background_loop.current_loop} it", inline=True)
         else:
             embed.add_field(name="Boss Loop", value=f"❌ Unloaded", inline=True)
 
