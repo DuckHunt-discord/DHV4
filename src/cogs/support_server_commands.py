@@ -70,8 +70,11 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
         embed.add_field(name="Uptime", value=f"{self.get_bot_uptime()}", inline=True)
 
-        mc_command_name, mc_command_uses = self.bot.commands_used.most_common(1)
-        embed.add_field(name="Commands (most used)", value=f"dh!{mc_command_name} ({mc_command_uses} uses)", inline=False)
+        try:
+            mc_command_name, mc_command_uses = self.bot.commands_used.most_common(1)
+            embed.add_field(name="Commands (most used)", value=f"dh!{mc_command_name} ({mc_command_uses} uses)", inline=False)
+        except ValueError:
+            embed.add_field(name="Commands", value=f"❌", inline=False)
 
         ds_cog = self.bot.get_cog("DucksSpawning")
         if ds_cog:
