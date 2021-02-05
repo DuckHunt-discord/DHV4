@@ -48,7 +48,6 @@ class SupportServerCommands(Cog):
 
         self.bot.logger.debug("Updating status message", guild=status_channel.guild, channel=status_channel)
 
-        await purge_channel_messages(status_channel)
         embed = discord.Embed(colour=discord.Colour.blurple(),
                               title=f"{self.bot.user.name}'s status")
 
@@ -108,6 +107,7 @@ class SupportServerCommands(Cog):
         delta = dates.format_timedelta(next_it - now, locale='en')
         embed.set_footer(text=f"This should update every {delta} - Last update")
 
+        await purge_channel_messages(status_channel)
         await status_channel.send(embed=embed)
 
     @background_loop.before_loop
