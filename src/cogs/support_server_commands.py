@@ -70,6 +70,28 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
         embed.add_field(name="Uptime", value=f"{self.get_bot_uptime()}", inline=True)
 
+        ds_cog = self.bot.get_cog("DucksSpawning")
+        if ds_cog:
+            now = time.time()
+            loop_time = ds_cog.current_iteration_public
+            diff = now - loop_time
+            diff_str = round(diff, 2)
+            if diff < 2:
+                embed.add_field(name="Ducks Loop", value=f"✅ {diff_str}s off", inline=True)
+            else:
+                embed.add_field(name="Ducks Loop", value=f"⚠️ {diff_str}s off", inline=True)
+        else:
+            embed.add_field(name="Ducks Loop", value=f"❌ Unloaded", inline=True)
+
+        boss_cog = self.bot.get_cog("DuckBoss")
+        if boss_cog:
+            if boss_cog.background_loop.failed():
+                embed.add_field(name="Ducks Loop", value=f"❌ Failed", inline=True)
+            else:
+                embed.add_field(name="Ducks Loop", value=f"✅ {boss_cog.background_loop.current_loop} it", inline=True)
+        else:
+            embed.add_field(name="Boss Loop", value=f"❌ Unloaded", inline=True)
+
         embed.timestamp = datetime.datetime.utcnow()
 
         next_it = self.background_loop.next_iteration

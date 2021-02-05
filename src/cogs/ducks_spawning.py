@@ -24,6 +24,7 @@ class DucksSpawning(Cog):
         self.background_loop = bot.loop.create_task(self.loop())
         self.interval = 1
         self.last_planned_day = 0
+        self.current_iteration_public = 0
 
     async def loop(self):
         try:
@@ -37,6 +38,8 @@ class DucksSpawning(Cog):
             # Precalculate timings
             now = time()
             current_iteration = current_iteration + self.interval
+            self.current_iteration_public = current_iteration
+
             delay = now - current_iteration
             if delay >= 30:
                 self.bot.logger.error(f"Ignoring iterations to compensate for delays ({delay} seconds)!")
