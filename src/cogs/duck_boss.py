@@ -83,7 +83,8 @@ class DuckBoss(Cog):
                     description=f"Thanks to the {bangs} players who helped in this quest. Check your inventories with `dh!inv` for these drops.",
                 )
 
-                new_embed.set_image(url="https://media.discordapp.net/attachments/734810933091762188/779515302382796870/boss.png")
+                new_embed.set_image(url=random.choice(["https://cdn.discordapp.com/attachments/795225915248214036/807309301181055056/deadboss_Calgeka.png",
+                                                       "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png"]))
                 new_embed.add_field(name="Health", value=f"0/{boss_life}")
 
                 time_delta = datetime.datetime.now() - boss_message.created_at
