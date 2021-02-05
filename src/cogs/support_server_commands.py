@@ -39,7 +39,7 @@ class SupportServerCommands(Cog):
     def get_bot_uptime(self):
         return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
 
-    @tasks.loop(minutes=15)
+    @tasks.loop(seconds=30)
     async def background_loop(self):
         status_channel = self.bot.get_channel(self.config()["status_channel_id"])
         if not status_channel or not isinstance(status_channel, discord.TextChannel):
@@ -69,6 +69,9 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Cogs loaded", value=f"{len(self.bot.cogs)}", inline=True)
         embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
         embed.add_field(name="Uptime", value=f"{self.get_bot_uptime()}", inline=True)
+
+        mc_command_name, mc_command_uses = self.bot.commands_used.most_common(1)
+        embed.add_field(name="Commands (most used)", value=f"dh!{mc_command_name} ({mc_command_uses} uses)", inline=False)
 
         ds_cog = self.bot.get_cog("DucksSpawning")
         if ds_cog:
