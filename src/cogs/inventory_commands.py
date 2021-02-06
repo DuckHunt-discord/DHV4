@@ -21,10 +21,18 @@ INV_COMMON_ITEMS = {
         {"type": "lootbox", "action": "welcome", "name": _("A welcome gift"), "description": _("Open it in your inventory")},
     'foie_gras':
         {"type": "lootbox", "action": "foie_gras", "name": _("A clean box of foie gras"), "description": _("The boss dropped that when he died")},
+    'i_voted':
+        {"type": "lootbox", "action": "vote", "name": _("A little something for helping the bot"), "description": _("Thanks for voting for DuckHunt")},
     'vip_card':
         {"type": "item", "action": "set_vip", "uses": 1, "name": _("VIP Card"), "description": _("A nice and shiny card that allow you to set a server as VIP.")},
+    'mini_boost_exp':
+        {"type": "item", "action": "add_exp", "uses": 1, "amount": 15, "name": _("A book in a foreign language"), "description": _("Can you read it ?")},
     'boost_exp':
         {"type": "item", "action": "add_exp", "uses": 1, "amount": 35, "name": _("A book"), "description": _("Reading it will give you experience")},
+    'big_boost_exp':
+        {"type": "item", "action": "add_exp", "uses": 1, "amount": 75, "name": _("An encyclopedia"), "description": _("Reading it will give you a lot of experience")},
+    'bullet':
+        {"type": "item", "action": "bullet", "uses": 1, "name": _("A bullet"), "description": _("This is just a normal bullet, but it might help you to get that special achievement")},
     'spawn_ducks':
         {"type": "item", "action": "spawn_ducks", "uses": 1, "name": _("A good ol' egg"), "description": _("Crack it open !")},
     'refill_magazines':
@@ -39,7 +47,9 @@ INV_LOOTBOX_ITEMS = {
         ],
     'foie_gras':
         [
-            {"luck": 35, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 1, "item": INV_COMMON_ITEMS['big_boost_exp']},
+            {"luck": 20, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 45, "item": INV_COMMON_ITEMS['mini_boost_exp']},
             {"luck": 100, "item": INV_COMMON_ITEMS['refill_magazines']},
             {"luck": 10, "item": INV_COMMON_ITEMS['spawn_ducks']},
         ],
@@ -51,8 +61,11 @@ INV_LOOTBOX_ITEMS = {
         ],
     'vote':
         [
+            {"luck": 10, "item": INV_COMMON_ITEMS['refill_magazines']},
+            {"luck": 1, "item": INV_COMMON_ITEMS['big_boost_exp']},
             {"luck": 5, "item": INV_COMMON_ITEMS['boost_exp']},
-            {"luck": 100, "item": INV_COMMON_ITEMS["refill_magazines"]},
+            {"luck": 50, "item": INV_COMMON_ITEMS['mini_boost_exp']},
+            {"luck": 100, "item": INV_COMMON_ITEMS["bullet"]},
         ],
 }
 
@@ -187,6 +200,11 @@ class InventoryCommands(Cog):
                 db_player.magazines = level_info['magazines']
                 db_player.bullets = level_info['bullets']
                 await ctx.send(_('✨ Yay! Free ammo!'))
+            elif item_action == "bullet":
+                level_info = db_player.level_info()
+                # Can go higher than the limit, that's intended
+                db_player.bullets = max(level_info['bullets'], db_player.bullets + 1)
+                await ctx.send(_('✨ Oh, is this a bullet ?'))
             elif item_action == "spawn_ducks":
                 for i in range(2):
                     await spawn_random_weighted_duck(self.bot, ctx.channel)
