@@ -15,8 +15,13 @@ from utils.models import get_enabled_channels, DiscordChannel, Player, DiscordUs
 class DuckBoss(Cog):
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
-        self.index = 0
         self.background_loop.start()
+        self.iterations_no_spawn = 1
+        self.iterations_spawn = 0
+
+    @property
+    def luck(self):
+        return ((self.iterations_spawn / self.iterations_no_spawn) / (60 * 24)) * 100
 
     def cog_unload(self):
         self.background_loop.cancel()
@@ -98,7 +103,10 @@ class DuckBoss(Cog):
 
         else:
             if random.randint(1, 1440) == 1:
+                self.iterations_spawn += 1
                 await self.spawn_boss()
+            else:
+                self.iterations_no_spawn += 1
 
     async def spawn_boss(self):
         self.bot.logger.info("Spawning duck boss...")
