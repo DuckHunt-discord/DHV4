@@ -73,7 +73,7 @@ class ItemsMenusSource(menus.ListPageSource):
         for i, item in enumerate(entries, start=offset):
             uses = item.get("uses", 1)
             if uses > 1:
-                uses_str = f"{uses}x"
+                uses_str = f"{uses}x "
             else:
                 uses_str = ""
 
@@ -171,6 +171,9 @@ class InventoryCommands(Cog):
             item_action = item.get("action")
             if item_action == "set_vip":
                 db_guild = await get_from_db(ctx.guild)
+                if db_guild.vip:
+                    await ctx.send(_('❌ {guild.name} is already VIP.', guild=ctx.guild))
+                    return
                 db_guild.vip = True
                 await db_guild.save()
                 await ctx.send(_('✨ {guild.name} is now VIP! Thanks.', guild=ctx.guild))
