@@ -331,6 +331,7 @@ class RestAPI(Cog):
 
         db_user: DiscordUser = await get_from_db(user)
 
+        db_user.votes += 1
         db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
 
         if not is_test:
