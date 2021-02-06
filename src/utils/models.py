@@ -208,7 +208,8 @@ class DiscordUser(Model):
     def add_to_inventory(self, item_to_give, item_number=None):
         for item_in_inventory in self.inventory:
             if item_in_inventory["type"] == item_to_give["type"] and \
-                    item_in_inventory.get("action", "") == item_to_give.get("action", ""):
+                    item_in_inventory.get("action", "") == item_to_give.get("action", "") and \
+                    item_in_inventory.get("amount", 0) == item_to_give.get("amount", 0):
                 item_in_inventory["uses"] = item_in_inventory.get("uses", 1) + item_to_give.get("uses", 1)
                 break
         else:
