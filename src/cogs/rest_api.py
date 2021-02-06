@@ -340,6 +340,11 @@ class RestAPI(Cog):
         else:
             self.bot.logger.warning(f"Test vote received for {user.name}#{user.discriminator}. Not saved.")
 
+        try:
+            await user.send("✨ Thanks for voting for DuckHunt ! Check your inventory with `dh!inv`.")
+        except discord.errors.Forbidden:
+            pass
+
         return web.Response(status=200, text="Vote accepted")
 
     async def run(self):
