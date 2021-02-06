@@ -341,7 +341,7 @@ class RestAPI(Cog):
             self.bot.logger.warning(f"Test vote received for {user.name}#{user.discriminator}. Not saved.")
 
         try:
-            await user.send("✨ Thanks for voting for DuckHunt ! Check your inventory with `dh!inv`.")
+            await user.send("✨ Thanks for voting for DuckHunt ! Check your inventory with `dh!inv` in a game channel.")
         except discord.errors.Forbidden:
             pass
 
