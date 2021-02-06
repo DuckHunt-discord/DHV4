@@ -3,6 +3,7 @@ from collections import defaultdict
 from typing import Union, Optional
 
 import aiohttp_cors
+import discord
 from aiohttp import web
 from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
 from discord.ext import commands, tasks
@@ -311,15 +312,19 @@ class RestAPI(Cog):
             return web.Response(status=401, text="Unauthorized, bad auth")
 
         post_data = await request.json()
-        user_id = post_data["user"]
+        user_id = int(post_data["user"])
 
-        bot_id = post_data["bot"]
+        bot_id = int(post_data["bot"])
 
         if bot_id != self.bot.user.id:
-            self.bot.logger.warning("Bad bot ID provided to DBL API.")
-            return web.Response(status=401, text="Unauthorized, bad ID")
+            self.bot.logger.warning(f"Bad bot ID ({bot_id}) provided to DBL API.")
+            return web.Response(status=401, text="Unauthorized, bad bot ID")
 
-        user = await self.bot.fetch_user(user_id)
+        try:
+            user = await self.bot.fetch_user(user_id)
+        except discord.errors.NotFound:
+            self.bot.logger.warning(f"Bad user ID provided to DBL API: {user_id}.")
+            return web.Response(status=401, text="Unauthorized, bad user ID")
 
         is_test = post_data["type"] == "test"
         is_weekend = post_data["isWeekend"]
