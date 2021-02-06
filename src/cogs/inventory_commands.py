@@ -107,6 +107,14 @@ async def show_items_menu(ctx, items, title: str, numbers=True):
 
 
 class InventoryCommands(Cog):
+    @commands.command(aliases=["open"])
+    @checks.channel_enabled()
+    async def use(self, ctx: MyContext, item_number: int):
+        """
+        Alias for dh!inv use, so that you can just type dh!use instead.
+        """
+        await self.inv_use(ctx, item_number)
+
     @commands.group(aliases=["inv"])
     @checks.channel_enabled()
     async def inventory(self, ctx: MyContext):
