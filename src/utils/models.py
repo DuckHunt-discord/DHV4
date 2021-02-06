@@ -202,14 +202,14 @@ class DiscordUser(Model):
 
     access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
-    def add_to_inventory(self, item_to_give):
+    def add_to_inventory(self, item_to_give, item_number=-1):
         for item_in_inventory in self.inventory:
             if item_in_inventory["type"] == item_to_give["type"] and \
                     item_in_inventory.get("action", "") == item_to_give.get("action", ""):
                 item_in_inventory["uses"] = item_in_inventory.get("uses", 1) + item_to_give.get("uses", 1)
                 break
         else:
-            self.inventory.append(item_to_give)
+            self.inventory.insert(item_to_give, item_number)
 
     class Meta:
         table = "users"

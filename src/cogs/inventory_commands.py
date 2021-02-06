@@ -152,7 +152,7 @@ class InventoryCommands(Cog):
 
         if item.get("uses", 1) > 1:
             item["uses"] -= 1
-            db_user.add_to_inventory(item)
+            db_user.add_to_inventory(item, item_number - 1)
 
         item_type = item.get('type')
 
