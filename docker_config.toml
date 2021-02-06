@@ -70,6 +70,7 @@ moderators_that_can_delete_with_reactions = [251996890369884161]
 listen_ip = "0.0.0.0"
 listen_port = "8080"
 route_prefix = "/api"
+dbl_shared_secret = "abcdef"
 # Access keys are actually GUIDs/UUIDs.
 # You can generate them easily. https://www.uuidgenerator.net/version4
 global_access_keys = []
