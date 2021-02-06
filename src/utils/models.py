@@ -209,7 +209,7 @@ class DiscordUser(Model):
                 item_in_inventory["uses"] = item_in_inventory.get("uses", 1) + item_to_give.get("uses", 1)
                 break
         else:
-            self.inventory.insert(item_to_give, item_number)
+            self.inventory.insert(item_number, item_to_give)
 
     class Meta:
         table = "users"
