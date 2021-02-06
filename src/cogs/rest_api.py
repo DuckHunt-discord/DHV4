@@ -8,8 +8,9 @@ from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
 from discord.ext import commands, tasks
 from discord.ext.commands import Command, Group
 
+from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.cog_class import Cog
-from utils.models import get_enabled_channels, DiscordChannel, get_from_db, Player, AccessLevel
+from utils.models import get_enabled_channels, DiscordChannel, get_from_db, Player, AccessLevel, DiscordUser
 
 
 class RestAPI(Cog):
@@ -296,6 +297,45 @@ class RestAPI(Cog):
             }
         )
 
+    async def dbl_hook(self, request: web.Request):
+        """
+        /dbl/hook
+
+        Handle users votes. This is not for public use.
+        """
+        shared_secret = self.config()['dbl_shared_secret']
+        auth = request.headers.get("Authorization", "")
+
+        if auth != shared_secret:
+            self.bot.logger.warning("Bad authentification provided to DBL API.")
+            return web.Response(status=401, text="Unauthorized, bad auth")
+
+        post_data = await request.json()
+        user_id = post_data["user"]
+
+        bot_id = post_data["bot"]
+
+        if bot_id != self.bot.user.id:
+            self.bot.logger.warning("Bad bot ID provided to DBL API.")
+            return web.Response(status=401, text="Unauthorized, bad ID")
+
+        user = await self.bot.fetch_user(user_id)
+
+        is_test = post_data["type"] == "test"
+        is_weekend = post_data["isWeekend"]
+
+        db_user: DiscordUser = await get_from_db(user)
+
+        db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
+
+        if not is_test:
+            self.bot.logger.info(f"Vote recorded for {user.name}#{user.discriminator}.")
+            await db_user.save()
+        else:
+            self.bot.logger.warning(f"Test vote received for {user.name}#{user.discriminator}. Not saved.")
+
+        return web.Response(status=200, text="Vote accepted")
+
     async def run(self):
         # Don't wait for ready to avoid blocking the website
         # await self.bot.wait_until_ready()
@@ -311,6 +351,7 @@ class RestAPI(Cog):
             ('GET', f'{route_prefix}/help/commands', self.commands),
             ('GET', f'{route_prefix}/status', self.status),
             ('GET', f'{route_prefix}/stats', self.stats),
+            ('POST', f'{route_prefix}/dbl/hook', self.dbl_hook),
         ]
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
