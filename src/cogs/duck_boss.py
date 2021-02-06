@@ -79,7 +79,7 @@ class DuckBoss(Cog):
                 discordusers: List[DiscordUser] = await DiscordUser.filter(discord_id__in=ids).only('inventory', 'discord_id').all()
 
                 for discorduser in discordusers:
-                    discorduser.inventory.append(INV_COMMON_ITEMS['foie_gras'])
+                    discorduser.add_to_inventory(INV_COMMON_ITEMS['foie_gras'])
                     await discorduser.save(update_fields=['inventory'])
 
                 new_embed = discord.Embed(

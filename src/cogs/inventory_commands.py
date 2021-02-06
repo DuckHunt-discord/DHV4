@@ -125,7 +125,7 @@ class InventoryCommands(Cog):
             await ctx.send(_("❌ Unknown item."))
             return
 
-        db_target.inventory.append(item)
+        db_target.add_to_inventory(item)
         await db_target.save()
         await ctx.send(_("👌 Item has been given to {target.name}.", target=target))
 
@@ -150,6 +150,10 @@ class InventoryCommands(Cog):
             await ctx.send(_('❌ Unknown item number.'))
             return
 
+        if item.get("uses", 1) > 1:
+            item["uses"] -= 1
+            db_user.add_to_inventory(item)
+
         item_type = item.get('type')
 
         if item_type == "lootbox":
@@ -159,15 +163,11 @@ class InventoryCommands(Cog):
                 item_to_give = item_info_to_give.get("item")
                 if random.randint(0, 100) <= luck:
                     items_given.append(item_to_give)
+                    db_user.add_to_inventory(item_to_give)
 
-            db_user.inventory.extend(items_given)
             await show_items_menu(ctx, items_given, title=_("Lootbox opened"), numbers=False)
 
         elif item_type == "item":
-            if item.get("uses", 1) > 1:
-                item["uses"] -= 1
-                db_user.inventory.append(item)
-
             item_action = item.get("action")
             if item_action == "set_vip":
                 db_guild = await get_from_db(ctx.guild)
