@@ -288,7 +288,7 @@ class SupportServerCommands(Cog):
 
         await ctx.reply(f"A boss has been spawned.")
 
-    @manage_bot.command(aliases=["event", "reroll_event", "change_event"])
+    @manage_bot.command(aliases=["event", "reroll_event", "change_event", "regen_event"])
     async def update_event(self, ctx: MyContext, force=True):
         """
         Force the current event to change, and reroll a new one.
