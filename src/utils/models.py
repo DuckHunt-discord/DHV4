@@ -202,6 +202,9 @@ class DiscordUser(Model):
 
     access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
+    votes = fields.IntField(default=0)
+    boss_kills = fields.IntField(default=0)
+
     def add_to_inventory(self, item_to_give, item_number=None):
         for item_in_inventory in self.inventory:
             if item_in_inventory["type"] == item_to_give["type"] and \
