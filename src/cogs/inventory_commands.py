@@ -150,6 +150,26 @@ class InventoryCommands(Cog):
         await db_target.save()
         await ctx.send(_("👌 Item has been given to {target.name}.", target=target))
 
+    @inventory.command(name="compress", aliases=["sort", "sorted"])
+    async def inv_compress(self, ctx: MyContext):
+        """
+        Compress and sort your inventory, to fuse items together. You shouldn't have to use this.
+        """
+        _ = await ctx.get_translate_function(user_language=True)
+        async with ctx.typing():
+            db_user = await get_from_db(ctx.author, as_user=True)
+
+            # The following creates a new list, there is no need to copy.
+            inv_items = sorted(db_user.inventory, key=lambda i: i["name"])
+            db_user.inventory = []
+            for item in inv_items:
+                db_user.add_to_inventory(item)
+
+            await db_user.save()
+        await ctx.reply(_("🎒 Your inventory has been sorted."))
+
+
+
     @inventory.command(name="use", aliases=["open"])
     async def inv_use(self, ctx: MyContext, item_number: int):
         """
