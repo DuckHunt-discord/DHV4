@@ -234,6 +234,16 @@ class SimpleCommands(Cog):
         """
         await ctx.reply(r"¯\_(ツ)_/¯")
 
+    @commands.command()
+    @checks.channel_enabled()
+    async def vote(self, ctx: MyContext):
+        """
+        Sends the link you can use to vote for DuckHunt on the bot list
+        """
+        _ = await ctx.get_translate_function()
+
+        await ctx.reply(_("You can vote using the following URL: https://top.gg/bot/187636089073172481/vote"))
+
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
     async def event(self, ctx: MyContext):
