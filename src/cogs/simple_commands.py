@@ -111,7 +111,7 @@ class SimpleCommands(Cog):
         """
         await ctx.send(f"<https://discordapp.com/invite/2BksEkV>")
 
-    @commands.command(aliases=["giveback"])
+    @commands.command(aliases=["giveback", "ft"])
     @checks.channel_enabled()
     async def freetime(self, ctx: MyContext):
         """
