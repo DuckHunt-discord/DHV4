@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-06 19:14+0100\n"
+"POT-Creation-Date: 2021-02-07 21:13+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -71,6 +71,9 @@ msgstr "顯示當前頻道上的鴨子"
 msgid "Removes all ducks from the channel"
 msgstr "將所有鴨子從頻道中移出"
 
+msgid "Alias for dh!inv use, so that you can just type dh!use instead."
+msgstr ""
+
 msgid ""
 "Show your inventory content.\n"
 "\n"
@@ -85,6 +88,11 @@ msgstr ""
 
 msgid "Give something to some player."
 msgstr "給某個玩家一些東西。"
+
+msgid ""
+"Compress and sort your inventory, to fuse items together. You shouldn't have "
+"to use this."
+msgstr ""
 
 msgid "Use one of the items in your inventory."
 msgstr "使用庫存中的一項。"
@@ -190,6 +198,11 @@ msgid "/stats\n"
 msgstr "/stats\n"
 "\n"
 "獲取一些關於機器人的全球統計數據。"
+
+msgid "/dbl/hook\n"
+"\n"
+"Handle users votes. This is not for public use."
+msgstr ""
 
 msgid "Commands to view and edit settings"
 msgstr "查看和編輯設置的命令"
@@ -556,6 +569,9 @@ msgid "Who doesn't need eyes"
 msgstr ""
 
 msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr ""
+
+msgid "Sends the link you can use to vote for DuckHunt on the bot list"
 msgstr ""
 
 msgid ""
@@ -1005,16 +1021,42 @@ msgstr ""
 msgid "The boss dropped that when he died"
 msgstr ""
 
+msgid "A little something for helping the bot"
+msgstr ""
+
+msgid "Thanks for voting for DuckHunt"
+msgstr ""
+
 msgid "VIP Card"
 msgstr ""
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
 
+msgid "A book in a foreign language"
+msgstr ""
+
+msgid "Can you read it ?"
+msgstr ""
+
 msgid "A book"
 msgstr ""
 
 msgid "Reading it will give you experience"
+msgstr ""
+
+msgid "An encyclopedia"
+msgstr ""
+
+msgid "Reading it will give you a lot of experience"
+msgstr ""
+
+msgid "A bullet"
+msgstr ""
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement"
 msgstr ""
 
 msgid "A good ol' egg"
@@ -1041,6 +1083,9 @@ msgstr ""
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
 
+msgid "🎒 Your inventory has been sorted."
+msgstr ""
+
 msgid "❌ Items usage is disabled on this channel."
 msgstr ""
 
@@ -1061,6 +1106,9 @@ msgid ""
 msgstr ""
 
 msgid "✨ Yay! Free ammo!"
+msgstr ""
+
+msgid "✨ Oh, is this a bullet ?"
 msgstr ""
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
@@ -1794,6 +1842,11 @@ msgstr ""
 msgid "You don't have to go right now"
 msgstr ""
 
+msgid ""
+"You can vote using the following URL: https://top.gg/bot/187636089073172481/"
+"vote"
+msgstr ""
+
 msgid "Current event: "
 msgstr ""
 
@@ -1871,130 +1924,130 @@ msgid "{shots} shots attempted without bullets."
 msgstr ""
 
 msgid "{shots} shots jamming {target.mention} weapon."
-msgstr ""
+msgstr "{shots}射擊干擾{target. mention}武器。"
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
-msgstr ""
+msgstr "{bullets}瘋狂殺鴨時使用的子彈。"
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
-msgstr ""
+msgstr "{shots} 射擊未擊中目標。"
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
-msgstr ""
+msgstr "{shots}開槍殺人（{murders}是謀殺）。"
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
-msgstr ""
+msgstr "{target. mention}被殺了{times}次。"
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
 msgstr ""
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
-msgstr ""
+msgstr "{shots} 射向鴨子。"
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵"
 
 msgid "{shots} shots stopped by the infrared detector."
-msgstr ""
+msgstr "{shots}被紅外偵測器阻止的射擊。"
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
-msgstr ""
+msgstr "{shots} 射擊時看不到任何鴨子。"
 
 msgid "Normal ducks"
-msgstr ""
+msgstr "普通鴨子"
 
 msgid "Ghost ducks"
-msgstr ""
+msgstr "幽靈鴨子"
 
 msgid "Professor ducks"
-msgstr ""
+msgstr "教授鴨子"
 
 msgid "Baby ducks"
-msgstr ""
+msgstr "鴨子寶寶"
 
 msgid "Golden ducks"
-msgstr ""
+msgstr "金鴨子"
 
 msgid "Plastic ducks"
-msgstr ""
+msgstr "塑膠鴨子"
 
 msgid "Kamikaze ducks"
-msgstr ""
+msgstr "自爆鴨子"
 
 msgid "Mechanical ducks"
-msgstr ""
+msgstr "機械鴨子"
 
 msgid "Super ducks"
-msgstr ""
+msgstr "超級鴨子"
 
 msgid "Mother of all ducks"
-msgstr ""
+msgstr "鴨子的媽媽"
 
 msgid "Armored ducks"
-msgstr ""
+msgstr "裝甲鴨子"
 
 msgid "{target.name} best times."
-msgstr ""
+msgstr "{target.name}最佳時間"
 
 msgid "Never killed any"
-msgstr ""
+msgstr "沒殺過人"
 
 msgid "{target.name} kill counts."
-msgstr ""
+msgstr "{target.name}擊殺次數"
 
 msgid "{target.name} hugs counts."
-msgstr ""
+msgstr "{target.name}擁抱次數"
 
 msgid "Players"
-msgstr ""
+msgstr "玩家"
 
 msgid "Hugs when dead"
-msgstr ""
+msgstr "死亡時的擁抱"
 
 msgid "{target.name} hurt counts."
-msgstr ""
+msgstr "{target.name}傷害次数"
 
 msgid "{target.name} resisted counts."
-msgstr ""
+msgstr "{target.name}抗拒次數"
 
 msgid "{target.name} scared ducks."
-msgstr ""
+msgstr "{target.name}嚇壞了鴨子。"
 
 msgid "{target.name} achievements."
-msgstr ""
+msgstr "{target.name}成就"
 
 msgid "❌ You cant send experience to yourself."
-msgstr ""
+msgstr "❌你不能給自己發送經驗值"
 
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
-msgstr ""
+msgstr "❌我不確定{target. mention}能夠玩DuckHunt。"
 
 msgid "❌ You need to send more experience than this."
-msgstr ""
+msgstr "❌你需要發送比這更多的經驗值。"
 
 msgid "❌ You don't have enough experience 🤣."
-msgstr ""
+msgstr "❌ 你的经验不够 "
 
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
@@ -2263,14 +2316,14 @@ msgstr ""
 msgid "of which {this_ducks_killed} is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "其中 {this_duks_killed}是鬼鴨子。"
 
 msgid "prof"
-msgstr ""
+msgstr "教授"
 
 msgid "of which {this_ducks_killed} is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
-msgstr[0] ""
+msgstr[0] "其中 {this_duks_killed}是一只教授级鸭。"
 msgstr[1] ""
 
 msgid "Huh, quick question, what's {operation} ?"
@@ -2412,310 +2465,310 @@ msgid "QUAK"
 msgstr ""
 
 msgid "QUAAK"
-msgstr ""
+msgstr "QUAAK"
 
 msgid "QUAAAK"
-msgstr ""
+msgstr "QUAAAK"
 
 msgid "QUACK"
-msgstr ""
+msgstr "嘎嘎"
 
 msgid "QUAACK"
-msgstr ""
+msgstr "QUAACK"
 
 msgid "QUAAACK"
-msgstr ""
+msgstr "QUAAACK"
 
 msgid "COUAC"
-msgstr ""
+msgstr "COUAC"
 
 msgid "COUAAC"
-msgstr ""
+msgstr "COUAAC"
 
 msgid "COUAAAC"
-msgstr ""
+msgstr "COUAAAC"
 
 msgid "COUACK"
-msgstr ""
+msgstr "COUACK"
 
 msgid "*cries*"
-msgstr ""
+msgstr "*哭聲*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "你好，世界"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "你今天怎麼樣？"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "請不要殺我..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "我也愛你！"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "別射我！我是一隻假鴨子！"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
-msgstr ""
+msgstr "**鴨子的事實**。有些鴨子一天可以飛到332英里！"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "**鴨子的事實**。鴨子背部的羽毛是防水的。"
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "**鴨子的事實**： 鴨子有三個眼皮！"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
-msgstr ""
+msgstr "**鴨子的事實**。根據鴨子的種類，一隻鴨子可以活2到12年。這個遊戲里的鴨子就不行... ..."
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "我是隱形的，不用殺我了"
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "這裡的小████，是誰殺了我的朋友？"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "你不能瞄准好... ..."
 
 msgid "The duck left."
-msgstr ""
+msgstr "鴨子離開了。"
 
 msgid "The duck right."
-msgstr ""
+msgstr "鴨子的權利。"
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "停下來！不是你想的那樣！"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "殺了我，你會損失1562點經驗值。"
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
-msgstr ""
+msgstr "我有一個秘密計劃，要殺死所有的獵人，但我已經氣喘吁吁了，我想我無法向你解釋這一切... ..."
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr ""
+msgstr "[在這裏插入鸭子噪音]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
-msgstr ""
+msgstr "DuckHunt創建後發生了什麼？||大爆炸||。"
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "現在是兔子的季節。"
 
 msgid "Got a spare cape?"
-msgstr ""
+msgstr "有多餘的披風嗎？"
 
 msgid "Which side of a duck has more feathers? ||The outside||."
-msgstr ""
+msgstr "鴨子哪面的羽毛多？||外面||"
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "我偷錢的，我是一個強盜鴨子。"
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "我是一隻很特別的鴨子。"
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
-msgstr ""
+msgstr "**DuckHunt 技巧®**：使用三葉草獲得更多經驗值。"
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
-msgstr ""
+msgstr "**DuckHunt 技巧®**：在較低的水平上使用瞄准器來提高精度。"
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
-msgstr ""
+msgstr "**DuckHunt 技巧®**：使用潤滑油防止武器卡死。"
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*啜飲*"
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "希望你們都掛機了......"
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
-msgstr ""
+msgstr "**DuckHunt 技巧®**：使用紅外探測器，防止無用的射擊。"
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "我只是在做我的工作... ..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
-msgstr ""
+msgstr "嘿，DuckHunt質量保險鴨子在這裡。你會如何評價到目前為止你殺鴨的經驗？"
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "你被惡化了"
 
 msgid "The duck went away."
-msgstr ""
+msgstr "鴨子走了。"
 
 msgid "The duck went to another world."
-msgstr ""
+msgstr "鴨子去了另一個世界。"
 
 msgid "The duck didn't have time for this."
-msgstr ""
+msgstr "鴨子沒時間做這個。"
 
 msgid "The duck dissipated in space and time."
-msgstr ""
+msgstr "鴨子在時空里消散了。"
 
 msgid "The duck left out of boredom."
-msgstr ""
+msgstr "鴨子因為無聊而離開。"
 
 msgid "The duck doesn't want to be sniped."
-msgstr ""
+msgstr "鴨子不想被狙擊。"
 
 msgid "The duck walked up to the lemonade stand."
-msgstr ""
+msgstr "鴨子走去了檸檬水攤。"
 
 msgid "The duck flew over a disproportionately small gap."
-msgstr ""
+msgstr "鴨子飛過一個不成比例的小缺口。"
 
 msgid "The duck chickened out."
-msgstr ""
+msgstr "鴨子膽怯了。"
 
 msgid "The duck went to the parallel universe"
-msgstr ""
+msgstr "鴨子去了平行宇宙"
 
 msgid "The duck went to a parallel universe"
-msgstr ""
+msgstr "鸭子去了平行宇宙"
 
 msgid "The duck went into the duckiverse"
-msgstr ""
+msgstr "鴨子進了鴨子宇宙"
 
 msgid "The duck teleported away from here"
-msgstr ""
+msgstr "鴨子從這裡傳送走了"
 
 msgid "The duck went to look for a friend"
-msgstr ""
+msgstr "鴨子去找朋友了"
 
 msgid "The duck went to a better place"
-msgstr ""
+msgstr "鴨子去了一个更好的地方"
 
 msgid "The duck went to a better party"
-msgstr ""
+msgstr "鴨子去了一个更好的地方"
 
 msgid "The duck has some important business to take care of"
-msgstr ""
+msgstr "鴨子有很重要的事情要處理。"
 
 msgid "A duck"
-msgstr ""
+msgstr "一隻鴨子"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "鴨先生"
 
 msgid "RealDuck"
-msgstr ""
+msgstr "真正的鴨子"
 
 msgid "The ghost never appeared."
-msgstr ""
+msgstr "鬼魂從來沒有出現過。"
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "隱形鴨子"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "幽靈鴨子"
 
 msgid "Boooo Duck"
 msgstr ""
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "教授鴨子"
 
 msgid "EnsDuck"
 msgstr ""
 
 msgid "**COIN**"
-msgstr ""
+msgstr "**金幣**"
 
 msgid "**Piou** ?"
 msgstr ""
 
 msgid "**Coin** ?"
-msgstr ""
+msgstr "**金幣**？"
 
 msgid "**Coin**!"
-msgstr ""
+msgstr "**金幣**！"
 
 msgid "**COIIIIIINNNNNN**!"
-msgstr ""
+msgstr "**金幣幣幣**!"
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "小而可爱的鴨子"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "迷你鴨"
 
 msgid "Ducky"
-msgstr ""
+msgstr "鴨子"
 
 msgid "Duckie"
-msgstr ""
+msgstr "小鴨子"
 
 msgid "£!"
-msgstr ""
+msgstr "$!"
 
 msgid "Free money !"
-msgstr ""
+msgstr "免費的錢！"
 
 msgid "It's free money"
-msgstr ""
+msgstr "這是免費的錢"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "金鴨子"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "黃金鵝"
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "閃亮的鴨子"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "有錢的鴨子"
 
 msgid "£?"
-msgstr ""
+msgstr "$?"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "有没有錢？"
 
 msgid "It's paid money"
-msgstr ""
+msgstr "這是付了錢的"
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "塑膠鴨"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "窮鴨子"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "黏糊糊的鴨子"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
-msgstr ""
+msgstr "**不要動，否則一切都會爆炸！**。"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "我要殺了你們！"
 
 msgid "The Kamikaze Duck"
-msgstr ""
+msgstr "自爆鴨子"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "爆炸鴨子"
 
 msgid "Boom Duck"
-msgstr ""
+msgstr "爆鴨子"
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "炸藥鴨"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
-msgstr ""
+msgstr "自爆鴨爆炸了，把頻道里的鴨子都炸死了。"
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "鴨子2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "歐米加鴨"
 
 msgid "BZZZZZAAAAK"
 msgstr ""
@@ -2727,28 +2780,28 @@ msgid "BZAACK"
 msgstr ""
 
 msgid "Big Duck"
-msgstr ""
+msgstr "大鴨子"
 
 msgid "Strong Duck"
-msgstr ""
+msgstr "強壯的鴨子"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "重型鴨子"
 
 msgid "**I am your mother...**"
-msgstr ""
+msgstr "**我是你的母親... ...**"
 
 msgid "Ms. Duck"
-msgstr ""
+msgstr "鴨子女士"
 
 msgid "Mom"
-msgstr ""
+msgstr "媽媽"
 
 msgid "Mommy"
-msgstr ""
+msgstr "媽咪"
 
 msgid "MOAD"
-msgstr ""
+msgstr "媽媽鴨子"
 
 msgid "Mooooom"
 msgstr ""
@@ -2757,71 +2810,71 @@ msgid "*coin*"
 msgstr ""
 
 msgid "*Don't make a noise, it's nighttime*"
-msgstr ""
+msgstr "*別出聲，現在是晚上*"
 
 msgid "*Shhhhh*"
-msgstr ""
+msgstr "*噓！*"
 
 msgid "ZzZzZz"
-msgstr ""
+msgstr "ZzZzZz"
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "一切都很平靜"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "現在什麼都沒有發生。"
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "鴨子正在遷徙"
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "準備在接下來的一個小時里看到更多的鴨子。"
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "湖中的類固醇"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
-msgstr ""
+msgstr "一家醫療廢物公司將類固醇倒入湖中。鴨子變異了，你會看到更多的超級鴨子。但是，要小心，不要喝那些水。"
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "安全課取消了"
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
-msgstr ""
+msgstr "安全課取消了，當心不要射到別人的獵人！"
 
 msgid "Connection problem"
-msgstr ""
+msgstr "連接問題"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
 "less of them until it's repaired."
-msgstr ""
+msgstr "鴨子因為連接問題找不到你的電腦，在沒有修好之前，鴨子會越來越少。"
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "鎮上新開了一家花店"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
-msgstr ""
+msgstr "鎮上開了一家花店，現在你可以找到更好的四葉草了。去看看他們！"
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "巨型鴨子"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
-msgstr ""
+msgstr "有人給超級鴨子充氣，現在它們變得更大了！！"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "大風天氣"
 
 msgid "Bullets are deflected by some strong wind."
-msgstr ""
+msgstr "子彈被一些強風吹偏了。"
 
 msgid "A UN treaty bans damaging ammo"
-msgstr ""
+msgstr "聯合國條約禁止破壞性彈藥"
 
 msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
@@ -2835,16 +2888,16 @@ msgid "Duck Hugger ?"
 msgstr ""
 
 msgid "What are you doing ?"
-msgstr ""
+msgstr "你在做什麼？"
 
 msgid "public danger"
-msgstr ""
+msgstr "公共危害"
 
 msgid "tourist"
-msgstr ""
+msgstr "游客"
 
 msgid "noob"
-msgstr ""
+msgstr "菜鳥"
 
 msgid "trainee"
 msgstr ""
@@ -2868,7 +2921,7 @@ msgid "duck plucker"
 msgstr ""
 
 msgid "hunter"
-msgstr ""
+msgstr "獵人"
 
 msgid "duck inside out turner"
 msgstr ""

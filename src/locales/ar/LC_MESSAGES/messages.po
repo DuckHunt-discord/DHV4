@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-06 19:14+0100\n"
+"POT-Creation-Date: 2021-02-07 21:13+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -71,6 +71,9 @@ msgstr ""
 msgid "Removes all ducks from the channel"
 msgstr ""
 
+msgid "Alias for dh!inv use, so that you can just type dh!use instead."
+msgstr ""
+
 msgid ""
 "Show your inventory content.\n"
 "\n"
@@ -80,6 +83,11 @@ msgid ""
 msgstr ""
 
 msgid "Give something to some player."
+msgstr ""
+
+msgid ""
+"Compress and sort your inventory, to fuse items together. You shouldn't have "
+"to use this."
 msgstr ""
 
 msgid "Use one of the items in your inventory."
@@ -171,6 +179,11 @@ msgstr ""
 msgid "/stats\n"
 "\n"
 "Get some global statistics about the bot."
+msgstr ""
+
+msgid "/dbl/hook\n"
+"\n"
+"Handle users votes. This is not for public use."
 msgstr ""
 
 msgid "Commands to view and edit settings"
@@ -528,6 +541,9 @@ msgid "Who doesn't need eyes"
 msgstr ""
 
 msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr ""
+
+msgid "Sends the link you can use to vote for DuckHunt on the bot list"
 msgstr ""
 
 msgid ""
@@ -975,16 +991,42 @@ msgstr ""
 msgid "The boss dropped that when he died"
 msgstr ""
 
+msgid "A little something for helping the bot"
+msgstr ""
+
+msgid "Thanks for voting for DuckHunt"
+msgstr ""
+
 msgid "VIP Card"
 msgstr ""
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
 
+msgid "A book in a foreign language"
+msgstr ""
+
+msgid "Can you read it ?"
+msgstr ""
+
 msgid "A book"
 msgstr ""
 
 msgid "Reading it will give you experience"
+msgstr ""
+
+msgid "An encyclopedia"
+msgstr ""
+
+msgid "Reading it will give you a lot of experience"
+msgstr ""
+
+msgid "A bullet"
+msgstr ""
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement"
 msgstr ""
 
 msgid "A good ol' egg"
@@ -1011,6 +1053,9 @@ msgstr ""
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
 
+msgid "🎒 Your inventory has been sorted."
+msgstr ""
+
 msgid "❌ Items usage is disabled on this channel."
 msgstr ""
 
@@ -1031,6 +1076,9 @@ msgid ""
 msgstr ""
 
 msgid "✨ Yay! Free ammo!"
+msgstr ""
+
+msgid "✨ Oh, is this a bullet ?"
 msgstr ""
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
@@ -1762,6 +1810,11 @@ msgid ""
 msgstr ""
 
 msgid "You don't have to go right now"
+msgstr ""
+
+msgid ""
+"You can vote using the following URL: https://top.gg/bot/187636089073172481/"
+"vote"
 msgstr ""
 
 msgid "Current event: "
