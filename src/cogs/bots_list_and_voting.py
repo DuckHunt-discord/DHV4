@@ -191,7 +191,7 @@ class BotsListVoting(Cog):
         auth = request.headers.get("Authorization", "")
 
         if auth != bot_list["auth"]:
-            self.bot.logger.warning(f"Bad authentification provided to {bot_list['name']} API.")
+            self.bot.logger.warning(f"Bad authentification ({auth} vs {bot_list['auth']}) provided to {bot_list['name']} API.")
             return web.Response(status=401, text="Unauthorized, bad auth")
 
         post_data = await request.json()
