@@ -47,7 +47,7 @@ class BotsListVoting(Cog):
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
                 "webhook_key": "topgg",
                 # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_secret": "",
+                # "webhook_auth": "",
 
                 # **Statistics**
                 # On what endpoint can the bot send statistics
@@ -99,7 +99,7 @@ class BotsListVoting(Cog):
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": None,
                 # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_discordbotslist_hook,
+                "webhook_handler": self.votes_generic_hook_factory("discordbotslist"),
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
                 "webhook_key": "discordbotslist",
 
@@ -132,7 +132,7 @@ class BotsListVoting(Cog):
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "voted",
                 # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_fateslist_hook,
+                "webhook_handler": self.votes_generic_hook_factory("fateslist"),
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
                 "webhook_key": "fateslist",
 
@@ -165,11 +165,11 @@ class BotsListVoting(Cog):
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": None,
                 # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_topgg_hook,
+                "webhook_handler": self.votes_generic_hook_factory("botsfordiscord", user_id_json_field="user"),
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
                 "webhook_key": "botsfordiscord",
                 # Secret used for authentication of the webhooks messages if not the same the auth token
-                "webhook_secret": config["botsfordiscord_token"][:60],
+                "webhook_auth": config["botsfordiscord_token"][:60],
 
                 # **Statistics**
                 # On what endpoint can the bot send statistics
@@ -199,69 +199,36 @@ class BotsListVoting(Cog):
 
         return routes
 
-    async def votes_botsfordiscord_hook(self, request: web.Request):
+    def votes_generic_hook_factory(self, bot_list_key, authorization_header="Authorization", user_id_json_field="id"):
         """
-        Handle users votes for botsfordiscord
+        Creates votes handlers for specific bots lists
         """
-        bot_list = (await self.get_bot_dict())["botsfordiscord"]
-        auth = request.headers.get("Authorization", "")
 
-        if auth != bot_list.get("webhook_secret", bot_list["auth"]):
-            self.bot.logger.warning(f"Bad authentification provided to {bot_list['name']} API.")
-            return web.Response(status=401, text="Unauthorized, bad auth")
+        async def votes_hook(request: web.Request):
+            """
+            Handle users votes for fateslist
+            """
+            bot_list = (await self.get_bot_dict())[bot_list_key]
 
-        post_data = await request.json()
-        user_id = int(post_data["user"])
+            auth = request.headers.get(authorization_header, "")
+            local_auth = bot_list.get('webhook_auth', bot_list['auth'])
 
-        result, message = await self.handle_vote(user_id, bot_list)
+            if auth != local_auth:
+                self.bot.logger.warning(
+                    f"Bad authentification ({auth} vs {local_auth}) provided to {bot_list['name']} API.")
+                return web.Response(status=401, text="Unauthorized, bad auth")
 
-        if result:
-            return web.Response(status=200, text=message)
-        else:
-            return web.Response(status=400, text=message)
+            post_data = await request.json()
+            user_id = int(post_data[user_id_json_field])
 
+            result, message = await self.handle_vote(user_id, bot_list)
 
-    async def votes_discordbotslist_hook(self, request: web.Request):
-        """
-        Handle users votes for discordbotslist
-        """
-        bot_list = (await self.get_bot_dict())["discordbotslist"]
-        auth = request.headers.get("Authorization", "")
+            if result:
+                return web.Response(status=200, text=message)
+            else:
+                return web.Response(status=400, text=message)
 
-        if auth != bot_list["auth"]:
-            self.bot.logger.warning(f"Bad authentification provided to {bot_list['name']} API.")
-            return web.Response(status=401, text="Unauthorized, bad auth")
-
-        post_data = await request.json()
-        user_id = int(post_data["id"])
-
-        result, message = await self.handle_vote(user_id, bot_list)
-
-        if result:
-            return web.Response(status=200, text=message)
-        else:
-            return web.Response(status=400, text=message)
-
-    async def votes_fateslist_hook(self, request: web.Request):
-        """
-        Handle users votes for fateslist
-        """
-        bot_list = (await self.get_bot_dict())["fateslist"]
-        auth = request.headers.get("Authorization", "")
-
-        if auth != bot_list["auth"]:
-            self.bot.logger.warning(f"Bad authentification ({auth} vs {bot_list['auth']}) provided to {bot_list['name']} API.")
-            return web.Response(status=401, text="Unauthorized, bad auth")
-
-        post_data = await request.json()
-        user_id = int(post_data["id"])
-
-        result, message = await self.handle_vote(user_id, bot_list)
-
-        if result:
-            return web.Response(status=200, text=message)
-        else:
-            return web.Response(status=400, text=message)
+        return votes_hook
 
     async def votes_topgg_hook(self, request: web.Request):
         """
