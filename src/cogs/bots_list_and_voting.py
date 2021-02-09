@@ -23,43 +23,79 @@ class BotsListVoting(Cog):
     async def get_bot_dict(self) -> Dict[str, Dict[str, Any]]:
         BOTS_DICT = {
             "top_gg": {
+                # **Generic data**
+                # The name of the bot list
                 "name": "top.gg",
+                # URL for the main bot page
                 "bot_url": "https://top.gg/bot/187636089073172481",
-                "can_vote": True,
-                "vote_url": "https://top.gg/bot/187636089073172481/vote",
-                "vote_every": datetime.timedelta(hours=12),
-                "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
-                "check_vote_key": "voted",
+                # Token to authenticate requests to and from the website
                 "auth": config["topgg_shared_secret"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                "can_vote": True,
+                # If they can vote, on what URL ?
+                "vote_url": "https://top.gg/bot/187636089073172481/vote",
+                # And how often
+                "vote_every": datetime.timedelta(hours=12),
+                # Is there a URL the bot can query to see if some `user` has voted recently
+                "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
+                "check_vote_key": "voted",
+                # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_topgg_hook,
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
                 "webhook_key": "topgg",
+
+                # **Statistics**
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://top.gg/api/bots/187636089073172481/stats",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "server_count",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": "shard_count",
             },
             "discord_bots_gg": {
                 "name": "discord.bots.gg",
                 "bot_url": "https://discord.bots.gg/bots/187636089073172481",
+                "auth": config["discordbotsgg_api_token"],
+
                 "can_vote": False,
+
+                "post_stats_url": "https://discord.bots.gg/api/v1/bots/187636089073172481/stats",
+                "post_stats_server_count_key": "guildCount",
+                "post_stats_shard_count_key": "shardCount",
             },
             "discordbotslist": {
                 "name": "Discord Bots List",
-                "bot_url": "",
+                "bot_url": "https://discordbotlist.com/bots/duckhunt",
+                "auth": config["discordbotlist_api_token"],
+
                 "can_vote": True,
-                "vote_url": "",
+                "vote_url": "https://discordbotlist.com/bots/duckhunt/upvote",
                 "vote_every": datetime.timedelta(hours=12),
                 "check_vote_url": None,
-                "auth": config["discordbotlist_api_token"],
                 "webhook_handler": self.votes_discordbotslist_hook,
-                "webhook_key": "discordbotlist",
+
+                "post_stats_url": "https://discordbotlist.com/api/v1/bots/187636089073172481/stats",
+                "post_stats_server_count_key": "guilds",
+                "post_stats_shard_count_key": None,
             },
             "fateslist": {
                 "name": "fateslist",
                 "bot_url": "https://fateslist.xyz/bot/187636089073172481",
+                "auth": config["fateslist_api_token"],
+
                 "can_vote": True,
                 "vote_url": "https://fateslist.xyz/bot/187636089073172481/vote",
                 "vote_every": datetime.timedelta(hours=8),
                 "check_vote_url": "https://fateslist.xyz/api/bots/187636089073172481/votes?user_id={user.id}",
                 "check_vote_key": "voted",
-                "auth": config["fateslist_api_token"],
                 "webhook_handler": self.votes_fateslist_hook,
+
+                "post_stats_url": "https://fateslist.xyz/api/bots/187636089073172481/stats",
+                "post_stats_server_count_key": "guild_count",
+                "post_stats_shard_count_key": "shard_count",
             },
         }
 
@@ -174,7 +210,8 @@ class BotsListVoting(Cog):
             self.bot.logger.warning(f"{multiplicator} test vote(s) received for {user.name}#{user.discriminator}. Not saved.")
 
         try:
-            await user.send("✨ Thanks for voting for DuckHunt ! Check your inventory with `dh!inv` in a game channel.")
+            await user.send(f"✨ Thanks for voting for DuckHunt on {bot_list['name']}! "
+                            f"Check your inventory with `dh!inv` in a game channel.")
         except discord.errors.Forbidden:
             pass
 
@@ -268,6 +305,34 @@ class BotsListVoting(Cog):
                                 value=f"[Click me to vote]({bot_list['vote_url']}")
 
             await m.edit(embed=embed, content=text)
+
+    @Cog.listener("on_guild_join")
+    @Cog.listener("on_guild_remove")
+    @Cog.listener("on_ready")
+    async def post_stats(self, *args, **kwargs):
+        self.bot.logger.debug(f"Updating stats on bots list")
+
+        server_count = len(self.bot.guilds)
+        shard_count = self.bot.shard_count
+
+        for bot_list in await self.get_bot_list():
+            stats_url = bot_list.get("post_stats_url", None)
+            if stats_url:
+                timeout = aiohttp.ClientTimeout(total=5)
+                headers = {'Content-Type': 'application/json',
+                           'accept': 'application/json',
+                           "Authorization": bot_list.get("auth", "")}
+                post_data = {}
+
+                post_stats_server_count_key = bot_list.get("post_stats_server_count_key", "server_count")
+                if post_stats_server_count_key:
+                    post_data[post_stats_server_count_key] = server_count
+
+                post_stats_shard_count_key = bot_list.get("post_stats_shard_count_key", "shard_count")
+                if post_stats_server_count_key:
+                    post_data[post_stats_shard_count_key] = shard_count
+
+                await self.bot.client_session.get(stats_url, timeout=timeout, headers=headers, json=post_data)
 
 
 setup = BotsListVoting.setup
