@@ -56,45 +56,90 @@ class BotsListVoting(Cog):
                 "post_stats_shard_count_key": "shard_count",
             },
             "discord_bots_gg": {
+                # **Generic data**
+                # The name of the bot list
                 "name": "discord.bots.gg",
+                # URL for the main bot page
                 "bot_url": "https://discord.bots.gg/bots/187636089073172481",
+                # Token to authenticate requests to and from the website
                 "auth": config["discordbotsgg_api_token"],
 
+                # **Votes**
+                # Can people vote on that bot list ?
                 "can_vote": False,
 
+                # **Statistics**
+                # On what endpoint can the bot send statistics
                 "post_stats_url": "https://discord.bots.gg/api/v1/bots/187636089073172481/stats",
+                # In the JSON, how should we call the server count ?
                 "post_stats_server_count_key": "guildCount",
+                # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": "shardCount",
             },
             "discordbotslist": {
+                # **Generic data**
+                # The name of the bot list
                 "name": "Discord Bots List",
+                # URL for the main bot page
                 "bot_url": "https://discordbotlist.com/bots/duckhunt",
+                # Token to authenticate requests to and from the website
                 "auth": config["discordbotlist_api_token"],
 
+                # **Votes**
+                # Can people vote on that bot list ?
                 "can_vote": True,
+                # If they can vote, on what URL ?
                 "vote_url": "https://discordbotlist.com/bots/duckhunt/upvote",
+                # And how often
                 "vote_every": datetime.timedelta(hours=12),
+                # Is there a URL the bot can query to see if some `user` has voted recently
                 "check_vote_url": None,
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
+                "check_vote_key": None,
+                # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_discordbotslist_hook,
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
+                "webhook_key": "discordbotslist",
 
+                # **Statistics**
+                # On what endpoint can the bot send statistics
                 "post_stats_url": "https://discordbotlist.com/api/v1/bots/187636089073172481/stats",
+                # In the JSON, how should we call the server count ?
                 "post_stats_server_count_key": "guilds",
+                # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": None,
             },
             "fateslist": {
-                "name": "fateslist",
+                # **Generic data**
+                # The name of the bot list
+                "name": "Fateslist",
+                # URL for the main bot page
                 "bot_url": "https://fateslist.xyz/bot/187636089073172481",
+                # Token to authenticate requests to and from the website
                 "auth": config["fateslist_api_token"],
 
+                # **Votes**
+                # Can people vote on that bot list ?
                 "can_vote": True,
+                # If they can vote, on what URL ?
                 "vote_url": "https://fateslist.xyz/bot/187636089073172481/vote",
+                # And how often
                 "vote_every": datetime.timedelta(hours=8),
+                # Is there a URL the bot can query to see if some `user` has voted recently
                 "check_vote_url": "https://fateslist.xyz/api/bots/187636089073172481/votes?user_id={user.id}",
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "voted",
+                # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_fateslist_hook,
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
+                "webhook_key": "fateslist",
 
+                # **Statistics**
+                # On what endpoint can the bot send statistics
                 "post_stats_url": "https://fateslist.xyz/api/bots/187636089073172481/stats",
+                # In the JSON, how should we call the server count ?
                 "post_stats_server_count_key": "guild_count",
+                # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": "shard_count",
             },
         }
