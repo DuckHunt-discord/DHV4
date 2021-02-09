@@ -201,13 +201,4 @@ class BotsListVoting(Cog):
                 embed.description = _("Thanks for supporting the bot. Check again soon to see new links as they become available.")
                 await m.edit(embed=embed, content=bot_list['vote_url'])
 
-
-
-
-
-
-
-
-
-
 setup = BotsListVoting.setup
