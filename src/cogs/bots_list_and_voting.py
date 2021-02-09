@@ -343,11 +343,11 @@ class BotsListVoting(Cog):
 
             for bot_list in votable_lists:
                 embed.add_field(name=_("You can vote on {bl_name}", bl_name=bot_list['name']),
-                                value=f"[Click me to vote]({bot_list['vote_url']}")
+                                value=f"[Click me to vote]({bot_list['vote_url']})")
 
             for bot_list in maybe_lists:
                 embed.add_field(name=_("You might be able to vote on {bl_name}", bl_name=bot_list['name']),
-                                value=f"[Click me to vote]({bot_list['vote_url']}")
+                                value=f"[Click me to vote]({bot_list['vote_url']})")
 
             await m.edit(embed=embed, content=text)
 
