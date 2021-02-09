@@ -25,6 +25,7 @@ config['bot_lists']['topgg_shared_secret'] = environ['TOPGG_SHARED_SECRET']
 config['bot_lists']['fateslist_api_token'] = environ['FATESLIST_API_TOKEN']
 config['bot_lists']['discordbotlist_api_token'] = environ['DISCORDBOTLIST_TOKEN']
 config['bot_lists']['discordbotsgg_api_token'] = environ['DISCORDBOTSGG_API_TOKEN']
+config['bot_lists']['botsfordiscord_token'] = environ['BOTSFORDISCORD_TOKEN']
 
 with open(TO_CONFIG, "w") as f:
     toml.dump(config, f)
