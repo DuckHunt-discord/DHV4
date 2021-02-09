@@ -225,8 +225,6 @@ class BotsListVoting(Cog):
 
         return votable_lists, maybe_lists, nope_lists
 
-
-
     @commands.command()
     @checks.channel_enabled()
     async def vote(self, ctx: MyContext):
