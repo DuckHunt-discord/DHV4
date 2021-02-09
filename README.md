@@ -37,6 +37,8 @@ Duckhunt have many features:
 ## More information
 
 - Bot default prefix : `dh!`
+- Bot user ID : `187636089073172481`
+- Bot client ID : `187636051135823872`
 - Tags : Game, Fun, Leveling, Social, Economy, Web Dashboard, Customizable Behavior, and Roleplay
 
 ![The boss](https://duckhunt.me/docs/.gitbook/assets/boss_calgeka.png)
