@@ -162,7 +162,9 @@ class BotsListVoting(Cog):
             async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
                 json_resp = await resp.json()
 
-            voted_resp = json_resp.get(bot_list['check_vote_key'])
+            self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list['name']} -> {json_resp}")
+
+            voted_resp = str(json_resp.get(bot_list['check_vote_key']))
             if voted_resp.isdigit():
                 voted = bool(int(voted_resp))
             elif voted_resp.lower() == "true":
