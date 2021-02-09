@@ -298,9 +298,9 @@ class RestAPI(Cog):
             }
         )
 
-    async def dbl_hook(self, request: web.Request):
+    async def votes_topgg_hook(self, request: web.Request):
         """
-        /dbl/hook
+        /votes/topgg/hook
 
         Handle users votes. This is not for public use.
         """
@@ -362,7 +362,7 @@ class RestAPI(Cog):
             ('GET', f'{route_prefix}/help/commands', self.commands),
             ('GET', f'{route_prefix}/status', self.status),
             ('GET', f'{route_prefix}/stats', self.stats),
-            ('POST', f'{route_prefix}/dbl/hook', self.dbl_hook),
+            ('POST', f'{route_prefix}/votes/topgg/hook', self.votes_topgg_hook),
         ]
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
