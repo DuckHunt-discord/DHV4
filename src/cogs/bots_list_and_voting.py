@@ -154,7 +154,7 @@ class BotsListVoting(Cog):
         if not bot_list["can_vote"]:
             return False
         elif not vote_check_url:
-            return True
+            return None
         else:
             timeout = aiohttp.ClientTimeout(total=5)
             headers = {'accept': 'application/json', "Authorization": bot_list.get("auth", "")}
@@ -177,6 +177,24 @@ class BotsListVoting(Cog):
 
             return not voted
 
+    async def get_votable_lists(self, user: discord.User):
+        votable_lists = []
+        maybe_lists = []
+        nope_lists = []
+
+        for bot_list in await self.get_bot_list():
+            res = await self.can_vote(bot_list, user)
+            if res is True:
+                votable_lists.append(bot_list)
+            elif res is None:
+                maybe_lists.append(bot_list)
+            else:
+                nope_lists.append(bot_list)
+
+        return votable_lists, maybe_lists, nope_lists
+
+
+
     @commands.command()
     @checks.channel_enabled()
     async def vote(self, ctx: MyContext):
@@ -188,17 +206,38 @@ class BotsListVoting(Cog):
         m = await ctx.reply(_("Please wait while I check where you can vote..."))
 
         async with ctx.typing():
-            for bot_list in await self.get_bot_list():
-                if await self.can_vote(bot_list, ctx.author):
-                    embed = discord.Embed(colour=discord.Colour.green(),
-                                          title=_("You can vote on {bot_list_name}", bot_list_name=bot_list['name']))
-                    embed.url = bot_list['vote_url']
-                    await m.edit(embed=embed, content=bot_list['vote_url'])
-                    break
+            votable_lists, maybe_lists, nope_lists = await self.get_votable_lists(ctx.author)
+
+            embed = discord.Embed()
+
+            if votable_lists:
+                text = votable_lists[0]['vote_url']
+                embed.title = _("You can vote !")
+                embed.description = _("Thanks for supporting the bot by voting !")
+                embed.url = votable_lists[0]['vote_url']
+                embed.colour = discord.Colour.green()
+            elif maybe_lists:
+                text = maybe_lists[0]['vote_url']
+                embed.title = _("You might be able to vote !")
+                embed.description = _("Thanks for supporting the bot by voting as much as you can. It makes a difference !")
+                embed.url = maybe_lists[0]['vote_url']
+                embed.colour = discord.Colour.orange()
             else:
-                embed = discord.Embed(colour=discord.Colour.red(),
-                                      title=_("No bot list is currently available for you to vote"))
-                embed.description = _("Thanks for supporting the bot. Check again soon to see new links as they become available.")
-                await m.edit(embed=embed, content=bot_list['vote_url'])
+                text = _("Oh no! No bot list is currently available for you to vote.")
+                embed.title = _("There is nowhere for you to vote at the time !")
+                embed.description = _("Thanks for supporting the bot. It makes a difference! \n"
+                                      "Unfortunately, you voted everywhere you could for now, but you can check back in a few hours.")
+                embed.colour = discord.Colour.red()
+
+            for bot_list in votable_lists:
+                embed.add_field(name=_("You can vote on {bl_name}", bl_name=bot_list['name']),
+                                value=f"[Click me to vote]({bot_list['vote_url']}")
+
+            for bot_list in maybe_lists:
+                embed.add_field(name=_("You might be able to vote on {bl_name}", bl_name=bot_list['name']),
+                                value=f"[Click me to vote]({bot_list['vote_url']}")
+
+            await m.edit(embed=embed, content=text)
+
 
 setup = BotsListVoting.setup
