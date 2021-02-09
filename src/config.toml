@@ -29,7 +29,6 @@ token = ""
 [cogs]
 # Names of cogs to load. Usually cogs.file_name_without_py
 # bots_list_and_voting must be loaded before rest_api
-
 cogs_to_load = ['cogs.error_handling',
                 'cogs.simple_commands',
                 'cogs.background_loop',
