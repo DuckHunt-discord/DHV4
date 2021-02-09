@@ -39,6 +39,17 @@ class BotsListVoting(Cog):
                 "bot_url": "https://discord.bots.gg/bots/187636089073172481",
                 "can_vote": False,
             },
+            "discordbotslist": {
+                "name": "Discord Bots List",
+                "bot_url": "",
+                "can_vote": True,
+                "vote_url": "",
+                "vote_every": datetime.timedelta(hours=12),
+                "check_vote_url": None,
+                "auth": config["discordbotlist_api_token"],
+                "webhook_handler": self.votes_discordbotslist_hook,
+                "webhook_key": "discordbotlist",
+            },
             "fateslist": {
                 "name": "fateslist",
                 "bot_url": "https://fateslist.xyz/bot/187636089073172481",
@@ -69,6 +80,27 @@ class BotsListVoting(Cog):
                 routes.append(('POST', f'{route_prefix}/{webhook_key}/hook', handler))
 
         return routes
+
+    async def votes_discordbotslist_hook(self, request: web.Request):
+        """
+        Handle users votes for discordbotslist
+        """
+        bot_list = (await self.get_bot_dict())["discordbotslist"]
+        auth = request.headers.get("Authorization", "")
+
+        if auth != bot_list["auth"]:
+            self.bot.logger.warning(f"Bad authentification provided to {bot_list['name']} API.")
+            return web.Response(status=401, text="Unauthorized, bad auth")
+
+        post_data = await request.json()
+        user_id = int(post_data["id"])
+
+        result, message = await self.handle_vote(user_id, bot_list)
+
+        if result:
+            return web.Response(status=200, text=message)
+        else:
+            return web.Response(status=400, text=message)
 
     async def votes_fateslist_hook(self, request: web.Request):
         """

@@ -23,6 +23,7 @@ config['cogs']['RestAPI']['global_access_keys'].append(environ['GLOBAL_API_KEY']
 
 config['bot_lists']['topgg_shared_secret'] = environ['TOPGG_SHARED_SECRET']
 config['bot_lists']['fateslist_api_token'] = environ['FATESLIST_API_TOKEN']
+config['bot_lists']['discordbotlist_api_token'] = environ['DISCORDBOTLIST_TOKEN']
 
 with open(TO_CONFIG, "w") as f:
     toml.dump(config, f)

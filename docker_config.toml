@@ -82,3 +82,4 @@ composite_order = ['Body', 'Neck', 'Face', 'Hats'] # Background is included
 [bot_lists]
 topgg_shared_secret = "abcdef"
 fateslist_api_token = "abcdef"
+discordbotlist_api_token = "abcdef"
