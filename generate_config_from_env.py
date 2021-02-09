@@ -20,7 +20,9 @@ config['database']['password'] = environ['DB_PASSWORD']
 config['database']['database'] = environ['DB_NAME']
 
 config['cogs']['RestAPI']['global_access_keys'].append(environ['GLOBAL_API_KEY'])
-config['cogs']['RestAPI']['dbl_shared_secret'] = environ['DBL_SHARED_SECRET']
+
+config['bot_lists']['topgg_shared_secret'] = environ['TOPGG_SHARED_SECRET']
+config['bot_lists']['fateslist_api_token'] = environ['FATESLIST_API_TOKEN']
 
 with open(TO_CONFIG, "w") as f:
     toml.dump(config, f)

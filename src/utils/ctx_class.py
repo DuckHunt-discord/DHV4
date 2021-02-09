@@ -24,9 +24,8 @@ class MyContext(commands.Context):
 
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
-    async def reply(self, *args, **kwargs):
+    async def reply(self, *args, **kwargs) -> discord.Message:
         # pip3.9 install git+https://github.com/Rapptz/discord.py.git
-
         return await self.send(*args, **kwargs, reply=True)
 
     async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, reply=False, **kwargs) -> Message:

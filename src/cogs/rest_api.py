@@ -298,61 +298,15 @@ class RestAPI(Cog):
             }
         )
 
-    async def votes_topgg_hook(self, request: web.Request):
-        """
-        /votes/topgg/hook
-
-        Handle users votes. This is not for public use.
-        """
-        shared_secret = self.config()['dbl_shared_secret']
-        auth = request.headers.get("Authorization", "")
-
-        if auth != shared_secret:
-            self.bot.logger.warning("Bad authentification provided to DBL API.")
-            return web.Response(status=401, text="Unauthorized, bad auth")
-
-        post_data = await request.json()
-        user_id = int(post_data["user"])
-
-        bot_id = int(post_data["bot"])
-
-        if bot_id != self.bot.user.id:
-            self.bot.logger.warning(f"Bad bot ID ({bot_id}) provided to DBL API.")
-            return web.Response(status=401, text="Unauthorized, bad bot ID")
-
-        try:
-            user = await self.bot.fetch_user(user_id)
-        except discord.errors.NotFound:
-            self.bot.logger.warning(f"Bad user ID provided to DBL API: {user_id}.")
-            return web.Response(status=401, text="Unauthorized, bad user ID")
-
-        is_test = post_data["type"] == "test"
-        is_weekend = post_data["isWeekend"]
-
-        db_user: DiscordUser = await get_from_db(user)
-
-        db_user.votes += 1
-        db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
-
-        if not is_test:
-            self.bot.logger.info(f"Vote recorded for {user.name}#{user.discriminator}.")
-            await db_user.save()
-        else:
-            self.bot.logger.warning(f"Test vote received for {user.name}#{user.discriminator}. Not saved.")
-
-        try:
-            await user.send("✨ Thanks for voting for DuckHunt ! Check your inventory with `dh!inv` in a game channel.")
-        except discord.errors.Forbidden:
-            pass
-
-        return web.Response(status=200, text="Vote accepted")
-
     async def run(self):
         # Don't wait for ready to avoid blocking the website
         # await self.bot.wait_until_ready()
         listen_ip = self.config()['listen_ip']
         listen_port = self.config()['listen_port']
         route_prefix = self.config()['route_prefix']
+
+        botlist_cog = self.bot.get_cog("BotsListVoting")
+
         routes = [
             ('GET', f'{route_prefix}/channels', self.channels_list),
             ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
@@ -362,8 +316,12 @@ class RestAPI(Cog):
             ('GET', f'{route_prefix}/help/commands', self.commands),
             ('GET', f'{route_prefix}/status', self.status),
             ('GET', f'{route_prefix}/stats', self.stats),
-            ('POST', f'{route_prefix}/votes/topgg/hook', self.votes_topgg_hook),
         ]
+
+        if not botlist_cog:
+            self.bot.logger.error("API was loaded before the bots_list cog")
+        else:
+            routes += await botlist_cog.get_routes(f"{route_prefix}/votes")
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
             route = self.cors.add(
