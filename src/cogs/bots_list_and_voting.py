@@ -162,7 +162,16 @@ class BotsListVoting(Cog):
             async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
                 json_resp = await resp.json()
 
-            voted = bool(json_resp.get(bot_list['check_vote_key']))
+            voted_resp = json_resp.get(bot_list['check_vote_key'])
+            if voted_resp.isdigit():
+                voted = bool(int(voted_resp))
+            elif voted_resp.lower() == "true":
+                voted = True
+            elif voted_resp.lower() == "false":
+                voted = False
+            else:
+                self.bot.logger.warning(f"Unknown response for {bot_list['name']} votechecking: {voted_resp}")
+                voted = False
 
             return not voted
 
