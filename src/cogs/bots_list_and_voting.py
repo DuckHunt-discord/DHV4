@@ -385,4 +385,5 @@ class BotsListVoting(Cog):
                 else:
                     self.bot.logger.warning(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
 
+
 setup = BotsListVoting.setup
