@@ -377,7 +377,7 @@ class BotsListVoting(Cog):
                 if post_stats_server_count_key:
                     post_data[post_stats_shard_count_key] = shard_count
 
-                resp = await self.bot.client_session.get(stats_url, timeout=timeout, headers=headers, json=post_data)
+                resp = await self.bot.client_session.post(stats_url, timeout=timeout, headers=headers, json=post_data)
                 text = await resp.text()
                 status = resp.status
 
