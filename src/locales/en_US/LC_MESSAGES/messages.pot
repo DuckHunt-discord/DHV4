@@ -4,11 +4,31 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-07 21:13+0100\n"
+"POT-Creation-Date: 2021-02-09 21:58+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
+
+#: ../cogs/bots_list_and_voting.py:20
+msgid "Handle votes for the bot on many different bot lists."
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:85
+msgid "Handle users votes for discordbotslist"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:106
+msgid "Handle users votes for fateslist"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:127
+msgid "Handle users votes for top.gg"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:233
+msgid "Sends the link you can use to vote for DuckHunt on bot lists"
+msgstr ""
 
 #: ../cogs/community.py:35
 msgid ""
@@ -140,7 +160,7 @@ msgstr ""
 msgid "Get some more experience..."
 msgstr ""
 
-#: ../cogs/rest_api.py:18
+#: ../cogs/rest_api.py:14
 msgid ""
 "If someone wants to do a dashboard or something to control DuckHunt, there "
 "are a few api routes already. They all return JSON or HTTP404/403/500.\n"
@@ -173,67 +193,60 @@ msgid ""
 "c806-4066-8387-1d5144b7fa72`"
 msgstr ""
 
-#: ../cogs/rest_api.py:74
+#: ../cogs/rest_api.py:70
 msgid ""
 "/channels/\n"
 "\n"
 "Get all channels enabled on the bot"
 msgstr ""
 
-#: ../cogs/rest_api.py:95
+#: ../cogs/rest_api.py:91
 msgid ""
 "/channels/<channel_id>\n"
 "\n"
 "Get information about a specific channel ID"
 msgstr ""
 
-#: ../cogs/rest_api.py:126
+#: ../cogs/rest_api.py:122
 msgid ""
 "/channels/<channel_id>/settings\n"
 "\n"
 "Get information about a specific channel ID"
 msgstr ""
 
-#: ../cogs/rest_api.py:143
+#: ../cogs/rest_api.py:139
 msgid ""
 "/channels/<channel_id>/top\n"
 "\n"
 "Get players data, ordered by experience"
 msgstr ""
 
-#: ../cogs/rest_api.py:165
+#: ../cogs/rest_api.py:161
 msgid ""
 "/channels/<channel_id>/player/<player_id>\n"
 "\n"
 "Get players data, ordered by experience"
 msgstr ""
 
-#: ../cogs/rest_api.py:230
+#: ../cogs/rest_api.py:226
 msgid ""
 "/help/commands\n"
 "\n"
 "Get list of commands"
 msgstr ""
 
-#: ../cogs/rest_api.py:244
+#: ../cogs/rest_api.py:240
 msgid ""
 "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
 msgstr ""
 
-#: ../cogs/rest_api.py:275
+#: ../cogs/rest_api.py:271
 msgid ""
 "/stats\n"
 "\n"
 "Get some global statistics about the bot."
-msgstr ""
-
-#: ../cogs/rest_api.py:302
-msgid ""
-"/dbl/hook\n"
-"\n"
-"Handle users votes. This is not for public use."
 msgstr ""
 
 #: ../cogs/settings_commands.py:38
@@ -666,10 +679,6 @@ msgid "I guess that just says ¯\\_(ツ)_/¯"
 msgstr ""
 
 #: ../cogs/simple_commands.py:240
-msgid "Sends the link you can use to vote for DuckHunt on the bot list"
-msgstr ""
-
-#: ../cogs/simple_commands.py:250
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -829,6 +838,53 @@ msgstr ""
 
 #: ../cogs/support_server_commands.py:304
 msgid "Congratulate an user giving him a trophy."
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:238
+msgid "Please wait while I check where you can vote..."
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:247
+msgid "You can vote !"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:248
+msgid "Thanks for supporting the bot by voting !"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:253
+msgid "You might be able to vote !"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:254
+msgid ""
+"Thanks for supporting the bot by voting as much as you can. It makes a "
+"difference !"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:258
+msgid "Oh no! No bot list is currently available for you to vote."
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:259
+msgid "There is nowhere for you to vote at the time !"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:260
+msgid ""
+"Thanks for supporting the bot. It makes a difference! \n"
+"Unfortunately, you voted everywhere you could for now, but you can check "
+"back in a few hours."
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:265
+#, python-brace-format
+msgid "You can vote on {bl_name}"
+msgstr ""
+
+#: ../cogs/bots_list_and_voting.py:269
+#, python-brace-format
+msgid "You might be able to vote on {bl_name}"
 msgstr ""
 
 #: ../cogs/community.py:24
@@ -2376,17 +2432,11 @@ msgstr ""
 msgid "You don't have to go right now"
 msgstr ""
 
-#: ../cogs/simple_commands.py:245
-msgid ""
-"You can vote using the following URL: https://top.gg/bot/187636089073172481/"
-"vote"
-msgstr ""
-
-#: ../cogs/simple_commands.py:265
+#: ../cogs/simple_commands.py:255
 msgid "Current event: "
 msgstr ""
 
-#: ../cogs/simple_commands.py:270
+#: ../cogs/simple_commands.py:260
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
