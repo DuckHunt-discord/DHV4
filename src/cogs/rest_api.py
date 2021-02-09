@@ -1,17 +1,13 @@
-import datetime
 from collections import defaultdict
 from typing import Union, Optional
 
 import aiohttp_cors
-import discord
 from aiohttp import web
 from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
-from discord.ext import commands, tasks
-from discord.ext.commands import Command, Group
+from discord.ext.commands import Group
 
-from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.cog_class import Cog
-from utils.models import get_enabled_channels, DiscordChannel, get_from_db, Player, AccessLevel, DiscordUser
+from utils.models import DiscordChannel, get_from_db, Player, AccessLevel
 
 
 class RestAPI(Cog):
@@ -322,6 +318,9 @@ class RestAPI(Cog):
             self.bot.logger.error("API was loaded before the bots_list cog")
         else:
             routes += await botlist_cog.get_routes(f"{route_prefix}/votes")
+
+        self.bot.logger.debug(f"Defined routes {routes}")
+
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
             route = self.cors.add(

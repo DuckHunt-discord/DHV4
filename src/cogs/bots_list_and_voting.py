@@ -59,14 +59,14 @@ class BotsListVoting(Cog):
 
         return BOTS_LIST
 
-
     async def get_routes(self, route_prefix):
         routes = []
 
         for bot_list in await self.get_bot_list():
             handler = bot_list.get("webhook_handler", None)
-            webhook_key = bot_list.get("webhook_key", bot_list["name"])
-            routes.append(('POST', f'{route_prefix}/{webhook_key}/hook', handler))
+            if handler:
+                webhook_key = bot_list.get("webhook_key", bot_list["name"])
+                routes.append(('POST', f'{route_prefix}/{webhook_key}/hook', handler))
 
         return routes
 
