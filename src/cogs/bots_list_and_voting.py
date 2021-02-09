@@ -30,7 +30,6 @@ class BotsListVoting(Cog):
                 "vote_every": datetime.timedelta(hours=12),
                 "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
                 "check_vote_key": "voted",
-                "check_vote_authenticate": False,
                 "auth": config["topgg_shared_secret"],
                 "webhook_handler": self.votes_topgg_hook,
                 "webhook_key": "topgg",
@@ -158,11 +157,7 @@ class BotsListVoting(Cog):
             return True
         else:
             timeout = aiohttp.ClientTimeout(total=5)
-            headers = {'accept': 'application/json'}
-
-            if bot_list.get('check_vote_authenticate', True):
-                headers["Authorization"] = bot_list.get("auth", "")
-
+            headers = {'accept': 'application/json', "Authorization": bot_list.get("auth", "")}
             self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list['name']}")
             async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
                 json_resp = await resp.json()
