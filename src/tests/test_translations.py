@@ -1,4 +1,5 @@
 import pathlib
+import sys
 from typing import Tuple, List, Dict
 
 import string
@@ -85,6 +86,7 @@ def main():
             print("\n-----\n")
     else:
         print(f"✅ All is good !")
+    sys.exit(len(failed_files))
 
 
 if __name__ == '__main__':
