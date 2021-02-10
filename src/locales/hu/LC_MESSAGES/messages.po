@@ -1890,7 +1890,7 @@ msgid ""
 msgstr ""
 
 msgid "Pong. — Time taken: {miliseconds}ms"
-msgstr "Pong. — Felhasznált idő: [miliseconds] ms"
+msgstr "Pong. — Felhasznált idő: {miliseconds} ms"
 
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
@@ -2029,7 +2029,7 @@ msgid "🔫"
 msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
-msgstr "{shots}"
+msgstr ""
 
 msgid "🎯"
 msgstr "🎯"

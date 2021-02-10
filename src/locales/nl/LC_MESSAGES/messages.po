@@ -1320,7 +1320,9 @@ msgstr ""
 msgid ""
 "{exception} Please check that you are using the correct syntax: "
 "`{command_invoke_help}`."
-msgstr "Controleer of je de juiste syntax gebruikt: `{command_invoke_help}`."
+msgstr ""
+"{exception} Controleer of je de juiste syntax gebruikt: "
+"`{command_invoke_help}`."
 
 msgid "This command can only be used in a private message."
 msgstr "Dit commando kan alleen in een privébericht worden gebruikt."
@@ -2952,7 +2954,7 @@ msgstr "Normaal"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een normale eend is"
 msgstr[1] "waarvan {this_ducks_killed} normale eenden zijn"
 
 msgid ""
@@ -3012,7 +3014,7 @@ msgstr "spook"
 
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een spookeend is"
 msgstr[1] "waarvan {this_ducks_killed} spookeenden zijn"
 
 msgid "prof"
@@ -3020,7 +3022,7 @@ msgstr "professor"
 
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een professoreend is"
 msgstr[1] "waarvan {this_ducks_killed} professor-eenden zijn"
 
 msgid "Huh, quick question, what's {operation} ?"
@@ -3044,7 +3046,7 @@ msgstr "baby"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een babyeend is"
 msgstr[1] "waarvan {this_ducks_killed} baby-eenden zijn"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
@@ -3055,7 +3057,7 @@ msgstr "gouden"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een houden end is"
 msgstr[1] "waarvan {this_ducks_killed} gouden eenden zijn"
 
 msgid "plastic"
@@ -3063,7 +3065,7 @@ msgstr "plastic"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
-msgstr[0] ""
+msgstr[0] "waarvan één van plastic gemaakt is"
 msgstr[1] "waarvan {this_ducks_killed} van plastic zijn"
 
 msgid "kamikaze"
@@ -3071,7 +3073,7 @@ msgstr "kamikaze"
 
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een kamikazeeend is"
 msgstr[1] "waarvan {this_ducks_killed} kamikaze-eenden zijn"
 
 msgid "mechanical"
@@ -3079,7 +3081,7 @@ msgstr "mechanisch"
 
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een mechanische eend is"
 msgstr[1] "waarvan {this_ducks_killed} mechanische eenden zijn"
 
 msgid ""
@@ -3102,7 +3104,7 @@ msgstr "super"
 
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een supereend is"
 msgstr[1] "waarvan {this_ducks_killed} supereenden zijn"
 
 msgid "moad"
@@ -3110,7 +3112,7 @@ msgstr "MOAD"
 
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
-msgstr[0] ""
+msgstr[0] "waarvan één een MOAD is"
 msgstr[1] "waarvan {this_ducks_killed} MOADs zijn"
 
 msgid "armored"
@@ -3118,7 +3120,7 @@ msgstr "gepanterd"
 
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een gepantserde eend is"
 msgstr[1] "waarvan {this_ducks_killed} gepantserde eenden zijn"
 
 msgid ""
@@ -3140,7 +3142,7 @@ msgstr "nacht"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een nachteend is"
 msgstr[1] "waarvan {this_ducks_killed} nachteenden zijn"
 
 msgid "sleeping"
@@ -3148,7 +3150,7 @@ msgstr "slapende"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
-msgstr[0] ""
+msgstr[0] "waarvan één een slapende yeend is"
 msgstr[1] "waarvan {this_ducks_killed} slapende eenden zijn"
 
 msgid "KWAK"

@@ -1964,7 +1964,7 @@ msgid "{shots} shots attempted without bullets."
 msgstr ""
 
 msgid "{shots} shots jamming {target.mention} weapon."
-msgstr "{shots}射擊干擾{target. mention}武器。"
+msgstr "{shots}射擊干擾{target.mention}武器。"
 
 msgid "🔫"
 msgstr "🔫"
@@ -1988,7 +1988,7 @@ msgid "🧟"
 msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
-msgstr "{target. mention}被殺了{times}次。"
+msgstr "{target.mention}被殺了{times}次。"
 
 msgid "🏆️"
 msgstr "🏆️"
@@ -2081,7 +2081,7 @@ msgid "❌ You cant send experience to yourself."
 msgstr "❌你不能給自己發送經驗值"
 
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
-msgstr "❌我不確定{target. mention}能夠玩DuckHunt。"
+msgstr "❌我不確定{target.mention}能夠玩DuckHunt。"
 
 msgid "❌ You need to send more experience than this."
 msgstr "❌你需要發送比這更多的經驗值。"
@@ -2094,7 +2094,7 @@ msgid ""
 "tax_on_user_send}% was applied to this transaction (taking {tax} exp out of "
 "the total sent)."
 msgstr ""
-" 🏦你發送了{recived}經驗給{reciver.reference}。這個交易被應用了{db_channel."
+" 🏦你發送了{recived}經驗給{reciver.mention}。這個交易被應用了{db_channel."
 "tax_on_user_send}%的稅（從發送的總金額中扣除{tax}經驗值）。"
 
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
