@@ -17,9 +17,6 @@ config = config.load_config()["bot_lists"]
 
 
 class BotsListVoting(Cog):
-    """
-    Handle votes for the bot on many different bot lists.
-    """
     async def get_bot_dict(self) -> Dict[str, Dict[str, Any]]:
         BOTS_DICT = {
             "top_gg": {
