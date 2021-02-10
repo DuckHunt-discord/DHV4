@@ -198,9 +198,9 @@ class BotsListVoting(Cog):
                 # Is there a URL the bot can query to see if some `user` has voted recently
                 "check_vote_url": "https://discord.boats/api/bot/187636089073172481/voted?id={user.id}",
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "user.id",
+                "check_vote_key": "voted",
                 # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("discordboats"),
+                "webhook_handler": self.votes_generic_hook_factory("discordboats", user_id_json_field="user.id"),
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
                 "webhook_key": "discordboats",
                 # Secret used for authentication of the webhooks messages if not the same the auth token
@@ -254,7 +254,14 @@ class BotsListVoting(Cog):
                 return web.Response(status=401, text="Unauthorized, bad auth")
 
             post_data = await request.json()
-            user_id = int(post_data[user_id_json_field])
+
+            if '.' not in user_id_json_field:
+                user_id = int(post_data[user_id_json_field])
+            else:
+                user_id = post_data
+                for part in user_id_json_field.split('.'):
+                    user_id = user_id[part]
+                user_id = int(user_id)
 
             result, message = await self.handle_vote(user_id, bot_list)
 
@@ -408,13 +415,14 @@ class BotsListVoting(Cog):
                                       "Unfortunately, you voted everywhere you could for now, but you can check back in a few hours.")
                 embed.colour = discord.Colour.red()
 
+            click_me_to_vote = _("Click me to vote")
             for bot_list in votable_lists:
                 embed.add_field(name=_("You can vote on {bl_name}", bl_name=bot_list['name']),
-                                value=f"[Click me to vote]({bot_list['vote_url']})")
+                                value=f"[{click_me_to_vote}]({bot_list['vote_url']})", inline=False)
 
             for bot_list in maybe_lists:
                 embed.add_field(name=_("You might be able to vote on {bl_name}", bl_name=bot_list['name']),
-                                value=f"[Click me to vote]({bot_list['vote_url']})")
+                                value=f"[{click_me_to_vote}]({bot_list['vote_url']})", inline=True)
 
             await m.edit(embed=embed, content=text)
 
