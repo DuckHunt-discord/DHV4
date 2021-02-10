@@ -42,6 +42,8 @@ class BotsListVoting(Cog):
                 "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "voted",
+                # Does the boolean says if the user has votes (True) or if he can vote (False) ?
+                "check_vote_negate": True,
                 # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_topgg_hook,
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
@@ -130,7 +132,9 @@ class BotsListVoting(Cog):
                 # Is there a URL the bot can query to see if some `user` has voted recently
                 "check_vote_url": "https://fateslist.xyz/api/bots/187636089073172481/votes?user_id={user.id}",
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
+                "check_vote_key": "vote_right_now",
+                # Does the boolean says if the user has votes (True) or if he can vote (False) ?
+                "check_vote_negate": False,
                 # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_generic_hook_factory("fateslist"),
                 # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
@@ -363,7 +367,10 @@ class BotsListVoting(Cog):
                 self.bot.logger.warning(f"Unknown response for {bot_list['name']} votechecking: {voted_resp}")
                 voted = False
 
-            return not voted
+            if bot_list.get("check_vote_negate", True):
+                return not voted
+            else:
+                return voted
 
     async def get_votable_lists(self, user: discord.User):
         votable_lists = []
