@@ -4,13 +4,18 @@ on:
     paths:
       - 'src/locales/**.po'
       - 'src/locales/**.pot'
+      - 'src/tests/**'
+      - '.github/workflows/test_translations.yml'
   pull_request:
     paths:
       - 'src/locales/**.po'
       - 'src/locales/**.pot'
+      - 'src/tests/**'
+      - '.github/workflows/test_translations.yml'
+ 
 
 jobs:
-  check-bats-version:
+  parse-and-check-po-files:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
