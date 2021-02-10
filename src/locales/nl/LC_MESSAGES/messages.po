@@ -1,10 +1,27 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-07 21:13+0100\n"
+"POT-Creation-Date: 2021-02-10 01:06+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Handle votes for the bot on many different bot lists."
+msgstr "Behandelt de stemmen voor de bot op verschillende botlijsten."
+
+msgid "Creates votes handlers for specific bots lists"
+msgstr "Creëert stembeheerders voor specifieke botlijsten"
+
+msgid "Handle users votes for fateslist"
+msgstr "Beheer gebruikersstemmen voor fateslist"
+
+msgid "Handle users votes for top.gg"
+msgstr "Beheer gebruikersstemmen voor top.gg"
+
+msgid "Sends the link you can use to vote for DuckHunt on bot lists"
+msgstr ""
+"Stuurt de link die je kan gebruiken om op DuckHunt te stemmen op de "
+"botlijsten"
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -76,6 +93,7 @@ msgstr "Verwijdert alle eenden uit het kanaal."
 
 msgid "Alias for dh!inv use, so that you can just type dh!use instead."
 msgstr ""
+"Alias voor dh!inv use, zodat je in plaats daarvan gewoon dh!use kunt typen."
 
 msgid ""
 "Show your inventory content.\n"
@@ -97,6 +115,8 @@ msgid ""
 "Compress and sort your inventory, to fuse items together. You shouldn't have "
 "to use this."
 msgstr ""
+"Sorteer je inventaris om voorwerpen samen te voegen. Je zou dit niet hoeven "
+"te gebruiken."
 
 msgid "Use one of the items in your inventory."
 msgstr "Gebruik een van de spullen uit je inventaris."
@@ -241,11 +261,6 @@ msgstr "/stats\n"
 "\n"
 "Krijg wat globale statistieken over de bot."
 
-msgid "/dbl/hook\n"
-"\n"
-"Handle users votes. This is not for public use."
-msgstr ""
-
 msgid "Commands to view and edit settings"
 msgstr "Commando's om de instellingen te zien en aan te passen"
 
@@ -309,6 +324,13 @@ msgid ""
 "\n"
 "All the other settings are reset to their default values."
 msgstr ""
+"Hydra gamemode.\n"
+"\n"
+"Veel MOAD's zullen spawnen op het kanaal, en ze zullen ook MOAD's laten "
+"spawnen.\n"
+"Dit zet eigenlijk alleen maar spawn_weight_moad_ducks op 100.\n"
+"\n"
+"Alle andere instellingen worden teruggezet naar de standaardwaarden."
 
 msgid ""
 "Nuclear Radiation gamemode.\n"
@@ -320,6 +342,14 @@ msgid ""
 "\n"
 "All the other settings are reset to their default values."
 msgstr ""
+"Nucleaire Straling gamemode.\n"
+"\n"
+"Kijk uit, want de straling lijkt ervoor te zorgen dat eenden sterker worden!\n"
+"Dit betekent dat er meer, en sterkere, super-eenden zijn. Pak een "
+"raketwerper of iets vergelijkbaars SNEL!!!\n"
+"De straling zorgt ervoor dat klavers ook negatieve ervaringen kunnen geven!\n"
+"\n"
+"Alle andere instellingen worden teruggezet naar hun standaard waarden."
 
 msgid ""
 "Australia (reverse) gamemode.\n"
@@ -733,9 +763,6 @@ msgstr "Wie heeft er geen ogen nodig?"
 msgid "I guess that just says ¯\\_(ツ)_/¯"
 msgstr "Ik denk dat er alleen maar staat: ¯\\_(ツ)_/¯"
 
-msgid "Sends the link you can use to vote for DuckHunt on the bot list"
-msgstr ""
-
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -934,6 +961,49 @@ msgstr "Dwing de huidige gebeurtenis te veranderen, en rol een nieuwe."
 
 msgid "Congratulate an user giving him a trophy."
 msgstr "Feliciteert een gebruiker door hen een trofee te geven."
+
+msgid "Please wait while I check where you can vote..."
+msgstr "Wacht even terwijl ik kijk waar je kunt stemmen..."
+
+msgid "You can vote !"
+msgstr "Je kunt stemmen !"
+
+msgid "Thanks for supporting the bot by voting !"
+msgstr "Bedankt voor de bot te steunen door te stemmen !"
+
+msgid "You might be able to vote !"
+msgstr "Je kunt misschien stemmen !"
+
+msgid ""
+"Thanks for supporting the bot by voting as much as you can. It makes a "
+"difference !"
+msgstr ""
+"Bedankt voor de bot te steunen door zoveel mogelijk te stemmen. Het maakt "
+"een verschil !"
+
+msgid "Oh no! No bot list is currently available for you to vote."
+msgstr "Oh nee! Er is momenteel geen botlijst beschikbaar om op te stemmen."
+
+msgid "There is nowhere for you to vote at the time !"
+msgstr "Je kunt nergens stemmen op dit moment !"
+
+msgid ""
+"Thanks for supporting the bot. It makes a difference! \n"
+"Unfortunately, you voted everywhere you could for now, but you can check "
+"back in a few hours."
+msgstr ""
+"Bedankt voor de bot te steunen. Het maakt een verschil! \n"
+"Helaas, je hebt nu overal gestemd waar je kon, maar je kunt over een paar "
+"uur terugkomen."
+
+msgid "Click me to vote"
+msgstr "Klik mij om te stemmen"
+
+msgid "You can vote on {bl_name}"
+msgstr "Je kunt stemmen op {bl_name}"
+
+msgid "You might be able to vote on {bl_name}"
+msgstr "Je kunt misschien stemmen op {bl_name}"
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr "{monitored_player.mention}, RPG cooldown: **{name}** expired."
@@ -1351,10 +1421,10 @@ msgid "The boss dropped that when he died"
 msgstr "De baas liet het vallen toen hij stierf."
 
 msgid "A little something for helping the bot"
-msgstr ""
+msgstr "Een kleinigheid voor de bot te helpen"
 
 msgid "Thanks for voting for DuckHunt"
-msgstr ""
+msgstr "Bedankt voor het stemmen op DuckHunt"
 
 msgid "VIP Card"
 msgstr "VIP-kaart."
@@ -1365,30 +1435,32 @@ msgstr ""
 "maken."
 
 msgid "A book in a foreign language"
-msgstr ""
+msgstr "Een boek in een vreemde taal"
 
 msgid "Can you read it ?"
-msgstr ""
+msgstr "Kan je het lezen ?"
 
 msgid "A book"
 msgstr "Een boek."
 
 msgid "Reading it will give you experience"
-msgstr "Als je dit leest krijg je was ervaring."
+msgstr "Als je dit leest krijg je wat ervaring."
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "Een encyclopedie"
 
 msgid "Reading it will give you a lot of experience"
-msgstr ""
+msgstr "Als je dit leest krijg je VEEL ervaring."
 
 msgid "A bullet"
-msgstr ""
+msgstr "Een kogel"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement"
 msgstr ""
+"Dit is gewoon een normale kogel, maar het kan je helpen om die speciale "
+"prestatie te krijgen"
 
 msgid "A good ol' egg"
 msgstr "Een albekend ei."
@@ -1415,7 +1487,7 @@ msgid "👌 Item has been given to {target.name}."
 msgstr "👌 Item is gegeven aan {target.name}."
 
 msgid "🎒 Your inventory has been sorted."
-msgstr ""
+msgstr "🎒 Je inventaris is gesorteerd."
 
 msgid "❌ Items usage is disabled on this channel."
 msgstr "❌ Het gebruik van items is uitgeschakeld op dit kanaal."
@@ -1427,7 +1499,7 @@ msgid "Lootbox opened"
 msgstr "Lootbox geopend"
 
 msgid "❌ {guild.name} is already VIP."
-msgstr ""
+msgstr "❌ {guild.name} is al VIP."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
 msgstr "✨ {guild.name} is nu VIP! Bedankt."
@@ -1442,7 +1514,7 @@ msgid "✨ Yay! Free ammo!"
 msgstr "✨ yey! Gratis munitie!"
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr ""
+msgstr "✨ Oh, is dit een kogel ?"
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr "✨ Oh kijk, eenden! Eenden zijn overal!"
@@ -2400,11 +2472,6 @@ msgstr ""
 
 msgid "You don't have to go right now"
 msgstr "Je hoeft nu niet te gaan"
-
-msgid ""
-"You can vote using the following URL: https://top.gg/bot/187636089073172481/"
-"vote"
-msgstr ""
 
 msgid "Current event: "
 msgstr "Huidig event:"

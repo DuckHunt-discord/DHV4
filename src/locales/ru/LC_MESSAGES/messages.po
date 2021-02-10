@@ -1,10 +1,25 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-07 21:13+0100\n"
+"POT-Creation-Date: 2021-02-10 01:06+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Handle votes for the bot on many different bot lists."
+msgstr ""
+
+msgid "Creates votes handlers for specific bots lists"
+msgstr ""
+
+msgid "Handle users votes for fateslist"
+msgstr ""
+
+msgid "Handle users votes for top.gg"
+msgstr ""
+
+msgid "Sends the link you can use to vote for DuckHunt on bot lists"
+msgstr ""
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -78,6 +93,7 @@ msgstr "Удаляет всех уток с канала."
 
 msgid "Alias for dh!inv use, so that you can just type dh!use instead."
 msgstr ""
+"Альтернативный вариант команды dh!inv use. Можно просто ввести dh!use."
 
 msgid ""
 "Show your inventory content.\n"
@@ -99,7 +115,7 @@ msgstr "Передача чего-либо другому игроку."
 msgid ""
 "Compress and sort your inventory, to fuse items together. You shouldn't have "
 "to use this."
-msgstr ""
+msgstr "Группировка и сортировка содержимого инвентаря."
 
 msgid "Use one of the items in your inventory."
 msgstr "Использование одного из предметов в вашем инвентаре."
@@ -245,11 +261,6 @@ msgstr "/stats\n"
 "\n"
 "Выводит глобальную статистику о боте"
 
-msgid "/dbl/hook\n"
-"\n"
-"Handle users votes. This is not for public use."
-msgstr ""
-
 msgid "Commands to view and edit settings"
 msgstr "Команды для просмотра и редактирования статистики"
 
@@ -314,6 +325,13 @@ msgid ""
 "\n"
 "All the other settings are reset to their default values."
 msgstr ""
+"Режим игры \"Гидра\".\n"
+"\n"
+"На канале будет множество уток класса мать всех уток, которые будут плодить "
+"новых уток-мамаш.\n"
+"По сути, это когда значение параметра spawn_weight_moad_ducks равно 100.\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
 
 msgid ""
 "Nuclear Radiation gamemode.\n"
@@ -325,6 +343,14 @@ msgid ""
 "\n"
 "All the other settings are reset to their default values."
 msgstr ""
+"Режим игры \"Радиация\".\n"
+"\n"
+"Осторожно! Похоже, радиация как-то влияет на уток.\n"
+"Супер-уток стало больше. А ещё они намного сильнее. Скорее обзаведитесь "
+"стволом помощнее!\n"
+"Кстати, теперь клевер может давать и отрицательный бонус!\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
 
 msgid ""
 "Australia (reverse) gamemode.\n"
@@ -735,9 +761,6 @@ msgstr "Кому не нужны глаза"
 msgid "I guess that just says ¯\\_(ツ)_/¯"
 msgstr "Просто выводит ¯\\_(ツ)_/¯"
 
-msgid "Sends the link you can use to vote for DuckHunt on the bot list"
-msgstr ""
-
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -938,6 +961,44 @@ msgstr "Принудительная смена текущего события 
 
 msgid "Congratulate an user giving him a trophy."
 msgstr "Награждение пользователя трофеем."
+
+msgid "Please wait while I check where you can vote..."
+msgstr ""
+
+msgid "You can vote !"
+msgstr ""
+
+msgid "Thanks for supporting the bot by voting !"
+msgstr ""
+
+msgid "You might be able to vote !"
+msgstr ""
+
+msgid ""
+"Thanks for supporting the bot by voting as much as you can. It makes a "
+"difference !"
+msgstr ""
+
+msgid "Oh no! No bot list is currently available for you to vote."
+msgstr ""
+
+msgid "There is nowhere for you to vote at the time !"
+msgstr ""
+
+msgid ""
+"Thanks for supporting the bot. It makes a difference! \n"
+"Unfortunately, you voted everywhere you could for now, but you can check "
+"back in a few hours."
+msgstr ""
+
+msgid "Click me to vote"
+msgstr ""
+
+msgid "You can vote on {bl_name}"
+msgstr ""
+
+msgid "You might be able to vote on {bl_name}"
+msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr ""
@@ -1356,10 +1417,10 @@ msgid "The boss dropped that when he died"
 msgstr "Босс обронил это, когда отправился на тот свет"
 
 msgid "A little something for helping the bot"
-msgstr ""
+msgstr "Кое-что в благодарность за помощь боту"
 
 msgid "Thanks for voting for DuckHunt"
-msgstr ""
+msgstr "Спасибо за участие в голосовании!"
 
 msgid "VIP Card"
 msgstr "VIP карта"
@@ -1368,10 +1429,10 @@ msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr "Новенькая красивая карта, дающая право настроить сервер как VIP"
 
 msgid "A book in a foreign language"
-msgstr ""
+msgstr "Книга на иностранном языке"
 
 msgid "Can you read it ?"
-msgstr ""
+msgstr "Сможете её прочесть?"
 
 msgid "A book"
 msgstr "Книга"
@@ -1380,18 +1441,18 @@ msgid "Reading it will give you experience"
 msgstr "Её прочтение добавит вам опыта"
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "Энциклопедия"
 
 msgid "Reading it will give you a lot of experience"
-msgstr ""
+msgstr "Её прочтение даст вам много опыта"
 
 msgid "A bullet"
-msgstr ""
+msgstr "Патрон"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement"
-msgstr ""
+msgstr "Вроде бы обычный патрон, но он может помочь раздобыть вкусный ужин"
 
 msgid "A good ol' egg"
 msgstr "Старое доброе яйцо"
@@ -1418,7 +1479,7 @@ msgid "👌 Item has been given to {target.name}."
 msgstr "👌 Предмет передан {target.name}."
 
 msgid "🎒 Your inventory has been sorted."
-msgstr ""
+msgstr "🎒 Сортировка содержимого инвентаря завершена."
 
 msgid "❌ Items usage is disabled on this channel."
 msgstr "❌ На этом канале отключено использование предметов."
@@ -1430,7 +1491,7 @@ msgid "Lootbox opened"
 msgstr "Лутбокс открыт"
 
 msgid "❌ {guild.name} is already VIP."
-msgstr ""
+msgstr "❌ У {guild.name} уже есть VIP-статус."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
 msgstr "✨ {guild.name} получает статус VIP! Спасибо!"
@@ -1443,7 +1504,7 @@ msgid "✨ Yay! Free ammo!"
 msgstr "✨ Ура! Бесплатные патроны!"
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr ""
+msgstr "✨ Ой, патрончик!"
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr "✨ Смотрите, утки! Повсюду утки!"
@@ -1592,18 +1653,16 @@ msgid "Defaults settings have been restored."
 msgstr "Восстановлены настройки по умолчанию."
 
 msgid "DHV3-Like settings have been applied to this channel."
-msgstr "К этому каналу применены настройки типа DHV3."
+msgstr "Применены настройки DHV3."
 
 msgid "Casual mode settings have been applied to this channel."
-msgstr "К этому каналу применены настройки обычного режима."
+msgstr "Применены настройки обычного режима."
 
 msgid "Hardcore mode settings have been applied to this channel."
-msgstr "К этому каналу применены настройки режима повышенной сложности."
+msgstr "Применены настройки режима повышенной сложности."
 
 msgid "👻 Haunted House settings have been applied to this channel."
-msgstr ""
-"👻 Для данного канала были применены настройки режима \"Дом с привидениями\"."
-""
+msgstr "👻 Применены настройки режима \"Дом с привидениями\"."
 
 msgid "🤖 Robot fest settings have been applied to this channel."
 msgstr "🤖 Применены настройки режима \"Фестиваль роботов\"."
@@ -2386,11 +2445,6 @@ msgstr ""
 
 msgid "You don't have to go right now"
 msgstr "Вы ж вроде только недавно!"
-
-msgid ""
-"You can vote using the following URL: https://top.gg/bot/187636089073172481/"
-"vote"
-msgstr ""
 
 msgid "Current event: "
 msgstr "Текущее событие:"

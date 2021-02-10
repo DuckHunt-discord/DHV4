@@ -1,10 +1,25 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-07 21:13+0100\n"
+"POT-Creation-Date: 2021-02-10 01:06+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Content-Type: text/plain; charset=UTF-8"
+
+msgid "Handle votes for the bot on many different bot lists."
+msgstr ""
+
+msgid "Creates votes handlers for specific bots lists"
+msgstr ""
+
+msgid "Handle users votes for fateslist"
+msgstr ""
+
+msgid "Handle users votes for top.gg"
+msgstr ""
+
+msgid "Sends the link you can use to vote for DuckHunt on bot lists"
+msgstr ""
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -238,11 +253,6 @@ msgid "/stats\n"
 msgstr "/stats \n"
 "\n"
 "Få nogle globale statistikker om bot."
-
-msgid "/dbl/hook\n"
-"\n"
-"Handle users votes. This is not for public use."
-msgstr ""
 
 msgid "Commands to view and edit settings"
 msgstr "Kommandoer til at se og redigere indstillinger"
@@ -667,9 +677,6 @@ msgstr ""
 msgid "I guess that just says ¯\\_(ツ)_/¯"
 msgstr ""
 
-msgid "Sends the link you can use to vote for DuckHunt on the bot list"
-msgstr ""
-
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -824,6 +831,44 @@ msgid "Force the current event to change, and reroll a new one."
 msgstr ""
 
 msgid "Congratulate an user giving him a trophy."
+msgstr ""
+
+msgid "Please wait while I check where you can vote..."
+msgstr ""
+
+msgid "You can vote !"
+msgstr ""
+
+msgid "Thanks for supporting the bot by voting !"
+msgstr ""
+
+msgid "You might be able to vote !"
+msgstr ""
+
+msgid ""
+"Thanks for supporting the bot by voting as much as you can. It makes a "
+"difference !"
+msgstr ""
+
+msgid "Oh no! No bot list is currently available for you to vote."
+msgstr ""
+
+msgid "There is nowhere for you to vote at the time !"
+msgstr ""
+
+msgid ""
+"Thanks for supporting the bot. It makes a difference! \n"
+"Unfortunately, you voted everywhere you could for now, but you can check "
+"back in a few hours."
+msgstr ""
+
+msgid "Click me to vote"
+msgstr ""
+
+msgid "You can vote on {bl_name}"
+msgstr ""
+
+msgid "You might be able to vote on {bl_name}"
 msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
@@ -2014,11 +2059,6 @@ msgid ""
 msgstr ""
 
 msgid "You don't have to go right now"
-msgstr ""
-
-msgid ""
-"You can vote using the following URL: https://top.gg/bot/187636089073172481/"
-"vote"
 msgstr ""
 
 msgid "Current event: "
