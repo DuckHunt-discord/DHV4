@@ -56,10 +56,14 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str]]:
             message_string_keys = extract_keys(message_string)
 
             if len(message_id_keys) != len(message_string_keys):
-                messages.append(f"{ERROR} `{message_id}` is mistranslated (missing f-keys) : {message_id_keys} in ID, {message_string_keys} in string ({message_string})")
+                messages.append(f"{ERROR} Mistranslated (missing f-keys):\n"
+                                f"ID_: {message_id_keys} ({message_id})\n"
+                                f"STR: {message_string_keys} ({message_string})")
                 result = False
             elif sorted(message_id_keys) != sorted(message_string_keys):
-                messages.append(f"{ERROR} `{message_id}` is probably mistranslated (different f-keys) : {message_id_keys} in ID, {message_string_keys} in string ({message_string})")
+                messages.append(f"{ERROR} Probably mistranslated (different f-keys):\n"
+                                f"ID_: {message_id_keys} ({message_id})\n"
+                                f"STR: {message_string_keys} ({message_string})")
                 result = False
 
     messages.append(f"{INFO} {untranslated_messages} untranslated messages")
