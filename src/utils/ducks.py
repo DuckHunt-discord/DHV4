@@ -234,7 +234,7 @@ class Duck:
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a normal duck",
+        return ngettext("of which one is a normal duck",
                         "of which {this_ducks_killed} are normal ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -616,7 +616,7 @@ class GhostDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a ghost duck",
+        return ngettext("of which one is a ghost duck",
                         "of which {this_ducks_killed} are ghost ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -657,7 +657,7 @@ class PrDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a professor duck",
+        return ngettext("of which one is a professor duck",
                         "of which {this_ducks_killed} are Pr. ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -709,7 +709,7 @@ class BabyDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a baby duck",
+        return ngettext("of which one is a baby duck",
                         "of which {this_ducks_killed} are baby ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -735,7 +735,7 @@ class GoldenDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a golden duck",
+        return ngettext("of which one is a golden duck",
                         "of which {this_ducks_killed} are golden ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -751,10 +751,9 @@ class PlasticDuck(Duck):
     """
     category = _('plastic')
 
-
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is made of plastic",
+        return ngettext("of which one is made of plastic",
                         "of which {this_ducks_killed} are made of plastic",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -770,10 +769,9 @@ class KamikazeDuck(Duck):
     """
     category = _('kamikaze')
 
-
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a kamikaze duck",
+        return ngettext("of which one is a kamikaze duck",
                         "of which {this_ducks_killed} are kamikaze ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -811,7 +809,7 @@ class MechanicalDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a mechanical duck",
+        return ngettext("of which one is a mechanical duck",
                         "of which {this_ducks_killed} are mechanical ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -856,7 +854,7 @@ class SuperDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a super duck",
+        return ngettext("of which one is a super duck",
                         "of which {this_ducks_killed} are super ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -881,7 +879,7 @@ class MotherOfAllDucks(SuperDuck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a MOAD",
+        return ngettext("of which one is a MOAD",
                         "of which {this_ducks_killed} are MOADs",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -909,7 +907,7 @@ class ArmoredDuck(SuperDuck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is an armored duck",
+        return ngettext("of which one is an armored duck",
                         "of which {this_ducks_killed} are armored ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -953,7 +951,7 @@ class NightDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a night duck",
+        return ngettext("of which one is a night duck",
                         "of which {this_ducks_killed} are night ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
@@ -968,7 +966,7 @@ class SleepingDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which {this_ducks_killed} is a sleeping duck",
+        return ngettext("of which one is a sleeping duck",
                         "of which {this_ducks_killed} are sleeping ducks",
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
