@@ -1,13 +1,10 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-11 00:01+0100\n"
+"POT-Creation-Date: 2021-02-11 00:19+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Content-Type: text/plain; charset=UTF-8"
-
-msgid "Handle votes for the bot on many different bot lists."
-msgstr "Gère les votes pour le bot sur de nombreuses listes de bot."
 
 msgid "Creates votes handlers for specific bots lists"
 msgstr "Crée des gestionnaires de votes pour des listes de bots spécifiques."
@@ -3006,7 +3003,7 @@ msgstr "normal"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
-msgstr[0] ""
+msgstr[0] "dont un est un canard normal"
 msgstr[1] "dont {this_ducks_killed} sont des canards normaux"
 
 msgid ""
@@ -3064,7 +3061,7 @@ msgstr "Fantôme"
 
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard fantôme"
 msgstr[1] "dont {this_ducks_killed} canards fantômes"
 
 msgid "prof"
@@ -3072,7 +3069,7 @@ msgstr "Professeur"
 
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
-msgstr[0] ""
+msgstr[0] "dont un Professeur canard"
 msgstr[1] "dont {this_ducks_killed} Pr. Canards"
 
 msgid "Huh, quick question, what's {operation} ?"
@@ -3096,7 +3093,7 @@ msgstr "bébé"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] ""
+msgstr[0] "dont un bébé canard"
 msgstr[1] "dont {this_ducks_killed} bébés canards"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
@@ -3108,7 +3105,7 @@ msgstr "doré"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard doré"
 msgstr[1] "dont {this_ducks_killed} canards dorés"
 
 msgid "plastic"
@@ -3116,7 +3113,7 @@ msgstr "plastique"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
-msgstr[0] ""
+msgstr[0] "dont un fait de plastique"
 msgstr[1] "dont {this_ducks_killed} qui sont faits de plastique"
 
 msgid "kamikaze"
@@ -3124,7 +3121,7 @@ msgstr "kamikaze"
 
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard kamikaze"
 msgstr[1] "dont {this_ducks_killed} canards kamikazes"
 
 msgid "mechanical"
@@ -3132,7 +3129,7 @@ msgstr "mecaniques"
 
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard mécanique"
 msgstr[1] "dont {this_ducks_killed} canards mécaniques"
 
 msgid ""
@@ -3154,7 +3151,7 @@ msgstr "super"
 
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
-msgstr[0] ""
+msgstr[0] "dont un super canard"
 msgstr[1] "dont {this_ducks_killed} super canards"
 
 msgid "moad"
@@ -3162,7 +3159,7 @@ msgstr "mdtlc"
 
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
-msgstr[0] ""
+msgstr[0] "dont une MDTLC"
 msgstr[1] "dont {this_ducks_killed} MDTLC"
 
 msgid "armored"
@@ -3170,7 +3167,7 @@ msgstr "en armure"
 
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard blindé"
 msgstr[1] "dont {this_ducks_killed} canards en armure"
 
 msgid ""
@@ -3192,7 +3189,7 @@ msgstr "de nuit"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard de nuit"
 msgstr[1] "dont {this_ducks_killed} canards de nuit"
 
 msgid "sleeping"
@@ -3200,7 +3197,7 @@ msgstr "endormi"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
-msgstr[0] ""
+msgstr[0] "dont un canard dormant"
 msgstr[1] "dont {this_ducks_killed} canards endormis"
 
 msgid "KWAK"

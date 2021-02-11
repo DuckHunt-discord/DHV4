@@ -3,29 +3,25 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-11 00:01+0100\n"
+"POT-Creation-Date: 2021-02-11 00:19+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Content-Type: text/plain; charset=UTF-8"
 
-#: ../cogs/bots_list_and_voting.py:20
-msgid "Handle votes for the bot on many different bot lists."
-msgstr "Handle votes for the bot on many different bot lists."
-
-#: ../cogs/bots_list_and_voting.py:242
+#: ../cogs/bots_list_and_voting.py:239
 msgid "Creates votes handlers for specific bots lists"
 msgstr "Creates votes handlers for specific bots lists"
 
-#: ../cogs/bots_list_and_voting.py:247
+#: ../cogs/bots_list_and_voting.py:244
 msgid "Handle users votes for fateslist"
 msgstr "Handle users votes for fateslist"
 
-#: ../cogs/bots_list_and_voting.py:280
+#: ../cogs/bots_list_and_voting.py:277
 msgid "Handle users votes for top.gg"
 msgstr "Handle users votes for top.gg"
 
-#: ../cogs/bots_list_and_voting.py:394
+#: ../cogs/bots_list_and_voting.py:391
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr "Sends the link you can use to vote for DuckHunt on bot lists"
 
@@ -1084,23 +1080,23 @@ msgstr "Force the current event to change, and reroll a new one."
 msgid "Congratulate an user giving him a trophy."
 msgstr "Congratulate an user giving him a trophy."
 
-#: ../cogs/bots_list_and_voting.py:399
+#: ../cogs/bots_list_and_voting.py:396
 msgid "Please wait while I check where you can vote..."
 msgstr "Please wait while I check where you can vote..."
 
-#: ../cogs/bots_list_and_voting.py:408
+#: ../cogs/bots_list_and_voting.py:405
 msgid "You can vote !"
 msgstr "You can vote !"
 
-#: ../cogs/bots_list_and_voting.py:409
+#: ../cogs/bots_list_and_voting.py:406
 msgid "Thanks for supporting the bot by voting !"
 msgstr "Thanks for supporting the bot by voting !"
 
-#: ../cogs/bots_list_and_voting.py:414
+#: ../cogs/bots_list_and_voting.py:411
 msgid "You might be able to vote !"
 msgstr "You might be able to vote !"
 
-#: ../cogs/bots_list_and_voting.py:415
+#: ../cogs/bots_list_and_voting.py:412
 msgid ""
 "Thanks for supporting the bot by voting as much as you can. It makes a "
 "difference !"
@@ -1108,15 +1104,15 @@ msgstr ""
 "Thanks for supporting the bot by voting as much as you can. It makes a "
 "difference !"
 
-#: ../cogs/bots_list_and_voting.py:419
+#: ../cogs/bots_list_and_voting.py:416
 msgid "Oh no! No bot list is currently available for you to vote."
 msgstr "Oh no! No bot list is currently available for you to vote."
 
-#: ../cogs/bots_list_and_voting.py:420
+#: ../cogs/bots_list_and_voting.py:417
 msgid "There is nowhere for you to vote at the time !"
 msgstr "There is nowhere for you to vote at the time !"
 
-#: ../cogs/bots_list_and_voting.py:421
+#: ../cogs/bots_list_and_voting.py:418
 msgid ""
 "Thanks for supporting the bot. It makes a difference! \n"
 "Unfortunately, you voted everywhere you could for now, but you can check "
@@ -1126,16 +1122,16 @@ msgstr ""
 "Unfortunately, you voted everywhere you could for now, but you can check "
 "back in a few hours."
 
-#: ../cogs/bots_list_and_voting.py:425
+#: ../cogs/bots_list_and_voting.py:422
 msgid "Click me to vote"
 msgstr "Click me to vote"
 
-#: ../cogs/bots_list_and_voting.py:427
+#: ../cogs/bots_list_and_voting.py:424
 #, python-brace-format
 msgid "You can vote on {bl_name}"
 msgstr "You can vote on {bl_name}"
 
-#: ../cogs/bots_list_and_voting.py:431
+#: ../cogs/bots_list_and_voting.py:428
 #, python-brace-format
 msgid "You might be able to vote on {bl_name}"
 msgstr "You might be able to vote on {bl_name}"
