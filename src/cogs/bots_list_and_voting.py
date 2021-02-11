@@ -1,3 +1,5 @@
+import asyncio
+
 import aiohttp
 from aiohttp import web
 from discord.ext import commands
@@ -342,8 +344,11 @@ class BotsListVoting(Cog):
             timeout = aiohttp.ClientTimeout(total=5)
             headers = {'accept': 'application/json', "Authorization": bot_list.get("auth", "")}
             self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list['name']}")
-            async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
-                json_resp = await resp.json()
+            try:
+                async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
+                    json_resp = await resp.json()
+            except asyncio.TimeoutError:
+                return False  # Can't vote if the bot list is down
 
             self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list['name']} -> {json_resp}")
 
@@ -455,14 +460,17 @@ class BotsListVoting(Cog):
                 post_stats_shard_count_key = bot_list.get("post_stats_shard_count_key", "shard_count")
                 if post_stats_shard_count_key:
                     post_data[post_stats_shard_count_key] = shard_count
-
-                resp = await self.bot.client_session.post(stats_url, timeout=timeout, headers=headers, json=post_data)
-                text = await resp.text()
-                status = resp.status
-                if status == 200:
-                    self.bot.logger.debug(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
+                try:
+                    resp = await self.bot.client_session.post(stats_url, timeout=timeout, headers=headers, json=post_data)
+                except asyncio.TimeoutError:
+                    self.bot.logger.warning(f"Push stats to {bot_list['name']}: resp [TIMEOUT]")
                 else:
-                    self.bot.logger.warning(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
+                    text = await resp.text()
+                    status = resp.status
+                    if status == 200:
+                        self.bot.logger.debug(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
+                    else:
+                        self.bot.logger.warning(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
 
 
 setup = BotsListVoting.setup
