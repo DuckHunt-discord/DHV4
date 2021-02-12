@@ -170,7 +170,7 @@ class DucksHuntingCommands(Cog):
                 await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
                                   "You should send your complaints to the CACAD. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
                                   ))
-            await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(ctx.author.name)}&top2={quote_plus(_('Signed up for the CACAC.'))}&top3=&top4=&sp=")
+            await ctx.send(f"http://www.tombstonebuilder.com/generate.php?top1={quote_plus(ctx.author.name)}&top2={quote_plus(_('Signed up for the CACAD.'))}&top3=&top4=&sp=")
             return False
 
         # Maybe a duck there
