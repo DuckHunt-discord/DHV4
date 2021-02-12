@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-11 00:19+0100\n"
+"POT-Creation-Date: 2021-02-12 11:13+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -1535,7 +1535,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"On {channel.mention}, when a hunter buy a clover, the minimum experience "
+"On {channel.mention}, when a hunter buys a clover, the minimum experience "
 "given per duck kill will be of {value}."
 msgstr ""
 

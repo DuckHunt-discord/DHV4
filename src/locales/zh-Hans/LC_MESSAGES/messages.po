@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-11 00:19+0100\n"
+"POT-Creation-Date: 2021-02-12 11:13+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -13,10 +13,10 @@ msgid "Handle users votes for fateslist"
 msgstr ""
 
 msgid "Handle users votes for top.gg"
-msgstr ""
+msgstr "处理用户在 top.gg 的投票"
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
-msgstr ""
+msgstr "发送可用于为Duckhunt 在机器人列表上投票的链接"
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -27,61 +27,61 @@ msgid "Shoot at the duck that appeared first on the channel."
 msgstr ""
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "重装您的枪"
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr ""
+msgstr "拥抱最先出现在频道上的鸭子"
 
 msgid "Revive yourself by eating brains"
-msgstr ""
+msgstr "通过服用脑袋来复活自己"
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "随机生成鸭子"
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
 msgstr ""
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "生成一只寻常鸭子"
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "生成一只超级鸭子"
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "生成一只小鸭"
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "生成一只鸭博士"
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
-msgstr ""
+msgstr "生成一只鸭鬼。很明显这不会有生成消息"
 
 msgid "Spawns a MOAD."
-msgstr ""
+msgstr "生成一只鸭母亲"
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
 msgstr ""
 
 msgid "Spawns a golden duck."
-msgstr ""
+msgstr "生成一只金鸭子"
 
 msgid "Spawns a plastic duck."
-msgstr ""
+msgstr "生成一只塑料鸭"
 
 msgid "Spawns a kamikaze duck."
-msgstr ""
+msgstr "生成一只神风鸭"
 
 msgid "Spawns a night duck."
-msgstr ""
+msgstr "生成一只夜鸭"
 
 msgid "Spawns a sleeping duck."
-msgstr ""
+msgstr "生成一只正在睡觉的鸭子"
 
 msgid "Show ducks currently on the channel"
-msgstr ""
+msgstr "显示目前在频道上的鸭子"
 
 msgid "Removes all ducks from the channel"
-msgstr ""
+msgstr "从频道中移除所有鸭子"
 
 msgid "Alias for dh!inv use, so that you can just type dh!use instead."
 msgstr ""
@@ -92,10 +92,13 @@ msgid ""
 "The inventory is global. It means that all items you can store in it can be "
 "used on (almost) every server.\n"
 "Server administrators can disable inventory usage on specific channels."
-msgstr ""
+msgstr "显示您的物品栏。\n"
+"\n"
+"物品栏是全球性的。您\n"
+"服务器管理员能够在特定频道里禁用物品栏"
 
 msgid "Give something to some player."
-msgstr ""
+msgstr "给予玩家东西"
 
 msgid ""
 "Compress and sort your inventory, to fuse items together. You shouldn't have "
@@ -103,13 +106,13 @@ msgid ""
 msgstr ""
 
 msgid "Use one of the items in your inventory."
-msgstr ""
+msgstr "使用您物品栏中的一件东西"
 
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
 
 msgid "More info about prestige"
-msgstr ""
+msgstr "关于会员的详情"
 
 msgid ""
 "Execute the prestige process. Almost all of your hunting data **WILL** be "
@@ -1391,7 +1394,7 @@ msgid ""
 msgstr ""
 
 msgid ""
-"On {channel.mention}, when a hunter buy a clover, the minimum experience "
+"On {channel.mention}, when a hunter buys a clover, the minimum experience "
 "given per duck kill will be of {value}."
 msgstr ""
 
