@@ -21,7 +21,7 @@ class DuckBoss(Cog):
 
     @property
     def luck(self):
-        return ((self.iterations_spawn / self.iterations_no_spawn) / (60 * 24)) * 100
+        return 1440 / self.iterations_no_spawn * self.iterations_spawn * 100
 
     def cog_unload(self):
         self.background_loop.cancel()
