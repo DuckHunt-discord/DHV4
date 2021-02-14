@@ -20,442 +20,26 @@ config = config.load_config()["bot_lists"]
 
 
 class BotsListVoting(Cog):
-    async def get_bot_dict(self) -> Dict[str, Dict[str, Any]]:
-        BOTS_DICT = {
-            "top_gg": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "top.gg",
-                # URL for the main bot page
-                "bot_url": "https://top.gg/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["topgg_shared_secret"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://top.gg/bot/187636089073172481/vote",
-                # And how often
-                "vote_every": datetime.timedelta(hours=12),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
-                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
-                "check_vote_negate": True,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_topgg_hook,
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "topgg",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_auth": "",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://top.gg/api/bots/187636089073172481/stats",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "server_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shard_count",
-            },
-            "discord_bots_gg": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "discord.bots.gg",
-                # URL for the main bot page
-                "bot_url": "https://discord.bots.gg/bots/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["discordbotsgg_api_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": False,
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://discord.bots.gg/api/v1/bots/187636089073172481/stats",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "guildCount",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shardCount",
-            },
-            "discordbotslist": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Discord Bots List",
-                # URL for the main bot page
-                "bot_url": "https://discordbotlist.com/bots/duckhunt",
-                # Token to authenticate requests to and from the website
-                "auth": config["discordbotlist_api_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://discordbotlist.com/bots/duckhunt/upvote",
-                # And how often
-                "vote_every": datetime.timedelta(hours=12),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": None,
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": None,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("discordbotslist"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "discordbotslist",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://discordbotlist.com/api/v1/bots/187636089073172481/stats",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "guilds",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": None,
-            },
-            "fateslist": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Fateslist",
-                # URL for the main bot page
-                "bot_url": "https://fateslist.xyz/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["fateslist_api_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://fateslist.xyz/bot/187636089073172481/vote",
-                # And how often
-                "vote_every": datetime.timedelta(hours=8),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": "https://fateslist.xyz/api/bots/187636089073172481/votes?user_id={user.id}",
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "vote_right_now",
-                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
-                "check_vote_negate": False,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("fateslist"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "fateslist",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://fateslist.xyz/api/bots/187636089073172481/stats",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "guild_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shard_count",
-            },
-            "botsfordiscord": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Bots For Discord",
-                # URL for the main bot page
-                "bot_url": "https://botsfordiscord.com/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["botsfordiscord_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://botsfordiscord.com/bot/187636089073172481/vote",
-                # And how often
-                "vote_every": datetime.timedelta(days=1),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": None,
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": None,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("botsfordiscord", user_id_json_field="user"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "botsfordiscord",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                "webhook_auth": config["botsfordiscord_token"][:60],
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://botsfordiscord.com/api/bot/187636089073172481",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "server_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": None,
-            },
-            "discordboats": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Discord Boats",
-                # URL for the main bot page
-                "bot_url": "https://discord.boats/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["discordboats_api_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://discord.boats/bot/187636089073172481/vote",
-                # And how often
-                "vote_every": datetime.timedelta(hours=12),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": "https://discord.boats/api/bot/187636089073172481/voted?id={user.id}",
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("discordboats", user_id_json_field="user.id"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "discordboats",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_auth": "",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://discord.boats/api/bot/187636089073172481",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "server_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": None,
-            },
-            "botlistspace": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "botlist.space",
-                # URL for the main bot page
-                "bot_url": "https://botlist.space/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["botlist_space_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://botlist.space/bot/187636089073172481/upvote",
-                # And how often
-                "vote_every": datetime.timedelta(days=1),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": None,
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
-                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
-                "check_vote_negate": True,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("botlistspace", user_id_json_field="user.id"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "botlistspace",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_auth": "",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://api.botlist.space/v1/bots/187636089073172481",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "server_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": None,
-            },
-            "discordextremelist": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Discord Extreme List",
-                # URL for the main bot page
-                "bot_url": "https://discordextremelist.xyz/en-US/bots/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["discordextremelist_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                # They can, but only once, so let's say they can't because I can't be bothered
-                "can_vote": False,
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://api.discordextremelist.xyz/v2/bot/187636089073172481/stats",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "guildCount",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shardCount",
-            },
-            "voidbots": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Void Bots",
-                # URL for the main bot page
-                "bot_url": "https://voidbots.net/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["voidbots_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://voidbots.net/bot/187636089073172481/vote",
-                # And how often
-                "vote_every": datetime.timedelta(hours=12),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": "https://api.voidbots.net/bot/voted/187636089073172481/{user.id}",
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
-                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
-                "check_vote_negate": True,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("voidbots", user_id_json_field="user"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "voidbots",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_auth": "",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://api.voidbots.net/bot/stats/187636089073172481",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "server_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shard_count",
-            },
-            "infinitybotlist": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Infinity Bot List",
-                # URL for the main bot page
-                "bot_url": "https://infinitybotlist.com/bots/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["infinitybotlist_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": True,
-                # If they can vote, on what URL ?
-                "vote_url": "https://infinitybotlist.com/bots/187636089073172481/vote",
-                # And how often
-                "vote_every": datetime.timedelta(days=1),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": None,
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
-                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
-                "check_vote_negate": True,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("infinitybotlist", user_id_json_field="userID"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "infinitybotlist",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_auth": "",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://api.infinitybotlist.com/bot/187636089073172481",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "servers",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shards",
-            },
-            "blist": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Blist",
-                # URL for the main bot page
-                "bot_url": "https://blist.xyz/bot/187636089073172481",
-                # Token to authenticate requests to and from the website
-                "auth": config["blist_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                # They can. Webhooks are currently out of order, so I'm gonna wait until they fix it.
-                # https://discord.com/channels/716445624517656727/716715657600827447/810603306040295465
-                "can_vote": False,
-                # If they can vote, on what URL ?
-                "vote_url": "https://blist.xyz/bot/187636089073172481",
-                # And how often
-                "vote_every": datetime.timedelta(hours=12),
-                # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": None,
-                # What is the key used to specify the vote in the JSON returned by the URL above ?
-                "check_vote_key": "voted",
-                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
-                "check_vote_negate": True,
-                # What is the function that'll receive the request from the vote hooks
-                "webhook_handler": self.votes_generic_hook_factory("blist", user_id_json_field="user"),
-                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
-                "webhook_key": "blist",
-                # Secret used for authentication of the webhooks messages if not the same the auth token
-                # "webhook_auth": "",
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "PATCH",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://blist.xyz/api/v2/bot/187636089073172481/stats/",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "server_count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": "shard_count",
-            },
-            "discordapps": {
-                # **Generic data**
-                # The name of the bot list
-                "name": "Discord Apps",
-                # URL for the main bot page
-                "bot_url": "https://discordapps.dev/en-GB/bots/187636089073172481/",
-                # Token to authenticate requests to and from the website
-                "auth": config["discordapps_token"],
-
-                # **Votes**
-                # Can people vote on that bot list ?
-                "can_vote": False,
-
-                # **Statistics**
-                # What HTTP method should be used to send the stats
-                "post_stats_method": "POST",
-                # On what endpoint can the bot send statistics
-                "post_stats_url": "https://discordapps.dev/bots/187636089073172481",
-                # In the JSON, how should we call the server count ?
-                "post_stats_server_count_key": "bot.count",
-                # In the JSON, how should we call the guild count ?
-                "post_stats_shard_count_key": None,
-            },
-        }
-
-        return BOTS_DICT
-
-    async def get_bot_list(self) -> List[Dict[str, Any]]:
-        BOTS_LIST = list((await self.get_bot_dict()).values())
-
-        return BOTS_LIST
+    async def get_bot_list(self) -> List[BotList]:
+        return await BotList.all()
 
     async def get_routes(self, route_prefix):
         routes = []
 
         for bot_list in await self.get_bot_list():
-            handler = bot_list.get("webhook_handler", None)
-            if handler:
-                webhook_key = bot_list.get("webhook_key", bot_list["name"])
-                routes.append(('POST', f'{route_prefix}/{webhook_key}/hook', handler))
+            webhook_key = bot_list.key
+
+            handler_type = bot_list.webhook_handler
+            if handler_type == "generic":
+                handler = self.votes_generic_hook_factory(bot_list)
+            elif handler_type == "top.gg":
+                handler = self.votes_topgg_hook
+
+            routes.append(('POST', f'{route_prefix}/{webhook_key}/hook', handler))
 
         return routes
 
-    def votes_generic_hook_factory(self, bot_list_key, authorization_header="Authorization", user_id_json_field="id"):
+    def votes_generic_hook_factory(self, bot_list: BotList):
         """
         Creates votes handlers for specific bots lists
         """
@@ -464,23 +48,21 @@ class BotsListVoting(Cog):
             """
             Handle users votes for fateslist
             """
-            bot_list = (await self.get_bot_dict())[bot_list_key]
-
-            auth = request.headers.get(authorization_header, "")
-            local_auth = bot_list.get('webhook_auth', bot_list['auth'])
+            auth = request.headers.get(bot_list.webhook_authorization_header, "")
+            local_auth = bot_list.webhook_auth or bot_list.auth
 
             if auth != local_auth:
                 self.bot.logger.warning(
-                    f"Bad authentification ({auth} vs {local_auth}) provided to {bot_list['name']} API.")
+                    f"Bad authentification ({auth} vs {local_auth}) provided to {bot_list.name} API.")
                 return web.Response(status=401, text="Unauthorized, bad auth")
 
             post_data = await request.json()
 
-            if '.' not in user_id_json_field:
-                user_id = int(post_data[user_id_json_field])
+            if '.' not in bot_list.webhook_user_id_json_field:
+                user_id = int(post_data[bot_list.webhook_user_id_json_field])
             else:
                 user_id = post_data
-                for part in user_id_json_field.split('.'):
+                for part in bot_list.webhook_user_id_json_field.split('.'):
                     user_id = user_id[part]
                 user_id = int(user_id)
 
@@ -497,11 +79,11 @@ class BotsListVoting(Cog):
         """
         Handle users votes for top.gg
         """
-        bot_list = (await self.get_bot_dict())["top_gg"]
+        bot_list = await BotList.filter(key="top.gg").get()
         auth = request.headers.get("Authorization", "")
 
-        if auth != bot_list["auth"]:
-            self.bot.logger.warning(f"Bad authentification provided to {bot_list['name']} API.")
+        if auth != bot_list.auth:
+            self.bot.logger.warning(f"Bad authentification provided to {bot_list.name} API.")
             return web.Response(status=401, text="Unauthorized, bad auth")
 
         post_data = await request.json()
@@ -510,7 +92,7 @@ class BotsListVoting(Cog):
         bot_id = int(post_data["bot"])
 
         if bot_id != self.bot.user.id:
-            self.bot.logger.warning(f"Bad bot ID ({bot_id}) provided to {bot_list['name']} API.")
+            self.bot.logger.warning(f"Bad bot ID ({bot_id}) provided to {bot_list.name} API.")
             return web.Response(status=401, text="Unauthorized, bad bot ID")
 
         is_test = post_data["type"] == "test"
@@ -525,7 +107,7 @@ class BotsListVoting(Cog):
         else:
             return web.Response(status=400, text=message)
 
-    async def handle_vote(self, user_id: int, bot_list: BotList, multiplicator: int =1, is_test: bool = False) -> Tuple[bool, str]:
+    async def handle_vote(self, user_id: int, bot_list: BotList, multiplicator: int = 1, is_test: bool = False) -> Tuple[bool, str]:
         try:
             user = await self.bot.fetch_user(user_id)
         except discord.errors.NotFound:
@@ -553,45 +135,44 @@ class BotsListVoting(Cog):
 
         return True, "Vote recorded"
 
-    async def can_vote(self, bot_list, user, db_user):
-        vote_check_url = bot_list.get("check_vote_url", None)
-        vote_every = bot_list.get("vote_every", None)
+    async def can_vote(self, bot_list: BotList, user: discord.User, db_user: DiscordUser):
+        vote_check_url = bot_list.check_vote_url
+        vote_every = bot_list.vote_every
 
-        if not bot_list["can_vote"]:
+        if not bot_list.can_vote:
             return False
         elif not vote_check_url and vote_every:
-            bot_list_key = bot_list.get("webhook_key", bot_list["name"])
+            last_vote = await Vote.filter(user=db_user, bot_list=bot_list).order_by('-at').first()
 
-            last_vote = db_user.last_votes.get(bot_list_key, 0)
-            now = int(time.time())
-
-            time_elapsed = now - last_vote
-            td_elapsed = datetime.timedelta(seconds=time_elapsed)
-
-            # We wait for five more minutes just in case clocks desync'ed
-            if td_elapsed > (vote_every + datetime.timedelta(minutes=5)):
-                return True
+            if last_vote:
+                # We wait for five more minutes just in case clocks desync'ed
+                if datetime.datetime.now() > (last_vote.at + vote_every + datetime.timedelta(minutes=5)):
+                    return True
+                else:
+                    return False
             else:
-                return False
+                # Never voted
+                return True
+
         elif not vote_check_url:
             return None
         else:
             timeout = aiohttp.ClientTimeout(total=5)
-            headers = {'accept': 'application/json', "Authorization": bot_list.get("auth", "")}
-            self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list['name']}")
+            headers = {'accept': 'application/json', "Authorization": bot_list.auth}
+            self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list.name}")
             try:
                 async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
                     json_resp = await resp.json()
             except asyncio.TimeoutError:
                 return False  # Can't vote if the bot list is down
 
-            self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list['name']} -> {json_resp}")
+            self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list.name} -> {json_resp}")
 
-            if '.' not in bot_list['check_vote_key']:
-                voted_resp = str(json_resp.get(bot_list['check_vote_key']))
+            if '.' not in bot_list.check_vote_key:
+                voted_resp = str(json_resp.get(bot_list.check_vote_key))
             else:
                 voted_resp = json_resp
-                for part in bot_list['check_vote_key'].split('.'):
+                for part in bot_list.check_vote_key.split('.'):
                     voted_resp = json_resp[part]
 
             if voted_resp.isdigit():
@@ -601,15 +182,15 @@ class BotsListVoting(Cog):
             elif voted_resp.lower() == "false":
                 voted = False
             else:
-                self.bot.logger.warning(f"Unknown response for {bot_list['name']} votechecking: {voted_resp}")
+                self.bot.logger.warning(f"Unknown response for {bot_list.name} votechecking: {voted_resp}")
                 voted = False
 
-            if bot_list.get("check_vote_negate", True):
+            if bot_list.check_vote_negate:
                 return not voted
             else:
                 return voted
 
-    async def get_votable_lists(self, user: discord.User):
+    async def get_votable_lists(self, user: discord.User) -> Tuple[List[BotList], List[BotList], List[BotList]]:
         votable_lists = []
         maybe_lists = []
         nope_lists = []
@@ -643,16 +224,16 @@ class BotsListVoting(Cog):
             embed = discord.Embed()
 
             if votable_lists:
-                text = votable_lists[0]['vote_url']
+                text = votable_lists[0].vote_url
                 embed.title = _("You can vote !")
                 embed.description = _("Thanks for supporting the bot by voting !")
-                embed.url = votable_lists[0]['vote_url']
+                embed.url = votable_lists[0].vote_url
                 embed.colour = discord.Colour.green()
             elif maybe_lists:
-                text = maybe_lists[0]['vote_url']
+                text = maybe_lists[0].vote_url
                 embed.title = _("You might be able to vote !")
                 embed.description = _("Thanks for supporting the bot by voting as much as you can. It makes a difference !")
-                embed.url = maybe_lists[0]['vote_url']
+                embed.url = maybe_lists[0].vote_url
                 embed.colour = discord.Colour.orange()
             else:
                 text = _("Oh no! No bot list is currently available for you to vote.")
@@ -663,12 +244,12 @@ class BotsListVoting(Cog):
 
             click_me_to_vote = _("Click me to vote")
             for bot_list in votable_lists:
-                embed.add_field(name=_("You can vote on {bl_name}", bl_name=bot_list['name']),
-                                value=f"[{click_me_to_vote}]({bot_list['vote_url']})", inline=False)
+                embed.add_field(name=_("You can vote on {bl_name}", bl_name=bot_list.name),
+                                value=f"[{click_me_to_vote}]({bot_list.vote_url})", inline=False)
 
             for bot_list in maybe_lists:
-                embed.add_field(name=_("You might be able to vote on {bl_name}", bl_name=bot_list['name']),
-                                value=f"[{click_me_to_vote}]({bot_list['vote_url']})", inline=True)
+                embed.add_field(name=_("You might be able to vote on {bl_name}", bl_name=bot_list.name),
+                                value=f"[{click_me_to_vote}]({bot_list.vote_url})", inline=True)
 
             await m.edit(embed=embed, content=text)
 
@@ -682,16 +263,16 @@ class BotsListVoting(Cog):
         shard_count = self.bot.shard_count
 
         for bot_list in await self.get_bot_list():
-            stats_url = bot_list.get("post_stats_url", None)
+            stats_url = bot_list.post_stats_url
             if stats_url:
                 timeout = aiohttp.ClientTimeout(total=5)
                 headers = {'Content-Type': 'application/json',
                            'accept': 'application/json',
-                           "Authorization": bot_list.get("auth", "")}
+                           "Authorization": bot_list.auth}
                 post_data = {}
-                method = bot_list.get("post_stats_method", "POST")
+                method = bot_list.post_stats_method
 
-                post_stats_server_count_key = bot_list.get("post_stats_server_count_key", "server_count")
+                post_stats_server_count_key = bot_list.post_stats_server_count_key
                 if "." in post_stats_server_count_key:
                     keys = list(reversed(post_stats_server_count_key.split('.')))
 
@@ -711,7 +292,7 @@ class BotsListVoting(Cog):
                 elif post_stats_server_count_key:
                     post_data[post_stats_server_count_key] = server_count
 
-                post_stats_shard_count_key = bot_list.get("post_stats_shard_count_key", "shard_count")
+                post_stats_shard_count_key = bot_list.post_stats_shard_count_key
                 if post_stats_shard_count_key:
                     post_data[post_stats_shard_count_key] = shard_count
                 try:
@@ -720,16 +301,16 @@ class BotsListVoting(Cog):
                     elif method == "PATCH":
                         resp = await self.bot.client_session.patch(stats_url, timeout=timeout, headers=headers, json=post_data)
                     else:
-                        self.bot.logger.error(f"Unknown HTTP method to post stats on {bot_list['name']}: {method}")
+                        self.bot.logger.error(f"Unknown HTTP method to post stats on {bot_list.name}: {method}")
                 except asyncio.TimeoutError:
-                    self.bot.logger.warning(f"Push stats to {bot_list['name']}: resp [TIMEOUT]")
+                    self.bot.logger.warning(f"Push stats to {bot_list.name}: resp [TIMEOUT]")
                 else:
                     text = await resp.text()
                     status = resp.status
-                    if status == 200:
-                        self.bot.logger.debug(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
+                    if status in [200, 204]:
+                        self.bot.logger.debug(f"Pushed stats to {bot_list.name} : resp [{status}] {text}")
                     else:
-                        self.bot.logger.warning(f"Pushed stats to {bot_list['name']} : resp [{status}] {text}")
+                        self.bot.logger.warning(f"Pushed stats to {bot_list.name} : resp [{status}] {text}")
 
 
 setup = BotsListVoting.setup
