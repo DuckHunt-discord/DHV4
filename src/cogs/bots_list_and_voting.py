@@ -16,8 +16,6 @@ from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.ctx_class import MyContext
 from utils.models import DiscordUser, get_from_db, BotList, Vote
 
-config = config.load_config()["bot_lists"]
-
 
 class BotsListVoting(Cog):
     async def get_bot_list(self) -> List[BotList]:
@@ -34,6 +32,9 @@ class BotsListVoting(Cog):
                 handler = self.votes_generic_hook_factory(bot_list)
             elif handler_type == "top.gg":
                 handler = self.votes_topgg_hook
+            else:
+                self.bot.logger.error(f"Unknown hook type for {bot_list.name} : {handler_type}")
+                continue
 
             routes.append(('POST', f'{route_prefix}/{webhook_key}/hook', handler))
 
