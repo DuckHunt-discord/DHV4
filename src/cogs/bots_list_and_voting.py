@@ -36,6 +36,8 @@ class BotsListVoting(Cog):
                 handler = self.votes_generic_hook_factory(bot_list)
             elif handler_type == "top.gg":
                 handler = self.votes_topgg_hook
+            elif handler_type == "None":
+                continue
             else:
                 self.bot.logger.error(f"Unknown hook type for {bot_list.name} : {handler_type}")
                 continue

@@ -491,7 +491,8 @@ class BotList(Model):
 
     webhook_handler = fields.CharField(help_text="What is the function that'll receive the request from the vote hooks",
                                        choices=(("generic", "generic"),
-                                                ("top.gg", "top.gg")),
+                                                ("top.gg", "top.gg"),
+                                                ("None", "none")),
                                        default="generic",
                                        max_length=20)
 
