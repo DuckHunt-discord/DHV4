@@ -168,8 +168,6 @@ class InventoryCommands(Cog):
             await db_user.save()
         await ctx.reply(_("🎒 Your inventory has been sorted."))
 
-
-
     @inventory.command(name="use", aliases=["open"])
     async def inv_use(self, ctx: MyContext, item_number: int):
         """
@@ -231,7 +229,7 @@ class InventoryCommands(Cog):
             elif item_action == "bullet":
                 level_info = db_player.level_info()
                 # Can go higher than the limit, that's intended
-                db_player.bullets = max(level_info['bullets'], db_player.bullets + 1)
+                db_player.bullets += 1
                 await ctx.send(_('✨ Oh, is this a bullet ?'))
             elif item_action == "spawn_ducks":
                 for i in range(2):
