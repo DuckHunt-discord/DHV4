@@ -382,7 +382,7 @@ class BotsListVoting(Cog):
 
                 # **Votes**
                 # Can people vote on that bot list ?
-                "can_vote": True,
+                "can_vote": False,
                 # If they can vote, on what URL ?
                 "vote_url": "https://blist.xyz/bot/187636089073172481",
                 # And how often
