@@ -230,7 +230,7 @@ class BotsListVoting(Cog):
                 # Can people vote on that bot list ?
                 "can_vote": True,
                 # If they can vote, on what URL ?
-                "vote_url": "https://botlist.space/bot/187636089073172481/upvote",
+                "vote_url": None,
                 # And how often
                 "vote_every": datetime.timedelta(days=1),
                 # Is there a URL the bot can query to see if some `user` has voted recently
