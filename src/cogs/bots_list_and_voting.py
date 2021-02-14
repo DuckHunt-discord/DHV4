@@ -14,7 +14,7 @@ import discord
 from utils import config, checks
 from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.ctx_class import MyContext
-from utils.models import DiscordUser, get_from_db, BotList, Vote
+from utils.models import DiscordUser, get_from_db, BotList, Vote, init_db_connection
 
 
 class BotsListVoting(Cog):
@@ -23,6 +23,10 @@ class BotsListVoting(Cog):
 
     async def get_routes(self, route_prefix):
         routes = []
+
+        # Make sure
+        config_ = config.load_config()
+        await init_db_connection(config_['database'])
 
         for bot_list in await self.get_bot_list():
             webhook_key = bot_list.key

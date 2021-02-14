@@ -610,7 +610,15 @@ async def get_enabled_channels():
     return await DiscordChannel.filter(enabled=True).all()
 
 
+INITIALIZE = False
+
+
 async def init_db_connection(config, create_dbs=False):
+    global INITIALIZE
+    if INITIALIZE:
+        return
+    INITIALIZE = True
+
     tortoise_config = {
         'connections': {
             # Dict format for connection
@@ -638,3 +646,4 @@ async def init_db_connection(config, create_dbs=False):
     if create_dbs:
         # This would create the databases, something that should be handled by Django.
         await Tortoise.generate_schemas()
+
