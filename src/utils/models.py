@@ -462,7 +462,7 @@ class BotList(Model):
     # **Generic Data**
     key = fields.CharField(help_text="The unique key to recognise the bot list",
                            max_length=50,
-                           primary_key=True)
+                           pk=True)
 
     name = fields.CharField(help_text="Name of the bot list",
                             max_length=128)
