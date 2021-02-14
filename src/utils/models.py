@@ -202,9 +202,6 @@ class DiscordUser(Model):
 
     access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
-    last_votes = DefaultDictJSONField(default_factory=int)  # Unix Timestamps by botlist.
-    votes = DefaultDictJSONField(default_factory=int)  # Count of votes by botlist
-
     boss_kills = fields.IntField(default=0)
 
     def add_to_inventory(self, item_to_give, item_number=None):
@@ -459,6 +456,84 @@ class DiscordMember(Model):
 
     def __repr__(self):
         return f"<Member user={self.user} guild={self.guild}>"
+
+
+class BotList(Model):
+    # **Generic Data**
+    key = fields.CharField(help_text="The unique key to recognise the bot list",
+                           max_length=50,
+                           primary_key=True)
+
+    name = fields.CharField(help_text="Name of the bot list",
+                            max_length=128)
+
+    bot_url = fields.TextField(help_text="URL for the main bot page")
+
+    auth = fields.TextField(help_text="Token used to authenticate requests to/from the bot")
+
+    # **Votes**
+    can_vote = fields.BooleanField(help_text="Can people vote (more than once) on that list ?",
+                                   default=True)
+
+    vote_url = fields.TextField(help_text="URL for an user to vote")
+
+    vote_every = fields.TimeDeltaField(help_text="How often can users vote ?",
+                                       null=True)
+
+    check_vote_url = fields.TextField(help_text="URL the bot can use to check if an user voted recently")
+
+    check_vote_key = fields.CharField(help_text="Key in the returned JSON to check for presence of vote",
+                                      default="voted",
+                                      max_length=128)
+
+    check_vote_negate = fields.BooleanField(help_text="Does the boolean says if the user has voted (True) or if he can vote (False) ?",
+                                            default=True)
+
+    webhook_handler = fields.CharField(help_text="What is the function that'll receive the request from the vote hooks",
+                                       choices=(("generic", "generic"),
+                                                ("top.gg", "top.gg")),
+                                       default="generic",
+                                       max_length=20)
+
+    webhook_authorization_header = fields.CharField(help_text="Name of the header used to authenticate webhooks requests",
+                                                    default="Authorization",
+                                                    max_length=20)
+
+    webhook_user_id_json_field = fields.CharField(help_text="Key that gives the user ID in the provided JSON",
+                                                  default="id",
+                                                  max_length=20)
+
+    webhook_auth = fields.TextField(help_text="Secret used for authentication of the webhooks messages if not the same the auth token",
+                                    blank=True)
+
+
+    # **Statistics**
+
+    post_stats_method = fields.CharField(help_text="What HTTP method should be used to send the stats",
+                                         choices=(("POST", "POST"),
+                                                  ("PATCH", "PATCH")),
+                                         default="POST",
+                                         max_length=10)
+
+    post_stats_url = fields.TextField(help_text="Endpoint that will receive statistics")
+
+    post_stats_server_count_key = fields.CharField(help_text="Name of the server count key in the statistics JSON",
+                                                   default="server_count",
+                                                   blank=True,
+                                                   max_length=128)
+
+    post_stats_shard_count_key = fields.CharField(help_text="Name of the shard count key in the statistics JSON",
+                                                  default="shard_count",
+                                                  blank=True,
+                                                  max_length=128)
+
+
+class Vote(Model):
+    user: DiscordUser = fields.ForeignKeyField('models.DiscordUser', related_name="votes")
+    bot_list = fields.ForeignKeyField('models.BotList', related_name="votes")
+
+    at = fields.DatetimeField(auto_now_add=True)
+    multiplicator = fields.IntField(default=1)
 
 
 async def get_from_db(discord_object, as_user=False):
