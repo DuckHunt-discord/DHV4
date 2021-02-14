@@ -216,7 +216,66 @@ class BotsListVoting(Cog):
                 "post_stats_server_count_key": "server_count",
                 # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": None,
-            }
+            },
+            "botlistspace": {
+                # **Generic data**
+                # The name of the bot list
+                "name": "botlist.space",
+                # URL for the main bot page
+                "bot_url": "https://botlist.space/bot/187636089073172481",
+                # Token to authenticate requests to and from the website
+                "auth": config["botlist_space_token"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                "can_vote": True,
+                # If they can vote, on what URL ?
+                "vote_url": "https://botlist.space/bot/187636089073172481/upvote",
+                # And how often
+                "vote_every": datetime.timedelta(days=1),
+                # Is there a URL the bot can query to see if some `user` has voted recently
+                "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
+                "check_vote_key": "voted",
+                # Does the boolean says if the user has votes (True) or if he can vote (False) ?
+                "check_vote_negate": True,
+                # What is the function that'll receive the request from the vote hooks
+                "webhook_handler": self.votes_generic_hook_factory("botlistspace", user_id_json_field="user.id"),
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
+                "webhook_key": "botlistspace",
+                # Secret used for authentication of the webhooks messages if not the same the auth token
+                # "webhook_auth": "",
+
+                # **Statistics**
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://api.botlist.space/v1/bots/187636089073172481",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "server_count",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": None,
+            },
+            "discordextremelist": {
+                # **Generic data**
+                # The name of the bot list
+                "name": "Discord Extreme List",
+                # URL for the main bot page
+                "bot_url": "https://discordextremelist.xyz/en-US/bots/187636089073172481",
+                # Token to authenticate requests to and from the website
+                "auth": config["discordextremelist_token"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                # They can, but only once, so let's say they can't because I can't be bothered
+                "can_vote": False,
+
+                # **Statistics**
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://api.discordextremelist.xyz/v2/bot/187636089073172481/stats",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "guildCount",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": "shardCount",
+            },
         }
 
         return BOTS_DICT
