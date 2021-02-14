@@ -539,7 +539,7 @@ class SettingsCommands(Cog):
         else:
             await ctx.send(_("That channel uses pure-text ducks. How does it feels to live in the IRC world ?"))
 
-    @settings.command(aliases=["enable", "disabled", "disabled", "on", "off"])
+    @settings.command(aliases=["enable", "disabled", "disable", "on", "off"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def enabled(self, ctx: MyContext, value: bool = None):
         """
