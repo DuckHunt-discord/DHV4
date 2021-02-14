@@ -14,7 +14,7 @@ import discord
 from utils import config, checks
 from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.ctx_class import MyContext
-from utils.models import DiscordUser, get_from_db
+from utils.models import DiscordUser, get_from_db, BotList, Vote
 
 config = config.load_config()["bot_lists"]
 
@@ -525,28 +525,28 @@ class BotsListVoting(Cog):
         else:
             return web.Response(status=400, text=message)
 
-    async def handle_vote(self, user_id, bot_list, multiplicator=1, is_test=False) -> Tuple[bool, str]:
-        bot_list_key = bot_list.get("webhook_key", bot_list["name"])
+    async def handle_vote(self, user_id: int, bot_list: BotList, multiplicator: int =1, is_test: bool = False) -> Tuple[bool, str]:
         try:
             user = await self.bot.fetch_user(user_id)
         except discord.errors.NotFound:
-            self.bot.logger.warning(f"Bad user ID provided to votes API {bot_list['name']}: {user_id}.")
+            self.bot.logger.warning(f"Bad user ID provided to votes API {bot_list.name}: {user_id}.")
             return False, "Unauthorized, bad user ID"
 
         db_user: DiscordUser = await get_from_db(user)
 
-        # db_user.votes[bot_list_key] += multiplicator
-        # db_user.last_votes[bot_list_key] = int(time.time())
+        vote = Vote(user=db_user, bot_list=bot_list, multiplicator=multiplicator)
+        await vote.save()
+
         db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
 
         if not is_test:
-            self.bot.logger.info(f"{multiplicator} vote(s) recorded for {user.name}#{user.discriminator} on {bot_list['name']}.")
+            self.bot.logger.info(f"{multiplicator} vote(s) recorded for {user.name}#{user.discriminator} on {bot_list.name}.")
             await db_user.save()
         else:
             self.bot.logger.warning(f"{multiplicator} test vote(s) received for {user.name}#{user.discriminator}. Not saved.")
 
         try:
-            await user.send(f"✨ Thanks for voting for DuckHunt on {bot_list['name']}! "
+            await user.send(f"✨ Thanks for voting for DuckHunt on {bot_list.name}! "
                             f"Check your inventory with `dh!inv` in a game channel.")
         except discord.errors.Forbidden:
             pass
