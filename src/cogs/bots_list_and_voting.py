@@ -149,7 +149,7 @@ class BotsListVoting(Cog):
 
             if last_vote:
                 # We wait for five more minutes just in case clocks desync'ed
-                if datetime.datetime.now() > (last_vote.at + vote_every + datetime.timedelta(minutes=5)):
+                if datetime.datetime.now(datetime.timezone.utc) > (last_vote.at + vote_every + datetime.timedelta(minutes=5)):
                     return True
                 else:
                     return False
