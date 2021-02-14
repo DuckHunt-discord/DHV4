@@ -535,8 +535,8 @@ class BotsListVoting(Cog):
 
         db_user: DiscordUser = await get_from_db(user)
 
-        db_user.votes[bot_list_key] += multiplicator
-        db_user.last_votes[bot_list_key] = int(time.time())
+        # db_user.votes[bot_list_key] += multiplicator
+        # db_user.last_votes[bot_list_key] = int(time.time())
         db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
 
         if not is_test:
