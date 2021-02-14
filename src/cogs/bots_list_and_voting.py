@@ -405,6 +405,7 @@ class BotsListVoting(Cog):
             return web.Response(status=400, text=message)
 
     async def handle_vote(self, user_id, bot_list, multiplicator=1, is_test=False) -> Tuple[bool, str]:
+        bot_list_key = bot_list.get("webhook_key", bot_list["name"])
         try:
             user = await self.bot.fetch_user(user_id)
         except discord.errors.NotFound:
@@ -413,8 +414,8 @@ class BotsListVoting(Cog):
 
         db_user: DiscordUser = await get_from_db(user)
 
-        db_user.votes[bot_list] += multiplicator
-        db_user.last_votes[bot_list] = int(time.time())
+        db_user.votes[bot_list_key] += multiplicator
+        db_user.last_votes[bot_list_key] = int(time.time())
         db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
 
         if not is_test:
@@ -431,11 +432,26 @@ class BotsListVoting(Cog):
 
         return True, "Vote recorded"
 
-    async def can_vote(self, bot_list, user):
+    async def can_vote(self, bot_list, user, db_user):
         vote_check_url = bot_list.get("check_vote_url", None)
+        vote_every = bot_list.get("vote_every", None)
 
         if not bot_list["can_vote"]:
             return False
+        elif not vote_check_url and vote_every:
+            bot_list_key = bot_list.get("webhook_key", bot_list["name"])
+
+            last_vote = db_user.last_votes.get(bot_list_key, 0)
+            now = int(time.time())
+
+            time_elapsed = now - last_vote
+            td_elapsed = datetime.timedelta(seconds=time_elapsed)
+
+            # We wait for five more minutes just in case clocks desync'ed
+            if td_elapsed > (vote_every + datetime.timedelta(minutes=5)):
+                return True
+            else:
+                return False
         elif not vote_check_url:
             return None
         else:
@@ -477,8 +493,10 @@ class BotsListVoting(Cog):
         maybe_lists = []
         nope_lists = []
 
+        db_user = await get_from_db(user, as_user=True)
+
         for bot_list in await self.get_bot_list():
-            res = await self.can_vote(bot_list, user)
+            res = await self.can_vote(bot_list, user, db_user)
             if res is True:
                 votable_lists.append(bot_list)
             elif res is None:
