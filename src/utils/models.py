@@ -202,7 +202,9 @@ class DiscordUser(Model):
 
     access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
-    votes = fields.IntField(default=0)
+    last_votes = DefaultDictJSONField(default_factory=int)  # Unix Timestamps by botlist.
+    votes = DefaultDictJSONField(default_factory=int)  # Count of votes by botlist
+
     boss_kills = fields.IntField(default=0)
 
     def add_to_inventory(self, item_to_give, item_number=None):
