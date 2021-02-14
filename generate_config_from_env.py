@@ -32,6 +32,7 @@ config['bot_lists']['discordextremelist_token'] = environ['DISCORDEXTREMELIST_TO
 config['bot_lists']['voidbots_token'] = environ['VOIDBOTS_TOKEN']
 config['bot_lists']['infinitybotlist_token'] = environ['INFINITYBOTLIST_TOKEN']
 config['bot_lists']['blist_token'] = environ['BLIST_TOKEN']
+config['bot_lists']['discordapps_token'] = environ['DISCORDAPPS_TOKEN']
 
 with open(TO_CONFIG, "w") as f:
     toml.dump(config, f)

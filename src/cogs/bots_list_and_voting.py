@@ -412,6 +412,29 @@ class BotsListVoting(Cog):
                 # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": "shard_count",
             },
+            "discordapps": {
+                # **Generic data**
+                # The name of the bot list
+                "name": "Discord Apps",
+                # URL for the main bot page
+                "bot_url": "https://discordapps.dev/en-GB/bots/187636089073172481/",
+                # Token to authenticate requests to and from the website
+                "auth": config["discordapps_token"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                "can_vote": False,
+
+                # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://discordapps.dev/bots/187636089073172481",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "bot.count",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": None,
+            },
         }
 
         return BOTS_DICT
@@ -669,7 +692,23 @@ class BotsListVoting(Cog):
                 method = bot_list.get("post_stats_method", "POST")
 
                 post_stats_server_count_key = bot_list.get("post_stats_server_count_key", "server_count")
-                if post_stats_server_count_key:
+                if "." in post_stats_server_count_key:
+                    keys = list(reversed(post_stats_server_count_key.split('.')))
+
+                    # FIXME : This is fragile, and will not merge multiple dicts together.
+                    #  Why the fuck are bot lists so fucking complicated 😢
+                    mydict = {
+                        keys[0]: server_count
+                    }
+
+                    for key in keys[1:]:
+                        mydict = {
+                            key: mydict
+                        }
+
+                    post_data = {**post_data, **mydict}
+
+                elif post_stats_server_count_key:
                     post_data[post_stats_server_count_key] = server_count
 
                 post_stats_shard_count_key = bot_list.get("post_stats_shard_count_key", "shard_count")
