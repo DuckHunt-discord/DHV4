@@ -16,7 +16,7 @@ from utils import config as config
 from utils.ctx_class import MyContext
 from utils.events import Events
 from utils.logger import FakeLogger
-from utils.models import get_from_db, AccessLevel
+from utils.models import get_from_db, AccessLevel, init_db_connection
 
 if typing.TYPE_CHECKING:
     # Prevent circular imports
@@ -26,6 +26,7 @@ if typing.TYPE_CHECKING:
 class MyBot(AutoShardedBot):
     def __init__(self, *args, **kwargs):
         self.logger = FakeLogger()
+        self.logger.debug("Running sync init")
         self.config: dict = {}
         self.reload_config()
         #activity = discord.Game(self.config["bot"]["playing"])
@@ -44,7 +45,9 @@ class MyBot(AutoShardedBot):
 
         self._duckhunt_public_log = None
 
-        asyncio.ensure_future(self.async_setup())
+        self.loop.run_until_complete(self.async_setup())
+        self.logger.debug("End of init, bot object is ready")
+
 
     @property
     def client_session(self):
@@ -64,7 +67,12 @@ class MyBot(AutoShardedBot):
         """
         This function is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
+        self.logger.debug("Running async init")
+
         self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
+
+        if self.config['database']['enable']:
+            await init_db_connection(self.config['database'])
 
     def get_logging_channel(self):
         if not self._duckhunt_public_log:

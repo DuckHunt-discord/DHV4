@@ -12,8 +12,6 @@ asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 config = load_config()
 
-if config['database']['enable']:
-    asyncio.ensure_future(init_db_connection(config['database']))
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.Intents
 intents = discord.Intents.none()

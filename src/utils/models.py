@@ -611,44 +611,33 @@ async def get_enabled_channels():
     return await DiscordChannel.filter(enabled=True).all()
 
 
-INITIALIZE = asyncio.Event()
-INITIALIZING = asyncio.Lock()
-
-
 async def init_db_connection(config, create_dbs=False):
-    global INITIALIZE
-    global INITIALIZING
-    async with INITIALIZING:
-        if INITIALIZE.is_set():
-            return
-
-        tortoise_config = {
-            'connections': {
-                # Dict format for connection
-                'default': {
-                    'engine': 'tortoise.backends.asyncpg',
-                    'credentials': {
-                        'host': config['host'],
-                        'port': config['port'],
-                        'user': config['user'],
-                        'password': config['password'],
-                        'database': config['database'],
-                    }
-                },
-            },
-            'apps': {
-                'models': {
-                    'models': ["utils.models", "aerich.models"],
-                    'default_connection': 'default',
+    tortoise_config = {
+        'connections': {
+            # Dict format for connection
+            'default': {
+                'engine': 'tortoise.backends.asyncpg',
+                'credentials': {
+                    'host': config['host'],
+                    'port': config['port'],
+                    'user': config['user'],
+                    'password': config['password'],
+                    'database': config['database'],
                 }
+            },
+        },
+        'apps': {
+            'models': {
+                'models': ["utils.models", "aerich.models"],
+                'default_connection': 'default',
             }
         }
+    }
 
-        await Tortoise.init(tortoise_config)
+    await Tortoise.init(tortoise_config)
 
-        if create_dbs:
-            # This would create the databases, something that should be handled by Django.
-            await Tortoise.generate_schemas()
+    if create_dbs:
+        # This would create the databases, something that should be handled by Django.
+        await Tortoise.generate_schemas()
 
-        INITIALIZE.set()
 
