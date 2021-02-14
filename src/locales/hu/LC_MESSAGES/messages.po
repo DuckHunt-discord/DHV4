@@ -74,10 +74,10 @@ msgid "Spawns a kamikaze duck."
 msgstr "Leidéz egy kamikaze kacsát."
 
 msgid "Spawns a night duck."
-msgstr ""
+msgstr "Leidéz egy éjszakai kacsát."
 
 msgid "Spawns a sleeping duck."
-msgstr ""
+msgstr "Leidéz egy alvó kacsát."
 
 msgid "Show ducks currently on the channel"
 msgstr "Megmutatja a csatornán jelenleg lévő kacsákat."
@@ -245,7 +245,9 @@ msgstr "/help/commands\n"
 msgid "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
-msgstr ""
+msgstr "/status\n"
+"\n"
+"Lekéri a bot által hosztolt összes shard állapotát."
 
 msgid "/stats\n"
 "\n"
@@ -261,7 +263,7 @@ msgid "Set your server settings to specific, designed modes"
 msgstr "Beállítja a szervered beállításait bizonyos, tervezett módokra."
 
 msgid "Restore default settings for DuckHunt V4."
-msgstr ""
+msgstr "Visszaállítja botot a V4 alapértelmezett beállításaira."
 
 msgid "Restore similar settings to DuckHunt V3, if that's your thing."
 msgstr "Beállít hasonló dolgokat a DuckHunt V3-hoz, ha úgy szereted."
@@ -275,6 +277,10 @@ msgid ""
 "\n"
 "For experienced hunters only."
 msgstr ""
+"Beállítja a botot egy hardcore élményre: kevesebb tapasztalati pont és "
+"magasabb nehézségű kacsák.\n"
+"\n"
+"Csak tapasztalt vadászoknak!"
 
 msgid ""
 "Haunted house gamemode.\n"
@@ -479,10 +485,10 @@ msgstr ""
 "BOT_OWNER (Bot Tulajdonos) = 600"
 
 msgid "View the current permissions"
-msgstr ""
+msgstr "Megjeleníti a jelenlegi jogosultságokat."
 
 msgid "Edit the current permissions for a specific user"
-msgstr ""
+msgstr "Szerkeszti a jogosultságokat egy bizonyos felhasználón."
 
 msgid "Set your preference on whether replies from the bot should ping you"
 msgstr ""
@@ -499,7 +505,7 @@ msgid ""
 msgstr ""
 
 msgid "Buy items here"
-msgstr ""
+msgstr "Vásárolj tárgyakat itt!"
 
 msgid "Adds a bullet to your current magazine. [7 exp]"
 msgstr ""
@@ -2786,13 +2792,13 @@ msgid "**Coin**!"
 msgstr ""
 
 msgid "**COIIIIIINNNNNN**!"
-msgstr ""
+msgstr "**COIIIIIINNNNNN**!"
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "Kicsi Kacsa"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "Mini Kacsa"
 
 msgid "Ducky"
 msgstr ""
@@ -2801,43 +2807,43 @@ msgid "Duckie"
 msgstr ""
 
 msgid "£!"
-msgstr ""
+msgstr "£!"
 
 msgid "Free money !"
-msgstr ""
+msgstr "Ingyen pénz!"
 
 msgid "It's free money"
-msgstr ""
+msgstr "Ez ingyen pénz"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "Arany Kacsa"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "Aranyliba"
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Fényes Kacsa"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Gazdag Kacsa"
 
 msgid "£?"
-msgstr ""
+msgstr "£?"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Van pénzed?"
 
 msgid "It's paid money"
 msgstr ""
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Műanyag Kacsa"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Szegény Kacsa"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "Nyálkás Kacsa"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr "**NE MOZOGJ VAGY MINDEN FEL FOG ROBBANNI!**"
@@ -2846,73 +2852,73 @@ msgid "Gonna kill y'all !"
 msgstr ""
 
 msgid "The Kamikaze Duck"
-msgstr ""
+msgstr "A Kamikaze Kacsa"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "Robbanékony Kacsa"
 
 msgid "Boom Duck"
 msgstr ""
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "Dinamit Kacsa"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
-msgstr ""
+msgstr "A kamikáze kacsa felrobbant, megölve minden kacsát a csatornán."
 
 msgid "Duck 2000"
 msgstr "Kacsa 2000"
 
 msgid "Omega Duck"
-msgstr "Omega kacsa"
+msgstr "Omega Kacsa"
 
 msgid "BZZZZZAAAAK"
-msgstr ""
+msgstr "BZZZZZAAAAK"
 
 msgid "BZAAAACK"
-msgstr ""
+msgstr "BZAAAACK"
 
 msgid "BZAACK"
-msgstr ""
+msgstr "BZAACK"
 
 msgid "Big Duck"
-msgstr "Nagya kacsa"
+msgstr "Nagy Kacsa"
 
 msgid "Strong Duck"
-msgstr "Erős kacsa"
+msgstr "Erős Kacsa"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "Nehéz Kacsa"
 
 msgid "**I am your mother...**"
 msgstr "**Én vagyok az anyád....**"
 
 msgid "Ms. Duck"
-msgstr ""
+msgstr "Ms. Kacsa"
 
 msgid "Mom"
-msgstr ""
+msgstr "Anya"
 
 msgid "Mommy"
-msgstr ""
+msgstr "Anyu"
 
 msgid "MOAD"
-msgstr ""
+msgstr "MOAD"
 
 msgid "Mooooom"
-msgstr ""
+msgstr "Anyaaaaaaaa"
 
 msgid "*coin*"
-msgstr ""
+msgstr "*coin*"
 
 msgid "*Don't make a noise, it's nighttime*"
-msgstr ""
+msgstr "*Ne adj ki zajt, éjszaka van*"
 
 msgid "*Shhhhh*"
 msgstr "*Shhhhh*"
 
 msgid "ZzZzZz"
-msgstr ""
+msgstr "ZzZzZz"
 
 msgid "Everything is calm"
 msgstr "Minden nyugodt"
@@ -2921,41 +2927,50 @@ msgid "Nothing is happening right now."
 msgstr "Semmi sem történik most."
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "A kacsák vándorolnak"
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "Készülj fel több kacsára a következő órában."
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "Szteroidok a tóban"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"Egy orvosi hulladékkezelő cég szteroidokat dobott a tóba. A kacsák mutáltak, "
+"és sokkal több szuper kacsa lesz látható. De légy óvatos, és ne igyál abból "
+"a vízből."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "A biztonsági tanóra elmaradt"
 
 msgid "The safety class was canceled, beware not to shoot others hunters!"
 msgstr ""
+"A biztonsági tanóra vissza lett vonva, ügyelj ara, hogy ne lőj le más "
+"vadászokat!"
 
 msgid "Connection problem"
-msgstr ""
+msgstr "Kapcsolódási probléma"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
 "less of them until it's repaired."
 msgstr ""
+"A kacsák nem találják az eszközöd kapcsolódási problémák miatt, ezért "
+"kevesebb lesz belőlük, amíg a hibát el nem hárítják."
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Új virágárus a városban"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"Egy virágárus bolt megnyílt a városban, és jobb 4 levelű lóheréket tudsz "
+"találni. Menj, nézd meg őket!"
 
 msgid "Mega-ducks"
 msgstr "Mega-kacsák"
@@ -2967,7 +2982,7 @@ msgid "Windy weather"
 msgstr "Szeles időjárás"
 
 msgid "Bullets are deflected by some strong wind."
-msgstr "A lövedékeket az erős szél eltereli."
+msgstr "A lövedékeket erős szél eltereli."
 
 msgid "A UN treaty bans damaging ammo"
 msgstr "Egy ENSZ-szerződő tiltja a sebző lövedékeket"
@@ -2980,13 +2995,13 @@ msgstr ""
 "tapasztalati pontot érnek, mert egyre ritkábbak."
 
 msgid "Negative cheater ?"
-msgstr ""
+msgstr "Negatív csaló?"
 
 msgid "Duck Hugger ?"
-msgstr ""
+msgstr "Kacsa ölelő?"
 
 msgid "What are you doing ?"
-msgstr ""
+msgstr "Mit csinálsz?"
 
 msgid "public danger"
 msgstr "közveszély"
@@ -3004,16 +3019,16 @@ msgid "duck misser"
 msgstr "kacsa eltévesztő"
 
 msgid "member of the Comitee Against Ducks"
-msgstr "a kacsák elleni bizottság tagja"
+msgstr "a Kacsák Elleni Bizottság tagja"
 
 msgid "duck hater"
 msgstr "kacsa-utáló"
 
 msgid "duck pest"
-msgstr "kacsa károkozó"
+msgstr "kacsa-károkozó"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "kacsa-nyiszáló"
 
 msgid "duck plucker"
 msgstr "kacsa pengető"
@@ -3022,43 +3037,43 @@ msgid "hunter"
 msgstr "vadász"
 
 msgid "duck inside out turner"
-msgstr "kacsa kifordító"
+msgstr "kacsa-kifordító"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "kacsa-ütő"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "kacsa-rágó"
 
 msgid "duck eater"
 msgstr "kacsa-evő"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "kacsa-lapító"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "kacsa-szétszerelő"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "kacsa-lebontó"
 
 msgid "duck killer"
-msgstr ""
+msgstr "kacsaölő"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "kacsa-lebőröző"
 
 msgid "duck predator"
-msgstr ""
+msgstr "kacsa-predátor"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "kacsa-aprító"
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "kacsa "
 
 msgid "duck fragger"
-msgstr ""
+msgstr "kacsa-törő"
 
 msgid "duck shatterer"
 msgstr ""
@@ -3079,10 +3094,10 @@ msgid "duck eviscerator"
 msgstr ""
 
 msgid "ducks terror"
-msgstr ""
+msgstr "kacsa-terror"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "kacsa-felrobbantó"
 
 msgid "duck destructor"
 msgstr ""

@@ -83,7 +83,7 @@ msgid "Spawns a night duck."
 msgstr "Fait apparaitre un canard de nuit."
 
 msgid "Spawns a sleeping duck."
-msgstr "Fait apparaitre un canard dormant."
+msgstr "Fait apparaitre un canard endormi."
 
 msgid "Show ducks currently on the channel"
 msgstr "Montre les canards actuellement présents sur le salon."
@@ -1881,6 +1881,8 @@ msgid ""
 "On {channel.mention}, when a hunter buys a clover, the minimum experience "
 "given per duck kill will be of {value}."
 msgstr ""
+"Sur {channel.mention}, lorsqu'un chasseur achète un trèfle à quatre "
+"feuilles, l'expérience minimale donnée par canard tué sera de {value}."
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
@@ -3195,7 +3197,7 @@ msgstr "endormi"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
-msgstr[0] "dont un canard dormant"
+msgstr[0] "dont un canard endormi"
 msgstr[1] "dont {this_ducks_killed} canards endormis"
 
 msgid "KWAK"
