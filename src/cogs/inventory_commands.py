@@ -61,10 +61,10 @@ INV_LOOTBOX_ITEMS = {
         ],
     'vote':
         [
-            {"luck": 10, "item": INV_COMMON_ITEMS['refill_magazines']},
+            {"luck": 6, "item": INV_COMMON_ITEMS['refill_magazines']},
             {"luck": 1, "item": INV_COMMON_ITEMS['big_boost_exp']},
-            {"luck": 5, "item": INV_COMMON_ITEMS['boost_exp']},
-            {"luck": 50, "item": INV_COMMON_ITEMS['mini_boost_exp']},
+            {"luck": 3, "item": INV_COMMON_ITEMS['boost_exp']},
+            {"luck": 20, "item": INV_COMMON_ITEMS['mini_boost_exp']},
             {"luck": 100, "item": INV_COMMON_ITEMS["bullet"]},
         ],
 }
