@@ -41,7 +41,7 @@ class BotsListVoting(Cog):
                 "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "voted",
-                # Does the boolean says if the user has votes (True) or if he can vote (False) ?
+                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
                 "check_vote_negate": True,
                 # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_topgg_hook,
@@ -132,7 +132,7 @@ class BotsListVoting(Cog):
                 "check_vote_url": "https://fateslist.xyz/api/bots/187636089073172481/votes?user_id={user.id}",
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "vote_right_now",
-                # Does the boolean says if the user has votes (True) or if he can vote (False) ?
+                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
                 "check_vote_negate": False,
                 # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_generic_hook_factory("fateslist"),
@@ -237,7 +237,7 @@ class BotsListVoting(Cog):
                 "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "voted",
-                # Does the boolean says if the user has votes (True) or if he can vote (False) ?
+                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
                 "check_vote_negate": True,
                 # What is the function that'll receive the request from the vote hooks
                 "webhook_handler": self.votes_generic_hook_factory("botlistspace", user_id_json_field="user.id"),
@@ -275,6 +275,43 @@ class BotsListVoting(Cog):
                 "post_stats_server_count_key": "guildCount",
                 # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": "shardCount",
+            },
+            "voidbots": {
+                # **Generic data**
+                # The name of the bot list
+                "name": "Void Bots",
+                # URL for the main bot page
+                "bot_url": "https://voidbots.net/bot/187636089073172481",
+                # Token to authenticate requests to and from the website
+                "auth": config["voidbots_token"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                "can_vote": True,
+                # If they can vote, on what URL ?
+                "vote_url": "https://voidbots.net/bot/187636089073172481/vote",
+                # And how often
+                "vote_every": datetime.timedelta(hours=12),
+                # Is there a URL the bot can query to see if some `user` has voted recently
+                "check_vote_url": "https://api.voidbots.net/bot/voted/187636089073172481/{user.id}",
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
+                "check_vote_key": "voted",
+                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
+                "check_vote_negate": True,
+                # What is the function that'll receive the request from the vote hooks
+                "webhook_handler": self.votes_generic_hook_factory("voidbots", user_id_json_field="user"),
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
+                "webhook_key": "voidbots",
+                # Secret used for authentication of the webhooks messages if not the same the auth token
+                # "webhook_auth": "",
+
+                # **Statistics**
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://api.voidbots.net/bot/stats/187636089073172481",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "server_count",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": "shard_count",
             },
         }
 
