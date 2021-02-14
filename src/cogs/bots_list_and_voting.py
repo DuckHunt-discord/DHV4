@@ -52,6 +52,8 @@ class BotsListVoting(Cog):
                 # "webhook_auth": "",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://top.gg/api/bots/187636089073172481/stats",
                 # In the JSON, how should we call the server count ?
@@ -73,6 +75,8 @@ class BotsListVoting(Cog):
                 "can_vote": False,
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://discord.bots.gg/api/v1/bots/187636089073172481/stats",
                 # In the JSON, how should we call the server count ?
@@ -106,6 +110,8 @@ class BotsListVoting(Cog):
                 "webhook_key": "discordbotslist",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://discordbotlist.com/api/v1/bots/187636089073172481/stats",
                 # In the JSON, how should we call the server count ?
@@ -141,6 +147,8 @@ class BotsListVoting(Cog):
                 "webhook_key": "fateslist",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://fateslist.xyz/api/bots/187636089073172481/stats",
                 # In the JSON, how should we call the server count ?
@@ -176,6 +184,8 @@ class BotsListVoting(Cog):
                 "webhook_auth": config["botsfordiscord_token"][:60],
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://botsfordiscord.com/api/bot/187636089073172481",
                 # In the JSON, how should we call the server count ?
@@ -211,6 +221,8 @@ class BotsListVoting(Cog):
                 # "webhook_auth": "",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://discord.boats/api/bot/187636089073172481",
                 # In the JSON, how should we call the server count ?
@@ -248,6 +260,8 @@ class BotsListVoting(Cog):
                 # "webhook_auth": "",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://api.botlist.space/v1/bots/187636089073172481",
                 # In the JSON, how should we call the server count ?
@@ -270,6 +284,8 @@ class BotsListVoting(Cog):
                 "can_vote": False,
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://api.discordextremelist.xyz/v2/bot/187636089073172481/stats",
                 # In the JSON, how should we call the server count ?
@@ -307,6 +323,8 @@ class BotsListVoting(Cog):
                 # "webhook_auth": "",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://api.voidbots.net/bot/stats/187636089073172481",
                 # In the JSON, how should we call the server count ?
@@ -344,12 +362,53 @@ class BotsListVoting(Cog):
                 # "webhook_auth": "",
 
                 # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "POST",
                 # On what endpoint can the bot send statistics
                 "post_stats_url": "https://api.infinitybotlist.com/bot/187636089073172481",
                 # In the JSON, how should we call the server count ?
                 "post_stats_server_count_key": "servers",
                 # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": "shards",
+            },
+            "blist": {
+                # **Generic data**
+                # The name of the bot list
+                "name": "Blist",
+                # URL for the main bot page
+                "bot_url": "https://blist.xyz/bot/187636089073172481",
+                # Token to authenticate requests to and from the website
+                "auth": config["blist_token"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                "can_vote": True,
+                # If they can vote, on what URL ?
+                "vote_url": "https://blist.xyz/bot/187636089073172481/vote",
+                # And how often
+                "vote_every": datetime.timedelta(hours=12),
+                # Is there a URL the bot can query to see if some `user` has voted recently
+                "check_vote_url": None,
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
+                "check_vote_key": "voted",
+                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
+                "check_vote_negate": True,
+                # What is the function that'll receive the request from the vote hooks
+                "webhook_handler": self.votes_generic_hook_factory("blist", user_id_json_field="user"),
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
+                "webhook_key": "blist",
+                # Secret used for authentication of the webhooks messages if not the same the auth token
+                # "webhook_auth": "",
+
+                # **Statistics**
+                # What HTTP method should be used to send the stats
+                "post_stats_method": "PATCH",
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://blist.xyz/api/v2/bot/187636089073172481/stats/",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "server_count",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": "shard_count",
             },
         }
 
@@ -605,6 +664,7 @@ class BotsListVoting(Cog):
                            'accept': 'application/json',
                            "Authorization": bot_list.get("auth", "")}
                 post_data = {}
+                method = bot_list.get("post_stats_method", "POST")
 
                 post_stats_server_count_key = bot_list.get("post_stats_server_count_key", "server_count")
                 if post_stats_server_count_key:
@@ -614,7 +674,12 @@ class BotsListVoting(Cog):
                 if post_stats_shard_count_key:
                     post_data[post_stats_shard_count_key] = shard_count
                 try:
-                    resp = await self.bot.client_session.post(stats_url, timeout=timeout, headers=headers, json=post_data)
+                    if method == "POST":
+                        resp = await self.bot.client_session.post(stats_url, timeout=timeout, headers=headers, json=post_data)
+                    elif method == "PATCH":
+                        resp = await self.bot.client_session.patch(stats_url, timeout=timeout, headers=headers, json=post_data)
+                    else:
+                        self.bot.logger.error(f"Unknown HTTP method to post stats on {bot_list['name']}: {method}")
                 except asyncio.TimeoutError:
                     self.bot.logger.warning(f"Push stats to {bot_list['name']}: resp [TIMEOUT]")
                 else:
