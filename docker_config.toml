@@ -78,17 +78,3 @@ global_access_keys = []
 [random_ducks]
 assets_path = 'assets/Random Ducks'
 composite_order = ['Body', 'Neck', 'Face', 'Hats'] # Background is included
-
-[bot_lists]
-topgg_shared_secret = "abcdef"
-fateslist_api_token = "abcdef"
-discordbotlist_api_token = "abcdef"
-discordbotsgg_api_token = "abcdef"
-botsfordiscord_token = "abcdef"
-discordboats_api_token = "abcdef"
-botlist_space_token = "abcdef"
-discordextremelist_token = "abcdef"
-voidbots_token = "abcdef"
-infinitybotlist_token = "abcdef"
-blist_token = "abcdef"
-discordapps_token = "abcdef"

@@ -21,18 +21,6 @@ config['database']['database'] = environ['DB_NAME']
 
 config['cogs']['RestAPI']['global_access_keys'].append(environ['GLOBAL_API_KEY'])
 
-config['bot_lists']['topgg_shared_secret'] = environ['TOPGG_SHARED_SECRET']
-config['bot_lists']['fateslist_api_token'] = environ['FATESLIST_API_TOKEN']
-config['bot_lists']['discordbotlist_api_token'] = environ['DISCORDBOTLIST_TOKEN']
-config['bot_lists']['discordbotsgg_api_token'] = environ['DISCORDBOTSGG_API_TOKEN']
-config['bot_lists']['botsfordiscord_token'] = environ['BOTSFORDISCORD_TOKEN']
-config['bot_lists']['discordboats_api_token'] = environ['DISCORDBOATS_API_TOKEN']
-config['bot_lists']['botlist_space_token'] = environ['BOTLIST_SPACE_TOKEN']
-config['bot_lists']['discordextremelist_token'] = environ['DISCORDEXTREMELIST_TOKEN']
-config['bot_lists']['voidbots_token'] = environ['VOIDBOTS_TOKEN']
-config['bot_lists']['infinitybotlist_token'] = environ['INFINITYBOTLIST_TOKEN']
-config['bot_lists']['blist_token'] = environ['BLIST_TOKEN']
-config['bot_lists']['discordapps_token'] = environ['DISCORDAPPS_TOKEN']
 
 with open(TO_CONFIG, "w") as f:
     toml.dump(config, f)
