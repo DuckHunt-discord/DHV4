@@ -314,6 +314,43 @@ class BotsListVoting(Cog):
                 # In the JSON, how should we call the guild count ?
                 "post_stats_shard_count_key": "shard_count",
             },
+            "infinitybotlist": {
+                # **Generic data**
+                # The name of the bot list
+                "name": "Infinity Bot List",
+                # URL for the main bot page
+                "bot_url": "https://infinitybotlist.com/bots/187636089073172481",
+                # Token to authenticate requests to and from the website
+                "auth": config["infinitybotlist_token"],
+
+                # **Votes**
+                # Can people vote on that bot list ?
+                "can_vote": True,
+                # If they can vote, on what URL ?
+                "vote_url": "https://infinitybotlist.com/bots/187636089073172481/vote",
+                # And how often
+                "vote_every": datetime.timedelta(days=1),
+                # Is there a URL the bot can query to see if some `user` has voted recently
+                "check_vote_url": None,
+                # What is the key used to specify the vote in the JSON returned by the URL above ?
+                "check_vote_key": "voted",
+                # Does the boolean says if the user has voted (True) or if he can vote (False) ?
+                "check_vote_negate": True,
+                # What is the function that'll receive the request from the vote hooks
+                "webhook_handler": self.votes_generic_hook_factory("infinitybotlist", user_id_json_field="userID"),
+                # What's the key in the URL https://duckhunt.me/api/votes/{key}/hook
+                "webhook_key": "infinitybotlist",
+                # Secret used for authentication of the webhooks messages if not the same the auth token
+                # "webhook_auth": "",
+
+                # **Statistics**
+                # On what endpoint can the bot send statistics
+                "post_stats_url": "https://api.infinitybotlist.com/bot/187636089073172481",
+                # In the JSON, how should we call the server count ?
+                "post_stats_server_count_key": "servers",
+                # In the JSON, how should we call the guild count ?
+                "post_stats_shard_count_key": "shards",
+            },
         }
 
         return BOTS_DICT

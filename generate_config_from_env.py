@@ -30,6 +30,7 @@ config['bot_lists']['discordboats_api_token'] = environ['DISCORDBOATS_API_TOKEN'
 config['bot_lists']['botlist_space_token'] = environ['BOTLIST_SPACE_TOKEN']
 config['bot_lists']['discordextremelist_token'] = environ['DISCORDEXTREMELIST_TOKEN']
 config['bot_lists']['voidbots_token'] = environ['VOIDBOTS_TOKEN']
+config['bot_lists']['infinitybotlist_token'] = environ['INFINITYBOTLIST_TOKEN']
 
 with open(TO_CONFIG, "w") as f:
     toml.dump(config, f)
