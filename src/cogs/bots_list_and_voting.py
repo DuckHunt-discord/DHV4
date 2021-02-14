@@ -382,6 +382,8 @@ class BotsListVoting(Cog):
 
                 # **Votes**
                 # Can people vote on that bot list ?
+                # They can. Webhooks are currently out of order, so I'm gonna wait until they fix it.
+                # https://discord.com/channels/716445624517656727/716715657600827447/810603306040295465
                 "can_vote": False,
                 # If they can vote, on what URL ?
                 "vote_url": "https://blist.xyz/bot/187636089073172481",
