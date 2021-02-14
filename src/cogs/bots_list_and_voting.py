@@ -230,11 +230,11 @@ class BotsListVoting(Cog):
                 # Can people vote on that bot list ?
                 "can_vote": True,
                 # If they can vote, on what URL ?
-                "vote_url": None,
+                "vote_url": "https://botlist.space/bot/187636089073172481/upvote",
                 # And how often
                 "vote_every": datetime.timedelta(days=1),
                 # Is there a URL the bot can query to see if some `user` has voted recently
-                "check_vote_url": "https://top.gg/api/bots/187636089073172481/check?userId={user.id}",
+                "check_vote_url": None,
                 # What is the key used to specify the vote in the JSON returned by the URL above ?
                 "check_vote_key": "voted",
                 # Does the boolean says if the user has voted (True) or if he can vote (False) ?
