@@ -309,7 +309,7 @@ class BotsListVoting(Cog):
                 except asyncio.TimeoutError:
                     self.bot.logger.warning(f"Push stats to {bot_list.name}: resp [TIMEOUT]")
                 else:
-                    text = await resp.text()[:100]
+                    text = (await resp.text())[:100]
                     status = resp.status
                     if status in [200, 204]:
                         self.bot.logger.debug(f"Pushed stats to {bot_list.name} : resp [{status}] {text}")
