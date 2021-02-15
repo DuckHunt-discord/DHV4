@@ -1845,6 +1845,8 @@ msgid ""
 "On {channel.mention}, when a hunter buys a clover, the minimum experience "
 "given per duck kill will be of {value}."
 msgstr ""
+"Op {channel.mention}, als een jager een klavertje vier koopt, is de minimale "
+"ervaring per gedode eend {value}."
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "

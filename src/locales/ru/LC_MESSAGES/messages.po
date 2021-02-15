@@ -1832,6 +1832,8 @@ msgid ""
 "On {channel.mention}, when a hunter buys a clover, the minimum experience "
 "given per duck kill will be of {value}."
 msgstr ""
+"Когда охотник на канале {channel.mention} покупает клевер, он получит "
+"минимум {value} ед. опыта за каждую убитую утку."
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
@@ -2911,7 +2913,7 @@ msgstr "утка обыкновенная"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса утка обыкновенная"
 msgstr[1] "из которых {this_ducks_killed} класса утка обыкновенная"
 
 msgid ""
@@ -2970,7 +2972,7 @@ msgstr "утка-привидение"
 
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса утка-привидение"
 msgstr[1] "из которых {this_ducks_killed} класса утка-привидение"
 
 msgid "prof"
@@ -2978,7 +2980,7 @@ msgstr "утка-профессор"
 
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса утка-профессор"
 msgstr[1] "из которых {this_ducks_killed} класса утка-профессор"
 
 msgid "Huh, quick question, what's {operation} ?"
@@ -3002,7 +3004,7 @@ msgstr "утёнок"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса утёнок"
 msgstr[1] "из которых {this_ducks_killed} класса утёнок"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
@@ -3014,7 +3016,7 @@ msgstr "золотая утка"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса золотая утка"
 msgstr[1] "из которых {this_ducks_killed} класса золотая утка"
 
 msgid "plastic"
@@ -3022,7 +3024,7 @@ msgstr "пластмассовая уточка"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
-msgstr[0] ""
+msgstr[0] "из которых одна сделана из пластика"
 msgstr[1] "из которых {this_ducks_killed} сделаны из пластика"
 
 msgid "kamikaze"
@@ -3030,7 +3032,7 @@ msgstr "утка-камикадзе"
 
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса утка-камикадзе"
 msgstr[1] "из которых {this_ducks_killed} класса утка-камикадзе"
 
 msgid "mechanical"
@@ -3038,7 +3040,7 @@ msgstr "механическая утка"
 
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна механическая"
 msgstr[1] "из которых {this_ducks_killed} являются механическими"
 
 msgid ""
@@ -3060,7 +3062,7 @@ msgstr "супер-утка"
 
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна класса супер-утка"
 msgstr[1] "из которых {this_ducks_killed} класса супер-утка"
 
 msgid "moad"
@@ -3068,7 +3070,7 @@ msgstr "мать всех уток"
 
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
-msgstr[0] ""
+msgstr[0] "из которых одна класса мать всех уток"
 msgstr[1] "из которых {this_ducks_killed} класса мать всех уток"
 
 msgid "armored"
@@ -3076,7 +3078,7 @@ msgstr "бронированная утка"
 
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
-msgstr[0] ""
+msgstr[0] "их которых одна класса утка бронированная"
 msgstr[1] "их которых {this_ducks_killed} класса утка бронированная"
 
 msgid ""
@@ -3098,7 +3100,7 @@ msgstr "ночная уточка"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна ночная утка"
 msgstr[1] "их которых {this_ducks_killed} класса ночная уточка"
 
 msgid "sleeping"
@@ -3106,7 +3108,7 @@ msgstr "спящая уточка"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
-msgstr[0] ""
+msgstr[0] "из которых одна спящая утка"
 msgstr[1] "их которых {this_ducks_killed} класса спящая уточка"
 
 msgid "KWAK"

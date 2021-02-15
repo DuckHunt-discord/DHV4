@@ -16,7 +16,7 @@ msgid "Handle users votes for top.gg"
 msgstr ""
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
-msgstr ""
+msgstr "Elküldi a linket, amellyel szavazni tudsz a DuckHunt-ra bot listákon."
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -1196,29 +1196,29 @@ msgid "❌ Items usage is disabled on this channel."
 msgstr "❌ A tárgyhasználat ki van kapcsolva ezen a csatornán."
 
 msgid "❌ Unknown item number."
-msgstr ""
+msgstr "❌ Ismeretlen elem szám."
 
 msgid "Lootbox opened"
 msgstr ""
 
 msgid "❌ {guild.name} is already VIP."
-msgstr ""
+msgstr "❌ {guild.name} már VIP."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr ""
+msgstr "✨ {guild.name} mostantól VIP! Köszönöm."
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
 msgstr ""
 
 msgid "✨ Yay! Free ammo!"
-msgstr ""
+msgstr "✨ Ez az! Ingyen lőszer!"
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr ""
+msgstr "✨ Ó, ez egy "
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
-msgstr ""
+msgstr "✨ Ó nézd, kacsák! Kacsák mindenhol!"
 
 msgid "Prestige Information"
 msgstr ""
@@ -1267,22 +1267,22 @@ msgid "Level 3"
 msgstr "3. szint"
 
 msgid "**Daily command**: Get more experience every day"
-msgstr ""
+msgstr "**Napi parancs**: szerezz több tapasztalatot mindennap"
 
 msgid "Level 4"
 msgstr "4. szint"
 
 msgid "**Icelandic water**: Wet others for longer"
-msgstr ""
+msgstr "**Jeges víz**: vizezz össze másokat több időre"
 
 msgid "Level 5"
-msgstr ""
+msgstr "5. szint"
 
 msgid "**Untearable coat**: Buy it for life"
-msgstr ""
+msgstr "**Szakíthatatlan kabát:** vedd meg örökre"
 
 msgid "Level 6"
-msgstr ""
+msgstr "6. szint"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
