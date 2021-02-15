@@ -82,6 +82,12 @@ class DucksSpawning(Cog):
                         ducks_spawned += 1
 
                     self.bot.enabled_channels[channel] -= 1
+
+                if ducks_spawned > 20:
+                    self.bot.logger.warning(f"Tried to make more than {ducks_spawned} ducks spawn at once, "
+                                            f"stopping there to protect rate limits...")
+                    break
+
             end_spawning = time()
 
             if end_spawning-start_spawning > 0.7:
@@ -89,16 +95,26 @@ class DucksSpawning(Cog):
                 self.bot.logger.error(f"Spawning {ducks_spawned} ducks took more than {duration} seconds...")
 
         start_leaving = time()
+        total_leaves = 0
         for channel, ducks_queue in self.bot.ducks_spawned.copy().items():
             for duck in ducks_queue.copy():
-                if not await duck.maybe_leave():
+                left = await duck.maybe_leave()
+                if not left:
                     break
+                else:
+                    total_leaves += 1
+
+            if total_leaves > 25:
+                self.bot.logger.warning(f"Tried to make more than {total_leaves} ducks leave at once, "
+                                        f"stopping there to protect rate limits...")
+                break
+
 
         end_leaving = time()
 
         if end_leaving-start_leaving > 0.7:
             duration = round(end_leaving - start_leaving, 2)
-            self.bot.logger.error(f"Leaving ducks took more than {duration} seconds...")
+            self.bot.logger.error(f"Leaving {total_leaves} ducks took more than {duration} seconds...")
 
         CURRENT_PLANNED_DAY = now - (now % DAY)
         if CURRENT_PLANNED_DAY != self.last_planned_day:
