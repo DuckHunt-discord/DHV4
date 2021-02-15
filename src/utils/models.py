@@ -137,6 +137,9 @@ class DiscordChannel(Model):
             if serialize_field == "discord_id":
                 ser[serialize_field] = str(getattr(self, serialize_field))
 
+            elif isinstance(getattr(self, serialize_field), datetime.datetime):
+                ser[serialize_field] = str(getattr(self, serialize_field))
+
             ser[serialize_field] = getattr(self, serialize_field)
 
         return ser
