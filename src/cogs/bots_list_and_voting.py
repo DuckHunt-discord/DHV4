@@ -91,7 +91,6 @@ class BotsListVoting(Cog):
             else:
                 return web.Response(status=400, text="Bad user ID")
 
-
             result, message = await self.handle_vote(user_id, bot_list)
 
             if result:
