@@ -75,6 +75,10 @@ route_prefix = "/api"
 # You can generate them easily. https://www.uuidgenerator.net/version4
 global_access_keys = []
 
+[cogs.BotsListVoting]
+statcord_token = "abcdef"
+
+
 [random_ducks]
 assets_path = 'assets/Random Ducks'
 composite_order = ['Body', 'Neck', 'Face', 'Hats'] # Background is included

@@ -1,15 +1,13 @@
 import asyncio
-
+import statcord
 import aiohttp
-from aiohttp import web
-from discord.ext import commands
-
-from utils.cog_class import Cog
 import datetime
-from typing import Tuple, List
-
 import discord
 
+from aiohttp import web
+from discord.ext import commands
+from utils.cog_class import Cog
+from typing import Tuple, List
 from utils import checks
 from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.ctx_class import MyContext
@@ -17,6 +15,15 @@ from utils.models import DiscordUser, get_from_db, BotList, Vote
 
 
 class BotsListVoting(Cog):
+    def __init__(self, bot, *args, **kwargs):
+        super().__init__(bot, *args, **kwargs)
+        self.statcord_api = statcord.Client(self.bot, self.config()['statcord_token'])
+        self.statcord_api.start_loop()
+
+    @Cog.listener()
+    async def on_command(self, ctx):
+        self.statcord_api.command_run(ctx)
+
     async def get_bot_list(self) -> List[BotList]:
         return await BotList.all()
 

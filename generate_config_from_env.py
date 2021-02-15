@@ -20,6 +20,7 @@ config['database']['password'] = environ['DB_PASSWORD']
 config['database']['database'] = environ['DB_NAME']
 
 config['cogs']['RestAPI']['global_access_keys'].append(environ['GLOBAL_API_KEY'])
+config['cogs']['BotsListVoting']['statcord_token'] = environ['STATCORD_TOKEN']
 
 
 with open(TO_CONFIG, "w") as f:
