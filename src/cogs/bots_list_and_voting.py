@@ -76,12 +76,21 @@ class BotsListVoting(Cog):
             post_data = await request.json()
 
             if '.' not in bot_list.webhook_user_id_json_field:
-                user_id = int(post_data[bot_list.webhook_user_id_json_field])
+                user_id = post_data[bot_list.webhook_user_id_json_field]
             else:
                 user_id = post_data
                 for part in bot_list.webhook_user_id_json_field.split('.'):
                     user_id = user_id[part]
+
+            # This is just to make sure that the ID is an integer
+            # Thanks, discordbots.co test webhooks...
+            if str(user_id).isdigit():
                 user_id = int(user_id)
+            elif "test" in user_id.lower():
+                return web.Response(status=201, text="Test OK")
+            else:
+                return web.Response(status=400, text="Bad user ID")
+
 
             result, message = await self.handle_vote(user_id, bot_list)
 
