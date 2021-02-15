@@ -469,6 +469,9 @@ class BotList(Model):
 
     bot_url = fields.TextField(help_text="URL for the main bot page")
 
+    notes = fields.TextField(help_text="Informations about this bot list",
+                             blank=True)
+
     auth = fields.TextField(help_text="Token used to authenticate requests to/from the bot")
 
     # **Votes**
@@ -512,7 +515,8 @@ class BotList(Model):
 
     post_stats_method = fields.CharField(help_text="What HTTP method should be used to send the stats",
                                          choices=(("POST", "POST"),
-                                                  ("PATCH", "PATCH")),
+                                                  ("PATCH", "PATCH"),
+                                                  ("None", "None")),
                                          default="POST",
                                          max_length=10)
 
@@ -527,6 +531,14 @@ class BotList(Model):
                                                   default="shard_count",
                                                   blank=True,
                                                   max_length=128)
+
+    # **Others**
+
+    bot_certified = fields.BooleanField(help_text="Whether the bot was certified on that bot list",
+                                        default=False)
+
+    embed_code = fields.TextField(help_text="Code to show this bot list embed. This HTML won't be escaped.",
+                                  blank=True)
 
 
 class Vote(Model):

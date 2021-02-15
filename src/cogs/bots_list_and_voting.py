@@ -303,6 +303,8 @@ class BotsListVoting(Cog):
                         resp = await self.bot.client_session.post(stats_url, timeout=timeout, headers=headers, json=post_data)
                     elif method == "PATCH":
                         resp = await self.bot.client_session.patch(stats_url, timeout=timeout, headers=headers, json=post_data)
+                    elif method == "None":
+                        continue
                     else:
                         self.bot.logger.error(f"Unknown HTTP method to post stats on {bot_list.name}: {method}")
                 except asyncio.TimeoutError:
