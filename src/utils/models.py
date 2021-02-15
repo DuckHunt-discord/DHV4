@@ -537,6 +537,9 @@ class BotList(Model):
 
     # **Others**
 
+    bot_verified = fields.BooleanField(help_text="Whether the bot was verified by the bot list staff",
+                                       default=False)
+
     bot_certified = fields.BooleanField(help_text="Whether the bot was certified on that bot list",
                                         default=False)
 
