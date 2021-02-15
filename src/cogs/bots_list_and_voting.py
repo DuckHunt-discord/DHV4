@@ -1,5 +1,4 @@
 import asyncio
-import time
 
 import aiohttp
 from aiohttp import web
@@ -7,11 +6,11 @@ from discord.ext import commands
 
 from utils.cog_class import Cog
 import datetime
-from typing import Tuple, Dict, Any, List
+from typing import Tuple, List
 
 import discord
 
-from utils import config, checks
+from utils import checks
 from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.ctx_class import MyContext
 from utils.models import DiscordUser, get_from_db, BotList, Vote
