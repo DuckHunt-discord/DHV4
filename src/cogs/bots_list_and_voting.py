@@ -188,7 +188,9 @@ class BotsListVoting(Cog):
             try:
                 async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
                     json_resp = await resp.json()
-            except asyncio.TimeoutError:
+            except (asyncio.TimeoutError, aiohttp.ContentTypeError):
+                self.bot.logger.warning(f"Checking user {user.id} vote on {bot_list.name} -> The bot list seems down.")
+
                 return False  # Can't vote if the bot list is down
 
             self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list.name} -> {json_resp}")
