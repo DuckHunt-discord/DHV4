@@ -421,9 +421,12 @@ class SettingsCommands(Cog):
                 # Send it twice, in english and the original language.
                 await ctx.send(
                     f"❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
-                await ctx.send(_(
-                    "❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`",
-                    ctx=ctx))
+
+                current_lang = await ctx.get_language_code()
+                if "en" not in current_lang:
+                    await ctx.send(_(
+                        "❌ Unknown locale. If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`",
+                        ctx=ctx))
                 return
 
             db_guild.language = language_code
@@ -1152,10 +1155,13 @@ class SettingsCommands(Cog):
                 await ctx.reply(
                     f"❌ Unknown locale. If you wish to go back to the default, english language, "
                     f"use `{ctx.prefix}{ctx.command.qualified_name} en`")
-                await ctx.reply(_(
-                    "❌ Unknown locale. If you wish to go back to the default, english language, "
-                    "use `{ctx.prefix}{ctx.command.qualified_name} en`",
-                    ctx=ctx))
+
+                current_lang = await ctx.get_language_code(user_language=True)
+                if "en" not in current_lang:
+                    await ctx.reply(_(
+                        "❌ Unknown locale. If you wish to go back to the default, english language, "
+                        "use `{ctx.prefix}{ctx.command.qualified_name} en`",
+                        ctx=ctx))
                 return
 
             db_user.language = language_code
