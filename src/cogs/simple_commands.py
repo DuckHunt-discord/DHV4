@@ -164,22 +164,32 @@ class SimpleCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        embed = discord.Embed()
+        my_perms = ctx.channel.permissions_for(ctx.me)
 
-        embed.color = discord.Color.green()
-        embed.description = _("The bot itself is made by Eyesofcreeper, but these fine people down there help with "
-                              "graphics, ideas, images, and more. Make sure to give them a wave if you see them.")
+        if my_perms.embed_links:
+            embed = discord.Embed()
 
-        embed.add_field(name=_("Developer"), value=_("<@138751484517941259> (\"Eyesofcreeper\") made this bot."), inline=False)
-        embed.add_field(name=_("Designer"), value=_("<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."), inline=False)
-        embed.add_field(name=_("Designer"), value=_("<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit."), inline=False)
-        embed.add_field(name=_("Ideas"), value=_("Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"), inline=False)
-        embed.add_field(name=_("Translations"), value=_("The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."), inline=False)
+            embed.color = discord.Color.green()
+            embed.description = _("The bot itself is made by Eyesofcreeper, but these fine people down there help with "
+                                  "graphics, ideas, images, and more. Make sure to give them a wave if you see them.")
 
-        f = discord.File("assets/Robot_Ducc_Globloxmen.jpg")
-        embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
+            embed.add_field(name=_("Developer"), value=_("<@138751484517941259> (\"Eyesofcreeper\") made this bot."), inline=False)
+            embed.add_field(name=_("Designer"), value=_("<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."), inline=False)
+            embed.add_field(name=_("Designer"), value=_("<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit."), inline=False)
+            embed.add_field(name=_("Ideas"), value=_("Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"), inline=False)
+            embed.add_field(name=_("Translations"), value=_("The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."), inline=False)
 
-        await ctx.send(embed=embed, file=f)
+            f = discord.File("assets/Robot_Ducc_Globloxmen.jpg")
+            embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
+
+            await ctx.send(embed=embed, file=f)
+        else:
+            await ctx.send(content="\n".join([_("**DuckHunt credits**"),
+                                              _("The bot itself is made by Eyesofcreeper, but a lot of people "
+                                   "helped with graphics, ideas, images, and more."),
+                                              _("To see more information about that bot, you'll need to give it the "
+                                                "`embed_links` permission. Contact your friendly neighbourhood server "
+                                                "admin.")]))
 
     @commands.command(aliases=["translate"])
     async def translators(self, ctx: MyContext):
