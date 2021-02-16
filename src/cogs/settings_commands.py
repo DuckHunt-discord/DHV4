@@ -416,7 +416,7 @@ class SettingsCommands(Cog):
         elif language_code:
             try:
                 locale_data = Locale.parse(language_code)
-            except babel.UnknownLocaleError:
+            except (babel.UnknownLocaleError, ValueError):
                 _ = await ctx.get_translate_function()
                 # Send it twice, in english and the original language.
                 await ctx.send(
@@ -1140,13 +1140,13 @@ class SettingsCommands(Cog):
         Specify your language as a 2/5 letters code. For example, if you live in France, you'd use fr or fr_FR.
         In Québec, you could use fr_CA.
 
-        Some messages will use your prefered language, usually when the bot communicates with you in DM.
+        Some messages will use your preferred language, usually when the bot communicates with you in DM.
         """
         db_user = await get_from_db(ctx.author, as_user=True)
         if language_code:
             try:
                 locale_data = Locale.parse(language_code)
-            except babel.UnknownLocaleError:
+            except (babel.UnknownLocaleError, ValueError):
                 _ = await ctx.get_translate_function()
                 # Send it twice, in english and the original language.
                 await ctx.reply(
