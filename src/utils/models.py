@@ -52,6 +52,7 @@ class DiscordGuild(Model):
 
     name = fields.TextField()
     prefix = fields.CharField(20, null=True, default="!")
+    channel_disabled_message = fields.BooleanField(default=True)
 
     vip = fields.BooleanField(default=False)
 

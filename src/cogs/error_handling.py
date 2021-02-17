@@ -14,6 +14,8 @@ from utils.interaction import escape_everything
 
 from babel import dates
 
+from utils.models import get_from_db
+
 
 class CommandErrorHandler(Cog):
     @commands.Cog.listener()
@@ -132,15 +134,20 @@ class CommandErrorHandler(Cog):
                                     exception=exception)
 
                 elif type(exception).__name__ == NotEnoughExperience.__name__:
-                    message = _(f"You don't have enough experience to enjoy this item. You'd need at least {exception.needed} exp, but you only have {exception.having}.",
+                    message = _("You don't have enough experience to enjoy this item. You'd need at least {exception.needed} exp, but you only have {exception.having}.",
                                 exception=exception)
 
                 elif isinstance(exception, checks.AccessTooLow):
-                    message = _(f"Your access level is too low : you have an access level of {exception.current_access.name}, and you need at least {exception.required_access.name}.",
+                    message = _("Your access level is too low : you have an access level of {exception.current_access.name}, and you need at least {exception.required_access.name}.",
                                 exception=exception)
 
                 elif isinstance(exception, checks.ChannelDisabled):
-                    return
+                    db_guild = await get_from_db(ctx.guild)
+
+                    if db_guild.channel_disabled_message:
+                        message = _(
+                            "The game isn't running on this channel. Admins can disable this message by running `dh!settings channel_disabled_message False`.",
+                            exception=exception)
 
                 elif isinstance(exception, checks.BotIgnore):
                     return
