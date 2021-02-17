@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-17 19:33+0100\n"
+"POT-Creation-Date: 2021-02-17 19:42+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -469,6 +469,12 @@ msgstr ""
 
 #: ../cogs/settings_commands.py:1060
 msgid ""
+"Enable or disable the channel disabled message that tells you that you've "
+"ran a command in a channel that isn't enabled."
+msgstr ""
+
+#: ../cogs/settings_commands.py:1078
+msgid ""
 "Commands to edit permissions.\n"
 "\n"
 "BANNED = 0\n"
@@ -480,19 +486,19 @@ msgid ""
 "BOT_OWNER = 600"
 msgstr ""
 
-#: ../cogs/settings_commands.py:1077
+#: ../cogs/settings_commands.py:1095
 msgid "View the current permissions"
 msgstr ""
 
-#: ../cogs/settings_commands.py:1100
+#: ../cogs/settings_commands.py:1118
 msgid "Edit the current permissions for a specific user"
 msgstr ""
 
-#: ../cogs/settings_commands.py:1122
+#: ../cogs/settings_commands.py:1140
 msgid "Set your preference on whether replies from the bot should ping you"
 msgstr ""
 
-#: ../cogs/settings_commands.py:1140
+#: ../cogs/settings_commands.py:1158
 msgid ""
 "Change/view your own language.\n"
 "\n"
@@ -1252,44 +1258,45 @@ msgstr ""
 #: ../cogs/error_handling.py:149
 msgid ""
 "The game isn't running on this channel. Admins can disable this message by "
-"running `dh!settings channel_disabled_message False`."
-msgstr ""
-
-#: ../cogs/error_handling.py:159
-msgid "The provided command was not found."
+"running `dh!settings channel_disabled_message False`, or can enable the "
+"channel with `dh!settings enabled True`."
 msgstr ""
 
 #: ../cogs/error_handling.py:161
-msgid "That command has been disabled."
+msgid "The provided command was not found."
 msgstr ""
 
 #: ../cogs/error_handling.py:163
+msgid "That command has been disabled."
+msgstr ""
+
+#: ../cogs/error_handling.py:165
 msgid ""
 "There was an error running the specified command. Contact the bot admins."
 msgstr ""
 
-#: ../cogs/error_handling.py:173
+#: ../cogs/error_handling.py:175
 #, python-brace-format
 msgid "This command is overused. Please try again {some_time}."
 msgstr ""
 
-#: ../cogs/error_handling.py:182
+#: ../cogs/error_handling.py:184
 #, python-brace-format
 msgid ""
 "You are above the limits of DuckHunt database. Try to reduce your "
 "expectations. Database message: `{exception}`"
 msgstr ""
 
-#: ../cogs/error_handling.py:187
+#: ../cogs/error_handling.py:189
 #, python-brace-format
 msgid "Missing permissions, please check I can embed links here. `{exception}`"
 msgstr ""
 
-#: ../cogs/error_handling.py:190
+#: ../cogs/error_handling.py:192
 msgid "Missing permissions, please check I can add reactions here."
 msgstr ""
 
-#: ../cogs/error_handling.py:192
+#: ../cogs/error_handling.py:194
 msgid ""
 "This should not have happened. A command raised an error that does not come "
 "from CommandError, and isn't handled by our error handler. Please inform the "
@@ -1653,7 +1660,7 @@ msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
 msgstr ""
 
-#: ../cogs/settings_commands.py:428 ../cogs/settings_commands.py:1162
+#: ../cogs/settings_commands.py:428 ../cogs/settings_commands.py:1180
 #, python-brace-format
 msgid ""
 "❌ Unknown locale. If you wish to go back to the default, english language, "
@@ -1665,7 +1672,7 @@ msgstr ""
 msgid "This server language is set to `{language}` [{language_name}]."
 msgstr ""
 
-#: ../cogs/settings_commands.py:447 ../cogs/settings_commands.py:1182
+#: ../cogs/settings_commands.py:447 ../cogs/settings_commands.py:1200
 msgid "There is no specific language set for this guild."
 msgstr ""
 
@@ -1994,34 +2001,42 @@ msgstr ""
 msgid "I couldn't DM you... Are your DMs blocked ?"
 msgstr ""
 
-#: ../cogs/settings_commands.py:1090
-#, python-brace-format
-msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
+#: ../cogs/settings_commands.py:1071
+msgid "Channel disabled messages are enabled."
 msgstr ""
 
-#: ../cogs/settings_commands.py:1095
-msgid "No members have any specific rights in the server."
+#: ../cogs/settings_commands.py:1073
+msgid "Channel disabled messages are disabled. The bot will stay silent."
 msgstr ""
 
 #: ../cogs/settings_commands.py:1108
 #, python-brace-format
+msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
+msgstr ""
+
+#: ../cogs/settings_commands.py:1113
+msgid "No members have any specific rights in the server."
+msgstr ""
+
+#: ../cogs/settings_commands.py:1126
+#, python-brace-format
 msgid "❌ {target.mention}, you cannot ban yourself !"
 msgstr ""
 
-#: ../cogs/settings_commands.py:1115
+#: ../cogs/settings_commands.py:1133
 #, python-brace-format
 msgid "{target.mention} now has a access of {level.name}."
 msgstr ""
 
-#: ../cogs/settings_commands.py:1133
+#: ../cogs/settings_commands.py:1151
 msgid "You'll now be pinged in replies from the bot."
 msgstr ""
 
-#: ../cogs/settings_commands.py:1135
+#: ../cogs/settings_commands.py:1153
 msgid "You wont be pinged anymore in replies from the bot."
 msgstr ""
 
-#: ../cogs/settings_commands.py:1173
+#: ../cogs/settings_commands.py:1191
 #, python-brace-format
 msgid "Your language is set to `{language}` [{language_name}]."
 msgstr ""

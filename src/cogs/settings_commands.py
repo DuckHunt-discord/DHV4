@@ -1056,18 +1056,18 @@ class SettingsCommands(Cog):
 
     @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
-    async def api_key(self, ctx: MyContext, enable: bool = None):
+    async def channel_disabled_message(self, ctx: MyContext, enable: bool = None):
         """
         Enable or disable the channel disabled message that tells you that you've ran a command in a channel that isn't enabled.
         """
-        db_channel = await get_from_db(ctx.channel)
+        db_guild = await get_from_db(ctx.guild)
         _ = await ctx.get_translate_function()
 
         if enable is not None:
-            db_channel.channel_disabled_message = enable
-            await db_channel.save()
+            db_guild.channel_disabled_message = enable
+            await db_guild.save()
 
-        if db_channel.channel_disabled_message:
+        if db_guild.channel_disabled_message:
             await ctx.reply(_("Channel disabled messages are enabled."))
         else:
             await ctx.reply(_("Channel disabled messages are disabled. The bot will stay silent."))
