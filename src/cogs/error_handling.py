@@ -146,7 +146,9 @@ class CommandErrorHandler(Cog):
 
                     if db_guild.channel_disabled_message:
                         message = _(
-                            "The game isn't running on this channel. Admins can disable this message by running `dh!settings channel_disabled_message False`.",
+                            "The game isn't running on this channel. "
+                            "Admins can disable this message by running `dh!settings channel_disabled_message False`, "
+                            "or can enable the channel with `dh!settings enabled True`.",
                             exception=exception)
 
                 elif isinstance(exception, checks.BotIgnore):
