@@ -1251,7 +1251,7 @@ msgstr "✨ {guild.name} mostantól VIP! Köszönöm."
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
-msgstr "✨"
+msgstr ""
 
 msgid "✨ Yay! Free ammo!"
 msgstr "✨ Ez az! Ingyen lőszer!"
@@ -1369,7 +1369,7 @@ msgstr ""
 msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
-msgstr "❌"
+msgstr ""
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr "❌"
