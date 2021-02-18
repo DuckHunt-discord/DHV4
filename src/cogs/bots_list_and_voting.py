@@ -1,4 +1,6 @@
 import asyncio
+import time
+
 import statcord
 import aiohttp
 import datetime
@@ -21,6 +23,7 @@ class BotsListVoting(Cog):
                                             custom1=self.statcord_custom_value_ducks_spawned,
                                             custom2=self.statcord_custom_value_players_count)
         self.statcord_api.start_loop()
+        self.last_stats_post = 0
 
     @Cog.listener()
     async def on_command(self, ctx):
@@ -284,6 +287,11 @@ class BotsListVoting(Cog):
     @Cog.listener("on_guild_remove")
     @Cog.listener("on_ready")
     async def post_stats(self, *args, **kwargs):
+        if int(time.time()) - self.last_stats_post < 30 * 60:
+            return "Can't post stats more than twice per hour."
+        else:
+            self.last_stats_post = int(time.time())
+
         self.bot.logger.debug(f"Updating stats on bots list")
 
         server_count = len(self.bot.guilds)
