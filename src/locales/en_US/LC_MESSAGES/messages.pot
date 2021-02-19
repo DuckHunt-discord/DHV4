@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 10:41+0100\n"
+"POT-Creation-Date: 2021-02-19 14:05+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3051,6 +3051,90 @@ msgstr ""
 #: ../utils/bushes.py:132
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
+msgstr ""
+
+#: ../utils/coats.py:10
+msgid "Basic"
+msgstr ""
+
+#: ../utils/coats.py:11
+msgid "A useful coat when it rains."
+msgstr ""
+
+#: ../utils/coats.py:13
+msgid "Orange"
+msgstr ""
+
+#: ../utils/coats.py:14
+msgid ""
+"Better visibility: Increase your chance to frighten ducks, and reduce your "
+"chance to get shot by another hunter."
+msgstr ""
+
+#: ../utils/coats.py:16
+msgid "Camo"
+msgstr ""
+
+#: ../utils/coats.py:17
+msgid ""
+"Lower visibility: Increase your chance to get shot by another hunter, but "
+"less chance to frighten ducks."
+msgstr ""
+
+#: ../utils/coats.py:19
+msgid "Blue"
+msgstr ""
+
+#: ../utils/coats.py:20
+msgid "Lucky find: Increase your chance to find items in bushes."
+msgstr ""
+
+#: ../utils/coats.py:22
+msgid "Red"
+msgstr ""
+
+#: ../utils/coats.py:23
+msgid "Hungry for blood: Increase your murder skills, reduce murder penalties."
+msgstr ""
+
+#: ../utils/coats.py:25
+msgid "Yellow"
+msgstr ""
+
+#: ../utils/coats.py:26
+msgid "Sun powers: Mirrors are less effective against you."
+msgstr ""
+
+#: ../utils/coats.py:28
+msgid "Dark green"
+msgstr ""
+
+#: ../utils/coats.py:29
+msgid "Farming skills: Clovers give you one more experience point."
+msgstr ""
+
+#: ../utils/coats.py:31
+msgid "Black"
+msgstr ""
+
+#: ../utils/coats.py:32
+msgid "Secret service: Sabotages are cheaper."
+msgstr ""
+
+#: ../utils/coats.py:35
+msgid "Light blue"
+msgstr ""
+
+#: ../utils/coats.py:36
+msgid "Sea powers: You are immune to water buckets."
+msgstr ""
+
+#: ../utils/coats.py:38
+msgid "Pink"
+msgstr ""
+
+#: ../utils/coats.py:39
+msgid "Power of love: You can't kill players with the same coat color."
 msgstr ""
 
 #: ../utils/custom_help.py:39
