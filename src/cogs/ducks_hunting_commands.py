@@ -233,12 +233,13 @@ class DucksHuntingCommands(Cog):
                 else:
                     db_target: Player = await get_random_player(db_channel)
 
+                target_coat_color = db_target.get_current_coat_color()
                 if db_channel.mentions_when_killed:
                     player_name = f"<@{db_target.member.user.discord_id}>"
                 else:
                     player_name = db_target.member.user.name
 
-                if not murder and db_target.get_current_coat_color() == Coats.ORANGE and random.randint(0, 100) <= 75:
+                if not murder and target_coat_color == Coats.ORANGE and random.randint(0, 100) <= 75:
                     db_hunter.shooting_stats['near_misses'] += 1
                     db_target.shooting_stats['near_missed'] += 1
 
@@ -250,6 +251,32 @@ class DucksHuntingCommands(Cog):
 
                     await asyncio.gather(db_target.save(), db_hunter.save())
                     return
+
+                elif hunter_coat_color == Coats.PINK and target_coat_color == Coats.PINK:
+                    if murder:
+                        db_hunter.shooting_stats['murders'] -= 1  # Cancel the murder
+
+                        db_hunter.shooting_stats['love_avoids_murder'] += 1
+                        db_target.shooting_stats['love_avoided_murder'] += 1
+
+                        await ctx.reply(
+                            _("🔫 You took your weapon out, aimed it towards {player_name} head, but he had a pink coat just like yours. "
+                              "Using the power of love, you missed them on purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]",
+                              player_name=player_name,
+                            ))
+                    else:
+                        db_hunter.shooting_stats['love_avoids_accidents'] += 1
+                        db_target.shooting_stats['love_avoided_accidents'] += 1
+
+                        await ctx.reply(
+                            _("🔫 You missed the duck... And you saw your bullet go towards {player_name} head, "
+                              "but he had a pink coat just like yours. Just like in the movies, "
+                              "by using the power of love, you made the bullet hit the love tree 🌳 instead. [**MISSED**: -2 exp]",
+                              player_name=player_name,
+                            ))
+                    await asyncio.gather(db_target.save(), db_hunter.save())
+                    return
+
 
                 has_valid_kill_licence = db_hunter.is_powerup_active('kill_licence') and not murder
 
