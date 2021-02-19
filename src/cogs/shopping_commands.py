@@ -559,7 +559,7 @@ class ShoppingCommands(Cog):
     async def sabotage(self, ctx: MyContext, target: discord.Member):
         """
         Sabotage the weapon of another player.
-        Their gun will jam and explode in their face the next time they press the trigger. [14 exp]
+        Their gun will jam and explode in their face the next time they press the trigger. [14* exp]
         """
         ITEM_COST = 14
 
@@ -577,6 +577,10 @@ class ShoppingCommands(Cog):
             pass
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
+
+        if db_hunter.get_current_coat_color() == Coats.BLACK:
+            ITEM_COST = 11
+
         db_target: Player = await get_player(target, ctx.channel)
 
         if db_target.weapon_sabotaged_by:
