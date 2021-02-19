@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 14:42+0100\n"
+"POT-Creation-Date: 2021-02-19 14:52+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,15 +35,15 @@ msgstr ""
 msgid "Shoot at the duck that appeared first on the channel."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:323
+#: ../cogs/ducks_hunting_commands.py:344
 msgid "Reload your gun."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:385
+#: ../cogs/ducks_hunting_commands.py:406
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:438
+#: ../cogs/ducks_hunting_commands.py:459
 msgid "Revive yourself by eating brains"
 msgstr ""
 
@@ -910,85 +910,85 @@ msgid ""
 "bot says."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:37 ../cogs/ducks_hunting_commands.py:391
+#: ../cogs/ducks_hunting_commands.py:37 ../cogs/ducks_hunting_commands.py:412
 msgid ""
 "The bot is still starting up, please wait a minute and retry. Ducks haven't "
 "been lost."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:48
+#: ../cogs/ducks_hunting_commands.py:49
 #, python-brace-format
 msgid ""
 "☠️ It's a little cold in there... Maybe because **you are DEAD**! have you "
 "tried eating BRAINS ? `{ctx.prefix}revive`..."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:58
+#: ../cogs/ducks_hunting_commands.py:59
 #, python-brace-format
 msgid ""
 "🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) or "
 "something, or buy new ones (`{ctx.prefix}shop clothes`)"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:67
+#: ../cogs/ducks_hunting_commands.py:68
 #, python-brace-format
 msgid ""
 "⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}"
 "freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:87
+#: ../cogs/ducks_hunting_commands.py:88
 #, python-brace-format
 msgid ""
 "💥 Your weapon was sabotaged and exploded in your face. You can thank "
 "{sabotager.name}#{sabotager.discriminator} for this bad joke."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:96
+#: ../cogs/ducks_hunting_commands.py:97
 #, python-brace-format
 msgid ""
 "☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:110
+#: ../cogs/ducks_hunting_commands.py:111
 #, python-brace-format
 msgid ""
 "🦉 Backpack empty ! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: "
 "0/{max_magazines} [**Autoreload failed**]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:118
+#: ../cogs/ducks_hunting_commands.py:119
 #, python-brace-format
 msgid ""
 "🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | "
 "Magazines: {current_magazines}/{max_magazines}"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:137
+#: ../cogs/ducks_hunting_commands.py:138
 msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:162
+#: ../cogs/ducks_hunting_commands.py:163
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:167
+#: ../cogs/ducks_hunting_commands.py:168
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. At least, you had a ~~kill~~ "
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:171
+#: ../cogs/ducks_hunting_commands.py:172
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. [**WEAPON CONFISCATED**]"
 "[**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:238
+#: ../cogs/ducks_hunting_commands.py:246
 #, python-brace-format
 msgid ""
 "🔫 You missed the duck... And *almost* shot {player_name} in the head, "
@@ -996,62 +996,74 @@ msgid ""
 "exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:267
+#: ../cogs/ducks_hunting_commands.py:279
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:270
+#: ../cogs/ducks_hunting_commands.py:282
 #, python-brace-format
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:277
+#: ../cogs/ducks_hunting_commands.py:288
+msgid ""
+"🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:291
+#, python-brace-format
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, "
+"and pulled the trigger. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:298
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head. You died. You are "
 "legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:281
+#: ../cogs/ducks_hunting_commands.py:302
 #, python-brace-format
 msgid ""
 "🔫 You missed the duck... And shot {player_name} in the head, killing him on "
 "the spot. You are legally allowed to kill people. [**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:287
+#: ../cogs/ducks_hunting_commands.py:308
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head, dying instantly. "
 "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:291
+#: ../cogs/ducks_hunting_commands.py:312
 #, python-brace-format
 msgid ""
 "🔫 You missed the duck... And shot {player_name} in the head, killing him on "
 "the spot. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:299
+#: ../cogs/ducks_hunting_commands.py:320
 msgid ""
 "🌲 What did you try to aim at ? I guess you shot that tree, over here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:313
+#: ../cogs/ducks_hunting_commands.py:334
 msgid ""
 "🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped "
 "the shot."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:318
+#: ../cogs/ducks_hunting_commands.py:339
 msgid ""
 "❓️ What are you trying to kill exactly ? There are no ducks here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:334
+#: ../cogs/ducks_hunting_commands.py:355
 #, python-brace-format
 msgid ""
 "Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
@@ -1059,25 +1071,25 @@ msgid ""
 "weapon`)"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:343
+#: ../cogs/ducks_hunting_commands.py:364
 msgid "☀️️ You unjam your weapon !"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:355
+#: ../cogs/ducks_hunting_commands.py:376
 #, python-brace-format
 msgid ""
 "🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
 "Magazines: {current_magazines}/{max_magazines} "
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:365
+#: ../cogs/ducks_hunting_commands.py:386
 #, python-brace-format
 msgid ""
 "🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/"
 "{max_bullets} | Magazines: {current_magazines}/{max_magazines} "
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:374
+#: ../cogs/ducks_hunting_commands.py:395
 #, python-brace-format
 msgid ""
 "🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: "
@@ -1085,44 +1097,44 @@ msgid ""
 "{max_magazines} "
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:399
+#: ../cogs/ducks_hunting_commands.py:420
 #, python-brace-format
 msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:405
+#: ../cogs/ducks_hunting_commands.py:426
 msgid "tree"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:406
+#: ../cogs/ducks_hunting_commands.py:427
 msgid "❌ I have no idea what you want to hug..."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:409
+#: ../cogs/ducks_hunting_commands.py:430
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:418
+#: ../cogs/ducks_hunting_commands.py:439
 #, python-brace-format
 msgid ""
 "{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:424
+#: ../cogs/ducks_hunting_commands.py:445
 #, python-brace-format
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:431
+#: ../cogs/ducks_hunting_commands.py:452
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:450
+#: ../cogs/ducks_hunting_commands.py:471
 msgid "You are already alive and well."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:460
+#: ../cogs/ducks_hunting_commands.py:481
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr ""
@@ -3088,9 +3100,7 @@ msgid "Camo"
 msgstr ""
 
 #: ../utils/coats.py:27
-msgid ""
-"Lower visibility: Increase your chance to get shot by another hunter, but "
-"less chance to frighten ducks."
+msgid "Lower visibility: Less chance to frighten ducks."
 msgstr ""
 
 #: ../utils/coats.py:29
@@ -3232,187 +3242,187 @@ msgid ""
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:617
+#: ../utils/ducks.py:625
 msgid "ghost"
 msgstr ""
 
-#: ../utils/ducks.py:622
+#: ../utils/ducks.py:630
 #, python-brace-format
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:642
+#: ../utils/ducks.py:650
 msgid "prof"
 msgstr ""
 
-#: ../utils/ducks.py:663
+#: ../utils/ducks.py:671
 #, python-brace-format
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:672
+#: ../utils/ducks.py:680
 #, python-brace-format
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
 
-#: ../utils/ducks.py:682
+#: ../utils/ducks.py:690
 #, python-brace-format
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
 "`dh!bang <answer>`."
 msgstr ""
 
-#: ../utils/ducks.py:688
+#: ../utils/ducks.py:696
 #, python-brace-format
 msgid "{hurter.mention}, Just give me digits !"
 msgstr ""
 
-#: ../utils/ducks.py:694
+#: ../utils/ducks.py:702
 #, python-brace-format
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
-#: ../utils/ducks.py:709
+#: ../utils/ducks.py:717
 msgid "baby"
 msgstr ""
 
-#: ../utils/ducks.py:715
+#: ../utils/ducks.py:723
 #, python-brace-format
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:723
+#: ../utils/ducks.py:731
 #, python-brace-format
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:737
+#: ../utils/ducks.py:745
 msgid "golden"
 msgstr ""
 
-#: ../utils/ducks.py:741
+#: ../utils/ducks.py:749
 #, python-brace-format
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:755
+#: ../utils/ducks.py:763
 msgid "plastic"
 msgstr ""
 
-#: ../utils/ducks.py:759
+#: ../utils/ducks.py:767
 #, python-brace-format
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:773
+#: ../utils/ducks.py:781
 msgid "kamikaze"
 msgstr ""
 
-#: ../utils/ducks.py:777
+#: ../utils/ducks.py:785
 #, python-brace-format
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:792
+#: ../utils/ducks.py:800
 msgid "mechanical"
 msgstr ""
 
-#: ../utils/ducks.py:815
+#: ../utils/ducks.py:823
 #, python-brace-format
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:827
+#: ../utils/ducks.py:835
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:832
+#: ../utils/ducks.py:840
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:850
+#: ../utils/ducks.py:858
 msgid "super"
 msgstr ""
 
-#: ../utils/ducks.py:860
+#: ../utils/ducks.py:868
 #, python-brace-format
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:881
+#: ../utils/ducks.py:889
 msgid "moad"
 msgstr ""
 
-#: ../utils/ducks.py:885
+#: ../utils/ducks.py:893
 #, python-brace-format
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:909
+#: ../utils/ducks.py:917
 msgid "armored"
 msgstr ""
 
-#: ../utils/ducks.py:913
+#: ../utils/ducks.py:921
 #, python-brace-format
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:937
+#: ../utils/ducks.py:945
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:944
+#: ../utils/ducks.py:952
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:953
+#: ../utils/ducks.py:961
 msgid "night"
 msgstr ""
 
-#: ../utils/ducks.py:957
+#: ../utils/ducks.py:965
 #, python-brace-format
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:968
+#: ../utils/ducks.py:976
 msgid "sleeping"
 msgstr ""
 
-#: ../utils/ducks.py:972
+#: ../utils/ducks.py:980
 #, python-brace-format
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
