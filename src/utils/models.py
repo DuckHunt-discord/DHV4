@@ -356,7 +356,7 @@ class Player(Model):
             return clover_exp
         return 0
 
-    async def get_current_coat_color(self) -> typing.Optional[Coats]:
+    def get_current_coat_color(self) -> typing.Optional[Coats]:
         if self.is_powerup_active('coat'):
             color_name = self.active_powerups.get('coat_color', None)
             if color_name:
