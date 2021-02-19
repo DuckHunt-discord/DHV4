@@ -350,7 +350,10 @@ class Player(Model):
 
     async def get_bonus_experience(self, given_experience):
         if self.is_powerup_active('clover'):
-            return self.active_powerups['clover_exp']
+            clover_exp = self.active_powerups['clover_exp']
+            if self.get_current_coat_color() == Coats.DARK_GREEN:
+                clover_exp += 1
+            return clover_exp
         return 0
 
     async def get_current_coat_color(self) -> typing.Optional[Coats]:
