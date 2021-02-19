@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 15:42+0100\n"
+"POT-Creation-Date: 2021-02-19 17:52+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -770,25 +770,25 @@ msgid ""
 "everyone who ever played."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:123
+#: ../cogs/support_server_commands.py:124
 msgid "Check the status of every shard the bot is hosting."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:151
+#: ../cogs/support_server_commands.py:152
 msgid ""
 "Shows a paginator with the most used commands on the bot. This is the poor "
 "version of a bot analytics.\n"
 "The counters get reset every time the bot reboot."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:166
+#: ../cogs/support_server_commands.py:167
 msgid ""
 "Shows a paginator with the users that have used the bot the most. This is "
 "again the poor version of a bot analytics.\n"
 "The counters get reset every time the bot reboot."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:194
+#: ../cogs/support_server_commands.py:195
 msgid ""
 "Shows a random duck image, courtesy of Globloxmen assets.\n"
 "This is mostly used to debug the random duck functions,\n"
@@ -798,7 +798,7 @@ msgid ""
 "defaults to yes."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:213
+#: ../cogs/support_server_commands.py:214
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
 "leaving, and planning ducks spawn for the\n"
@@ -808,14 +808,14 @@ msgid ""
 "english"
 msgstr ""
 
-#: ../cogs/support_server_commands.py:225
+#: ../cogs/support_server_commands.py:226
 msgid ""
 "Reset ducks planning, setting the ducks left to spawn counts to a value "
 "proportional to the time left spawning\n"
 "ducks today. This is executed everyday at midnight."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:238
+#: ../cogs/support_server_commands.py:239
 msgid ""
 "Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
 "from the planification,\n"
@@ -824,21 +824,21 @@ msgid ""
 "Duck will still be able to leave, even if this lock is set."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:263
+#: ../cogs/support_server_commands.py:264
 msgid ""
 "Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
 "usual if a planification isn't done."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:282
+#: ../cogs/support_server_commands.py:283
 msgid "Force a boss to spawn"
 msgstr ""
 
-#: ../cogs/support_server_commands.py:293
+#: ../cogs/support_server_commands.py:294
 msgid "Force the current event to change, and reroll a new one."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:304
+#: ../cogs/support_server_commands.py:305
 msgid "Congratulate an user giving him a trophy."
 msgstr ""
 
@@ -2861,20 +2861,20 @@ msgid ""
 "stopped... You can use `{ctx.prefix}settings enabled False` to stop the game."
 msgstr ""
 
-#: ../cogs/support_server_commands.py:158
+#: ../cogs/support_server_commands.py:159
 msgid "Most used commands"
 msgstr ""
 
-#: ../cogs/support_server_commands.py:160
+#: ../cogs/support_server_commands.py:161
 #, python-brace-format
 msgid "{n} uses"
 msgstr ""
 
-#: ../cogs/support_server_commands.py:173
+#: ../cogs/support_server_commands.py:174
 msgid "Top users"
 msgstr ""
 
-#: ../cogs/support_server_commands.py:175
+#: ../cogs/support_server_commands.py:176
 #, python-brace-format
 msgid "{n} commands used"
 msgstr ""
@@ -3185,7 +3185,7 @@ msgstr ""
 #: ../utils/coats.py:59
 #, python-brace-format
 msgid ""
-"This is not a valid color. You can choose between {levels}, or `random` for "
+"This is not a valid color. You can choose between {colors}, or `random` for "
 "a random color."
 msgstr ""
 
