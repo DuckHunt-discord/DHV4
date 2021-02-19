@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 14:52+0100\n"
+"POT-Creation-Date: 2021-02-19 15:10+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,15 +35,15 @@ msgstr ""
 msgid "Shoot at the duck that appeared first on the channel."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:344
+#: ../cogs/ducks_hunting_commands.py:371
 msgid "Reload your gun."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:406
+#: ../cogs/ducks_hunting_commands.py:433
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:459
+#: ../cogs/ducks_hunting_commands.py:486
 msgid "Revive yourself by eating brains"
 msgstr ""
 
@@ -596,34 +596,34 @@ msgstr ""
 msgid ""
 "Sabotage the weapon of another player.\n"
 "Their gun will jam and explode in their face the next time they press the "
-"trigger. [14 exp]"
+"trigger. [14* exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:603
+#: ../cogs/shopping_commands.py:607
 msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:637
+#: ../cogs/shopping_commands.py:641
 msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:672
+#: ../cogs/shopping_commands.py:676
 msgid ""
 "Protect yourself from water. If you are already wet, it also can be used as "
 "a change. [15 exp/24 hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:708
+#: ../cogs/shopping_commands.py:719
 msgid ""
 "Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:734
+#: ../cogs/shopping_commands.py:745
 msgid ""
 "Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:761
+#: ../cogs/shopping_commands.py:772
 msgid ""
 "Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
 msgstr ""
@@ -910,7 +910,7 @@ msgid ""
 "bot says."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:37 ../cogs/ducks_hunting_commands.py:412
+#: ../cogs/ducks_hunting_commands.py:37 ../cogs/ducks_hunting_commands.py:439
 msgid ""
 "The bot is still starting up, please wait a minute and retry. Ducks haven't "
 "been lost."
@@ -988,7 +988,7 @@ msgid ""
 "[**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:246
+#: ../cogs/ducks_hunting_commands.py:247
 #, python-brace-format
 msgid ""
 "🔫 You missed the duck... And *almost* shot {player_name} in the head, "
@@ -996,74 +996,91 @@ msgid ""
 "exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:279
+#: ../cogs/ducks_hunting_commands.py:263
+#, python-brace-format
+msgid ""
+"🔫 You took your weapon out, aimed it towards {player_name} head, but he had "
+"a pink coat just like yours. Using the power of love, you missed them on "
+"purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:272
+#, python-brace-format
+msgid ""
+"🔫 You missed the duck... And you saw your bullet go towards {player_name} "
+"head, but he had a pink coat just like yours. Just like in the movies, by "
+"using the power of love, you made the bullet hit the love tree 🌳 instead. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:306
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:282
+#: ../cogs/ducks_hunting_commands.py:309
 #, python-brace-format
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:288
+#: ../cogs/ducks_hunting_commands.py:315
 msgid ""
 "🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:291
+#: ../cogs/ducks_hunting_commands.py:318
 #, python-brace-format
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:298
+#: ../cogs/ducks_hunting_commands.py:325
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head. You died. You are "
 "legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:302
+#: ../cogs/ducks_hunting_commands.py:329
 #, python-brace-format
 msgid ""
 "🔫 You missed the duck... And shot {player_name} in the head, killing him on "
 "the spot. You are legally allowed to kill people. [**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:308
+#: ../cogs/ducks_hunting_commands.py:335
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head, dying instantly. "
 "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:312
+#: ../cogs/ducks_hunting_commands.py:339
 #, python-brace-format
 msgid ""
 "🔫 You missed the duck... And shot {player_name} in the head, killing him on "
 "the spot. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:320
+#: ../cogs/ducks_hunting_commands.py:347
 msgid ""
 "🌲 What did you try to aim at ? I guess you shot that tree, over here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:334
+#: ../cogs/ducks_hunting_commands.py:361
 msgid ""
 "🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector stopped "
 "the shot."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:339
+#: ../cogs/ducks_hunting_commands.py:366
 msgid ""
 "❓️ What are you trying to kill exactly ? There are no ducks here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:355
+#: ../cogs/ducks_hunting_commands.py:382
 #, python-brace-format
 msgid ""
 "Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
@@ -1071,25 +1088,25 @@ msgid ""
 "weapon`)"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:364
+#: ../cogs/ducks_hunting_commands.py:391
 msgid "☀️️ You unjam your weapon !"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:376
+#: ../cogs/ducks_hunting_commands.py:403
 #, python-brace-format
 msgid ""
 "🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
 "Magazines: {current_magazines}/{max_magazines} "
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:386
+#: ../cogs/ducks_hunting_commands.py:413
 #, python-brace-format
 msgid ""
 "🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/"
 "{max_bullets} | Magazines: {current_magazines}/{max_magazines} "
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:395
+#: ../cogs/ducks_hunting_commands.py:422
 #, python-brace-format
 msgid ""
 "🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: "
@@ -1097,44 +1114,44 @@ msgid ""
 "{max_magazines} "
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:420
+#: ../cogs/ducks_hunting_commands.py:447
 #, python-brace-format
 msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:426
+#: ../cogs/ducks_hunting_commands.py:453
 msgid "tree"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:427
+#: ../cogs/ducks_hunting_commands.py:454
 msgid "❌ I have no idea what you want to hug..."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:430
+#: ../cogs/ducks_hunting_commands.py:457
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:439
+#: ../cogs/ducks_hunting_commands.py:466
 #, python-brace-format
 msgid ""
 "{you.mention} hugged {other.mention}. The developer of the bot is really "
 "happy that you are loving it."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:445
+#: ../cogs/ducks_hunting_commands.py:472
 #, python-brace-format
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:452
+#: ../cogs/ducks_hunting_commands.py:479
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:471
+#: ../cogs/ducks_hunting_commands.py:498
 msgid "You are already alive and well."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:481
+#: ../cogs/ducks_hunting_commands.py:508
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr ""
@@ -2317,18 +2334,18 @@ msgid ""
 "-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:583
+#: ../cogs/shopping_commands.py:587
 msgid "❌ That weapon is already sabotaged."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:596
+#: ../cogs/shopping_commands.py:600
 #, python-brace-format
 msgid ""
 "💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:598
+#: ../cogs/shopping_commands.py:602
 #, python-brace-format
 msgid ""
 "I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
@@ -2336,21 +2353,21 @@ msgid ""
 "{db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:633
+#: ../cogs/shopping_commands.py:637
 #, python-brace-format
 msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:666
+#: ../cogs/shopping_commands.py:670
 #, python-brace-format
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
 "seconds. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:668
+#: ../cogs/shopping_commands.py:672
 #, python-brace-format
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
@@ -2358,34 +2375,39 @@ msgid ""
 "**I couldn't DM you this message**"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:686
+#: ../cogs/shopping_commands.py:690
 msgid "❌ I'm afraid you cannot choose your coat color yet."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:697
+#: ../cogs/shopping_commands.py:701
 #, python-brace-format
 msgid ""
 "💸 You bought a new, {color} coloured coat. You don't look very good, but you "
-"are very much protected from water. [Bought: -{ITEM_COST} exp, total "
-"{db_hunter.experience} exp]"
+"are very much protected from water. The tag on the coat says the "
+"follwoing :\n"
+"> 100% Polyester, machine washable\n"
+"> {hint}\n"
+"> Made in a CACAD factory also producing homing bullets\n"
+"\n"
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:720
+#: ../cogs/shopping_commands.py:731
 msgid "❌ You already use a kill license."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:729
+#: ../cogs/shopping_commands.py:740
 #, python-brace-format
 msgid ""
 "💸 You bought a kill licence. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:744
+#: ../cogs/shopping_commands.py:755
 msgid "❌ You already have an automatic reloader."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:756
+#: ../cogs/shopping_commands.py:767
 #, python-brace-format
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
@@ -2393,11 +2415,11 @@ msgid ""
 "{db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:771
+#: ../cogs/shopping_commands.py:782
 msgid "❌ You already have homing bullets."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:783
+#: ../cogs/shopping_commands.py:794
 #, python-brace-format
 msgid ""
 "💸 You are now using the brand new Homing Bullets made by CACAC (the Comitee "
@@ -2529,23 +2551,23 @@ msgstr ""
 msgid "{target.name} statistics (click me!)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:419
+#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:422
 msgid "Bullets"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:422
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:425
 msgid "Magazines"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:405
+#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:408
 msgid "Experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:406
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:409
 msgid "Level"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:411
+#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:414
 msgid "Accuracy"
 msgstr ""
 
@@ -2555,7 +2577,7 @@ msgstr ""
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:415
+#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:418
 msgid "Reliability"
 msgstr ""
 
@@ -3078,7 +3100,7 @@ msgid ""
 msgstr ""
 
 #: ../utils/coats.py:20
-msgid "Basic"
+msgid "Blank"
 msgstr ""
 
 #: ../utils/coats.py:21
@@ -4201,10 +4223,10 @@ msgstr ""
 msgid "Can't set such a high level"
 msgstr ""
 
-#: ../utils/models.py:427
+#: ../utils/models.py:430
 msgid "You leveled up!"
 msgstr ""
 
-#: ../utils/models.py:431
+#: ../utils/models.py:434
 msgid "You leveled down!"
 msgstr ""

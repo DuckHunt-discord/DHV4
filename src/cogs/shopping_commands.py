@@ -698,12 +698,19 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['coat'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bought a new, {color} coloured coat. You don't look very good, but you are very much protected from water. "
+        await ctx.reply(_("💸 You bought a new, {color} coloured coat. You don't look very good, "
+                          "but you are very much protected from water. "
+                          "The tag on the coat says the follwoing :\n"
+                          "> 100% Polyester, machine washable\n"
+                          "> {hint}\n"
+                          "> Made in a CACAD factory also producing homing bullets\n\n"
                           "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
                           db_hunter=db_hunter,
                           ITEM_COST=ITEM_COST,
-                          color=_(color.value[0])
+                          color=_(color.value[0]),
+                          hint=_(color.value[1])
                           ))
+
 
     @shop.command(aliases=["29", "licence", "kill_permit", "permit", "licence_to_kill", "license_to_kill",
                            "licencetokill", "licensetokill", "kill_licence", "kill_license",
