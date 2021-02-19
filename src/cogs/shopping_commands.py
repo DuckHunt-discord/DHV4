@@ -94,7 +94,11 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['magazines'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You added a magazine in your weapon. Time to reload! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
+
+        if db_hunter.bullets <= 0:
+            await ctx.reply(_("💸 You added a magazine in your weapon. Time to reload! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
+        else:
+            await ctx.reply(_("💸 You added a magazine in your weapon. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["3", "ap_ammo"])
     async def ap(self, ctx: MyContext):
