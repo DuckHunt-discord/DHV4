@@ -426,8 +426,11 @@ class Duck:
 
         if not db_hunter.is_powerup_active('silencer'):
             frighten_chance = db_channel.duck_frighten_chance
-            if db_hunter.get_current_coat_color() == Coats.ORANGE:
+            coat_color = db_hunter.get_current_coat_color()
+            if coat_color == Coats.ORANGE:
                 frighten_chance += 3
+            elif coat_color == Coats.CAMO:
+                frighten_chance -= 3
             return random.randint(1, 100) <= frighten_chance
         else:
             return False
