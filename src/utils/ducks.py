@@ -496,6 +496,11 @@ class Duck:
 
     async def maybe_bushes_message(self, hunter, db_hunter) -> typing.Optional[typing.Callable]:
         bush_chance = 13
+        coat_color = db_hunter.get_current_coat_color()
+
+        if coat_color == Coats.BLUE:
+            bush_chance += 7
+
         if not random.randint(1, 100) <= bush_chance:
             return None
 
