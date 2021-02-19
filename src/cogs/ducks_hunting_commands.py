@@ -38,6 +38,7 @@ class DucksHuntingCommands(Cog):
             return False
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
+        hunter_coat_color = db_hunter.get_current_coat_color()
         now = int(time.time())
 
         language_code = await ctx.get_language_code()
@@ -202,6 +203,9 @@ class DucksHuntingCommands(Cog):
 
         missed = not compute_luck(accuracy)
 
+        if target and hunter_coat_color == Coats.RED:
+            missed = False
+
         if (missed and not target) or (target and not missed):
             if duck:
                 await duck.release()
@@ -246,7 +250,10 @@ class DucksHuntingCommands(Cog):
                 has_valid_kill_licence = db_hunter.is_powerup_active('kill_licence') and not murder
 
                 db_hunter.shooting_stats['killed'] += 1
-                if not has_valid_kill_licence:
+
+                if hunter_coat_color == Coats.RED and murder:
+                    await db_hunter.edit_experience_with_levelups(ctx, -15)
+                elif not has_valid_kill_licence:
                     await db_hunter.edit_experience_with_levelups(ctx, -15)
                     db_hunter.active_powerups["confiscated"] = 1
 
@@ -263,14 +270,24 @@ class DucksHuntingCommands(Cog):
                     await db_hunter.save()
 
                 if murder:
-                    if db_target.id == db_hunter.id:
-                        await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
-                                          ))
+                    if hunter_coat_color != Coats.RED:
+                        if db_target.id == db_hunter.id:
+                            await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
+                                              ))
+                        else:
+                            await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player_name} head, and pulled the trigger. "
+                                              "[**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
+                                              player_name=player_name,
+                                              ))
                     else:
-                        await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player_name} head, and pulled the trigger. "
-                                          "[**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
-                                          player_name=player_name,
-                                          ))
+                        if db_target.id == db_hunter.id:
+                            await ctx.reply(_("🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]",
+                                              ))
+                        else:
+                            await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player_name} head, and pulled the trigger. "
+                                              "[**RED COAT**: Kept weapon][**MURDER**: -15 exp]",
+                                              player_name=player_name,
+                                              ))
                 else:
                     if has_valid_kill_licence:
                         if db_target.id == db_hunter.id:
