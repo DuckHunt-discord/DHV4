@@ -234,7 +234,9 @@ class ShoppingCommands(Cog):
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         if db_hunter.is_powerup_active("sight"):
-            await ctx.reply(_("❌ You added a new sight to your weapon recently. You don't need a new one."))
+            await ctx.reply(_("❌ You added a new sight to your weapon recently. "
+                              "You don't need a new one for your next {uses} shots.",
+                              uses=db_hunter.active_powerups["sight"]))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
@@ -257,7 +259,9 @@ class ShoppingCommands(Cog):
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         if db_hunter.is_powerup_active("detector"):
-            await ctx.reply(_("❌ You already have that infrared detector on your weapon."))
+            await ctx.reply(_("❌ You already have that infrared detector on your weapon. "
+                              "It is still good for {times} missed shots.",
+                              times=db_hunter.active_powerups["detector"]))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
@@ -275,12 +279,18 @@ class ShoppingCommands(Cog):
         ITEM_COST = 5
 
         _ = await ctx.get_translate_function()
+
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         if db_hunter.is_powerup_active('silencer'):
-            await ctx.reply(_("❌ You already use a silencer."))
+            language_code = await ctx.get_language_code()
+            time_delta = get_timedelta(db_hunter.active_powerups['silencer'],
+                                       time.time())
+
+            await ctx.reply(_("❌ You already use a silencer. It's still good for {time_delta}, come back then.",
+                              time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
