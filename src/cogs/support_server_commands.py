@@ -99,7 +99,8 @@ class SupportServerCommands(Cog):
                     embed.add_field(name="Boss Loop", value=f"✅ {boss_cog.iterations_spawn} spawns "
                                                             f"({ round(boss_cog.luck) }% luck), {boss_cog.background_loop.current_loop} it",
                                     inline=True)
-                embed.add_field(name="Boss Loop", value=f"✅ {boss_cog.background_loop.current_loop} it", inline=True)
+                else:
+                    embed.add_field(name="Boss Loop", value=f"✅ {boss_cog.background_loop.current_loop} it", inline=True)
         else:
             embed.add_field(name="Boss Loop", value=f"❌ Unloaded", inline=True)
 
