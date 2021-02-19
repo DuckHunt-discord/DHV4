@@ -1,8 +1,18 @@
+import random
 from enum import Enum, unique
 
+
 # Fake translation
+from babel.lists import format_list
+from discord.ext import commands
+
+
 def _(string):
     return string
+
+
+def get_random_coat_type():
+    return random.choice(list(Coats))
 
 
 @unique
@@ -37,3 +47,16 @@ class Coats(Enum):
 
     PINK       = _("Pink"), \
                  _("Power of love: You can't kill players with the same coat color.")
+
+    @classmethod
+    async def convert(cls, ctx, argument: str):
+        if argument.upper() == "RANDOM":
+            return None
+        try:
+            return getattr(cls, argument.upper())
+        except AttributeError:
+            _ = await ctx.get_translate_function()
+            raise commands.BadArgument(_("This is not a valid color. "
+                                         "You can choose between {levels}, or `random` for a random color.",
+                                         levels=format_list(list(cls.__members__),
+                                                            locale=await ctx.get_language_code())))

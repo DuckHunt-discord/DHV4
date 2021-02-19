@@ -1,12 +1,14 @@
 import asyncio
 import random
 import time
+from typing import Optional
 
 import discord
 from babel.dates import format_timedelta
 from discord.ext import commands
 
 from utils import checks, ducks
+from utils.coats import Coats, get_random_coat_type
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.events import Events
@@ -666,7 +668,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp].\n**I couldn't DM you this message**", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
     @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
-    async def coat(self, ctx: MyContext):
+    async def coat(self, ctx: MyContext, color: Optional[Coats] = None):
         """
         Protect yourself from water. If you are already wet, it also can be used as a change. [15 exp/24 hrs]
         """
@@ -678,15 +680,26 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
+        if color is None:
+            color = get_random_coat_type()
+        elif db_hunter.prestige < 2:
+            await ctx.reply(_("❌ I'm afraid you cannot choose your coat color yet."))
+            return
+
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["wet"] = 0
         db_hunter.active_powerups["coat"] = int(time.time()) + DAY
+        db_hunter.active_powerups["coat_colour"] = color.name
 
         db_hunter.bought_items['coat'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bought some a new coat. You don't look very good, but you are very much protected from water. "
-                          "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
+        await ctx.reply(_("💸 You bought a new, {color} coloured coat. You don't look very good, but you are very much protected from water. "
+                          "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
+                          db_hunter=db_hunter,
+                          ITEM_COST=ITEM_COST,
+                          color=_(color.value[0])
+                          ))
 
     @shop.command(aliases=["29", "licence", "kill_permit", "permit", "licence_to_kill", "license_to_kill",
                            "licencetokill", "licensetokill", "kill_licence", "kill_license",
