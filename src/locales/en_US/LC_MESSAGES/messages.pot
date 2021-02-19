@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 15:10+0100\n"
+"POT-Creation-Date: 2021-02-19 15:42+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2382,9 +2382,10 @@ msgstr ""
 #: ../cogs/shopping_commands.py:701
 #, python-brace-format
 msgid ""
-"💸 You bought a new, {color} coloured coat. You don't look very good, but you "
-"are very much protected from water. The tag on the coat says the "
-"follwoing :\n"
+"💸 You bought a new, **{color}** coat. \n"
+"You don't look very good, but you are very much protected from water.\n"
+"\n"
+"The tag on the coat says the following :\n"
 "> 100% Polyester, machine washable\n"
 "> {hint}\n"
 "> Made in a CACAD factory also producing homing bullets\n"
@@ -3100,7 +3101,7 @@ msgid ""
 msgstr ""
 
 #: ../utils/coats.py:20
-msgid "Blank"
+msgid "White"
 msgstr ""
 
 #: ../utils/coats.py:21

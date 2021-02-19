@@ -17,7 +17,7 @@ def get_random_coat_type():
 
 @unique
 class Coats(Enum):
-    DEFAULT    = _("Blank"), \
+    DEFAULT    = _("White"), \
                  _("A useful coat when it rains.")
 
     ORANGE     = _("Orange"), \
