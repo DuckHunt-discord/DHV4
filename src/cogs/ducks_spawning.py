@@ -253,9 +253,23 @@ class DucksSpawning(Cog):
         embed.set_footer(text="Ducks that were on the channel previously should have been restored, and can be killed.")
         await self.bot.log_to_channel(embed=embed)
 
-        self.bot.logger.info(f"Rolling an event for the rest of the hour")
+        self.bot.logger.info(f"Restoring an event for the rest of the hour")
 
-        await self.change_event()
+        try:
+            with open("cache/event_cache.json", "r") as f:
+                event_cache = json.load(f)
+            event_name = event_cache["current_event"]
+            event = Events[event_name]
+            self.bot.current_event = event
+        except FileNotFoundError:
+            self.bot.logger.warning("No event_cache.json found. Normal on first run. Rolling an event instead.")
+            await self.change_event()
+        except KeyError:
+            self.bot.logger.exception("event_cache.json found, but couldn't read it. Rolling an event instead.")
+            await self.change_event()
+
+        game = discord.Game(self.bot.current_event.value[0])
+        await self.bot.change_presence(status=discord.Status.online, activity=game)
 
         self.bot.logger.info(f"Ducks spawning started")
 
@@ -306,5 +320,9 @@ class DucksSpawning(Cog):
 
         await self.bot.log_to_channel(embed=embed)
 
+        with open("cache/event_cache.json", "w") as f:
+            json.dump({
+                "current_event": self.bot.current_event.name
+            }, f)
 
 setup = DucksSpawning.setup
