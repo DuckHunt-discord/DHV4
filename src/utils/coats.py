@@ -24,7 +24,7 @@ class Coats(Enum):
                  _("Better visibility: Increase your chance to frighten ducks, and reduce your chance to get shot by another hunter.")
 
     CAMO       = _("Camo"), \
-                 _("Lower visibility: Increase your chance to get shot by another hunter, but less chance to frighten ducks.")
+                 _("Lower visibility: Less chance to frighten ducks.")
 
     BLUE       = _("Blue"), \
                  _("Lucky find: Increase your chance to find items in bushes.")
