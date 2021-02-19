@@ -13,6 +13,8 @@ from tortoise import Tortoise, fields
 from tortoise.models import Model
 
 from enum import IntEnum, unique
+
+from utils.coats import Coats
 from utils.levels import get_level_info
 from utils.translations import translate
 
@@ -350,6 +352,17 @@ class Player(Model):
         if self.is_powerup_active('clover'):
             return self.active_powerups['clover_exp']
         return 0
+
+    async def get_current_coat_color(self) -> typing.Optional[Coats]:
+        if self.is_powerup_active('coat'):
+            color_name = self.active_powerups.get('coat_color', None)
+            if color_name:
+                return Coats[color_name]
+            else:
+                # This is for older players that bought a "no_colored" coat.
+                return Coats.DEFAULT
+        else:
+            return None
 
     def level_info(self):
         li = get_level_info(self.experience).copy()

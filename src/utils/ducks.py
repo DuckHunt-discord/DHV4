@@ -13,6 +13,7 @@ from discord.utils import escape_markdown
 from utils import config
 from utils.bot_class import MyBot
 from utils.bushes import bushes_objects, bushes_weights
+from utils.coats import Coats
 from utils.events import Events
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player
@@ -425,6 +426,8 @@ class Duck:
 
         if not db_hunter.is_powerup_active('silencer'):
             frighten_chance = db_channel.duck_frighten_chance
+            if db_hunter.get_current_coat_color() == Coats.ORANGE:
+                frighten_chance += 3
             return random.randint(1, 100) <= frighten_chance
         else:
             return False

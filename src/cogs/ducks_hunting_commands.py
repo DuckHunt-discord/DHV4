@@ -8,6 +8,7 @@ import discord
 from discord.ext import commands
 
 from utils import checks
+from utils.coats import Coats
 from utils.events import Events
 from utils.interaction import get_timedelta, SmartMemberConverter
 
@@ -218,18 +219,36 @@ class DucksHuntingCommands(Cog):
                 killed_someone = killed_someone or compute_luck(db_channel.kill_on_miss_chance)
 
             if killed_someone:
+                if murder:
+                    db_target: Player = await get_player(target, ctx.channel)
+                    db_hunter.shooting_stats['murders'] += 1
+                else:
+                    db_target: Player = await get_random_player(db_channel)
+
+                if db_channel.mentions_when_killed:
+                    player_name = f"<@{db_target.member.user.discord_id}>"
+                else:
+                    player_name = db_target.member.user.name
+
+                if not murder and db_target.get_current_coat_color() == Coats.ORANGE and random.randint(0, 100) <= 75:
+                    db_hunter.shooting_stats['near_misses'] += 1
+                    db_target.shooting_stats['near_missed'] += 1
+
+                    await ctx.reply(
+                          _("🔫 You missed the duck... And *almost* shot {player_name} in the head, missing him by a few hairs. "
+                            "Their orange coat saved them. [**MISSED**: -2 exp]",
+                            player_name=player_name,
+                            ))
+
+                    await asyncio.gather(db_target.save(), db_hunter.save())
+                    return
+
                 has_valid_kill_licence = db_hunter.is_powerup_active('kill_licence') and not murder
 
                 db_hunter.shooting_stats['killed'] += 1
                 if not has_valid_kill_licence:
                     await db_hunter.edit_experience_with_levelups(ctx, -15)
                     db_hunter.active_powerups["confiscated"] = 1
-
-                if murder:
-                    db_target: Player = await get_player(target, ctx.channel)
-                    db_hunter.shooting_stats['murders'] += 1
-                else:
-                    db_target: Player = await get_random_player(db_channel)
 
                 if db_target.id == db_hunter.id:
                     db_target = db_hunter
@@ -242,11 +261,6 @@ class DucksHuntingCommands(Cog):
                     await asyncio.gather(db_target.save(), db_hunter.save())  # Save both at the same time
                 else:
                     await db_hunter.save()
-
-                if db_channel.mentions_when_killed:
-                    player_name = f"<@{db_target.member.user.discord_id}>"
-                else:
-                    player_name = db_target.member.user.name
 
                 if murder:
                     if db_target.id == db_hunter.id:
