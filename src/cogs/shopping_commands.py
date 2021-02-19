@@ -693,7 +693,7 @@ class ShoppingCommands(Cog):
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["wet"] = 0
         db_hunter.active_powerups["coat"] = int(time.time()) + DAY
-        db_hunter.active_powerups["coat_colour"] = color.name
+        db_hunter.active_powerups["coat_color"] = color.name
 
         db_hunter.bought_items['coat'] += 1
 
