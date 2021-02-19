@@ -57,6 +57,6 @@ class Coats(Enum):
         except AttributeError:
             _ = await ctx.get_translate_function()
             raise commands.BadArgument(_("This is not a valid color. "
-                                         "You can choose between {levels}, or `random` for a random color.",
-                                         levels=format_list(list(cls.__members__),
+                                         "You can choose between {colors}, or `random` for a random color.",
+                                         colors=format_list(list(cls.__members__),
                                                             locale=await ctx.get_language_code())))
