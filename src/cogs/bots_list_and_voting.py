@@ -287,6 +287,10 @@ class BotsListVoting(Cog):
     @Cog.listener("on_guild_remove")
     @Cog.listener("on_ready")
     async def post_stats(self, *args, **kwargs):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(30)
+        await self.bot.wait_until_ready()
+
         if int(time.time()) - self.last_stats_post < 30 * 60:
             return "Can't post stats more than twice per hour."
         else:
