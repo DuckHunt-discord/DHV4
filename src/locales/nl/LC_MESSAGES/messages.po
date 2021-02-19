@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 10:41+0100\n"
+"POT-Creation-Date: 2021-02-19 17:52+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -679,10 +679,8 @@ msgstr ""
 msgid ""
 "Sabotage the weapon of another player.\n"
 "Their gun will jam and explode in their face the next time they press the "
-"trigger. [14 exp]"
+"trigger. [14* exp]"
 msgstr ""
-"Saboteer het wapen van een andere speler; hun geweer zal vastlopen en in hun "
-"gezicht exploderen de volgende keer dat ze de trekker indrukken. [14 exp]"
 
 msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
 msgstr ""
@@ -1099,6 +1097,25 @@ msgstr ""
 "je klachten doorsturen naar het CACAD. [** WAPEN GECONFISQUEERD**] [** "
 "GEMIST **: -2 exp] [** MOORD **: -15 exp]"
 
+msgid ""
+"🔫 You missed the duck... And *almost* shot {player_name} in the head, "
+"missing him by a few hairs. Their orange coat saved them. [**MISSED**: -2 "
+"exp]"
+msgstr ""
+
+msgid ""
+"🔫 You took your weapon out, aimed it towards {player_name} head, but he had "
+"a pink coat just like yours. Using the power of love, you missed them on "
+"purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"🔫 You missed the duck... And you saw your bullet go towards {player_name} "
+"head, but he had a pink coat just like yours. Just like in the movies, by "
+"using the power of love, you made the bullet hit the love tree 🌳 instead. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 "🔫 Je hebt zelfmoord gepleegd. [** WAPEN GECONFISQUEERD**] [** MOORD **: -15 "
@@ -1111,6 +1128,15 @@ msgstr ""
 "🔫 Je haalde je wapen tevoorschijn, richtte het rechtstreeks op het hoofd "
 "van {player_name} en haalde de trekker over. [** WAPEN GECONFISQUEERD**][** "
 "MOORD **: -15 exp]"
+
+msgid ""
+"🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, "
+"and pulled the trigger. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
 
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head. You died. You are "
@@ -2364,14 +2390,20 @@ msgstr ""
 "seconden spawnen. [Gekocht: -{ITEM_COST} exp]\n"
 "**Ik kon je dit bericht niet DM'en**"
 
-msgid ""
-"💸 You bought some a new coat. You don't look very good, but you are very "
-"much protected from water. [Bought: -{ITEM_COST} exp, total {db_hunter."
-"experience} exp]"
+msgid "❌ I'm afraid you cannot choose your coat color yet."
 msgstr ""
-"💸 Je hebt een nieuwe jas gekocht. Je ziet er niet erg goed uit, maar je "
-"bent erg beschermd tegen water. [Gekocht: -{ITEM_COST} exp, totaal "
-"{db_hunter.experience} exp]"
+
+msgid ""
+"💸 You bought a new, **{color}** coat. \n"
+"You don't look very good, but you are very much protected from water.\n"
+"\n"
+"The tag on the coat says the following :\n"
+"> 100% Polyester, machine washable\n"
+"> {hint}\n"
+"> Made in a CACAD factory also producing homing bullets\n"
+"\n"
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
 
 msgid "❌ You already use a kill license."
 msgstr "❌ Je gebruikt al een kill-licentie."
@@ -2967,6 +2999,74 @@ msgid ""
 msgstr ""
 "Als je de struiken rond de eend doorzoekt, vind je... **Een "
 "infrarooddetector**."
+
+msgid "White"
+msgstr ""
+
+msgid "A useful coat when it rains."
+msgstr ""
+
+msgid "Orange"
+msgstr ""
+
+msgid ""
+"Better visibility: Increase your chance to frighten ducks, and reduce your "
+"chance to get shot by another hunter."
+msgstr ""
+
+msgid "Camo"
+msgstr ""
+
+msgid "Lower visibility: Less chance to frighten ducks."
+msgstr ""
+
+msgid "Blue"
+msgstr ""
+
+msgid "Lucky find: Increase your chance to find items in bushes."
+msgstr ""
+
+msgid "Red"
+msgstr ""
+
+msgid ""
+"Hungry for blood: Increase your murder skills, reduce murder penalties."
+msgstr ""
+
+msgid "Yellow"
+msgstr ""
+
+msgid "Sun powers: Mirrors are less effective against you."
+msgstr ""
+
+msgid "Dark green"
+msgstr ""
+
+msgid "Farming skills: Clovers give you one more experience point."
+msgstr ""
+
+msgid "Black"
+msgstr ""
+
+msgid "Secret service: Sabotages are cheaper."
+msgstr ""
+
+msgid "Light blue"
+msgstr ""
+
+msgid "Sea powers: You are immune to water buckets."
+msgstr ""
+
+msgid "Pink"
+msgstr ""
+
+msgid "Power of love: You can't kill players with the same coat color."
+msgstr ""
+
+msgid ""
+"This is not a valid color. You can choose between {colors}, or `random` for "
+"a random color."
+msgstr ""
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
