@@ -152,6 +152,22 @@ class Tags(Cog):
         await ctx.reply(_("👌 Tag {tag.name} edited.", tag=tag))
 
     @tags.command()
+    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
+    async def delete(self, ctx: MyContext, tag_name: TagName):
+        """
+        Delete an existing tag.
+        """
+        _ = await ctx.get_translate_function()
+
+        tag = await get_tag(tag_name, increment_uses=False)
+        if not tag:
+            await ctx.reply(_("❌ This tag doesn't exist."))
+            return
+
+        await tag.delete()
+        await ctx.reply(_("👌 Tag {tag.name} deleted.", tag=tag))
+
+    @tags.command()
     async def raw(self, ctx: MyContext, *, tag_name: TagName):
         """
         View the raw version of the tag, with markdown escaped. This is useful to use as a base for editing a tag.
