@@ -79,6 +79,13 @@ global_access_keys = [
     "d84af260-c806-4066-8387-1d5144b7fa72", # DuckHunt WebInterface (exemple)
 ]
 
+[cogs.Tags]
+allowed_in_guilds = [
+    195260081036591104, # DuckHunt Support Server
+    734810932529856652, # DuckHunt Beta
+]
+
+
 [cogs.BotsListVoting]
 statcord_token = "abcdef"
 

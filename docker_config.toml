@@ -76,6 +76,12 @@ route_prefix = "/api"
 # You can generate them easily. https://www.uuidgenerator.net/version4
 global_access_keys = []
 
+[cogs.Tags]
+allowed_in_guilds = [
+    195260081036591104, # DuckHunt Support Server
+    734810932529856652, # DuckHunt Beta
+]
+
 [cogs.BotsListVoting]
 statcord_token = "abcdef"
 
