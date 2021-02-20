@@ -45,6 +45,15 @@ class TagMenuSource(menus.ListPageSource):
         if len(entry) == 0:
             entry = " "
 
+        # Embed the image directly
+        lines = entry.splitlines()
+        last_line = lines[-1]
+        if last_line.endswith(".jpg") or last_line.endswith(".png") or last_line.endswith(".gif"):
+            if last_line.startswith("https://") and not " " in last_line:
+                e.set_image(url=last_line)
+
+        entry = "\n".join(lines[:-1])
+
         e.description = entry
 
         return e
