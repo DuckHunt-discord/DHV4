@@ -1,6 +1,8 @@
 """
 Tags are snippet of text that can be used to quickly send a message.
 """
+from typing import List
+
 import discord
 from discord.ext import commands, menus
 
@@ -60,6 +62,31 @@ class TagMenuSource(menus.ListPageSource):
 
 async def show_tag_embed(ctx: MyContext, tag: Tag):
     pages = menus.MenuPages(source=TagMenuSource(ctx, tag), clear_reactions_after=True)
+    await pages.start(ctx)
+
+
+class TagsListMenuSource(menus.ListPageSource):
+    def __init__(self, ctx: MyContext, tags: List[Tag]):
+        self.ctx = ctx
+        self.tags = tags
+
+        super().__init__(tags, per_page=10)
+
+    async def format_page(self, menu, entries):
+        _ = await self.ctx.get_translate_function(user_language=True)
+        e = discord.Embed()
+        e.url = "https://duckhunt.me/tags"
+
+        for tag in entries:
+            e.add_field(inline=False, name=tag.name, value=_("{u} uses, {r} revisions.",
+                                                             u=tag.uses,
+                                                             r=tag.revisions))
+
+        return e
+
+
+async def show_tagslist_embed(ctx: MyContext, tags: List[Tag]):
+    pages = menus.MenuPages(source=TagsListMenuSource(ctx, tags), clear_reactions_after=True)
     await pages.start(ctx)
 
 
@@ -131,7 +158,8 @@ class Tags(Cog):
         tag_alias = TagAlias(owner=db_user, tag=target_tag, name=alias_name)
         await tag_alias.save()
 
-        await ctx.reply(_("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag=tag_alias))
+        await ctx.reply(
+            _("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag=tag_alias))
 
     @tags.command()
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
@@ -166,6 +194,17 @@ class Tags(Cog):
 
         await tag.delete()
         await ctx.reply(_("👌 Tag {tag.name} deleted.", tag=tag))
+
+    @tags.command()
+    async def list(self, ctx: MyContext):
+        """
+        List all the existing tags.
+        """
+        _ = await ctx.get_translate_function()
+
+        tags = await Tag.all().order_by('-uses')
+
+        await show_tagslist_embed(ctx, tags)
 
     @tags.command()
     async def raw(self, ctx: MyContext, *, tag_name: TagName):
