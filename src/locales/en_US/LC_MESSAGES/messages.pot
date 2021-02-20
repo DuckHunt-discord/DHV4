@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 17:52+0100\n"
+"POT-Creation-Date: 2021-02-20 23:32+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2877,6 +2877,34 @@ msgstr ""
 #: ../cogs/support_server_commands.py:176
 #, python-brace-format
 msgid "{n} commands used"
+msgstr ""
+
+#: ../cogs/tags.py:83 ../cogs/tags.py:97
+msgid "❌ This tag already exists."
+msgstr ""
+
+#: ../cogs/tags.py:89
+#, python-brace-format
+msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
+msgstr ""
+
+#: ../cogs/tags.py:103
+msgid "❌ This tag doesn't exist."
+msgstr ""
+
+#: ../cogs/tags.py:110
+#, python-brace-format
+msgid ""
+"👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)"
+msgstr ""
+
+#: ../cogs/tags.py:119 ../cogs/tags.py:133
+msgid "❌ This tag doesn't exist yet. You might want to create it."
+msgstr ""
+
+#: ../cogs/tags.py:125
+#, python-brace-format
+msgid "👌 Tag {tag.name} edited."
 msgstr ""
 
 #: ../utils/achievements.py:12
