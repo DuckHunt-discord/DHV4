@@ -137,7 +137,7 @@ class Tags(Cog):
 
         escaped_content = discord.utils.escape_markdown(tag.content)
 
-        await ctx.reply(f"```md\n{escaped_content}\n```")
+        await ctx.reply(escaped_content)
 
 
 
