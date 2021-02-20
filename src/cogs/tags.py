@@ -33,7 +33,7 @@ class TagMenuSource(menus.ListPageSource):
         self.ctx = ctx
         self.tag = tag
 
-        data = tag.content.split('\n---\n')
+        data = [s.strip(" \n") for s in tag.content.split('\n\n---')]
         super().__init__(data, per_page=1)
 
     async def format_page(self, menu, entry):
