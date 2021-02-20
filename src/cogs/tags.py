@@ -17,13 +17,13 @@ class TagName(commands.clean_content):
         lower = converted.lower().strip()
 
         if not lower:
-            raise commands.BadArgument('Missing tag name.')
+            raise commands.BadArgument('Missing tag name')
 
         if " " in lower:
-            raise commands.BadArgument("Tags names can't contain spaces.")
+            raise commands.BadArgument("Tags names can't contain spaces")
 
         if len(lower) > 90:
-            raise commands.BadArgument('Tag name is a maximum of 90 characters.')
+            raise commands.BadArgument('Tag name is a maximum of 90 characters')
 
         return lower
 
@@ -127,6 +127,8 @@ class Tags(Cog):
     @tags.command()
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def raw(self, ctx: MyContext, *, tag_name: TagName):
+        _ = await ctx.get_translate_function()
+
         tag = await get_tag(tag_name)
 
         if not tag:
