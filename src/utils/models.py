@@ -574,6 +574,60 @@ class Vote(Model):
     multiplicator = fields.IntField(default=1)
 
 
+class Tag(Model):
+    owner = fields.ForeignKeyField('models.DiscordUser', related_name='tags')
+
+    # Statistics
+    created = fields.DatetimeField(auto_now_add=True)
+    last_modified = fields.DatetimeField(auto_now=True)
+    uses = fields.IntField(default=0)
+    revisions = fields.IntField(default=0)
+
+    # Tag
+    official = fields.BooleanField(default=False)
+    name = fields.CharField(max_length=90, db_index=True, unique=True)
+    content = fields.TextField()
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class TagAlias(Model):
+    owner = fields.ForeignKeyField('models.DiscordUser', related_name='tags_aliases')
+    tag = fields.ForeignKeyField('models.Tag', related_name='aliases')
+
+    uses = fields.IntField(default=0)
+
+    name = fields.CharField(max_length=90, db_index=True, unique=True)
+
+    def __str__(self):
+        return f"{self.name} -> {self.tag.name}"
+
+
+async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
+    tag: typing.Optional[Tag] = await Tag.filter(name=name).first()
+    if tag:
+        if increment_uses:
+            tag.uses += 1
+            await tag.save()
+        return tag
+    else:
+        # Search for an alias
+        alias: typing.Optional[TagAlias] = await TagAlias.filter(name=name).prefetch_related("tag").first()
+        if alias:
+            tag: Tag = alias.tag
+            if increment_uses:
+                alias.uses += 1
+                tag.uses += 1
+
+                await alias.save()
+                await tag.save()
+            return tag
+        else:
+            # No alias and no tag
+            return None
+
+
 async def get_from_db(discord_object, as_user=False):
     async with DB_LOCKS[(discord_object, as_user)]:
         if isinstance(discord_object, discord.Guild):
