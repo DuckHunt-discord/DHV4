@@ -140,8 +140,4 @@ class Tags(Cog):
         await ctx.reply(escaped_content)
 
 
-
-
-
-
 setup = Tags.setup
