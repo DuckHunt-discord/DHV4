@@ -72,19 +72,31 @@ class Tags(Cog):
             raise BotIgnore()
 
     @commands.command(aliases=["t"])
-    async def tag(self, ctx: MyContext, *, tag_name:TagName):
+    async def tag(self, ctx: MyContext, *, tag_name: TagName):
+        """
+        Show a given tag based on the name.
+
+        The command accept tags names or aliases, and will display then in a nice paginator, directly in discord.
+        You can click the link in the title to read the tag online if you prefer.
+        """
         tag = await get_tag(tag_name)
 
         await show_tag_embed(ctx, tag)
 
     @commands.group()
     async def tags(self, ctx: MyContext):
+        """
+        Commands to interact with tags : creations, editions, deletions, ...
+        """
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
 
     @tags.command()
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def create(self, ctx: MyContext, tag_name: TagName, *, tag_content):
+        """
+        Create a new tag. The tag name must not be an existing tag or tag alias.
+        """
         _ = await ctx.get_translate_function()
         tag = await get_tag(tag_name, increment_uses=False)
         if tag:
@@ -99,6 +111,10 @@ class Tags(Cog):
     @tags.command()
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def alias(self, ctx: MyContext, alias_name: TagName, tag_name: TagName):
+        """
+        Alias an existing tag to a new name.
+        This is useful to give the same tag multiple names, and be able to edit them in sync.
+        """
         _ = await ctx.get_translate_function()
         alias_tag = await get_tag(alias_name, increment_uses=False)
         if alias_tag:
@@ -120,6 +136,9 @@ class Tags(Cog):
     @tags.command()
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def edit(self, ctx: MyContext, tag_name: TagName, *, tag_content):
+        """
+        Edit an existing tag, changing the text.
+        """
         _ = await ctx.get_translate_function()
 
         tag = await get_tag(tag_name, increment_uses=False)
@@ -133,8 +152,10 @@ class Tags(Cog):
         await ctx.reply(_("👌 Tag {tag.name} edited.", tag=tag))
 
     @tags.command()
-    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def raw(self, ctx: MyContext, *, tag_name: TagName):
+        """
+        View the raw version of the tag, with markdown escaped. This is useful to use as a base for editing a tag.
+        """
         _ = await ctx.get_translate_function()
 
         tag = await get_tag(tag_name)
