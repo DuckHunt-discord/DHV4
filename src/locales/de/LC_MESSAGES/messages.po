@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-19 17:52+0100\n"
+"POT-Creation-Date: 2021-02-21 00:28+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -717,6 +717,35 @@ msgid "Force the current event to change, and reroll a new one."
 msgstr ""
 
 msgid "Congratulate an user giving him a trophy."
+msgstr ""
+
+msgid ""
+"Show a given tag based on the name.\n"
+"\n"
+"The command accept tags names or aliases, and will display then in a nice "
+"paginator, directly in discord.\n"
+"You can click the link in the title to read the tag online if you prefer."
+msgstr ""
+
+msgid "Commands to interact with tags : creations, editions, deletions, ..."
+msgstr ""
+
+msgid ""
+"Create a new tag. The tag name must not be an existing tag or tag alias."
+msgstr ""
+
+msgid ""
+"Alias an existing tag to a new name.\n"
+"This is useful to give the same tag multiple names, and be able to edit them "
+"in sync."
+msgstr ""
+
+msgid "Edit an existing tag, changing the text."
+msgstr ""
+
+msgid ""
+"View the raw version of the tag, with markdown escaped. This is useful to "
+"use as a base for editing a tag."
 msgstr ""
 
 msgid "Please wait while I check where you can vote..."
@@ -2193,6 +2222,26 @@ msgid "Top users"
 msgstr ""
 
 msgid "{n} commands used"
+msgstr ""
+
+msgid "❌ This tag already exists."
+msgstr ""
+
+msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
+msgstr ""
+
+msgid "❌ This tag doesn't exist."
+msgstr ""
+
+msgid ""
+"👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
+"pk}`)"
+msgstr ""
+
+msgid "❌ This tag doesn't exist yet. You might want to create it."
+msgstr ""
+
+msgid "👌 Tag {tag.name} edited."
 msgstr ""
 
 msgid "Murderer"
