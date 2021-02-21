@@ -590,7 +590,7 @@ class Tag(Model):
 
     @property
     def pages(self):
-        return [s.strip(" \n") for s in self.content.split('\n\n---')]
+        return [page.strip(" \n") for page in "\n".join(self.content.splitlines()).split('\n\n---')]
 
     def __str__(self):
         return f"{self.name}"
