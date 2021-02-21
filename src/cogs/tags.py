@@ -60,8 +60,19 @@ class TagMenuSource(menus.ListPageSource):
         return e
 
 
+class MultiplayerMenuPage(menus.MenuPages):
+    def reaction_check(self, payload: discord.RawReactionActionEvent) -> bool:
+        # self.ctx: MyContext
+        if payload.message_id != self.message.id:
+            return False
+        if payload.user_id not in {self.bot.owner_id, self._author_id, *[m.id for m in self.ctx.message.mentions], *self.bot.owner_ids}:
+            return False
+
+        return payload.emoji in self.buttons
+
+
 async def show_tag_embed(ctx: MyContext, tag: Tag):
-    pages = menus.MenuPages(source=TagMenuSource(ctx, tag), clear_reactions_after=True)
+    pages = MultiplayerMenuPage(source=TagMenuSource(ctx, tag), clear_reactions_after=True)
     await pages.start(ctx)
 
 
@@ -108,7 +119,11 @@ class Tags(Cog):
         """
         tag = await get_tag(tag_name)
 
-        await show_tag_embed(ctx, tag)
+        if tag:
+            await show_tag_embed(ctx, tag)
+        else:
+            _ = await ctx.get_translate_function()
+            await ctx.reply(_("❌ There is no tag with that name."))
 
     @commands.group()
     async def tags(self, ctx: MyContext):
