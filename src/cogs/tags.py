@@ -102,6 +102,9 @@ class TagsListMenuSource(menus.ListPageSource):
         _ = await self.ctx.get_translate_function(user_language=True)
         e = discord.Embed()
         e.url = "https://duckhunt.me/tags"
+        e.description = _("This is the list of all the tags on this server. "
+                          "They are ordered by official tags and most used first.\n"
+                          "The list doesn't include tag aliases")
 
         for tag in entries:
             e.add_field(inline=False, name=tag.name, value=_("{u} uses, {r} revisions.",
@@ -232,7 +235,7 @@ class Tags(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        tags = await Tag.all().order_by('-uses')
+        tags = await Tag.all().order_by('official', '-uses')
 
         await show_tagslist_embed(ctx, tags)
 
