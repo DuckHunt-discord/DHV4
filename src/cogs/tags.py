@@ -235,7 +235,7 @@ class Tags(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        tags = await Tag.all().order_by('official', '-uses')
+        tags = await Tag.all().order_by('-official', '-uses')
 
         await show_tagslist_embed(ctx, tags)
 
