@@ -588,6 +588,10 @@ class Tag(Model):
     name = fields.CharField(max_length=90, db_index=True, unique=True)
     content = fields.TextField()
 
+    @property
+    def pages(self):
+        return [s.strip(" \n") for s in self.content.split('\n\n---')]
+
     def __str__(self):
         return f"{self.name}"
 

@@ -35,7 +35,7 @@ class TagMenuSource(menus.ListPageSource):
         self.ctx = ctx
         self.tag = tag
 
-        data = [s.strip(" \n") for s in tag.content.split('\n\n---')]
+        data = tag.pages
         super().__init__(data, per_page=1)
 
     async def format_page(self, menu, entry):
@@ -55,7 +55,7 @@ class TagMenuSource(menus.ListPageSource):
                 e.set_image(url=last_line)
                 entry = "\n".join(lines[:-1])
 
-        e.description = entry
+        e.description = entry[:2047]
 
         return e
 
