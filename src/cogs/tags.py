@@ -41,7 +41,7 @@ class TagMenuSource(menus.ListPageSource):
     async def format_page(self, menu, entry):
         _ = await self.ctx.get_translate_function(user_language=True)
         e = discord.Embed()
-        e.title = self.tag.name.title()
+        e.title = self.tag.name.replace('_', ' ').title()
         e.url = f"https://duckhunt.me/tags/{self.tag.name}"
 
         if len(entry) == 0:
