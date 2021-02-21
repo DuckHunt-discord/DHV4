@@ -27,6 +27,15 @@ class TagName(commands.clean_content):
         if "/" in lower:
             raise commands.BadArgument("Tags names can't contain slashes (`/`)")
 
+        if "#" in lower:
+            raise commands.BadArgument("Tags names can't contain hashes (`#`)")
+
+        if "?" in lower:
+            raise commands.BadArgument("Tags names can't contain question marks (`?`)")
+
+        if "&" in lower:
+            raise commands.BadArgument("Tags names can't contain and signs (`&`)")
+
         if len(lower) > 90:
             raise commands.BadArgument('Tag name is a maximum of 90 characters')
 
