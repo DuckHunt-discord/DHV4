@@ -189,7 +189,7 @@ class Tags(Cog):
         await tag_alias.save()
 
         await ctx.reply(
-            _("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag=tag_alias))
+            _("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag_alias=tag_alias))
 
     @tags.command()
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
