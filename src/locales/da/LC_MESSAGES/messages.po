@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-21 00:28+0100\n"
+"POT-Creation-Date: 2021-02-21 12:18+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -854,6 +854,12 @@ msgid ""
 msgstr ""
 
 msgid "Edit an existing tag, changing the text."
+msgstr ""
+
+msgid "Delete an existing tag."
+msgstr ""
+
+msgid "List all the existing tags."
 msgstr ""
 
 msgid ""
@@ -2394,6 +2400,18 @@ msgstr ""
 msgid "{n} commands used"
 msgstr ""
 
+msgid ""
+"This is the list of all the tags on this server. They are ordered by "
+"official tags and most used first.\n"
+"The list doesn't include tag aliases"
+msgstr ""
+
+msgid "{u} uses, {r} revisions."
+msgstr ""
+
+msgid "❌ There is no tag with that name."
+msgstr ""
+
 msgid "❌ This tag already exists."
 msgstr ""
 
@@ -2412,6 +2430,9 @@ msgid "❌ This tag doesn't exist yet. You might want to create it."
 msgstr ""
 
 msgid "👌 Tag {tag.name} edited."
+msgstr ""
+
+msgid "👌 Tag {tag.name} deleted."
 msgstr ""
 
 msgid "Murderer"
