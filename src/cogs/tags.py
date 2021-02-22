@@ -113,10 +113,12 @@ class TagsListMenuSource(menus.ListPageSource):
 
         maximum = self.get_max_pages()
         if maximum > 1:
-            text = _('Page {menu.current_page + 1}/{maximum} ({len(self.entries)} tags)',
-                     menu=menu,
+            current_page = menu.current_page + 1
+            entries = len(self.entries)
+            text = _('Page {current_page}/{maximum} ({entries} tags)',
+                     current_page=current_page,
                      maximum=maximum,
-                     self=self)
+                     entries=entries)
             e.set_footer(text=text)
 
         return e
