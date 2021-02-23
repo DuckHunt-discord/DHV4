@@ -1,5 +1,6 @@
 import asyncio
 import collections
+import copy
 import datetime
 import random
 import time
@@ -219,9 +220,9 @@ class DiscordUser(Model):
                 break
         else:
             if item_number:
-                self.inventory.insert(item_number, item_to_give)
+                self.inventory.insert(item_number, copy.deepcopy(item_to_give))
             else:
-                self.inventory.append(item_to_give)
+                self.inventory.append(copy.deepcopy(item_to_give))
 
     class Meta:
         table = "users"
