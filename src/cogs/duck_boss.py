@@ -31,6 +31,8 @@ class DuckBoss(Cog):
             # every self.boss_every_n_minutes iterations.
             # I ask a math guy for this, I trust him completely, so I'll say that it is right, but don't question me
             # about it. Thanks Cyril.
+            # He said the following:
+            # "It is one minus the cumulative distribution function of a geometric random variable."
             return ((self.boss_every_n_minutes - 1) / self.boss_every_n_minutes) ** self.iterations_no_spawn
 
     def cog_unload(self):
