@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "射击在频道上最先出现的鸭子"
 
 msgid "Reload your gun."
 msgstr "重装您的枪"
@@ -39,7 +39,7 @@ msgid "Spawns a random duck"
 msgstr "随机生成鸭子"
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
-msgstr ""
+msgstr "生成很多鸭子，其中（至少）一只是机械鸭"
 
 msgid "Spawns a normal duck"
 msgstr "生成一只寻常鸭子"
@@ -178,7 +178,8 @@ msgstr ""
 msgid "/channels/\n"
 "\n"
 "Get all channels enabled on the bot"
-msgstr ""
+msgstr "/channels/\n"
+"在机器人上启用所有频道"
 
 msgid "/channels/<channel_id>\n"
 "\n"
