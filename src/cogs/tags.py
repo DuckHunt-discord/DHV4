@@ -138,12 +138,14 @@ class Tags(Cog):
             raise BotIgnore()
 
     @commands.command(aliases=["t"])
-    async def tag(self, ctx: MyContext, *, tag_name: TagName):
+    async def tag(self, ctx: MyContext, tag_name: TagName, users: str):
         """
         Show a given tag based on the name.
 
         The command accept tags names or aliases, and will display then in a nice paginator, directly in discord.
         You can click the link in the title to read the tag online if you prefer.
+
+        You can add mentions at the end of your message to allow others to control the tag pagination too.
         """
         tag = await get_tag(tag_name)
 
