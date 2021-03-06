@@ -737,6 +737,27 @@ class BabyDuck(Duck):
     async def get_hug_experience(self):
         return 5
 
+    async def get_hug_message(self, hugger, db_hugger, experience) -> str:
+        spawned_for = datetime.timedelta(seconds=self.spawned_for)
+
+        db_guild = await get_from_db(self.channel.guild)
+
+        locale = db_guild.language
+
+        if locale.startswith("ru"):
+            spawned_for_str = format_timedelta(spawned_for, locale=locale, format="short")
+        else:
+            spawned_for_str = format_timedelta(spawned_for, locale=locale, threshold=1.20)
+
+        _ = await self.get_translate_function()
+        return _("{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: +{experience} exp]",
+                 hugger=hugger,
+                 experience=experience,
+                 spawned_for_str=spawned_for_str,
+                 )
+
+
+
 
 class GoldenDuck(Duck):
     """
