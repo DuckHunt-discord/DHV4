@@ -33,7 +33,7 @@ class DuckBoss(Cog):
             # about it. Thanks Cyril.
             # He said the following:
             # "It is one minus the cumulative distribution function of a geometric random variable."
-            return ((self.boss_every_n_minutes - 1) / self.boss_every_n_minutes) ** self.iterations_no_spawn
+            return (((self.boss_every_n_minutes - 1) / self.boss_every_n_minutes) ** self.iterations_no_spawn) * 100
 
     def cog_unload(self):
         self.background_loop.cancel()
