@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-02-21 12:18+0100\n"
+"POT-Creation-Date: 2021-03-06 19:11+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -988,11 +988,11 @@ msgstr ""
 "download the scores and statistics for\n"
 "everyone who ever played."
 
-#: ../cogs/support_server_commands.py:124
+#: ../cogs/support_server_commands.py:122
 msgid "Check the status of every shard the bot is hosting."
 msgstr "Check the status of every shard the bot is hosting."
 
-#: ../cogs/support_server_commands.py:152
+#: ../cogs/support_server_commands.py:150
 msgid ""
 "Shows a paginator with the most used commands on the bot. This is the poor "
 "version of a bot analytics.\n"
@@ -1002,7 +1002,7 @@ msgstr ""
 "version of a bot analytics.\n"
 "The counters get reset every time the bot reboot."
 
-#: ../cogs/support_server_commands.py:167
+#: ../cogs/support_server_commands.py:165
 msgid ""
 "Shows a paginator with the users that have used the bot the most. This is "
 "again the poor version of a bot analytics.\n"
@@ -1012,7 +1012,7 @@ msgstr ""
 "again the poor version of a bot analytics.\n"
 "The counters get reset every time the bot reboot."
 
-#: ../cogs/support_server_commands.py:195
+#: ../cogs/support_server_commands.py:193
 msgid ""
 "Shows a random duck image, courtesy of Globloxmen assets.\n"
 "This is mostly used to debug the random duck functions,\n"
@@ -1028,7 +1028,7 @@ msgstr ""
 "You can specify if you want a background or not for your random duck, and it "
 "defaults to yes."
 
-#: ../cogs/support_server_commands.py:214
+#: ../cogs/support_server_commands.py:212
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
 "leaving, and planning ducks spawn for the\n"
@@ -1044,7 +1044,7 @@ msgstr ""
 "These commands do not use the translation system, and will always show in "
 "english"
 
-#: ../cogs/support_server_commands.py:226
+#: ../cogs/support_server_commands.py:224
 msgid ""
 "Reset ducks planning, setting the ducks left to spawn counts to a value "
 "proportional to the time left spawning\n"
@@ -1054,7 +1054,7 @@ msgstr ""
 "proportional to the time left spawning\n"
 "ducks today. This is executed everyday at midnight."
 
-#: ../cogs/support_server_commands.py:239
+#: ../cogs/support_server_commands.py:237
 msgid ""
 "Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
 "from the planification,\n"
@@ -1068,7 +1068,7 @@ msgstr ""
 "\n"
 "Duck will still be able to leave, even if this lock is set."
 
-#: ../cogs/support_server_commands.py:264
+#: ../cogs/support_server_commands.py:262
 msgid ""
 "Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
 "usual if a planification isn't done."
@@ -1076,43 +1076,49 @@ msgstr ""
 "Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
 "usual if a planification isn't done."
 
-#: ../cogs/support_server_commands.py:283
+#: ../cogs/support_server_commands.py:281
 msgid "Force a boss to spawn"
 msgstr "Force a boss to spawn"
 
-#: ../cogs/support_server_commands.py:294
+#: ../cogs/support_server_commands.py:292
 msgid "Force the current event to change, and reroll a new one."
 msgstr "Force the current event to change, and reroll a new one."
 
-#: ../cogs/support_server_commands.py:305
+#: ../cogs/support_server_commands.py:303
 msgid "Congratulate an user giving him a trophy."
 msgstr "Congratulate an user giving him a trophy."
 
-#: ../cogs/tags.py:132
+#: ../cogs/tags.py:142
 msgid ""
 "Show a given tag based on the name.\n"
 "\n"
 "The command accept tags names or aliases, and will display then in a nice "
 "paginator, directly in discord.\n"
-"You can click the link in the title to read the tag online if you prefer."
+"You can click the link in the title to read the tag online if you prefer.\n"
+"\n"
+"You can add mentions at the end of your message to allow others to control "
+"the tag pagination too."
 msgstr ""
 "Show a given tag based on the name.\n"
 "\n"
 "The command accept tags names or aliases, and will display then in a nice "
 "paginator, directly in discord.\n"
-"You can click the link in the title to read the tag online if you prefer."
+"You can click the link in the title to read the tag online if you prefer.\n"
+"\n"
+"You can add mentions at the end of your message to allow others to control "
+"the tag pagination too."
 
-#: ../cogs/tags.py:148
+#: ../cogs/tags.py:160
 msgid "Commands to interact with tags : creations, editions, deletions, ..."
 msgstr "Commands to interact with tags : creations, editions, deletions, ..."
 
-#: ../cogs/tags.py:157
+#: ../cogs/tags.py:169
 msgid ""
 "Create a new tag. The tag name must not be an existing tag or tag alias."
 msgstr ""
 "Create a new tag. The tag name must not be an existing tag or tag alias."
 
-#: ../cogs/tags.py:174
+#: ../cogs/tags.py:186
 msgid ""
 "Alias an existing tag to a new name.\n"
 "This is useful to give the same tag multiple names, and be able to edit them "
@@ -1122,19 +1128,19 @@ msgstr ""
 "This is useful to give the same tag multiple names, and be able to edit them "
 "in sync."
 
-#: ../cogs/tags.py:200
+#: ../cogs/tags.py:212
 msgid "Edit an existing tag, changing the text."
 msgstr "Edit an existing tag, changing the text."
 
-#: ../cogs/tags.py:218
+#: ../cogs/tags.py:230
 msgid "Delete an existing tag."
 msgstr "Delete an existing tag."
 
-#: ../cogs/tags.py:233
+#: ../cogs/tags.py:245
 msgid "List all the existing tags."
 msgstr "List all the existing tags."
 
-#: ../cogs/tags.py:244
+#: ../cogs/tags.py:256
 msgid ""
 "View the raw version of the tag, with markdown escaped. This is useful to "
 "use as a base for editing a tag."
@@ -3191,23 +3197,23 @@ msgstr "{exp} experience"
 msgid "{target.name} statistics (click me!)."
 msgstr "{target.name} statistics (click me!)."
 
-#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:422
+#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:423
 msgid "Bullets"
 msgstr "Bullets"
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:425
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:426
 msgid "Magazines"
 msgstr "Magazines"
 
-#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:408
+#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:409
 msgid "Experience"
 msgstr "Experience"
 
-#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:409
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:410
 msgid "Level"
 msgstr "Level"
 
-#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:414
+#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:415
 msgid "Accuracy"
 msgstr "Accuracy"
 
@@ -3217,7 +3223,7 @@ msgstr "Accuracy"
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr "{level_reliability} % (Real: {real_reliability} %)"
 
-#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:418
+#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:419
 msgid "Reliability"
 msgstr "Reliability"
 
@@ -3510,20 +3516,20 @@ msgstr ""
 "stopped... You can use `{ctx.prefix}settings enabled False` to stop the game."
 ""
 
-#: ../cogs/support_server_commands.py:159
+#: ../cogs/support_server_commands.py:157
 msgid "Most used commands"
 msgstr "Most used commands"
 
-#: ../cogs/support_server_commands.py:161
+#: ../cogs/support_server_commands.py:159
 #, python-brace-format
 msgid "{n} uses"
 msgstr "{n} uses"
 
-#: ../cogs/support_server_commands.py:174
+#: ../cogs/support_server_commands.py:172
 msgid "Top users"
 msgstr "Top users"
 
-#: ../cogs/support_server_commands.py:176
+#: ../cogs/support_server_commands.py:174
 #, python-brace-format
 msgid "{n} commands used"
 msgstr "{n} commands used"
@@ -3543,24 +3549,29 @@ msgstr ""
 msgid "{u} uses, {r} revisions."
 msgstr "{u} uses, {r} revisions."
 
-#: ../cogs/tags.py:144
+#: ../cogs/tags.py:118
+#, python-brace-format
+msgid "Page {current_page}/{maximum} ({entries} tags)"
+msgstr "Page {current_page}/{maximum} ({entries} tags)"
+
+#: ../cogs/tags.py:156
 msgid "❌ There is no tag with that name."
 msgstr "❌ There is no tag with that name."
 
-#: ../cogs/tags.py:163 ../cogs/tags.py:181
+#: ../cogs/tags.py:175 ../cogs/tags.py:193
 msgid "❌ This tag already exists."
 msgstr "❌ This tag already exists."
 
-#: ../cogs/tags.py:169
+#: ../cogs/tags.py:181
 #, python-brace-format
 msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
 msgstr "👌 Tag created: {tag.name} (`{tag.pk}`)"
 
-#: ../cogs/tags.py:187 ../cogs/tags.py:225
+#: ../cogs/tags.py:199 ../cogs/tags.py:237
 msgid "❌ This tag doesn't exist."
 msgstr "❌ This tag doesn't exist."
 
-#: ../cogs/tags.py:195
+#: ../cogs/tags.py:207
 #, python-brace-format
 msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
@@ -3569,16 +3580,16 @@ msgstr ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
 "pk}`)"
 
-#: ../cogs/tags.py:207 ../cogs/tags.py:252
+#: ../cogs/tags.py:219 ../cogs/tags.py:264
 msgid "❌ This tag doesn't exist yet. You might want to create it."
 msgstr "❌ This tag doesn't exist yet. You might want to create it."
 
-#: ../cogs/tags.py:213
+#: ../cogs/tags.py:225
 #, python-brace-format
 msgid "👌 Tag {tag.name} edited."
 msgstr "👌 Tag {tag.name} edited."
 
-#: ../cogs/tags.py:229
+#: ../cogs/tags.py:241
 #, python-brace-format
 msgid "👌 Tag {tag.name} deleted."
 msgstr "👌 Tag {tag.name} deleted."
@@ -4084,51 +4095,60 @@ msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 
-#: ../utils/ducks.py:745
+#: ../utils/ducks.py:753
+#, python-brace-format
+msgid ""
+"{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
+"+{experience} exp]"
+msgstr ""
+"{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
+"+{experience} exp]"
+
+#: ../utils/ducks.py:766
 msgid "golden"
 msgstr "golden"
 
-#: ../utils/ducks.py:749
+#: ../utils/ducks.py:770
 #, python-brace-format
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
 msgstr[0] "of which one is a golden duck"
 msgstr[1] "of which {this_ducks_killed} are golden ducks"
 
-#: ../utils/ducks.py:763
+#: ../utils/ducks.py:784
 msgid "plastic"
 msgstr "plastic"
 
-#: ../utils/ducks.py:767
+#: ../utils/ducks.py:788
 #, python-brace-format
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
 msgstr[0] "of which one is made of plastic"
 msgstr[1] "of which {this_ducks_killed} are made of plastic"
 
-#: ../utils/ducks.py:781
+#: ../utils/ducks.py:802
 msgid "kamikaze"
 msgstr "kamikaze"
 
-#: ../utils/ducks.py:785
+#: ../utils/ducks.py:806
 #, python-brace-format
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
 msgstr[0] "of which one is a kamikaze duck"
 msgstr[1] "of which {this_ducks_killed} are kamikaze ducks"
 
-#: ../utils/ducks.py:800
+#: ../utils/ducks.py:821
 msgid "mechanical"
 msgstr "mechanical"
 
-#: ../utils/ducks.py:823
+#: ../utils/ducks.py:844
 #, python-brace-format
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
 msgstr[0] "of which one is a mechanical duck"
 msgstr[1] "of which {this_ducks_killed} are mechanical ducks"
 
-#: ../utils/ducks.py:835
+#: ../utils/ducks.py:856
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -4137,7 +4157,7 @@ msgstr ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 
-#: ../utils/ducks.py:840
+#: ../utils/ducks.py:861
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
@@ -4146,40 +4166,40 @@ msgstr ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 
-#: ../utils/ducks.py:858
+#: ../utils/ducks.py:879
 msgid "super"
 msgstr "super"
 
-#: ../utils/ducks.py:868
+#: ../utils/ducks.py:889
 #, python-brace-format
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
 msgstr[0] "of which one is a super duck"
 msgstr[1] "of which {this_ducks_killed} are super ducks"
 
-#: ../utils/ducks.py:889
+#: ../utils/ducks.py:910
 msgid "moad"
 msgstr "moad"
 
-#: ../utils/ducks.py:893
+#: ../utils/ducks.py:914
 #, python-brace-format
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
 msgstr[0] "of which one is a MOAD"
 msgstr[1] "of which {this_ducks_killed} are MOADs"
 
-#: ../utils/ducks.py:917
+#: ../utils/ducks.py:938
 msgid "armored"
 msgstr "armored"
 
-#: ../utils/ducks.py:921
+#: ../utils/ducks.py:942
 #, python-brace-format
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
 msgstr[0] "of which one is an armored duck"
 msgstr[1] "of which {this_ducks_killed} are armored ducks"
 
-#: ../utils/ducks.py:945
+#: ../utils/ducks.py:966
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
@@ -4188,7 +4208,7 @@ msgstr ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 
-#: ../utils/ducks.py:952
+#: ../utils/ducks.py:973
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
@@ -4197,22 +4217,22 @@ msgstr ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
 "{damage}]"
 
-#: ../utils/ducks.py:961
+#: ../utils/ducks.py:982
 msgid "night"
 msgstr "night"
 
-#: ../utils/ducks.py:965
+#: ../utils/ducks.py:986
 #, python-brace-format
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
 msgstr[0] "of which one is a night duck"
 msgstr[1] "of which {this_ducks_killed} are night ducks"
 
-#: ../utils/ducks.py:976
+#: ../utils/ducks.py:997
 msgid "sleeping"
 msgstr "sleeping"
 
-#: ../utils/ducks.py:980
+#: ../utils/ducks.py:1001
 #, python-brace-format
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
@@ -4998,19 +5018,19 @@ msgstr "duck toaster"
 msgid "unemployed due to extinction of the duck species"
 msgstr "unemployed due to extinction of the duck species"
 
-#: ../utils/models.py:178 ../utils/models.py:186
+#: ../utils/models.py:179 ../utils/models.py:187
 #, python-brace-format
 msgid "This is not a valid level. Choose between {levels}"
 msgstr "This is not a valid level. Choose between {levels}"
 
-#: ../utils/models.py:190
+#: ../utils/models.py:191
 msgid "Can't set such a high level"
 msgstr "Can't set such a high level"
 
-#: ../utils/models.py:430
+#: ../utils/models.py:431
 msgid "You leveled up!"
 msgstr "You leveled up!"
 
-#: ../utils/models.py:434
+#: ../utils/models.py:435
 msgid "You leveled down!"
 msgstr "You leveled down!"
