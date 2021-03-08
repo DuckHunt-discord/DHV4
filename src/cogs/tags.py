@@ -138,7 +138,7 @@ class Tags(Cog):
             raise BotIgnore()
 
     @commands.command(aliases=["t"])
-    async def tag(self, ctx: MyContext, tag_name: TagName, users: str):
+    async def tag(self, ctx: MyContext, tag_name: TagName, users: str = None):
         """
         Show a given tag based on the name.
 
