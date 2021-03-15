@@ -3,7 +3,7 @@ import time
 
 import discord
 from babel import Locale
-from babel.dates import format_timedelta
+from babel.dates import format_timedelta, format_datetime
 from babel.lists import format_list
 from discord.ext import commands, menus
 
@@ -273,6 +273,17 @@ class SimpleCommands(Cog):
         embed.color = discord.Color.dark_theme()
 
         await ctx.send(embed=embed)
+
+    @commands.command()
+    @checks.channel_enabled()
+    async def time(self, ctx: MyContext):
+        """
+        This returns the current bot time.
+        """
+
+        language_code = await ctx.get_language_code()
+        now = datetime.datetime.utcnow()
+        await ctx.reply(format_datetime(now, format='full', locale=language_code))
 
 
 setup = SimpleCommands.setup
