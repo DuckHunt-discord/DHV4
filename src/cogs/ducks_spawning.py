@@ -124,7 +124,7 @@ class DucksSpawning(Cog):
             embed.colour = discord.Colour.green()
             embed.title = f"It's freetime !"
             embed.description = f"Your magazines have been refilled, and confiscated weapons have just been released"
-            embed.set_footer(text="Freetime happen every 24 hours.")
+            embed.set_footer(text="Freetime happens every 24 hours.")
             await self.bot.log_to_channel(embed=embed)
 
         if SECONDS_LEFT_TODAY % HOUR == 0:

@@ -17,7 +17,7 @@ class Events(Enum):
                  _("A medical waste company dumped steroids in the lake. Ducks have mutated, and you'll see a lot more super ducks. But, be careful, and don't drink that water.")
 
     SAFETY     = _("Safety class canceled"), \
-                 _("The safety class was canceled, beware not to shoot others hunters!")
+                 _("The safety class was canceled, beware not to shoot other hunters!")
 
     CONNECTION = _("Connection problem"), \
                  _("Ducks cant find your computer due to connection problems, and there will be less of them until it's repaired.")
