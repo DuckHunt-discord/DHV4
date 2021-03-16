@@ -791,7 +791,7 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
 
-        await ctx.reply(_("💸 You are now using the brand new Homing Bullets made by CACAC (the Comitee Against the Comitee Against Ducks) in China. "
+        await ctx.reply(_("💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee Against the Comitee Against Ducks) in China. "
                           "Try them soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, channel=ctx.channel))
 
 
