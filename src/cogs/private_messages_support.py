@@ -63,6 +63,18 @@ class PrivateMessagesSupport(Cog):
                                                    avatar=await user.avatar_url_as(format="jpg", size=512).read(),
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
+
+            await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator}.\n"
+                                       f"Every message in here will get sent back to them if it's not a bot message, "
+                                       f"DuckHunt command, and if it doesn't start by the > character.\n"
+                                       f"You can use many commands in the DM channels, detailed in "
+                                       f"`dh!help private_support`\n"
+                                       f"• `dh!ps close` will close the channel, sending a DM to the user.\n"
+                                       f"• `dh!ps block` will block the user from opening further channels.\n"
+                                       f"• `dh!ps huh` should be used if the message is not a support request, "
+                                       f"and will silently close the channel.\n"
+                                       f"Attachments are supported in messages.\n\n"
+                                       f"Thanks for helping with the bot DM support ! <3")
         else:
             if self.webhook_cache.get(channel, None) is None:
                 webhook = (await channel.webhooks())[0]
