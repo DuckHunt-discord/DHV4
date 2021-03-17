@@ -113,8 +113,11 @@ class Community(Cog):
                         if db_member.access_level_override < AccessLevel.BOT_MODERATOR:
                             # And isn't a BOT_MODERATOR or higher, so we won't show anything.
                             continue
-
-                    match_message = await match_channel.fetch_message(match_message_id)
+                    try:
+                        match_message = await match_channel.fetch_message(match_message_id)
+                    except discord.Forbidden:
+                        # Whoops, we don't have perms to see the message
+                        continue
 
                     embed = await make_message_embed(match_message)
                     await ctx.send(embed=embed)
