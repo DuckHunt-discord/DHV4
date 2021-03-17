@@ -97,6 +97,7 @@ async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordCha
     webhook = None
     try:
         webhooks = await channel.webhooks()
+        db_channel.webhook_urls = []
         for webhook in webhooks:
             webhook: discord.Webhook
             if webhook.name == "DuckHunt":
