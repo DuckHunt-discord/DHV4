@@ -121,7 +121,7 @@ class PrivateMessagesSupport(Cog):
                                       embeds=embeds,
                                       files=files,
                                       allowed_mentions=discord.AllowedMentions.none(),
-                                      wait=False)
+                                      wait=True)
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
