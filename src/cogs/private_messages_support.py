@@ -21,18 +21,15 @@ class PrivateMessagesSupport(Cog):
         self.users_cache: Dict[int, discord.User] = {}
         self.blocked_ids: List[int] = []
 
-    def is_in_forwarding_channels_check(self):
-        async def predicate(ctx: MyContext):
-            category = await self.get_forwarding_category()
-            if not ctx.guild:
-                raise commands.NoPrivateMessage()
-            elif ctx.guild.id != category.guild.id:
-                raise NotInServer(must_be_in_guild_id=category.guild.id)
-            elif ctx.channel.category != category:
-                raise NotInChannel(must_be_in_channel_id=category.id)
-            return True
-
-        return commands.check(predicate)
+    async def is_in_forwarding_channels(self, ctx):
+        category = await self.get_forwarding_category()
+        if not ctx.guild:
+            raise commands.NoPrivateMessage()
+        elif ctx.guild.id != category.guild.id:
+            raise NotInServer(must_be_in_guild_id=category.guild.id)
+        elif ctx.channel.category != category:
+            raise NotInChannel(must_be_in_channel_id=category.id)
+        return True
 
     async def get_user(self, user_id):
         user_id = int(user_id)
@@ -152,11 +149,11 @@ class PrivateMessagesSupport(Cog):
             await ctx.send_help(ctx.command)
 
     @private_support.command()
-    @is_in_forwarding_channels_check()
     async def close(self, ctx: MyContext):
         """
         Close the opened DM channel. Will send a message telling the user that the DM was closed.
         """
+        await self.is_in_forwarding_channels(ctx)
 
         user = await self.get_user(ctx.channel.name)
         db_user = await get_from_db(user, as_user=True)
@@ -179,11 +176,12 @@ class PrivateMessagesSupport(Cog):
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
     @private_support.command()
-    @is_in_forwarding_channels_check()
     async def block(self, ctx: MyContext):
         """
         Block the user from opening further DMs channels.
         """
+        await self.is_in_forwarding_channels(ctx)
+
         self.blocked_ids.append(int(ctx.channel.name))
         await ctx.send("👌")
 
