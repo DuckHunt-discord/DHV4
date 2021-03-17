@@ -318,8 +318,8 @@ class PrivateMessagesSupport(Cog):
         tag = await get_tag(tag_name)
 
         if tag:
-            support_pages = MirrorMenuPage(source=TagMenuSource(ctx, tag), clear_reactions_after=True)
-            dm_pages = MirrorMenuPage(source=TagMenuSource(ctx, tag), clear_reactions_after=True)
+            support_pages = MirrorMenuPage(timeout=86400, source=TagMenuSource(ctx, tag), clear_reactions_after=True)
+            dm_pages = MirrorMenuPage(timeout=86400, source=TagMenuSource(ctx, tag), clear_reactions_after=True)
 
             dm_pages.other = support_pages
             support_pages.other = dm_pages
