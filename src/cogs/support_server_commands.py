@@ -171,7 +171,6 @@ class SupportServerCommands(Cog):
                                                      ))
         await menu.start(ctx)
 
-
     @commands.group(aliases=["bot_administration", "emergencies"])
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def manage_bot(self, ctx: MyContext):
@@ -281,7 +280,6 @@ class SupportServerCommands(Cog):
             await db_user.save()
 
         await ctx.reply(f"User {user.name}#{user.discriminator} (`{user.id}`) updated.")
-
 
 
 setup = SupportServerCommands.setup
