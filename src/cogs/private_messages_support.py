@@ -235,12 +235,10 @@ class PrivateMessagesSupport(Cog):
 
         if tag:
             pages = MultiplayerMenuPage(source=TagMenuSource(ctx, tag), clear_reactions_after=True, more_users=[user])
-            await pages.start(ctx, channel=user)
+            await pages.start(ctx, channel=await user.create_dm())
         else:
             _ = await ctx.get_translate_function()
             await ctx.reply(_("❌ There is no tag with that name."))
-
-
 
 
 setup = PrivateMessagesSupport.setup
