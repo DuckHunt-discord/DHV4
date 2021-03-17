@@ -150,6 +150,8 @@ class CommandErrorHandler(Cog):
                             "Admins can disable this message by running `dh!settings channel_disabled_message False`, "
                             "or can enable the channel with `dh!settings enabled True`.",
                             exception=exception)
+                    else:
+                        return
 
                 elif isinstance(exception, checks.BotIgnore):
                     return
