@@ -27,10 +27,10 @@ class MirrorMenuPage(menus.MenuPages):
 
         return payload.emoji in self.buttons
 
-    def show_page(self, page_number, propagate=True):
+    async def show_page(self, page_number, propagate=True):
         if propagate:
-            self.other.show_page(page_number, propagate=False)
-        super().show_page(page_number)
+            await self.other.show_page(page_number, propagate=False)
+        return await super().show_page(page_number)
 
 
 class PrivateMessagesSupport(Cog):
