@@ -177,6 +177,14 @@ class Tags(Cog):
         """
         _ = await ctx.get_translate_function()
         tag = await get_tag(tag_name, increment_uses=False)
+
+        if len(ctx.message.attachments):
+            url = ctx.message.attachments[0].url
+            if tag_content:
+                tag_content += "\n\n" + url
+            else:
+                tag_content = url
+
         if tag:
             await ctx.reply(_("❌ This tag already exists."))
         else:
@@ -228,6 +236,13 @@ class Tags(Cog):
         if tag_owner.discord_id != ctx.author.id and db_member.get_access_level() < AccessLevel.TRUSTED:
             await ctx.reply(_("❌ You don't own that tag, you can't edit it."))
             return
+
+        if len(ctx.message.attachments):
+            url = ctx.message.attachments[0].url
+            if tag_content:
+                tag_content += "\n\n" + url
+            else:
+                tag_content = url
 
         tag.content = tag_content
         tag.revisions += 1
