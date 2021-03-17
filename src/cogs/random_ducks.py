@@ -1,28 +1,10 @@
-import datetime
-from functools import partial
-from io import BytesIO
-
-import discord
 from discord.ext import commands
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.random_ducks import create_random_duck
+from utils.random_ducks import get_random_duck_file
 
 
 class RandomDucks(Cog):
-
-    @staticmethod
-    def get_random_duck_bytes(with_background=True):
-        image = create_random_duck(with_background)
-
-        # prepare the stream to save this image into
-        buffer = BytesIO()
-
-        # save into the stream, using png format.
-        image.save(buffer, "png")
-        buffer.seek(0)
-        return buffer
-
     @commands.command(aliases=["rd"])
     async def random_duck(self, ctx: MyContext, with_background=True):
         """
@@ -34,11 +16,9 @@ class RandomDucks(Cog):
         """
         async with ctx.typing():
             _ = await ctx.get_translate_function()
-            fn = partial(self.get_random_duck_bytes, with_background)
-
-            buffer = await self.bot.loop.run_in_executor(None, fn)
-            file = discord.File(filename="random_duck.png", fp=buffer)
+            file = await get_random_duck_file(self.bot, with_background)
 
             await ctx.send(file=file)
+
 
 setup = RandomDucks.setup

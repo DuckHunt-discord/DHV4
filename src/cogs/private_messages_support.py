@@ -1,4 +1,5 @@
 import datetime
+from functools import partial
 from typing import Dict, List
 
 import discord
@@ -11,6 +12,7 @@ from utils.checks import NotInServer, BotIgnore, NotInChannel
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_tag
+from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
 
@@ -247,15 +249,21 @@ class PrivateMessagesSupport(Cog):
         close_embed = discord.Embed(
             color=discord.Color.red(),
             title=_("DM Closed"),
-            description=_("Your support ticket was closed. Thanks for using DuckHunt DM support.", ctx=ctx),
+            description=_("Your support ticket was closed and the history deleted. "
+                          "Thanks for using DuckHunt DM support. "
+                          "If you need anything else, feel free to open a new ticket by sending a message here.\n"
+                          "In the meantime, here's a nice duck picture for you to look at !", ctx=ctx),
         )
 
         close_embed.add_field(name=_("Support server"), value=_("For all your questions, there is a support server. "
                                                                 "Click [here](https://discord.gg/G4skWae) to join."))
 
+        file = await get_random_duck_file(self.bot)
+        close_embed.set_image(url="attachment://random_duck.png")
+
         async with ctx.typing():
             try:
-                await user.send(embed=close_embed)
+                await user.send(file=file, embed=close_embed)
             except:
                 pass
 
