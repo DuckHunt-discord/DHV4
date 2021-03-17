@@ -39,7 +39,7 @@ WORKDIR /duckhunt/src/
 RUN for dirr in ./locales/*/LC_MESSAGES/ ; do msgfmt ${dirr}messages.po -o ${dirr}messages.mo ; echo ${dirr} compiled; done
 
 ENTRYPOINT ["sh"]
-CMD ["/run.sh"]
+CMD ["/duckhunt/docker_run.sh"]
 
 STOPSIGNAL SIGTERM
 
