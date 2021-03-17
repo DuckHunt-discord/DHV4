@@ -197,12 +197,13 @@ class DiscordUser(Model):
 
     name = fields.TextField()
     discriminator = fields.CharField(4)
-    times_ran_example_command = fields.IntField(default=0)
 
     inventory = fields.JSONField(default=[])
     trophys = fields.JSONField(default={})
 
     ping_friendly = fields.BooleanField(default=True)
+
+    opened_support_tickets = fields.IntField(default=0)
 
     language = fields.CharField(6, default="en")
     first_use = fields.BooleanField(default=True)
