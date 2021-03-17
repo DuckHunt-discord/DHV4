@@ -3,6 +3,7 @@ Commands to change settings in a channel/server
 
 These commands act where they are typed!
 """
+import asyncio
 import datetime
 import time
 from typing import Optional
@@ -803,10 +804,20 @@ class SettingsCommands(Cog):
                     await ctx.send(_(
                         "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
                         "The number of ducks per day is limited to ensure resources are used fairly.\n "
-                        "I'm proceeding anyway as requested, with {value} ducks per day on the channel.",
+                        "Please say `Yes` to proceed as requested, with {value} ducks per day on the channel.",
                         maximum_value=maximum_value,
                         value=int(value),
                         ))
+
+                    def check(message: discord.Message):
+                        return ctx.author == message.author and message.content.lower() == "yes"
+
+                    try:
+                        await self.bot.wait_for('message', timeout=20, check=check)
+                    except asyncio.TimeoutError:
+                        await ctx.send(_("🛑 Operation cancelled."))
+                        return
+
                 elif db_guild.vip:
                     value = min(maximum_value * 5, value)  # Limit to 5x max
                     await ctx.send(_(
