@@ -258,8 +258,19 @@ class PrivateMessagesSupport(Cog):
                 await user.send(embed=close_embed)
             except:
                 pass
-            self.users_cache.pop(user.id)
-            self.webhook_cache.pop(ctx.channel)
+
+            try:
+                self.users_cache.pop(int(ctx.channel.name))
+            except KeyError:
+                # Cog reload, probably.
+                pass
+
+            try:
+                self.webhook_cache.pop(ctx.channel)
+            except KeyError:
+                # Cog reload, probably.
+                pass
+
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
@@ -271,8 +282,18 @@ class PrivateMessagesSupport(Cog):
         await self.is_in_forwarding_channels(ctx)
 
         async with ctx.typing():
-            self.users_cache.pop(int(ctx.channel.name))
-            self.webhook_cache.pop(ctx.channel)
+            try:
+                self.users_cache.pop(int(ctx.channel.name))
+            except KeyError:
+                # Cog reload, probably.
+                pass
+
+            try:
+                self.webhook_cache.pop(ctx.channel)
+            except KeyError:
+                # Cog reload, probably.
+                pass
+
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
