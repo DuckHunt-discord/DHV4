@@ -11,7 +11,7 @@ from utils.bot_class import MyBot
 from utils.checks import NotInServer, BotIgnore, NotInChannel
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_tag
+from utils.models import get_from_db, get_tag, DiscordUser
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
@@ -109,6 +109,10 @@ class PrivateMessagesSupport(Cog):
                                                    avatar=await user.avatar_url_as(format="png", size=512).read(),
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
+
+            db_user: DiscordUser = await get_from_db(user, as_user=True)
+            db_user.opened_support_tickets += 1
+            await db_user.save()
 
             await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
                                        f"Every message in here will get sent back to them if it's not a bot message, "
