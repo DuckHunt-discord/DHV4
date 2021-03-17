@@ -71,6 +71,8 @@ class PrivateMessagesSupport(Cog):
 
         channel = discord.utils.get(forwarding_category.text_channels, name=str(user.id))
         if not channel:
+            self.bot.logger.info(f"[SUPPORT] creating a DM channel for {user.name}#{user.discriminator}.")
+
             now_str = format_datetime(datetime.datetime.now(), locale='en')
             channel = await forwarding_category.create_text_channel(
                 name=str(user.id),
@@ -78,6 +80,8 @@ class PrivateMessagesSupport(Cog):
                       f"What's written in there will be sent back to him, except if "
                       f"the message starts with > or is a DuckHunt command.\nChannel opened: {now_str}",
                 reason="Received a DM.")
+
+            self.bot.logger.debug(f"[SUPPORT] creating a webhook for {user.name}#{user.discriminator}.")
 
             webhook = await channel.create_webhook(name=f"{user.name}#{user.discriminator}",
                                                    avatar=await user.avatar_url_as(format="png", size=512).read(),
@@ -98,8 +102,12 @@ class PrivateMessagesSupport(Cog):
                                        f"and will silently close the channel.\n"
                                        f"Attachments are supported in messages.\n\n"
                                        f"Thanks for helping with the bot DM support ! <3")
+
+            self.bot.logger.debug(f"[SUPPORT] channel created for {user.name}#{user.discriminator}.")
         else:
             if self.webhook_cache.get(channel, None) is None:
+                self.bot.logger.debug(f"[SUPPORT] recorvering {user.name}#{user.discriminator} channel webhook.")
+
                 webhook = (await channel.webhooks())[0]
                 self.webhook_cache[channel] = webhook
         return channel
@@ -146,20 +154,27 @@ class PrivateMessagesSupport(Cog):
         await self.bot.wait_until_ready()
 
         if message.author.id in self.blocked_ids:
+            self.bot.logger.debug(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist")
             return
 
         forwarding_channel = await self.get_or_create_channel(message.author)
         forwarding_webhook = self.webhook_cache[forwarding_channel]
 
+        self.bot.logger.debug(f"[SUPPORT] got {message.author.name}#{message.author.discriminator} channel and webhook.")
+
         attachments = message.attachments
         files = [await attach.to_file() for attach in attachments]
         embeds = message.embeds
+
+        self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message prepared.")
 
         await forwarding_webhook.send(content=message.content,
                                       embeds=embeds,
                                       files=files,
                                       allowed_mentions=discord.AllowedMentions.none(),
                                       wait=True)
+
+        self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message forwarded.")
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
