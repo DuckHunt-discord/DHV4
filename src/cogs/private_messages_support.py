@@ -60,7 +60,7 @@ class PrivateMessagesSupport(Cog):
                 reason="Received a DM.")
 
             webhook = await channel.create_webhook(name=f"{user.name}#{user.discriminator}",
-                                                   avatar=await user.avatar_url_as(format="jpg", size=512).read(),
+                                                   avatar=await user.avatar_url_as(format="png", size=512).read(),
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
 
