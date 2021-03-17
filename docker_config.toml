@@ -39,6 +39,7 @@ cogs_to_load = ['cogs.error_handling',
                 'cogs.ducks_hunting_commands',
                 'cogs.statistics_experience_commands',
                 'cogs.community',
+                'cogs.private_messages_support',
                 'cogs.random_ducks',
                 'cogs.inventory_commands',
                 'cogs.shopping_commands',
@@ -68,6 +69,9 @@ status_channel_id = 795389911163338775
 servers = [195260081036591104]
 rpg_role_name = "Ping me for RPG bot events"
 moderators_that_can_delete_with_reactions = [251996890369884161]
+
+[cogs.PrivateMessagesSupport]
+forwarding_category = 821732328018935818
 
 [cogs.RestAPI]
 listen_ip = "0.0.0.0"

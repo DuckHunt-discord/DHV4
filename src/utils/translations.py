@@ -34,6 +34,45 @@ def ntranslate(singular, plural, n, language_code):
     return get_translation(language_code).ngettext(singular, plural, n)
 
 
+def get_translate_function(bot_or_ctx, language_code, additional_kwargs=None):
+    if additional_kwargs is None:
+        additional_kwargs = {}
+
+    def _(message, **kwargs):
+        kwargs = {**additional_kwargs, **kwargs}
+        translated_message = translate(message, language_code)
+        try:
+            formatted_message = translated_message.format(**kwargs)
+        except KeyError:
+            bot_or_ctx.logger.exception(f"Error formatting message {message} // {translated_message}")
+            formatted_message = message.format(**kwargs)
+        return formatted_message
+
+    return _
+
+
+def get_ntranslate_function(bot_or_ctx, language_code, additional_kwargs=None):
+    if additional_kwargs is None:
+        additional_kwargs = {}
+
+    def ngettext(singular, plural, n, **kwargs):
+        kwargs = {**additional_kwargs, "n": n, **kwargs}
+        translated_message = ntranslate(singular, plural, n, language_code)
+        try:
+            formatted_message = translated_message.format(**kwargs)
+        except KeyError:
+            if n > 1:
+                bot_or_ctx.logger.exception(f"Error formatting message (n={n}) {plural} // {translated_message}")
+                formatted_message = plural.format(**kwargs)
+            else:
+                bot_or_ctx.logger.exception(f"Error formatting message (n={n}) {singular} // {translated_message}")
+                formatted_message = singular.format(**kwargs)
+
+        return formatted_message
+
+    return ngettext
+
+
 def fake_translation(message, language_code=None):
     return message
 

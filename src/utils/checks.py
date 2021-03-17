@@ -11,6 +11,13 @@ class NotInServer(commands.CheckFailure):
         self.must_be_in_guild_id = must_be_in_guild_id
 
 
+class NotInChannel(commands.CheckFailure):
+    """Exception raised when a command is not ran in the specified channel."""
+
+    def __init__(self, must_be_in_channel_id):
+        self.must_be_in_channel_id = must_be_in_channel_id
+
+
 class BotIgnore(commands.CheckFailure):
     """Exception raised when a member is ignored by the bot"""
 

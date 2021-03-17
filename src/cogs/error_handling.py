@@ -132,6 +132,15 @@ class CommandErrorHandler(Cog):
                     else:
                         message = _("You need to be in a server with ID {exception.must_be_in_guild_id}.",
                                     exception=exception)
+                elif isinstance(exception, checks.NotInChannel):
+                    correct_channel = self.bot.get_channel(exception.must_be_in_channel_id)
+                    if correct_channel:
+                        message = _("You need to be in the {correct_channel.name} channel (`{exception.must_be_in_channel_id}`).",
+                                    correct_channel=correct_channel,
+                                    exception=exception)
+                    else:
+                        message = _("You need to be in a server with ID {exception.must_be_in_channel_id}.",
+                                    exception=exception)
 
                 elif type(exception).__name__ == NotEnoughExperience.__name__:
                     message = _("You don't have enough experience to enjoy this item. You'd need at least {exception.needed} exp, but you only have {exception.having}.",
