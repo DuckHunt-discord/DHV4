@@ -105,6 +105,7 @@ class PrivateMessagesSupport(Cog):
             await message.channel.send(f"❌: {e}\nYou can use `dh!private_support close` to close the channel.")
 
     async def handle_dm_message(self, message: discord.Message):
+        await self.bot.logger.info(f"[SUPPORT] received a message from{message.author.name}#{message.author.discriminator}")
         await self.bot.wait_until_ready()
 
         if message.author.id in self.blocked_ids:
@@ -178,7 +179,21 @@ class PrivateMessagesSupport(Cog):
                                                                 "Click [here](https://discord.gg/G4skWae) to join."))
 
         async with ctx.typing():
-            await user.send(embed=close_embed)
+            try:
+                await user.send(embed=close_embed)
+            except:
+                pass
+            await ctx.channel.delete(
+                reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
+
+    @private_support.command(aliases=["not_support", "huh"])
+    async def close_silent(self, ctx: MyContext):
+        """
+        Close the opened DM channel. Will not send a message, since it wasn't a support request.
+        """
+        await self.is_in_forwarding_channels(ctx)
+
+        async with ctx.typing():
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
