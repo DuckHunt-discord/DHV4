@@ -32,8 +32,16 @@ class MirrorMenuPage(menus.MenuPages):
         return payload.emoji in self.buttons
 
     async def show_page(self, page_number, propagate=True):
-        if propagate:
-            await self.other.show_page(page_number, propagate=False)
+        if propagate and self.other:
+            try:
+                await self.other.show_page(page_number, propagate=False)
+            except discord.NotFound:
+                # Break the link, one was deleted.
+                self.other = None
+            except discord.Forbidden:
+                # Break the link, can't speak anymore.
+                self.other = None
+
         return await super().show_page(page_number)
 
 
