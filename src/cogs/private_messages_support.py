@@ -108,7 +108,7 @@ class PrivateMessagesSupport(Cog):
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
 
-            await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator}.\n"
+            await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
                                        f"Every message in here will get sent back to them if it's not a bot message, "
                                        f"DuckHunt command, and if it doesn't start by the > character.\n"
                                        f"You can use many commands in the DM channels, detailed in "
