@@ -65,7 +65,12 @@ class PrivateMessagesSupport(Cog):
             self.webhook_cache[channel] = webhook
         else:
             if self.webhook_cache.get(channel, None) is None:
-                webhook = (await channel.webhooks())[0]
+                try:
+                    webhook = (await channel.webhooks())[0]
+                except IndexError:
+                    webhook = await channel.create_webhook(name=f"{user.name}#{user.discriminator}",
+                                                           avatar=await user.avatar_url.read(),
+                                                           reason="Received a DM...")
                 self.webhook_cache[channel] = webhook
         return channel
 
