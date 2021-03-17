@@ -86,13 +86,13 @@ class Community(Cog):
             await self.epic_rpg_pings(message)
 
         if not message.author.bot:
-            links_matches = self.message_link_regex.findall(message.content)
+            links_matches = list(self.message_link_regex.finditer(message.content))
 
             if links_matches and len(links_matches) <= 5:
                 for match in links_matches:
-                    match_guild_id = match.group('guild_id')
-                    match_channel_id = match.group('channel_id')
-                    match_message_id = match.group('message_id')
+                    match_guild_id = int(match.group('guild_id'))
+                    match_channel_id = int(match.group('channel_id'))
+                    match_message_id = int(match.group('message_id'))
 
                     match_guild = self.bot.get_guild(match_guild_id)
 
