@@ -133,12 +133,13 @@ class PrivateMessagesSupport(Cog):
             # Don't listen to bots (ourselves in this case)
             return
 
+        guild = message.guild
         ctx = await self.bot.get_context(message, cls=MyContext)
         if ctx.valid:
             # It's just a command.
             return
 
-        if message.guild:
+        if guild:
             if message.channel.category == await self.get_forwarding_category():
                 if message.content.startswith(">"):
                     return
