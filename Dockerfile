@@ -5,20 +5,18 @@ RUN apt-get update; \
         # To fetch from pip
         git \
         gettext \
+        nano \
        ; \
     rm -rf /var/lib/apt/lists/*;
 
 
-WORKDIR /
-COPY requirements.txt /
+WORKDIR /duckhunt/
+COPY requirements.txt /duckhunt/
 
 RUN pip install --use-deprecated=legacy-resolver -U -r requirements.txt
 
 # Fix for babel stupid parsing
 RUN curl https://raw.githubusercontent.com/paris-ci/babel/master/babel/dates.py > /usr/local/lib/python3.9/site-packages/babel/dates.py
-
-
-COPY src/ /bot
 
 ENV BOT_TOKEN=""
 ENV DB_HOST=""
@@ -32,11 +30,9 @@ ENV JISHAKU_HIDE="True"
 ENV JISHAKU_NO_DM_TRACEBACK="True"
 ENV JISHAKU_NO_UNDERSCORE="True"
 
-COPY docker_config.toml /docker_config.toml
-COPY generate_config_from_env.py /generate_config_from_env.py
-COPY docker_run.sh /run.sh
+COPY / /duckhunt/
 
-WORKDIR /bot/
+WORKDIR /duckhunt/src/
 
 # Compile messages catalogs
 #RUN pybabel compile -d locales/
