@@ -87,7 +87,8 @@ class MultiplayerMenuPage(menus.MenuPages):
         # self.ctx: MyContext
         if payload.message_id != self.message.id:
             return False
-        if payload.user_id not in {self.bot.owner_id, self._author_id, *[m.id for m in self.ctx.message.mentions], *self.bot.owner_ids, *self.more_users}:
+        if payload.user_id not in {self.bot.owner_id, self._author_id, *[m.id for m in self.ctx.message.mentions],
+                                   *self.bot.owner_ids, *self.more_users}:
             return False
 
         return payload.emoji in self.buttons
@@ -171,7 +172,7 @@ class Tags(Cog):
             await ctx.send_help(ctx.command)
 
     @tags.command()
-    async def create(self, ctx: MyContext, tag_name: TagName, *, tag_content):
+    async def create(self, ctx: MyContext, tag_name: TagName, *, tag_content=""):
         """
         Create a new tag. The tag name must not be an existing tag or tag alias.
         """
@@ -184,6 +185,9 @@ class Tags(Cog):
                 tag_content += "\n\n" + url
             else:
                 tag_content = url
+
+        if not tag_content:
+            await ctx.reply(_("❌ You didn't specify what you want your tag to say."))
 
         if tag:
             await ctx.reply(_("❌ This tag already exists."))
@@ -220,7 +224,7 @@ class Tags(Cog):
             _("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag_alias=tag_alias))
 
     @tags.command()
-    async def edit(self, ctx: MyContext, tag_name: TagName, *, tag_content):
+    async def edit(self, ctx: MyContext, tag_name: TagName, *, tag_content=""):
         """
         Edit an existing tag, changing the text.
         """
@@ -243,6 +247,9 @@ class Tags(Cog):
                 tag_content += "\n\n" + url
             else:
                 tag_content = url
+
+        if not tag_content:
+            await ctx.reply(_("❌ You didn't specify what you want your tag to say."))
 
         tag.content = tag_content
         tag.revisions += 1
