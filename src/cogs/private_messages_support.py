@@ -139,12 +139,13 @@ class PrivateMessagesSupport(Cog):
             await self.handle_dm_message(message)
 
     @commands.group(aliases=["ps"])
-    @is_in_forwarding_channels_check()
     async def private_support(self, ctx: MyContext):
         """
         The DuckHunt bot DMs are monitored. All of these commands are used to control the created channels, and to
         interact with remote users.
         """
+        await self.is_in_forwarding_channels(ctx)
+
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
 
