@@ -25,6 +25,10 @@ class MirrorMenuPage(menus.MenuPages):
         if payload.message_id != self.message.id:
             return False
 
+        # self.bot: MyBot
+        if payload.user_id == self.bot.user.id:
+            return False
+
         return payload.emoji in self.buttons
 
     async def show_page(self, page_number, propagate=True):
