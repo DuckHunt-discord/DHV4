@@ -74,7 +74,7 @@ class PrivateMessagesSupport(Cog):
         db_user = await get_from_db(user, as_user=True)
         language = db_user.language
 
-        await self.bot.logger.info(f"[SUPPORT] answering {user.name}#{user.discriminator} with a message from {message.author.name}#{message.author.discriminator}")
+        self.bot.logger.info(f"[SUPPORT] answering {user.name}#{user.discriminator} with a message from {message.author.name}#{message.author.discriminator}")
 
         _ = get_translate_function(self.bot, language)
 
@@ -107,7 +107,7 @@ class PrivateMessagesSupport(Cog):
             await message.channel.send(f"❌: {e}\nYou can use `dh!private_support close` to close the channel.")
 
     async def handle_dm_message(self, message: discord.Message):
-        await self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
+        self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
         await self.bot.wait_until_ready()
 
         if message.author.id in self.blocked_ids:
