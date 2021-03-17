@@ -5,11 +5,12 @@ import discord
 from babel.dates import format_datetime
 from discord.ext import commands
 
+from cogs.tags import MultiplayerMenuPage, TagMenuSource, TagName
 from utils.bot_class import MyBot
 from utils.checks import NotInServer, BotIgnore, NotInChannel
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db
+from utils.models import get_from_db, get_tag
 from utils.translations import get_translate_function
 
 
@@ -217,6 +218,29 @@ class PrivateMessagesSupport(Cog):
 
         self.blocked_ids.append(int(ctx.channel.name))
         await ctx.send("👌")
+
+    @private_support.command(aliases=["send_tag", "t"])
+    async def tag(self, ctx: MyContext, *, tag_name: TagName):
+        """
+        Send a tag to the user, as if you used the dh!tag command in his DMs.
+        """
+        await self.is_in_forwarding_channels(ctx)
+
+        self.blocked_ids.append(int(ctx.channel.name))
+        await ctx.send("👌")
+
+        user = await self.get_user(ctx.channel.name)
+
+        tag = await get_tag(tag_name)
+
+        if tag:
+            pages = MultiplayerMenuPage(source=TagMenuSource(ctx, tag), clear_reactions_after=True, more_users=[user])
+            await pages.start(ctx, channel=user)
+        else:
+            _ = await ctx.get_translate_function()
+            await ctx.reply(_("❌ There is no tag with that name."))
+
+
 
 
 setup = PrivateMessagesSupport.setup

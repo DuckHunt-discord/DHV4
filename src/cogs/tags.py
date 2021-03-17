@@ -76,11 +76,18 @@ class TagMenuSource(menus.ListPageSource):
 
 
 class MultiplayerMenuPage(menus.MenuPages):
+    def __init__(self, source, more_users=None, **kwargs):
+        super().__init__(source, **kwargs)
+        if more_users is None:
+            self.more_users = []
+        else:
+            self.more_users = more_users
+
     def reaction_check(self, payload: discord.RawReactionActionEvent) -> bool:
         # self.ctx: MyContext
         if payload.message_id != self.message.id:
             return False
-        if payload.user_id not in {self.bot.owner_id, self._author_id, *[m.id for m in self.ctx.message.mentions], *self.bot.owner_ids}:
+        if payload.user_id not in {self.bot.owner_id, self._author_id, *[m.id for m in self.ctx.message.mentions], *self.bot.owner_ids, *self.more_users}:
             return False
 
         return payload.emoji in self.buttons
