@@ -134,16 +134,18 @@ class PrivateMessagesSupport(Cog):
             # Don't listen to bots (ourselves in this case)
             return
 
+        ctx = await self.bot.get_context(message, cls=MyContext)
+        if ctx.valid:
+            # It's just a command.
+            return
+
         if message.guild:
             if message.channel.category == await self.get_forwarding_category():
+                if message.startswith("#"):
+                    return
                 # This is a support message.
                 await self.handle_support_message(message)
         else:
-            ctx = await self.bot.get_context(message, cls=MyContext)
-            if ctx.valid:
-                # It's just a command.
-                return
-
             # New DM message.
             await self.handle_dm_message(message)
 
