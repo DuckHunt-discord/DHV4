@@ -178,10 +178,12 @@ class PrivateMessagesSupport(Cog):
                 if message.content.startswith(">"):
                     return
                 # This is a support message.
-                await self.handle_support_message(message)
+                async with message.channel.typing():
+                    await self.handle_support_message(message)
         else:
             # New DM message.
-            await self.handle_dm_message(message)
+            async with message.channel.typing():
+                await self.handle_dm_message(message)
 
     @commands.group(aliases=["ps"])
     async def private_support(self, ctx: MyContext):
@@ -221,6 +223,8 @@ class PrivateMessagesSupport(Cog):
                 await user.send(embed=close_embed)
             except:
                 pass
+            self.users_cache.pop(user.id)
+            self.webhook_cache.pop(ctx.channel)
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
@@ -232,6 +236,8 @@ class PrivateMessagesSupport(Cog):
         await self.is_in_forwarding_channels(ctx)
 
         async with ctx.typing():
+            self.users_cache.pop(int(ctx.channel.name))
+            self.webhook_cache.pop(ctx.channel)
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
