@@ -117,7 +117,7 @@ class Community(Cog):
                     match_message = await match_channel.fetch_message(match_message_id)
 
                     embed = await make_message_embed(match_message)
-                    await ctx.reply(embed=embed)
+                    await ctx.send(embed=embed)
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = datetime.datetime.utcnow()
