@@ -136,7 +136,7 @@ class PrivateMessagesSupport(Cog):
 
         if message.guild:
             if message.channel.category == await self.get_forwarding_category():
-                if message.startswith("#"):
+                if message.content.startswith("#"):
                     return
                 # This is a support message.
                 await self.handle_support_message(message)
