@@ -56,6 +56,7 @@ class MirrorMenuPage(menus.MenuPages):
                 self.other = None
         return await super().stop()
 
+
 class PrivateMessagesSupport(Cog):
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
