@@ -76,7 +76,6 @@ class PrivateMessagesSupport(Cog):
 
         await self.bot.logger.info(f"[SUPPORT] answering {user.name}#{user.discriminator} with a message from {message.author.name}#{message.author.discriminator}")
 
-
         _ = get_translate_function(self.bot, language)
 
         support_embed = discord.Embed(color=discord.Color.blurple(), title="Support response")
