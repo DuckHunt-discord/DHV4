@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import re
 
 import discord
 from discord.ext import commands
@@ -11,6 +12,8 @@ from utils.human_time import ShortTime
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.interaction import make_message_embed
+from utils.models import get_from_db, AccessLevel
 
 
 async def wait_cd(monitored_player, ctx, name, dt):
@@ -28,6 +31,12 @@ class Community(Cog):
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.epic_rpg_cd_coros = {}
+        self.message_link_regex = re.compile(
+            r"https://discord\.com/channels/"
+            r"(?P<guild_id>[0-9]*)/"
+            r"(?P<channel_id>[0-9]*)/"
+            r"(?P<message_id>[0-9]*)",
+            flags=re.MULTILINE | re.IGNORECASE)
 
     @commands.command()
     @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
@@ -69,9 +78,46 @@ class Community(Cog):
         if not await self.is_in_server(message):
             return
 
+        ctx: MyContext = await self.bot.get_context(message, cls=MyContext)
+        db_member = None
+
         if message.author.id == 555955826880413696:
             await self.epic_rpg_cooldowns(message)
             await self.epic_rpg_pings(message)
+
+        if not message.author.bot:
+            links_matches = self.message_link_regex.findall(message.content)
+
+            if links_matches and len(links_matches) <= 5:
+                for match in links_matches:
+                    match_guild_id = match.group('guild_id')
+                    match_channel_id = match.group('channel_id')
+                    match_message_id = match.group('message_id')
+
+                    match_guild = self.bot.get_guild(match_guild_id)
+
+                    if not match_guild:
+                        continue
+
+                    match_channel = match_guild.get_channel(match_channel_id)
+
+                    if not match_channel:
+                        continue
+
+                    # Permissions check !
+                    permissions = match_channel.permissions_for(await match_guild.fetch_member(message.author.id))
+
+                    if not permissions.read_message_history or not permissions.read_messages:
+                        # The user can't read messages
+                        db_member = db_member or await get_from_db(message.author, as_user=True)
+                        if db_member.access_level_override < AccessLevel.BOT_MODERATOR:
+                            # And isn't a BOT_MODERATOR or higher, so we won't show anything.
+                            continue
+
+                    match_message = await match_channel.fetch_message(match_message_id)
+
+                    embed = await make_message_embed(match_message)
+                    await ctx.reply(embed=embed)
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = datetime.datetime.utcnow()
@@ -129,11 +175,12 @@ class Community(Cog):
             await ctx.send(_("{rpg_role.mention}, you might want to click the reaction above/do what the bot says.", rpg_role=rpg_role))
 
     async def epic_rpg_cooldowns(self, message: discord.Message):
-        is_cooldown = False
         has_embeds = len(message.embeds)
         if has_embeds:
             embed: discord.Embed = message.embeds[0]
             is_cooldown = str(embed.author.name).endswith("'s cooldowns")
+        else:
+            return
 
         if is_cooldown:
             ctx: MyContext = await self.bot.get_context(message, cls=MyContext)

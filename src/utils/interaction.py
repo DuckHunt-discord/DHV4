@@ -159,3 +159,34 @@ def anti_bot_zero_width(mystr: str):
             out.append(random.choice(addings))
 
     return ''.join(out)
+
+
+async def make_message_embed(message: discord.Message):
+    embed = discord.Embed(color=discord.Colour.blurple())
+    embed.set_author(name=message.author.name, icon_url=str(message.author.avatar_url))
+    embed.description = message.content
+
+    if len(message.attachments) == 1:
+        url = str(message.attachments[0].url)
+        if not message.channel.nsfw and (url.endswith(".webp") or url.endswith(".png") or url.endswith(".jpg")):
+            embed.set_image(url=url)
+        else:
+            embed.add_field(name="Attached", value=url)
+
+    elif len(message.attachments) > 1:
+        for attach in message.attachments:
+            embed.add_field(name="Attached", value=attach.url)
+
+    if not message.guild:
+        embed.set_footer(text=f"Private message",
+                         icon_url=str(message.guild.icon_url))
+    elif message.channel.nsfw:
+        embed.set_footer(text=f"{message.guild.name}: [NSFW] #{message.channel.name}",
+                         icon_url=str(message.guild.icon_url))
+    else:
+        embed.set_footer(text=f"{message.guild.name}: #{message.channel.name}",
+                         icon_url=str(message.guild.icon_url))
+
+    embed.timestamp = message.created_at
+
+    return embed
