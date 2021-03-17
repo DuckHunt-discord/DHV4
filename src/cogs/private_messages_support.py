@@ -108,7 +108,7 @@ class PrivateMessagesSupport(Cog):
             await message.channel.send(f"❌: {e}\nYou can use `dh!private_support close` to close the channel.")
 
     async def handle_dm_message(self, message: discord.Message):
-        await self.bot.logger.info(f"[SUPPORT] received a message from{message.author.name}#{message.author.discriminator}")
+        await self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
         await self.bot.wait_until_ready()
 
         if message.author.id in self.blocked_ids:
