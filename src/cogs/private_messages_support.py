@@ -273,10 +273,7 @@ class PrivateMessagesSupport(Cog):
         """
         await self.is_in_forwarding_channels(ctx)
 
-        self.blocked_ids.append(int(ctx.channel.name))
-
         user = await self.get_user(ctx.channel.name)
-
         tag = await get_tag(tag_name)
 
         if tag:
