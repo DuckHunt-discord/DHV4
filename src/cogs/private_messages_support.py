@@ -44,17 +44,17 @@ class MirrorMenuPage(menus.MenuPages):
 
         return await super().show_page(page_number)
 
-    async def stop(self, propagate=True):
+    def stop(self, propagate=True):
         if propagate and self.other:
             try:
-                await self.other.stop(propagate=False)
+                self.other.stop(propagate=False)
             except discord.NotFound:
                 # Break the link, one was deleted.
                 self.other = None
             except discord.Forbidden:
                 # Break the link, can't speak anymore.
                 self.other = None
-        return await super().stop()
+        return super().stop()
 
 
 class PrivateMessagesSupport(Cog):
