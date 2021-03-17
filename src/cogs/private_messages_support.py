@@ -16,7 +16,6 @@ from utils.translations import get_translate_function
 class PrivateMessagesSupport(Cog):
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
-        self._forwarding_category = None
         self.webhook_cache: Dict[discord.TextChannel, discord.Webhook] = {}
         self.users_cache: Dict[int, discord.User] = {}
         self.blocked_ids: List[int] = []
@@ -41,10 +40,7 @@ class PrivateMessagesSupport(Cog):
         return user
 
     async def get_forwarding_category(self) -> discord.CategoryChannel:
-        if self._forwarding_category is None:
-            self._forwarding_category = self.bot.get_channel(self.config()['forwarding_category'])
-
-        return self._forwarding_category
+        return self.bot.get_channel(self.config()['forwarding_category'])
 
     async def get_or_create_channel(self, user: discord.User) -> discord.TextChannel:
         forwarding_category = await self.get_forwarding_category()
