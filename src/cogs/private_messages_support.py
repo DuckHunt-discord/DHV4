@@ -125,6 +125,10 @@ class PrivateMessagesSupport(Cog):
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
+        if message.author.bot:
+            # Don't listen to bots (ourselves in this case)
+            return
+
         if message.guild:
             if message.channel.category == await self.get_forwarding_category():
                 # This is a support message.
