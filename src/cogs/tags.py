@@ -10,7 +10,7 @@ from utils import checks
 from utils.checks import BotIgnore
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import AccessLevel, Tag, get_tag, get_from_db, TagAlias
+from utils.models import AccessLevel, Tag, get_tag, get_from_db, TagAlias, DiscordUser, DiscordMember
 
 
 class TagName(commands.clean_content):
@@ -171,7 +171,6 @@ class Tags(Cog):
             await ctx.send_help(ctx.command)
 
     @tags.command()
-    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def create(self, ctx: MyContext, tag_name: TagName, *, tag_content):
         """
         Create a new tag. The tag name must not be an existing tag or tag alias.
@@ -188,7 +187,6 @@ class Tags(Cog):
             await ctx.reply(_("👌 Tag created: {tag.name} (`{tag.pk}`)", tag=tag))
 
     @tags.command()
-    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def alias(self, ctx: MyContext, alias_name: TagName, tag_name: TagName):
         """
         Alias an existing tag to a new name.
@@ -214,7 +212,6 @@ class Tags(Cog):
             _("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag_alias=tag_alias))
 
     @tags.command()
-    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def edit(self, ctx: MyContext, tag_name: TagName, *, tag_content):
         """
         Edit an existing tag, changing the text.
@@ -226,13 +223,18 @@ class Tags(Cog):
             await ctx.reply(_("❌ This tag doesn't exist yet. You might want to create it."))
             return
 
+        db_member: DiscordMember = await get_from_db(ctx.author)
+        tag_owner: DiscordUser = await tag.owner
+        if tag_owner.discord_id != ctx.author.id and db_member.get_access_level() < AccessLevel.TRUSTED:
+            await ctx.reply(_("❌ You don't own that tag, you can't edit it."))
+            return
+
         tag.content = tag_content
         tag.revisions += 1
         await tag.save()
         await ctx.reply(_("👌 Tag {tag.name} edited.", tag=tag))
 
     @tags.command()
-    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def delete(self, ctx: MyContext, tag_name: TagName):
         """
         Delete an existing tag.
@@ -242,6 +244,12 @@ class Tags(Cog):
         tag = await get_tag(tag_name, increment_uses=False)
         if not tag:
             await ctx.reply(_("❌ This tag doesn't exist."))
+            return
+
+        db_member: DiscordMember = await get_from_db(ctx.author)
+        tag_owner: DiscordUser = await tag.owner
+        if tag_owner.discord_id != ctx.author.id and db_member.get_access_level() < AccessLevel.TRUSTED:
+            await ctx.reply(_("❌ You don't own that tag, you can't delete it."))
             return
 
         await tag.delete()
