@@ -56,7 +56,7 @@ class PrivateMessagesSupport(Cog):
                 name=str(user.id),
                 topic=f"This is the logs of a DM with {user.name}#{user.discriminator}. "
                       f"What's written in there will be sent back to him, except if "
-                      f"the message starts with # or is a DuckHunt command.\nChannel opened: {now_str}",
+                      f"the message starts with > or is a DuckHunt command.\nChannel opened: {now_str}",
                 reason="Received a DM.")
 
             webhook = await channel.create_webhook(name=f"{user.name}#{user.discriminator}",
@@ -137,7 +137,7 @@ class PrivateMessagesSupport(Cog):
 
         if message.guild:
             if message.channel.category == await self.get_forwarding_category():
-                if message.content.startswith("#"):
+                if message.content.startswith(">"):
                     return
                 # This is a support message.
                 await self.handle_support_message(message)
