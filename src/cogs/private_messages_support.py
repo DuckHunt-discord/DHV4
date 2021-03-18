@@ -100,7 +100,8 @@ class PrivateMessagesSupport(Cog):
                 name=str(user.id),
                 topic=f"This is the logs of a DM with {user.name}#{user.discriminator}. "
                       f"What's written in there will be sent back to him, except if "
-                      f"the message starts with > or is a DuckHunt command.\nChannel opened: {now_str}",
+                      f"the message starts with > or is a DuckHunt command.\nChannel opened: {now_str}"
+                      f"\n\n\n[getbeaned:disable_automod]\n[getbeaned:disable_logging]",
                 reason="Received a DM.")
 
             self.bot.logger.debug(f"[SUPPORT] creating a webhook for {user.name}#{user.discriminator}.")
