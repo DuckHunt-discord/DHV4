@@ -4,7 +4,8 @@ from typing import Dict, List
 
 import discord
 from babel.dates import format_datetime
-from discord.ext import commands, menus
+from discord.ext import commands, menus, tasks
+from discord.utils import snowflake_time
 
 from cogs.tags import MultiplayerMenuPage, TagMenuSource, TagName
 from utils.bot_class import MyBot
@@ -65,6 +66,73 @@ class PrivateMessagesSupport(Cog):
         self.webhook_cache: Dict[discord.TextChannel, discord.Webhook] = {}
         self.users_cache: Dict[int, discord.User] = {}
         self.blocked_ids: List[int] = []
+        self.index = 0
+        self.background_loop.start()
+
+    def cog_unload(self):
+        self.background_loop.cancel()
+
+    @tasks.loop(hours=1)
+    async def background_loop(self):
+        """
+        Check for age of the last message sent in the channel.
+        If it's too old, consider the channel inactive and close the ticket.
+        """
+        category = await self.get_forwarding_category()
+        one_day_ago = datetime.datetime.now() - datetime.timedelta(days=1)
+        for ticket_channel in category.text_channels:
+            last_message_id = ticket_channel.last_message_id
+            if last_message_id:
+                # We have the ID of the last message, there is no need to fetch the API, since we can just extract the
+                # datetime from it.
+                last_message_time = snowflake_time(last_message_id)
+            else:
+                # For some reason, we couldn't get the last message, so we'll have to go the expensive route.
+                # In my testing, I didn't see it happen, but better safe than sorry.
+                try:
+                    last_message = (await ticket_channel.history(limit=1).flatten())[0]
+                except IndexError:
+                    # No messages at all.
+                    last_message_time = datetime.datetime.now()
+                else:
+                    last_message_time = last_message.created_at
+
+            if last_message_time <= one_day_ago:
+                # The last message was sent a day ago, or more.
+                # It's time to close the channel.
+                async with ticket_channel.typing():
+                    user = await self.get_user(ticket_channel.name)
+                    db_user = await get_from_db(user, as_user=True)
+                    language = db_user.language
+
+                    _ = get_translate_function(self.bot, language)
+
+                    inactivity_embed = discord.Embed(
+                        color=discord.Color.orange(),
+                        title=_("DM Timed Out"),
+                        description=_("It seems like nothing has been said here for a long time, "
+                                      "so I've gone ahead and closed your ticket, deleting its history. "
+                                      "Thanks for using DuckHunt DM support. "
+                                      "If you need anything else, feel free to open a new ticket by sending a message "
+                                      "here."),
+                    )
+
+                    inactivity_embed.add_field(name=_("Support server"),
+                                               value=_("For all your questions, there is a support server. "
+                                                       "Click [here](https://discord.gg/G4skWae) to join."))
+
+                    try:
+                        await user.send(embed=inactivity_embed)
+                    except:
+                        pass
+
+                    await self.clear_caches(ticket_channel)
+
+                    await ticket_channel.delete(reason=f"Automatic deletion for inactivity.")
+
+    @background_loop.before_loop
+    async def before(self):
+        await self.bot.wait_until_ready()
 
     async def is_in_forwarding_channels(self, ctx):
         category = await self.get_forwarding_category()
@@ -144,7 +212,8 @@ class PrivateMessagesSupport(Cog):
         db_user = await get_from_db(user, as_user=True)
         language = db_user.language
 
-        self.bot.logger.info(f"[SUPPORT] answering {user.name}#{user.discriminator} with a message from {message.author.name}#{message.author.discriminator}")
+        self.bot.logger.info(
+            f"[SUPPORT] answering {user.name}#{user.discriminator} with a message from {message.author.name}#{message.author.discriminator}")
 
         _ = get_translate_function(self.bot, language)
 
@@ -181,13 +250,15 @@ class PrivateMessagesSupport(Cog):
         await self.bot.wait_until_ready()
 
         if message.author.id in self.blocked_ids:
-            self.bot.logger.debug(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist")
+            self.bot.logger.debug(
+                f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist")
             return
 
         forwarding_channel = await self.get_or_create_channel(message.author)
         forwarding_webhook = self.webhook_cache[forwarding_channel]
 
-        self.bot.logger.debug(f"[SUPPORT] got {message.author.name}#{message.author.discriminator} channel and webhook.")
+        self.bot.logger.debug(
+            f"[SUPPORT] got {message.author.name}#{message.author.discriminator} channel and webhook.")
 
         attachments = message.attachments
         files = [await attach.to_file() for attach in attachments]
@@ -202,6 +273,19 @@ class PrivateMessagesSupport(Cog):
                                       wait=True)
 
         self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message forwarded.")
+
+    async def clear_caches(self, channel: discord.TextChannel):
+        try:
+            self.users_cache.pop(int(channel.name))
+        except KeyError:
+            # Cog reload, probably.
+            pass
+
+        try:
+            self.webhook_cache.pop(channel)
+        except KeyError:
+            # Cog reload, probably.
+            pass
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -272,17 +356,7 @@ class PrivateMessagesSupport(Cog):
             except:
                 pass
 
-            try:
-                self.users_cache.pop(int(ctx.channel.name))
-            except KeyError:
-                # Cog reload, probably.
-                pass
-
-            try:
-                self.webhook_cache.pop(ctx.channel)
-            except KeyError:
-                # Cog reload, probably.
-                pass
+            await self.clear_caches(ctx.channel)
 
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
@@ -295,17 +369,7 @@ class PrivateMessagesSupport(Cog):
         await self.is_in_forwarding_channels(ctx)
 
         async with ctx.typing():
-            try:
-                self.users_cache.pop(int(ctx.channel.name))
-            except KeyError:
-                # Cog reload, probably.
-                pass
-
-            try:
-                self.webhook_cache.pop(ctx.channel)
-            except KeyError:
-                # Cog reload, probably.
-                pass
+            await self.clear_caches(ctx.channel)
 
             await ctx.channel.delete(
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
