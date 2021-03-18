@@ -99,7 +99,7 @@ class PrivateMessagesSupport(Cog):
                     last_message_time = last_message.created_at
 
             inactive_for = last_message_time - now
-            inactive_for_str = format_timedelta(inactive_for, granularity='minute', locale='en')
+            inactive_for_str = format_timedelta(inactive_for, granularity='minute', locale='en', threshold=1.1)
             self.bot.logger.debug(f"[SUPPORT GARBAGE COLLECTOR] "
                                   f"#{ticket_channel.name} has been inactive for {inactive_for_str}.")
 
