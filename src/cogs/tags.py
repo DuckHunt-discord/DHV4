@@ -207,13 +207,16 @@ class Tags(Cog):
         _ = await ctx.get_translate_function()
         alias_tag = await get_tag(alias_name, increment_uses=False)
         if alias_tag:
-            await ctx.reply(_("❌ This tag already exists."))
-            return
+            alias_name, tag_name = tag_name, alias_name  # Maybe there was a slight confusion on the arguments order.
+            alias_tag = await get_tag(alias_name, increment_uses=False)
+            if alias_tag:
+                await ctx.reply(_("❌ Both tags already exists, what are you trying to do ?"))
+                return
 
         target_tag = await get_tag(tag_name, increment_uses=False)
 
         if not target_tag:
-            await ctx.reply(_("❌ This tag doesn't exist."))
+            await ctx.reply(_("❌ None of your tags exist."))
             return
 
         db_user = await get_from_db(ctx.author, as_user=True)
