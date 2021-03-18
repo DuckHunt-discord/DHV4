@@ -3,7 +3,7 @@ from functools import partial
 from typing import Dict, List
 
 import discord
-from babel.dates import format_datetime
+from babel.dates import format_datetime, format_timedelta
 from discord.ext import commands, menus, tasks
 from discord.utils import snowflake_time
 
@@ -79,7 +79,8 @@ class PrivateMessagesSupport(Cog):
         If it's too old, consider the channel inactive and close the ticket.
         """
         category = await self.get_forwarding_category()
-        one_day_ago = datetime.datetime.now() - datetime.timedelta(days=1)
+        now = datetime.datetime.now()
+        one_day_ago = now - datetime.timedelta(days=1)
         for ticket_channel in category.text_channels:
             last_message_id = ticket_channel.last_message_id
             if last_message_id:
@@ -93,11 +94,18 @@ class PrivateMessagesSupport(Cog):
                     last_message = (await ticket_channel.history(limit=1).flatten())[0]
                 except IndexError:
                     # No messages at all.
-                    last_message_time = datetime.datetime.now()
+                    last_message_time = now
                 else:
                     last_message_time = last_message.created_at
 
+            inactive_for = last_message_time - now
+            inactive_for_str = format_timedelta(inactive_for, granularity='minute', locale='en')
+            self.bot.logger.debug(f"[SUPPORT GARBAGE COLLECTOR] "
+                                  f"#{ticket_channel.name} has been inactive for {inactive_for_str}.")
+
             if last_message_time <= one_day_ago:
+                self.bot.logger.debug(f"[SUPPORT GARBAGE COLLECTOR] "
+                                      f"Deleting #{ticket_channel.name}...")
                 # The last message was sent a day ago, or more.
                 # It's time to close the channel.
                 async with ticket_channel.typing():
