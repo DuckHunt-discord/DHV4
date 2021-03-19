@@ -1,4 +1,5 @@
 import datetime
+import re
 from functools import partial
 from typing import Dict, List
 
@@ -12,7 +13,7 @@ from utils.bot_class import MyBot
 from utils.checks import NotInServer, BotIgnore, NotInChannel
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_tag, DiscordUser
+from utils.models import get_from_db, get_tag, DiscordUser, Player
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
@@ -68,6 +69,13 @@ class PrivateMessagesSupport(Cog):
         self.blocked_ids: List[int] = []
         self.index = 0
         self.background_loop.start()
+
+        self.invites_regex = re.compile(
+            r"""
+                discord      # Literally just discord
+                (?:app\s?\.\s?com\s?/invite|\.\s?gg)\s?/ # All the domains
+                ((?!.*[Ii10OolL]).[a-zA-Z0-9]{5,12}|[a-zA-Z0-9\-]{2,32}) # Rest of the fucking owl.
+                """, flags=re.VERBOSE | re.IGNORECASE)
 
     def cog_unload(self):
         self.background_loop.cancel()
@@ -186,27 +194,8 @@ class PrivateMessagesSupport(Cog):
                                                    avatar=await user.avatar_url_as(format="png", size=512).read(),
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
-
-            db_user: DiscordUser = await get_from_db(user, as_user=True)
-            db_user.opened_support_tickets += 1
-            await db_user.save()
-
-            await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
-                                       f"Every message in here will get sent back to them if it's not a bot message, "
-                                       f"DuckHunt command, and if it doesn't start by the > character.\n"
-                                       f"You can use many commands in the DM channels, detailed in "
-                                       f"`dh!help private_support`\n"
-                                       f"• `dh!ps close` will close the channel, sending a DM to the user.\n"
-                                       f"• `dh!ps tag tag_name` will send a tag to the user *and* in the channel. "
-                                       f"The two are linked, so changing pages in this channel "
-                                       f"will change the page in the DM too.\n"
-                                       f"• `dh!ps block` will block the user from opening further channels.\n"
-                                       f"• `dh!ps huh` should be used if the message is not a support request, "
-                                       f"and will silently close the channel.\n"
-                                       f"Attachments are supported in messages.\n\n"
-                                       f"Thanks for helping with the bot DM support ! <3")
-
             self.bot.logger.debug(f"[SUPPORT] channel created for {user.name}#{user.discriminator}.")
+            await self.handle_ticket_opening(channel, user)
         else:
             if self.webhook_cache.get(channel, None) is None:
                 self.bot.logger.debug(f"[SUPPORT] recorvering {user.name}#{user.discriminator} channel webhook.")
@@ -214,6 +203,78 @@ class PrivateMessagesSupport(Cog):
                 webhook = (await channel.webhooks())[0]
                 self.webhook_cache[channel] = webhook
         return channel
+
+    async def send_mirrored_message(self, channel: discord.TextChannel, user: discord.User, db_user=None,
+                                    **send_kwargs):
+        self.bot.logger.info(f"[SUPPORT] Sending mirror message to {user.name}#{user.discriminator}")
+
+        db_user = db_user or await get_from_db(user, as_user=True)
+        language = db_user.language
+        _ = get_translate_function(self.bot, language)
+
+        channel_message = await channel.send(**send_kwargs)
+
+        try:
+            await user.send(**send_kwargs)
+        except discord.Forbidden:
+            await channel_message.add_reaction(emoji="❌")
+            await channel.send(content="❌ Couldn't send the above message, `dh!ps close` to close the channel.")
+
+    async def handle_ticket_opening(self, channel: discord.TextChannel, user: discord.User):
+        db_user: DiscordUser = await get_from_db(user, as_user=True)
+        db_user.opened_support_tickets += 1
+        await db_user.save()
+
+        await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
+                                   f"Every message in here will get sent back to them if it's not a bot message, "
+                                   f"DuckHunt command, and if it doesn't start by the > character.\n"
+                                   f"You can use many commands in the DM channels, detailed in "
+                                   f"`dh!help private_support`\n"
+                                   f"• `dh!ps close` will close the channel, sending a DM to the user.\n"
+                                   f"• `dh!ps tag tag_name` will send a tag to the user *and* in the channel. "
+                                   f"The two are linked, so changing pages in this channel "
+                                   f"will change the page in the DM too.\n"
+                                   f"• `dh!ps block` will block the user from opening further channels.\n"
+                                   f"• `dh!ps huh` should be used if the message is not a support request, "
+                                   f"and will silently close the channel.\n"
+                                   f"Attachments are supported in messages.\n\n"
+                                   f"Thanks for helping with the bot DM support ! <3")
+
+        players_data = await Player.all().filter(member__user=db_user).order_by("-last_giveback").select_related(
+            "channel").limit(5)
+
+        info_embed = discord.Embed(color=discord.Color.blurple(), title="Support information")
+
+        info_embed.description = "Information in this box isn't meant to be shared outside of this channel, and is " \
+                                 "provided for support purposes only. \n" \
+                                 "Nothing was sent to the user about this."
+
+        info_embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=str(user.avatar_url))
+        info_embed.set_footer(text="Private statistics")
+        info_embed.add_field(name="Tickets created", value=str(db_user.opened_support_tickets))
+
+        for player_data in players_data:
+            info_embed.add_field(name=f"#{player_data.channel} - {player_data.experience} exp",
+                                 value=f"https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id}")
+
+        await channel.send(embed=info_embed)
+
+        _ = get_translate_function(self.bot, db_user.language)
+
+        welcome_embed = discord.Embed(color=discord.Color.green(), title="Support ticket opened")
+        welcome_embed.description = \
+            _("Welcome to DuckHunt private messages support.\n"
+              "Messages here are relayed to a select group of volunteers and bot moderators to help you use the bot. "
+              "For general questions, we also have a support server "
+              "[here](https://discord.gg/G4skWae).\n"
+              "If you opened the ticket by mistake, just say `close` and we'll close it for you, otherwise, we'll get "
+              "back to you in a few minutes.")
+
+        try:
+            await user.send(embed=welcome_embed)
+        except discord.Forbidden:
+            await channel.send(content="❌ It seems I can't send messages to the user, you might want to close the DM. "
+                                       "`dh!ps close`.")
 
     async def handle_support_message(self, message: discord.Message):
         user = await self.get_user(message.channel.name)
@@ -252,6 +313,28 @@ class PrivateMessagesSupport(Cog):
             await user.send(embed=support_embed)
         except Exception as e:
             await message.channel.send(f"❌: {e}\nYou can use `dh!private_support close` to close the channel.")
+
+    async def handle_auto_responses(self, message: discord.Message):
+        forwarding_channel = await self.get_or_create_channel(message.author)
+        content = message.content
+
+        user = message.author
+        db_user = await get_from_db(message.author, as_user=True)
+        language = db_user.language
+        _ = get_translate_function(self.bot, language)
+
+        if self.invites_regex.search(content):
+            dm_invite_embed = discord.Embed(color=discord.Color.purple(), title=_("This is not how you invite DuckHunt."))
+            dm_invite_embed.description = \
+                _("DuckHunt, like other discord bots, can't join servers by using an invite link.\n"
+                  "You instead have to be a server Administrator and to invite the bot by following "
+                  "[this guide](https://duckhunt.me/docs/bot-administration/admin-quickstart). If you need more help, "
+                  "you can ask here and we'll get back to you.")
+
+            dm_invite_embed.set_footer(text=_("This is an automatic message."))
+
+            await self.send_mirrored_message(forwarding_channel, user, db_user=db_user, embed=dm_invite_embed)
+
 
     async def handle_dm_message(self, message: discord.Message):
         self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
@@ -318,6 +401,7 @@ class PrivateMessagesSupport(Cog):
             # New DM message.
             async with message.channel.typing():
                 await self.handle_dm_message(message)
+                await self.handle_auto_responses(message)
 
     @commands.group(aliases=["ps"])
     async def private_support(self, ctx: MyContext):
