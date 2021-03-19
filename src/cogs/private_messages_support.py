@@ -269,6 +269,7 @@ class PrivateMessagesSupport(Cog):
               "[here](https://discord.gg/G4skWae).\n"
               "If you opened the ticket by mistake, just say `close` and we'll close it for you, otherwise, we'll get "
               "back to you in a few minutes.")
+        welcome_embed.set_footer(text=_("Support tickets are deleted after 24 hours of inactivity"))
 
         try:
             await user.send(embed=welcome_embed)
