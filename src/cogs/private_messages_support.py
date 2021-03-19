@@ -255,7 +255,7 @@ class PrivateMessagesSupport(Cog):
 
         for player_data in players_data:
             info_embed.add_field(name=f"#{player_data.channel} - {player_data.experience} exp",
-                                 value=f"https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id}")
+                                 value=f"[Statistics](https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id})")
 
         await channel.send(embed=info_embed)
 
