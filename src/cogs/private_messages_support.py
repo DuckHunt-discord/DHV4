@@ -254,8 +254,12 @@ class PrivateMessagesSupport(Cog):
         info_embed.add_field(name="Tickets created", value=str(db_user.opened_support_tickets))
 
         for player_data in players_data:
-            info_embed.add_field(name=f"#{player_data.channel} - {player_data.experience} exp",
-                                 value=f"[Statistics](https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id})")
+            if player_data.channel.enabled:
+                info_embed.add_field(name=f"#{player_data.channel} - {player_data.experience} exp",
+                                     value=f"[Statistics](https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id})")
+            else:
+                info_embed.add_field(name=f"#{player_data.channel} [DISABLED]",
+                                     value=f"[Statistics](https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id}) - {player_data.experience} exp")
 
         await channel.send(embed=info_embed)
 
