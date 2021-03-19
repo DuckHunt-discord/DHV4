@@ -1,3 +1,4 @@
+import asyncio
 import datetime
 import re
 from functools import partial
@@ -448,10 +449,14 @@ class PrivateMessagesSupport(Cog):
         close_embed.set_image(url="attachment://random_duck.png")
 
         async with ctx.typing():
+            await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
+
             try:
                 await user.send(file=file, embed=close_embed)
             except:
                 pass
+
+            await asyncio.sleep(5)  # To let people stop writing
 
             await self.clear_caches(ctx.channel)
 
@@ -466,6 +471,9 @@ class PrivateMessagesSupport(Cog):
         await self.is_in_forwarding_channels(ctx)
 
         async with ctx.typing():
+            await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
+            await asyncio.sleep(5)  # To let people stop writing
+
             await self.clear_caches(ctx.channel)
 
             await ctx.channel.delete(
