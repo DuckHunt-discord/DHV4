@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-03-17 22:39+0100\n"
+"POT-Creation-Date: 2021-03-19 16:37+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -134,6 +134,11 @@ msgstr ""
 
 msgid "Get some more experience..."
 msgstr "Получить ещё немного опыта..."
+
+msgid ""
+"Check for age of the last message sent in the channel.\n"
+"If it's too old, consider the channel inactive and close the ticket."
+msgstr ""
 
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
@@ -1788,12 +1793,57 @@ msgid ""
 msgstr ""
 "💰️ Вы сняли {exp} ед. опыта со счёта в банке престижа. Приходите ещё!"
 
+msgid "DM Timed Out"
+msgstr ""
+
+msgid ""
+"It seems like nothing has been said here for a long time, so I've gone ahead "
+"and closed your ticket, deleting its history. Thanks for using DuckHunt DM "
+"support. If you need anything else, feel free to open a new ticket by "
+"sending a message here."
+msgstr ""
+
+msgid "Support server"
+msgstr "Сервер техподдержки"
+
+msgid ""
+"For all your questions, there is a support server. Click [here](https://"
+"discord.gg/G4skWae) to join."
+msgstr ""
+
+msgid ""
+"Welcome to DuckHunt private messages support.\n"
+"Messages here are relayed to a select group of volunteers and bot moderators "
+"to help you use the bot. For general questions, we also have a support "
+"server [here](https://discord.gg/G4skWae).\n"
+"If you opened the ticket by mistake, just say `close` and we'll close it for "
+"you, otherwise, we'll get back to you in a few minutes."
+msgstr ""
+
+msgid "Support tickets are deleted after 24 hours of inactivity"
+msgstr ""
+
 msgid "Attachments persistance"
 msgstr ""
 
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
+msgstr ""
+
+msgid "This is not how you invite DuckHunt."
+msgstr ""
+
+msgid ""
+"DuckHunt, like other discord bots, can't join servers by using an invite "
+"link.\n"
+"You instead have to be a server Administrator and to invite the bot by "
+"following [this guide](https://duckhunt.me/docs/bot-administration/admin-"
+"quickstart). If you need more help, you can ask here and we'll get back to "
+"you."
+msgstr ""
+
+msgid "This is an automatic message."
 msgstr ""
 
 msgid "DM Closed"
@@ -1804,14 +1854,6 @@ msgid ""
 "DuckHunt DM support. If you need anything else, feel free to open a new "
 "ticket by sending a message here.\n"
 "In the meantime, here's a nice duck picture for you to look at !"
-msgstr ""
-
-msgid "Support server"
-msgstr "Сервер техподдержки"
-
-msgid ""
-"For all your questions, there is a support server. Click [here](https://"
-"discord.gg/G4skWae) to join."
 msgstr ""
 
 msgid "❌ There is no tag with that name."
@@ -2933,14 +2975,20 @@ msgstr "{u} использований, {r} ревизий."
 msgid "Page {current_page}/{maximum} ({entries} tags)"
 msgstr "Страница {current_page}/{maximum} ({entries} меток)"
 
+msgid "❌ You didn't specify what you want your tag to say."
+msgstr ""
+
 msgid "❌ This tag already exists."
 msgstr "❌ Данная метка уже существует."
 
 msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
 msgstr "👌 Метка создана: {tag.name} (`{tag.pk}`)"
 
-msgid "❌ This tag doesn't exist."
-msgstr "❌ Данная метка не существует."
+msgid "❌ Both tags already exists, what are you trying to do ?"
+msgstr ""
+
+msgid "❌ None of your tags exist."
+msgstr ""
 
 msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
@@ -2952,8 +3000,17 @@ msgstr ""
 msgid "❌ This tag doesn't exist yet. You might want to create it."
 msgstr "❌ Данная метка пока ещё не существует. Есть смысл её создать."
 
+msgid "❌ You don't own that tag, you can't edit it."
+msgstr ""
+
 msgid "👌 Tag {tag.name} edited."
 msgstr "👌 Метка {tag.name} отредактирована."
+
+msgid "❌ This tag doesn't exist."
+msgstr "❌ Данная метка не существует."
+
+msgid "❌ You don't own that tag, you can't delete it."
+msgstr ""
 
 msgid "👌 Tag {tag.name} deleted."
 msgstr "👌 Метка {tag.name} удалена."
