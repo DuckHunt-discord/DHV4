@@ -330,7 +330,8 @@ class PrivateMessagesSupport(Cog):
         _ = get_translate_function(self.bot, language)
 
         if self.invites_regex.search(content):
-            dm_invite_embed = discord.Embed(color=discord.Color.purple(), title=_("This is not how you invite DuckHunt."))
+            dm_invite_embed = discord.Embed(color=discord.Color.purple(),
+                                            title=_("This is not how you invite DuckHunt."))
             dm_invite_embed.description = \
                 _("DuckHunt, like other discord bots, can't join servers by using an invite link.\n"
                   "You instead have to be a server Administrator and to invite the bot by following "
@@ -340,7 +341,6 @@ class PrivateMessagesSupport(Cog):
             dm_invite_embed.set_footer(text=_("This is an automatic message."))
 
             await self.send_mirrored_message(forwarding_channel, user, db_user=db_user, embed=dm_invite_embed)
-
 
     async def handle_dm_message(self, message: discord.Message):
         self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
