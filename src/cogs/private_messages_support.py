@@ -346,11 +346,6 @@ class PrivateMessagesSupport(Cog):
         self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
         await self.bot.wait_until_ready()
 
-        if message.author.id in self.blocked_ids:
-            self.bot.logger.debug(
-                f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist")
-            return
-
         forwarding_channel = await self.get_or_create_channel(message.author)
         forwarding_webhook = self.webhook_cache[forwarding_channel]
 
@@ -405,9 +400,15 @@ class PrivateMessagesSupport(Cog):
                     await self.handle_support_message(message)
         else:
             # New DM message.
-            async with message.channel.typing():
-                await self.handle_dm_message(message)
-                await self.handle_auto_responses(message)
+            if message.author.id in self.blocked_ids:
+                # Blocked
+                self.bot.logger.debug(
+                    f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist")
+                return
+            else:
+                async with message.channel.typing():
+                    await self.handle_dm_message(message)
+                    await self.handle_auto_responses(message)
 
     @commands.group(aliases=["ps"])
     async def private_support(self, ctx: MyContext):
