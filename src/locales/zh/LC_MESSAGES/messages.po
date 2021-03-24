@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-03-19 16:37+0100\n"
+"POT-Creation-Date: 2021-03-23 14:08+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -1776,22 +1776,22 @@ msgid "No members have any specific rights in the server."
 msgstr ""
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
-msgstr ""
+msgstr "❌ {target.reference}, 你不能禁止你自己 !"
 
 msgid "{target.mention} now has a access of {level.name}."
-msgstr ""
+msgstr "現在，{target.mention}擁有訪問{level.name}的權限。"
 
 msgid "You'll now be pinged in replies from the bot."
-msgstr ""
+msgstr "你現在會在機器人的回復中被提示。"
 
 msgid "You wont be pinged anymore in replies from the bot."
-msgstr ""
+msgstr "你不會再在機器人的回復中被提示。"
 
 msgid "Your language is set to `{language}` [{language_name}]."
-msgstr ""
+msgstr "您的語言被設置為`{language}` [{language_name}]。"
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
-msgstr ""
+msgstr "❌ 糟糕，你的武器里已經有太多的子彈了。"
 
 msgid ""
 "💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
@@ -2178,7 +2178,7 @@ msgid "{shots} shots attempted when wet."
 msgstr ""
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
