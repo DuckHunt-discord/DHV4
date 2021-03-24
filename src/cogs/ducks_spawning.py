@@ -225,8 +225,12 @@ class DucksSpawning(Cog):
 
         self.bot.logger.info(f"Loaded JSON file...")
 
+        self.bot.logger.debug(f"Building channels hash table for fast-access...")
+        channels = {c.id: c for c in self.bot.get_all_channels()}
+        self.bot.logger.debug(f"Hash table built, restoring ducks...")
+
         for channel_id, ducks in serialized.items():
-            channel = self.bot.get_channel(int(channel_id))
+            channel = channels.get(int(channel_id), None)
 
             if channel:
                 for data in ducks:
