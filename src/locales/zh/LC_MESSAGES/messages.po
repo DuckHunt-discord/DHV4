@@ -1776,7 +1776,7 @@ msgid "No members have any specific rights in the server."
 msgstr ""
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
-msgstr "❌ {target.reference}, 你不能禁止你自己 !"
+msgstr "❌ {target.mention}, 你不能禁止你自己 !"
 
 msgid "{target.mention} now has a access of {level.name}."
 msgstr "現在，{target.mention}擁有訪問{level.name}的權限。"
