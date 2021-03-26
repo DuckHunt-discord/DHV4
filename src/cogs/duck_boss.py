@@ -93,7 +93,7 @@ class DuckBoss(Cog):
                 for discorduser in discordusers:
                     discorduser.boss_kills += 1
                     discorduser.add_to_inventory(INV_COMMON_ITEMS['foie_gras'])
-                    await discorduser.save(update_fields=['inventory'])
+                    await discorduser.save(update_fields=['inventory', 'boss_kills'])
 
                 new_embed = discord.Embed(
                     title=random.choice(["The boss was defeated !"]),
