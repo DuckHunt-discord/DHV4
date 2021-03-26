@@ -392,7 +392,7 @@ class PrivateMessagesSupport(Cog):
             return
 
         if guild:
-            if message.channel.category == await self.get_forwarding_category():
+            if message.channel.category and message.channel.category == await self.get_forwarding_category():
                 if message.content.startswith(">"):
                     return
                 # This is a support message.
