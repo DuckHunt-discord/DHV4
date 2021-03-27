@@ -129,7 +129,7 @@ class MyBot(AutoShardedBot):
                                         "However, if the duck says **COIN** it's a **baby duck** and you should hug it with `dh!hug`.\n"
                                         "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
                                         "If you want to learn more about the game, use the wiki! <{wiki_link}>",
-                                        support_server_link=_("https://discord.gg/G4skWae"),
+                                        support_server_link=_("https://duckhunt.me/support"),
                                         wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
                 ))
             except discord.Forbidden:

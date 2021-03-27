@@ -136,7 +136,7 @@ class PrivateMessagesSupport(Cog):
 
                     inactivity_embed.add_field(name=_("Support server"),
                                                value=_("For all your questions, there is a support server. "
-                                                       "Click [here](https://discord.gg/G4skWae) to join."))
+                                                       "Click [here](https://duckhunt.me/support) to join."))
 
                     try:
                         await user.send(embed=inactivity_embed)
@@ -271,7 +271,7 @@ class PrivateMessagesSupport(Cog):
             _("Welcome to DuckHunt private messages support.\n"
               "Messages here are relayed to a select group of volunteers and bot moderators to help you use the bot. "
               "For general questions, we also have a support server "
-              "[here](https://discord.gg/G4skWae).\n"
+              "[here](https://duckhunt.me/support).\n"
               "If you opened the ticket by mistake, just say `close` and we'll close it for you, otherwise, we'll get "
               "back to you in a few minutes.")
         welcome_embed.set_footer(text=_("Support tickets are deleted after 24 hours of inactivity"))
@@ -444,7 +444,7 @@ class PrivateMessagesSupport(Cog):
         )
 
         close_embed.add_field(name=_("Support server"), value=_("For all your questions, there is a support server. "
-                                                                "Click [here](https://discord.gg/G4skWae) to join."))
+                                                                "Click [here](https://duckhunt.me/support) to join."))
 
         file = await get_random_duck_file(self.bot)
         close_embed.set_image(url="attachment://random_duck.png")

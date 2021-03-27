@@ -253,7 +253,7 @@ class DucksSpawning(Cog):
         embed.description = f"The bot restarted and is now ready to spawn ducks. Get your rifles out!"
         embed.add_field(name="Statistics", value=f"{len(self.bot.guilds)} servers, "
                                                  f"{len(self.bot.enabled_channels)} channels")
-        embed.add_field(name="Help and support", value="https://discord.gg/G4skWae")
+        embed.add_field(name="Help and support", value="https://duckhunt.me/support")
         embed.set_footer(text="Ducks that were on the channel previously should have been restored, and can be killed.")
         await self.bot.log_to_channel(embed=embed)
 

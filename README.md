@@ -1,6 +1,6 @@
 # DuckHunt, the discord bot
 
-[![Discord](https://img.shields.io/discord/195260081036591104)](https://discord.gg/2BksEkV)
+[![Discord](https://img.shields.io/discord/195260081036591104)](https://duckhunt.me/support)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/DuckHunt-discord/DHV4) 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fduckhunt.me)](https://duckhunt.me)
 
@@ -28,11 +28,11 @@ Duckhunt have many features:
 
 ## Invite
 
-[https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489](https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489)
+[https://duckhunt.me/invite](https://duckhunt.me/invite)
 
 ## Support server
 
-[https://discord.gg/2BksEkV](https://discord.gg/2BksEkV)
+[https://duckhunt.me/support](https://duckhunt.me/support)
 
 ## More information
 

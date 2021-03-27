@@ -102,14 +102,14 @@ class SimpleCommands(Cog):
         """
 
         await ctx.send(
-            f"<https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489>")
+            f"<https://duckhunt.me/invite>")
 
     @commands.command()
     async def support(self, ctx: MyContext):
         """
         Get a discord invite to the support server.
         """
-        await ctx.send(f"<https://discordapp.com/invite/2BksEkV>")
+        await ctx.send(f"<https://duckhunt.me/support>")
 
     @commands.command(aliases=["giveback", "ft"])
     @checks.channel_enabled()
