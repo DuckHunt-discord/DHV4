@@ -1,6 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "POT-Creation-Date: 2021-03-23 14:08+0100\n"
@@ -2167,24 +2164,24 @@ msgstr "Support server"
 #: ../cogs/private_messages_support.py:446
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
-"discord.gg/G4skWae) to join."
+"duckhunt.me/support) to join."
 msgstr ""
 "For all your questions, there is a support server. Click [here](https://"
-"discord.gg/G4skWae) to join."
+"duckhunt.me/support) to join."
 
 #: ../cogs/private_messages_support.py:271
 msgid ""
 "Welcome to DuckHunt private messages support.\n"
 "Messages here are relayed to a select group of volunteers and bot moderators "
 "to help you use the bot. For general questions, we also have a support "
-"server [here](https://discord.gg/G4skWae).\n"
+"server [here](https://duckhunt.me/support).\n"
 "If you opened the ticket by mistake, just say `close` and we'll close it for "
 "you, otherwise, we'll get back to you in a few minutes."
 msgstr ""
 "Welcome to DuckHunt private messages support.\n"
 "Messages here are relayed to a select group of volunteers and bot moderators "
 "to help you use the bot. For general questions, we also have a support "
-"server [here](https://discord.gg/G4skWae).\n"
+"server [here](https://duckhunt.me/support).\n"
 "If you opened the ticket by mistake, just say `close` and we'll close it for "
 "you, otherwise, we'll get back to you in a few minutes."
 
@@ -3901,8 +3898,8 @@ msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr "Sabotage the gun of someone that planned to shoot at you."
 
 #: ../utils/bot_class.py:132
-msgid "https://discord.gg/G4skWae"
-msgstr "https://discord.gg/G4skWae"
+msgid "https://duckhunt.me/support"
+msgstr "https://duckhunt.me/support"
 
 #: ../utils/bot_class.py:133
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
