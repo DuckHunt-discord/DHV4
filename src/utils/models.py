@@ -58,9 +58,12 @@ class SupportTicket(Model):
     closed_at = fields.DatetimeField(null=True, blank=True)
     closed_by = fields.ForeignKeyField('models.DiscordUser', on_delete=fields.SET_NULL, db_index=False, null=True)
 
-    close_reason = fields.TextField(blank=True)
+    close_reason = fields.TextField(blank=True, default="")
 
     def close(self, by_user: 'DiscordUser', reason: typing.Optional[str] = None):
+        if reason is None:
+            reason = ""
+
         self.closed = True
         self.closed_at = datetime.datetime.utcnow()
         self.closed_by = by_user
