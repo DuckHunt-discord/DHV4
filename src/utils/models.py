@@ -221,8 +221,6 @@ class DiscordUser(Model):
 
     ping_friendly = fields.BooleanField(default=True)
 
-    opened_support_tickets = fields.IntField(default=0)
-
     language = fields.CharField(6, default="en")
     first_use = fields.BooleanField(default=True)
 
