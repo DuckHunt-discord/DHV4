@@ -266,7 +266,7 @@ class PrivateMessagesSupport(Cog):
         if ticket_count > 1:
             last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by').first()
 
-            ftd = format_timedelta(timezone.now() - last_ticket.closed_at,
+            ftd = format_timedelta(last_ticket.closed_at - timezone.now(),
                                    granularity="minute",
                                    add_direction=True,
                                    format="short",
