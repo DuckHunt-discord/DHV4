@@ -263,9 +263,10 @@ class PrivateMessagesSupport(Cog):
         info_embed.add_field(name="Tickets created", value=str(ticket_count))
 
         if ticket_count > 1:
-            last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('opened_at').select_related('closed_by').first()
+            last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by').first()
 
-            value = f"Closed at {last_ticket.closed_at} by {last_ticket.closed_by.name}."
+            fdt = format_datetime(last_ticket.closed_at, format="short", locale="en")
+            value = f"Closed at {fdt} by {last_ticket.closed_by.name}."
 
             if last_ticket.close_reason:
                 value += f"\n{last_ticket.close_reason}"
