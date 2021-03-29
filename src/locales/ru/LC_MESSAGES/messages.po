@@ -139,12 +139,18 @@ msgid ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
 msgstr ""
+"Отображение срока давности последнего отправленного сообщения на канала.\n"
+"Если сообщение покрылось плесенью, можно считать канал заброшенным, а запрос "
+"- удалить."
 
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
 "interact with remote users."
 msgstr ""
+"ЛС бота DuckHunt отслеживаются.\n"
+"Все эти команды используются для управления созданными каналами и "
+"взаимодействия с пользователями."
 
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
@@ -1821,7 +1827,7 @@ msgid ""
 msgstr ""
 
 msgid "Support tickets are deleted after 24 hours of inactivity"
-msgstr ""
+msgstr "Обращения в службу поддержки удаляются после 24 часов неактивности."
 
 msgid "Attachments persistance"
 msgstr ""
@@ -1844,10 +1850,10 @@ msgid ""
 msgstr ""
 
 msgid "This is an automatic message."
-msgstr ""
+msgstr "Это сообщение сгенерировано автоматически."
 
 msgid "DM Closed"
-msgstr ""
+msgstr "Личные сообщения закрыты."
 
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
@@ -1855,6 +1861,10 @@ msgid ""
 "ticket by sending a message here.\n"
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
+"Ваше обращение в службу поддержки было закрыто, а история удалена. "
+"Благодарим за ваш запрос. Если вам требуется какая-либо дополнительная "
+"помощь, пожалуйста, создайте новый запрос, отправив сообщение.\n"
+"А пока полюбуйтесь этой забавной картинкой с уткой."
 
 msgid "❌ There is no tag with that name."
 msgstr "❌ Метка с таким именем не существует."
@@ -2976,7 +2986,7 @@ msgid "Page {current_page}/{maximum} ({entries} tags)"
 msgstr "Страница {current_page}/{maximum} ({entries} меток)"
 
 msgid "❌ You didn't specify what you want your tag to say."
-msgstr ""
+msgstr "❌ Вы не ввели описание метки."
 
 msgid "❌ This tag already exists."
 msgstr "❌ Данная метка уже существует."
@@ -2985,10 +2995,10 @@ msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
 msgstr "👌 Метка создана: {tag.name} (`{tag.pk}`)"
 
 msgid "❌ Both tags already exists, what are you trying to do ?"
-msgstr ""
+msgstr "❌ Обе метки уже созданы. Что вы пытаетесь сделать?"
 
 msgid "❌ None of your tags exist."
-msgstr ""
+msgstr "❌ У вас нет меток."
 
 msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
@@ -3002,6 +3012,7 @@ msgstr "❌ Данная метка пока ещё не существует. �
 
 msgid "❌ You don't own that tag, you can't edit it."
 msgstr ""
+"❌ Вы не являетесь владельцем этой метки, поэтому не можете её редактировать."
 
 msgid "👌 Tag {tag.name} edited."
 msgstr "👌 Метка {tag.name} отредактирована."
@@ -3011,6 +3022,7 @@ msgstr "❌ Данная метка не существует."
 
 msgid "❌ You don't own that tag, you can't delete it."
 msgstr ""
+"❌ Вы не являетесь владельцем этой метки, поэтому не можете её удалить."
 
 msgid "👌 Tag {tag.name} deleted."
 msgstr "👌 Метка {tag.name} удалена."
@@ -3107,7 +3119,7 @@ msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr "Саботируйте оружие охотника, который собирался выстрелить в вас."
 
 msgid "https://duckhunt.me/support"
-msgstr ""
+msgstr "https://duckhunt.me/support"
 
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
