@@ -31,7 +31,8 @@ class DefaultDictJSONField(fields.JSONField):
         kwargs["default"] = make_default
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[collections.defaultdict]:
+    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
+        collections.defaultdict]:
         ret = super().to_python_value(value)
         return collections.defaultdict(self.default_factory, ret)
 
@@ -48,7 +49,24 @@ class PercentageField(fields.SmallIntField):
         return super().to_db_value(value, instance)
 
 
-# TODO : https://github.com/long2ice/aerich
+class SupportTicket(Model):
+    user = fields.ForeignKeyField('models.DiscordUser', related_name="support_tickets", db_index=True)
+
+    opened_at = fields.DatetimeField(auto_now_add=True)
+
+    closed = fields.BooleanField(default=False)
+    closed_at = fields.DatetimeField(null=True, blank=True)
+    closed_by = fields.ForeignKeyField('models.DiscordUser', on_delete=fields.SET_NULL, db_index=False, null=True)
+
+    close_reason = fields.TextField(blank=True)
+
+    def close(self, by_user: 'DiscordUser', reason: typing.Optional[str] = None):
+        self.closed = True
+        self.closed_at = datetime.datetime.utcnow()
+        self.closed_by = by_user
+        self.close_reason = reason
+
+
 class DiscordGuild(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
@@ -211,6 +229,17 @@ class DiscordUser(Model):
     access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
     boss_kills = fields.IntField(default=0)
+
+    async def get_or_create_support_ticket(self) -> SupportTicket:
+        support_ticket: typing.Optional[SupportTicket] = await SupportTicket.filter(user=self, closed=False).first()
+
+        if not support_ticket:
+            support_ticket = SupportTicket(user=self)
+
+        return support_ticket
+
+    async def support_ticket_count(self, **filter_kwargs) -> int:
+        return await SupportTicket.filter(user=self, **filter_kwargs).count()
 
     def add_to_inventory(self, item_to_give, item_number=None):
         for item_in_inventory in self.inventory:
@@ -513,8 +542,9 @@ class BotList(Model):
                                       default="voted",
                                       max_length=128)
 
-    check_vote_negate = fields.BooleanField(help_text="Does the boolean says if the user has voted (True) or if he can vote (False) ?",
-                                            default=True)
+    check_vote_negate = fields.BooleanField(
+        help_text="Does the boolean says if the user has voted (True) or if he can vote (False) ?",
+        default=True)
 
     webhook_handler = fields.CharField(help_text="What is the function that'll receive the request from the vote hooks",
                                        choices=(("generic", "generic"),
@@ -523,17 +553,18 @@ class BotList(Model):
                                        default="generic",
                                        max_length=20)
 
-    webhook_authorization_header = fields.CharField(help_text="Name of the header used to authenticate webhooks requests",
-                                                    default="Authorization",
-                                                    max_length=20)
+    webhook_authorization_header = fields.CharField(
+        help_text="Name of the header used to authenticate webhooks requests",
+        default="Authorization",
+        max_length=20)
 
     webhook_user_id_json_field = fields.CharField(help_text="Key that gives the user ID in the provided JSON",
                                                   default="id",
                                                   max_length=20)
 
-    webhook_auth = fields.TextField(help_text="Secret used for authentication of the webhooks messages if not the same the auth token",
-                                    blank=True)
-
+    webhook_auth = fields.TextField(
+        help_text="Secret used for authentication of the webhooks messages if not the same the auth token",
+        blank=True)
 
     # **Statistics**
 
@@ -736,5 +767,3 @@ async def init_db_connection(config, create_dbs=False):
     if create_dbs:
         # This would create the databases, something that should be handled by Django.
         await Tortoise.generate_schemas()
-
-

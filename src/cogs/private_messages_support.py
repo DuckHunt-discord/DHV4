@@ -14,7 +14,7 @@ from utils.bot_class import MyBot
 from utils.checks import NotInServer, BotIgnore, NotInChannel
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_tag, DiscordUser, Player
+from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
@@ -120,6 +120,12 @@ class PrivateMessagesSupport(Cog):
                 async with ticket_channel.typing():
                     user = await self.get_user(ticket_channel.name)
                     db_user = await get_from_db(user, as_user=True)
+
+                    ticket = await db_user.get_or_create_support_ticket()
+                    ticket.close(await get_from_db(self.bot.user, as_user=True), "Automatic closing for inactivity.")
+
+                    await ticket.save()
+
                     language = db_user.language
 
                     _ = get_translate_function(self.bot, language)
@@ -223,8 +229,8 @@ class PrivateMessagesSupport(Cog):
 
     async def handle_ticket_opening(self, channel: discord.TextChannel, user: discord.User):
         db_user: DiscordUser = await get_from_db(user, as_user=True)
-        db_user.opened_support_tickets += 1
-        await db_user.save()
+        ticket = await db_user.get_or_create_support_ticket()
+        await ticket.save()
 
         await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
                                    f"Every message in here will get sent back to them if it's not a bot message, "
@@ -252,7 +258,21 @@ class PrivateMessagesSupport(Cog):
 
         info_embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=str(user.avatar_url))
         info_embed.set_footer(text="Private statistics")
-        info_embed.add_field(name="Tickets created", value=str(db_user.opened_support_tickets))
+
+        ticket_count = await db_user.support_ticket_count()
+        info_embed.add_field(name="Tickets created", value=str(ticket_count))
+
+        if ticket_count > 1:
+            last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('opened_at').select_related('closed_by').first()
+
+            value = f"Closed at {last_ticket.closed_at} by {last_ticket.closed_by.name}."
+
+            if last_ticket.close_reason:
+                value += f"\n{last_ticket.close_reason}"
+
+            info_embed.add_field(name="Previous ticket",
+                                 value=value,
+                                 inline=False)
 
         for player_data in players_data:
             if player_data.channel.enabled:
@@ -422,7 +442,7 @@ class PrivateMessagesSupport(Cog):
             await ctx.send_help(ctx.command)
 
     @private_support.command()
-    async def close(self, ctx: MyContext):
+    async def close(self, ctx: MyContext, *, reason: str = None):
         """
         Close the opened DM channel. Will send a message telling the user that the DM was closed.
         """
@@ -430,6 +450,12 @@ class PrivateMessagesSupport(Cog):
 
         user = await self.get_user(ctx.channel.name)
         db_user = await get_from_db(user, as_user=True)
+
+        ticket = await db_user.get_or_create_support_ticket()
+        ticket.close(await get_from_db(ctx.author, as_user=True), reason)
+
+        await ticket.save()
+
         language = db_user.language
 
         _ = get_translate_function(self.bot, language)
@@ -465,11 +491,22 @@ class PrivateMessagesSupport(Cog):
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
     @private_support.command(aliases=["not_support", "huh"])
-    async def close_silent(self, ctx: MyContext):
+    async def close_silent(self, ctx: MyContext, *, reason:str =None):
         """
         Close the opened DM channel. Will not send a message, since it wasn't a support request.
         """
         await self.is_in_forwarding_channels(ctx)
+
+        if reason is None:
+            reason = "Closed silently."
+
+        user = await self.get_user(ctx.channel.name)
+        db_user = await get_from_db(user, as_user=True)
+
+        ticket = await db_user.get_or_create_support_ticket()
+        ticket.close(await get_from_db(ctx.author, as_user=True), reason)
+
+        await ticket.save()
 
         async with ctx.typing():
             await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
