@@ -8,6 +8,7 @@ import discord
 from babel.dates import format_datetime, format_timedelta
 from discord.ext import commands, menus, tasks
 from discord.utils import snowflake_time
+from tortoise import timezone
 
 from cogs.tags import MultiplayerMenuPage, TagMenuSource, TagName
 from utils.bot_class import MyBot
@@ -265,8 +266,12 @@ class PrivateMessagesSupport(Cog):
         if ticket_count > 1:
             last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by').first()
 
-            fdt = format_datetime(last_ticket.closed_at, format="short", locale="en")
-            value = f"Closed at {fdt} by {last_ticket.closed_by.name}."
+            ftd = format_timedelta(timezone.now() - last_ticket.closed_at,
+                                   granularity="minute",
+                                   add_direction=True,
+                                   format="short",
+                                   locale="en")
+            value = f"Closed {ftd} by {last_ticket.closed_by.name}."
 
             if last_ticket.close_reason:
                 value += f"\n{last_ticket.close_reason}"
