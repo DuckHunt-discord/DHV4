@@ -53,18 +53,24 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str]]:
                 break
 
             message_id_keys = extract_keys(message_id)
-            message_string_keys = extract_keys(message_string)
-
-            if len(message_id_keys) != len(message_string_keys):
-                messages.append(f"{ERROR} Mistranslated (missing f-keys):\n"
+            try:
+                message_string_keys = extract_keys(message_string)
+            except ValueError as e:
+                messages.append(f"{ERROR} Bad f-string formatting:\n"
                                 f"ID_: {message_id_keys} ({message_id})\n"
-                                f"STR: {message_string_keys} ({message_string})")
+                                f"STR: {message_string} ({e})")
                 result = False
-            elif sorted(message_id_keys) != sorted(message_string_keys):
-                messages.append(f"{ERROR} Probably mistranslated (different f-keys):\n"
-                                f"ID_: {message_id_keys} ({message_id})\n"
-                                f"STR: {message_string_keys} ({message_string})")
-                result = False
+            else:
+                if len(message_id_keys) != len(message_string_keys):
+                    messages.append(f"{ERROR} Mistranslated (missing f-keys):\n"
+                                    f"ID_: {message_id_keys} ({message_id})\n"
+                                    f"STR: {message_string_keys} ({message_string})")
+                    result = False
+                elif sorted(message_id_keys) != sorted(message_string_keys):
+                    messages.append(f"{ERROR} Probably mistranslated (different f-keys):\n"
+                                    f"ID_: {message_id_keys} ({message_id})\n"
+                                    f"STR: {message_string_keys} ({message_string})")
+                    result = False
 
     messages.append(f"{INFO} {untranslated_messages} untranslated messages")
     return result, messages
