@@ -46,11 +46,19 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str]]:
             maybe_tuple_message_string = (maybe_tuple_message_string, )
 
         for message_id, message_string in zip(maybe_tuple_message_id, maybe_tuple_message_string):
+            html_detects = ["&gt;", "&lt;", "&nbsp;"]
             if not len(message_string):
                 # Not bad but still good to show
                 # messages.append(f"{INFO} `{message_id}` is untranslated")
                 untranslated_messages += 1
                 break
+
+            for html_detect in html_detects:
+                if html_detect in message_string and not html_detect in message_id:
+                    messages.append(f"{WARNING} Detected HTML tag {html_detect}:\n"
+                                    f"ID_: {message_id}\n"
+                                    f"STR: {message_string}")
+                    result = False
 
             message_id_keys = extract_keys(message_id)
             try:
@@ -71,6 +79,7 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str]]:
                                     f"ID_: {message_id_keys} ({message_id})\n"
                                     f"STR: {message_string_keys} ({message_string})")
                     result = False
+
 
     messages.append(f"{INFO} {untranslated_messages} untranslated messages")
     return result, messages
