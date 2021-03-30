@@ -58,7 +58,6 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str]]:
                     messages.append(f"{WARNING} Detected HTML tag {html_detect}:\n"
                                     f"ID_: {message_id}\n"
                                     f"STR: {message_string}")
-                    result = False
 
             message_id_keys = extract_keys(message_id)
             try:
