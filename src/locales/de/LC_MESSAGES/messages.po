@@ -1839,7 +1839,7 @@ msgstr ""
 "info` um mehr zu erfahren."
 
 msgid "Prestige {old_prestige} -> {new_prestige}"
-msgstr "Prestige {alt_prestige} -&gt; {neues_prestige}"
+msgstr "Prestige {old_prestige} -> {new_prestige}"
 
 msgid "You used prestige after reaching {pct}% of the required threshold."
 msgstr ""
@@ -2384,7 +2384,9 @@ msgstr "❌ Hoppla, Sie haben schon zu viele Kugeln in Ihrer Waffe."
 msgid ""
 "💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
-msgstr "P"
+msgstr ""
+"Sie haben ihrer Waffe eine Kugel hinzugefügt. [Bought: -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
 
 msgid ""
 "💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
@@ -3540,7 +3542,7 @@ msgstr ""
 "Antworten Sie mit `dh!bang <answer>`."
 
 msgid "{hurter.mention}, Just give me digits !"
-msgstr "{hunter.mention}, Geben Sie mir einfach Ziffern!"
+msgstr "{hurter.mention}, Geben Sie mir einfach Ziffern!"
 
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr "{hurter.mention}, das ist nicht die richtige Antwort!"
