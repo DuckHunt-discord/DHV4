@@ -196,7 +196,7 @@ class DucksSpawning(Cog):
                 await asyncio.sleep(0)  # Just in case
             self.bot.logger.warning(f"Disabled {len(channels_to_disable)} channels "
                                     f"that are no longer available to the bot.")
-        elif len(channels_to_disable) >= 30:
+        elif len(channels_to_disable) >= 3000:
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
@@ -328,5 +328,6 @@ class DucksSpawning(Cog):
             json.dump({
                 "current_event": self.bot.current_event.name
             }, f)
+
 
 setup = DucksSpawning.setup
