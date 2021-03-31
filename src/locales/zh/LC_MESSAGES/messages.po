@@ -13,7 +13,7 @@ msgid "Handle users votes for fateslist"
 msgstr ""
 
 msgid "Handle users votes for top.gg"
-msgstr ""
+msgstr "處理用戶對top.gg的投票"
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr ""
@@ -1192,48 +1192,48 @@ msgid "Open it in your inventory"
 msgstr "在您的庫存中打開它"
 
 msgid "A clean box of foie gras"
-msgstr ""
+msgstr "一盒乾淨的鴨肝"
 
 msgid "The boss dropped that when he died"
-msgstr ""
+msgstr "首領死的時候掉落的"
 
 msgid "A little something for helping the bot"
-msgstr ""
+msgstr "幫助機器人的小東西"
 
 msgid "Thanks for voting for DuckHunt"
-msgstr ""
+msgstr "感謝為DuckHunt投票"
 
 msgid "VIP Card"
-msgstr ""
+msgstr "貴賓卡"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
-msgstr ""
+msgstr "一張漂亮而閃亮的卡片，允許你將服務器設置為VIP。"
 
 msgid "A book in a foreign language"
-msgstr ""
+msgstr "一本外籍語言的書"
 
 msgid "Can you read it ?"
-msgstr ""
+msgstr "你能看懂嗎？"
 
 msgid "A book"
-msgstr ""
+msgstr "一本書"
 
 msgid "Reading it will give you experience"
-msgstr ""
+msgstr "讀了它，你會得到經驗值"
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "一部本百科全書"
 
 msgid "Reading it will give you a lot of experience"
-msgstr ""
+msgstr "讀了它，你會得到很多經驗"
 
 msgid "A bullet"
-msgstr ""
+msgstr "一顆子彈"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement"
-msgstr ""
+msgstr "這只是一顆普通的子彈，但它可能會幫助你獲得一個特殊的成就。"
 
 msgid "A good ol' egg"
 msgstr ""
@@ -1761,7 +1761,7 @@ msgid ""
 msgstr ""
 
 msgid "I couldn't DM you... Are your DMs blocked ?"
-msgstr ""
+msgstr "我不能給你發私訊信...你的私信被封了嗎？"
 
 msgid "Channel disabled messages are enabled."
 msgstr ""
@@ -2506,10 +2506,10 @@ msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
 msgid "https://duckhunt.me/support"
-msgstr ""
+msgstr "https://duckhunt.me/support"
 
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
-msgstr ""
+msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
 
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "
@@ -2530,19 +2530,19 @@ msgstr ""
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**."
-msgstr ""
+msgstr "搜索鴨子周圍的灌木叢，你發現... ... **一些垃圾躺在周圍**。"
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**. You didn't take it, you had already too many..."
-msgstr ""
+msgstr "搜索鴨子周圍的灌木叢，你發現... ... **一些垃圾躺在周圍**。你沒有拿，你已經有太多的了..."
 
 msgid "Searching the bushes around the duck, you found... **Nothing**."
-msgstr ""
+msgstr "搜索鴨子周圍的灌木叢，你發現... ... **什麼都沒有**"
 
 msgid ""
 "Searching the bushes around the duck, you found... **A lot of bushes**."
-msgstr ""
+msgstr "搜索鴨子周圍的灌木叢，你發現... ... **很多灌木叢**"
 
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
@@ -2590,13 +2590,13 @@ msgid ""
 msgstr "在鴨子周圍的灌木叢中搜索，你發現... ... **一個紅外線探測器**。"
 
 msgid "White"
-msgstr ""
+msgstr "白色"
 
 msgid "A useful coat when it rains."
-msgstr ""
+msgstr "下雨的時候很有用的外套。"
 
 msgid "Orange"
-msgstr ""
+msgstr "橙色"
 
 msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
@@ -2604,13 +2604,13 @@ msgid ""
 msgstr ""
 
 msgid "Camo"
-msgstr ""
+msgstr "迷彩"
 
 msgid "Lower visibility: Less chance to frighten ducks."
 msgstr ""
 
 msgid "Blue"
-msgstr ""
+msgstr "藍"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
 msgstr ""
@@ -2629,19 +2629,19 @@ msgid "Sun powers: Mirrors are less effective against you."
 msgstr ""
 
 msgid "Dark green"
-msgstr ""
+msgstr "深綠色"
 
 msgid "Farming skills: Clovers give you one more experience point."
-msgstr ""
+msgstr "獵殺技能。三葉草給你多一個經驗值。"
 
 msgid "Black"
-msgstr ""
+msgstr "黑"
 
 msgid "Secret service: Sabotages are cheaper."
 msgstr ""
 
 msgid "Light blue"
-msgstr ""
+msgstr "淺藍色"
 
 msgid "Sea powers: You are immune to water buckets."
 msgstr ""
@@ -3337,22 +3337,22 @@ msgid "duck clobber"
 msgstr ""
 
 msgid "duck chewer"
-msgstr ""
+msgstr "嚼鴨者"
 
 msgid "duck eater"
-msgstr ""
+msgstr "食鴨者"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "鴨子攤平機"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "鴨子拆裝器"
 
 msgid "duck demolisher"
 msgstr ""
 
 msgid "duck killer"
-msgstr ""
+msgstr "鴨子殺手"
 
 msgid "duck skinner"
 msgstr ""
@@ -3421,7 +3421,7 @@ msgid "old noob"
 msgstr "老頑童"
 
 msgid "duck toaster"
-msgstr "烤鴨"
+msgstr "烤鴨器"
 
 msgid "unemployed due to extinction of the duck species"
 msgstr ""
