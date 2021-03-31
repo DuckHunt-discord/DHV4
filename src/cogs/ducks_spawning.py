@@ -1,4 +1,5 @@
 import asyncio
+import datetime
 import json
 import random
 
@@ -124,7 +125,12 @@ class DucksSpawning(Cog):
             embed.colour = discord.Colour.green()
             embed.title = f"It's freetime !"
             embed.description = f"Your magazines have been refilled, and confiscated weapons have just been released"
-            embed.set_footer(text="Freetime happens every 24 hours.")
+            dtnow = datetime.datetime.fromtimestamp(now)
+            if dtnow.day == 1 and dtnow.month == 4:
+                # April 1st
+                embed.set_footer(text="🐟️")
+            else:
+                embed.set_footer(text="Freetime happens every 24 hours.")
             await self.bot.log_to_channel(embed=embed)
 
         if SECONDS_LEFT_TODAY % HOUR == 0:

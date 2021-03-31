@@ -191,12 +191,21 @@ class Duck:
     async def get_face(self) -> str:
         db_channel = await self.get_db_channel()
 
-        if not db_channel.use_emojis:
-            faces = self.get_cosmetics()['faces']
-            face = escape_markdown(random.choice(faces))
+        dtnow = datetime.datetime.now()
+        if dtnow.day == 1 and dtnow.month == 4 and self.category == "normal":
+            if not db_channel.use_emojis:
+                faces = ["><(((º>", "< )))) ><", ">--) ) ) )*>", "><((((>", "><(((('>", "くコ:彡"]
+                face = escape_markdown(random.choice(faces))
+            else:
+                faces = ["🐟", "🐠", "🐡"]
+                face = random.choice(faces)
         else:
-            faces = self.get_cosmetics()['emojis']
-            face = random.choice(faces)
+            if not db_channel.use_emojis:
+                faces = self.get_cosmetics()['faces']
+                face = escape_markdown(random.choice(faces))
+            else:
+                faces = self.get_cosmetics()['emojis']
+                face = random.choice(faces)
 
         return face
 
