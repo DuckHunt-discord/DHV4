@@ -119,16 +119,16 @@ class MyBot(AutoShardedBot):
             _ = await ctx.get_translate_function(user_language=True)
 
             ctx.logger.info(f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
-
             try:
                 await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
                                         "and also provide you with links to the DuckHunt wiki.\n"
                                         "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
                                         "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
                                         "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
-                                        "However, if the duck says **COIN** it's a **baby duck** and you should hug it with `dh!hug`.\n"
                                         "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
-                                        "If you want to learn more about the game, use the wiki! <{wiki_link}>",
+                                        "Your scores and channel leaderboards are available online (click the title in `dh!me` after playing for a while), and on Discord."
+                                        "If you want to learn more about the game, use the wiki! <{wiki_link}>\n"
+                                        "We also monitor the bot DMs, so if you have further questions, just answer this message!",
                                         support_server_link=_("https://duckhunt.me/support"),
                                         wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
                 ))
