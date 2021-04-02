@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-03-27 14:43+0100\n"
+"POT-Creation-Date: 2021-04-02 12:11+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -156,36 +156,36 @@ msgstr ""
 msgid "Get some more experience..."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:86
+#: ../cogs/private_messages_support.py:87
 msgid ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:415
+#: ../cogs/private_messages_support.py:441
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
 "interact with remote users."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:426
+#: ../cogs/private_messages_support.py:452
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:469
+#: ../cogs/private_messages_support.py:501
 msgid ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:485
+#: ../cogs/private_messages_support.py:528
 msgid "Block the user from opening further DMs channels."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:495
+#: ../cogs/private_messages_support.py:538
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr ""
 
@@ -738,59 +738,59 @@ msgstr ""
 msgid "This returns the current bot time."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:55
+#: ../cogs/statistics_experience_commands.py:56
 msgid "Get some quickstats about yourself (or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:87
+#: ../cogs/statistics_experience_commands.py:92
 msgid "Get shooting stats (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:202
+#: ../cogs/statistics_experience_commands.py:226
 msgid "Get best times to kill of ducks (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:229
+#: ../cogs/statistics_experience_commands.py:253
 msgid "Get number of each type of duck killed (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:254
+#: ../cogs/statistics_experience_commands.py:278
 msgid "Get number of each type of duck hugged (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:283
+#: ../cogs/statistics_experience_commands.py:307
 msgid "Get number of each type of duck hurt (for you or someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:304
+#: ../cogs/statistics_experience_commands.py:328
 msgid ""
 "Get number of each type of duck that resisted a shot (for you or someone "
 "else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:325
+#: ../cogs/statistics_experience_commands.py:349
 msgid ""
 "Get number of each type of duck that fled following a shot (for you or "
 "someone else)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:346
+#: ../cogs/statistics_experience_commands.py:370
 msgid "Show your/someone else achievements in the channel"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:370
+#: ../cogs/statistics_experience_commands.py:394
 msgid "Send some of your experience to another player."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:415
+#: ../cogs/statistics_experience_commands.py:441
 msgid "Give some experience to another player. This is a cheat."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:435
+#: ../cogs/statistics_experience_commands.py:461
 msgid "Who's the best ?"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:446
+#: ../cogs/statistics_experience_commands.py:472
 msgid ""
 "Delete scores for a specific user from the channel. The target can be an ID "
 "or a mention.\n"
@@ -803,18 +803,24 @@ msgid ""
 "download the scores and statistics."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:465
+#: ../cogs/statistics_experience_commands.py:491
 msgid ""
-"Delete scores for all users on this channel.\n"
+"Delete scores for all users on this channel or on the specified channel ID.\n"
 "\n"
 "Data will not be recoverable, and there is no confirmation dialog. Type with "
 "caution.\n"
-"This command will execute on the *current channel*. There is no way to pass "
-"another channel to the command.\n"
+"This command will execute on the *current channel* if no ID is provided.\n"
+"If you pass an ID, the bot will check wether the channel still exist. If it "
+"does, it'll refuse to delete to\n"
+"prevent mistakes. You'll have to run the command in the correct channel. If "
+"it doesn't, but the channel was in\n"
+"the same guild/server, scores will be deleted.\n"
 "\n"
 "If you need a backup of the channel data, you can use the DuckHunt API to "
 "download the scores and statistics for\n"
-"everyone who ever played."
+"everyone who ever played.\n"
+"\n"
+"Note that the channel itself wont be deleted, only the scores are."
 msgstr ""
 
 #: ../cogs/support_server_commands.py:118
@@ -1733,11 +1739,11 @@ msgstr ""
 msgid "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:129
+#: ../cogs/private_messages_support.py:136
 msgid "DM Timed Out"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:130
+#: ../cogs/private_messages_support.py:137
 msgid ""
 "It seems like nothing has been said here for a long time, so I've gone ahead "
 "and closed your ticket, deleting its history. Thanks for using DuckHunt DM "
@@ -1745,19 +1751,19 @@ msgid ""
 "sending a message here."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:137
-#: ../cogs/private_messages_support.py:446
+#: ../cogs/private_messages_support.py:144
+#: ../cogs/private_messages_support.py:478
 msgid "Support server"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:138
-#: ../cogs/private_messages_support.py:446
+#: ../cogs/private_messages_support.py:145
+#: ../cogs/private_messages_support.py:478
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:271
+#: ../cogs/private_messages_support.py:297
 msgid ""
 "Welcome to DuckHunt private messages support.\n"
 "Messages here are relayed to a select group of volunteers and bot moderators "
@@ -1767,25 +1773,25 @@ msgid ""
 "you, otherwise, we'll get back to you in a few minutes."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:277
+#: ../cogs/private_messages_support.py:303
 msgid "Support tickets are deleted after 24 hours of inactivity"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:312
+#: ../cogs/private_messages_support.py:338
 msgid "Attachments persistance"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:314
+#: ../cogs/private_messages_support.py:340
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:334
+#: ../cogs/private_messages_support.py:360
 msgid "This is not how you invite DuckHunt."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:336
+#: ../cogs/private_messages_support.py:362
 msgid ""
 "DuckHunt, like other discord bots, can't join servers by using an invite "
 "link.\n"
@@ -1795,15 +1801,15 @@ msgid ""
 "you."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:341
+#: ../cogs/private_messages_support.py:367
 msgid "This is an automatic message."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:439
+#: ../cogs/private_messages_support.py:471
 msgid "DM Closed"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:440
+#: ../cogs/private_messages_support.py:472
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
 "DuckHunt DM support. If you need anything else, feel free to open a new "
@@ -1811,7 +1817,7 @@ msgid ""
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:514 ../cogs/tags.py:164
+#: ../cogs/private_messages_support.py:557 ../cogs/tags.py:164
 msgid "❌ There is no tag with that name."
 msgstr ""
 
@@ -2723,295 +2729,295 @@ msgid ""
 "in {formatted_td}"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:30
+#: ../cogs/statistics_experience_commands.py:31
 #, python-brace-format
 msgid "{exp} experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:65
+#: ../cogs/statistics_experience_commands.py:66
 #, python-brace-format
 msgid "{target.name} statistics (click me!)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:71 ../utils/models.py:424
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:454
 msgid "Bullets"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:427
+#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:457
 msgid "Magazines"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:410
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:440
 msgid "Experience"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:411
+#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:441
 msgid "Level"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:416
+#: ../cogs/statistics_experience_commands.py:77 ../utils/models.py:446
 msgid "Accuracy"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:76
-#: ../cogs/statistics_experience_commands.py:79
+#: ../cogs/statistics_experience_commands.py:78
+#: ../cogs/statistics_experience_commands.py:82
 #, python-brace-format
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:78 ../utils/models.py:420
+#: ../cogs/statistics_experience_commands.py:81 ../utils/models.py:450
 msgid "Reliability"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:97
+#: ../cogs/statistics_experience_commands.py:102
 #, python-brace-format
 msgid "{target.name} shooting stats."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:107
+#: ../cogs/statistics_experience_commands.py:112
 msgid "🧠"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:107
+#: ../cogs/statistics_experience_commands.py:112
 #, python-brace-format
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
 "life {revives} times eating a total of {brains_eaten} brains"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:116
+#: ../cogs/statistics_experience_commands.py:121
 msgid "🚰"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:116
+#: ../cogs/statistics_experience_commands.py:121
 #, python-brace-format
 msgid "{shots} shots attempted when wet."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:120
+#: ../cogs/statistics_experience_commands.py:125
 msgid "⛔️"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:120
+#: ../cogs/statistics_experience_commands.py:125
 #, python-brace-format
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:124
-#: ../cogs/statistics_experience_commands.py:136
+#: ../cogs/statistics_experience_commands.py:130
+#: ../cogs/statistics_experience_commands.py:148
 msgid "💥"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:124
+#: ../cogs/statistics_experience_commands.py:131
 #, python-brace-format
 msgid "{shots} shots attempted with a sabotaged gun."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:128
+#: ../cogs/statistics_experience_commands.py:136
 msgid "☁"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:128
+#: ../cogs/statistics_experience_commands.py:137
 #, python-brace-format
 msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:132
+#: ../cogs/statistics_experience_commands.py:142
 msgid "🦉"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:132
+#: ../cogs/statistics_experience_commands.py:143
 #, python-brace-format
 msgid "{shots} shots attempted without bullets."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:136
+#: ../cogs/statistics_experience_commands.py:149
 #, python-brace-format
 msgid "{shots} shots jamming {target.mention} weapon."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:140
+#: ../cogs/statistics_experience_commands.py:154
 msgid "🔫"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:140
+#: ../cogs/statistics_experience_commands.py:155
 #, python-brace-format
 msgid "{bullets} bullets used in a duck killing madness."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:144
+#: ../cogs/statistics_experience_commands.py:160
 msgid "🎯"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:144
+#: ../cogs/statistics_experience_commands.py:160
 #, python-brace-format
 msgid "{shots} shots missing a target."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:149
+#: ../cogs/statistics_experience_commands.py:165
 msgid "☠️"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:149
+#: ../cogs/statistics_experience_commands.py:166
 #, python-brace-format
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:153
+#: ../cogs/statistics_experience_commands.py:171
 msgid "🧟"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:153
+#: ../cogs/statistics_experience_commands.py:172
 #, python-brace-format
 msgid "{target.mention} was killed {times} times."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:157
+#: ../cogs/statistics_experience_commands.py:176
 msgid "🏆️"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:157
+#: ../cogs/statistics_experience_commands.py:177
 #, python-brace-format
 msgid "{shots} shots using homing bullets."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:161
+#: ../cogs/statistics_experience_commands.py:181
 msgid "🦆"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:161
+#: ../cogs/statistics_experience_commands.py:182
 #, python-brace-format
 msgid "{shots} shots going towards ducks."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:165
+#: ../cogs/statistics_experience_commands.py:186
 msgid "🕵"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:165
+#: ../cogs/statistics_experience_commands.py:187
 #, python-brace-format
 msgid "{shots} shots stopped by the infrared detector."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:169
+#: ../cogs/statistics_experience_commands.py:192
 msgid "❓"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:169
+#: ../cogs/statistics_experience_commands.py:192
 #, python-brace-format
 msgid "{shots} shots without any duck in sight."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:175
+#: ../cogs/statistics_experience_commands.py:199
 msgid "Normal ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:176
+#: ../cogs/statistics_experience_commands.py:200
 msgid "Ghost ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:177
+#: ../cogs/statistics_experience_commands.py:201
 msgid "Professor ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:179
+#: ../cogs/statistics_experience_commands.py:203
 msgid "Baby ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:180
+#: ../cogs/statistics_experience_commands.py:204
 msgid "Golden ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:181
+#: ../cogs/statistics_experience_commands.py:205
 msgid "Plastic ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:183
+#: ../cogs/statistics_experience_commands.py:207
 msgid "Kamikaze ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:184
+#: ../cogs/statistics_experience_commands.py:208
 msgid "Mechanical ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:185
+#: ../cogs/statistics_experience_commands.py:209
 msgid "Super ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:187
+#: ../cogs/statistics_experience_commands.py:211
 msgid "Mother of all ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:188
+#: ../cogs/statistics_experience_commands.py:212
 msgid "Armored ducks"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:212
+#: ../cogs/statistics_experience_commands.py:236
 #, python-brace-format
 msgid "{target.name} best times."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:220
+#: ../cogs/statistics_experience_commands.py:244
 msgid "Never killed any"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:239
+#: ../cogs/statistics_experience_commands.py:263
 #, python-brace-format
 msgid "{target.name} kill counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:264
+#: ../cogs/statistics_experience_commands.py:288
 #, python-brace-format
 msgid "{target.name} hugs counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:272
+#: ../cogs/statistics_experience_commands.py:296
 msgid "Players"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:276
+#: ../cogs/statistics_experience_commands.py:300
 msgid "Hugs when dead"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:293
+#: ../cogs/statistics_experience_commands.py:317
 #, python-brace-format
 msgid "{target.name} hurt counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:314
+#: ../cogs/statistics_experience_commands.py:338
 #, python-brace-format
 msgid "{target.name} resisted counts."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:335
+#: ../cogs/statistics_experience_commands.py:359
 #, python-brace-format
 msgid "{target.name} scared ducks."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:356
+#: ../cogs/statistics_experience_commands.py:380
 #, python-brace-format
 msgid "{target.name} achievements."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:377
+#: ../cogs/statistics_experience_commands.py:403
 msgid "❌ You cant send experience to yourself."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:381
-#: ../cogs/statistics_experience_commands.py:421
+#: ../cogs/statistics_experience_commands.py:407
+#: ../cogs/statistics_experience_commands.py:447
 #, python-brace-format
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:385
+#: ../cogs/statistics_experience_commands.py:411
 msgid "❌ You need to send more experience than this."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:389
+#: ../cogs/statistics_experience_commands.py:415
 msgid "❌ You don't have enough experience 🤣."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:402
+#: ../cogs/statistics_experience_commands.py:428
 #, python-brace-format
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
@@ -3019,23 +3025,43 @@ msgid ""
 "the total sent)."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:428
+#: ../cogs/statistics_experience_commands.py:454
 #, python-brace-format
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:440
+#: ../cogs/statistics_experience_commands.py:466
 #, python-brace-format
 msgid "Top Scores on #{channel}"
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:459
+#: ../cogs/statistics_experience_commands.py:485
 #, python-brace-format
 msgid ""
 "{target.name}#{target.discriminator} data was deleted from this channel."
 msgstr ""
 
-#: ../cogs/statistics_experience_commands.py:480
+#: ../cogs/statistics_experience_commands.py:512
+#, python-brace-format
+msgid ""
+"❌ The channel {channel.mention} still exists on the server. Please run the "
+"command from there."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:523
+msgid ""
+"❌ The channel used to exist but on a different server. I can't confirm you "
+"have the correct rights on that server. Please use this command in the right "
+"server, or contact support : <https://duckhunt.me/support>."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:529
+msgid ""
+"❌ I can't find a channel with that ID. Please check the given ID, or contact "
+"support : <https://duckhunt.me/support>."
+msgstr ""
+
+#: ../cogs/statistics_experience_commands.py:539
 #, python-brace-format
 msgid ""
 "Scores and hunters data were removed from the game, but the game wasn't "
@@ -3258,7 +3284,7 @@ msgstr ""
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr ""
 
-#: ../utils/bot_class.py:124
+#: ../utils/bot_class.py:123
 #, python-brace-format
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "
@@ -3269,11 +3295,13 @@ msgid ""
 "to ask for help in the support channels at <{support_server_link}>.\n"
 "\n"
 "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
-"However, if the duck says **COIN** it's a **baby duck** and you should hug "
-"it with `dh!hug`.\n"
 "You can reload your ammunition with `dh!reload` and buy new magazines with "
 "`dh!shop magazine` or `dh!shop 2`.\n"
-"If you want to learn more about the game, use the wiki! <{wiki_link}>"
+"Your scores and channel leaderboards are available online (click the title "
+"in `dh!me` after playing for a while), and on Discord.If you want to learn "
+"more about the game, use the wiki! <{wiki_link}>\n"
+"We also monitor the bot DMs, so if you have further questions, just answer "
+"this message!"
 msgstr ""
 
 #: ../utils/bushes.py:20
@@ -3458,14 +3486,14 @@ msgstr ""
 msgid "normal"
 msgstr ""
 
-#: ../utils/ducks.py:238
+#: ../utils/ducks.py:247
 #, python-brace-format
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:264
+#: ../utils/ducks.py:273
 #, python-brace-format
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
@@ -3473,237 +3501,237 @@ msgid ""
 "{bonus_experience} **clover**]"
 msgstr ""
 
-#: ../utils/ducks.py:277
+#: ../utils/ducks.py:286
 #, python-brace-format
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:291
+#: ../utils/ducks.py:300
 #, python-brace-format
 msgid "{hunter.mention} scared the duck away."
 msgstr ""
 
-#: ../utils/ducks.py:302
+#: ../utils/ducks.py:311
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:309
+#: ../utils/ducks.py:318
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:316
+#: ../utils/ducks.py:325
 #, python-brace-format
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
 msgstr ""
 
-#: ../utils/ducks.py:322
+#: ../utils/ducks.py:331
 #, python-brace-format
 msgid "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:328
+#: ../utils/ducks.py:337
 #, python-brace-format
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:625
+#: ../utils/ducks.py:634
 msgid "ghost"
 msgstr ""
 
-#: ../utils/ducks.py:630
+#: ../utils/ducks.py:639
 #, python-brace-format
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:650
+#: ../utils/ducks.py:659
 msgid "prof"
 msgstr ""
 
-#: ../utils/ducks.py:671
+#: ../utils/ducks.py:680
 #, python-brace-format
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:680
+#: ../utils/ducks.py:689
 #, python-brace-format
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
 
-#: ../utils/ducks.py:690
+#: ../utils/ducks.py:699
 #, python-brace-format
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
 "`dh!bang <answer>`."
 msgstr ""
 
-#: ../utils/ducks.py:696
+#: ../utils/ducks.py:705
 #, python-brace-format
 msgid "{hurter.mention}, Just give me digits !"
 msgstr ""
 
-#: ../utils/ducks.py:702
+#: ../utils/ducks.py:711
 #, python-brace-format
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
-#: ../utils/ducks.py:717
+#: ../utils/ducks.py:726
 msgid "baby"
 msgstr ""
 
-#: ../utils/ducks.py:723
+#: ../utils/ducks.py:732
 #, python-brace-format
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:731
+#: ../utils/ducks.py:740
 #, python-brace-format
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:753
+#: ../utils/ducks.py:762
 #, python-brace-format
 msgid ""
 "{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
 "+{experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:766
+#: ../utils/ducks.py:775
 msgid "golden"
 msgstr ""
 
-#: ../utils/ducks.py:770
+#: ../utils/ducks.py:779
 #, python-brace-format
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:784
+#: ../utils/ducks.py:793
 msgid "plastic"
 msgstr ""
 
-#: ../utils/ducks.py:788
+#: ../utils/ducks.py:797
 #, python-brace-format
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:802
+#: ../utils/ducks.py:811
 msgid "kamikaze"
 msgstr ""
 
-#: ../utils/ducks.py:806
+#: ../utils/ducks.py:815
 #, python-brace-format
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:821
+#: ../utils/ducks.py:830
 msgid "mechanical"
 msgstr ""
 
-#: ../utils/ducks.py:844
+#: ../utils/ducks.py:853
 #, python-brace-format
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:856
+#: ../utils/ducks.py:865
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:861
+#: ../utils/ducks.py:870
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:879
+#: ../utils/ducks.py:888
 msgid "super"
 msgstr ""
 
-#: ../utils/ducks.py:889
+#: ../utils/ducks.py:898
 #, python-brace-format
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:910
+#: ../utils/ducks.py:919
 msgid "moad"
 msgstr ""
 
-#: ../utils/ducks.py:914
+#: ../utils/ducks.py:923
 #, python-brace-format
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:938
+#: ../utils/ducks.py:947
 msgid "armored"
 msgstr ""
 
-#: ../utils/ducks.py:942
+#: ../utils/ducks.py:951
 #, python-brace-format
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:966
+#: ../utils/ducks.py:975
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:973
+#: ../utils/ducks.py:982
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:982
+#: ../utils/ducks.py:991
 msgid "night"
 msgstr ""
 
-#: ../utils/ducks.py:986
+#: ../utils/ducks.py:995
 #, python-brace-format
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:997
+#: ../utils/ducks.py:1006
 msgid "sleeping"
 msgstr ""
 
-#: ../utils/ducks.py:1001
+#: ../utils/ducks.py:1010
 #, python-brace-format
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
@@ -4473,19 +4501,19 @@ msgstr ""
 msgid "unemployed due to extinction of the duck species"
 msgstr ""
 
-#: ../utils/models.py:179 ../utils/models.py:187
+#: ../utils/models.py:200 ../utils/models.py:208
 #, python-brace-format
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
 
-#: ../utils/models.py:191
+#: ../utils/models.py:212
 msgid "Can't set such a high level"
 msgstr ""
 
-#: ../utils/models.py:432
+#: ../utils/models.py:462
 msgid "You leveled up!"
 msgstr ""
 
-#: ../utils/models.py:436
+#: ../utils/models.py:466
 msgid "You leveled down!"
 msgstr ""
