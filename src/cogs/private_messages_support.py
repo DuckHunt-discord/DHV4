@@ -191,7 +191,7 @@ class PrivateMessagesSupport(Cog):
             channel = await forwarding_category.create_text_channel(
                 name=str(user.id),
                 topic=f"This is the logs of a DM with {user.name}#{user.discriminator}. "
-                      f"What's written in there will be sent back to him, except if "
+                      f"What's written in there will be sent back to them, except if "
                       f"the message starts with > or is a DuckHunt command.\nChannel opened: {now_str}"
                       f"\n\n\n[getbeaned:disable_automod]\n[getbeaned:disable_logging]",
                 reason="Received a DM.")
@@ -235,7 +235,7 @@ class PrivateMessagesSupport(Cog):
 
         await channel.send(content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
                                    f"Every message in here will get sent back to them if it's not a bot message, "
-                                   f"DuckHunt command, and if it doesn't start by the > character.\n"
+                                   f"DuckHunt command, and if it doesn't start with the > character.\n"
                                    f"You can use many commands in the DM channels, detailed in "
                                    f"`dh!help private_support`\n"
                                    f"• `dh!ps close` will close the channel, sending a DM to the user.\n"
@@ -335,7 +335,7 @@ class PrivateMessagesSupport(Cog):
             for attach in message.attachments:
                 support_embed.add_field(name="Attached", value=attach.url)
 
-            support_embed.add_field(name=_("Attachments persistance"),
+            support_embed.add_field(name=_("Attachments persistence"),
                                     value=_(
                                         "Images and other attached data to the message will get deleted "
                                         "once your ticket is closed. "
@@ -471,7 +471,7 @@ class PrivateMessagesSupport(Cog):
             title=_("DM Closed"),
             description=_("Your support ticket was closed and the history deleted. "
                           "Thanks for using DuckHunt DM support. "
-                          "If you need anything else, feel free to open a new ticket by sending a message here.\n"
+                          "Keep in mind, sending another message here will open a new ticket!\n"
                           "In the meantime, here's a nice duck picture for you to look at !", ctx=ctx),
         )
 
