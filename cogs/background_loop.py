@@ -20,4 +20,5 @@ class BackgroundLoop(Cog):
     async def before(self):
         await self.bot.wait_until_ready()
 
+
 setup = BackgroundLoop.setup

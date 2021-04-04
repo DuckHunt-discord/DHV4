@@ -12,7 +12,8 @@ def escape_everything(mystr: str):
     return discord.utils.escape_mentions(discord.utils.escape_markdown(mystr))
 
 
-async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message, message_to_delete: discord.Message):
+async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message,
+                                             message_to_delete: discord.Message):
     def check(message: discord.RawMessageDeleteEvent):
         return message.message_id == watch_message.id
 

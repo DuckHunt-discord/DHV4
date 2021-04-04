@@ -35,7 +35,7 @@ def is_in_server(must_be_in_guild_id):
 
 
 def needs_access_level(required_access):
-    async def predicate(ctx:MyContext):
+    async def predicate(ctx: MyContext):
 
         if not ctx.guild:
             raise commands.NoPrivateMessage()
@@ -49,4 +49,3 @@ def needs_access_level(required_access):
                 raise AccessTooLow(current_access=access, required_access=required_access)
 
     return commands.check(predicate)
-

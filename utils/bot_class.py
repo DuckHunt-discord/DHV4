@@ -20,7 +20,8 @@ class MyBot(AutoShardedBot):
         self.config: dict = {}
         self.reload_config()
         activity = discord.Game(self.config["bot"]["playing"])
-        super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
+        super().__init__(*args, command_prefix=get_prefix, activity=activity,
+                         case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
@@ -68,7 +69,8 @@ class MyBot(AutoShardedBot):
         messages = ["-----------", f"The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
         total_members = len(self.users)
         messages.append(f"I see {len(self.guilds)} guilds, and {total_members} members.")
-        messages.append(f"To invite your bot to your server, use the following link: https://discordapp.com/api/oauth2/authorize?client_id={self.user.id}&scope=bot&permissions=0")
+        messages.append(
+            f"To invite your bot to your server, use the following link: https://discordapp.com/api/oauth2/authorize?client_id={self.user.id}&scope=bot&permissions=0")
         cogs_count = len(self.cogs)
         messages.append(f"{cogs_count} cogs are loaded")
         messages.append("-----------")

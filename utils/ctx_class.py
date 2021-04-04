@@ -77,4 +77,3 @@ class MyContext(commands.Context):
             return translate(message, language_code).format(**kwargs)
 
         return _
-
