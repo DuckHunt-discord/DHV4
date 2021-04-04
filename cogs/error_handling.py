@@ -1,6 +1,7 @@
 import datetime
 import traceback
 
+from babel import dates
 from discord.ext import commands
 
 from utils import checks
@@ -8,7 +9,6 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
 
-from babel import dates
 
 class CommandErrorHandler(Cog):
     @commands.Cog.listener()

@@ -1,9 +1,8 @@
 import asyncio
 import io
+import typing
 
 import discord
-import toml
-import typing
 from discord import Message
 from discord.errors import InvalidArgument
 from discord.ext import commands

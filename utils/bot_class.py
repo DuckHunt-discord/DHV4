@@ -5,8 +5,8 @@ from typing import Optional
 
 import aiohttp
 import discord
-from discord.ext.commands.bot import AutoShardedBot
 from discord.ext import commands
+from discord.ext.commands.bot import AutoShardedBot
 
 from utils import config as config
 from utils.ctx_class import MyContext

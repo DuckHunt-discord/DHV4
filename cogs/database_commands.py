@@ -6,7 +6,6 @@ from typing import Optional
 from discord.ext import commands
 from discord.utils import escape_markdown, escape_mentions
 
-from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db

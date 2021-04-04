@@ -1,10 +1,10 @@
 import asyncio
-import uvloop
+
 import discord
+import uvloop
 
-
-from utils.config import load_config
 from utils.bot_class import MyBot
+from utils.config import load_config
 from utils.custom_help import EmbedHelpCommand
 from utils.models import init_db_connection
 

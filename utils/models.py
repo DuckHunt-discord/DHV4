@@ -1,12 +1,12 @@
-import discord
 import typing
+from enum import IntEnum, unique
+
+import discord
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
-from enum import IntEnum, unique
-
 if typing.TYPE_CHECKING:
-    from utils.ctx_class import MyContext
+    pass
 
 
 # TODO : https://github.com/long2ice/aerich
