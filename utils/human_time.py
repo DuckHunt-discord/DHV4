@@ -39,7 +39,7 @@ class ShortTime:
         if match is None or not match.group(0):
             raise commands.BadArgument('invalid time provided')
 
-        data = {k: int(v) for k, v in match.groupdict(default=0).items()}
+        data = {k: int(v) for k, v in match.groupdict(default="0").items()}
         now = now or datetime.datetime.utcnow()
         self.dt = now + relativedelta(**data)
 
@@ -126,7 +126,7 @@ class UserFriendlyTime(commands.Converter):
 
         match = regex.match(argument)
         if match is not None and match.group(0):
-            data = {k: int(v) for k, v in match.groupdict(default=0).items()}
+            data = {k: int(v) for k, v in match.groupdict(default="0").items()}
             remaining = argument[match.end():].strip()
             self.dt = now + relativedelta(**data)
             return await self.check_constraints(ctx, now, remaining)

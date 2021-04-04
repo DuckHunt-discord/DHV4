@@ -32,6 +32,7 @@ def is_in_server(must_be_in_guild_id):
             raise NotInServer(must_be_in_guild_id=must_be_in_guild_id)
         return True
 
+    # noinspection PyTypeChecker
     return commands.check(predicate)
 
 
@@ -49,4 +50,5 @@ def needs_access_level(required_access):
             else:
                 raise AccessTooLow(current_access=access, required_access=required_access)
 
+    # noinspection PyTypeChecker
     return commands.check(predicate)

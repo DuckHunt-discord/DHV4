@@ -90,6 +90,7 @@ async def get_prefix(bot: MyBot, message: discord.Message):
 
     if not message.guild:
         # Need no prefix when in DMs
+        # noinspection PyTypeChecker
         return commands.when_mentioned_or(*forced_prefixes, "")(bot, message)
 
     else:
@@ -100,4 +101,5 @@ async def get_prefix(bot: MyBot, message: discord.Message):
             if guild_prefix:
                 forced_prefixes.append(guild_prefix)
 
+        # noinspection PyTypeChecker
         return commands.when_mentioned_or(*forced_prefixes)(bot, message)

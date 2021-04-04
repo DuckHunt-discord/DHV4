@@ -23,11 +23,12 @@ class MyContext(commands.Context):
         super().__init__(*args, **kwargs)
         self.bot: 'MyBot'
 
+        # noinspection PyTypeChecker
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
     async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, **kwargs) -> Message:
         # Case for a too-big message
-        if content and len(content) > 1990:
+        if isinstance(content, str) and len(content) > 1990:
             self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
 
             message_file = discord.File(io.BytesIO(content.encode()), filename="message.txt")
