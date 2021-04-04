@@ -19,6 +19,7 @@ class MyBot(AutoShardedBot):
         self.logger = FakeLogger()
         self.config: dict = {}
         self.reload_config()
+        # noinspection PyArgumentList
         activity = discord.Game(self.config["bot"]["playing"])
         super().__init__(*args, command_prefix=get_prefix, activity=activity,
                          case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
