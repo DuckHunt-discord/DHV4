@@ -5,6 +5,7 @@ from enum import IntEnum, unique
 import discord
 # noinspection PyPackageRequirements
 from tortoise import Tortoise, fields
+# noinspection PyPackageRequirements
 from tortoise.models import Model
 
 if typing.TYPE_CHECKING:
