@@ -4,6 +4,7 @@ import collections
 import datetime
 from typing import Optional
 
+# noinspection PyPackageRequirements
 import aiohttp
 import discord
 from discord.ext import commands

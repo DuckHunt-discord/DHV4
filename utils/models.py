@@ -3,6 +3,7 @@ import typing
 from enum import IntEnum, unique
 
 import discord
+# noinspection PyPackageRequirements
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
