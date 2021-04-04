@@ -71,6 +71,7 @@ class HumanTime:
 
 class Time(HumanTime):
     def __init__(self, argument, *, now=None):
+        # noinspection PyBroadException
         try:
             o = ShortTime(argument, now=now)
         except Exception as e:
