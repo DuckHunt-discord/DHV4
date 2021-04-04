@@ -169,7 +169,8 @@ class FakeLogger:
             logger = init_logger()
         self.logger = logger
 
-    def make_message_prefix(self, guild: typing.Optional[discord.Guild] = None,
+    @staticmethod
+    def make_message_prefix(guild: typing.Optional[discord.Guild] = None,
                             channel: typing.Optional[discord.ChannelType] = None,
                             member: typing.Optional[discord.Member] = None):
         if guild and channel and member:
