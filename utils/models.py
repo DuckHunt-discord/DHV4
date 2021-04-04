@@ -3,6 +3,8 @@ import typing
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
+from enum import IntEnum, unique
+
 if typing.TYPE_CHECKING:
     from utils.ctx_class import MyContext
 
@@ -14,7 +16,6 @@ class DiscordGuild(Model):
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
     prefix = fields.CharField(20, null=True)
-    permissions = fields.JSONField(default={})
 
     language = fields.CharField(6, default="en")
 
@@ -33,7 +34,6 @@ class DiscordChannel(Model):
     guild = fields.ForeignKeyField('models.DiscordGuild')
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
-    permissions = fields.JSONField(default={})
 
     class Meta:
         table = "channels"
@@ -45,6 +45,15 @@ class DiscordChannel(Model):
         return f"<Channel name={self.name}>"
 
 
+@unique
+class AccessLevel(IntEnum):
+    BANNED = 0
+    DEFAULT = 50
+    TRUSTED = 100
+    MODERATOR = 200
+    ADMIN = 300
+
+
 class DiscordUser(Model):
     id = fields.IntField(pk=True)
     discord_id = fields.BigIntField(index=True)
@@ -52,9 +61,9 @@ class DiscordUser(Model):
     discriminator = fields.CharField(4)
     last_modified = fields.DatetimeField(auto_now=True)
     times_ran_example_command = fields.IntField(default=0)
-    permissions = fields.JSONField(default={})
 
     language = fields.CharField(6, default="en")
+    access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
     class Meta:
         table = "users"
@@ -68,9 +77,17 @@ class DiscordUser(Model):
 
 class DiscordMember(Model):
     id = fields.IntField(pk=True)
-    guild = fields.ForeignKeyField('models.DiscordGuild')
-    user = fields.ForeignKeyField('models.DiscordUser')
-    permissions = fields.JSONField(default={})
+    guild: DiscordGuild = fields.ForeignKeyField('models.DiscordGuild')
+    user: DiscordUser = fields.ForeignKeyField('models.DiscordUser')
+
+    access_level = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
+
+    def get_access_level(self):
+        override = self.user.access_level_override
+        if override != AccessLevel.DEFAULT:
+            return override
+        else:
+            return self.access_level
 
     class Meta:
         table = "members"
@@ -93,7 +110,7 @@ async def get_from_db(discord_object, as_user=False):
             await db_obj.save()
         return db_obj
     elif isinstance(discord_object, discord.Member) and not as_user:
-        db_obj = await DiscordMember.filter(user__discord_id=discord_object.id).first().prefetch_related("user", "guild")
+        db_obj = await DiscordMember.filter(user__discord_id=discord_object.id, guild__discord_id=discord_object.guild.id).first().prefetch_related("user", "guild")
         if not db_obj:
             db_obj = DiscordMember(guild=await get_from_db(discord_object.guild), user=await get_from_db(discord_object, as_user=True))
             await db_obj.save()
@@ -106,61 +123,24 @@ async def get_from_db(discord_object, as_user=False):
         return db_obj
 
 
-async def get_ctx_permissions(ctx: 'MyContext') -> dict:
-    """
-    Discover the permissions for a specified context. Permissions are evaluated first from the default permissions
-    specified in the config file, then by the guild config, the channel conifg, and again from the member_specific
-    permissions, then by the fixed permissions as seen in the config file, and finally using user overrides set by
-    the bot administrator in the database.
-    :param ctx:
-    :return:
-    """
-    if ctx.guild:
-        db_member: DiscordMember = await get_from_db(ctx.author)
-        db_channel: DiscordChannel = await get_from_db(ctx.channel)
-        db_user: DiscordUser = db_member.user
-        db_guild: DiscordGuild = db_member.guild
-        guild_permissions = db_guild.permissions
-        channel_permissions = db_channel.permissions
-        member_permissions = db_member.permissions
-        user_permissions = db_user.permissions
-        subguild_permissions = {}
-        subchannel_permissions = {}
-        for role in ctx.author.roles:
-            subguild_permissions = {**subguild_permissions, **guild_permissions.get(str(role.id), {})}
-            subchannel_permissions = {**subchannel_permissions, **channel_permissions.get(str(role.id), {})}
-    else:
-        subguild_permissions = {}
-        subchannel_permissions = {}
-        member_permissions = {}
-        db_user: DiscordUser = await get_from_db(ctx.author, as_user=True)
-        user_permissions = db_user.permissions
-
-    default_permissions = ctx.bot.config['permissions']['default']
-    fixed_permissions = ctx.bot.config['permissions']['fixed']
-
-    permissions = {**default_permissions, **subguild_permissions, **subchannel_permissions, **member_permissions, **fixed_permissions, **user_permissions}
-    return permissions
-
-
 async def init_db_connection(config):
     tortoise_config = {
         'connections': {
             # Dict format for connection
             'default': {
-                'engine': 'tortoise.backends.asyncpg',
+                'engine'     : 'tortoise.backends.asyncpg',
                 'credentials': {
-                    'host': config['host'],
-                    'port': config['port'],
-                    'user': config['user'],
+                    'host'    : config['host'],
+                    'port'    : config['port'],
+                    'user'    : config['user'],
                     'password': config['password'],
                     'database': config['database'],
                 }
             },
         },
-        'apps': {
+        'apps'       : {
             'models': {
-                'models': ["utils.models", "aerich.models"],
+                'models'            : ["utils.models", "aerich.models"],
                 'default_connection': 'default',
             }
         }

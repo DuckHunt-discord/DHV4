@@ -62,7 +62,7 @@ class MyContext(commands.Context):
             db_guild = await get_from_db(self.guild)
             language = db_guild.language
         else:
-            db_user = await get_from_db(self.author)
+            db_user = await get_from_db(self.author, as_user=True)
             language = db_user.language
 
         return language
