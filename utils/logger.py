@@ -126,6 +126,7 @@ def init_logger() -> logging.Logger:
             if not crtname:
                 crtname = ctypes.util.find_library("msvcrt")
             crtlib = ctypes.cdll.LoadLibrary(crtname)
+            # noinspection PyProtectedMember
             self._outhdl = crtlib._get_osfhandle(self.stream.fileno())
 
         def emit(self, record):
