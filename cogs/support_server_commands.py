@@ -10,6 +10,7 @@ import discord
 import pytz
 from babel import dates
 from discord.ext import commands, tasks
+from discord.utils import maybe_coroutine
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -26,7 +27,8 @@ class SupportServerCommands(Cog):
         self.background_loop.cancel()
 
     async def cog_check(self, ctx):
-        ret = await super().cog_check(ctx)
+        ret = await maybe_coroutine(super().cog_check, ctx)
+        # noinspection PyUnresolvedReferences
         ret = ret and ctx.guild.id == self.config()["support_server_id"]
         return ret
 
