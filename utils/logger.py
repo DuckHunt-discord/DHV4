@@ -140,8 +140,10 @@ def init_logger() -> logging.Logger:
     import platform
 
     if platform.system() == 'Windows':
+        # noinspection PyPep8Naming
         ColorStreamHandler = _WinColorStreamHandler
     else:
+        # noinspection PyPep8Naming
         ColorStreamHandler = _AnsiColorStreamHandler
 
     steam_handler = ColorStreamHandler()

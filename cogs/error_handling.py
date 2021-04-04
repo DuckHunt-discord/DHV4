@@ -29,7 +29,7 @@ class CommandErrorHandler(Cog):
         if isinstance(exception, ignored):
             return
 
-        DELETE_ERROR_MESSAGE_AFTER = 60
+        delete_error_message_after = 60
         command_invoke_help = f"{ctx.prefix}{ctx.command.qualified_name} {ctx.command.signature}"
 
         ctx.logger.debug(f"Error during processing: {exception} ({repr(exception)})")
@@ -173,7 +173,7 @@ class CommandErrorHandler(Cog):
             ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
-            await ctx.send("❌ " + message, delete_after=DELETE_ERROR_MESSAGE_AFTER)
+            await ctx.send("❌ " + message, delete_after=delete_error_message_after)
 
 
 setup = CommandErrorHandler.setup
