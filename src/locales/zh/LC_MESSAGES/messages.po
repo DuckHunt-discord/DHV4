@@ -27,7 +27,7 @@ msgid "Shoot at the duck that appeared first on the channel."
 msgstr "對著頻道里最先出現的鴨子開槍。"
 
 msgid "Reload your gun."
-msgstr "重新裝彈"
+msgstr "重新為你的槍裝彈"
 
 msgid "Hug the duck that appeared first on the channel."
 msgstr "抱起頻道里最先出現的鴨子。"
@@ -259,7 +259,9 @@ msgstr "/help/commands\n"
 msgid "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
-msgstr ""
+msgstr "/status\n"
+"\n"
+"檢查機器人托管的每個碎片的狀態。"
 
 msgid "/stats\n"
 "\n"
@@ -288,7 +290,7 @@ msgid ""
 "difficult ducks.\n"
 "\n"
 "For experienced hunters only."
-msgstr "設置機器人更硬核的體驗：經驗少，鴨子更難。"
+msgstr "設置機器人更硬核的體驗：經驗少，鴨子更難殺死。"
 
 msgid ""
 "Haunted house gamemode.\n"
@@ -305,11 +307,9 @@ msgid ""
 "This actually just set spawn_weight_mechanical_ducks to 100.\n"
 "\n"
 "All the other settings are reset to their default values."
-msgstr ""
-"機器人盛會遊戲模式。\n"
+msgstr "九頭蛇遊戲模式。\n"
 "\n"
-"很多野生機械鴨會在通道中產生。\n"
-"這其實只是將 spawn_weight_mechanical_ducks 設置為 100。"
+"很多媽媽鴨會在頻道里產生，他們也會讓媽媽鴨產生。"
 
 msgid ""
 "Hydra gamemode.\n"
@@ -596,7 +596,7 @@ msgstr ""
 
 msgid ""
 "Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
-msgstr ""
+msgstr "有了Homing Projectiles，射擊時再也不會失手了。[150 exp/限定時間]"
 
 msgid ""
 "Check that the bot is online, give the latency between the bot and Discord "
@@ -627,7 +627,7 @@ msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr "感謝那些（幫助）翻譯机械人的好心人。"
 
 msgid "For when you misspell the pan command."
-msgstr ""
+msgstr "當你拼錯pan命令的時候。"
 
 msgid "For when you misspell the reload command."
 msgstr ""
@@ -2202,7 +2202,7 @@ msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
 msgstr ""
@@ -2400,19 +2400,19 @@ msgid "Page {current_page}/{maximum} ({entries} tags)"
 msgstr ""
 
 msgid "❌ You didn't specify what you want your tag to say."
-msgstr ""
+msgstr "❌ 你沒有指定你的標籤要寫什麼。"
 
 msgid "❌ This tag already exists."
-msgstr ""
+msgstr "❌ 這個標籤已經存在。"
 
 msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
 msgstr ""
 
 msgid "❌ Both tags already exists, what are you trying to do ?"
-msgstr ""
+msgstr "❌ 兩個標籤都已經存在，你想做什麼？"
 
 msgid "❌ None of your tags exist."
-msgstr ""
+msgstr "❌ 您的標籤不存在。"
 
 msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
@@ -2420,49 +2420,49 @@ msgid ""
 msgstr ""
 
 msgid "❌ This tag doesn't exist yet. You might want to create it."
-msgstr ""
+msgstr "❌ 這個標籤還不存在。你可能需要創建它。"
 
 msgid "❌ You don't own that tag, you can't edit it."
-msgstr ""
+msgstr "❌ 你不擁有這個標籤，你不能編輯它。"
 
 msgid "👌 Tag {tag.name} edited."
 msgstr ""
 
 msgid "❌ This tag doesn't exist."
-msgstr ""
+msgstr "❌ 這個標籤不存在。"
 
 msgid "❌ You don't own that tag, you can't delete it."
-msgstr ""
+msgstr "❌你不擁有這個標籤，你不能刪除它。"
 
 msgid "👌 Tag {tag.name} deleted."
 msgstr ""
 
 msgid "Murderer"
-msgstr ""
+msgstr "殺人犯"
 
 msgid "Kill another hunter."
 msgstr ""
 
 msgid "Big spender"
-msgstr ""
+msgstr "花費大戶"
 
 msgid "Spend more than 2000 experience."
-msgstr ""
+msgstr "花多於2000的經驗值。"
 
 msgid "A hunter joined the chat"
-msgstr ""
+msgstr "一位獵人加入了聊天"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "玩了多於一个星期。"
 
 msgid "We are starting to know each other"
-msgstr ""
+msgstr "我們開始互相認識了"
 
 msgid "Play for more than a month."
-msgstr ""
+msgstr "玩了多於一個月。"
 
 msgid "Wanna be friends ?"
-msgstr ""
+msgstr "想成為朋友嗎？"
 
 msgid "Play for more than a year."
 msgstr ""
