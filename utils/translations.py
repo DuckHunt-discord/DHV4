@@ -10,5 +10,6 @@ def translate(message, language_code):
     return get_translation(language_code).gettext(message)
 
 
+# noinspection PyUnusedLocal
 def fake_translation(message, language_code=None):
     return message
