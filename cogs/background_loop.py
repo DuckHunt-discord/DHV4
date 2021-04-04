@@ -1,3 +1,4 @@
+# coding=utf-8
 from discord.ext import tasks
 
 from utils.cog_class import Cog

@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Some example of commands that can be used to interact with the database.
 """

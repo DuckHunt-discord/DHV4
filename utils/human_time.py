@@ -1,3 +1,4 @@
+# coding=utf-8
 # noinspection SpellCheckingInspection
 """
 This utils file was stolen from R. Danny source code and allow you to interact with time.

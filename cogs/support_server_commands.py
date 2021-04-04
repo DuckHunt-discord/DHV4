@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Some example of commands that can be used only in the bot support server.
 """
