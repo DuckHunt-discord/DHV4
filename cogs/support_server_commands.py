@@ -33,7 +33,7 @@ class SupportServerCommands(Cog):
     async def background_loop(self):
         status_channel = self.bot.get_channel(self.config()["status_channel_id"])
         if not status_channel or not isinstance(status_channel, discord.TextChannel):
-            self.bot.logger.warning("The status channel for the support server command is misconfigured.")
+            self.bot.logger.warning("The status channel for the support server command is configured improperly.")
             return
 
         self.bot.logger.debug("Updating status message", guild=status_channel.guild, channel=status_channel)

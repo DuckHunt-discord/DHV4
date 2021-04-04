@@ -1,3 +1,4 @@
+# noinspection SpellCheckingInspection
 """
 This utils file was stolen from R. Danny source code and allow you to interact with time.
 
@@ -189,6 +190,7 @@ class UserFriendlyTime(commands.Converter):
             raise
 
 
+# noinspection SpellCheckingInspection
 def human_timedelta(dt, *, source=None, accuracy=3, brief=False, suffix=True):
     now = source or datetime.datetime.utcnow()
     # Microsecond free zone

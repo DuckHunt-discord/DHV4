@@ -8,8 +8,8 @@ if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
 
-def escape_everything(mystr: str):
-    return discord.utils.escape_mentions(discord.utils.escape_markdown(mystr))
+def escape_everything(str_to_escape: str):
+    return discord.utils.escape_mentions(discord.utils.escape_markdown(str_to_escape))
 
 
 async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message,

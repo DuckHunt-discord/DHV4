@@ -129,6 +129,7 @@ async def get_from_db(discord_object, as_user=False):
 
 
 async def init_db_connection(config):
+    # noinspection SpellCheckingInspection
     tortoise_config = {
         'connections': {
             # Dict format for connection

@@ -40,7 +40,7 @@ class MyBot(AutoShardedBot):
 
     async def async_setup(self):
         """
-        This funtcion is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
+        This function is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
         self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
 

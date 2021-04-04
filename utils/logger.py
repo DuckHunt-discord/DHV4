@@ -10,6 +10,7 @@ def init_logger() -> logging.Logger:
     base_logger = logging.getLogger("matchmaking")
     base_logger.setLevel(logging.DEBUG)
 
+    # noinspection SpellCheckingInspection
     formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 
     # Logging to a file
@@ -66,6 +67,7 @@ def init_logger() -> logging.Logger:
             color = self._get_color(record.levelno)
             return color + text + self.DEFAULT
 
+    # noinspection SpellCheckingInspection
     class _WinColorStreamHandler(logging.StreamHandler):
         # wincon.h
         FOREGROUND_BLACK = 0x0000
@@ -149,6 +151,7 @@ def init_logger() -> logging.Logger:
     discord_logger = logging.getLogger('discord')
     discord_logger.setLevel(logging.WARNING)
 
+    # noinspection SpellCheckingInspection
     discord_formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 
     discord_steam_handler = ColorStreamHandler()

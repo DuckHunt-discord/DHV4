@@ -58,7 +58,7 @@ class DatabaseCommands(Cog):
         Change/view the server language.
 
         Specify the server language as a 2/5 letters code. For example, if you live in France, you'd use fr or fr_FR.
-        In Québec, you could use fr_QC.
+        In Quebec, you could use fr_QC.
         """
         db_guild = await get_from_db(ctx.guild)
         if language_code:

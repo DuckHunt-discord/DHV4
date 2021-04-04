@@ -21,8 +21,8 @@ intents.guilds = True
 intents.messages = True
 intents.reactions = True
 
-intents.presences = False  # Priviledged
-intents.members = False  # Priviledged
+intents.presences = False  # Privileged
+intents.members = False  # Privileged
 intents.bans = False
 intents.emojis = False
 intents.integrations = False
