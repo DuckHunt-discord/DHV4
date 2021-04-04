@@ -29,8 +29,8 @@ def init_logger() -> logging.Logger:
 
     # And to console
 
-    ## You can probably collapse the following two StreamHandlers.
-    ## They list the colors codes for windows and unix systems
+    # You can probably collapse the following two StreamHandlers.
+    # They list the colors codes for windows and unix systems
 
     class _AnsiColorStreamHandler(logging.StreamHandler):
         DEFAULT = '\x1b[0m'
@@ -136,7 +136,7 @@ def init_logger() -> logging.Logger:
             logging.StreamHandler.emit(self, record)
             self._set_color(self.FOREGROUND_WHITE)
 
-    ## select ColorStreamHandler based on platform
+    # select ColorStreamHandler based on platform
     import platform
 
     if platform.system() == 'Windows':

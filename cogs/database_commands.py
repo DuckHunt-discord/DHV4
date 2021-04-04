@@ -74,7 +74,8 @@ class DatabaseCommands(Cog):
 
             # Do not translate
             await ctx.send(
-                f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
+                f"If you wish to go back to the default, english language, use "
+                f"`{ctx.prefix}{ctx.command.qualified_name} en`")
         else:
             await ctx.send(_("There is no specific language set for this guild."))
 

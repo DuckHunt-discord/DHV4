@@ -45,7 +45,8 @@ class MyBot(AutoShardedBot):
         """
         This function is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
-        self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
+        # There is no need to call __aenter__, since that does nothing in this case
+        self._client_session = aiohttp.ClientSession()
 
     async def on_message(self, message):
         if not self.is_ready():
@@ -72,8 +73,8 @@ class MyBot(AutoShardedBot):
         messages = ["-----------", f"The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
         total_members = len(self.users)
         messages.append(f"I see {len(self.guilds)} guilds, and {total_members} members.")
-        messages.append(
-            f"To invite your bot to your server, use the following link: https://discordapp.com/api/oauth2/authorize?client_id={self.user.id}&scope=bot&permissions=0")
+        messages.append(f"To invite your bot to your server, use the following link: https://discordapp.com/api/oauth2/"
+                        f"authorize?client_id={self.user.id}&scope=bot&permissions=0")
         cogs_count = len(self.cogs)
         messages.append(f"{cogs_count} cogs are loaded")
         messages.append("-----------")

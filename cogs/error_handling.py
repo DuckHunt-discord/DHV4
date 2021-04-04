@@ -39,8 +39,8 @@ class CommandErrorHandler(Cog):
             if isinstance(exception, commands.ConversionError):
                 original = exception.original
                 message = _("There was an error converting one of your arguments with {exception.converter}. The "
-                            "correct syntax would be `{command_invoke_help}`. The converter returned the following error"
-                            ": {original}",
+                            "correct syntax would be `{command_invoke_help}`. The converter returned the following "
+                            "error: {original}",
                             command_invoke_help=command_invoke_help,
                             original=escape_everything(str(original)))
             elif isinstance(exception, commands.UserInputError):
@@ -100,7 +100,8 @@ class CommandErrorHandler(Cog):
                                 exception=exception)
                 elif isinstance(exception, commands.NotOwner):
                     message = _("You need to be the owner of the bot to run that.")
-                # We could edit and change the message here, but the lib messages are fine and specify exactly what permissions are missing
+                # We could edit and change the message here, but the lib messages are fine and specify exactly what
+                # permissions are missing
                 elif isinstance(exception, commands.MissingPermissions):
                     message = f"{str(exception)}"
                 elif isinstance(exception, commands.BotMissingPermissions):
@@ -129,7 +130,8 @@ class CommandErrorHandler(Cog):
                                     exception=exception)
                 elif isinstance(exception, checks.AccessTooLow):
                     message = _(
-                        f"Your access level is too low : you have an access level of {exception.current_access}, and you need at least {exception.required_access}.",
+                        f"Your access level is too low : you have an access level of {exception.current_access}, and "
+                        f"you need at least {exception.required_access}.",
                         exception=exception)
                 elif isinstance(exception, checks.BotIgnore):
                     return
@@ -152,7 +154,8 @@ class CommandErrorHandler(Cog):
                     return
                 else:
                     delta = datetime.timedelta(seconds=min(round(exception.retry_after, 1), 1))
-                    # NOTE : This message uses a formatted, direction date in some_time. Formatted, it'll give something like :
+                    # NOTE : This message uses a formatted, direction date in some_time. Formatted, it'll give
+                    # something like:
                     # "This command is overused. Please try again *in 4 seconds*"
                     message = _("This command is overused. Please try again {some_time}.",
                                 some_time=dates.format_timedelta(delta, add_direction=True,
@@ -165,7 +168,8 @@ class CommandErrorHandler(Cog):
                     "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
         else:
             message = _(
-                "This should not have happened. A command raised an error that does not comes from CommandError. Please inform the owner.")
+                "This should not have happened. A command raised an error that does not comes from CommandError. "
+                "Please inform the owner.")
             ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
