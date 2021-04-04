@@ -99,6 +99,8 @@ class UserFriendlyTime(commands.Converter):
 
         self.converter = converter
         self.default = default
+        self.arg = None
+        self.dt = None
 
     async def check_constraints(self, ctx, now, remaining):
         if self.dt < now:
