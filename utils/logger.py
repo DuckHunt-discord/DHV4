@@ -197,7 +197,7 @@ class FakeLogger:
 
     def warn(self, message: str, guild: typing.Optional[discord.Guild] = None,
              channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
-        return self.logger.warn(self.make_message_prefix(guild, channel, member) + str(message))
+        return self.logger.warning(self.make_message_prefix(guild, channel, member) + str(message))
 
     def warning(self, message: str, guild: typing.Optional[discord.Guild] = None,
                 channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
