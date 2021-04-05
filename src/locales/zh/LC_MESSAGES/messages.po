@@ -104,7 +104,7 @@ msgstr "給某個玩家一些東西。"
 msgid ""
 "Compress and sort your inventory, to fuse items together. You shouldn't have "
 "to use this."
-msgstr ""
+msgstr "壓縮和分類你的庫存，將物品融合在一起。你不應該使用這個。"
 
 msgid "Use one of the items in your inventory."
 msgstr "使用庫存中的一項。"
@@ -991,21 +991,25 @@ msgstr ""
 msgid ""
 "❓️ What are you trying to kill exactly ? There are no ducks here. "
 "[**MISSED**: -2 exp]"
-msgstr ""
+msgstr "❓️你到底想殺什麼？這裡沒有鴨子。[**失誤**: -2 exp]"
 
 msgid ""
 "Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
 "(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
 "weapon`)"
 msgstr ""
+"咦，你沒有武器，它被沒收了。等待免費時間(`{ctx.prefix}freetime`)，或者在商店裡買回來(`{ctx.prefix}shop "
+"weapon`)"
 
 msgid "☀️️ You unjam your weapon !"
-msgstr ""
+msgstr "☀️你把你的武器解開了!"
 
 msgid ""
 "🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
 "Magazines: {current_magazines}/{max_magazines} "
 msgstr ""
+"🦉 你從新添加了子彈 | 子彈: {current_bullets}/{max_bullets} | 彈夾: {current_magazines}/"
+"{max_magazines} "
 
 msgid ""
 "🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/"
@@ -1022,13 +1026,13 @@ msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself
 msgstr ""
 
 msgid "tree"
-msgstr ""
+msgstr "樹"
 
 msgid "❌ I have no idea what you want to hug..."
-msgstr ""
+msgstr "❌我不知道你想抱什麼... "
 
 msgid "🌳 You hugged the tree... Thanks!"
-msgstr ""
+msgstr "🌳你抱了一棵樹... ...謝謝你！"
 
 msgid ""
 "{you.mention} hugged {other.mention}. The developer of the bot is really "
@@ -1039,10 +1043,10 @@ msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
 
 msgid "What are you trying to hug, exactly? A tree?"
-msgstr ""
+msgstr "你到底想抱什麼？一棵樹？"
 
 msgid "You are already alive and well."
-msgstr ""
+msgstr "你已經活得很好了。"
 
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr ""
@@ -2190,13 +2194,13 @@ msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
 msgstr ""
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
@@ -2441,7 +2445,7 @@ msgid "Murderer"
 msgstr "殺人犯"
 
 msgid "Kill another hunter."
-msgstr ""
+msgstr "殺第二位獵人。"
 
 msgid "Big spender"
 msgstr "花費大戶"
@@ -2465,16 +2469,16 @@ msgid "Wanna be friends ?"
 msgstr "想成為朋友嗎？"
 
 msgid "Play for more than a year."
-msgstr ""
+msgstr "玩了多於一年。"
 
 msgid "I don't want your damn bullets!"
-msgstr ""
+msgstr "我不要你那該死的子彈！"
 
 msgid "Leave a bullet you found in the bushes."
 msgstr ""
 
 msgid "Mommy is crying"
-msgstr ""
+msgstr "媽媽在哭"
 
 msgid "Kill a few baby ducks."
 msgstr ""
@@ -2486,16 +2490,16 @@ msgid "Solve equations given by the Pr. Duck."
 msgstr ""
 
 msgid "BRAAAAAINS!"
-msgstr ""
+msgstr "大腦腦腦！"
 
 msgid "Eat some brains and come back to life."
-msgstr ""
+msgstr "吃點腦子，並從生。"
 
 msgid "Sentry gun"
-msgstr ""
+msgstr "哨兵槍"
 
 msgid "Use more than 1000 bullets."
-msgstr ""
+msgstr "使用多於1000顆子彈。"
 
 msgid "Homing kills (you)"
 msgstr ""
@@ -2504,7 +2508,7 @@ msgid "Use the homing projectiles."
 msgstr ""
 
 msgid "You monster"
-msgstr ""
+msgstr "你這個怪物"
 
 msgid "Kill a MOAD that spawns a baby duck."
 msgstr ""
@@ -2516,7 +2520,7 @@ msgid "Give at least 30 exp to an hunter that lost his gun."
 msgstr ""
 
 msgid "Short memory"
-msgstr ""
+msgstr "短暫的記憶"
 
 msgid "Shoot at your own mechanical duck."
 msgstr ""
@@ -2625,32 +2629,32 @@ msgstr "橙色"
 msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
 "chance to get shot by another hunter."
-msgstr ""
+msgstr "更好的能見度。增加你嚇到鴨子的機會，減少你被其他獵人射殺的機會"
 
 msgid "Camo"
 msgstr "迷彩"
 
 msgid "Lower visibility: Less chance to frighten ducks."
-msgstr ""
+msgstr "能見度低。鴨子受驚的機會減少"
 
 msgid "Blue"
 msgstr "藍"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
-msgstr ""
+msgstr "幸運發現。增加你在灌木叢中找到物品的機會。"
 
 msgid "Red"
-msgstr ""
+msgstr "紅色"
 
 msgid ""
 "Hungry for blood: Increase your murder skills, reduce murder penalties."
-msgstr ""
+msgstr "飢渴的血。增加你的謀殺技能，減少謀殺的懲罰。"
 
 msgid "Yellow"
-msgstr ""
+msgstr "黄"
 
 msgid "Sun powers: Mirrors are less effective against you."
-msgstr ""
+msgstr "太陽的力量。鏡子對你的作用較小"
 
 msgid "Dark green"
 msgstr "深綠色"
@@ -2662,24 +2666,24 @@ msgid "Black"
 msgstr "黑"
 
 msgid "Secret service: Sabotages are cheaper."
-msgstr ""
+msgstr "秘密服務。破壞比較便宜"
 
 msgid "Light blue"
 msgstr "淺藍色"
 
 msgid "Sea powers: You are immune to water buckets."
-msgstr ""
+msgstr "海的力量。你對水桶有免疫力"
 
 msgid "Pink"
-msgstr ""
+msgstr "粉紅色"
 
 msgid "Power of love: You can't kill players with the same coat color."
-msgstr ""
+msgstr "愛的力量令你你不能殺同色系的玩家。"
 
 msgid ""
 "This is not a valid color. You can choose between {colors}, or `random` for "
 "a random color."
-msgstr ""
+msgstr "這不是一個有效的顏色。你可以在{colors}或`random`之間選擇一個隨機的顏色。"
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr "使用{prefix}{help} [command] 以獲取更多關於命令的信息。"
@@ -2695,22 +2699,28 @@ msgstr "普通"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "其中一隻是普通鴨子"
+msgstr[1] "其中{this_ducks_killed}是普通鴨子。"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
 "{bonus_experience} **clover**]"
 msgstr ""
+"{killer."
+"mention}在{spawned_for_str}中殺死了鴨子，共計{total_duks_killed({ncategory_killed}）[**殺死**：{normal_exp} "
+"exp {bonus_experience} **四葉草**] 。"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
 msgstr ""
+"{killer.mention "
+"}在{spawned_for_str}中殺死了鴨子，共計{total_ducks_killed}({ncategory_killed}）[**Killed**：{normal_exp} "
+"exp]。"
 
 msgid "{hunter.mention} scared the duck away."
-msgstr ""
+msgstr "{hunter. mention}把鴨子嚇走了。"
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
@@ -2789,7 +2799,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "plastic"
-msgstr ""
+msgstr "塑膠"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
@@ -2797,7 +2807,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "kamikaze"
-msgstr ""
+msgstr "自爆"
 
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
@@ -2805,11 +2815,11 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "mechanical"
-msgstr ""
+msgstr "機械"
 
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
-msgstr[0] ""
+msgstr[0] "其中一隻是機械鴨"
 msgstr[1] "其中 {this_ducks_killed}是機械鴨。"
 
 msgid ""
@@ -3100,13 +3110,13 @@ msgid "Ghost Duck"
 msgstr "幽靈鴨子"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "嗚嗚鴨"
 
 msgid "Pr. Duck"
 msgstr "教授鴨子"
 
 msgid "EnsDuck"
-msgstr ""
+msgstr "愛因斯坦鴨"
 
 msgid "**COIN**"
 msgstr "**金幣！**"
@@ -3274,7 +3284,7 @@ msgid "Safety class canceled"
 msgstr "安全課取消了"
 
 msgid "The safety class was canceled, beware not to shoot other hunters!"
-msgstr ""
+msgstr "安全課取消了，當心不要射到其他獵人!"
 
 msgid "Connection problem"
 msgstr "連接問題"
@@ -3310,7 +3320,7 @@ msgstr "聯合國條約禁止破壞性彈藥"
 msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
 "they are getting rare."
-msgstr ""
+msgstr "AP和爆裂彈被禁用。超級鴨子更值錢了，因為它們越來越稀有。"
 
 msgid "Negative cheater ?"
 msgstr "負面的作弊者？"
@@ -3331,34 +3341,34 @@ msgid "noob"
 msgstr "菜鳥"
 
 msgid "trainee"
-msgstr ""
+msgstr "見習生"
 
 msgid "duck misser"
-msgstr ""
+msgstr "鴨子射失者"
 
 msgid "member of the Comitee Against Ducks"
-msgstr ""
+msgstr "對抗鴨子委員會成員"
 
 msgid "duck hater"
-msgstr ""
+msgstr "鴨子仇敵"
 
 msgid "duck pest"
-msgstr ""
+msgstr "鴨害"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "鴨子哈斯勒"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "鴨子拔毛器"
 
 msgid "hunter"
 msgstr "獵人"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "鴨子翻身器"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "鴨子擊倒者"
 
 msgid "duck chewer"
 msgstr "嚼鴨者"
@@ -3373,49 +3383,49 @@ msgid "duck disassembler"
 msgstr "鴨子拆裝器"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "鴨子粉碎器"
 
 msgid "duck killer"
 msgstr "鴨子殺手"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "鸭子剥皮者"
 
 msgid "duck predator"
-msgstr ""
+msgstr "鴨霸"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "斬鴨刀"
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "鴨子去皮器"
 
 msgid "duck fragger"
-msgstr ""
+msgstr "鴨子扒手"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "碎鴨者"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "鸭子雜碎者"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "旱鴨子"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "鴨子扒糞機"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "鴨子刺客"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "鴨子排糞器"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "恐怖鸭子"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "鴨子爆破者"
 
 msgid "duck destructor"
 msgstr "鴨子破壞者"
@@ -3430,10 +3440,10 @@ msgid "duck disintegrator"
 msgstr "鴨子分解器"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "鴨子霧化器"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "殲鴨器"
 
 msgid "serial duck killer"
 msgstr "鴨子殺手"
@@ -3448,7 +3458,7 @@ msgid "duck toaster"
 msgstr "烤鴨器"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "由於鴨種滅絕而失業"
 
 msgid "This is not a valid level. Choose between {levels}"
 msgstr "這不是一個有效的等級。在 {levels}之間選擇"
