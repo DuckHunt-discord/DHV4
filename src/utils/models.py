@@ -50,13 +50,22 @@ class PercentageField(fields.SmallIntField):
 
 
 class SupportTicket(Model):
-    user = fields.ForeignKeyField('models.DiscordUser', related_name="support_tickets", db_index=True)
+    user: fields.ForeignKeyRelation["DiscordUser"] = \
+        fields.ForeignKeyField('models.DiscordUser',
+                               related_name="support_tickets",
+                               db_index=True)
 
     opened_at = fields.DatetimeField(auto_now_add=True)
 
     closed = fields.BooleanField(default=False)
     closed_at = fields.DatetimeField(null=True, blank=True)
-    closed_by = fields.ForeignKeyField('models.DiscordUser', on_delete=fields.SET_NULL, db_index=False, null=True)
+
+    closed_by: fields.ForeignKeyRelation["DiscordUser"] = \
+        fields.ForeignKeyField('models.DiscordUser',
+                               related_name="closed_tickets",
+                               on_delete=fields.SET_NULL,
+                               db_index=False,
+                               null=True)
 
     close_reason = fields.TextField(blank=True, default="")
 
@@ -73,6 +82,9 @@ class SupportTicket(Model):
 class DiscordGuild(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
+
+    channels: fields.ReverseRelation["DiscordChannel"]
+    members: fields.ReverseRelation["DiscordMember"]
 
     name = fields.TextField()
     prefix = fields.CharField(20, null=True, default="!")
@@ -96,7 +108,12 @@ class DiscordChannel(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
 
-    guild = fields.ForeignKeyField('models.DiscordGuild')
+    guild: fields.ForeignKeyRelation[DiscordGuild] = \
+        fields.ForeignKeyField('models.DiscordGuild',
+                               related_name="channels")
+
+    players: fields.ReverseRelation["Player"]
+
     name = fields.TextField()
 
     webhook_urls = fields.JSONField(default=[])
@@ -216,6 +233,15 @@ class DiscordUser(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
 
+    support_tickets: fields.ReverseRelation[SupportTicket]
+    closed_tickets: fields.ReverseRelation[SupportTicket]
+
+    members: fields.ReverseRelation["DiscordMember"]
+
+    votes: fields.ReverseRelation["Vote"]
+    tags: fields.ReverseRelation["Tag"]
+    tags_aliases: fields.ReverseRelation["TagAlias"]
+
     name = fields.TextField()
     discriminator = fields.CharField(4)
 
@@ -272,8 +298,12 @@ class Player(Model):
     id = fields.IntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
 
-    channel = fields.ForeignKeyField('models.DiscordChannel')
-    member = fields.ForeignKeyField('models.DiscordMember')
+    channel: fields.ForeignKeyRelation[DiscordChannel] = \
+        fields.ForeignKeyField('models.DiscordChannel',
+                               related_name="players")
+    member: fields.ForeignKeyRelation["DiscordMember"] = \
+        fields.ForeignKeyField('models.DiscordMember',
+                               related_name="players")
 
     prestige = fields.SmallIntField(default=0)
     prestige_last_daily = fields.DatetimeField(auto_now_add=True)
@@ -300,7 +330,14 @@ class Player(Model):
     # Weapon & Player status
     last_giveback = fields.DatetimeField(auto_now_add=True)
 
-    weapon_sabotaged_by = fields.ForeignKeyField('models.Player', null=True, on_delete=fields.SET_NULL)
+    weapon_sabotaged_by: fields.ForeignKeyNullableRelation["Player"] = \
+        fields.ForeignKeyField('models.Player',
+                               related_name="sabotaged_weapons",
+                               null=True,
+                               on_delete=fields.SET_NULL
+                               )
+
+    sabotaged_weapons: fields.ReverseRelation["Player"]
 
     # Killed ducks stats
     best_times = DefaultDictJSONField(default_factory=lambda: 660)
@@ -310,8 +347,32 @@ class Player(Model):
     resisted = DefaultDictJSONField()
     frightened = DefaultDictJSONField()
 
+    def do_prestige(self, kept_exp):
+        """
+        Reset a player data, persisting his/her ID. What's left to do is.
+        """
+        SAVED_FIELDS = {'id', 'first_seen', 'channel', 'member', 'prestige', 'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience'}
+        self.prestige += 1
+        self.experience = kept_exp
+
+        meta = self._meta
+        reset_fields_names = meta.fields.copy() - SAVED_FIELDS
+
+        for reset_fields_name in reset_fields_names:
+            field_object = meta.fields_map[reset_fields_name]
+            default = field_object.default
+
+            if callable(field_object.default):
+                setattr(self, reset_fields_name, default())
+            else:
+                setattr(self, reset_fields_name, default)
+
+        level_info = self.level_info()
+        self.magazines = level_info["magazines"]
+        self.bullets = level_info["bullets"]
+
     def serialize(self, serialize_fields=None):
-        DONT_SERIALIZE = {'weapon_sabotaged_by', 'playerss', 'channel', 'member'}
+        DONT_SERIALIZE = {'weapon_sabotaged_by', 'sabotaged_weapons', 'channel', 'member'}
         db_member: DiscordMember = self.member
         db_user: DiscordUser = db_member.user
 
@@ -493,8 +554,14 @@ class Player(Model):
 
 class DiscordMember(Model):
     id = fields.IntField(pk=True)
-    guild: DiscordGuild = fields.ForeignKeyField('models.DiscordGuild')
-    user: DiscordUser = fields.ForeignKeyField('models.DiscordUser')
+    guild: fields.ForeignKeyRelation[DiscordGuild] = \
+        fields.ForeignKeyField('models.DiscordGuild',
+                               related_name="members")
+    user: fields.ForeignKeyRelation[DiscordUser] = \
+        fields.ForeignKeyField('models.DiscordUser',
+                               related_name="members")
+
+    players: fields.ReverseRelation["Player"]
 
     access_level = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
 
@@ -513,6 +580,8 @@ class DiscordMember(Model):
 
 
 class BotList(Model):
+    votes: fields.ReverseRelation["Vote"]
+
     # **Generic Data**
     key = fields.CharField(help_text="The unique key to recognise the bot list",
                            max_length=50,
@@ -601,15 +670,23 @@ class BotList(Model):
 
 
 class Vote(Model):
-    user: DiscordUser = fields.ForeignKeyField('models.DiscordUser', related_name="votes")
-    bot_list = fields.ForeignKeyField('models.BotList', related_name="votes")
+    user: fields.ForeignKeyRelation[DiscordUser] = \
+        fields.ForeignKeyField('models.DiscordUser',
+                               related_name="votes")
+
+    bot_list: fields.ForeignKeyRelation[BotList] = \
+        fields.ForeignKeyField('models.BotList', related_name="votes")
 
     at = fields.DatetimeField(auto_now_add=True)
     multiplicator = fields.IntField(default=1)
 
 
 class Tag(Model):
-    owner = fields.ForeignKeyField('models.DiscordUser', related_name='tags')
+    owner: fields.ForeignKeyRelation[DiscordUser] = \
+        fields.ForeignKeyField('models.DiscordUser',
+                               related_name='tags')
+
+    aliases: fields.ReverseRelation["TagAlias"]
 
     # Statistics
     created = fields.DatetimeField(auto_now_add=True)
@@ -631,8 +708,11 @@ class Tag(Model):
 
 
 class TagAlias(Model):
-    owner = fields.ForeignKeyField('models.DiscordUser', related_name='tags_aliases')
-    tag = fields.ForeignKeyField('models.Tag', related_name='aliases')
+    owner: fields.ForeignKeyRelation[DiscordUser] = \
+        fields.ForeignKeyField('models.DiscordUser',
+                               related_name='tags_aliases')
+    tag: fields.ForeignKeyRelation[Tag] = \
+        fields.ForeignKeyField('models.Tag', related_name='aliases')
 
     uses = fields.IntField(default=0)
 

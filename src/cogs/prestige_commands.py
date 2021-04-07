@@ -77,12 +77,12 @@ class PrestigeCommands(Cog):
     @prestige.command()
     async def confirm(self, ctx: MyContext):
         """Execute the prestige process. Almost all of your hunting data **WILL** be deleted."""
-        old_db_hunter: Player = await get_player(ctx.author, ctx.channel)
+        db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
         _ = await ctx.get_translate_function()
         higher_level = get_higher_level()
         needed_exp = higher_level["expMin"]
-        current_exp = old_db_hunter.experience
+        current_exp = db_hunter.experience
         missing_exp = needed_exp - current_exp
         progression = round(current_exp / needed_exp * 100)
         kept_exp = round(-missing_exp / 10)
@@ -92,8 +92,8 @@ class PrestigeCommands(Cog):
             return False
 
         async with ctx.typing():
-            old_prestige = old_db_hunter.prestige
-            new_prestige = old_db_hunter.prestige + 1
+            old_prestige = db_hunter.prestige
+            new_prestige = db_hunter.prestige + 1
 
             e = discord.Embed(title=_("Prestige {old_prestige} -> {new_prestige}",
                                       old_prestige=old_prestige,
@@ -102,19 +102,12 @@ class PrestigeCommands(Cog):
             e.color = discord.Color.green()
 
             e.description = _("You used prestige after reaching {pct}% of the required threshold.", pct=progression)
-            e.add_field(name=_("✨ New run"), value=_("You'll restart the game with {kept_exp} experience.", kept_exp=kept_exp))
+            e.add_field(name=_("✨ New run"),
+                        value=_("You'll restart the game with {kept_exp} experience.", kept_exp=kept_exp))
 
-            await old_db_hunter.delete()
-            new_db_hunter: Player = await get_player(ctx.author, ctx.channel)
-            new_db_hunter.experience = kept_exp
-            new_db_hunter.prestige = new_prestige
-            new_db_hunter.stored_achievements = old_db_hunter.stored_achievements
+            db_hunter.do_prestige(kept_exp=kept_exp)
 
-            level_info = new_db_hunter.level_info()
-            new_db_hunter.magazines = level_info["magazines"]
-            new_db_hunter.bullets = level_info["bullets"]
-
-            await new_db_hunter.save()
+            await db_hunter.save()
 
         await ctx.send(embed=e)
 
