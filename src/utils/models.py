@@ -10,7 +10,7 @@ import discord
 import typing
 
 from discord.ext import commands
-from tortoise import Tortoise, fields
+from tortoise import Tortoise, fields, timezone
 from tortoise.models import Model
 
 from enum import IntEnum, unique
@@ -351,13 +351,14 @@ class Player(Model):
         """
         Reset a player data, persisting his/her ID. What's left to do is.
         """
-        SAVED_FIELDS = {'id', 'first_seen', 'channel', 'member', 'prestige', 'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience'}
+        SAVED_FIELDS = {'id', 'first_seen', 'channel', 'channel_id', 'member', 'member_id', 'prestige', 'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience'}
         self.prestige += 1
         self.experience = kept_exp
 
         meta = self._meta
         reset_fields_names = meta.fields.copy() - SAVED_FIELDS
 
+        # Set (almost) everything back to default
         for reset_fields_name in reset_fields_names:
             field_object = meta.fields_map[reset_fields_name]
             default = field_object.default
@@ -366,6 +367,10 @@ class Player(Model):
                 setattr(self, reset_fields_name, default())
             else:
                 setattr(self, reset_fields_name, default)
+
+        # Fix auto_now_add fields since they don't get back to defaults
+        self.prestige_last_daily = timezone.now() - datetime.timedelta(days=1)
+        self.last_giveback = timezone.now()
 
         level_info = self.level_info()
         self.magazines = level_info["magazines"]
