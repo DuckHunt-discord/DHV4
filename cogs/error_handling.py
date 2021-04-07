@@ -96,7 +96,7 @@ class CommandErrorHandler(Cog):
                 elif isinstance(exception, commands.NoPrivateMessage):
                     message = _("This command cannot be used in a private message.")
                 elif isinstance(exception, commands.CheckAnyFailure):
-                    message = _("Multiple errors were encountered when running your command : {exception.errors}",
+                    message = _("Multiple errors were encountered when running your command: {exception.errors}",
                                 exception=exception)
                 elif isinstance(exception, commands.NotOwner):
                     message = _("You need to be the owner of the bot to run that.")
@@ -130,13 +130,13 @@ class CommandErrorHandler(Cog):
                                     exception=exception)
                 elif isinstance(exception, checks.AccessTooLow):
                     message = _(
-                        f"Your access level is too low : you have an access level of {exception.current_access}, and "
+                        f"Your access level is too low: you have an access level of {exception.current_access}, and "
                         f"you need at least {exception.required_access}.",
                         exception=exception)
                 elif isinstance(exception, checks.BotIgnore):
                     return
                 else:
-                    message = f"Check error running this command : {str(exception)} ({type(exception).__name__})"
+                    message = f"Check error running this command: {str(exception)} ({type(exception).__name__})"
                     ctx.logger.error(
                         "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.CommandNotFound):
@@ -154,7 +154,7 @@ class CommandErrorHandler(Cog):
                     return
                 else:
                     delta = datetime.timedelta(seconds=min(round(exception.retry_after, 1), 1))
-                    # NOTE : This message uses a formatted, direction date in some_time. Formatted, it'll give
+                    # NOTE: This message uses a formatted, direction date in some_time. Formatted, it'll give
                     # something like:
                     # "This command is overused. Please try again *in 4 seconds*"
                     message = _("This command is overused. Please try again {some_time}.",

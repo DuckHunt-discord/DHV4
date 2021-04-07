@@ -56,14 +56,14 @@ class SupportServerCommands(Cog):
         ping = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
 
         embed.add_field(name="Average Latency", value=f"{round(self.bot.latency, 2)}ms", inline=True)
-        embed.add_field(name="Current ping", value=f"{ping}ms", inline=True)
+        embed.add_field(name="Current Latency", value=f"{ping}ms", inline=True)
         embed.add_field(name="Shards Count", value=f"{self.bot.shard_count}", inline=True)
 
         def get_bot_uptime():
             return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
 
-        embed.add_field(name="Cogs loaded", value=f"{len(self.bot.cogs)}", inline=True)
-        embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
+        embed.add_field(name="Cogs Loaded", value=f"{len(self.bot.cogs)}", inline=True)
+        embed.add_field(name="Commands Loaded", value=f"{len(self.bot.commands)}", inline=True)
         embed.add_field(name="Uptime", value=f"{get_bot_uptime()}", inline=True)
 
         embed.timestamp = datetime.datetime.utcnow()
