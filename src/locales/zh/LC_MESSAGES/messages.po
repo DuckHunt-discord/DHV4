@@ -2708,7 +2708,7 @@ msgid ""
 "{bonus_experience} **clover**]"
 msgstr ""
 "{killer."
-"mention}在{spawned_for_str}中殺死了鴨子，共計{total_duks_killed}({ncategory_killed}）[**殺死**：{normal_exp} "
+"mention}在{spawned_for_str}中殺死了鴨子，共計{total_ducks_killed}({ncategory_killed}）[**殺死**：{normal_exp} "
 "exp {bonus_experience} **四葉草**] 。"
 
 msgid ""
