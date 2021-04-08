@@ -18,19 +18,18 @@ if config['database']['enable']:
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.Intents
 intents = discord.Intents.none()
-intents.guilds = True
-intents.messages = True
-intents.reactions = True
-
-intents.presences = False  # Privileged
-intents.members = False  # Privileged
-intents.bans = False
-intents.emojis = False
+intents.guilds =       True
+intents.messages =     True
+intents.reactions =    True
+intents.presences =    False  # Privileged
+intents.members =      False  # Privileged
+intents.bans =         False
+intents.emojis =       False
 intents.integrations = False
-intents.webhooks = False
-intents.invites = False
+intents.webhooks =     False
+intents.invites =      False
 intents.voice_states = False
-intents.typing = False
+intents.typing =       False
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.AllowedMentions
 allowed_mentions = discord.AllowedMentions(
