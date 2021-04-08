@@ -10,6 +10,9 @@ from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
 
 
+DELETE_ERROR_MESSAGE_AFTER = 60
+
+
 class CommandErrorHandler(Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx: MyContext, exception: Exception) -> None:
@@ -28,7 +31,6 @@ class CommandErrorHandler(Cog):
         if isinstance(exception, ignored):
             return
 
-        delete_error_message_after = 60
         command_invoke_help = f"{ctx.prefix}{ctx.command.qualified_name} {ctx.command.signature}"
 
         ctx.logger.debug(f"Error during processing: {exception} ({repr(exception)})")
@@ -172,7 +174,7 @@ class CommandErrorHandler(Cog):
             ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
-            await ctx.send("❌ " + message, delete_after=delete_error_message_after)
+            await ctx.send("❌ " + message, delete_after=DELETE_ERROR_MESSAGE_AFTER)
 
 
 setup = CommandErrorHandler.setup
