@@ -1,4 +1,3 @@
-# coding=utf-8
 from discord.ext import commands
 
 from utils.ctx_class import MyContext
