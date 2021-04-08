@@ -27,7 +27,8 @@ class MyContext(commands.Context):
 
     async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, **kwargs) -> Message:
         # Case for a too-big message
-        if isinstance(content, str) and len(content) > 1990:
+        content = str(content) if content is not None else None
+        if content and len(content) > 1990:
             self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
 
             message_file = discord.File(io.BytesIO(content.encode()), filename="message.txt")
