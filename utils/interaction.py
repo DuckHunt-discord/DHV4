@@ -30,9 +30,9 @@ async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwa
         return not message.pinned
 
     if check is None:
-        check = check_pinned
+        c = check_pinned
     else:
-        def check(m):
+        def c(m):
             check(m) and check_pinned(m)
 
-    return await channel.purge(check=check, **kwargs)
+    return await channel.purge(check=c, **kwargs)
