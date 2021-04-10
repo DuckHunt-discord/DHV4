@@ -1,19 +1,19 @@
 import asyncio
+import random
+import typing
 
 import discord
-import typing
-from typing import List
-import random
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
 
-def escape_everything(mystr: str):
-    return discord.utils.escape_mentions(discord.utils.escape_markdown(mystr))
+def escape_everything(str_to_escape: str):
+    return discord.utils.escape_mentions(discord.utils.escape_markdown(str_to_escape))
 
 
-async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message, message_to_delete: discord.Message):
+async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message,
+                                             message_to_delete: discord.Message):
     def check(message: discord.RawMessageDeleteEvent):
         return message.message_id == watch_message.id
 
@@ -30,8 +30,9 @@ async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwa
         return not message.pinned
 
     if check is None:
-        check = check_pinned
+        c = check_pinned
     else:
-        check = lambda m: check(m) and check_pinned(m)
+        def c(m):
+            check(m) and check_pinned(m)
 
-    return await channel.purge(check=check, **kwargs)
+    return await channel.purge(check=c, **kwargs)

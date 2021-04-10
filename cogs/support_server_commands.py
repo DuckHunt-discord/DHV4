@@ -7,13 +7,13 @@ import time
 
 import discord
 import pytz
+from babel import dates
 from discord.ext import commands, tasks
+from discord.utils import maybe_coroutine
 
-from utils import checks, human_time
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages
-from babel import dates
 
 
 class SupportServerCommands(Cog):
@@ -26,7 +26,8 @@ class SupportServerCommands(Cog):
         self.background_loop.cancel()
 
     async def cog_check(self, ctx):
-        ret = await super().cog_check(ctx)
+        ret = await maybe_coroutine(super().cog_check, ctx)
+        # noinspection PyUnresolvedReferences
         ret = ret and ctx.guild.id == self.config()["support_server_id"]
         return ret
 
@@ -34,7 +35,7 @@ class SupportServerCommands(Cog):
     async def background_loop(self):
         status_channel = self.bot.get_channel(self.config()["status_channel_id"])
         if not status_channel or not isinstance(status_channel, discord.TextChannel):
-            self.bot.logger.warning("The status channel for the support server command is misconfigured.")
+            self.bot.logger.warning("The status channel for the support server command is configured improperly.")
             return
 
         self.bot.logger.debug("Updating status message", guild=status_channel.guild, channel=status_channel)
@@ -54,14 +55,14 @@ class SupportServerCommands(Cog):
         ping = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
 
         embed.add_field(name="Average Latency", value=f"{round(self.bot.latency, 2)}ms", inline=True)
-        embed.add_field(name="Current ping", value=f"{ping}ms", inline=True)
+        embed.add_field(name="Current Latency", value=f"{ping}ms", inline=True)
         embed.add_field(name="Shards Count", value=f"{self.bot.shard_count}", inline=True)
 
         def get_bot_uptime():
             return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
 
-        embed.add_field(name="Cogs loaded", value=f"{len(self.bot.cogs)}", inline=True)
-        embed.add_field(name="Commands loaded", value=f"{len(self.bot.commands)}", inline=True)
+        embed.add_field(name="Cogs Loaded", value=f"{len(self.bot.cogs)}", inline=True)
+        embed.add_field(name="Commands Loaded", value=f"{len(self.bot.commands)}", inline=True)
         embed.add_field(name="Uptime", value=f"{get_bot_uptime()}", inline=True)
 
         embed.timestamp = datetime.datetime.utcnow()

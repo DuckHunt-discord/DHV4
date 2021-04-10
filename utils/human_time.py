@@ -1,3 +1,4 @@
+# noinspection SpellCheckingInspection
 """
 This utils file was stolen from R. Danny source code and allow you to interact with time.
 
@@ -13,11 +14,13 @@ human_timedelta convert two datetimes to a string that is humanised to tell how 
 
 """
 import datetime
+import re
+
 import parsedatetime as pdt
 from dateutil.relativedelta import relativedelta
-from .formats import plural, human_join
 from discord.ext import commands
-import re
+
+from .formats import Plural, human_join
 
 
 class ShortTime:
@@ -35,7 +38,7 @@ class ShortTime:
         if match is None or not match.group(0):
             raise commands.BadArgument('invalid time provided')
 
-        data = {k: int(v) for k, v in match.groupdict(default=0).items()}
+        data = {k: int(v) for k, v in match.groupdict(default="0").items()}
         now = now or datetime.datetime.utcnow()
         self.dt = now + relativedelta(**data)
 
@@ -67,9 +70,10 @@ class HumanTime:
 
 class Time(HumanTime):
     def __init__(self, argument, *, now=None):
+        # noinspection PyBroadException
         try:
             o = ShortTime(argument, now=now)
-        except Exception as e:
+        except Exception:
             super().__init__(argument)
         else:
             self.dt = o.dt
@@ -96,6 +100,8 @@ class UserFriendlyTime(commands.Converter):
 
         self.converter = converter
         self.default = default
+        self.arg = None
+        self.dt = None
 
     async def check_constraints(self, ctx, now, remaining):
         if self.dt < now:
@@ -113,80 +119,76 @@ class UserFriendlyTime(commands.Converter):
         return self
 
     async def convert(self, ctx, argument):
-        try:
-            calendar = HumanTime.calendar
-            regex = ShortTime.compiled
-            now = ctx.message.created_at
+        calendar = HumanTime.calendar
+        regex = ShortTime.compiled
+        now = ctx.message.created_at
 
-            match = regex.match(argument)
-            if match is not None and match.group(0):
-                data = {k: int(v) for k, v in match.groupdict(default=0).items()}
-                remaining = argument[match.end():].strip()
-                self.dt = now + relativedelta(**data)
-                return await self.check_constraints(ctx, now, remaining)
-
-            # apparently nlp does not like "from now"
-            # it likes "from x" in other cases though so let me handle the 'now' case
-            if argument.endswith('from now'):
-                argument = argument[:-8].strip()
-
-            if argument[0:2] == 'me':
-                # starts with "me to", "me in", or "me at "
-                if argument[0:6] in ('me to ', 'me in ', 'me at '):
-                    argument = argument[6:]
-
-            elements = calendar.nlp(argument, sourceTime=now)
-            if elements is None or len(elements) == 0:
-                raise commands.BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
-
-            # handle the following cases:
-            # "date time" foo
-            # date time foo
-            # foo date time
-
-            # first the first two cases:
-            dt, status, begin, end, dt_string = elements[0]
-
-            if not status.hasDateOrTime:
-                raise commands.BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
-
-            if begin not in (0, 1) and end != len(argument):
-                raise commands.BadArgument('Time is either in an inappropriate location, which ' \
-                                           'must be either at the end or beginning of your input, ' \
-                                           'or I just flat out did not understand what you meant. Sorry.')
-
-            if not status.hasTime:
-                # replace it with the current time
-                dt = dt.replace(hour=now.hour, minute=now.minute, second=now.second, microsecond=now.microsecond)
-
-            # if midnight is provided, just default to next day
-            if status.accuracy == pdt.pdtContext.ACU_HALFDAY:
-                dt = dt.replace(day=now.day + 1)
-
-            self.dt = dt
-
-            if begin in (0, 1):
-                if begin == 1:
-                    # check if it's quoted:
-                    if argument[0] != '"':
-                        raise commands.BadArgument('Expected quote before time input...')
-
-                    if not (end < len(argument) and argument[end] == '"'):
-                        raise commands.BadArgument('If the time is quoted, you must unquote it.')
-
-                    remaining = argument[end + 1:].lstrip(' ,.!')
-                else:
-                    remaining = argument[end:].lstrip(' ,.!')
-            elif len(argument) == end:
-                remaining = argument[:begin].strip()
-
+        match = regex.match(argument)
+        if match is not None and match.group(0):
+            data = {k: int(v) for k, v in match.groupdict(default="0").items()}
+            remaining = argument[match.end():].strip()
+            self.dt = now + relativedelta(**data)
             return await self.check_constraints(ctx, now, remaining)
-        except:
-            import traceback
-            traceback.print_exc()
-            raise
+
+        # apparently nlp does not like "from now"
+        # it likes "from x" in other cases though so let me handle the 'now' case
+        if argument.endswith('from now'):
+            argument = argument[:-8].strip()
+
+        if argument[0:2] == 'me':
+            # starts with "me to", "me in", or "me at "
+            if argument[0:6] in ('me to ', 'me in ', 'me at '):
+                argument = argument[6:]
+
+        elements = calendar.nlp(argument, sourceTime=now)
+        if elements is None or len(elements) == 0:
+            raise commands.BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
+
+        # handle the following cases:
+        # "date time" foo
+        # date time foo
+        # foo date time
+
+        # first the first two cases:
+        dt, status, begin, end, dt_string = elements[0]
+
+        if not status.hasDateOrTime:
+            raise commands.BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
+
+        if begin not in (0, 1) and end != len(argument):
+            raise commands.BadArgument('Time is either in an inappropriate location, which '
+                                       'must be either at the end or beginning of your input, '
+                                       'or I just flat out did not understand what you meant. Sorry.')
+
+        if not status.hasTime:
+            # replace it with the current time
+            dt = dt.replace(hour=now.hour, minute=now.minute, second=now.second, microsecond=now.microsecond)
+
+        # if midnight is provided, just default to next day
+        if status.accuracy == pdt.pdtContext.ACU_HALFDAY:
+            dt = dt.replace(day=now.day + 1)
+
+        self.dt = dt
+
+        if begin in (0, 1):
+            if begin == 1:
+                # check if it's quoted:
+                if argument[0] != '"':
+                    raise commands.BadArgument('Expected quote before time input...')
+
+                if not (end < len(argument) and argument[end] == '"'):
+                    raise commands.BadArgument('If the time is quoted, you must unquote it.')
+
+                remaining = argument[end + 1:].lstrip(' ,.!')
+            else:
+                remaining = argument[end:].lstrip(' ,.!')
+        elif len(argument) == end:
+            remaining = argument[:begin].strip()
+
+        return await self.check_constraints(ctx, now, remaining)
 
 
+# noinspection SpellCheckingInspection
 def human_timedelta(dt, *, source=None, accuracy=3, brief=False, suffix=True):
     now = source or datetime.datetime.utcnow()
     # Microsecond free zone
@@ -225,7 +227,7 @@ def human_timedelta(dt, *, source=None, accuracy=3, brief=False, suffix=True):
             if weeks:
                 elem -= weeks * 7
                 if not brief:
-                    output.append(format(plural(weeks), 'week'))
+                    output.append(format(Plural(weeks), 'week'))
                 else:
                     output.append(f'{weeks}w')
 
@@ -235,7 +237,7 @@ def human_timedelta(dt, *, source=None, accuracy=3, brief=False, suffix=True):
         if brief:
             output.append(f'{elem}{brief_attr}')
         else:
-            output.append(format(plural(elem), attr))
+            output.append(format(Plural(elem), attr))
 
     if accuracy is not None:
         output = output[:accuracy]

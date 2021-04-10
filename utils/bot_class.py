@@ -3,10 +3,11 @@ import collections
 import datetime
 from typing import Optional
 
+# noinspection PyPackageRequirements
 import aiohttp
 import discord
-from discord.ext.commands.bot import AutoShardedBot
 from discord.ext import commands
+from discord.ext.commands.bot import AutoShardedBot
 
 from utils import config as config
 from utils.ctx_class import MyContext
@@ -19,8 +20,10 @@ class MyBot(AutoShardedBot):
         self.logger = FakeLogger()
         self.config: dict = {}
         self.reload_config()
+        # noinspection PyArgumentList
         activity = discord.Game(self.config["bot"]["playing"])
-        super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
+        super().__init__(*args, command_prefix=get_prefix, activity=activity,
+                         case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
@@ -39,9 +42,10 @@ class MyBot(AutoShardedBot):
 
     async def async_setup(self):
         """
-        This funtcion is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
+        This function is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
-        self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
+        # There is no need to call __aenter__, since that does nothing in this case
+        self._client_session = aiohttp.ClientSession()
 
     async def on_message(self, message):
         if not self.is_ready():
@@ -68,7 +72,8 @@ class MyBot(AutoShardedBot):
         messages = ["-----------", f"The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
         total_members = len(self.users)
         messages.append(f"I see {len(self.guilds)} guilds, and {total_members} members.")
-        messages.append(f"To invite your bot to your server, use the following link: https://discordapp.com/api/oauth2/authorize?client_id={self.user.id}&scope=bot&permissions=0")
+        messages.append(f"To invite your bot to your server, use the following link: https://discordapp.com/api/oauth2/"
+                        f"authorize?client_id={self.user.id}&scope=bot&permissions=0")
         cogs_count = len(self.cogs)
         messages.append(f"{cogs_count} cogs are loaded")
         messages.append("-----------")
@@ -84,6 +89,7 @@ async def get_prefix(bot: MyBot, message: discord.Message):
 
     if not message.guild:
         # Need no prefix when in DMs
+        # noinspection PyTypeChecker
         return commands.when_mentioned_or(*forced_prefixes, "")(bot, message)
 
     else:
@@ -94,4 +100,5 @@ async def get_prefix(bot: MyBot, message: discord.Message):
             if guild_prefix:
                 forced_prefixes.append(guild_prefix)
 
+        # noinspection PyTypeChecker
         return commands.when_mentioned_or(*forced_prefixes)(bot, message)

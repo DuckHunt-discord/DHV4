@@ -1,4 +1,5 @@
-from discord.ext import commands, tasks
+from discord.ext import tasks
+
 from utils.cog_class import Cog
 
 
@@ -18,5 +19,6 @@ class BackgroundLoop(Cog):
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
+
 
 setup = BackgroundLoop.setup

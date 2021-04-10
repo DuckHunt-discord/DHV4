@@ -5,7 +5,6 @@ from discord.ext import commands
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 
-from babel import dates
 
 class SimpleCommands(Cog):
     @commands.command()
@@ -19,7 +18,8 @@ class SimpleCommands(Cog):
         await ctx.trigger_typing()  # tell Discord that the bot is "typing", which is a very simple request
         t_2 = time.perf_counter()
         time_delta = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
-        await ctx.send(_("Pong. — Time taken: {miliseconds}ms", miliseconds=time_delta))  # send a message telling the user the calculated ping time
+        await ctx.send(_("Pong. — Time taken: {milliseconds}ms",
+                         milliseconds=time_delta))  # send a message telling the user the calculated ping time
 
     @commands.command()
     async def say_hello(self, ctx: MyContext):

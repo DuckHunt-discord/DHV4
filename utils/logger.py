@@ -10,6 +10,7 @@ def init_logger() -> logging.Logger:
     base_logger = logging.getLogger("matchmaking")
     base_logger.setLevel(logging.DEBUG)
 
+    # noinspection SpellCheckingInspection
     formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 
     # Logging to a file
@@ -27,8 +28,8 @@ def init_logger() -> logging.Logger:
 
     # And to console
 
-    ## You can probably collapse the following two StreamHandlers.
-    ## They list the colors codes for windows and unix systems
+    # You can probably collapse the following two StreamHandlers.
+    # They list the colors codes for windows and unix systems
 
     class _AnsiColorStreamHandler(logging.StreamHandler):
         DEFAULT = '\x1b[0m'
@@ -66,6 +67,7 @@ def init_logger() -> logging.Logger:
             color = self._get_color(record.levelno)
             return color + text + self.DEFAULT
 
+    # noinspection SpellCheckingInspection
     class _WinColorStreamHandler(logging.StreamHandler):
         # wincon.h
         FOREGROUND_BLACK = 0x0000
@@ -124,6 +126,7 @@ def init_logger() -> logging.Logger:
             if not crtname:
                 crtname = ctypes.util.find_library("msvcrt")
             crtlib = ctypes.cdll.LoadLibrary(crtname)
+            # noinspection PyProtectedMember
             self._outhdl = crtlib._get_osfhandle(self.stream.fileno())
 
         def emit(self, record):
@@ -132,12 +135,14 @@ def init_logger() -> logging.Logger:
             logging.StreamHandler.emit(self, record)
             self._set_color(self.FOREGROUND_WHITE)
 
-    ## select ColorStreamHandler based on platform
+    # select ColorStreamHandler based on platform
     import platform
 
     if platform.system() == 'Windows':
+        # noinspection PyPep8Naming
         ColorStreamHandler = _WinColorStreamHandler
     else:
+        # noinspection PyPep8Naming
         ColorStreamHandler = _AnsiColorStreamHandler
 
     steam_handler = ColorStreamHandler()
@@ -149,6 +154,7 @@ def init_logger() -> logging.Logger:
     discord_logger = logging.getLogger('discord')
     discord_logger.setLevel(logging.WARNING)
 
+    # noinspection SpellCheckingInspection
     discord_formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 
     discord_steam_handler = ColorStreamHandler()
@@ -165,7 +171,10 @@ class FakeLogger:
             logger = init_logger()
         self.logger = logger
 
-    def make_message_prefix(self, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    @staticmethod
+    def make_message_prefix(guild: typing.Optional[discord.Guild] = None,
+                            channel: typing.Optional[discord.ChannelType] = None,
+                            member: typing.Optional[discord.Member] = None):
         if guild and channel and member:
             return f"{guild.id} - #{channel.name[:15]} :: <{member.name}#{member.discriminator}> "
 
@@ -181,27 +190,34 @@ class FakeLogger:
         else:
             return f""
 
-    def debug(self, message: str, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    def debug(self, message: str, guild: typing.Optional[discord.Guild] = None,
+              channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.debug(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def info(self, message: str, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    def info(self, message: str, guild: typing.Optional[discord.Guild] = None,
+             channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.info(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def warn(self, message: str, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
-        return self.logger.warn(self.make_message_prefix(guild, channel, member) + str(message))
-
-    def warning(self, message: str, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    def warn(self, message: str, guild: typing.Optional[discord.Guild] = None,
+             channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.warning(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def error(self, message: str, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    def warning(self, message: str, guild: typing.Optional[discord.Guild] = None,
+                channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+        return self.logger.warning(self.make_message_prefix(guild, channel, member) + str(message))
+
+    def error(self, message: str, guild: typing.Optional[discord.Guild] = None,
+              channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.error(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def exception(self, message: str, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    def exception(self, message: str, guild: typing.Optional[discord.Guild] = None,
+                  channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.exception(self.make_message_prefix(guild, channel, member) + str(message))
 
 
 class LoggerConstant:
-    def __init__(self, logger: FakeLogger, guild: typing.Optional[discord.Guild] = None, channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
+    def __init__(self, logger: FakeLogger, guild: typing.Optional[discord.Guild] = None,
+                 channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         self.logger = logger
         self.guild = guild
         self.channel = channel
@@ -224,4 +240,3 @@ class LoggerConstant:
 
     def exception(self, message: str):
         return self.logger.exception(message, self.guild, self.channel, self.member)
-

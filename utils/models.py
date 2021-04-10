@@ -1,12 +1,14 @@
-import discord
 import typing
-from tortoise import Tortoise, fields
-from tortoise.models import Model
-
 from enum import IntEnum, unique
 
+import discord
+# noinspection PyPackageRequirements
+from tortoise import Tortoise, fields
+# noinspection PyPackageRequirements
+from tortoise.models import Model
+
 if typing.TYPE_CHECKING:
-    from utils.ctx_class import MyContext
+    pass
 
 
 # TODO : https://github.com/long2ice/aerich
@@ -106,41 +108,48 @@ async def get_from_db(discord_object, as_user=False):
     elif isinstance(discord_object, discord.abc.GuildChannel):
         db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
         if not db_obj:
-            db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name, guild=await get_from_db(discord_object.guild))
+            db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name,
+                                    guild=await get_from_db(discord_object.guild))
             await db_obj.save()
         return db_obj
     elif isinstance(discord_object, discord.Member) and not as_user:
-        db_obj = await DiscordMember.filter(user__discord_id=discord_object.id, guild__discord_id=discord_object.guild.id).first().prefetch_related("user", "guild")
+        db_obj = await DiscordMember.filter(user__discord_id=discord_object.id,
+                                            guild__discord_id=discord_object.guild.id).\
+                                            first().\
+                                            prefetch_related("user", "guild")
         if not db_obj:
-            db_obj = DiscordMember(guild=await get_from_db(discord_object.guild), user=await get_from_db(discord_object, as_user=True))
+            db_obj = DiscordMember(guild=await get_from_db(discord_object.guild),
+                                   user=await get_from_db(discord_object, as_user=True))
             await db_obj.save()
         return db_obj
     elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.Member) and as_user:
         db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
         if not db_obj:
-            db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name, discriminator=discord_object.discriminator)
+            db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name,
+                                 discriminator=discord_object.discriminator)
             await db_obj.save()
         return db_obj
 
 
 async def init_db_connection(config):
+    # noinspection SpellCheckingInspection
     tortoise_config = {
         'connections': {
             # Dict format for connection
             'default': {
-                'engine'     : 'tortoise.backends.asyncpg',
+                'engine': 'tortoise.backends.asyncpg',
                 'credentials': {
-                    'host'    : config['host'],
-                    'port'    : config['port'],
-                    'user'    : config['user'],
+                    'host': config['host'],
+                    'port': config['port'],
+                    'user': config['user'],
                     'password': config['password'],
                     'database': config['database'],
                 }
             },
         },
-        'apps'       : {
+        'apps': {
             'models': {
-                'models'            : ["utils.models", "aerich.models"],
+                'models': ["utils.models", "aerich.models"],
                 'default_connection': 'default',
             }
         }

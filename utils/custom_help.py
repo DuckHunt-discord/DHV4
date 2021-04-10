@@ -1,5 +1,5 @@
-from discord.ext import commands
 import discord
+from discord.ext import commands
 
 
 class EmbedHelpCommand(commands.HelpCommand):
@@ -29,11 +29,11 @@ class EmbedHelpCommand(commands.HelpCommand):
         if description:
             embed.description = description
 
-        for cog, commands in mapping.items():
+        for cog, cog_commands in mapping.items():
             name = 'No Category' if cog is None else cog.qualified_name
-            filtered = await self.filter_commands(commands, sort=True)
+            filtered = await self.filter_commands(cog_commands, sort=True)
             if filtered:
-                value = '\u2002'.join(c.name for c in commands)
+                value = '\u2002'.join(c.name for c in cog_commands)
                 if cog and cog.description:
                     value = '{0}\n{1}'.format(cog.description, value)
 
@@ -62,7 +62,8 @@ class EmbedHelpCommand(commands.HelpCommand):
         if isinstance(group, commands.Group):
             filtered = await self.filter_commands(group.commands, sort=True)
             for command in filtered:
-                embed.add_field(name=self.get_command_signature(command), value=command.short_doc or '...', inline=False)
+                embed.add_field(name=self.get_command_signature(command), value=command.short_doc or '...',
+                                inline=False)
 
         embed.set_footer(text=self.get_ending_note())
         await self.get_destination().send(embed=embed)

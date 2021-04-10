@@ -6,7 +6,6 @@ from typing import Optional
 from discord.ext import commands
 from discord.utils import escape_markdown, escape_mentions
 
-from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db
@@ -59,7 +58,7 @@ class DatabaseCommands(Cog):
         Change/view the server language.
 
         Specify the server language as a 2/5 letters code. For example, if you live in France, you'd use fr or fr_FR.
-        In Québec, you could use fr_QC.
+        In Quebec, you could use fr_QC.
         """
         db_guild = await get_from_db(ctx.guild)
         if language_code:
@@ -73,8 +72,11 @@ class DatabaseCommands(Cog):
                              ))
 
             # Do not translate
-            await ctx.send(f"If you wish to go back to the default, english language, use `{ctx.prefix}{ctx.command.qualified_name} en`")
+            await ctx.send(
+                f"If you wish to go back to the default, english language, use "
+                f"`{ctx.prefix}{ctx.command.qualified_name} en`")
         else:
             await ctx.send(_("There is no specific language set for this guild."))
+
 
 setup = DatabaseCommands.setup

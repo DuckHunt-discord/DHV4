@@ -1,6 +1,7 @@
 import datetime
 import traceback
 
+from babel import dates
 from discord.ext import commands
 
 from utils import checks
@@ -8,7 +9,9 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
 
-from babel import dates
+
+DELETE_ERROR_MESSAGE_AFTER = 60
+
 
 class CommandErrorHandler(Cog):
     @commands.Cog.listener()
@@ -28,7 +31,6 @@ class CommandErrorHandler(Cog):
         if isinstance(exception, ignored):
             return
 
-        DELETE_ERROR_MESSAGE_AFTER = 60
         command_invoke_help = f"{ctx.prefix}{ctx.command.qualified_name} {ctx.command.signature}"
 
         ctx.logger.debug(f"Error during processing: {exception} ({repr(exception)})")
@@ -38,14 +40,15 @@ class CommandErrorHandler(Cog):
             if isinstance(exception, commands.ConversionError):
                 original = exception.original
                 message = _("There was an error converting one of your arguments with {exception.converter}. The "
-                            "correct syntax would be `{command_invoke_help}`. The converter returned the following error"
-                            ": {original}",
+                            "correct syntax would be `{command_invoke_help}`. The converter returned the following "
+                            "error: {original}",
                             command_invoke_help=command_invoke_help,
                             original=escape_everything(str(original)))
             elif isinstance(exception, commands.UserInputError):
                 if isinstance(exception, commands.errors.MissingRequiredArgument):
-                    message = _("This command is missing an argument. The correct syntax would be `{command_invoke_help}`.",
-                                command_invoke_help=command_invoke_help)
+                    message = _(
+                        "This command is missing an argument. The correct syntax would be `{command_invoke_help}`.",
+                        command_invoke_help=command_invoke_help)
                 elif isinstance(exception, commands.errors.ArgumentParsingError):
                     if isinstance(exception, commands.UnexpectedQuoteError):
                         message = _("Too many quotes were provided in your message: don't forget to escape your "
@@ -79,12 +82,14 @@ class CommandErrorHandler(Cog):
                                 command_invoke_help=command_invoke_help,
                                 exception=exception)
                 elif isinstance(exception, commands.BadUnionArgument):
-                    message = _("{exception} Please check that you are using the correct syntax: `{command_invoke_help}`.",
-                                command_invoke_help=command_invoke_help,
-                                exception=str(exception))
+                    message = _(
+                        "{exception} Please check that you are using the correct syntax: `{command_invoke_help}`.",
+                        command_invoke_help=command_invoke_help,
+                        exception=str(exception))
                 else:
                     message = f"{str(exception)} ({type(exception).__name__})"
-                    ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
+                    ctx.logger.error(
+                        "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
             elif isinstance(exception, commands.CheckFailure):
                 if isinstance(exception, commands.PrivateMessageOnly):
@@ -92,11 +97,12 @@ class CommandErrorHandler(Cog):
                 elif isinstance(exception, commands.NoPrivateMessage):
                     message = _("This command cannot be used in a private message.")
                 elif isinstance(exception, commands.CheckAnyFailure):
-                    message = _("Multiple errors were encountered when running your command : {exception.errors}",
+                    message = _("Multiple errors were encountered when running your command: {exception.errors}",
                                 exception=exception)
                 elif isinstance(exception, commands.NotOwner):
                     message = _("You need to be the owner of the bot to run that.")
-                # We could edit and change the message here, but the lib messages are fine and specify exactly what permissions are missing
+                # We could edit and change the message here, but the lib messages are fine and specify exactly what
+                # permissions are missing
                 elif isinstance(exception, commands.MissingPermissions):
                     message = f"{str(exception)}"
                 elif isinstance(exception, commands.BotMissingPermissions):
@@ -116,20 +122,24 @@ class CommandErrorHandler(Cog):
                 elif isinstance(exception, checks.NotInServer):
                     correct_guild = self.bot.get_guild(exception.must_be_in_guild_id)
                     if correct_guild:
-                        message = _("You need to be in the {correct_guild.name} server (`{exception.must_be_in_guild_id}`).",
-                                    correct_guild=correct_guild,
-                                    exception=exception)
+                        message = _(
+                            "You need to be in the {correct_guild.name} server (`{exception.must_be_in_guild_id}`).",
+                            correct_guild=correct_guild,
+                            exception=exception)
                     else:
                         message = _("You need to be in a server with ID {exception.must_be_in_guild_id}.",
                                     exception=exception)
                 elif isinstance(exception, checks.AccessTooLow):
-                    message = _(f"Your access level is too low : you have an access level of {exception.current_access}, and you need at least {exception.required_access}.",
-                                exception=exception)
+                    message = _(
+                        f"Your access level is too low: you have an access level of {exception.current_access}, and "
+                        f"you need at least {exception.required_access}.",
+                        exception=exception)
                 elif isinstance(exception, checks.BotIgnore):
                     return
                 else:
-                    message = f"Check error running this command : {str(exception)} ({type(exception).__name__})"
-                    ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
+                    message = f"Check error running this command: {str(exception)} ({type(exception).__name__})"
+                    ctx.logger.error(
+                        "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.CommandNotFound):
                 # This should be disabled.
                 message = _("The provided command was not found.")
@@ -137,24 +147,30 @@ class CommandErrorHandler(Cog):
                 message = _("That command has been disabled.")
             elif isinstance(exception, commands.CommandInvokeError):
                 message = _("There was an error running the specified command. Contact the bot admins.")
-                ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
+                ctx.logger.error(
+                    "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.errors.CommandOnCooldown):
                 if await self.bot.is_owner(ctx.author):
                     await ctx.reinvoke()
                     return
                 else:
                     delta = datetime.timedelta(seconds=min(round(exception.retry_after, 1), 1))
-                    # NOTE : This message uses a formatted, direction date in some_time. Formatted, it'll give something like :
+                    # NOTE: This message uses a formatted, direction date in some_time. Formatted, it'll give
+                    # something like:
                     # "This command is overused. Please try again *in 4 seconds*"
                     message = _("This command is overused. Please try again {some_time}.",
-                                some_time=dates.format_timedelta(delta, add_direction=True, locale=await ctx.get_language_code()))
+                                some_time=dates.format_timedelta(delta, add_direction=True,
+                                                                 locale=await ctx.get_language_code()))
             elif isinstance(exception, commands.errors.MaxConcurrencyReached):
                 message = f"{str(exception)}"  # The message from the lib is great.
             else:
                 message = f"{str(exception)} ({type(exception).__name__})"
-                ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
+                ctx.logger.error(
+                    "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
         else:
-            message = _("This should not have happened. A command raised an error that does not comes from CommandError. Please inform the owner.")
+            message = _(
+                "This should not have happened. A command raised an error that does not comes from CommandError. "
+                "Please inform the owner.")
             ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
