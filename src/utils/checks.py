@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, AccessLevel, get_player
+from utils.models import get_from_db, AccessLevel
 
 
 class NotInServer(commands.CheckFailure):
@@ -48,7 +48,6 @@ def is_in_server(must_be_in_guild_id):
 
 def needs_access_level(required_access):
     async def predicate(ctx: MyContext):
-
         if not ctx.guild:
             raise commands.NoPrivateMessage()
         else:
@@ -64,9 +63,9 @@ def needs_access_level(required_access):
             else:
                 raise AccessTooLow(current_access=access, required_access=required_access)
 
-    # noinspection PyTypeChecker
     predicate.access = required_access
 
+    # noinspection PyTypeChecker
     return commands.check(predicate)
 
 
@@ -77,4 +76,5 @@ def channel_enabled():
         else:
             raise ChannelDisabled()
 
+    # noinspection PyTypeChecker
     return commands.check(predictate)

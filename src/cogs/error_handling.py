@@ -4,7 +4,7 @@ import traceback
 import babel
 import discord
 import tortoise
-from discord.ext import commands, menus
+from discord.ext import menus
 from babel import dates
 from discord.ext import commands
 
@@ -13,12 +13,9 @@ from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
-
+from utils.models import get_from_db
 
 DELETE_ERROR_MESSAGE_AFTER = 60
-
-
-from utils.models import get_from_db
 
 
 class CommandErrorHandler(Cog):

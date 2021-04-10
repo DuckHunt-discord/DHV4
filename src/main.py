@@ -6,12 +6,10 @@ import uvloop
 from utils.bot_class import MyBot
 from utils.config import load_config
 from utils.custom_help import EmbedHelpCommand
-from utils.models import init_db_connection
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 config = load_config()
-
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.Intents
 intents = discord.Intents.none()
