@@ -7,10 +7,6 @@ from tortoise import Tortoise, fields
 # noinspection PyPackageRequirements
 from tortoise.models import Model
 
-if typing.TYPE_CHECKING:
-    pass
-
-
 # TODO : https://github.com/long2ice/aerich
 
 class DiscordGuild(Model):
