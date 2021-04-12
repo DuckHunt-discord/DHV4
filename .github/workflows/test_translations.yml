@@ -12,14 +12,14 @@ on:
       - 'src/locales/**.pot'
       - 'src/tests/**'
       - '.github/workflows/test_translations.yml'
- 
+
+env:
+  L10N_WEBHOOK_URL: ${{ secrets.L10N_WEBHOOK_URL }}
 
 jobs:
   parse-and-check-po-files:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          L10N_WEBHOOK_URL: ${{ secrets.L10N_WEBHOOK_URL }}
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
