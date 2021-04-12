@@ -347,16 +347,18 @@ class Player(Model):
     resisted = DefaultDictJSONField()
     frightened = DefaultDictJSONField()
 
+    PRESTIGE_SAVED_FIELDS = {'id', 'first_seen', 'channel', 'channel_id', 'member', 'member_id', 'prestige',
+                    'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience', 'givebacks'}
+
     def do_prestige(self, kept_exp):
         """
         Reset a player data, persisting his/her ID. What's left to do is.
         """
-        SAVED_FIELDS = {'id', 'first_seen', 'channel', 'channel_id', 'member', 'member_id', 'prestige', 'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience'}
         self.prestige += 1
         self.experience = kept_exp
 
         meta = self._meta
-        reset_fields_names = meta.fields.copy() - SAVED_FIELDS
+        reset_fields_names = meta.fields.copy() - self.PRESTIGE_SAVED_FIELDS
 
         # Set (almost) everything back to default
         for reset_fields_name in reset_fields_names:
