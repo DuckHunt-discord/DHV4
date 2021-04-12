@@ -158,10 +158,10 @@ def main():
                 print(f"\t -> {message}")
             print("\n-----\n")
 
-        if webhook:
-            for failed_po_file, embeds in failed_files.items():
-                for embed in embeds:
-                    webhook.send(embed=embed)
+    if failed_files_embeds and webhook:
+        for failed_po_file, embeds in failed_files_embeds.items():
+            for embed in embeds:
+                webhook.send(embed=embed)
     else:
         print(f"✅ All is good !")
     sys.exit(len(failed_files))
