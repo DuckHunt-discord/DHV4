@@ -21,6 +21,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-      - run: pip install babel
+          python-version: '3.9' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      - run: pip install babel discord.py
       - run: python ./src/tests/test_translations.py
