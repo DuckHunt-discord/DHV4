@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-02 12:11+0200\n"
+"POT-Creation-Date: 2021-04-12 11:19+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -835,7 +835,7 @@ msgid ""
 "Data will not be recoverable, and there is no confirmation dialog. Type with "
 "caution.\n"
 "This command will execute on the *current channel* if no ID is provided.\n"
-"If you pass an ID, the bot will check wether the channel still exist. If it "
+"If you pass an ID, the bot will check whether the channel still exist. If it "
 "does, it'll refuse to delete to\n"
 "prevent mistakes. You'll have to run the command in the correct channel. If "
 "it doesn't, but the channel was in\n"
@@ -1337,10 +1337,9 @@ msgid "This command cannot be used in a private message."
 msgstr "Este comando no puede ser usado en un mensaje privado."
 
 msgid ""
-"Multiple errors were encountered when running your command : {exception."
+"Multiple errors were encountered when running your command: {exception."
 "errors}"
 msgstr ""
-"Se encontraron múltiples errores al ejecutar su comando:  {exception.errors}"
 
 msgid "You need to be the owner of the bot to run that."
 msgstr "Tienes que ser el admin del bot para hacer eso."
@@ -1388,6 +1387,9 @@ msgid ""
 "channel with `dh!settings enabled True`."
 msgstr ""
 
+msgid "Check error running this command: {err_data}"
+msgstr ""
+
 msgid "The provided command was not found."
 msgstr "El comando no fue encontrado."
 
@@ -1404,6 +1406,11 @@ msgid "This command is overused. Please try again {some_time}."
 msgstr ""
 "Este comando está sobreutilizado. Por favor, inténtelo de nuevo en "
 "{some_time}."
+
+msgid ""
+"This should not have happened. A command raised an error that does not comes "
+"from CommandError. Please inform the owner."
+msgstr ""
 
 msgid ""
 "You are above the limits of DuckHunt database. Try to reduce your "
@@ -1563,6 +1570,14 @@ msgstr ""
 "Un nuevo rango está disponible para ti! Adelante, usa `{ctx.prefix}prestige "
 "confirm`. Usándolo ahora mantendrás {kept_exp} exp."
 
+msgid "Prestige daily bonus"
+msgstr ""
+
+msgid ""
+"You can get anywhere from {min} to {max} experience every day by using the "
+"daily command."
+msgstr ""
+
 msgid "✨ Current prestige level ✨️"
 msgstr "✨ Rango actual ✨️"
 
@@ -1696,7 +1711,7 @@ msgstr ""
 msgid "Support tickets are deleted after 24 hours of inactivity"
 msgstr ""
 
-msgid "Attachments persistance"
+msgid "Attachments persistence"
 msgstr ""
 
 msgid ""
@@ -1724,8 +1739,8 @@ msgstr ""
 
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
-"DuckHunt DM support. If you need anything else, feel free to open a new "
-"ticket by sending a message here.\n"
+"DuckHunt DM support. Keep in mind, sending another message here will open a "
+"new ticket!\n"
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
 
@@ -2574,6 +2589,12 @@ msgstr "{level_reliability} % (Real: {real_reliability} %)"
 
 msgid "Reliability"
 msgstr "Confianza"
+
+msgid "Prestige"
+msgstr ""
+
+msgid "Level {level}"
+msgstr ""
 
 msgid "{target.name} shooting stats."
 msgstr "{target.name} Estadísticas de tiro."
