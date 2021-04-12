@@ -65,7 +65,7 @@ class PrestigeCommands(Cog):
         else:
             e.add_field(name="⚠️",
                         value=_("**Remember**, using prestige means losing your statistics and most of your experience. "
-                                           "However, you'll get the following items to help you"), inline=False)
+                                "However, you'll get the following items to help you"), inline=False)
 
         e.add_field(name=_("Level 1"), value=_("**Unbreakable sunglasses**: Never buy sunglasses again"))
         e.add_field(name=_("Level 2"), value=_("**Coat colour**: Choose the colour of your coat"))
