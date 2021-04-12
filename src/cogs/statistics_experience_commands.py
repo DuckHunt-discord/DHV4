@@ -84,6 +84,11 @@ class StatisticsCommands(Cog):
                                 real_reliability=db_hunter.real_reliability),
                         inline=True)
 
+        embed.add_field(name=_("Prestige"),
+                        value=_("Level {level}",
+                                level=db_hunter.prestige),
+                        inline=True)
+
         await ctx.send(embed=embed)
 
     @commands.command(aliases=["shoots", "shooting"])
