@@ -53,10 +53,18 @@ class PrestigeCommands(Cog):
 
         e.description = description
 
+        if db_hunter.prestige > 3:
+            e.add_field(name=_("Prestige daily bonus"),
+                        value=_("You can get anywhere from {min} to {max} experience every day by using the daily command.",
+                                min=5,
+                                max=15))
+
         if db_hunter.prestige > 0:
-            e.add_field(name=_("✨ Current prestige level ✨️"), value=_("You have reached level {level}", level=db_hunter.prestige), inline=False)
+            e.add_field(name=_("✨ Current prestige level ✨️"),
+                        value=_("You have reached level {level}", level=db_hunter.prestige), inline=False)
         else:
-            e.add_field(name="⚠️", value=_("**Remember**, using prestige means losing your statistics and most of your experience. "
+            e.add_field(name="⚠️",
+                        value=_("**Remember**, using prestige means losing your statistics and most of your experience. "
                                            "However, you'll get the following items to help you"), inline=False)
 
         e.add_field(name=_("Level 1"), value=_("**Unbreakable sunglasses**: Never buy sunglasses again"))
