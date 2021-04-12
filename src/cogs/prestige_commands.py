@@ -68,7 +68,7 @@ class PrestigeCommands(Cog):
                                            "However, you'll get the following items to help you"), inline=False)
 
         e.add_field(name=_("Level 1"), value=_("**Unbreakable sunglasses**: Never buy sunglasses again"))
-        e.add_field(name=_("Level 2"), value=_("**Coat colour**: Choose the colour of your coat"))  # TODO
+        e.add_field(name=_("Level 2"), value=_("**Coat colour**: Choose the colour of your coat"))
         e.add_field(name=_("Level 3"), value=_("**Daily command**: Get more experience every day"))
         e.add_field(name=_("Level 4"), value=_("**Icelandic water**: Wet others for longer"))
         e.add_field(name=_("Level 5"), value=_("**Untearable coat**: Buy it for life"))
