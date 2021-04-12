@@ -70,8 +70,8 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str], List[discord.Emb
                     e = discord.Embed(color=WARNING_COLOR,
                                       title=lang_name,
                                       description=f"HTML tag detected: {html_detect}")
-                    e.add_field(name="English message", value=message_id[:250])
-                    e.add_field(name="Translated message", value=message_string[:250])
+                    e.add_field(name="English message", value=message_id[:250], inline=False)
+                    e.add_field(name="Translated message", value=message_string[:250], inline=False)
                     embeds.append(e)
 
             message_id_keys = extract_keys(message_id)
@@ -86,11 +86,11 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str], List[discord.Emb
                                   title=lang_name,
                                   description=f"Bad f-string formatting")
 
-                e.add_field(name="Keys in english", value=str(message_id_keys))
-                e.add_field(name="Error", value=str(e))
+                e.add_field(name="Keys in english", value=str(message_id_keys), inline=False)
+                e.add_field(name="Error", value=str(e), inline=False)
 
-                e.add_field(name="English message", value=message_id[:250])
-                e.add_field(name="Translated message", value=message_string[:250])
+                e.add_field(name="English message", value=message_id[:250], inline=False)
+                e.add_field(name="Translated message", value=message_string[:250], inline=False)
                 embeds.append(e)
 
                 result = False
@@ -98,11 +98,11 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str], List[discord.Emb
                 e = discord.Embed(color=ERROR_COLOR,
                                   title=lang_name,)
 
-                e.add_field(name="Keys in english", value=str(message_id_keys))
-                e.add_field(name="English message", value=message_id[:250])
+                e.add_field(name="Keys in english", value=str(message_id_keys), inline=False)
+                e.add_field(name="Keys in translation", value=str(message_string_keys), inline=False)
 
-                e.add_field(name="Keys in translation", value=str(message_string_keys))
-                e.add_field(name="Translated message", value=message_string[:250])
+                e.add_field(name="English message", value=message_id[:250], inline=False)
+                e.add_field(name="Translated message", value=message_string[:250], inline=False)
 
                 if len(message_id_keys) != len(message_string_keys):
                     messages.append(f"{ERROR} Mistranslated (missing f-keys):\n"
