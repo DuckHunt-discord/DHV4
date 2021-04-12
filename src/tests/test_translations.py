@@ -133,7 +133,7 @@ def main():
     webhook = None
 
     if webhook_url:
-        webhook = discord.Webhook.from_url(url=webhook_url, adapter=discord.RequestsWebhookAdapter)
+        webhook = discord.Webhook.from_url(url=webhook_url, adapter=discord.RequestsWebhookAdapter())
         print(f"Detected webhook OS var... Logging to #l10n")
     else:
         print(f"Webhook OS var not detected... Are we in a PR ?")
