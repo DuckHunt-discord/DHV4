@@ -98,6 +98,9 @@ class ItemsMenusSource(menus.ListPageSource):
         if not entries:
             e.description = _("A lot of air and a starved mosquito.")
 
+        if self.numbers:
+            e.set_footer(text=_("`{prefix}inv use item_number` to use an item", prefix=self.ctx.prefix))
+
         return e
 
 
