@@ -493,7 +493,7 @@ class StatisticsCommands(Cog):
 
         Data will not be recoverable, and there is no confirmation dialog. Type with caution.
         This command will execute on the *current channel* if no ID is provided.
-        If you pass an ID, the bot will check wether the channel still exist. If it does, it'll refuse to delete to
+        If you pass an ID, the bot will check whether the channel still exist. If it does, it'll refuse to delete to
         prevent mistakes. You'll have to run the command in the correct channel. If it doesn't, but the channel was in
         the same guild/server, scores will be deleted.
 
