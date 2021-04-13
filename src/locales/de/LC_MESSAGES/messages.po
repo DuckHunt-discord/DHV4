@@ -1399,7 +1399,9 @@ msgstr ""
 "wirklich glücklich, dass Sie ihn lieben."
 
 msgid "{you.mention} hugged {other.mention}. They feel loved."
-msgstr "{you.mention} hat {other.mention} umarmt. Sie fühlen sich geliebt."
+msgstr ""
+"{you.mention} hat {other.mention} umarmt. Ihr habt das Gefühl, geliebt zu "
+"werden"
 
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr "Was genau versuchen Sie zu umarmen? Einen Baum?"
