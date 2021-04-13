@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-12 11:19+0200\n"
+"POT-Creation-Date: 2021-04-13 16:09+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -111,11 +111,11 @@ msgstr ""
 msgid "Removes all ducks from the channel"
 msgstr ""
 
-#: ../cogs/inventory_commands.py:113
+#: ../cogs/inventory_commands.py:116
 msgid "Alias for dh!inv use, so that you can just type dh!use instead."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:121
+#: ../cogs/inventory_commands.py:124
 msgid ""
 "Show your inventory content.\n"
 "\n"
@@ -124,17 +124,17 @@ msgid ""
 "Server administrators can disable inventory usage on specific channels."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:138
+#: ../cogs/inventory_commands.py:141
 msgid "Give something to some player."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:155
+#: ../cogs/inventory_commands.py:158
 msgid ""
 "Compress and sort your inventory, to fuse items together. You shouldn't have "
 "to use this."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:173
+#: ../cogs/inventory_commands.py:176
 msgid "Use one of the items in your inventory."
 msgstr ""
 
@@ -671,59 +671,75 @@ msgid ""
 "Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
 msgstr ""
 
-#: ../cogs/simple_commands.py:75
+#: ../cogs/simple_commands.py:76
 msgid ""
 "Check that the bot is online, give the latency between the bot and Discord "
 "servers."
 msgstr ""
 
-#: ../cogs/simple_commands.py:89
+#: ../cogs/simple_commands.py:90
 msgid "Returns the wiki URL"
 msgstr ""
 
-#: ../cogs/simple_commands.py:100
+#: ../cogs/simple_commands.py:101
 msgid "Get the URL to invite the bot"
 msgstr ""
 
-#: ../cogs/simple_commands.py:109
+#: ../cogs/simple_commands.py:110
 msgid "Get a discord invite to the support server."
 msgstr ""
 
-#: ../cogs/simple_commands.py:117
+#: ../cogs/simple_commands.py:118
 msgid ""
 "Get the time when you'll get free magazines and your weapon back from the "
 "police"
 msgstr ""
 
-#: ../cogs/simple_commands.py:140
+#: ../cogs/simple_commands.py:141
 msgid "Get the bot prefixes"
 msgstr ""
 
-#: ../cogs/simple_commands.py:162
+#: ../cogs/simple_commands.py:163
 msgid "Thanks to those fine people who (helped) make the bot"
 msgstr ""
 
-#: ../cogs/simple_commands.py:196
+#: ../cogs/simple_commands.py:197
 msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
 
-#: ../cogs/simple_commands.py:216
+#: ../cogs/simple_commands.py:217
 msgid "For when you misspell the pan command."
 msgstr ""
 
-#: ../cogs/simple_commands.py:226
+#: ../cogs/simple_commands.py:227
 msgid "For when you misspell the reload command."
 msgstr ""
 
-#: ../cogs/simple_commands.py:234
+#: ../cogs/simple_commands.py:235
+msgid "I only get one eye"
+msgstr ""
+
+#: ../cogs/simple_commands.py:243
 msgid "Who doesn't need eyes"
 msgstr ""
 
-#: ../cogs/simple_commands.py:242
+#: ../cogs/simple_commands.py:251
+msgid "Who doesn't need cows ?"
+msgstr ""
+
+#: ../cogs/simple_commands.py:264
+msgid "When you don't have eyes"
+msgstr ""
+
+#: ../cogs/simple_commands.py:272
 msgid "I guess that just says ¯\\_(ツ)_/¯"
 msgstr ""
 
-#: ../cogs/simple_commands.py:250
+#: ../cogs/simple_commands.py:280
+msgid "When you need some good laughs"
+msgstr ""
+
+#: ../cogs/simple_commands.py:288
 msgid ""
 "See the current global event.\n"
 "\n"
@@ -734,7 +750,7 @@ msgid ""
 "better : EXPERIENCE !"
 msgstr ""
 
-#: ../cogs/simple_commands.py:280
+#: ../cogs/simple_commands.py:318
 msgid "This returns the current bot time."
 msgstr ""
 
@@ -1538,59 +1554,64 @@ msgstr ""
 msgid "A lot of air and a starved mosquito."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:133
+#: ../cogs/inventory_commands.py:102
+#, python-brace-format
+msgid "`{prefix}inv use item_number` to use an item"
+msgstr ""
+
+#: ../cogs/inventory_commands.py:136
 msgid "Your inventory"
 msgstr ""
 
-#: ../cogs/inventory_commands.py:146
+#: ../cogs/inventory_commands.py:149
 msgid "❌ Unknown item."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:151
+#: ../cogs/inventory_commands.py:154
 #, python-brace-format
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:169
+#: ../cogs/inventory_commands.py:172
 msgid "🎒 Your inventory has been sorted."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:183
+#: ../cogs/inventory_commands.py:186
 msgid "❌ Items usage is disabled on this channel."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:189
+#: ../cogs/inventory_commands.py:192
 msgid "❌ Unknown item number."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:207
+#: ../cogs/inventory_commands.py:210
 msgid "Lootbox opened"
 msgstr ""
 
-#: ../cogs/inventory_commands.py:214
+#: ../cogs/inventory_commands.py:217
 #, python-brace-format
 msgid "❌ {guild.name} is already VIP."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:218
+#: ../cogs/inventory_commands.py:221
 #, python-brace-format
 msgid "✨ {guild.name} is now VIP! Thanks."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:223
+#: ../cogs/inventory_commands.py:226
 #, python-brace-format
 msgid "✨ You learned a lot, adding {amount} experience points to your profile."
 msgstr ""
 
-#: ../cogs/inventory_commands.py:228
+#: ../cogs/inventory_commands.py:231
 msgid "✨ Yay! Free ammo!"
 msgstr ""
 
-#: ../cogs/inventory_commands.py:233
+#: ../cogs/inventory_commands.py:236
 msgid "✨ Oh, is this a bullet ?"
 msgstr ""
 
-#: ../cogs/inventory_commands.py:238
+#: ../cogs/inventory_commands.py:241
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr ""
 
@@ -1896,7 +1917,7 @@ msgstr ""
 msgid "There is no specific prefix set for this guild."
 msgstr ""
 
-#: ../cogs/settings_commands.py:399 ../cogs/simple_commands.py:157
+#: ../cogs/settings_commands.py:399 ../cogs/simple_commands.py:158
 #, python-brace-format
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
@@ -2637,11 +2658,11 @@ msgid ""
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/simple_commands.py:34
+#: ../cogs/simple_commands.py:35
 msgid "The beloved DuckHunt translators"
 msgstr ""
 
-#: ../cogs/simple_commands.py:37
+#: ../cogs/simple_commands.py:38
 #, python-brace-format
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -2650,101 +2671,105 @@ msgid ""
 "Thanks!"
 msgstr ""
 
-#: ../cogs/simple_commands.py:84
+#: ../cogs/simple_commands.py:85
 #, python-brace-format
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr ""
 
-#: ../cogs/simple_commands.py:132
+#: ../cogs/simple_commands.py:133
 #, python-brace-format
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
 "({formatted_precise_delta})"
 msgstr ""
 
-#: ../cogs/simple_commands.py:153
+#: ../cogs/simple_commands.py:154
 #, python-brace-format
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
 "global prefixes : {global_prefixes_list}"
 msgstr ""
 
-#: ../cogs/simple_commands.py:173
+#: ../cogs/simple_commands.py:174
 msgid ""
 "The bot itself is made by Eyesofcreeper, but these fine people down there "
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
 
-#: ../cogs/simple_commands.py:176
+#: ../cogs/simple_commands.py:177
 msgid "Developer"
 msgstr ""
 
-#: ../cogs/simple_commands.py:176
+#: ../cogs/simple_commands.py:177
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
 msgstr ""
 
-#: ../cogs/simple_commands.py:177 ../cogs/simple_commands.py:178
+#: ../cogs/simple_commands.py:178 ../cogs/simple_commands.py:179
 msgid "Designer"
 msgstr ""
 
-#: ../cogs/simple_commands.py:177
+#: ../cogs/simple_commands.py:178
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
 
-#: ../cogs/simple_commands.py:178
+#: ../cogs/simple_commands.py:179
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
 
-#: ../cogs/simple_commands.py:179
+#: ../cogs/simple_commands.py:180
 msgid "Ideas"
 msgstr ""
 
-#: ../cogs/simple_commands.py:179
+#: ../cogs/simple_commands.py:180
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
 "Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 msgstr ""
 
-#: ../cogs/simple_commands.py:180
+#: ../cogs/simple_commands.py:181
 msgid "Translations"
 msgstr ""
 
-#: ../cogs/simple_commands.py:180
+#: ../cogs/simple_commands.py:181
 #, python-brace-format
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
 msgstr ""
 
-#: ../cogs/simple_commands.py:187
+#: ../cogs/simple_commands.py:188
 msgid "**DuckHunt credits**"
 msgstr ""
 
-#: ../cogs/simple_commands.py:188
+#: ../cogs/simple_commands.py:189
 msgid ""
 "The bot itself is made by Eyesofcreeper, but a lot of people helped with "
 "graphics, ideas, images, and more."
 msgstr ""
 
-#: ../cogs/simple_commands.py:190
+#: ../cogs/simple_commands.py:191
 msgid ""
 "To see more information about that bot, you'll need to give it the "
 "`embed_links` permission. Contact your friendly neighbourhood server admin."
 msgstr ""
 
-#: ../cogs/simple_commands.py:221
+#: ../cogs/simple_commands.py:222
 msgid "You don't have to go right now"
 msgstr ""
 
-#: ../cogs/simple_commands.py:265
+#: ../cogs/simple_commands.py:257
+msgid "Hi, fellow cow lover"
+msgstr ""
+
+#: ../cogs/simple_commands.py:303
 msgid "Current event: "
 msgstr ""
 
-#: ../cogs/simple_commands.py:270
+#: ../cogs/simple_commands.py:308
 #, python-brace-format
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "

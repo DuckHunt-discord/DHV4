@@ -1,4 +1,5 @@
 import datetime
+import random
 import time
 
 import discord
@@ -230,11 +231,40 @@ class SimpleCommands(Cog):
 
     @commands.command(hidden=True)
     @checks.channel_enabled()
+    async def eye(self, ctx: MyContext):
+        """
+        I only get one eye
+        """
+        await ctx.reply("👁️")
+
+    @commands.command(hidden=True)
+    @checks.channel_enabled()
     async def eyes(self, ctx: MyContext):
         """
         Who doesn't need eyes
         """
         await ctx.reply("👀")
+
+    @commands.command(hidden=True)
+    @checks.channel_enabled()
+    async def cow(self, ctx: MyContext):
+        """
+        Who doesn't need cows ?
+        """
+        _ = await ctx.get_translate_function()
+
+        if "🐮" in ctx.author.name:
+            await ctx.reply(_("Hi, fellow cow lover"))
+        else:
+            await ctx.reply("🐄")
+
+    @commands.command(hidden=True, aliases=["foot"])
+    @checks.channel_enabled()
+    async def feet(self, ctx: MyContext):
+        """
+        When you don't have eyes
+        """
+        await ctx.reply(random.choice(["🦶", "👣", "🦶🏻", "🦶🏼", "🦶🏽", "🦶🏾", "🦶🏿"]))
 
     @commands.command(hidden=True)
     @checks.channel_enabled()
