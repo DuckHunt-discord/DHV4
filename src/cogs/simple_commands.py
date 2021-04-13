@@ -244,6 +244,14 @@ class SimpleCommands(Cog):
         """
         await ctx.reply(r"¯\_(ツ)_/¯")
 
+    @commands.command(hidden=True)
+    @checks.channel_enabled()
+    async def lol(self, ctx: MyContext):
+        """
+        When you need some good laughs
+        """
+        await ctx.reply("🤣")
+
     @commands.command(aliases=["events"])
     @checks.channel_enabled()
     async def event(self, ctx: MyContext):
