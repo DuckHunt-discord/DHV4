@@ -432,9 +432,8 @@ class PrivateMessagesSupport(Cog):
                     f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist")
                 return
             else:
-                async with message.channel.typing():
-                    await self.handle_dm_message(message)
-                    await self.handle_auto_responses(message)
+                await self.handle_dm_message(message)
+                await self.handle_auto_responses(message)
 
     @commands.group(aliases=["ps"])
     async def private_support(self, ctx: MyContext):
