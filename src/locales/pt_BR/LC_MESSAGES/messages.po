@@ -310,7 +310,7 @@ msgstr ""
 msgid "/stats\n"
 "\n"
 "Get some global statistics about the bot."
-msgstr "/estatísticas\n"
+msgstr "/stats\n"
 "\n"
 "Obtenha algumas estatísticas globais sobre o bot."
 
