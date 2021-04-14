@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-12 11:19+0200\n"
+"POT-Creation-Date: 2021-04-13 16:09+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -706,10 +706,22 @@ msgstr "For når du staver kommandoen pan."
 msgid "For when you misspell the reload command."
 msgstr "For når du stave forkert kommandoen til genindlæsning."
 
+msgid "I only get one eye"
+msgstr ""
+
 msgid "Who doesn't need eyes"
 msgstr ""
 
+msgid "Who doesn't need cows ?"
+msgstr ""
+
+msgid "When you don't have eyes"
+msgstr ""
+
 msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr ""
+
+msgid "When you need some good laughs"
 msgstr ""
 
 msgid ""
@@ -1354,6 +1366,9 @@ msgid "Redeem it to refill your weapon."
 msgstr ""
 
 msgid "A lot of air and a starved mosquito."
+msgstr ""
+
+msgid "`{prefix}inv use item_number` to use an item"
 msgstr ""
 
 msgid "Your inventory"
@@ -2291,6 +2306,9 @@ msgid ""
 msgstr ""
 
 msgid "You don't have to go right now"
+msgstr ""
+
+msgid "Hi, fellow cow lover"
 msgstr ""
 
 msgid "Current event: "
