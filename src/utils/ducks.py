@@ -766,8 +766,6 @@ class BabyDuck(Duck):
                  )
 
 
-
-
 class GoldenDuck(Duck):
     """
     Duck worth twice the usual experience
@@ -799,6 +797,9 @@ class PlasticDuck(Duck):
                         this_ducks_killed,
                         this_ducks_killed=this_ducks_killed,
                         )
+
+    async def will_frighten(self):
+        return False
 
     async def get_exp_value(self):
         return round(await super().get_exp_value() * 0.5)
