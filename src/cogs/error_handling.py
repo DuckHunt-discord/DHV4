@@ -144,7 +144,7 @@ class CommandErrorHandler(Cog):
                                     correct_channel=correct_channel,
                                     exception=exception)
                     else:
-                        message = _("You need to be in a server with ID {exception.must_be_in_channel_id}.",
+                        message = _("You need to be in a channel with ID {exception.must_be_in_channel_id}.",
                                     exception=exception)
 
                 elif type(exception).__name__ == NotEnoughExperience.__name__:
