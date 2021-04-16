@@ -3,6 +3,8 @@ import typing
 
 import discord
 
+FILE_SIZE = 10000000
+
 
 def init_logger() -> logging.Logger:
     # Create the logger
@@ -16,12 +18,17 @@ def init_logger() -> logging.Logger:
     # Logging to a file
     from logging.handlers import RotatingFileHandler
 
-    file_handler = RotatingFileHandler('cache/all.log', 'a', 10000000, 1)
+    file_handler = RotatingFileHandler('cache/all.log', 'a', FILE_SIZE, 1)
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.DEBUG)
     base_logger.addHandler(file_handler)
 
-    file_handler = RotatingFileHandler('cache/errors.log', 'a', 10000000, 1)
+    file_handler = RotatingFileHandler('cache/info.log', 'a', FILE_SIZE * 10, 1)
+    file_handler.setFormatter(formatter)
+    file_handler.setLevel(logging.INFO)
+    base_logger.addHandler(file_handler)
+
+    file_handler = RotatingFileHandler('cache/errors.log', 'a', FILE_SIZE * 10, 1)
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.WARNING)
     base_logger.addHandler(file_handler)
