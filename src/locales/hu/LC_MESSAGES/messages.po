@@ -86,7 +86,7 @@ msgid "Removes all ducks from the channel"
 msgstr "Eltávolítja az összes kacsát a csatornából."
 
 msgid "Alias for dh!inv use, so that you can just type dh!use instead."
-msgstr ""
+msgstr "Aliasz a dh!inv use parancshoz, így használhatod a dh!use-t simán."
 
 msgid ""
 "Show your inventory content.\n"
@@ -647,7 +647,7 @@ msgid "Clean your gun, removing sabotage and sand. [7 exp]"
 msgstr ""
 
 msgid "Dazzle another hunter using the power of sunlight. [7 exp]"
-msgstr ""
+msgstr "Vakíts el egy másik vadászt a napfény erejével. [7 tp]"
 
 msgid ""
 "Throw sand into another player weapon.\n"
@@ -670,7 +670,7 @@ msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
 msgstr ""
 
 msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
-msgstr ""
+msgstr "Leidéz egy hamis kacsát pontosan 90 másodperc múlva. [15 tp]"
 
 msgid ""
 "Protect yourself from water. If you are already wet, it also can be used as "
@@ -695,13 +695,13 @@ msgid ""
 msgstr ""
 
 msgid "Returns the wiki URL"
-msgstr ""
+msgstr "Elküldi a wiki URL-jét"
 
 msgid "Get the URL to invite the bot"
-msgstr ""
+msgstr "Szerezd meg az URL-t a bot meghívásához"
 
 msgid "Get a discord invite to the support server."
-msgstr ""
+msgstr "Szerezd meg a discord meghívót a támogatási szerverhez (angol)."
 
 msgid ""
 "Get the time when you'll get free magazines and your weapon back from the "
@@ -713,9 +713,11 @@ msgstr ""
 
 msgid "Thanks to those fine people who (helped) make the bot"
 msgstr ""
+"Köszönet ezeknek a remek embereknek, akik segítettek a bot elkészítésében"
 
 msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
+"Köszönet ezeknek a remek embereknek, akik segítettek a bot lefordításában"
 
 msgid "For when you misspell the pan command."
 msgstr ""
@@ -792,7 +794,7 @@ msgid "Give some experience to another player. This is a cheat."
 msgstr ""
 
 msgid "Who's the best ?"
-msgstr ""
+msgstr "Ki a legjobb?"
 
 msgid ""
 "Delete scores for a specific user from the channel. The target can be an ID "
@@ -2618,7 +2620,7 @@ msgid "Solve equations given by the Pr. Duck."
 msgstr ""
 
 msgid "BRAAAAAINS!"
-msgstr ""
+msgstr "AGYAAAAAAAAK!"
 
 msgid "Eat some brains and come back to life."
 msgstr ""
@@ -2648,10 +2650,10 @@ msgid "Give at least 30 exp to an hunter that lost his gun."
 msgstr ""
 
 msgid "Short memory"
-msgstr ""
+msgstr "Rövid memória"
 
 msgid "Shoot at your own mechanical duck."
-msgstr ""
+msgstr "Lődd le a saját mechanikus kacsádat."
 
 msgid "An ounce of prevention is worth a pound of cure"
 msgstr ""
@@ -2682,6 +2684,8 @@ msgid ""
 "We also monitor the bot DMs, so if you have further questions, just answer "
 "this message!"
 msgstr ""
+"Üdv! Az alábbi üzenet (a DuckHunt tulajdonosa által írva, lefordította "
+"Robert9157) egy gyors bevezetést fog adni neked, és "
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
@@ -2746,10 +2750,10 @@ msgid ""
 msgstr ""
 
 msgid "White"
-msgstr ""
+msgstr "Fehér"
 
 msgid "A useful coat when it rains."
-msgstr ""
+msgstr "Egy hasznos kabát, ha esik az eső."
 
 msgid "Orange"
 msgstr ""
@@ -2791,7 +2795,7 @@ msgid "Farming skills: Clovers give you one more experience point."
 msgstr ""
 
 msgid "Black"
-msgstr ""
+msgstr "Fekete"
 
 msgid "Secret service: Sabotages are cheaper."
 msgstr ""
@@ -2989,7 +2993,7 @@ msgid ""
 msgstr ""
 
 msgid "night"
-msgstr ""
+msgstr "éjszaka"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
@@ -3005,70 +3009,70 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "KWAK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "KWAAK"
-msgstr ""
+msgstr "KWAAK"
 
 msgid "KWAAAK"
-msgstr ""
+msgstr "KWAAAK"
 
 msgid "COUAK"
-msgstr ""
+msgstr "COUAK"
 
 msgid "COUAAK"
-msgstr ""
+msgstr "COUAAK"
 
 msgid "COUAAAK"
-msgstr ""
+msgstr "COUAAAK"
 
 msgid "QUAK"
-msgstr ""
+msgstr "QUAK"
 
 msgid "QUAAK"
-msgstr ""
+msgstr "QUAAK"
 
 msgid "QUAAAK"
-msgstr ""
+msgstr "QUAAAK"
 
 msgid "QUACK"
-msgstr ""
+msgstr "QUACK"
 
 msgid "QUAACK"
-msgstr ""
+msgstr "QUAACK"
 
 msgid "QUAAACK"
-msgstr ""
+msgstr "QUAAACK"
 
 msgid "COUAC"
-msgstr ""
+msgstr "COUAC"
 
 msgid "COUAAC"
-msgstr ""
+msgstr "COUAAC"
 
 msgid "COUAAAC"
-msgstr ""
+msgstr "COUAAAC"
 
 msgid "COUACK"
-msgstr ""
+msgstr "COUACK"
 
 msgid "*cries*"
-msgstr ""
+msgstr "*sír*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "Helló világ"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Hogy vagy ma?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Kérlek, ne ölj meg..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Én is szeretlek!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Ne lőj le! Hamis kacsa vagyok!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
@@ -3088,19 +3092,19 @@ msgid "I am invisible, don't bother killing me"
 msgstr ""
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Ki az a kis ████ itt aki megölte a barátomat?"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "Tényleg nem tudsz célozni..."
 
 msgid "The duck left."
-msgstr ""
+msgstr "A kacsa elment balra."
 
 msgid "The duck right."
-msgstr ""
+msgstr "A kacsa elment jobbra."
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "ÁLLJ! Ez nem az, amire gondolsz!"
 
 msgid "Killing me will cost you 1562 experience points."
 msgstr ""
@@ -3111,25 +3115,25 @@ msgid ""
 msgstr ""
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr ""
+msgstr "[ILLESSZ BE KACSAHANGOT IDE]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr ""
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "Nyúlszezon van."
 
 msgid "Got a spare cape?"
 msgstr ""
 
 msgid "Which side of a duck has more feathers? ||The outside||."
-msgstr ""
+msgstr "A kacsa melyik oldalán van több toll? ||Kívül||."
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Én pénzt rablok. Én egy rablókacsa vagyok."
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Én egy nagyon speciális kacsa vagyok."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
@@ -3144,13 +3148,13 @@ msgid "*Slurp*"
 msgstr ""
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "*Remélhetőleg mindannyian AFK-ok vagytok...*"
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Én csak a dolgomat végzem..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
@@ -3158,97 +3162,97 @@ msgid ""
 msgstr ""
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "MeGrOnToTtAlAk."
 
 msgid "The duck went away."
-msgstr ""
+msgstr "A kacsa elment."
 
 msgid "The duck went to another world."
-msgstr ""
+msgstr "A kacsa elment egy másik világba."
 
 msgid "The duck didn't have time for this."
-msgstr ""
+msgstr "A kacsának nem volt erre ideje."
 
 msgid "The duck dissipated in space and time."
-msgstr ""
+msgstr "A kacsa szertefoszlott az űrben és időben."
 
 msgid "The duck left out of boredom."
-msgstr ""
+msgstr "A kacsa elment unalomból."
 
 msgid "The duck doesn't want to be sniped."
-msgstr ""
+msgstr "A kacsa nem szeretné, hogy lelőjék."
 
 msgid "The duck walked up to the lemonade stand."
-msgstr ""
+msgstr "A kacsa felsétált a limonádés standhoz."
 
 msgid "The duck flew over a disproportionately small gap."
-msgstr ""
+msgstr "A kacsa átrepült egy aránytalanul kicsi lyukon."
 
 msgid "The duck chickened out."
-msgstr ""
+msgstr "A kacsa berezelt."
 
 msgid "The duck went to the parallel universe"
-msgstr ""
+msgstr "A kacsa elment a párhuzamos univerzumba"
 
 msgid "The duck went to a parallel universe"
-msgstr ""
+msgstr "A kacsa elment egy párhuzamos univerzumba"
 
 msgid "The duck went into the duckiverse"
-msgstr ""
+msgstr "A kacsa elment a kacsaverzumba"
 
 msgid "The duck teleported away from here"
-msgstr ""
+msgstr "A kacsa elteleportált innen"
 
 msgid "The duck went to look for a friend"
-msgstr ""
+msgstr "A kacsa elment barátot keresni"
 
 msgid "The duck went to a better place"
-msgstr ""
+msgstr "A kacsa elment egy jobb helyre"
 
 msgid "The duck went to a better party"
-msgstr ""
+msgstr "A kacsa elment egy jobb partiba"
 
 msgid "The duck has some important business to take care of"
-msgstr ""
+msgstr "A kacsának fontos ügye van, amiről gondoskodnia kell"
 
 msgid "A duck"
-msgstr ""
+msgstr "Egy kacsa"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "Mr. Kacsa"
 
 msgid "RealDuck"
-msgstr ""
+msgstr "ValódiKacsa"
 
 msgid "The ghost never appeared."
-msgstr ""
+msgstr "A szellem sose jelent meg."
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Láthatatlan Kacsa"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Szellemkacsa"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Boooo Kacsa"
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "Pr. Kacsa"
 
 msgid "EnsDuck"
-msgstr ""
+msgstr "EnsKacsa"
 
 msgid "**COIN**"
-msgstr ""
+msgstr "**COIN**"
 
 msgid "**Piou** ?"
-msgstr ""
+msgstr "**Piou**?"
 
 msgid "**Coin** ?"
-msgstr ""
+msgstr "**Coin**?"
 
 msgid "**Coin**!"
-msgstr ""
+msgstr "**Coin**!"
 
 msgid "**COIIIIIINNNNNN**!"
 msgstr "**COIIIIIINNNNNN**!"
@@ -3293,7 +3297,7 @@ msgid "Have any money ?"
 msgstr "Van pénzed?"
 
 msgid "It's paid money"
-msgstr ""
+msgstr "Ez kifizetett pénz"
 
 msgid "Plastic Duck"
 msgstr "Műanyag Kacsa"
@@ -3308,7 +3312,7 @@ msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr "**NE MOZOGJ VAGY MINDEN FEL FOG ROBBANNI!**"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "Meg fogok ölni mindenkit!"
 
 msgid "The Kamikaze Duck"
 msgstr "A Kamikaze Kacsa"
@@ -3408,6 +3412,7 @@ msgstr "A biztonsági tanóra elmaradt"
 
 msgid "The safety class was canceled, beware not to shoot other hunters!"
 msgstr ""
+"A biztonsági tanóra elmaradt, ügyelj arra, hogy ne lődd le a többi vadászt!"
 
 msgid "Connection problem"
 msgstr "Kapcsolódási probléma"
