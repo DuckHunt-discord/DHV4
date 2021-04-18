@@ -96,7 +96,7 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
                    loop=0)
 
     final_buffer.seek(0)
-    return final_buffer
+    return final_buffer, src_h, src_w
 
 
 def resize_image(image_bytes, reduce_width, reduce_height):
