@@ -153,11 +153,11 @@ class FunOfTheEyes(Cog):
           go higher than 100 if you want to upscale the image
 
         - The image format argument can be any of
-          - jpeg, for a still image
-          - gif, for an animated resizing. Limited quality
-          - png for an APNG (Animated PNG - discord doesn't support them well and will only show the first frame,
+          • jpeg, for a still image
+          • gif, for an animated resizing. Limited quality
+          • png for an APNG (Animated PNG - discord doesn't support them well and will only show the first frame,
             open in browser)
-          - webp for an animated WebP, a new-ish format that discord doesn't support at all. Try opening those in your
+          • webp for an animated WebP, a new-ish format that discord doesn't support at all. Try opening those in your
             browser
         """
         if width_pct <= 0 or height_pct <= 0:
