@@ -44,7 +44,6 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
         dst.save(final_buffer, "jpeg")
 
     else:
-        dst_h, dst_w = src_h, src_w
         images = [Image.fromarray(src)]
         start_h = src_h
         end_h = src_h - reduce_height
@@ -56,6 +55,7 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
         step_w = GIF_STEP if end_w < start_w else - GIF_STEP
         big_w = max(start_w, end_w)
 
+        dst_h, dst_w = big_h, big_w
         for dst_h in range(start_h, end_h, step_h):
             src = seam_carving.resize(
                 src, (src_w, dst_h),
