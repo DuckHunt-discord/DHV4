@@ -141,7 +141,7 @@ class FunOfTheEyes(Cog):
         if width_pct <= 0 or height_pct <= 0:
             await ctx.send("❌ Please use positive integers for width and height.")
             return
-        if format not in ALLOWED_FORMATS:
+        if image_format not in ALLOWED_FORMATS:
             await ctx.send(f"❌ Please use a format in {ALLOWED_FORMATS}.")
             return
 
