@@ -19,7 +19,7 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
 
-GIF_STEP = -5
+GIF_STEP = -4
 BASE_DURATION = 10
 
 
