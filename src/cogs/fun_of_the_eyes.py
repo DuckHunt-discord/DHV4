@@ -119,7 +119,7 @@ def resize_image(image_bytes, w_pct, h_pct):
 
 
 class FunOfTheEyes(Cog):
-    @commands.command()
+    @commands.command(aliases=["resize"])
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
                     width_pct: int = 50, height_pct: int = 50, make_gif: bool = False):
