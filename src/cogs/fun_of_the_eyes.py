@@ -33,6 +33,9 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     # Get the PIL Image
     image = Image.open(BytesIO(image_bytes))
 
+    # Resize in case the image is too big
+    image.thumbnail((500, 500))
+
     # Get the output buffer
     final_buffer = BytesIO()
 
