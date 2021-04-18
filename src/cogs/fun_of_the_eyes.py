@@ -22,6 +22,14 @@ from utils.models import AccessLevel
 GIF_STEP = -10
 
 
+class TooSmall(Exception):
+    def __init__(self, src_h, src_w, dst_h, dst_w):
+        self.src_h = src_h
+        self.src_w = src_w
+        self.dst_h = dst_h
+        self.dst_w = dst_w
+
+
 def pad_image_to(image, big_h, big_w, curr_h, curr_w):
     delta_w = big_w - curr_w
     delta_h = big_h - curr_h
@@ -45,8 +53,8 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     # Get the desired sizes
     dst_h, dst_w = src_w - reduce_width, src_h - reduce_height
 
-    assert dst_h > 0
-    assert dst_w > 0
+    if dst_h <= 0 or dst_w <= 0:
+        raise TooSmall(src_h, src_w, dst_h, dst_w)
 
     # Get the starting size
     start_h = src_h
@@ -108,16 +116,15 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
 
 
 def resize_image(image_bytes, reduce_width, reduce_height):
-    image = Image.open(BytesIO(image_bytes),)
+    image = Image.open(BytesIO(image_bytes))
     final_buffer = BytesIO()
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
-
     dst_h, dst_w = src_w - reduce_width, src_h - reduce_height
 
-    assert dst_h > 0
-    assert dst_w > 0
+    if dst_h <= 0 or dst_w <= 0:
+        raise TooSmall(src_h, src_w, dst_h, dst_w)
 
     dst = seam_carving.resize(
         src, (dst_w, dst_h),
@@ -166,7 +173,14 @@ class FunOfTheEyes(Cog):
             else:
                 fn = partial(resize_image, image_bytes, reduce_width, reduce_height)
 
-            final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
+
+            try:
+                final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
+            except TooSmall as ts:
+                await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
+                                                  f"❌ Processing image... Dimensions too small "
+                                                  f"(source: {ts.src_w} x {ts.src_h}, dest: {ts.dst_w} x {ts.dst_h})\n")
+                return
 
             end_processing = time.perf_counter()
             processing_time = round(end_processing-end_dl, 1)
