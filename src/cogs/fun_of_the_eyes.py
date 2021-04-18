@@ -19,31 +19,57 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
 
+GIF_STEP = -10
 
-def resize_image(image_bytes, reduce_width, reduce_height):
+def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
     image = Image.open(BytesIO(image_bytes),)
+    final_buffer = BytesIO()
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
+
     dst_h, dst_w = src_w - reduce_width, src_h - reduce_height
 
     assert dst_h > 0
     assert dst_w > 0
 
-    dst = seam_carving.resize(
-        src, (dst_w, dst_h),
-        energy_mode='backward',  # Choose from {backward, forward}
-        order='width-first',  # Choose from {width-first, height-first}
-        keep_mask=None
-    )
+    if not make_gif:
+        dst = seam_carving.resize(
+            src, (dst_w, dst_h),
+            energy_mode='backward',  # Choose from {backward, forward}
+            order='width-first',  # Choose from {width-first, height-first}
+            keep_mask=None
+        )
+        dst = Image.fromarray(dst)
+        dst.save(final_buffer, "jpeg")
 
-    dst = Image.fromarray(dst)
+    else:
+        images = [Image.fromarray(src)]
+        for dst_h in range(src_h, src_h - reduce_height, GIF_STEP):
+            src = seam_carving.resize(
+                src, (src_w, dst_h),
+                energy_mode='backward',  # Choose from {backward, forward}
+                order='width-first',  # Choose from {width-first, height-first}
+                keep_mask=None
+            )
+            images.append(Image.fromarray(src))
 
-    # prepare the stream to save this image into
-    final_buffer = BytesIO()
+        for dst_w in range(src_w, src_w - reduce_width, GIF_STEP):
+            src = seam_carving.resize(
+                src, (dst_w, src_h - reduce_height),
+                energy_mode='backward',  # Choose from {backward, forward}
+                order='width-first',  # Choose from {width-first, height-first}
+                keep_mask=None
+            )
+            images.append(Image.fromarray(src))
 
-    # save into the stream, using png format.
-    dst.save(final_buffer, "jpeg")
+        images[0].save(final_buffer,
+                       format='gif',
+                       save_all=True,
+                       append_images=images[1:],
+                       duration=10,
+                       loop=0)
+
     final_buffer.seek(0)
 
     return final_buffer, src_h, src_w
@@ -52,7 +78,8 @@ def resize_image(image_bytes, reduce_width, reduce_height):
 class FunOfTheEyes(Cog):
     @commands.command()
     @needs_access_level(AccessLevel.BOT_MODERATOR)
-    async def carve(self, ctx: MyContext, who: Optional[discord.User] = None, reduce_width: int = 200, reduce_height: int = 200, ):
+    async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
+                    reduce_width: int = 200, reduce_height: int = 200, make_gif: bool = False):
         """
         Content-aware carving of an image/avatar, resizing it to reduce the width and height, loosing as few details as we can.
         """
@@ -76,7 +103,7 @@ class FunOfTheEyes(Cog):
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
                                               f"<a:typing:597589448607399949> Processing image...")
 
-            fn = partial(resize_image, image_bytes, reduce_width, reduce_height)
+            fn = partial(resize_image, image_bytes, reduce_width, reduce_height, make_gif)
             final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
 
             end_processing = time.perf_counter()
@@ -86,7 +113,10 @@ class FunOfTheEyes(Cog):
                                               f"✅ Processing image... {processing_time}s ({src_w}px x {src_h}px)\n", )
 
             # prepare the file
-            file = discord.File(filename="seam_carving.jpg", fp=final_buffer)
+            if make_gif:
+                file = discord.File(filename="seam_carving.gif", fp=final_buffer)
+            else:
+                file = discord.File(filename="seam_carving.jpg", fp=final_buffer)
 
             # send it
             await ctx.send(file=file)
