@@ -46,7 +46,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     start_h, start_w, _ = src.shape
 
     # Get the desired sizes
-    end_h, end_w = int(start_w * (w_pct/100)), int(start_h * (h_pct/100))
+    end_w, end_h = int(start_w * (w_pct/100)), int(start_h * (h_pct/100))
 
     # The step : positive if growing, negative if not.
     step_h = GIF_STEP if end_h < start_h else - GIF_STEP
@@ -105,7 +105,7 @@ def resize_image(image_bytes, w_pct, h_pct):
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
-    dst_h, dst_w = int(src_w * (w_pct/100)), int(src_h * (w_pct/100))
+    dst_h, dst_w = int(src_w * (h_pct/100)), int(src_h * (w_pct/100))
 
     dst = seam_carving.resize(
         src, (dst_w, dst_h),
