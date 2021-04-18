@@ -63,8 +63,8 @@ class FunOfTheEyes(Cog):
             for attachment in ctx.message.attachments:
                 if attachment.content_type.startswith('image/'):
                     image_bytes = await attachment.read()
-
-            if not image_bytes:
+                    break
+            else:
                 if who:
                     image_bytes = await who.avatar_url_as(format="png", size=4096).read()
                 else:
