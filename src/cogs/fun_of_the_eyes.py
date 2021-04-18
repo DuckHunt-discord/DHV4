@@ -22,14 +22,6 @@ from utils.models import AccessLevel
 GIF_STEP = -10
 
 
-class TooSmall(Exception):
-    def __init__(self, src_h, src_w, dst_h, dst_w):
-        self.src_h = src_h
-        self.src_w = src_w
-        self.dst_h = dst_h
-        self.dst_w = dst_w
-
-
 def pad_image_to(image, big_h, big_w, curr_h, curr_w):
     delta_w = big_w - curr_w
     delta_h = big_h - curr_h
@@ -48,19 +40,10 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     src = np.array(image)
 
     # Get the image sizes
-    src_h, src_w, _ = src.shape
+    start_h, start_w, _ = src.shape
 
     # Get the desired sizes
-    dst_h, dst_w = int(src_w * (w_pct/100)), int(src_h * (h_pct/100))
-
-    if dst_h <= 0 or dst_w <= 0:
-        raise TooSmall(src_h, src_w, dst_h, dst_w)
-
-    # Get the starting size
-    start_h = src_h
-
-    # The ending size
-    end_h = src_h - dst_h
+    end_h, end_w = int(start_w * (w_pct/100)), int(start_h * (h_pct/100))
 
     # The step : positive if growing, negative if not.
     step_h = GIF_STEP if end_h < start_h else - GIF_STEP
@@ -69,12 +52,10 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     big_h = max(start_h, end_h)
 
     # Same for width
-    start_w = src_w
-    end_w = dst_w
     step_w = GIF_STEP if end_w < start_w else - GIF_STEP
     big_w = max(start_w, end_w)
 
-    images = [pad_image_to(Image.fromarray(src), big_h, big_w, src_h, src_w)]
+    images = [pad_image_to(Image.fromarray(src), big_h, big_w, start_h, start_w)]
 
     # Resize height
     for curr_h in range(start_h, end_h, step_h):
@@ -112,7 +93,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
                    loop=0)
 
     final_buffer.seek(0)
-    return final_buffer, src_h, src_w
+    return final_buffer, start_h, start_w
 
 
 def resize_image(image_bytes, w_pct, h_pct):
@@ -122,9 +103,6 @@ def resize_image(image_bytes, w_pct, h_pct):
     src = np.array(image)
     src_h, src_w, _ = src.shape
     dst_h, dst_w = int(src_w * (w_pct/100)), int(src_h * (w_pct/100))
-
-    if dst_h <= 0 or dst_w <= 0:
-        raise TooSmall(src_h, src_w, dst_h, dst_w)
 
     dst = seam_carving.resize(
         src, (dst_w, dst_h),
@@ -148,6 +126,10 @@ class FunOfTheEyes(Cog):
         """
         Content-aware carving of an image/avatar, resizing it to reduce the width and height, loosing as few details as we can.
         """
+        if width_pct <= 0 or height_pct <= 0:
+            await ctx.send("❌ Please use positive integers for width and height.")
+            return
+
         status_message = await ctx.send("<a:typing:597589448607399949> Downloading image...")
         async with ctx.typing():
             start = time.perf_counter()
@@ -173,13 +155,7 @@ class FunOfTheEyes(Cog):
             else:
                 fn = partial(resize_image, image_bytes, width_pct, height_pct)
 
-            try:
-                final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
-            except TooSmall as ts:
-                await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
-                                                  f"❌ Processing image... Dimensions too small "
-                                                  f"(source: {ts.src_w} x {ts.src_h}, dest: {ts.dst_w} x {ts.dst_h})\n")
-                return
+            final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
 
             end_processing = time.perf_counter()
             processing_time = round(end_processing-end_dl, 1)
