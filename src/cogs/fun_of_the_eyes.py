@@ -21,7 +21,7 @@ from utils.models import AccessLevel
 
 GIF_STEP = -4
 BASE_DURATION = 10
-
+ALLOWED_FORMATS = {"jpeg", "gif", "webp"}
 
 def pad_image_to(image, big_h, big_w, curr_h, curr_w):
     delta_w = big_w - curr_w
@@ -30,12 +30,15 @@ def pad_image_to(image, big_h, big_w, curr_h, curr_w):
     return ImageOps.expand(image, padding)
 
 
-def resize_image_gif(image_bytes, w_pct, h_pct):
+def resize_image_gif(image_bytes, w_pct, h_pct, image_format):
     # Get the PIL Image
     image = Image.open(BytesIO(image_bytes))
 
     # Resize in case the image is too big
-    image.thumbnail((750, 750))
+    if image_format == "gif":
+        image.thumbnail((750, 750))
+    else:
+        image.thumbnail((1250, 1250))
 
     # Get the output buffer
     final_buffer = BytesIO()
@@ -95,7 +98,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     durations[-1] = BASE_DURATION * 15
 
     images[0].save(final_buffer,
-                   format='webp',
+                   format=image_format,
                    save_all=True,
                    append_images=images[1:],
                    duration=durations,
@@ -131,12 +134,15 @@ class FunOfTheEyes(Cog):
     @commands.command(aliases=["resize"])
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
-                    width_pct: int = 50, height_pct: int = 50, make_gif: bool = False):
+                    width_pct: int = 50, height_pct: int = 50, image_format: str = "jpeg"):
         """
         Content-aware carving of an image/avatar, resizing it to reduce the width and height, loosing as few details as we can.
         """
         if width_pct <= 0 or height_pct <= 0:
             await ctx.send("❌ Please use positive integers for width and height.")
+            return
+        if format not in ALLOWED_FORMATS:
+            await ctx.send(f"❌ Please use a format in {ALLOWED_FORMATS}.")
             return
 
         status_message = await ctx.send("<a:typing:597589448607399949> Downloading image...")
@@ -159,8 +165,8 @@ class FunOfTheEyes(Cog):
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
                                               f"<a:typing:597589448607399949> Processing image...")
 
-            if make_gif:
-                fn = partial(resize_image_gif, image_bytes, width_pct, height_pct)
+            if image_format in {"gif", "webp"}:
+                fn = partial(resize_image_gif, image_bytes, width_pct, height_pct, image_format)
             else:
                 fn = partial(resize_image, image_bytes, width_pct, height_pct)
 
@@ -174,10 +180,7 @@ class FunOfTheEyes(Cog):
                                               f"({src_w} x {src_h} -> {dst_w} x {dst_h})\n", )
 
             # prepare the file
-            if make_gif:
-                file = discord.File(filename="seam_carving.webp", fp=final_buffer)
-            else:
-                file = discord.File(filename="seam_carving.jpg", fp=final_buffer)
+            file = discord.File(filename="seam_carving." + image_format, fp=final_buffer)
 
             # send it
             await ctx.send(file=file)
