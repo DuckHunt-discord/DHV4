@@ -10,10 +10,10 @@ msgid "Creates votes handlers for specific bots lists"
 msgstr "Létrehoz szavazáskezelést bizonyos bot listákhoz"
 
 msgid "Handle users votes for fateslist"
-msgstr "A felhasználói szavazások kezelése fateslist-hez"
+msgstr "A felhasználói szavazások kezelése fateslist-en"
 
 msgid "Handle users votes for top.gg"
-msgstr "A felhasználói szavazások kezelése top.gg-hez"
+msgstr "A felhasználói szavazások kezelése top.gg-n"
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr "Elküldi a linket, amellyel szavazni tudsz a DuckHunt-ra bot listákon."
@@ -201,7 +201,7 @@ msgid ""
 "4066-8387-1d5144b7fa72`"
 msgstr ""
 "Ha valaki szeretne egy irányítópultot vagy hasonlót létrehozni a DuckHunt "
-"irányításához, már van néhány API útvonal. Mind JSON-t vagy HTTP404/403/500-"
+"irányításához, már van néhány API útvonal. Mind JSON-t vagy HTTP 404/403/500-"
 "at küld vissza.\n"
 "\n"
 "**Útvonalak:**\n"
@@ -229,8 +229,7 @@ msgstr ""
 "adataihoz. Kérésre (angolul) elérhetőek tőlem.\n"
 "\n"
 "API kulcsok (helyi vagy globális) uuid4 formátumban vannak, és így néznek ki:"
-"\n"
-"`d84af260-c806-4066-8387-1d5144b7fa72`"
+" `d84af260-c806-4066-8387-1d5144b7fa72`"
 
 msgid "/channels/\n"
 "\n"
@@ -624,6 +623,8 @@ msgid ""
 "Add an infrared detector to your weapon. Save bullets and shots. [15 exp/6 "
 "shots]"
 msgstr ""
+"Adj egy infraredes érzékelőt a fegyveredhez. Takarítsd meg a lövéseid és a "
+"golyókat. [15 tp/6 lövés]"
 
 msgid ""
 "Add a silencer to your weapon to prevent scaring ducks. [5 exp/24* hrs]"
@@ -720,10 +721,10 @@ msgstr ""
 "Köszönet ezeknek a remek embereknek, akik segítettek a bot lefordításában"
 
 msgid "For when you misspell the pan command."
-msgstr ""
+msgstr "Arra, amikor félreírod a pan parancsot."
 
 msgid "For when you misspell the reload command."
-msgstr ""
+msgstr "Arra, amikor félreírod a reload parancsot."
 
 msgid "I only get one eye"
 msgstr ""
@@ -754,7 +755,7 @@ msgid ""
 msgstr ""
 
 msgid "This returns the current bot time."
-msgstr ""
+msgstr "Ez elküldi a jelenlegi bot időt"
 
 msgid "Get some quickstats about yourself (or someone else)."
 msgstr ""
@@ -921,13 +922,13 @@ msgid "Please wait while I check where you can vote..."
 msgstr ""
 
 msgid "You can vote !"
-msgstr ""
+msgstr "Tudsz szavazni!"
 
 msgid "Thanks for supporting the bot by voting !"
-msgstr ""
+msgstr "Köszönjük, hogy támogatod a botot szavazással!"
 
 msgid "You might be able to vote !"
-msgstr ""
+msgstr "Lehet, hogy tudsz szavazni!"
 
 msgid ""
 "Thanks for supporting the bot by voting as much as you can. It makes a "
@@ -935,10 +936,10 @@ msgid ""
 msgstr ""
 
 msgid "Oh no! No bot list is currently available for you to vote."
-msgstr ""
+msgstr "Ó, ne! Egyetlen bot lista sem elérhető a szavazásodhoz."
 
 msgid "There is nowhere for you to vote at the time !"
-msgstr ""
+msgstr "Sehol se tudsz szavazni most!"
 
 msgid ""
 "Thanks for supporting the bot. It makes a difference! \n"
@@ -950,16 +951,16 @@ msgid "Click me to vote"
 msgstr ""
 
 msgid "You can vote on {bl_name}"
-msgstr ""
+msgstr "Tudsz szavazni a {bl_name} botlistán."
 
 msgid "You might be able to vote on {bl_name}"
-msgstr ""
+msgstr "Lehet, hogy tudsz szavazni a {bl_name} botlistán."
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
-msgstr ""
+msgstr "{monitored_player.mention}, RPG időkorlát: **{name}** lejárt."
 
 msgid "Here's the invite you requested {invite}"
-msgstr ""
+msgstr "Itt a meghívó, amit kértél: {invite}"
 
 msgid ""
 "{rpg_role.mention}, you might want to click the reaction above/do what the "
@@ -1129,7 +1130,7 @@ msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself
 msgstr ""
 
 msgid "tree"
-msgstr ""
+msgstr "fa"
 
 msgid "❌ I have no idea what you want to hug..."
 msgstr "❌ Nincs ötletem arra, hogy mit akarsz megölelni..."
@@ -1313,7 +1314,7 @@ msgid "Open it in your inventory"
 msgstr "Nyisd ki az eszköztáradban."
 
 msgid "A clean box of foie gras"
-msgstr ""
+msgstr "Egy tiszta doboz libamáj"
 
 msgid "The boss dropped that when he died"
 msgstr ""
@@ -1322,13 +1323,13 @@ msgid "A little something for helping the bot"
 msgstr "Egy kicsi dolog, a bot segítéséért"
 
 msgid "Thanks for voting for DuckHunt"
-msgstr "Köszi a DuckHunt-ra szavazás"
+msgstr "Köszi a DuckHunt-ra szavazást!"
 
 msgid "VIP Card"
 msgstr "VIP Kártya"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
-msgstr ""
+msgstr "Egy szép és"
 
 msgid "A book in a foreign language"
 msgstr "Egy könyv egy idegen nyelven"
@@ -1343,13 +1344,13 @@ msgid "Reading it will give you experience"
 msgstr ""
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "Egy enciklopédia"
 
 msgid "Reading it will give you a lot of experience"
 msgstr ""
 
 msgid "A bullet"
-msgstr ""
+msgstr "Egy golyó"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
@@ -1363,7 +1364,7 @@ msgid "Crack it open !"
 msgstr "Törd fel!"
 
 msgid "A free card for magazines"
-msgstr ""
+msgstr "Egy ingyen kártya tölténytárakért"
 
 msgid "Redeem it to refill your weapon."
 msgstr ""
@@ -1409,13 +1410,13 @@ msgid "✨ Yay! Free ammo!"
 msgstr "✨ Ez az! Ingyen lőszer!"
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr "✨ Ó, ez egy "
+msgstr "✨ Ó, ez egy golyó?"
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr "✨ Ó nézd, kacsák! Kacsák mindenhol!"
 
 msgid "Prestige Information"
-msgstr ""
+msgstr "Presztízs infomáció"
 
 msgid ""
 "Prestige is a way for you to restart the DuckHunt adventure, resetting your "
@@ -1435,7 +1436,7 @@ msgid ""
 msgstr ""
 
 msgid "Prestige daily bonus"
-msgstr ""
+msgstr "Presztízs napi bónusz"
 
 msgid ""
 "You can get anywhere from {min} to {max} experience every day by using the "
@@ -1443,10 +1444,10 @@ msgid ""
 msgstr ""
 
 msgid "✨ Current prestige level ✨️"
-msgstr "✨"
+msgstr "✨ Jelenlegi presztízs szint"
 
 msgid "You have reached level {level}"
-msgstr ""
+msgstr "Elérted a(z) {level}. szintet"
 
 msgid ""
 "**Remember**, using prestige means losing your statistics and most of your "
@@ -1539,7 +1540,7 @@ msgid ""
 msgstr ""
 
 msgid "DM Timed Out"
-msgstr ""
+msgstr "DM Időtúllépés"
 
 msgid ""
 "It seems like nothing has been said here for a long time, so I've gone ahead "
@@ -1547,9 +1548,13 @@ msgid ""
 "support. If you need anything else, feel free to open a new ticket by "
 "sending a message here."
 msgstr ""
+"Úgy látszik, hogy semmi se lett mondva itt sok ideig, így bezártam a jegyet "
+"és töröltem az előzményeit. Köszönjük, hogy használtad a DuckHunt DM "
+"támogatást. Ha kell bármi más, nyugodtan nyiss meg egy új jegyet egy üzenet "
+"ide elküldésével."
 
 msgid "Support server"
-msgstr ""
+msgstr "Támogatási szerver"
 
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
@@ -1638,7 +1643,7 @@ msgid "There will be very big ducks on this channel."
 msgstr ""
 
 msgid "The server prefix is set to `{prefix}`."
-msgstr ""
+msgstr "A szerver prefix erre van beállítva: `{prefix}`."
 
 msgid "There is no specific prefix set for this guild."
 msgstr ""
@@ -2442,7 +2447,7 @@ msgid "{target.name} hugs counts."
 msgstr ""
 
 msgid "Players"
-msgstr ""
+msgstr "Játékosok"
 
 msgid "Hugs when dead"
 msgstr ""
@@ -2611,10 +2616,10 @@ msgid "Mommy is crying"
 msgstr ""
 
 msgid "Kill a few baby ducks."
-msgstr ""
+msgstr "Ölj meg néhány babakacsát."
 
 msgid "MATHS 101"
-msgstr ""
+msgstr "MATEK 101"
 
 msgid "Solve equations given by the Pr. Duck."
 msgstr ""
@@ -2623,13 +2628,13 @@ msgid "BRAAAAAINS!"
 msgstr "AGYAAAAAAAAK!"
 
 msgid "Eat some brains and come back to life."
-msgstr ""
+msgstr "Egyél meg néhány agyat és gyere vissza az életbe."
 
 msgid "Sentry gun"
-msgstr ""
+msgstr "Őrpisztoly"
 
 msgid "Use more than 1000 bullets."
-msgstr ""
+msgstr "Használj fel több mint 1000 golyót."
 
 msgid "Homing kills (you)"
 msgstr ""
@@ -2638,7 +2643,7 @@ msgid "Use the homing projectiles."
 msgstr ""
 
 msgid "You monster"
-msgstr ""
+msgstr "Te szörnyeteg"
 
 msgid "Kill a MOAD that spawns a baby duck."
 msgstr ""
@@ -2662,10 +2667,10 @@ msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
 msgid "https://duckhunt.me/support"
-msgstr ""
+msgstr "https://duckhunt.me/support"
 
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
-msgstr ""
+msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
 
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "
@@ -2685,7 +2690,20 @@ msgid ""
 "this message!"
 msgstr ""
 "Üdv! Az alábbi üzenet (a DuckHunt tulajdonosa által írva, lefordította "
-"Robert9157) egy gyors bevezetést fog adni neked, és "
+"Robert9157) egy gyors bevezetést fog adni neked, és elküldi a DuckHunt wiki "
+"linkjeit is.\n"
+"Először is, köszönöm hogy használod a botom! Ha még vannak megválaszolatlan "
+"kérdéseid e üzenet és a wiki elolvasása után, több mint szívesen tudunk "
+"segíteni neked a támogatási csatornákon itt: <{support_server_link}>.\n"
+"\n"
+"Ha egy kacsa leidéződik, rá kell lőnöd a`dh!bang` paranccsal.\n"
+"Újratöltheted a lőszeredet `dh!reload`-dal, és új tölténytárakat "
+"vásárolhatsz ezzel: `dh!shop magazine` vagy `dh!shop 2`.\n"
+"Az eredményeid és a csatornák ranglistái elérhetőek online (nyomd meg a "
+"címsort a `dh!me` -ben miután játszottál egy kicsit), és Discordon. Ha "
+"többet szeretnél tudni a játékról, használd a wikit! <{wiki_link}>\n"
+"Mi figyeljük a bot privát üzeneteit is, tehát ha további kérdéseid vannak, "
+"csak válaszolj erre az üzenetre!"
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
@@ -2756,7 +2774,7 @@ msgid "A useful coat when it rains."
 msgstr "Egy hasznos kabát, ha esik az eső."
 
 msgid "Orange"
-msgstr ""
+msgstr "Narancssárga"
 
 msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
@@ -2764,32 +2782,32 @@ msgid ""
 msgstr ""
 
 msgid "Camo"
-msgstr ""
+msgstr "Camo"
 
 msgid "Lower visibility: Less chance to frighten ducks."
 msgstr ""
 
 msgid "Blue"
-msgstr ""
+msgstr "Kék"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
 msgstr ""
 
 msgid "Red"
-msgstr ""
+msgstr "Piros"
 
 msgid ""
 "Hungry for blood: Increase your murder skills, reduce murder penalties."
 msgstr ""
 
 msgid "Yellow"
-msgstr ""
+msgstr "Sárga"
 
 msgid "Sun powers: Mirrors are less effective against you."
 msgstr ""
 
 msgid "Dark green"
-msgstr ""
+msgstr "Sötétzöld"
 
 msgid "Farming skills: Clovers give you one more experience point."
 msgstr ""
@@ -2827,12 +2845,12 @@ msgid "{cog_name} Commands"
 msgstr ""
 
 msgid "normal"
-msgstr ""
+msgstr "normál"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 normál kacsa"
+msgstr[1] "amennyiből {this_ducks_killed} normál kacsa"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
@@ -2846,7 +2864,7 @@ msgid ""
 msgstr ""
 
 msgid "{hunter.mention} scared the duck away."
-msgstr ""
+msgstr "{hunter.mention} elijesztette a kacsát."
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
@@ -2887,29 +2905,32 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Huh, quick question, what's {operation} ?"
-msgstr ""
+msgstr "Huh, gyors kérdés, mennyi {operation}?"
 
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
 "`dh!bang <answer>`."
 msgstr ""
+"{hurter.mention}, kérdeztem tőled valamit! Mennyi {operation}? Válaszolj "
+"ezzel: `dh!bang <answer>`."
 
 msgid "{hurter.mention}, Just give me digits !"
-msgstr ""
+msgstr "{hurter.mention}, csak számokat adj nekem!"
 
 msgid "{hurter.mention}, that's not the correct answer !"
-msgstr ""
+msgstr "{hurter.mention}, ez nem a helyes megoldás!"
 
 msgid "baby"
-msgstr ""
+msgstr "bébi"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 bébikacsa"
+msgstr[1] "amennyiből {this_ducks_killed} bébikacsa"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
+"{killer.mention} megölte a bébikacsát  [**Bébi**: {won_experience} tp]"
 
 msgid ""
 "{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
@@ -2917,36 +2938,36 @@ msgid ""
 msgstr ""
 
 msgid "golden"
-msgstr ""
+msgstr "arany"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 aranykacsa"
+msgstr[1] "amennyiből {this_ducks_killed} aranykacsa"
 
 msgid "plastic"
-msgstr ""
+msgstr "műanyag"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 műanyagból készült"
+msgstr[1] "amennyiből {this_ducks_killed} műanyagből készült"
 
 msgid "kamikaze"
-msgstr ""
+msgstr "kamikáze"
 
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 kamikáze kacsa"
+msgstr[1] "amennyiből {this_ducks_killed} kamikáze kacsa"
 
 msgid "mechanical"
-msgstr ""
+msgstr "mechanikus"
 
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 mechanikus kacsa"
+msgstr[1] "amennyiből {this_ducks_killed} mechanikus kacsa"
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -3580,7 +3601,7 @@ msgid "duck annihilator"
 msgstr ""
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "kacsa sorozatgyilkos"
 
 msgid "duck genocider"
 msgstr ""
