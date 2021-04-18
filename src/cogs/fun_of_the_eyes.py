@@ -102,9 +102,9 @@ class FunOfTheEyes(Cog):
                     break
             else:
                 if who:
-                    image_bytes = await who.avatar_url_as(format="jpg", size=4096).read()
+                    image_bytes = await who.avatar_url_as(format="jpg", size=512).read()
                 else:
-                    image_bytes = await ctx.author.avatar_url_as(format="jpg", size=4096).read()
+                    image_bytes = await ctx.author.avatar_url_as(format="jpg", size=512).read()
 
             end_dl = time.perf_counter()
             dl_time = round(end_dl - start, 1)
