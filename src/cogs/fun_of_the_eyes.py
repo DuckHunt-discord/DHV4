@@ -10,7 +10,7 @@ from io import BytesIO
 from typing import Optional
 
 import seam_carving
-from PIL import Image
+from PIL import Image, ImageOps
 import discord
 from discord.ext import commands
 
@@ -44,6 +44,7 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
         dst.save(final_buffer, "jpeg")
 
     else:
+        dst_h, dst_w = src_h, src_w
         images = [Image.fromarray(src)]
         for dst_h in range(src_h, src_h - reduce_height, GIF_STEP):
             src = seam_carving.resize(
@@ -52,7 +53,11 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
                 order='width-first',  # Choose from {width-first, height-first}
                 keep_mask=None
             )
-            images.append(Image.fromarray(src))
+
+            delta_w = src_w - dst_w
+            delta_h = src_h - dst_h
+            padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+            images.append(ImageOps.expand(Image.fromarray(src), padding))
 
         for dst_w in range(src_w, src_w - reduce_width, GIF_STEP):
             src = seam_carving.resize(
@@ -61,7 +66,11 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
                 order='width-first',  # Choose from {width-first, height-first}
                 keep_mask=None
             )
-            images.append(Image.fromarray(src))
+
+            delta_w = src_w - dst_w
+            delta_h = src_h - dst_h
+            padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+            images.append(ImageOps.expand(Image.fromarray(src), padding))
 
         images[0].save(final_buffer,
                        format='gif',
