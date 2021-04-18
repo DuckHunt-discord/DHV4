@@ -19,7 +19,8 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
 
-GIF_STEP = -10
+GIF_STEP = -5
+BASE_DURATION = 10
 
 
 def pad_image_to(image, big_h, big_w, curr_h, curr_w):
@@ -59,6 +60,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     big_w = max(start_w, end_w)
 
     images = [pad_image_to(Image.fromarray(src), big_h, big_w, start_h, start_w)]
+    durations = [BASE_DURATION * 5]
 
     # Resize height
     for curr_h in range(start_h, end_h, step_h):
@@ -73,6 +75,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
         )
 
         images.append(pad_image_to(Image.fromarray(src), big_h, big_w, curr_h, curr_w))
+        durations.append(BASE_DURATION)
 
     # Resize width
 
@@ -87,12 +90,15 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
         )
 
         images.append(pad_image_to(Image.fromarray(src), big_h, big_w, curr_h, curr_w))
+        durations.append(BASE_DURATION)
+
+    durations[-1] = BASE_DURATION * 15
 
     images[0].save(final_buffer,
-                   format='gif',
+                   format='webp',
                    save_all=True,
                    append_images=images[1:],
-                   duration=10,
+                   duration=durations,
                    loop=0)
 
     final_buffer.seek(0)
@@ -169,7 +175,7 @@ class FunOfTheEyes(Cog):
 
             # prepare the file
             if make_gif:
-                file = discord.File(filename="seam_carving.gif", fp=final_buffer)
+                file = discord.File(filename="seam_carving.webp", fp=final_buffer)
             else:
                 file = discord.File(filename="seam_carving.jpg", fp=final_buffer)
 
