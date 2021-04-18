@@ -21,7 +21,9 @@ from utils.models import AccessLevel
 
 
 def resize_image(image_bytes, reduce_width, reduce_height):
-    image = Image.open(BytesIO(image_bytes))
+    image = Image.open(BytesIO(image_bytes),)
+    background = Image.new('RGBA', image.size, (255, 255, 255))
+    image = Image.alpha_composite(background, image)
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
