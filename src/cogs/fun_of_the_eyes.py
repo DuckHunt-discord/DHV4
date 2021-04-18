@@ -54,7 +54,7 @@ class FunOfTheEyes(Cog):
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def carve(self, ctx: MyContext, who: Optional[discord.User] = None, reduce_width: int = 200, reduce_height: int = 200, ):
         """
-        Carve an image/avatar, resigi
+        Content-aware carving of an image/avatar, resizing it to reduce the width and height, loosing as few details as we can.
         """
         status_message = await ctx.send("<a:typing:597589448607399949> Downloading image...")
         async with ctx.typing():
