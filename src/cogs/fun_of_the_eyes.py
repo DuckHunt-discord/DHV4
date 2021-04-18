@@ -102,7 +102,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct, image_format):
                    format=image_format,
                    save_all=True,
                    append_images=images[1:],
-                   duration=durations,
+                   duration=BASE_DURATION,
                    loop=0)
 
     final_buffer.seek(0)
