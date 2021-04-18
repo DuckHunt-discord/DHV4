@@ -105,7 +105,7 @@ def resize_image(image_bytes, w_pct, h_pct):
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
-    dst_h, dst_w = int(src_w * (h_pct/100)), int(src_h * (w_pct/100))
+    dst_h, dst_w = int(src_h * (h_pct/100)), int(src_w * (w_pct/100))
 
     dst = seam_carving.resize(
         src, (dst_w, dst_h),
