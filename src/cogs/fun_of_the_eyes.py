@@ -37,7 +37,7 @@ def pad_image_to(image, big_h, big_w, curr_h, curr_w):
     return ImageOps.expand(image, padding)
 
 
-def resize_image_gif(image_bytes, reduce_width, reduce_height):
+def resize_image_gif(image_bytes, w_pct, h_pct):
     # Get the PIL Image
     image = Image.open(BytesIO(image_bytes))
 
@@ -51,7 +51,7 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     src_h, src_w, _ = src.shape
 
     # Get the desired sizes
-    dst_h, dst_w = src_w - reduce_width, src_h - reduce_height
+    dst_h, dst_w = int(src_w * (w_pct/100)), int(src_h * (h_pct/100))
 
     if dst_h <= 0 or dst_w <= 0:
         raise TooSmall(src_h, src_w, dst_h, dst_w)
@@ -60,7 +60,7 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     start_h = src_h
 
     # The ending size
-    end_h = src_h - reduce_height
+    end_h = src_h - dst_h
 
     # The step : positive if growing, negative if not.
     step_h = GIF_STEP if end_h < start_h else - GIF_STEP
@@ -70,7 +70,7 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
 
     # Same for width
     start_w = src_w
-    end_w = src_w - reduce_width
+    end_w = dst_w
     step_w = GIF_STEP if end_w < start_w else - GIF_STEP
     big_w = max(start_w, end_w)
 
@@ -115,13 +115,13 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     return final_buffer, src_h, src_w
 
 
-def resize_image(image_bytes, reduce_width, reduce_height):
+def resize_image(image_bytes, w_pct, w_pct):
     image = Image.open(BytesIO(image_bytes))
     final_buffer = BytesIO()
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
-    dst_h, dst_w = src_w - reduce_width, src_h - reduce_height
+    dst_h, dst_w = int(src_w * (w_pct/100)), int(src_h * (w_pct/100))
 
     if dst_h <= 0 or dst_w <= 0:
         raise TooSmall(src_h, src_w, dst_h, dst_w)
@@ -144,7 +144,7 @@ class FunOfTheEyes(Cog):
     @commands.command()
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
-                    reduce_width: int = 200, reduce_height: int = 200, make_gif: bool = False):
+                    width_pct: int = 50, height_pct: int = 50, make_gif: bool = False):
         """
         Content-aware carving of an image/avatar, resizing it to reduce the width and height, loosing as few details as we can.
         """
@@ -169,10 +169,9 @@ class FunOfTheEyes(Cog):
                                               f"<a:typing:597589448607399949> Processing image...")
 
             if make_gif:
-                fn = partial(resize_image_gif, image_bytes, reduce_width, reduce_height)
+                fn = partial(resize_image_gif, image_bytes, width_pct, height_pct)
             else:
-                fn = partial(resize_image, image_bytes, reduce_width, reduce_height)
-
+                fn = partial(resize_image, image_bytes, width_pct, height_pct)
 
             try:
                 final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
