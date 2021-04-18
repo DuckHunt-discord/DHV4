@@ -21,7 +21,85 @@ from utils.models import AccessLevel
 
 GIF_STEP = -10
 
-def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
+
+def pad_image_to(image, big_h, big_w, curr_h, curr_w):
+    delta_w = big_w - curr_w
+    delta_h = big_h - curr_h
+    padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+    return ImageOps.expand(image, padding)
+
+
+def resize_image_gif(image_bytes, reduce_width, reduce_height):
+    # Get the PIL Image
+    image = Image.open(BytesIO(image_bytes))
+
+    # Get the output buffer
+    final_buffer = BytesIO()
+
+    # Get the numpy image
+    src = np.array(image)
+
+    # Get the image sizes
+    src_h, src_w, _ = src.shape
+
+    # Get the desired sizes
+    dst_h, dst_w = src_w - reduce_width, src_h - reduce_height
+
+    assert dst_h > 0
+    assert dst_w > 0
+
+    start_h = src_h
+    end_h = src_h - reduce_height
+    step_h = GIF_STEP if end_h < start_h else - GIF_STEP
+    big_h = max(start_h, end_h)
+
+    start_w = src_w
+    end_w = src_w - reduce_width
+    step_w = GIF_STEP if end_w < start_w else - GIF_STEP
+    big_w = max(start_w, end_w)
+
+    images = [pad_image_to(Image.fromarray(src), big_h, big_w, src_h, src_w)]
+
+    # Resize height
+    for dst_h in range(start_h, end_h, step_h):
+        curr_w = src_w
+        curr_h = dst_h
+
+        src = seam_carving.resize(
+            src, (curr_w, curr_h),
+            energy_mode='backward',  # Choose from {backward, forward}
+            order='width-first',  # Choose from {width-first, height-first}
+            keep_mask=None
+        )
+
+        images.append(pad_image_to(Image.fromarray(src), big_h, big_w, curr_h, curr_w))
+
+    # Resize width
+    for dst_w in range(start_w, end_w, step_w):
+        curr_w = dst_w
+        curr_h = src_h
+
+        src = seam_carving.resize(
+            src, (curr_w, curr_h - reduce_height),
+            energy_mode='backward',  # Choose from {backward, forward}
+            order='width-first',  # Choose from {width-first, height-first}
+            keep_mask=None
+        )
+
+        images.append(pad_image_to(Image.fromarray(src), big_h, big_w, curr_h, curr_w))
+
+    images[0].save(final_buffer,
+                   format='gif',
+                   save_all=True,
+                   append_images=images[1:],
+                   duration=10,
+                   loop=0)
+
+    final_buffer.seek(0)
+    return final_buffer
+
+
+def resize_image(image_bytes, reduce_width, reduce_height):
     image = Image.open(BytesIO(image_bytes),)
     final_buffer = BytesIO()
 
@@ -33,61 +111,14 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
     assert dst_h > 0
     assert dst_w > 0
 
-    if not make_gif:
-        dst = seam_carving.resize(
-            src, (dst_w, dst_h),
-            energy_mode='backward',  # Choose from {backward, forward}
-            order='width-first',  # Choose from {width-first, height-first}
-            keep_mask=None
-        )
-        dst = Image.fromarray(dst)
-        dst.save(final_buffer, "jpeg")
-
-    else:
-        images = [Image.fromarray(src)]
-        start_h = src_h
-        end_h = src_h - reduce_height
-        step_h = GIF_STEP if end_h < start_h else - GIF_STEP
-        big_h = max(start_h, end_h)
-
-        start_w = src_w
-        end_w = src_w - reduce_width
-        step_w = GIF_STEP if end_w < start_w else - GIF_STEP
-        big_w = max(start_w, end_w)
-
-        dst_h, dst_w = big_h, big_w
-        for dst_h in range(start_h, end_h, step_h):
-            src = seam_carving.resize(
-                src, (src_w, dst_h),
-                energy_mode='backward',  # Choose from {backward, forward}
-                order='width-first',  # Choose from {width-first, height-first}
-                keep_mask=None
-            )
-
-            delta_w = big_w - dst_w
-            delta_h = big_h - dst_h
-            padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
-            images.append(ImageOps.expand(Image.fromarray(src), padding))
-
-        for dst_w in range(start_w, end_w, step_w):
-            src = seam_carving.resize(
-                src, (dst_w, src_h - reduce_height),
-                energy_mode='backward',  # Choose from {backward, forward}
-                order='width-first',  # Choose from {width-first, height-first}
-                keep_mask=None
-            )
-
-            delta_w = big_w - dst_w
-            delta_h = big_h - dst_h
-            padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
-            images.append(ImageOps.expand(Image.fromarray(src), padding))
-
-        images[0].save(final_buffer,
-                       format='gif',
-                       save_all=True,
-                       append_images=images[1:],
-                       duration=10,
-                       loop=0)
+    dst = seam_carving.resize(
+        src, (dst_w, dst_h),
+        energy_mode='backward',  # Choose from {backward, forward}
+        order='width-first',  # Choose from {width-first, height-first}
+        keep_mask=None
+    )
+    dst = Image.fromarray(dst)
+    dst.save(final_buffer, "jpeg")
 
     final_buffer.seek(0)
 
@@ -122,7 +153,11 @@ class FunOfTheEyes(Cog):
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
                                               f"<a:typing:597589448607399949> Processing image...")
 
-            fn = partial(resize_image, image_bytes, reduce_width, reduce_height, make_gif)
+            if make_gif:
+                fn = partial(resize_image_gif, image_bytes, reduce_width, reduce_height)
+            else:
+                fn = partial(resize_image, image_bytes, reduce_width, reduce_height)
+
             final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
 
             end_processing = time.perf_counter()
