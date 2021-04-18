@@ -19,9 +19,10 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
 
-GIF_STEP = -4
+GIF_STEP = -10
 BASE_DURATION = 10
 ALLOWED_FORMATS = {"jpeg", "gif", "webp"}
+
 
 def pad_image_to(image, big_h, big_w, curr_h, curr_w):
     delta_w = big_w - curr_w
