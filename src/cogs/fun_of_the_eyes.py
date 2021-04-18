@@ -43,7 +43,7 @@ def resize_image(image_bytes, reduce_width, reduce_height):
     final_buffer = BytesIO()
 
     # save into the stream, using png format.
-    dst.save(final_buffer, "jpg")
+    dst.save(final_buffer, "jpeg")
     final_buffer.seek(0)
 
     return final_buffer, src_h, src_w
