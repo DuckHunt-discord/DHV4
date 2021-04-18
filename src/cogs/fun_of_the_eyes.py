@@ -21,7 +21,7 @@ from utils.models import AccessLevel
 
 GIF_STEP = -10
 BASE_DURATION = 10
-ALLOWED_FORMATS = {"jpeg", "gif", "webp"}
+ALLOWED_FORMATS = {"jpeg", "gif", "webp", "png"}
 
 
 def pad_image_to(image, big_h, big_w, curr_h, curr_w):
@@ -166,7 +166,7 @@ class FunOfTheEyes(Cog):
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
                                               f"<a:typing:597589448607399949> Processing image...")
 
-            if image_format in {"gif", "webp"}:
+            if image_format in {"gif", "webp", "png"}:
                 fn = partial(resize_image_gif, image_bytes, width_pct, height_pct, image_format)
             else:
                 fn = partial(resize_image, image_bytes, width_pct, height_pct)
