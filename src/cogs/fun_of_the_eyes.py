@@ -46,7 +46,17 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
     else:
         dst_h, dst_w = src_h, src_w
         images = [Image.fromarray(src)]
-        for dst_h in range(src_h, src_h - reduce_height, GIF_STEP):
+        start_h = src_h
+        end_h = src_h - reduce_height
+        step_h = GIF_STEP if end_h < start_h else - GIF_STEP
+        big_h = max(start_h, end_h)
+
+        start_w = src_w
+        end_w = src_w - reduce_width
+        step_w = GIF_STEP if end_w < start_w else - GIF_STEP
+        big_w = max(start_w, end_w)
+
+        for dst_h in range(start_h, end_h, step_h):
             src = seam_carving.resize(
                 src, (src_w, dst_h),
                 energy_mode='backward',  # Choose from {backward, forward}
@@ -54,12 +64,12 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
                 keep_mask=None
             )
 
-            delta_w = src_w - dst_w
-            delta_h = src_h - dst_h
+            delta_w = big_w - dst_w
+            delta_h = big_h - dst_h
             padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
             images.append(ImageOps.expand(Image.fromarray(src), padding))
 
-        for dst_w in range(src_w, src_w - reduce_width, GIF_STEP):
+        for dst_w in range(start_w, end_w, step_w):
             src = seam_carving.resize(
                 src, (dst_w, src_h - reduce_height),
                 energy_mode='backward',  # Choose from {backward, forward}
@@ -67,8 +77,8 @@ def resize_image(image_bytes, reduce_width, reduce_height, make_gif=False):
                 keep_mask=None
             )
 
-            delta_w = src_w - dst_w
-            delta_h = src_h - dst_h
+            delta_w = big_w - dst_w
+            delta_h = big_h - dst_h
             padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
             images.append(ImageOps.expand(Image.fromarray(src), padding))
 
