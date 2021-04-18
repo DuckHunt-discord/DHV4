@@ -22,8 +22,6 @@ from utils.models import AccessLevel
 
 def resize_image(image_bytes, reduce_width, reduce_height):
     image = Image.open(BytesIO(image_bytes),)
-    background = Image.new('RGBA', image.size, (255, 255, 255))
-    image = Image.alpha_composite(background, image)
 
     src = np.array(image)
     src_h, src_w, _ = src.shape
@@ -45,7 +43,7 @@ def resize_image(image_bytes, reduce_width, reduce_height):
     final_buffer = BytesIO()
 
     # save into the stream, using png format.
-    dst.save(final_buffer, "png")
+    dst.save(final_buffer, "jpg")
     final_buffer.seek(0)
 
     return final_buffer, src_h, src_w
@@ -68,9 +66,9 @@ class FunOfTheEyes(Cog):
                     break
             else:
                 if who:
-                    image_bytes = await who.avatar_url_as(format="png", size=4096).read()
+                    image_bytes = await who.avatar_url_as(format="jpg", size=4096).read()
                 else:
-                    image_bytes = await ctx.author.avatar_url_as(format="png", size=4096).read()
+                    image_bytes = await ctx.author.avatar_url_as(format="jpg", size=4096).read()
 
             end_dl = time.perf_counter()
             dl_time = round(end_dl - start, 1)
@@ -88,7 +86,7 @@ class FunOfTheEyes(Cog):
                                               f"✅ Processing image... {processing_time}s ({src_w}px x {src_h}px)\n", )
 
             # prepare the file
-            file = discord.File(filename="seam_carving.png", fp=final_buffer)
+            file = discord.File(filename="seam_carving.jpg", fp=final_buffer)
 
             # send it
             await ctx.send(file=file)
