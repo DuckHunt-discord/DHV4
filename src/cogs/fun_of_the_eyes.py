@@ -184,7 +184,7 @@ class FunOfTheEyes(Cog):
             file = discord.File(filename="seam_carving." + image_format, fp=final_buffer)
 
             # send it
-            await ctx.send(file=file)
+            await ctx.reply(file=file)
 
 
 setup = FunOfTheEyes.setup
