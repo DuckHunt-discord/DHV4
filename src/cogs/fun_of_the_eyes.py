@@ -48,11 +48,19 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     assert dst_h > 0
     assert dst_w > 0
 
+    # Get the starting size
     start_h = src_h
+
+    # The ending size
     end_h = src_h - reduce_height
+
+    # The step : positive if growing, negative if not.
     step_h = GIF_STEP if end_h < start_h else - GIF_STEP
+
+    # Find the biggest of the two, for the gif size
     big_h = max(start_h, end_h)
 
+    # Same for width
     start_w = src_w
     end_w = src_w - reduce_width
     step_w = GIF_STEP if end_w < start_w else - GIF_STEP
@@ -61,9 +69,9 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     images = [pad_image_to(Image.fromarray(src), big_h, big_w, src_h, src_w)]
 
     # Resize height
-    for dst_h in range(start_h, end_h, step_h):
+    for curr_h in range(start_h, end_h, step_h):
+        # Width not yet resized
         curr_w = start_w
-        curr_h = dst_h
 
         src = seam_carving.resize(
             src, (curr_w, curr_h),
@@ -75,12 +83,12 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
         images.append(pad_image_to(Image.fromarray(src), big_h, big_w, curr_h, curr_w))
 
     # Resize width
-    for dst_w in range(start_w, end_w, step_w):
-        curr_w = dst_w
-        curr_h = end_h
 
+    # The height is resized now
+    curr_h = end_h
+    for curr_w in range(start_w, end_w, step_w):
         src = seam_carving.resize(
-            src, (curr_w, curr_h - reduce_height),
+            src, (curr_w, curr_h),
             energy_mode='backward',  # Choose from {backward, forward}
             order='width-first',  # Choose from {width-first, height-first}
             keep_mask=None
