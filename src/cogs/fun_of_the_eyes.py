@@ -96,7 +96,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
                    loop=0)
 
     final_buffer.seek(0)
-    return final_buffer, start_h, start_w
+    return final_buffer, start_h, start_w, end_h, end_w
 
 
 def resize_image(image_bytes, w_pct, h_pct):
@@ -118,7 +118,7 @@ def resize_image(image_bytes, w_pct, h_pct):
 
     final_buffer.seek(0)
 
-    return final_buffer, src_h, src_w
+    return final_buffer, src_h, src_w, dst_h, dst_w
 
 
 class FunOfTheEyes(Cog):
@@ -158,13 +158,14 @@ class FunOfTheEyes(Cog):
             else:
                 fn = partial(resize_image, image_bytes, width_pct, height_pct)
 
-            final_buffer, src_h, src_w = await self.bot.loop.run_in_executor(None, fn)
+            final_buffer, src_h, src_w, dst_h, dst_w = await self.bot.loop.run_in_executor(None, fn)
 
             end_processing = time.perf_counter()
             processing_time = round(end_processing-end_dl, 1)
 
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
-                                              f"✅ Processing image... {processing_time}s ({src_w}px x {src_h}px)\n", )
+                                              f"✅ Processing image... {processing_time}s "
+                                              f"({src_w} x {src_h} -> {dst_w} x {dst_h})\n", )
 
             # prepare the file
             if make_gif:
