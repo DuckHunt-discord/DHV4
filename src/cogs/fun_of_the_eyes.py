@@ -137,7 +137,28 @@ class FunOfTheEyes(Cog):
     async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
                     width_pct: int = 50, height_pct: int = 50, image_format: str = "jpeg"):
         """
-        Content-aware carving of an image/avatar, resizing it to reduce the width and height, loosing as few details as we can.
+        Content-aware carving of an image/avatar, resizing it to reduce the width and height,
+        loosing as few details as we can.
+
+        With seam carving algorithm, the image could be intelligently resized while keeping the important contents
+        undistorted. The carving process could be further guided, so that an object could be removed from the image
+        without apparent artifacts.
+
+        This function only handle normal resizing, without masks.
+
+        The command arguments work as follow :
+        - The first argument is optional and can be a mention/user ID of someone to use their avatar.
+          If it's not supplied, the bot will look for an attached image.
+        - The next two arguments are the width and the height percentages to keep. They must both be > 0, but can also
+          go higher than 100 if you want to upscale the image
+
+        - The image format argument can be any of
+          - jpeg, for a still image
+          - gif, for an animated resizing. Limited quality
+          - png for an APNG (Animated PNG - discord doesn't support them well and will only show the first frame,
+            open in browser)
+          - webp for an animated WebP, a new-ish format that discord doesn't support at all. Try opening those in your
+            browser
         """
         if width_pct <= 0 or height_pct <= 0:
             await ctx.send("❌ Please use positive integers for width and height.")
