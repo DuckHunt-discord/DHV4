@@ -62,7 +62,7 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
 
     # Resize height
     for dst_h in range(start_h, end_h, step_h):
-        curr_w = src_w
+        curr_w = start_w
         curr_h = dst_h
 
         src = seam_carving.resize(
@@ -77,7 +77,7 @@ def resize_image_gif(image_bytes, reduce_width, reduce_height):
     # Resize width
     for dst_w in range(start_w, end_w, step_w):
         curr_w = dst_w
-        curr_h = src_h
+        curr_h = end_h
 
         src = seam_carving.resize(
             src, (curr_w, curr_h - reduce_height),
