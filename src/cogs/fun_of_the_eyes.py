@@ -115,7 +115,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct):
     return final_buffer, src_h, src_w
 
 
-def resize_image(image_bytes, w_pct, w_pct):
+def resize_image(image_bytes, w_pct, h_pct):
     image = Image.open(BytesIO(image_bytes))
     final_buffer = BytesIO()
 
