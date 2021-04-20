@@ -620,7 +620,7 @@ class BotList(Model):
                                       max_length=128)
 
     check_vote_negate = fields.BooleanField(
-        help_text="Does the boolean says if the user has voted (True) or if he can vote (False) ?",
+        help_text="Does the boolean says if the user has voted (True) or if they can vote (False) ?",
         default=True)
 
     webhook_handler = fields.CharField(help_text="What is the function that'll receive the request from the vote hooks",

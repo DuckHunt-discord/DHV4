@@ -267,7 +267,7 @@ class SupportServerCommands(Cog):
     @manage_bot.command()
     async def give_trophy(self, ctx: MyContext, trophy_key: str, user: discord.User, value: bool = True):
         """
-        Congratulate an user giving him a trophy.
+        Congratulate an user giving them a trophy.
         """
 
         async with ctx.typing():

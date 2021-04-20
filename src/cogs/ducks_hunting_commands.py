@@ -244,7 +244,7 @@ class DucksHuntingCommands(Cog):
                     db_target.shooting_stats['near_missed'] += 1
 
                     await ctx.reply(
-                          _("🔫 You missed the duck... And *almost* shot {player_name} in the head, missing him by a few hairs. "
+                          _("🔫 You missed the duck... And *almost* shot {player_name} in the head, missing them by a few hairs. "
                             "Their orange coat saved them. [**MISSED**: -2 exp]",
                             player_name=player_name,
                             ))
@@ -260,7 +260,7 @@ class DucksHuntingCommands(Cog):
                         db_target.shooting_stats['love_avoided_murder'] += 1
 
                         await ctx.reply(
-                            _("🔫 You took your weapon out, aimed it towards {player_name} head, but he had a pink coat just like yours. "
+                            _("🔫 You took your weapon out, aimed it towards {player_name} head, but they had a pink coat just like yours. "
                               "Using the power of love, you missed them on purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]",
                               player_name=player_name,
                             ))
@@ -270,7 +270,7 @@ class DucksHuntingCommands(Cog):
 
                         await ctx.reply(
                             _("🔫 You missed the duck... And you saw your bullet go towards {player_name} head, "
-                              "but he had a pink coat just like yours. Just like in the movies, "
+                              "but they had a pink coat just like yours. Just like in the movies, "
                               "by using the power of love, you made the bullet hit the love tree 🌳 instead. [**MISSED**: -2 exp]",
                               player_name=player_name,
                             ))
@@ -326,7 +326,7 @@ class DucksHuntingCommands(Cog):
                                               "You are legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]",
                                               ))
                         else:
-                            await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing him on the spot. "
+                            await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing them on the spot. "
                                               "You are legally allowed to kill people. [**MISSED**: -2 exp]",
                                               player_name=player_name,
                                               ))
@@ -336,7 +336,7 @@ class DucksHuntingCommands(Cog):
                                               "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
                                               ))
                         else:
-                            await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing him on the spot. "
+                            await ctx.reply(_("🔫 You missed the duck... And shot {player_name} in the head, killing them on the spot. "
                                             "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
                                             player_name=player_name,
                                             ))

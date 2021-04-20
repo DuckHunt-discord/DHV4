@@ -549,11 +549,11 @@ class ShoppingCommands(Cog):
         await asyncio.gather(db_hunter.save(), db_target.save())
 
         if target_has_coat:
-            await ctx.reply(_("💸 You threw water on {target.mention}... But he have a raincoat on. [Fail: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
+            await ctx.reply(_("💸 You threw water on {target.mention}... But they have a raincoat on. [Fail: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
         elif db_hunter.prestige >= 4:
-            await ctx.reply(_("💸 You threw some icelandic water on {target.mention}... He can't hunt for **three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
+            await ctx.reply(_("💸 You threw some icelandic water on {target.mention}... They can't hunt for **three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
         else:
-            await ctx.reply(_("💸 You threw water on {target.mention}... He can't hunt for an hour! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
+            await ctx.reply(_("💸 You threw water on {target.mention}... They can't hunt for an hour! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["17", "boom"])
     async def sabotage(self, ctx: MyContext, target: discord.Member):
@@ -597,10 +597,10 @@ class ShoppingCommands(Cog):
         await asyncio.gather(db_hunter.save(), db_target.save())
 
         try:
-            await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... He doesn't know... yet! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target, ))
+            await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target, ))
         except discord.Forbidden:
             await ctx.reply(_("I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target.name} weapon... "
-                              "He doesn't know... yet! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target,))
+                              "They don't know... yet! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target,))
 
     @shop.command(aliases=["20", "duck"])
     async def decoy(self, ctx: MyContext):
