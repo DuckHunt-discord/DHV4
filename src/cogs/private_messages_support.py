@@ -509,7 +509,7 @@ class PrivateMessagesSupport(Cog):
                 reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
     @private_support.command(aliases=["not_support", "huh"])
-    async def close_silent(self, ctx: MyContext, *, reason:str =None):
+    async def close_silent(self, ctx: MyContext, *, reason: str = None):
         """
         Close the opened DM channel. Will not send a message, since it wasn't a support request.
         """
