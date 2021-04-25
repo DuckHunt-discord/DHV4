@@ -109,13 +109,18 @@ class MyBot(AutoShardedBot):
             access = db_user.get_access_level()
 
             if access != AccessLevel.BANNED:
-                await self.concurrency.acquire(message)
+                should_block = getattr(ctx.command, "block_concurrency", True)
+                if should_block:
+                    await self.concurrency.acquire(message)
+
                 await self.invoke(ctx)
-                await self.concurrency.release(message)
+
+                if should_block:
+                    await self.concurrency.release(message)
 
     async def on_command(self, ctx: MyContext):
         db_user = await get_from_db(ctx.author, as_user=True)
-        if db_user.first_use:
+        if db_user.first_use and "help" not in ctx.command.name:
             _ = await ctx.get_translate_function(user_language=True)
 
             ctx.logger.info(f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
