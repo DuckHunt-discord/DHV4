@@ -16,7 +16,7 @@ from utils.checks import NotInServer, BotIgnore, NotInChannel
 from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket
+from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket, AccessLevel
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
@@ -262,10 +262,19 @@ class PrivateMessagesSupport(Cog):
         info_embed.set_footer(text="Private statistics")
 
         ticket_count = await db_user.support_ticket_count()
-        info_embed.add_field(name="User language", value=str(db_user.language))
-        info_embed.add_field(name="Access Level", value=str(db_user.access_level_override))
-        info_embed.add_field(name="First seen", value=str(db_user.first_seen), inline=False)
-        info_embed.add_field(name="Tickets created", value=str(ticket_count))
+        info_embed.add_field(name="User language", value=str(db_user.language), inline=True)
+
+        if db_user.access_level_override != AccessLevel.DEFAULT:
+            info_embed.add_field(name="Access Level", value=str(db_user.access_level_override.name), inline=True)
+
+        fs_td = format_timedelta(db_user.first_seen - timezone.now(),
+                                 granularity="minute",
+                                 add_direction=True,
+                                 format="short",
+                                 locale="en")
+
+        info_embed.add_field(name="First seen", value=str(fs_td), inline=True)
+        info_embed.add_field(name="Tickets created", value=str(ticket_count), inline=True)
 
         if ticket_count > 1:
             last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by').first()
