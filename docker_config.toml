@@ -55,7 +55,7 @@ wiki_url = "https://duckhunt.me/docs/"
 
 [cogs.DuckBoss]
 boss_channel_id = 794950988845940768
-required_bangs = 60
+required_bangs = 40
 role_ping_id = 803708518716014652
 
 
