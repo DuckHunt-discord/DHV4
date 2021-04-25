@@ -261,6 +261,9 @@ class PrivateMessagesSupport(Cog):
         info_embed.set_footer(text="Private statistics")
 
         ticket_count = await db_user.support_ticket_count()
+        info_embed.add_field(name="User language", value=str(db_user.language))
+        info_embed.add_field(name="Access Level", value=str(db_user.access_level_override))
+        info_embed.add_field(name="First seen", value=str(db_user.first_seen), inline=False)
         info_embed.add_field(name="Tickets created", value=str(ticket_count))
 
         if ticket_count > 1:
