@@ -618,7 +618,7 @@ class PrivateMessagesSupport(Cog):
             return payload.user_id == user.id and str(payload.emoji) == '✅' and payload.guild_id is None
 
         try:
-            reaction, user = await self.bot.wait_for('raw_reaction_add', timeout=600.0, check=check)
+            payload = await self.bot.wait_for('raw_reaction_add', timeout=600.0, check=check)
         except asyncio.TimeoutError:
             _ = get_translate_function(ctx, db_user.language)
             await user.send(_("Your language preference wasn't changed."))
