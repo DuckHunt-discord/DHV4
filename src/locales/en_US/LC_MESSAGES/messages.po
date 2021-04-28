@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-21 00:24+0200\n"
+"POT-Creation-Date: 2021-04-28 21:34+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -113,7 +113,7 @@ msgstr "Show ducks currently on the channel"
 msgid "Removes all ducks from the channel"
 msgstr "Removes all ducks from the channel"
 
-#: ../cogs/fun_of_the_eyes.py:139
+#: ../cogs/fun_of_the_eyes.py:141
 msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Get some more experience..."
 msgstr "Get some more experience..."
 
-#: ../cogs/private_messages_support.py:87
+#: ../cogs/private_messages_support.py:91
 msgid ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
@@ -238,7 +238,7 @@ msgstr ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
 
-#: ../cogs/private_messages_support.py:440
+#: ../cogs/private_messages_support.py:456
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
@@ -248,7 +248,7 @@ msgstr ""
 "control the created channels, and to\n"
 "interact with remote users."
 
-#: ../cogs/private_messages_support.py:451
+#: ../cogs/private_messages_support.py:467
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
@@ -256,7 +256,7 @@ msgstr ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
 
-#: ../cogs/private_messages_support.py:500
+#: ../cogs/private_messages_support.py:516
 msgid ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
@@ -264,13 +264,23 @@ msgstr ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
 
-#: ../cogs/private_messages_support.py:527
+#: ../cogs/private_messages_support.py:544
 msgid "Block the user from opening further DMs channels."
 msgstr "Block the user from opening further DMs channels."
 
-#: ../cogs/private_messages_support.py:537
+#: ../cogs/private_messages_support.py:555
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr "Send a tag to the user, as if you used the dh!tag command in his DMs."
+
+#: ../cogs/private_messages_support.py:578
+msgid ""
+"Suggest a new language to the user. This will show them a prompt asking them "
+"if they want to switch to this new\n"
+"language."
+msgstr ""
+"Suggest a new language to the user. This will show them a prompt asking them "
+"if they want to switch to this new\n"
+"language."
 
 #: ../cogs/random_ducks.py:10
 msgid ""
@@ -2266,11 +2276,11 @@ msgid ""
 msgstr ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 
-#: ../cogs/private_messages_support.py:136
+#: ../cogs/private_messages_support.py:140
 msgid "DM Timed Out"
 msgstr "DM Timed Out"
 
-#: ../cogs/private_messages_support.py:137
+#: ../cogs/private_messages_support.py:141
 msgid ""
 "It seems like nothing has been said here for a long time, so I've gone ahead "
 "and closed your ticket, deleting its history. Thanks for using DuckHunt DM "
@@ -2282,13 +2292,13 @@ msgstr ""
 "support. If you need anything else, feel free to open a new ticket by "
 "sending a message here."
 
-#: ../cogs/private_messages_support.py:144
-#: ../cogs/private_messages_support.py:477
+#: ../cogs/private_messages_support.py:148
+#: ../cogs/private_messages_support.py:493
 msgid "Support server"
 msgstr "Support server"
 
-#: ../cogs/private_messages_support.py:145
-#: ../cogs/private_messages_support.py:477
+#: ../cogs/private_messages_support.py:149
+#: ../cogs/private_messages_support.py:493
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
@@ -2296,7 +2306,7 @@ msgstr ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 
-#: ../cogs/private_messages_support.py:297
+#: ../cogs/private_messages_support.py:313
 msgid ""
 "Welcome to DuckHunt private messages support.\n"
 "Messages here are relayed to a select group of volunteers and bot moderators "
@@ -2312,15 +2322,15 @@ msgstr ""
 "If you opened the ticket by mistake, just say `close` and we'll close it for "
 "you, otherwise, we'll get back to you in a few minutes."
 
-#: ../cogs/private_messages_support.py:303
+#: ../cogs/private_messages_support.py:319
 msgid "Support tickets are deleted after 24 hours of inactivity"
 msgstr "Support tickets are deleted after 24 hours of inactivity"
 
-#: ../cogs/private_messages_support.py:338
+#: ../cogs/private_messages_support.py:354
 msgid "Attachments persistence"
 msgstr "Attachments persistence"
 
-#: ../cogs/private_messages_support.py:340
+#: ../cogs/private_messages_support.py:356
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
@@ -2328,11 +2338,11 @@ msgstr ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 
-#: ../cogs/private_messages_support.py:360
+#: ../cogs/private_messages_support.py:376
 msgid "This is not how you invite DuckHunt."
 msgstr "This is not how you invite DuckHunt."
 
-#: ../cogs/private_messages_support.py:362
+#: ../cogs/private_messages_support.py:378
 msgid ""
 "DuckHunt, like other discord bots, can't join servers by using an invite "
 "link.\n"
@@ -2348,15 +2358,15 @@ msgstr ""
 "quickstart). If you need more help, you can ask here and we'll get back to "
 "you."
 
-#: ../cogs/private_messages_support.py:367
+#: ../cogs/private_messages_support.py:383
 msgid "This is an automatic message."
 msgstr "This is an automatic message."
 
-#: ../cogs/private_messages_support.py:470
+#: ../cogs/private_messages_support.py:486
 msgid "DM Closed"
 msgstr "DM Closed"
 
-#: ../cogs/private_messages_support.py:471
+#: ../cogs/private_messages_support.py:487
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
 "DuckHunt DM support. Keep in mind, sending another message here will open a "
@@ -2368,9 +2378,41 @@ msgstr ""
 "new ticket!\n"
 "In the meantime, here's a nice duck picture for you to look at !"
 
-#: ../cogs/private_messages_support.py:556 ../cogs/tags.py:164
+#: ../cogs/private_messages_support.py:574 ../cogs/tags.py:164
 msgid "❌ There is no tag with that name."
 msgstr "❌ There is no tag with that name."
+
+#: ../cogs/private_messages_support.py:597
+msgid "Language change offer"
+msgstr "Language change offer"
+
+#: ../cogs/private_messages_support.py:599
+#, python-brace-format
+msgid ""
+"DuckHunt support suggests you change your personal language from "
+"{current_language} to {suggested_language}. This will translate all the "
+"messages you get in private message from DuckHunt to {suggested_language}."
+msgstr ""
+"DuckHunt support suggests you change your personal language from "
+"{current_language} to {suggested_language}. This will translate all the "
+"messages you get in private message from DuckHunt to {suggested_language}."
+
+#: ../cogs/private_messages_support.py:609
+msgid ""
+"Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
+"my_lang language_code] command in a game channel to edit later."
+msgstr ""
+"Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
+"my_lang language_code] command in a game channel to edit later."
+
+#: ../cogs/private_messages_support.py:627
+msgid "Your language preference wasn't changed."
+msgstr "Your language preference wasn't changed."
+
+#: ../cogs/private_messages_support.py:637
+#, python-brace-format
+msgid "Your preferred language is now {new_language}."
+msgstr "Your preferred language is now {new_language}."
 
 #: ../cogs/settings_commands.py:45
 msgid "You can view the channel settings here: "
@@ -4064,15 +4106,15 @@ msgstr "An ounce of prevention is worth a pound of cure"
 msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr "Sabotage the gun of someone that planned to shoot at you."
 
-#: ../utils/bot_class.py:132
+#: ../utils/bot_class.py:137
 msgid "https://duckhunt.me/support"
 msgstr "https://duckhunt.me/support"
 
-#: ../utils/bot_class.py:133
+#: ../utils/bot_class.py:138
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
 
-#: ../utils/bot_class.py:123
+#: ../utils/bot_class.py:128
 #, python-brace-format
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "

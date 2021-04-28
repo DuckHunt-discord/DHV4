@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-21 00:24+0200\n"
+"POT-Creation-Date: 2021-04-28 21:34+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -204,6 +204,12 @@ msgstr "Блокировка возможности отправки ЛС."
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr ""
 "Отправка метки пользователю, как будто в ЛС была выполнена команда dh!tag."
+
+msgid ""
+"Suggest a new language to the user. This will show them a prompt asking them "
+"if they want to switch to this new\n"
+"language."
+msgstr ""
 
 msgid ""
 "Shows a random duck image, courtesy of Globloxmen assets.\n"
@@ -1961,6 +1967,26 @@ msgstr ""
 
 msgid "❌ There is no tag with that name."
 msgstr "❌ Метка с таким именем не существует."
+
+msgid "Language change offer"
+msgstr ""
+
+msgid ""
+"DuckHunt support suggests you change your personal language from "
+"{current_language} to {suggested_language}. This will translate all the "
+"messages you get in private message from DuckHunt to {suggested_language}."
+msgstr ""
+
+msgid ""
+"Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
+"my_lang language_code] command in a game channel to edit later."
+msgstr ""
+
+msgid "Your language preference wasn't changed."
+msgstr ""
+
+msgid "Your preferred language is now {new_language}."
+msgstr ""
 
 msgid "You can view the channel settings here: "
 msgstr "Посмотреть настройки канала можно здесь:"
