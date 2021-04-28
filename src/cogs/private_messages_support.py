@@ -606,7 +606,8 @@ class PrivateMessagesSupport(Cog):
         embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",
                          icon_url=str(ctx.author.avatar_url))
 
-        embed.set_footer(text=_("Press ✅ to accept the change, or do nothing to reject."))
+        embed.set_footer(text=_("Press ✅ to accept the change, or do nothing to reject. "
+                                "Use the `dh!settings my_lang language_code` in a game channel to edit later."))
 
         message = await user.send(embed=embed)
         await message.add_reaction("✅")
