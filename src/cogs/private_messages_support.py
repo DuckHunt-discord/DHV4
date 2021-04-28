@@ -600,7 +600,7 @@ class PrivateMessagesSupport(Cog):
                               "from {current_language} to {suggested_language}. This will translate "
                               "all the messages you get in private message from DuckHunt to {suggested_language}.",
                               current_language=current_locale.get_display_name(language_code),
-                              suggested_language=suggested_locale.display_name(language_code),
+                              suggested_language=suggested_locale.get_display_name(language_code),
                               )
 
         embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",
