@@ -630,7 +630,7 @@ class PrivateMessagesSupport(Cog):
             _ = get_translate_function(ctx, db_user.language)
             await user.send(_("Your language preference wasn't changed."))
             await ctx.message.add_reaction('❌')
-            await ctx.send("Language change timed out.")
+            await ctx.reply("Language change timed out.")
         else:
             async with user.dm_channel.typing():
                 db_user = await get_from_db(user, as_user=True)
@@ -642,7 +642,7 @@ class PrivateMessagesSupport(Cog):
                               new_language=suggested_locale.get_display_name()))
 
             await ctx.message.add_reaction('✅')
-            await ctx.send("Language change accepted.")
+            await ctx.reply("Language change accepted.")
 
 
 setup = PrivateMessagesSupport.setup
