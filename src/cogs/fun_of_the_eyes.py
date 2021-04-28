@@ -16,6 +16,7 @@ from discord.ext import commands
 
 from utils.checks import needs_access_level
 from utils.cog_class import Cog
+from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
 
@@ -134,6 +135,7 @@ def resize_image(image_bytes, w_pct, h_pct):
 class FunOfTheEyes(Cog):
     @commands.command(aliases=["resize"])
     @needs_access_level(AccessLevel.BOT_MODERATOR)
+    @dont_block
     async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
                     width_pct: int = 50, height_pct: int = 50, image_format: str = "jpeg"):
         """
