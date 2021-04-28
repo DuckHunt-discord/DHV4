@@ -585,10 +585,12 @@ class PrivateMessagesSupport(Cog):
         db_user = await get_from_db(user, as_user=True)
 
         try:
-            locale_data = Locale.parse(language_code)
+            suggested_locale = Locale.parse(language_code)
         except (babel.UnknownLocaleError, ValueError):
             await ctx.reply("❌ Unknown locale. You need to provide a language code here, like `fr`, `es`, `en`, ...")
             return
+
+        current_locale = Locale.parse(db_user.language_code)
 
         _ = get_translate_function(ctx, language_code)
 
@@ -597,8 +599,8 @@ class PrivateMessagesSupport(Cog):
         embed.description = _("DuckHunt support suggests you change your personal language "
                               "from {current_language} to {suggested_language}. This will translate "
                               "all the messages you get in private message from DuckHunt to {suggested_language}.",
-                              current_language=locale_data.get_display_name(db_user.language),
-                              suggested_language=locale_data.get_display_name(),
+                              current_language=current_locale.get_display_name(language_code),
+                              suggested_language=suggested_locale.display_name(language_code),
                               )
 
         embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",
@@ -610,7 +612,7 @@ class PrivateMessagesSupport(Cog):
         await message.add_reaction("✅")
 
         # Do it, but don't block it
-        asyncio.ensure_future(self.language_change_interaction(ctx, db_user, user, language_code, locale_data))
+        asyncio.ensure_future(self.language_change_interaction(ctx, db_user, user, language_code, suggested_locale))
         await ctx.message.add_reaction("<a:typing:597589448607399949>")
 
     async def language_change_interaction(self, ctx, db_user, user, language_code, locale_data):
