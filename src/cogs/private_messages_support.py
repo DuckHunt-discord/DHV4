@@ -8,6 +8,7 @@ import babel
 import discord
 from babel import Locale
 from babel.dates import format_datetime, format_timedelta
+from discord import RawReactionActionEvent
 from discord.ext import commands, menus, tasks
 from discord.utils import snowflake_time
 from tortoise import timezone
@@ -610,13 +611,14 @@ class PrivateMessagesSupport(Cog):
 
         # Do it, but don't block it
         asyncio.ensure_future(self.language_change_interaction(ctx, db_user, user, language_code, locale_data))
+        await ctx.message.add_reaction("<a:typing:597589448607399949>")
 
     async def language_change_interaction(self, ctx, db_user, user, language_code, locale_data):
-        def check(reaction, react_user):
-            return react_user == user and str(reaction.emoji) == '✅'
+        def check(payload: RawReactionActionEvent):
+            return payload.user_id == user.id and str(payload.emoji) == '✅' and payload.guild_id is None
 
         try:
-            reaction, user = await self.bot.wait_for('reaction_add', timeout=600.0, check=check)
+            reaction, user = await self.bot.wait_for('raw_reaction_add', timeout=600.0, check=check)
         except asyncio.TimeoutError:
             _ = get_translate_function(ctx, db_user.language)
             await user.send(_("Your language preference wasn't changed."))
