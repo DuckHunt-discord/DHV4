@@ -4,7 +4,9 @@ import re
 from functools import partial
 from typing import Dict, List
 
+import babel
 import discord
+from babel import Locale
 from babel.dates import format_datetime, format_timedelta
 from discord.ext import commands, menus, tasks
 from discord.utils import snowflake_time
@@ -569,6 +571,69 @@ class PrivateMessagesSupport(Cog):
         else:
             _ = await ctx.get_translate_function()
             await ctx.reply(_("❌ There is no tag with that name."))
+
+    @private_support.command(aliases=["sl"])
+    async def suggest_language(self, ctx: MyContext, *, language_code):
+        """
+        Suggest a new language to the user. This will show them a prompt asking them if they want to switch to this new
+        language.
+        """
+        await self.is_in_forwarding_channels(ctx)
+
+        user = await self.get_user(ctx.channel.name)
+        db_user = await get_from_db(user, as_user=True)
+
+        try:
+            locale_data = Locale.parse(language_code)
+        except (babel.UnknownLocaleError, ValueError):
+            await ctx.reply("❌ Unknown locale. You need to provide a language code here, like `fr`, `es`, `en`, ...")
+            return
+
+        _ = get_translate_function(ctx, language_code)
+
+        embed = discord.Embed(colour=discord.Colour.blurple(), title=_("Language change offer"))
+
+        embed.description = _("DuckHunt support suggests you change your personal language "
+                              "from {current_language} to {suggested_language}. This will translate "
+                              "all the messages you get in private message from DuckHunt to {suggested_language}.",
+                              current_language=locale_data.get_display_name(db_user.language),
+                              suggested_language=locale_data.get_display_name(),
+                              )
+
+        embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",
+                         icon_url=str(ctx.author.avatar_url))
+
+        embed.set_footer(text=_("Press ✅ to accept the change, or do nothing to reject."))
+
+        message = await user.send(embed=embed)
+        await message.add_reaction("✅")
+
+        # Do it, but don't block it
+        asyncio.ensure_future(self.language_change_interaction(ctx, db_user, user, language_code, locale_data))
+
+    async def language_change_interaction(self, ctx, db_user, user, language_code, locale_data):
+        def check(reaction, react_user):
+            return react_user == user and str(reaction.emoji) == '✅'
+
+        try:
+            reaction, user = await self.bot.wait_for('reaction_add', timeout=600.0, check=check)
+        except asyncio.TimeoutError:
+            _ = get_translate_function(ctx, db_user.language)
+            await user.send(_("Your language preference wasn't changed."))
+            await ctx.message.add_reaction('❌')
+            await ctx.send("Language change timed out.")
+        else:
+            async with user.dm_channel.typing():
+                db_user = await get_from_db(user, as_user=True)
+                db_user.language = language_code
+                await db_user.save()
+                _ = get_translate_function(ctx, language_code)
+
+            await user.send(_("Your preferred language is now {new_language}.",
+                              new_language=locale_data.get_display_name()))
+
+            await ctx.message.add_reaction('✅')
+            await ctx.send("Language change accepted.")
 
 
 setup = PrivateMessagesSupport.setup
