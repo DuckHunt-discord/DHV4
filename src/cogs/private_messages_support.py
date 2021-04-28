@@ -590,7 +590,7 @@ class PrivateMessagesSupport(Cog):
             await ctx.reply("❌ Unknown locale. You need to provide a language code here, like `fr`, `es`, `en`, ...")
             return
 
-        current_locale = Locale.parse(db_user.language_code)
+        current_locale = Locale.parse(db_user.language)
 
         _ = get_translate_function(ctx, language_code)
 
@@ -615,7 +615,7 @@ class PrivateMessagesSupport(Cog):
         asyncio.ensure_future(self.language_change_interaction(ctx, db_user, user, language_code, suggested_locale))
         await ctx.message.add_reaction("<a:typing:597589448607399949>")
 
-    async def language_change_interaction(self, ctx, db_user, user, language_code, locale_data):
+    async def language_change_interaction(self, ctx, db_user, user, language_code, suggested_locale):
         def check(payload: RawReactionActionEvent):
             return payload.user_id == user.id and str(payload.emoji) == '✅' and payload.guild_id is None
 
@@ -634,7 +634,7 @@ class PrivateMessagesSupport(Cog):
                 _ = get_translate_function(ctx, language_code)
 
             await user.send(_("Your preferred language is now {new_language}.",
-                              new_language=locale_data.get_display_name()))
+                              new_language=suggested_locale.get_display_name()))
 
             await ctx.message.add_reaction('✅')
             await ctx.send("Language change accepted.")
