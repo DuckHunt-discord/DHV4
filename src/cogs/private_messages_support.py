@@ -584,6 +584,10 @@ class PrivateMessagesSupport(Cog):
         user = await self.get_user(ctx.channel.name)
         db_user = await get_from_db(user, as_user=True)
 
+        if db_user.language.casefold() == language_code.casefold():
+            await ctx.reply(f"❌ The user language is already set to {db_user.language}")
+            return
+
         try:
             suggested_locale = Locale.parse(language_code)
         except (babel.UnknownLocaleError, ValueError):
