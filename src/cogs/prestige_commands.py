@@ -1,5 +1,6 @@
 import datetime
 import random
+import statistics
 
 import discord
 from discord.ext import commands
@@ -55,9 +56,8 @@ class PrestigeCommands(Cog):
 
         if db_hunter.prestige > 3:
             e.add_field(name=_("Prestige daily bonus"),
-                        value=_("You can get anywhere from {min} to {max} experience every day by using the daily command.",
-                                min=5,
-                                max=20 * db_hunter.prestige))
+                        value=_("You can get around {experience} experience every day by using the daily command.",
+                                experience=20 * db_hunter.prestige/2,))
 
         if db_hunter.prestige > 0:
             e.add_field(name=_("✨ Current prestige level ✨️"),
@@ -135,10 +135,9 @@ class PrestigeCommands(Cog):
             await ctx.send(_("❌ You already claimed your dailies today. Try again tomorrow."))
             return False
 
-        min_experience = 5
         max_experience = 20 * db_hunter.prestige
-
-        added_experience = random.randint(min_experience, max_experience)
+        distrib = statistics.NormalDist(max_experience/2, max_experience/20)
+        added_experience = int(distrib.samples(1)[0])
 
         await db_hunter.edit_experience_with_levelups(ctx, added_experience)
         db_hunter.prestige_last_daily = now
@@ -147,8 +146,5 @@ class PrestigeCommands(Cog):
         await db_hunter.save()
 
         await ctx.send(_("💰️ You took {exp} experience out of the prestige bank. Come back soon!", exp=added_experience))
-
-
-
 
 setup = PrestigeCommands.setup
