@@ -136,7 +136,7 @@ class PrestigeCommands(Cog):
             return False
 
         max_experience = 20 * db_hunter.prestige
-        distrib = statistics.NormalDist(max_experience/2, max_experience/20)
+        distrib = statistics.NormalDist(max_experience/2, max_experience/6)
         added_experience = int(distrib.samples(1)[0])
 
         await db_hunter.edit_experience_with_levelups(ctx, added_experience)
