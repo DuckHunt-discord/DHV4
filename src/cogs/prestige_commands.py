@@ -57,7 +57,7 @@ class PrestigeCommands(Cog):
             e.add_field(name=_("Prestige daily bonus"),
                         value=_("You can get anywhere from {min} to {max} experience every day by using the daily command.",
                                 min=5,
-                                max=15))
+                                max=20 * db_hunter.prestige))
 
         if db_hunter.prestige > 0:
             e.add_field(name=_("✨ Current prestige level ✨️"),
@@ -136,7 +136,7 @@ class PrestigeCommands(Cog):
             return False
 
         min_experience = 5
-        max_experience = 15 * db_hunter.prestige
+        max_experience = 20 * db_hunter.prestige
 
         added_experience = random.randint(min_experience, max_experience)
 
