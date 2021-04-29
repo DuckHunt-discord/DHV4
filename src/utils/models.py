@@ -20,7 +20,10 @@ from utils.levels import get_level_info
 from utils.translations import translate
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
-
+SECOND = 1
+MINUTE = 60 * SECOND
+HOUR = 60 * MINUTE
+DAY = 24 * HOUR
 
 class DefaultDictJSONField(fields.JSONField):
     def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
@@ -104,6 +107,75 @@ class DiscordGuild(Model):
         return f"<Guild name={self.name}>"
 
 
+class SunState(IntEnum):
+    DAY = 0
+    NIGHT = 1
+
+
+class DucksLeft:
+    """
+    This class stores the sate of a channel, counting the ducks left.
+    """
+    def __init__(self, channel, day_ducks=None, night_ducks=None):
+        self.channel: discord.TextChannel = channel
+        self.day_ducks: int = day_ducks
+        self.night_ducks: int = night_ducks
+
+    async def compute_ducks_count(self, db_channel=None, now=None):
+        if not db_channel:
+            db_channel: DiscordChannel = await get_from_db(self.channel)
+
+        if not now:
+            now = int(time.time())
+
+        now = now % DAY
+
+        total_seconds_left = DAY - now
+        total_night_seconds = db_channel.night_seconds_left(0)
+        night_seconds_left = db_channel.night_seconds_left(now)
+        total_day_seconds = DAY - total_night_seconds
+        day_seconds_left   = total_seconds_left - night_seconds_left
+
+        total_ducks_today = db_channel.ducks_per_day
+
+        day_ducks_count = int(total_ducks_today * 9/10)
+        night_ducks_count = int(total_ducks_today * 1/10)
+
+        # Add missing ducks due to int() conversion to night.
+        night_ducks_count += total_ducks_today - day_ducks_count - night_ducks_count
+
+        # The min() here is protecting against having more than a duck every 5 seconds.
+        self.day_ducks   = int(min((day_seconds_left * day_ducks_count) / total_day_seconds, total_day_seconds/5))
+        self.night_ducks = int(min((night_seconds_left * night_ducks_count) / total_night_seconds, total_day_seconds/5))
+
+        return self
+
+    async def maybe_spawn_type(self, db_channel=None, now=None) -> typing.Optional[SunState]:
+        if not db_channel:
+            db_channel: DiscordChannel = await get_from_db(self.channel)
+
+        if not now:
+            now = int(time.time())
+
+        now = now % DAY
+
+        sun_state = db_channel.day_status(now)
+
+        if sun_state == SunState.DAY:
+            if random.randint(0, db_channel.day_seconds_left()) < self.day_ducks:
+                self.day_ducks -= 1
+                return SunState.DAY
+        elif sun_state == SunState.NIGHT:
+            if random.randint(0, db_channel.night_seconds_left()) < self.night_ducks:
+                self.night_ducks -= 1
+                return SunState.NIGHT
+        return None
+
+    @property
+    def ducks_left(self):
+        return self.night_ducks + self.day_ducks
+
+
 class DiscordChannel(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
@@ -185,6 +257,100 @@ class DiscordChannel(Model):
             ser[serialize_field] = getattr(self, serialize_field)
 
         return ser
+
+    @property
+    def night_seconds(self):
+        if self.night_start_at == self.night_end_at:
+            # Nothing set
+            return 0
+        elif self.night_start_at < self.night_end_at:
+            # Simple case: everything is the same day
+            # 16:00            < 23:00
+            return self.night_end_at - self.night_start_at
+        else:
+            # Harder case: night starts in a day and end the next day
+            # 21:00            > 06:00
+            #       v Time until next day      + v Time left at the start of the day
+            return (DAY - self.night_start_at) + self.night_end_at
+
+    def night_seconds_left(self, now=None):
+        if now is None:
+            now = int(time.time())
+
+        now = now % DAY
+
+        if self.night_start_at == self.night_end_at:
+            # Nothing set
+            return 0
+        elif self.night_start_at < self.night_end_at:
+            # Simple case: everything is the same day
+            # 16:00            < 23:00
+            if self.night_start_at < now <= self.night_end_at:
+                # During the night
+                return self.night_end_at - now
+            elif self.night_end_at < now:
+                # After the night
+                return 0
+            elif now < self.night_start_at:
+                # Before the night
+                return self.night_end_at - self.night_start_at
+            else:
+                # This shouldn't be happening
+                raise ArithmeticError(f"Error calculating simpler case in night_seconds_left, debugging follow"
+                                      f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}")
+        else:
+            # Harder case: night starts in a day and end the next day
+            # 21:00            > 06:00
+            #       v Time until next day      + v Time left at the start of the day
+            if now <= self.night_end_at:
+                # During the first night of the day
+                # Seconds left during the first night + seconds in the second night
+                return (self.night_end_at - now) + (DAY - self.night_start_at)
+            elif self.night_end_at < now <= self.night_start_at:
+                # During the day
+                return DAY - self.night_start_at
+            elif self.night_start_at < now:
+                # During the second night, until midnight
+                return DAY - now
+            else:
+                # This shouldn't be happening
+                raise ArithmeticError(f"Error calculating harder case in night_seconds_left, debugging follow"
+                                      f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}")
+
+    def day_status(self, now=None):
+        if now is None:
+            now = int(time.time())
+
+        now = now % DAY
+
+        if self.night_start_at == self.night_end_at:
+            # Nothing set
+            return SunState.DAY
+        elif self.night_start_at < self.night_end_at:
+            # Simple case: everything is the same day
+            # 16:00            < 23:00
+            if self.night_start_at < now <= self.night_end_at:
+                # During the night
+                return SunState.NIGHT
+            else:
+                return SunState.DAY
+        else:
+            # Harder case: night starts in a day and end the next day
+            # 21:00            > 06:00
+            if self.night_end_at < now <= self.night_start_at:
+                return SunState.DAY
+            else:
+                return SunState.NIGHT
+
+    def day_seconds_left(self, now=None):
+        if now is None:
+            now = int(time.time())
+
+        now = now % DAY
+
+        total_seconds_left = DAY - now
+
+        return total_seconds_left - self.night_seconds_left(now)
 
     class Meta:
         table = "channels"

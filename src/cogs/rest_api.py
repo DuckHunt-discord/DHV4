@@ -108,7 +108,7 @@ class RestAPI(Cog):
                  })
 
         ducks_spawned = self.bot.ducks_spawned[channel]
-        ducks_left = self.bot.enabled_channels[channel]
+        ducks_left = self.bot.enabled_channels[channel].ducks_left
 
         return web.json_response(
             {'id': channel.id,

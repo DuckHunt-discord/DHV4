@@ -160,7 +160,7 @@ class DucksSpawningCommands(Cog):
             language_code = await ctx.get_language_code(user_language=True)
             ducks_spawned = self.bot.ducks_spawned[ctx.channel]
             ducks_spawned_count = len(ducks_spawned)
-            ducks_left = self.bot.enabled_channels[ctx.channel]
+            ducks_left = self.bot.enabled_channels[ctx.channel].ducks_left
 
             message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to spawn today.", ducks_spawned_count=ducks_spawned_count, ducks_left=ducks_left),]
 

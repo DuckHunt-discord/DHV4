@@ -2,6 +2,7 @@ import asyncio
 import datetime
 import json
 import random
+from typing import Dict
 
 import discord
 from utils.cog_class import Cog
@@ -10,7 +11,7 @@ from time import time
 
 from utils.ducks import deserialize_duck, compute_sun_state
 from utils.events import Events
-from utils.models import get_enabled_channels, DiscordChannel, get_from_db
+from utils.models import get_enabled_channels, DiscordChannel, get_from_db, DucksLeft
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -69,20 +70,17 @@ class DucksSpawning(Cog):
             start_spawning = time()
             ducks_spawned = 0
             for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
-                if random.randint(0, SECONDS_LEFT_TODAY) < ducks_left_to_spawn:
+                maybe_spawn_type = await ducks_left_to_spawn.maybe_spawn_type()
+                if maybe_spawn_type:
                     if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
                         continue
 
-                    sun, duration_of_night, time_left_sun = await compute_sun_state(channel, SECONDS_SPENT_TODAY)
-
-                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
+                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=maybe_spawn_type))
                     ducks_spawned += 1
 
                     if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
-                        asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=sun))
+                        asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=maybe_spawn_type))
                         ducks_spawned += 1
-
-                    self.bot.enabled_channels[channel] -= 1
 
                 if ducks_spawned > 20:
                     self.bot.logger.warning(f"Tried to make more than {ducks_spawned} ducks spawn at once, "
@@ -109,7 +107,6 @@ class DucksSpawning(Cog):
                 self.bot.logger.warning(f"Tried to make more than {total_leaves} ducks leave at once, "
                                         f"stopping there to protect rate limits...")
                 break
-
 
         end_leaving = time()
 
@@ -173,7 +170,7 @@ class DucksSpawning(Cog):
 
         channels_to_disable = []
 
-        channels = {c.id: c for c in self.bot.get_all_channels()}
+        channels: Dict[int, discord.TextChannel] = {c.id: c for c in self.bot.get_all_channels()}
         i = 0
 
         for db_channel in db_channels:
@@ -185,7 +182,7 @@ class DucksSpawning(Cog):
                 self.bot.logger.debug(f"Planifying ducks spawns on {i}/{len(db_channels)} channels")
 
             if channel:
-                self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=now)
+                self.bot.enabled_channels[channel] = await DucksLeft(channel).compute_ducks_count(db_channel, now)
             else:
                 self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
                 channels_to_disable.append(db_channel)
@@ -202,7 +199,7 @@ class DucksSpawning(Cog):
                 await asyncio.sleep(0)  # Just in case
             self.bot.logger.warning(f"Disabled {len(channels_to_disable)} channels "
                                     f"that are no longer available to the bot.")
-        elif len(channels_to_disable) >= 3000:
+        elif len(channels_to_disable) >= 100:
             self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
                                   f"to disable them. Is discord healthy ?")
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
@@ -299,8 +296,7 @@ class DucksSpawning(Cog):
         return ducks
 
     async def recompute_channel(self, channel: discord.TextChannel):
-        db_channel = await get_from_db(channel)
-        self.bot.enabled_channels[channel] = await self.calculate_ducks_per_day(db_channel, now=int(time()))
+        self.bot.enabled_channels[channel] = await DucksLeft(channel).compute_ducks_count()
 
     async def change_event(self, force=False):
         if random.randint(1, 12) != 1 and not force:

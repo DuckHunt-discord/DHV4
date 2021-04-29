@@ -16,7 +16,7 @@ from utils.bushes import bushes_objects, bushes_weights
 from utils.coats import Coats
 from utils.events import Events
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
-from utils.models import DiscordChannel, get_from_db, Player, get_player
+from utils.models import DiscordChannel, get_from_db, Player, get_player, SunState
 from utils.translations import translate, ntranslate
 import utils.ducks_config as ducks_config
 
@@ -1032,20 +1032,19 @@ DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLAS
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun=None):
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun: SunState=None):
     duck = await get_random_weighted_duck(bot, channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun=None):
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun: SunState=None):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
 
-    assert sun in ["day", "night"]
     db_channel = await get_from_db(channel)
 
-    if sun == "day":
+    if sun == SunState.DAY:
         weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_DAYTIME_CATEGORIES]
         ducks = RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES
     else:
@@ -1079,29 +1078,29 @@ async def compute_sun_state(channel, seconds_spent_today=None):
 
     if night_start_at == night_end_at:
         # Fastpath: No night defined
-        sun = "day"
+        sun = SunState.DAY
         duration_of_night = 0
         time_left_sun = DAY
     elif night_start_at <= seconds_spent_today <= night_end_at:
         # Case where night is from small to big
         # Ex : 0          <= 30                  <= 60
-        sun = "night"
+        sun = SunState.NIGHT
         duration_of_night = night_end_at - night_start_at
         time_left_sun = night_end_at - seconds_spent_today
     elif night_end_at <= night_start_at <= seconds_spent_today:
         # Case where the nights rolls over the next day
         # Ex : 25         <= 30                  <= 2
-        sun = "night"
+        sun = SunState.NIGHT
         duration_of_night = DAY - night_start_at + night_end_at
         time_left_sun = DAY - seconds_spent_today + night_end_at
     elif night_start_at >= night_end_at >= seconds_spent_today:
         # Case where the night rolls over the previous day
         # Ex : 25         <= 1                   <= 2
-        sun = "night"
+        sun = SunState.NIGHT
         duration_of_night = DAY - night_start_at + night_end_at
         time_left_sun = night_end_at - seconds_spent_today
     else:
-        sun = "day"
+        sun = SunState.DAY
         if night_start_at <= night_end_at:
             duration_of_night = night_end_at - night_start_at
             if seconds_spent_today <= night_start_at:

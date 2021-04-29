@@ -16,7 +16,7 @@ from utils import config as config
 from utils.ctx_class import MyContext
 from utils.events import Events
 from utils.logger import FakeLogger
-from utils.models import get_from_db, AccessLevel, init_db_connection
+from utils.models import get_from_db, AccessLevel, init_db_connection, DucksLeft
 
 if typing.TYPE_CHECKING:
     # Prevent circular imports
@@ -39,7 +39,7 @@ class MyBot(AutoShardedBot):
         self.shards_ready = set()
         self._client_session: Optional[aiohttp.ClientSession] = None
         self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
-        self.enabled_channels: typing.Dict[discord.TextChannel, int] = {}
+        self.enabled_channels: typing.Dict[discord.TextChannel, DucksLeft] = {}
         self.concurrency = MaxConcurrency(number=1, per=BucketType.channel, wait=True)
         self.allow_ducks_spawning = True
 
