@@ -155,7 +155,7 @@ class DucksLeft:
             self.day_ducks = 0
 
         if total_night_seconds:
-            self.night_ducks = int(min((night_seconds_left * night_ducks_count) / total_night_seconds, total_day_seconds/5))
+            self.night_ducks = int(min((night_seconds_left * night_ducks_count) / total_night_seconds, total_night_seconds/5))
         else:
             # Prevent ZeroDivisionError
             self.night_ducks = 0
