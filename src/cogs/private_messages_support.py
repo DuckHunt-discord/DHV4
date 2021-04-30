@@ -1,7 +1,6 @@
 import asyncio
 import datetime
 import re
-from functools import partial
 from typing import Dict, List
 
 import babel
@@ -13,9 +12,9 @@ from discord.ext import commands, menus, tasks
 from discord.utils import snowflake_time
 from tortoise import timezone
 
-from cogs.tags import MultiplayerMenuPage, TagMenuSource, TagName
+from cogs.tags import TagMenuSource, TagName
 from utils.bot_class import MyBot
-from utils.checks import NotInServer, BotIgnore, NotInChannel
+from utils.checks import NotInServer, NotInChannel
 from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
