@@ -160,6 +160,7 @@ class PrivateMessagesSupport(Cog):
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
+        await asyncio.sleep(2)
 
     async def is_in_forwarding_channels(self, ctx):
         category = await self.get_forwarding_category()
