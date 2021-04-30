@@ -108,13 +108,15 @@ class RestAPI(Cog):
                  })
 
         ducks_spawned = self.bot.ducks_spawned[channel]
-        ducks_left = self.bot.enabled_channels[channel].ducks_left
+        ducks = self.bot.enabled_channels[channel]
 
         return web.json_response(
             {'id': channel.id,
              'name': channel.name,
              'ducks': [duck.serialize() for duck in ducks_spawned],
-             'ducks_left_today': ducks_left,
+             'ducks_left_today': ducks.ducks_left,
+             'ducks_left_day': ducks.day_ducks,
+             'ducks_left_night': ducks.night_ducks,
              'authentication': True,
              })
 

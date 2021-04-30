@@ -160,9 +160,21 @@ class DucksSpawningCommands(Cog):
             language_code = await ctx.get_language_code(user_language=True)
             ducks_spawned = self.bot.ducks_spawned[ctx.channel]
             ducks_spawned_count = len(ducks_spawned)
-            ducks_left = self.bot.enabled_channels[ctx.channel].ducks_left
+            ducks = self.bot.enabled_channels[ctx.channel]
+            ducks_left = ducks.ducks_left
+            ducks_day = ducks.day_ducks
+            ducks_night = ducks.night_ducks
 
-            message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to spawn today.", ducks_spawned_count=ducks_spawned_count, ducks_left=ducks_left),]
+            if not ducks_night:
+                message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to spawn today.",
+                             ducks_spawned_count=ducks_spawned_count,
+                             ducks_left=ducks_left), ]
+            else:
+                message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to spawn during "
+                             "the day and {ducks_night} during the night.",
+                             ducks_spawned_count=ducks_spawned_count,
+                             ducks_day=ducks_day,
+                             ducks_night=ducks_night), ]
 
             if ducks_spawned:
                 message.append(_("Here's the list of ducks spawned :"))
@@ -175,7 +187,7 @@ class DucksSpawningCommands(Cog):
 
                     duck_lives = await duck.get_lives()
 
-                    message.append(_("{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}.",
+                    message.append(_("{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}.",
                                      duck=duck,
                                      duck_lives=duck_lives,
                                      time_delta=time_delta
@@ -198,7 +210,6 @@ class DucksSpawningCommands(Cog):
         del self.bot.ducks_spawned[ctx.channel]
 
         await ctx.send(_("{ducks_spawned_count} ducks removed.", ducks_spawned_count=ducks_spawned_count))
-
 
 
 setup = DucksSpawningCommands.setup
