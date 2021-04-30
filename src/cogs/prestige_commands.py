@@ -139,12 +139,22 @@ class PrestigeCommands(Cog):
         distrib = statistics.NormalDist(max_experience/2, max_experience/6)
         added_experience = int(distrib.samples(1)[0])
 
+        added_experience = min(max(5, added_experience), max_experience + 5)
+
         await db_hunter.edit_experience_with_levelups(ctx, added_experience)
         db_hunter.prestige_last_daily = now
         db_hunter.prestige_dailies += 1
 
         await db_hunter.save()
 
+        if ctx.author.id == 618209176434507816:
+            # This is just a prank for the guy who made me add the Normal Dist,
+            # with "a tiny chance for it to become negative"
+            # It's not really negative, but heh :)
+            # It'll look like so.
+            added_experience = - added_experience
+
         await ctx.send(_("💰️ You took {exp} experience out of the prestige bank. Come back soon!", exp=added_experience))
+
 
 setup = PrestigeCommands.setup
