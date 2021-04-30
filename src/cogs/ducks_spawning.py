@@ -75,11 +75,18 @@ class DucksSpawning(Cog):
                     if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
                         continue
 
-                    asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, maybe_spawn_type.db_channel, sun=maybe_spawn_type))
+                    asyncio.ensure_future(
+                        ducks.spawn_random_weighted_duck(self.bot, channel,
+                                                         ducks_left_to_spawn.db_channel,
+                                                         sun=maybe_spawn_type)
+                    )
                     ducks_spawned += 1
 
                     if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
-                        asyncio.ensure_future(ducks.spawn_random_weighted_duck(self.bot, channel, sun=maybe_spawn_type))
+                        asyncio.ensure_future(
+                            ducks.spawn_random_weighted_duck(self.bot, channel,
+                                                             ducks_left_to_spawn.db_channel,
+                                                             sun=maybe_spawn_type))
                         ducks_spawned += 1
 
                 if ducks_spawned > 20:
