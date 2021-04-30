@@ -118,12 +118,15 @@ class DucksLeft:
     """
     def __init__(self, channel, day_ducks=None, night_ducks=None):
         self.channel: discord.TextChannel = channel
+        self.db_channel: typing.Optional[DiscordChannel] = None
         self.day_ducks: int = day_ducks
         self.night_ducks: int = night_ducks
 
     async def compute_ducks_count(self, db_channel=None, now=None):
         if not db_channel:
             db_channel: DiscordChannel = await get_from_db(self.channel)
+
+        self.db_channel = db_channel
 
         if not now:
             now = int(time.time())
@@ -159,9 +162,11 @@ class DucksLeft:
 
         return self
 
-    async def maybe_spawn_type(self, db_channel=None, now=None) -> typing.Optional[SunState]:
-        if not db_channel:
-            db_channel: DiscordChannel = await get_from_db(self.channel)
+    async def maybe_spawn_type(self, now=None) -> typing.Optional[SunState]:
+        if not self.db_channel:
+            self.db_channel: DiscordChannel = await get_from_db(self.channel)
+
+        db_channel = self.db_channel
 
         if not now:
             now = int(time.time())
