@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-28 21:34+0200\n"
+"POT-Creation-Date: 2021-04-30 11:36+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -1054,11 +1054,17 @@ msgid ""
 "spawn today."
 msgstr ""
 
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to "
+"spawn during the day and {ducks_night} during the night."
+msgstr ""
+
 msgid "Here's the list of ducks spawned :"
 msgstr ""
 
 msgid ""
-"{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}."
+"{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}."
+""
 msgstr ""
 
 msgid "{ducks_spawned_count} ducks removed."
@@ -1333,8 +1339,8 @@ msgid "Prestige daily bonus"
 msgstr ""
 
 msgid ""
-"You can get anywhere from {min} to {max} experience every day by using the "
-"daily command."
+"You can get around {experience} experience every day by using the daily "
+"command."
 msgstr ""
 
 msgid "✨ Current prestige level ✨️"

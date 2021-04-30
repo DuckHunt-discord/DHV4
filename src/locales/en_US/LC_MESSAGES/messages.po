@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-28 21:34+0200\n"
+"POT-Creation-Date: 2021-04-30 11:36+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -109,7 +109,7 @@ msgstr "Spawns a sleeping duck."
 msgid "Show ducks currently on the channel"
 msgstr "Show ducks currently on the channel"
 
-#: ../cogs/ducks_spawning_commands.py:191
+#: ../cogs/ducks_spawning_commands.py:203
 msgid "Removes all ducks from the channel"
 msgstr "Removes all ducks from the channel"
 
@@ -209,12 +209,12 @@ msgstr ""
 msgid "Use one of the items in your inventory."
 msgstr "Use one of the items in your inventory."
 
-#: ../cogs/prestige_commands.py:18
+#: ../cogs/prestige_commands.py:19
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
 "Prestige related commands. Reset your adventure for exclusive bonuses."
 
-#: ../cogs/prestige_commands.py:26
+#: ../cogs/prestige_commands.py:27
 msgid "More info about prestige"
 msgstr "More info about prestige"
 
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Get some more experience..."
 msgstr "Get some more experience..."
 
-#: ../cogs/private_messages_support.py:91
+#: ../cogs/private_messages_support.py:90
 msgid ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
@@ -238,7 +238,7 @@ msgstr ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
 
-#: ../cogs/private_messages_support.py:456
+#: ../cogs/private_messages_support.py:455
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
@@ -248,7 +248,7 @@ msgstr ""
 "control the created channels, and to\n"
 "interact with remote users."
 
-#: ../cogs/private_messages_support.py:467
+#: ../cogs/private_messages_support.py:466
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
@@ -256,7 +256,7 @@ msgstr ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
 
-#: ../cogs/private_messages_support.py:516
+#: ../cogs/private_messages_support.py:515
 msgid ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
@@ -264,15 +264,15 @@ msgstr ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
 
-#: ../cogs/private_messages_support.py:544
+#: ../cogs/private_messages_support.py:543
 msgid "Block the user from opening further DMs channels."
 msgstr "Block the user from opening further DMs channels."
 
-#: ../cogs/private_messages_support.py:555
+#: ../cogs/private_messages_support.py:554
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr "Send a tag to the user, as if you used the dh!tag command in his DMs."
 
-#: ../cogs/private_messages_support.py:578
+#: ../cogs/private_messages_support.py:577
 msgid ""
 "Suggest a new language to the user. This will show them a prompt asking them "
 "if they want to switch to this new\n"
@@ -376,7 +376,7 @@ msgstr "/channels/<channel_id>\n"
 "\n"
 "Get information about a specific channel ID"
 
-#: ../cogs/rest_api.py:122
+#: ../cogs/rest_api.py:124
 msgid ""
 "/channels/<channel_id>/settings\n"
 "\n"
@@ -386,7 +386,7 @@ msgstr ""
 "\n"
 "Get information about a specific channel ID"
 
-#: ../cogs/rest_api.py:139
+#: ../cogs/rest_api.py:141
 msgid "/channels/<channel_id>/top\n"
 "\n"
 "Get players data, ordered by experience"
@@ -394,7 +394,7 @@ msgstr "/channels/<channel_id>/top\n"
 "\n"
 "Get players data, ordered by experience"
 
-#: ../cogs/rest_api.py:161
+#: ../cogs/rest_api.py:163
 msgid ""
 "/channels/<channel_id>/player/<player_id>\n"
 "\n"
@@ -404,7 +404,7 @@ msgstr ""
 "\n"
 "Get players data, ordered by experience"
 
-#: ../cogs/rest_api.py:226
+#: ../cogs/rest_api.py:228
 msgid "/help/commands\n"
 "\n"
 "Get list of commands"
@@ -412,7 +412,7 @@ msgstr "/help/commands\n"
 "\n"
 "Get list of commands"
 
-#: ../cogs/rest_api.py:240
+#: ../cogs/rest_api.py:242
 msgid "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
@@ -420,7 +420,7 @@ msgstr "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
 
-#: ../cogs/rest_api.py:271
+#: ../cogs/rest_api.py:273
 msgid "/stats\n"
 "\n"
 "Get some global statistics about the bot."
@@ -1683,7 +1683,7 @@ msgstr "You are already alive and well."
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr "You eat {brains} 🧠 and regain consiousness."
 
-#: ../cogs/ducks_spawning_commands.py:165
+#: ../cogs/ducks_spawning_commands.py:169
 #, python-brace-format
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
@@ -1692,18 +1692,29 @@ msgstr ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
 "spawn today."
 
-#: ../cogs/ducks_spawning_commands.py:168
+#: ../cogs/ducks_spawning_commands.py:173
+#, python-brace-format
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to "
+"spawn during the day and {ducks_night} during the night."
+msgstr ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to "
+"spawn during the day and {ducks_night} during the night."
+
+#: ../cogs/ducks_spawning_commands.py:180
 msgid "Here's the list of ducks spawned :"
 msgstr "Here's the list of ducks spawned :"
 
-#: ../cogs/ducks_spawning_commands.py:178
+#: ../cogs/ducks_spawning_commands.py:190
 #, python-brace-format
 msgid ""
-"{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}."
+"{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}."
+""
 msgstr ""
-"{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}."
+"{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}."
+""
 
-#: ../cogs/ducks_spawning_commands.py:200
+#: ../cogs/ducks_spawning_commands.py:212
 #, python-brace-format
 msgid "{ducks_spawned_count} ducks removed."
 msgstr "{ducks_spawned_count} ducks removed."
@@ -2092,11 +2103,11 @@ msgstr "✨ Oh, is this a bullet ?"
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr "✨ Oh look, ducks! Ducks are everywhere!"
 
-#: ../cogs/prestige_commands.py:38
+#: ../cogs/prestige_commands.py:39
 msgid "Prestige Information"
 msgstr "Prestige Information"
 
-#: ../cogs/prestige_commands.py:41
+#: ../cogs/prestige_commands.py:42
 msgid ""
 "Prestige is a way for you to restart the DuckHunt adventure, resetting your "
 "account (experience, statistics, ...)\n"
@@ -2108,7 +2119,7 @@ msgstr ""
 "In exchange for the reset, you'll get new items to help you progress faster.\n"
 "\n"
 
-#: ../cogs/prestige_commands.py:45
+#: ../cogs/prestige_commands.py:46
 #, python-brace-format
 msgid ""
 "Prestige will be unlocked when you reach the maximum level. You are at "
@@ -2117,7 +2128,7 @@ msgstr ""
 "Prestige will be unlocked when you reach the maximum level. You are at "
 "{pct}% there (you need {missing_exp} more experience)."
 
-#: ../cogs/prestige_commands.py:50
+#: ../cogs/prestige_commands.py:51
 #, python-brace-format
 msgid ""
 "Prestige is available for you now ! Go ahead and use `{ctx.prefix}prestige "
@@ -2126,18 +2137,18 @@ msgstr ""
 "Prestige is available for you now ! Go ahead and use `{ctx.prefix}prestige "
 "confirm`. By using it now, you'll keep {kept_exp} exp."
 
-#: ../cogs/prestige_commands.py:57
+#: ../cogs/prestige_commands.py:58
 msgid "Prestige daily bonus"
 msgstr "Prestige daily bonus"
 
-#: ../cogs/prestige_commands.py:58
+#: ../cogs/prestige_commands.py:59
 #, python-brace-format
 msgid ""
-"You can get anywhere from {min} to {max} experience every day by using the "
-"daily command."
+"You can get around {experience} experience every day by using the daily "
+"command."
 msgstr ""
-"You can get anywhere from {min} to {max} experience every day by using the "
-"daily command."
+"You can get around {experience} experience every day by using the daily "
+"command."
 
 #: ../cogs/prestige_commands.py:63
 msgid "✨ Current prestige level ✨️"
@@ -2269,18 +2280,18 @@ msgstr ""
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr "❌ You already claimed your dailies today. Try again tomorrow."
 
-#: ../cogs/prestige_commands.py:149
+#: ../cogs/prestige_commands.py:157
 #, python-brace-format
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 msgstr ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 
-#: ../cogs/private_messages_support.py:140
+#: ../cogs/private_messages_support.py:139
 msgid "DM Timed Out"
 msgstr "DM Timed Out"
 
-#: ../cogs/private_messages_support.py:141
+#: ../cogs/private_messages_support.py:140
 msgid ""
 "It seems like nothing has been said here for a long time, so I've gone ahead "
 "and closed your ticket, deleting its history. Thanks for using DuckHunt DM "
@@ -2292,13 +2303,13 @@ msgstr ""
 "support. If you need anything else, feel free to open a new ticket by "
 "sending a message here."
 
-#: ../cogs/private_messages_support.py:148
-#: ../cogs/private_messages_support.py:493
+#: ../cogs/private_messages_support.py:147
+#: ../cogs/private_messages_support.py:492
 msgid "Support server"
 msgstr "Support server"
 
-#: ../cogs/private_messages_support.py:149
-#: ../cogs/private_messages_support.py:493
+#: ../cogs/private_messages_support.py:148
+#: ../cogs/private_messages_support.py:492
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
@@ -2306,7 +2317,7 @@ msgstr ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 
-#: ../cogs/private_messages_support.py:313
+#: ../cogs/private_messages_support.py:312
 msgid ""
 "Welcome to DuckHunt private messages support.\n"
 "Messages here are relayed to a select group of volunteers and bot moderators "
@@ -2322,15 +2333,15 @@ msgstr ""
 "If you opened the ticket by mistake, just say `close` and we'll close it for "
 "you, otherwise, we'll get back to you in a few minutes."
 
-#: ../cogs/private_messages_support.py:319
+#: ../cogs/private_messages_support.py:318
 msgid "Support tickets are deleted after 24 hours of inactivity"
 msgstr "Support tickets are deleted after 24 hours of inactivity"
 
-#: ../cogs/private_messages_support.py:354
+#: ../cogs/private_messages_support.py:353
 msgid "Attachments persistence"
 msgstr "Attachments persistence"
 
-#: ../cogs/private_messages_support.py:356
+#: ../cogs/private_messages_support.py:355
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
@@ -2338,11 +2349,11 @@ msgstr ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 
-#: ../cogs/private_messages_support.py:376
+#: ../cogs/private_messages_support.py:375
 msgid "This is not how you invite DuckHunt."
 msgstr "This is not how you invite DuckHunt."
 
-#: ../cogs/private_messages_support.py:378
+#: ../cogs/private_messages_support.py:377
 msgid ""
 "DuckHunt, like other discord bots, can't join servers by using an invite "
 "link.\n"
@@ -2358,15 +2369,15 @@ msgstr ""
 "quickstart). If you need more help, you can ask here and we'll get back to "
 "you."
 
-#: ../cogs/private_messages_support.py:383
+#: ../cogs/private_messages_support.py:382
 msgid "This is an automatic message."
 msgstr "This is an automatic message."
 
-#: ../cogs/private_messages_support.py:486
+#: ../cogs/private_messages_support.py:485
 msgid "DM Closed"
 msgstr "DM Closed"
 
-#: ../cogs/private_messages_support.py:487
+#: ../cogs/private_messages_support.py:486
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
 "DuckHunt DM support. Keep in mind, sending another message here will open a "
@@ -2378,15 +2389,15 @@ msgstr ""
 "new ticket!\n"
 "In the meantime, here's a nice duck picture for you to look at !"
 
-#: ../cogs/private_messages_support.py:574 ../cogs/tags.py:164
+#: ../cogs/private_messages_support.py:573 ../cogs/tags.py:164
 msgid "❌ There is no tag with that name."
 msgstr "❌ There is no tag with that name."
 
-#: ../cogs/private_messages_support.py:597
+#: ../cogs/private_messages_support.py:600
 msgid "Language change offer"
 msgstr "Language change offer"
 
-#: ../cogs/private_messages_support.py:599
+#: ../cogs/private_messages_support.py:602
 #, python-brace-format
 msgid ""
 "DuckHunt support suggests you change your personal language from "
@@ -2397,7 +2408,7 @@ msgstr ""
 "{current_language} to {suggested_language}. This will translate all the "
 "messages you get in private message from DuckHunt to {suggested_language}."
 
-#: ../cogs/private_messages_support.py:609
+#: ../cogs/private_messages_support.py:612
 msgid ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
@@ -2405,11 +2416,11 @@ msgstr ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
 
-#: ../cogs/private_messages_support.py:627
+#: ../cogs/private_messages_support.py:630
 msgid "Your language preference wasn't changed."
 msgstr "Your language preference wasn't changed."
 
-#: ../cogs/private_messages_support.py:637
+#: ../cogs/private_messages_support.py:640
 #, python-brace-format
 msgid "Your preferred language is now {new_language}."
 msgstr "Your preferred language is now {new_language}."
@@ -3537,23 +3548,23 @@ msgstr "{exp} experience"
 msgid "{target.name} statistics (click me!)."
 msgstr "{target.name} statistics (click me!)."
 
-#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:522
+#: ../cogs/statistics_experience_commands.py:72 ../utils/models.py:688
 msgid "Bullets"
 msgstr "Bullets"
 
-#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:525
+#: ../cogs/statistics_experience_commands.py:73 ../utils/models.py:691
 msgid "Magazines"
 msgstr "Magazines"
 
-#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:508
+#: ../cogs/statistics_experience_commands.py:74 ../utils/models.py:674
 msgid "Experience"
 msgstr "Experience"
 
-#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:509
+#: ../cogs/statistics_experience_commands.py:75 ../utils/models.py:675
 msgid "Level"
 msgstr "Level"
 
-#: ../cogs/statistics_experience_commands.py:77 ../utils/models.py:514
+#: ../cogs/statistics_experience_commands.py:77 ../utils/models.py:680
 msgid "Accuracy"
 msgstr "Accuracy"
 
@@ -3563,7 +3574,7 @@ msgstr "Accuracy"
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr "{level_reliability} % (Real: {real_reliability} %)"
 
-#: ../cogs/statistics_experience_commands.py:81 ../utils/models.py:518
+#: ../cogs/statistics_experience_commands.py:81 ../utils/models.py:684
 msgid "Reliability"
 msgstr "Reliability"
 
@@ -5414,19 +5425,19 @@ msgstr "duck toaster"
 msgid "unemployed due to extinction of the duck species"
 msgstr "unemployed due to extinction of the duck species"
 
-#: ../utils/models.py:217 ../utils/models.py:225
+#: ../utils/models.py:383 ../utils/models.py:391
 #, python-brace-format
 msgid "This is not a valid level. Choose between {levels}"
 msgstr "This is not a valid level. Choose between {levels}"
 
-#: ../utils/models.py:229
+#: ../utils/models.py:395
 msgid "Can't set such a high level"
 msgstr "Can't set such a high level"
 
-#: ../utils/models.py:530
+#: ../utils/models.py:696
 msgid "You leveled up!"
 msgstr "You leveled up!"
 
-#: ../utils/models.py:534
+#: ../utils/models.py:700
 msgid "You leveled down!"
 msgstr "You leveled down!"
