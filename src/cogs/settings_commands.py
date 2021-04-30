@@ -1010,6 +1010,7 @@ class SettingsCommands(Cog):
             db_channel.night_end_at = seconds_night_end
 
             await db_channel.save()
+            await self.bot.get_cog('DucksSpawning').recompute_channel(ctx.channel)
 
         sun, duration_of_night, time_left_sun = await compute_sun_state(ctx.channel)
 
