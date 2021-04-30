@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-29 20:06+0200\n"
+"POT-Creation-Date: 2021-04-30 11:31+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Show ducks currently on the channel"
 msgstr ""
 
-#: ../cogs/ducks_spawning_commands.py:191
+#: ../cogs/ducks_spawning_commands.py:203
 msgid "Removes all ducks from the channel"
 msgstr ""
 
@@ -286,42 +286,42 @@ msgid ""
 "Get information about a specific channel ID"
 msgstr ""
 
-#: ../cogs/rest_api.py:122
+#: ../cogs/rest_api.py:124
 msgid ""
 "/channels/<channel_id>/settings\n"
 "\n"
 "Get information about a specific channel ID"
 msgstr ""
 
-#: ../cogs/rest_api.py:139
+#: ../cogs/rest_api.py:141
 msgid ""
 "/channels/<channel_id>/top\n"
 "\n"
 "Get players data, ordered by experience"
 msgstr ""
 
-#: ../cogs/rest_api.py:161
+#: ../cogs/rest_api.py:163
 msgid ""
 "/channels/<channel_id>/player/<player_id>\n"
 "\n"
 "Get players data, ordered by experience"
 msgstr ""
 
-#: ../cogs/rest_api.py:226
+#: ../cogs/rest_api.py:228
 msgid ""
 "/help/commands\n"
 "\n"
 "Get list of commands"
 msgstr ""
 
-#: ../cogs/rest_api.py:240
+#: ../cogs/rest_api.py:242
 msgid ""
 "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
 msgstr ""
 
-#: ../cogs/rest_api.py:271
+#: ../cogs/rest_api.py:273
 msgid ""
 "/stats\n"
 "\n"
@@ -1301,23 +1301,31 @@ msgstr ""
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr ""
 
-#: ../cogs/ducks_spawning_commands.py:165
+#: ../cogs/ducks_spawning_commands.py:169
 #, python-brace-format
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
 "spawn today."
 msgstr ""
 
-#: ../cogs/ducks_spawning_commands.py:168
+#: ../cogs/ducks_spawning_commands.py:173
+#, python-brace-format
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to "
+"spawn during the day and {ducks_night} during the night."
+msgstr ""
+
+#: ../cogs/ducks_spawning_commands.py:180
 msgid "Here's the list of ducks spawned :"
 msgstr ""
 
-#: ../cogs/ducks_spawning_commands.py:178
+#: ../cogs/ducks_spawning_commands.py:190
 #, python-brace-format
-msgid "{duck.category} ({duck.lives_left}/{duck_lives}), spawned {time_delta}."
+msgid ""
+"{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}."
 msgstr ""
 
-#: ../cogs/ducks_spawning_commands.py:200
+#: ../cogs/ducks_spawning_commands.py:212
 #, python-brace-format
 msgid "{ducks_spawned_count} ducks removed."
 msgstr ""
@@ -1817,7 +1825,7 @@ msgstr ""
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr ""
 
-#: ../cogs/prestige_commands.py:148
+#: ../cogs/prestige_commands.py:157
 #, python-brace-format
 msgid "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 msgstr ""
