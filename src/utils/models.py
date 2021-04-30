@@ -300,12 +300,12 @@ class DiscordChannel(Model):
             elif self.night_end_at < now:
                 # After the night
                 return 0
-            elif now < self.night_start_at:
+            elif now <= self.night_start_at:
                 # Before the night
                 return self.night_end_at - self.night_start_at
             else:
                 # This shouldn't be happening
-                raise ArithmeticError(f"Error calculating simpler case in night_seconds_left, debugging follow"
+                raise ArithmeticError(f"Error calculating simpler case in night_seconds_left, debugging follow\n"
                                       f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}")
         else:
             # Harder case: night starts in a day and end the next day
@@ -323,7 +323,7 @@ class DiscordChannel(Model):
                 return DAY - now
             else:
                 # This shouldn't be happening
-                raise ArithmeticError(f"Error calculating harder case in night_seconds_left, debugging follow"
+                raise ArithmeticError(f"Error calculating harder case in night_seconds_left, debugging follow\n"
                                       f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}")
 
     def day_status(self, now=None):
