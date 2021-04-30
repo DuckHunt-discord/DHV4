@@ -147,12 +147,12 @@ class PrestigeCommands(Cog):
 
         await db_hunter.save()
 
-        #if ctx.author.id == 618209176434507816:
+        if ctx.author.id == 618209176434507816:
             # This is just a prank for the guy who made me add the Normal Dist,
             # with "a tiny chance for it to become negative"
             # It's not really negative, but heh :)
             # It'll look like so.
-            #added_experience = - added_experience
+            added_experience = - added_experience
 
         await ctx.send(_("💰️ You took {exp} experience out of the prestige bank. Come back soon!", exp=added_experience))
 
