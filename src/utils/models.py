@@ -145,8 +145,17 @@ class DucksLeft:
         night_ducks_count += total_ducks_today - day_ducks_count - night_ducks_count
 
         # The min() here is protecting against having more than a duck every 5 seconds.
-        self.day_ducks   = int(min((day_seconds_left * day_ducks_count) / total_day_seconds, total_day_seconds/5))
-        self.night_ducks = int(min((night_seconds_left * night_ducks_count) / total_night_seconds, total_day_seconds/5))
+        if total_day_seconds:
+            self.day_ducks = int(min((day_seconds_left * day_ducks_count) / total_day_seconds, total_day_seconds/5))
+        else:
+            # Prevent ZeroDivisionError
+            self.day_ducks = 0
+
+        if total_night_seconds:
+            self.night_ducks = int(min((night_seconds_left * night_ducks_count) / total_night_seconds, total_day_seconds/5))
+        else:
+            # Prevent ZeroDivisionError
+            self.night_ducks = 0
 
         return self
 
