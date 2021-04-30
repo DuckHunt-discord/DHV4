@@ -70,8 +70,8 @@ class DucksSpawning(Cog):
             start_spawning = time()
             ducks_spawned = 0
             for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
-                maybe_spawn_type = await ducks_left_to_spawn.maybe_spawn_type()
-                if maybe_spawn_type:
+                maybe_spawn_type = await ducks_left_to_spawn.maybe_spawn_type(now)
+                if maybe_spawn_type is not None:
                     if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
                         continue
 

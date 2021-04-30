@@ -176,11 +176,11 @@ class DucksLeft:
         sun_state = db_channel.day_status(now)
 
         if sun_state == SunState.DAY:
-            if random.randint(0, db_channel.day_seconds_left()) < self.day_ducks:
+            if random.randint(0, db_channel.day_seconds_left(now)) < self.day_ducks:
                 self.day_ducks -= 1
                 return SunState.DAY
         elif sun_state == SunState.NIGHT:
-            if random.randint(0, db_channel.night_seconds_left()) < self.night_ducks:
+            if random.randint(0, db_channel.night_seconds_left(now)) < self.night_ducks:
                 self.night_ducks -= 1
                 return SunState.NIGHT
         return None
