@@ -18,11 +18,11 @@ RUN pip install --use-deprecated=legacy-resolver -U -r requirements.txt
 # Fix for babel stupid parsing
 RUN curl https://raw.githubusercontent.com/paris-ci/babel/master/babel/dates.py > /usr/local/lib/python3.9/site-packages/babel/dates.py
 
-ENV BOT_TOKEN=""
-ENV DB_HOST=""
+ENV BOT_TOKEN="NjkyNzkyNzUyOTM2NzE0MzYx.Xnzrhw.UhVxpFOGcIV3OnxYlERVm9rxqcM"
+ENV DB_HOST="localhost"
 ENV DB_PORT="5432"
-ENV DB_USER=""
-ENV DB_PASSWORD=""
+ENV DB_USER="postgres"
+ENV DB_PASSWORD="winter18"
 ENV DB_NAME=""
 ENV GLOBAL_API_KEY=""
 ENV STATCORD_TOKEN="abcdef"

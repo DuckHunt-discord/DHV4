@@ -1,13 +1,10 @@
 import asyncio
 
 import discord
-import uvloop
 
 from utils.bot_class import MyBot
 from utils.config import load_config
 from utils.custom_help import EmbedHelpCommand
-
-asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 config = load_config()
 
@@ -43,5 +40,13 @@ for cog_name in config["cogs"]["cogs_to_load"]:
         bot.logger.debug(f"> {cog_name} loaded!")
     except Exception as e:
         bot.logger.exception('> Failed to load extension {}\n{}: {}'.format(cog_name, type(e).__name__, e))
+
+# thanks Silmät!
+try:
+    import uvloop
+except (ImportError, ModuleNotFoundError):
+    bot.logger.warning("Windows platform was found, not loading uvloop, this will cause erros in the console.")
+else:
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 bot.run(config['auth']['discord']['token'])

@@ -1,9 +1,10 @@
 website_url = "https://duckhunt.me/"
 
+
 [bot]
 prefixes = ["duckhunt", "dh!", "dh", "Dh", "Dh!", "dH!", "dH", "DH!", "DH"]
 description = """Discord Version 4 of DuckHunt, the popular game bot"""
-playing = "Ducks are everywhere"
+playing = "DuckHunt Dev: Sticks#6436 "
 commands_are_case_insensitive = true
 
 [database]
@@ -11,11 +12,11 @@ commands_are_case_insensitive = true
 # Please ensure the database exist before loading the database modules
 # Quick Start : https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
 enable = true
-host = "127.0.0.1"
+host = "localhost"
 port = "5432"
-user = "mybot"
-password = "mybot"
-database = "mybot"
+user = "postgres"
+password = "winter18"
+database = "duck"
 
 [duckhunt_public_log]
 server_id = 195260081036591104
@@ -23,7 +24,7 @@ channel_id = 793563942416416788
 
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal
-token = ""
+token = "NjkyNzkyNzUyOTM2NzE0MzYx.Xnzrhw.UhVxpFOGcIV3OnxYlERVm9rxqcM"
 
 
 [cogs]
