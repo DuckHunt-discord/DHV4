@@ -132,7 +132,8 @@ class PrestigeCommands(Cog):
 
         now = datetime.datetime.now()
         if db_hunter.prestige_last_daily.date() == now.date():
-            await ctx.send(_("❌ You already claimed your dailies today. Try again tomorrow."))
+            nextturn = db_hunter.prestige_last_daily.date() - now.date()
+            await ctx.send(_("❌ You already claimed your dailies today. Try again in: `{td}`", td=format_timedelta(nextturn, locale='en_US')))
             return False
 
         max_experience = 20 * db_hunter.prestige
