@@ -32,7 +32,7 @@ class Community(Cog):
         super().__init__(bot, *args, **kwargs)
         self.epic_rpg_cd_coros = {}
         self.message_link_regex = re.compile(
-            r"https://discord\.com/channels/"
+            r"discord\.com/channels/"
             r"(?P<guild_id>[0-9]*)/"
             r"(?P<channel_id>[0-9]*)/"
             r"(?P<message_id>[0-9]*)",
