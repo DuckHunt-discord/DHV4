@@ -109,7 +109,10 @@ class MyBot(AutoShardedBot):
             access = db_user.get_access_level()
 
             if access != AccessLevel.BANNED:
-                callback = ctx.command.callback
+                if ctx.command:
+                    callback = ctx.command.callback
+                else:
+                    callback = None
                 if callback:
                     should_block = getattr(ctx.command.callback, "block_concurrency", True)
                 else:
