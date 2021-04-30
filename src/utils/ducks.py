@@ -1032,17 +1032,17 @@ DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLAS
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun: SunState=None):
-    duck = await get_random_weighted_duck(bot, channel, sun)
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState=None):
+    duck = await get_random_weighted_duck(bot, channel, db_channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, sun: SunState=None):
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState=None):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
 
-    db_channel = await get_from_db(channel)
+    db_channel = db_channel or await get_from_db(channel)
 
     if sun == SunState.DAY:
         weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_DAYTIME_CATEGORIES]
