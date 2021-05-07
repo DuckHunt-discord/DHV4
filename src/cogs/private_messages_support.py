@@ -18,7 +18,7 @@ from utils.checks import NotInServer, NotInChannel
 from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket, AccessLevel
+from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket, AccessLevel, Tag
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
@@ -280,7 +280,7 @@ class PrivateMessagesSupport(Cog):
         info_embed.add_field(name="Tickets created", value=str(ticket_count), inline=True)
 
         if ticket_count > 1:
-            last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by').first()
+            last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by', 'last_tag_used').first()
 
             ftd = format_timedelta(last_ticket.closed_at - timezone.now(),
                                    granularity="minute",
@@ -291,6 +291,10 @@ class PrivateMessagesSupport(Cog):
 
             if last_ticket.close_reason:
                 value += f"\n{last_ticket.close_reason}"
+
+            tag: Tag = last_ticket.last_tag_used
+            if tag:
+                value += f"\nLast tag sent: {tag.name}"
 
             info_embed.add_field(name="Previous ticket",
                                  value=value,
@@ -561,6 +565,12 @@ class PrivateMessagesSupport(Cog):
         tag = await get_tag(tag_name)
 
         if tag:
+            db_user = await get_from_db(user, as_user=True)
+            ticket = await db_user.get_or_create_support_ticket()
+
+            ticket.last_tag_used = tag
+            await ticket.save()
+
             support_pages = MirrorMenuPage(timeout=86400, source=TagMenuSource(ctx, tag), clear_reactions_after=True)
             dm_pages = MirrorMenuPage(timeout=86400, source=TagMenuSource(ctx, tag), clear_reactions_after=True)
 
