@@ -72,6 +72,13 @@ class SupportTicket(Model):
 
     close_reason = fields.TextField(blank=True, default="")
 
+    last_tag_used: fields.ForeignKeyRelation["Tag"] = \
+        fields.ForeignKeyField('models.Tag',
+                               related_name='used_in_tickets',
+                               on_delete=fields.SET_NULL,
+                               db_index=False,
+                               null=True)
+
     def close(self, by_user: 'DiscordUser', reason: typing.Optional[str] = None):
         if reason is None:
             reason = ""
@@ -874,6 +881,7 @@ class Tag(Model):
                                related_name='tags')
 
     aliases: fields.ReverseRelation["TagAlias"]
+    used_in_tickets: fields.ReverseRelation["SupportTicket"]
 
     # Statistics
     created = fields.DatetimeField(auto_now_add=True)
