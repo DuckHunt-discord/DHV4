@@ -292,8 +292,8 @@ class PrivateMessagesSupport(Cog):
             if last_ticket.close_reason:
                 value += f"\n{last_ticket.close_reason}"
 
-            tag: Tag = last_ticket.last_tag_used
-            if tag:
+            if last_ticket.last_tag_used_id:
+                tag: Tag = last_ticket.last_tag_used
                 value += f"\nLast tag sent: {tag.name}"
 
             info_embed.add_field(name="Previous ticket",
