@@ -232,6 +232,10 @@ class DucksHuntingCommands(Cog):
                     db_hunter.shooting_stats['murders'] += 1
                 else:
                     db_target: Player = await get_random_player(db_channel)
+                    if db_target.member.user.discord_id == 138751484517941259:
+                        db_user = await get_from_db(ctx.author, as_user=True)
+                        db_user.trophys["no_more_updates"] = True
+                        await db_user.save(update_fields=["trophys"])
 
                 target_coat_color = db_target.get_current_coat_color()
                 if db_channel.mentions_when_killed:
