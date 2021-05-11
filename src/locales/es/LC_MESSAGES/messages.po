@@ -3468,7 +3468,7 @@ msgstr "normal"
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
 msgstr[0] "de los cuales uno es un pato normal"
-msgstr[1] "de los cuales {this_duck_killed} son patos normales"
+msgstr[1] "de los cuales {this_ducks_killed} son patos normales"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
