@@ -25,7 +25,7 @@ from utils.ctx_class import MyContext
 from utils.ducks import compute_sun_state
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
-from utils.models import get_from_db, DiscordMember, DiscordChannel
+from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -1021,7 +1021,7 @@ class SettingsCommands(Cog):
         if duration_of_night == 0:
             await ctx.send(_("On {channel.mention}, it's currently daytime. The day will last forever.",
                              channel=ctx.channel, ))
-        elif sun == "day":
+        elif sun == SunState.DAY:
             await ctx.send(_("On {channel.mention}, it's currently daytime, and night will fall {time_left_sun_td}. "
                              "Night will last for {duration_of_night_td}.",
                              channel=ctx.channel,
