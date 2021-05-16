@@ -613,7 +613,7 @@ class ShoppingCommands(Cog):
 
         try:
             await ctx.message.delete()
-        except discord.Forbidden:
+        except (discord.Forbidden, discord.NotFound):
             pass
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
