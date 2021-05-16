@@ -431,6 +431,10 @@ class PrivateMessagesSupport(Cog):
             # Don't listen to bots (ourselves in this case)
             return
 
+        if not message.content and not message.attachments:
+            # Message has no text and no attachments
+            return
+
         guild = message.guild
         ctx = await self.bot.get_context(message, cls=MyContext)
         if ctx.valid:
