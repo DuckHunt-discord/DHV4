@@ -1126,7 +1126,6 @@ class SettingsCommands(Cog):
                 return
 
             db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
-            await db_channel.save()
             await ctx.reply(_("👍️ Role added to the auto_roles list."))
 
 
@@ -1140,12 +1139,16 @@ class SettingsCommands(Cog):
                 role_id = int(role_id)
                 level = get_level_info_from_id(level_id)
                 role = guild.get_role(role_id)
+                if not role:
+                    del db_channel.levels_to_roles_ids_mapping[str(level_id)]
+                    message.append(_(level['name']).title() + " - " + _('Deleted role 🗑️ ID: {role_id}', role_id=role_id))
                 message.append(_(level['name']).title() + " - " + role.mention)
 
             message = "\n".join(message)
         else:
             message = _("No level mapping is currently defined on this channel.")
 
+        await db_channel.save()
         await ctx.reply(message)
 
     @settings.group(aliases=["access"])
