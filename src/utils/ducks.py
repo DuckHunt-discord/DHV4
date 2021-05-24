@@ -566,7 +566,7 @@ class Duck:
             db_killer.shooting_stats['bonus_experience_earned'] += bonus_experience
             won_experience += bonus_experience
 
-        await db_killer.edit_experience_with_levelups(self.channel, won_experience)
+        await db_killer.edit_experience_with_levelups(self.channel, won_experience, bot=self.bot)
 
         bushes_coro = await self.maybe_bushes_message(killer, db_killer)
 

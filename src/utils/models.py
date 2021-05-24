@@ -25,6 +25,7 @@ MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
+
 class DefaultDictJSONField(fields.JSONField):
     def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
         def make_default():
@@ -123,6 +124,7 @@ class DucksLeft:
     """
     This class stores the sate of a channel, counting the ducks left.
     """
+
     def __init__(self, channel, day_ducks=None, night_ducks=None):
         self.channel: discord.TextChannel = channel
         self.db_channel: typing.Optional[DiscordChannel] = None
@@ -144,25 +146,26 @@ class DucksLeft:
         total_night_seconds = db_channel.night_seconds_left(0)
         night_seconds_left = db_channel.night_seconds_left(now)
         total_day_seconds = DAY - total_night_seconds
-        day_seconds_left   = total_seconds_left - night_seconds_left
+        day_seconds_left = total_seconds_left - night_seconds_left
 
         total_ducks_today = db_channel.ducks_per_day
 
-        day_ducks_count = int(total_ducks_today * 9/10)
-        night_ducks_count = int(total_ducks_today * 1/10)
+        day_ducks_count = int(total_ducks_today * 9 / 10)
+        night_ducks_count = int(total_ducks_today * 1 / 10)
 
         # Add missing ducks due to int() conversion to night.
         night_ducks_count += total_ducks_today - day_ducks_count - night_ducks_count
 
         # The min() here is protecting against having more than a duck every 5 seconds.
         if total_day_seconds:
-            self.day_ducks = int(min((day_seconds_left * day_ducks_count) / total_day_seconds, total_day_seconds/5))
+            self.day_ducks = int(min((day_seconds_left * day_ducks_count) / total_day_seconds, total_day_seconds / 5))
         else:
             # Prevent ZeroDivisionError
             self.day_ducks = 0
 
         if total_night_seconds:
-            self.night_ducks = int(min((night_seconds_left * night_ducks_count) / total_night_seconds, total_night_seconds/5))
+            self.night_ducks = int(
+                min((night_seconds_left * night_ducks_count) / total_night_seconds, total_night_seconds / 5))
         else:
             # Prevent ZeroDivisionError
             self.night_ducks = 0
@@ -537,9 +540,10 @@ class Player(Model):
     frightened = DefaultDictJSONField()
 
     PRESTIGE_SAVED_FIELDS = {'id', 'first_seen', 'channel', 'channel_id', 'member', 'member_id', 'prestige',
-                    'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience', 'givebacks'}
+                             'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience',
+                             'givebacks'}
 
-    def do_prestige(self, kept_exp):
+    def do_prestige(self, bot, kept_exp):
         """
         Reset a player data, persisting his/her ID. What's left to do is.
         """
@@ -566,6 +570,8 @@ class Player(Model):
         level_info = self.level_info()
         self.magazines = level_info["magazines"]
         self.bullets = level_info["bullets"]
+
+        self.change_roles(bot)
 
     def serialize(self, serialize_fields=None):
         DONT_SERIALIZE = {'weapon_sabotaged_by', 'sabotaged_weapons', 'channel', 'member'}
@@ -674,7 +680,7 @@ class Player(Model):
             self.active_powerups['confiscated'] = 0
             await self.save()
 
-    async def edit_experience_with_levelups(self, ctx, delta):
+    async def edit_experience_with_levelups(self, ctx, delta, bot=None):
         old_level_info = self.level_info()
         self.experience += delta
         new_level_info = self.level_info()
@@ -682,16 +688,18 @@ class Player(Model):
         if old_level_info['level'] == new_level_info['level']:
             return
         else:
+            # Send level up embed.
+            guild: discord.Guild = ctx.guild
+
             if isinstance(ctx, discord.TextChannel):
-                guild = ctx.guild
                 db_guild = await get_from_db(guild)
                 language_code = db_guild.language
 
                 def _(message):
                     return translate(message, language_code)
-
             else:
                 _ = await ctx.get_translate_function()
+                bot = ctx.bot
 
             e = discord.Embed()
             e.add_field(name=_("Experience"), value=f"{self.experience - delta} -> {self.experience}", inline=False)
@@ -724,6 +732,53 @@ class Player(Model):
                 e.color = discord.Colour.red()
 
             asyncio.ensure_future(ctx.send(embed=e))
+            asyncio.ensure_future(self.change_roles(bot))
+
+    async def change_roles(self, bot):
+        new_level_info = self.level_info()
+        new_level = new_level_info['level']
+
+        db_member: DiscordMember = await self.member
+        db_channel: DiscordChannel = await self.channel
+        db_user: DiscordUser = await db_member.user
+        guild: discord.Guild = bot.get_guild(db_member.guild_id)
+        channel: discord.TextChannel = guild.get_channel(db_channel.discord_id)
+
+        # Now is time to give roles.
+        roles_mapping: typing.Dict[int, int] = db_channel.levels_to_roles_ids_mapping
+        #                     level nb, discord role ID
+
+        if not len(roles_mapping):
+            # Nothing in there, nothing to do, fast path.
+            return
+
+        member = await guild.fetch_member(db_user.discord_id)
+        managed_ids = roles_mapping.values()
+
+        # Remove all managed roles
+        member_roles = member.roles
+        new_member_roles = [r for r in member_roles if r not in managed_ids]
+        changed = len(member_roles) != len(new_member_roles)
+
+        for level_id, role_id in sorted(roles_mapping.items(), key=lambda kv: -kv[0]):
+            # Top level first
+            if level_id <= new_level:
+                new_member_roles.append(guild.get_role(role_id))
+                changed = True
+                break
+
+        if changed:
+            try:
+                bot.logger.info(f"Editing {member.name} ({member.id}) roles for level change.", guild=guild,
+                                channel=channel)
+                await member.edit(roles=new_member_roles, reason="Level change")
+            except discord.Forbidden as e:
+                # Can't set the new roles.
+                bot.logger.warning(f"Can't set {member.id} roles on {guild.id}: Forbidden - {e}", guild=guild,
+                                   channel=channel)
+        else:
+            bot.logger.debug(f"Not editing {member.name} ({member.id}) roles for level change, no change.", guild=guild,
+                             channel=channel)
 
     def is_powerup_active(self, powerup):
         if self.prestige >= 1 and powerup == "sunglasses":
