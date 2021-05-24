@@ -1087,7 +1087,7 @@ class SettingsCommands(Cog):
         else:
             await ctx.reply(_("Channel disabled messages are disabled. The bot will stay silent."))
 
-    @settings.command(aliases=["roles", "ar"])
+    @settings.command(aliases=["roles", "ar", "autoroles", "auto_role", "autorole"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def auto_roles(self, ctx: MyContext, level_id: int = None, role: discord.Role = None):
         """
