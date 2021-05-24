@@ -1087,7 +1087,7 @@ class SettingsCommands(Cog):
         else:
             await ctx.reply(_("Channel disabled messages are disabled. The bot will stay silent."))
 
-    @settings.command(aliases=["roles", "ar", "autoroles", "auto_role", "autorole"])
+    @settings.command(aliases=["roles", "role", "ar", "autoroles", "auto_role", "autorole"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def auto_roles(self, ctx: MyContext, level_id: int = None, role: discord.Role = None):
         """
@@ -1148,6 +1148,68 @@ class SettingsCommands(Cog):
             message = "\n".join(message)
         else:
             message = _("No level mapping is currently defined on this channel.")
+
+        await db_channel.save()
+        await ctx.reply(message)
+
+    @settings.command(aliases=["prestige_roles", "prestige_role", "apr", "autoprestigeroles", "auto_prestige_role", "autoprestigerole"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def auto_prestige_roles(self, ctx: MyContext, prestige_id: int = None, role: discord.Role = None):
+        """
+        Commands to edit auto prestige roles. Auto prestige roles are roles that are given automatically to members once
+        they reach a certain prestige level.
+
+        To work properly, roles must all be BELOW DuckHunt top role in the server hierarchy.
+        """
+        guild = ctx.guild
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if prestige_id is not None and role is not None:
+            if prestige_id < 0:
+                await ctx.reply(
+                    _("❌ A prestige number must be a positive integer. Please check the table here: "
+                      "<https://duckhunt.me/docs/players-guide/levels-and-experience>"))
+                return
+
+            me = ctx.guild.me
+            authorized = me.guild_permissions.manage_roles or me.guild_permissions.administrator
+
+            if not authorized:
+                await ctx.reply(
+                    _("❌ I can't assign roles. Please make sure I have the `MANAGE_ROLES` permission."))
+                return
+
+            my_top_role = me.top_role
+            if role >= my_top_role:
+                await ctx.reply(
+                    _("❌ I can't assign this role. Move my top role (currently {top_role}) "
+                      "above the roles you want to be able to assign.",
+                      top_role=my_top_role.mention))
+                return
+
+            db_channel.prestige_to_roles_ids_mapping[str(prestige_id)] = str(role.id)
+            await ctx.reply(_("👍️ Role added to the auto_prestige_roles list."))
+
+        # Sorted by lowest role first.
+        current_mapping = sorted(db_channel.prestige_to_roles_ids_mapping.items(), key=lambda kv: int(kv[0]))
+
+        if len(current_mapping):
+            message = [_("Current prestige roles mapping:")]
+            for prestige_id, role_id in current_mapping:
+                prestige_id = int(prestige_id)
+                role_id = int(role_id)
+                role = guild.get_role(role_id)
+                if not role:
+                    del db_channel.prestige_to_roles_ids_mapping[str(prestige_id)]
+                    message.append(
+                        _("Level {i}", i=prestige_id) + " - " + _('Deleted role 🗑️ ID: {role_id}', role_id=role_id))
+                else:
+                    message.append(_("Level {i}", i=prestige_id) + " - " + role.mention)
+
+            message = "\n".join(message)
+        else:
+            message = _("No prestige level mapping is currently defined on this channel.")
 
         await db_channel.save()
         await ctx.reply(message)

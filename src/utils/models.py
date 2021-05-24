@@ -264,6 +264,7 @@ class DiscordChannel(Model):
     super_ducks_max_life = fields.SmallIntField(default=7)
 
     levels_to_roles_ids_mapping = fields.JSONField(default=dict)
+    prestige_to_roles_ids_mapping = fields.JSONField(default=dict)
 
     def serialize(self, serialize_fields=None):
         DONT_SERIALIZE = {'guild', 'members', 'playerss', 'webhook_urls', 'api_key'}
@@ -745,10 +746,11 @@ class Player(Model):
         channel: discord.TextChannel = guild.get_channel(db_channel.discord_id)
 
         # Now is time to give roles.
-        roles_mapping: typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
-        #          (int-like) level nb, discord role ID
+        roles_mapping:    typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
+        prestige_mapping: typing.Dict[str, str] = db_channel.prestige_to_roles_ids_mapping
+        #             (int-like) level nb, discord role ID
 
-        if not len(roles_mapping):
+        if not len(roles_mapping) and not len(prestige_mapping):
             # Nothing in there, nothing to do, fast path.
             return
         try:
@@ -758,7 +760,8 @@ class Player(Model):
             bot.logger.info(f"Can't edit {db_user.discord_id} roles for level change: user NotFound.", guild=guild,
                             channel=channel)
             return
-        managed_ids = roles_mapping.values()
+        managed_ids = set(roles_mapping.values())
+        managed_ids = managed_ids.union(set(prestige_mapping.values()))
 
         # Remove all managed roles
         member_roles = member.roles
@@ -768,9 +771,19 @@ class Player(Model):
         for level_id, role_id in sorted(roles_mapping.items(), key=lambda kv: -int(kv[0])):
             # Top level first
             if int(level_id) <= new_level:
-                new_member_roles.append(guild.get_role(int(role_id)))
-                changed = True
-                break
+                role = guild.get_role(int(role_id))
+                if role:
+                    new_member_roles.append(role)
+                    changed = True
+                    break
+
+        for prestige_id, role_id in sorted(prestige_mapping.items(), key=lambda kv: -int(kv[0])):
+            if int(prestige_id) <= self.prestige:
+                role = guild.get_role(int(role_id))
+                if role:
+                    new_member_roles.append(role)
+                    changed = True
+                    break
 
         if changed:
             try:
