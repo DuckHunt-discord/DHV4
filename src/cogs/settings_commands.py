@@ -25,6 +25,7 @@ from utils.ctx_class import MyContext
 from utils.ducks import compute_sun_state
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
+from utils.levels import get_level_info_from_id
 from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState
 
 SECOND = 1
@@ -59,7 +60,8 @@ class SettingsCommands(Cog):
         db_defaults = DiscordChannel(discord_id=db_channel.discord_id, name=db_channel.name,
                                      guild=await db_channel.guild)
 
-        EXCLUDE = {"discord_id", "first_seen", "guild", "guild_id", "players", "name", "webhook_urls", "api_key", "use_webhooks",
+        EXCLUDE = {"discord_id", "first_seen", "guild", "guild_id", "players", "name", "webhook_urls", "api_key",
+                   "use_webhooks",
                    "use_emojis", "enabled"}
 
         COPY_FIELDS = db_defaults._meta.fields.copy() - EXCLUDE
@@ -468,10 +470,10 @@ class SettingsCommands(Cog):
         if db_channel.use_webhooks:
             await ctx.send(_("Webhooks are used in this channel."))
         else:
-            await ctx.send(_("Webhooks are not used in this channel."))\
+            await ctx.send(_("Webhooks are not used in this channel.")) \
+ \
+            @ settings.command()
 
-
-    @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     @checks.channel_enabled()
     async def allow_global_items(self, ctx: MyContext, value: Optional[bool] = None):
@@ -694,7 +696,7 @@ class SettingsCommands(Cog):
                 await ctx.send(_(
                     "⚠️ In some cases, users may get NEGATIVE experience when killing ducks with that low of a experience.",
                     channel=ctx.channel,
-                    ))
+                ))
             elif value > db_channel.clover_max_experience:
                 await ctx.send(_("❌️ You need to provide a lower value than the one set in `clover_max_experience` !",
                                  channel=ctx.channel,
@@ -807,7 +809,7 @@ class SettingsCommands(Cog):
                         "Please say `Yes` to proceed as requested, with {value} ducks per day on the channel.",
                         maximum_value=maximum_value,
                         value=int(value),
-                        ))
+                    ))
 
                     def check(message: discord.Message):
                         return ctx.author == message.author and message.content.lower() == "yes"
@@ -1059,7 +1061,8 @@ class SettingsCommands(Cog):
         api_key = db_channel.api_key
         try:
             if api_key:
-                await ctx.author.send(_("{channel.mention} API key is `{api_key}`", channel=ctx.channel, api_key=api_key))
+                await ctx.author.send(
+                    _("{channel.mention} API key is `{api_key}`", channel=ctx.channel, api_key=api_key))
             else:
                 await ctx.author.send(_("The API is disabled on {channel.mention}. "
                                         "Enable it with `{ctx.prefix}set api_key True`", channel=ctx.channel))
@@ -1083,6 +1086,67 @@ class SettingsCommands(Cog):
             await ctx.reply(_("Channel disabled messages are enabled."))
         else:
             await ctx.reply(_("Channel disabled messages are disabled. The bot will stay silent."))
+
+    @settings.command(aliases=["roles", "ar"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def auto_roles(self, ctx: MyContext, level_id: int = None, role: discord.Role = None):
+        """
+        Commands to edit auto roles. Auto roles are roles that are given automatically to members once they reach a
+        certain DH level.
+
+        To work properly, roles must all be BELOW DuckHunt top role in the server hierarchy.
+        """
+        guild = ctx.guild
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if level_id and role:
+            level = get_level_info_from_id(level_id)
+
+            if not level:
+                await ctx.reply(
+                    _("❌ Unknown level number. Please check the table here: "
+                      "<https://duckhunt.me/docs/players-guide/levels-and-experience>"))
+                return
+            me = ctx.guild.me
+
+            authorized = me.guild_permissions.manage_roles or me.guild_permissions.administrator
+
+            if not authorized:
+                await ctx.reply(
+                    _("❌ I can't assign roles. Please make sure I have the `MANAGE_ROLES` permission."))
+                return
+
+            my_top_role = me.top_role
+            if role >= my_top_role:
+                await ctx.reply(
+                    _("❌ I can't assign this role. Move my top role (currently {top_role}) "
+                      "above the roles you want to be able to assign.",
+                      top_role=my_top_role.mention))
+                return
+
+            db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
+            await db_channel.save()
+            await ctx.reply(_("👍️ Role added to the auto_roles list."))
+
+
+        # Sorted by lowest role first.
+        current_mapping = sorted(db_channel.levels_to_roles_ids_mapping.items(), key=lambda kv: int(kv[0]))
+
+        if len(current_mapping):
+            message = [_("Current roles mapping:")]
+            for level_id, role_id in current_mapping:
+                level_id = int(level_id)
+                role_id = int(role_id)
+                level = get_level_info_from_id(level_id)
+                role = guild.get_role(role_id)
+                message.append(_(level['name']) + " - " + role.mention)
+
+            message = "\n".join(message)
+        else:
+            message = _("No level mapping is currently defined on this channel.")
+
+        await ctx.reply(message)
 
     @settings.group(aliases=["access"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)

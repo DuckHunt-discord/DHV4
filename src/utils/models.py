@@ -745,8 +745,8 @@ class Player(Model):
         channel: discord.TextChannel = guild.get_channel(db_channel.discord_id)
 
         # Now is time to give roles.
-        roles_mapping: typing.Dict[int, int] = db_channel.levels_to_roles_ids_mapping
-        #                     level nb, discord role ID
+        roles_mapping: typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
+        #          (int-like) level nb, discord role ID
 
         if not len(roles_mapping):
             # Nothing in there, nothing to do, fast path.
@@ -760,10 +760,10 @@ class Player(Model):
         new_member_roles = [r for r in member_roles if r not in managed_ids]
         changed = len(member_roles) != len(new_member_roles)
 
-        for level_id, role_id in sorted(roles_mapping.items(), key=lambda kv: -kv[0]):
+        for level_id, role_id in sorted(roles_mapping.items(), key=lambda kv: -int(kv[0])):
             # Top level first
-            if level_id <= new_level:
-                new_member_roles.append(guild.get_role(role_id))
+            if int(level_id) <= new_level:
+                new_member_roles.append(guild.get_role(int(role_id)))
                 changed = True
                 break
 

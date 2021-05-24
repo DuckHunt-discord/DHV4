@@ -57,6 +57,10 @@ def get_level_info(experience):
     return next((level for level in reversed(LEVELS) if level["expMin"] <= experience), LEVELS[0])
 
 
+def get_level_info_from_id(level_id):
+    return next((level for level in LEVELS if level["level"] == level_id), None)
+
+
 def get_higher_level():
     return get_level_info(math.inf)
 
