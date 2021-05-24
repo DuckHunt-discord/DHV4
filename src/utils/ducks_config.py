@@ -80,7 +80,7 @@ normal = {
                _("COUACK"), _("COUACK"),
 
                _("*cries*"), _("Hello world"), _("How are you today?"), _("Please don't kill me..."),
-               "<https://youtu.be/r8EBoX9iUw4?t=25>", "<https://youtu.be/HP362ccZBmY>",
+               "<https://youtu.be/r8EBoX9iUw4>", "<https://youtu.be/HP362ccZBmY>",
                "<https://youtu.be/MtN1YnoL46Q>", "<https://youtu.be/_0AAbWqxIs8>", "<https://youtu.be/JZGjyxPc41o>",
                "<https://youtu.be/7jjcAuEYW9M?t=4>", "<https://youtu.be/Ru4a-js4My4?t=4>",
                "<https://youtu.be/dJyPfXAAADI?t=5>",
