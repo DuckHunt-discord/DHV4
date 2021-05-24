@@ -762,7 +762,7 @@ class Player(Model):
             return
 
         managed_ids = list(roles_mapping.values())
-        managed_ids = managed_ids.extend(list(prestige_mapping.values()))
+        managed_ids.extend(list(prestige_mapping.values()))
 
         # Remove all managed roles
         member_roles = member.roles
