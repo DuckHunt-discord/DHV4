@@ -1100,7 +1100,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if level_id and role:
+        if level_id is not None and role is not None:
             level = get_level_info_from_id(level_id)
 
             if not level:
