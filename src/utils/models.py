@@ -766,7 +766,7 @@ class Player(Model):
 
         # Remove all managed roles
         member_roles = member.roles
-        new_member_roles = [r for r in member_roles if str(r) not in managed_ids]
+        new_member_roles = [r for r in member_roles if str(r.id) not in managed_ids]
         changed = len(member_roles) != len(new_member_roles)
 
         level_role = None
