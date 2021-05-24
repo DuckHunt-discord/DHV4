@@ -209,7 +209,7 @@ class DiscordChannel(Model):
 
     name = fields.TextField()
 
-    webhook_urls = fields.JSONField(default=[])
+    webhook_urls = fields.JSONField(default=list)
     api_key = fields.UUIDField(null=True)
 
     # Generic settings
@@ -259,6 +259,8 @@ class DiscordChannel(Model):
     ducks_time_to_live = fields.SmallIntField(default=660)  # Seconds
     super_ducks_min_life = fields.SmallIntField(default=2)
     super_ducks_max_life = fields.SmallIntField(default=7)
+
+    levels_to_roles_ids_mapping = fields.JSONField(default=dict)
 
     def serialize(self, serialize_fields=None):
         DONT_SERIALIZE = {'guild', 'members', 'playerss', 'webhook_urls', 'api_key'}
@@ -432,8 +434,8 @@ class DiscordUser(Model):
     name = fields.TextField()
     discriminator = fields.CharField(4)
 
-    inventory = fields.JSONField(default=[])
-    trophys = fields.JSONField(default={})
+    inventory = fields.JSONField(default=list)
+    trophys = fields.JSONField(default=dict)
 
     ping_friendly = fields.BooleanField(default=True)
 
