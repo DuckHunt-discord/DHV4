@@ -751,8 +751,13 @@ class Player(Model):
         if not len(roles_mapping):
             # Nothing in there, nothing to do, fast path.
             return
-
-        member = await guild.fetch_member(db_user.discord_id)
+        try:
+            member = await guild.fetch_member(db_user.discord_id)
+        except discord.NotFound:
+            # Member left.
+            bot.logger.info(f"Can't edit {db_user.discord_id} roles for level change: user NotFound.", guild=guild,
+                            channel=channel)
+            return
         managed_ids = roles_mapping.values()
 
         # Remove all managed roles
