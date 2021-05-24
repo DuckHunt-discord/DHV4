@@ -766,15 +766,17 @@ class Player(Model):
 
         # Remove all managed roles
         member_roles = member.roles
-        new_member_roles = [r for r in member_roles if r not in managed_ids]
+        new_member_roles = [r for r in member_roles if str(r) not in managed_ids]
         changed = len(member_roles) != len(new_member_roles)
+
+        level_role = None
 
         for level_id, role_id in sorted(roles_mapping.items(), key=lambda kv: -int(kv[0])):
             # Top level first
             if int(level_id) <= new_level:
-                role = guild.get_role(int(role_id))
-                if role:
-                    new_member_roles.append(role)
+                level_role = guild.get_role(int(role_id))
+                if level_role:
+                    new_member_roles.append(level_role)
                     changed = True
                     break
 
@@ -782,7 +784,8 @@ class Player(Model):
             if int(prestige_id) <= self.prestige:
                 role = guild.get_role(int(role_id))
                 if role:
-                    new_member_roles.append(role)
+                    if role != level_role:
+                        new_member_roles.append(role)
                     changed = True
                     break
 
