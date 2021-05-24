@@ -1140,7 +1140,7 @@ class SettingsCommands(Cog):
                 role_id = int(role_id)
                 level = get_level_info_from_id(level_id)
                 role = guild.get_role(role_id)
-                message.append(_(level['name']) + " - " + role.mention)
+                message.append(_(level['name']).title() + " - " + role.mention)
 
             message = "\n".join(message)
         else:
