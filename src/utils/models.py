@@ -122,7 +122,7 @@ class SunState(IntEnum):
 
 class DucksLeft:
     """
-    This class stores the sate of a channel, counting the ducks left.
+    This class stores the state of a channel, counting the ducks left.
     """
 
     def __init__(self, channel, day_ducks=None, night_ducks=None):
