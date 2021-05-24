@@ -279,6 +279,18 @@ class PrivateMessagesSupport(Cog):
         info_embed.add_field(name="First seen", value=str(fs_td), inline=True)
         info_embed.add_field(name="Tickets created", value=str(ticket_count), inline=True)
 
+        # The following requires members intents.
+        # members = []
+        # for maybe_member in self.bot.get_all_members():
+        #     if maybe_member.id == user.id:
+        #         members.append(maybe_member)
+
+        # if len(members) > 1:
+        #     info_embed.add_field(name="Shared servers", value=str(len(members)), inline=True)
+        # else:
+        #     guild = members[0].guild
+        #     info_embed.add_field(name="Shared server", value=f"1: {guild.name} <{guild.id}>", inline=True)
+
         if ticket_count > 1:
             last_ticket = await SupportTicket.filter(user=db_user, closed=True).order_by('-opened_at').select_related('closed_by', 'last_tag_used').first()
 
