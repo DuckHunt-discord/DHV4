@@ -760,8 +760,9 @@ class Player(Model):
             bot.logger.info(f"Can't edit {db_user.discord_id} roles for level change: user NotFound.", guild=guild,
                             channel=channel)
             return
-        managed_ids = set(roles_mapping.values())
-        managed_ids = managed_ids.union(set(prestige_mapping.values()))
+
+        managed_ids = list(roles_mapping.values())
+        managed_ids = managed_ids.extend(list(prestige_mapping.values()))
 
         # Remove all managed roles
         member_roles = member.roles
@@ -789,6 +790,8 @@ class Player(Model):
             try:
                 bot.logger.info(f"Editing {member.name} ({member.id}) roles for level change.", guild=guild,
                                 channel=channel)
+
+                bot.logger.debug(f"Roles transition for {member.id}: {member_roles} -> {new_member_roles}", guild=guild, channel=channel)
                 await member.edit(roles=new_member_roles, reason="Level change")
             except discord.Forbidden as e:
                 # Can't set the new roles.
