@@ -62,7 +62,7 @@ class SettingsCommands(Cog):
 
         EXCLUDE = {"discord_id", "first_seen", "guild", "guild_id", "players", "name", "webhook_urls", "api_key",
                    "use_webhooks",
-                   "use_emojis", "enabled"}
+                   "use_emojis", "enabled", "prestige_to_roles_ids_mapping", "levels_to_roles_ids_mapping"}
 
         COPY_FIELDS = db_defaults._meta.fields.copy() - EXCLUDE
 
