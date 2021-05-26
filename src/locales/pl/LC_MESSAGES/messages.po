@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-04-30 11:36+0200\n"
+"POT-Creation-Date: 2021-05-25 13:18+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -459,6 +459,24 @@ msgstr ""
 msgid ""
 "Enable or disable the channel disabled message that tells you that you've "
 "ran a command in a channel that isn't enabled."
+msgstr ""
+
+msgid ""
+"Commands to edit auto roles. Auto roles are roles that are given "
+"automatically to members once they reach a\n"
+"certain DH level.\n"
+"\n"
+"To work properly, roles must all be BELOW DuckHunt top role in the server "
+"hierarchy."
+msgstr ""
+
+msgid ""
+"Commands to edit auto prestige roles. Auto prestige roles are roles that are "
+"given automatically to members once\n"
+"they reach a certain prestige level.\n"
+"\n"
+"To work properly, roles must all be BELOW DuckHunt top role in the server "
+"hierarchy."
 msgstr ""
 
 msgid ""
@@ -1820,6 +1838,50 @@ msgid "Channel disabled messages are enabled."
 msgstr ""
 
 msgid "Channel disabled messages are disabled. The bot will stay silent."
+msgstr ""
+
+msgid ""
+"❌ Unknown level number. Please check the table here: <https://duckhunt.me/"
+"docs/players-guide/levels-and-experience>"
+msgstr ""
+
+msgid ""
+"❌ I can't assign roles. Please make sure I have the `MANAGE_ROLES` "
+"permission."
+msgstr ""
+
+msgid ""
+"❌ I can't assign this role. Move my top role (currently {top_role}) above "
+"the roles you want to be able to assign."
+msgstr ""
+
+msgid "👍️ Role added to the auto_roles list."
+msgstr ""
+
+msgid "Current roles mapping:"
+msgstr ""
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr ""
+
+msgid "No level mapping is currently defined on this channel."
+msgstr ""
+
+msgid ""
+"❌ A prestige number must be a positive integer. Please check the table here: "
+"<https://duckhunt.me/docs/players-guide/levels-and-experience>"
+msgstr ""
+
+msgid "👍️ Role added to the auto_prestige_roles list."
+msgstr ""
+
+msgid "Current prestige roles mapping:"
+msgstr ""
+
+msgid "Level {i}"
+msgstr ""
+
+msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
 
 msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
