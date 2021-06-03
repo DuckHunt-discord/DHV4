@@ -14,6 +14,7 @@ class InvalidUsesCount(Exception):
 class NotInInventory(Exception):
     pass
 
+
 def _(s):
     return s
 

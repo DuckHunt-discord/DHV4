@@ -5,7 +5,7 @@ from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.inventory_items import ALL_INVENTORY, ALL_SHORTCODE, InvalidUsesCount, NotInInventory
-from utils.models import get_from_db, DiscordUser
+from utils.models import get_from_db, DiscordUser, get_user_inventory
 
 
 class InventoryCommands(Cog):
@@ -30,7 +30,7 @@ class InventoryCommands(Cog):
             _ = await ctx.get_translate_function(user_language=True)
 
             db_user: DiscordUser = await get_from_db(ctx.author, as_user=True)
-            inventory = await db_user.inventory
+            inventory = await get_user_inventory(db_user)
 
             embed = discord.Embed(title=_("Your inventory"))
             empty = True
