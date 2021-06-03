@@ -63,7 +63,7 @@ class InventoryCommands(Cog):
 
         # noinspection PyPep8Naming
         Item = ALL_SHORTCODE.get(item_shortcode, None)
-        if not Item:
+        if Item is None:
             await ctx.send(_("❌ Unknown item."))
             return
 
@@ -90,7 +90,7 @@ class InventoryCommands(Cog):
 
         # noinspection PyPep8Naming
         Item = ALL_SHORTCODE.get(item_shortcode, None)
-        if not Item:
+        if Item is None:
             await ctx.send(_("❌ Unknown item."))
             return
 
