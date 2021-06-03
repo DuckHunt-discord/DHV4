@@ -272,12 +272,18 @@ class RefillMagazines(Item):
 
         db_player = db_player or await get_player(ctx.author, ctx.channel)
 
-        await super().use_item(ctx, db_player=db_player, **kwargs)
-
         level_info = db_player.level_info()
-        db_player.magazines = level_info['magazines']
-        db_player.bullets = level_info['bullets']
-        await ctx.send(_('✨ Yay! Free ammo!'))
+
+        mags, bullets = db_player.magazines, db_player.bullets
+        new_mags, new_bullets = level_info['magazines'], level_info['bullets']
+
+        if mags < new_mags or bullets < new_bullets:
+            await super().use_item(ctx, db_player=db_player, **kwargs)
+            db_player.magazines = max(mags, new_mags)
+            db_player.bullets = max(bullets, new_bullets)
+            await ctx.send(_('✨ Yay! Free ammo!'))
+        else:
+            await ctx.send(_('❌ Your ammo is already full!'))
 
 
 # Lootboxes
