@@ -424,7 +424,7 @@ class AccessLevel(IntEnum):
 
 class UserInventory(Model):
     user: fields.ForeignKeyRelation["DiscordUser"] = \
-        fields.OneToOneField('models.DiscordUser', related_name='inventory', on_delete=fields.CASCADE, primary_key=True)
+        fields.OneToOneField('models.DiscordUser', related_name='inventory', on_delete=fields.CASCADE, pk=True)
 
     # Boxes
     lootbox_welcome_left = fields.IntField(default=1)
