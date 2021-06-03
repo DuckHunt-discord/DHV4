@@ -146,7 +146,7 @@ class Lootbox(Item):
             item_uses = item.uses
             description.append(f"**{item_uses}x {item_name}**\n{item_desc}")
 
-        await self.inventory.save()
+        await super().use_item(ctx, **kwargs)
 
         if len(description) > 0:
             embed.description = "\n\n".join(description)
