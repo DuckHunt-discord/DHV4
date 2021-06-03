@@ -232,7 +232,7 @@ class Bullet(Item):
         await super().use_item(ctx, db_player=db_player, **kwargs)
         _ = await ctx.get_translate_function(user_language=True)
 
-        db_player.bullets += 1
+        db_player.bullets += self.uses
         await db_player.save()
         await ctx.send(_('✨ Oh, is this a bullet ?'))
 
@@ -245,10 +245,13 @@ class Egg(Item):
     db_name: str = "item_spawn_ducks"
 
     async def use_item(self, ctx: MyContext, db_channel=None, **kwargs):
+        if self.uses >= 5:
+            raise InvalidUsesCount()
+
         _ = await ctx.get_translate_function(user_language=True)
         await super().use_item(ctx, db_channel=db_channel, **kwargs)
 
-        for i in range(2):
+        for i in range(self.uses * 2):
             await spawn_random_weighted_duck(ctx.bot, ctx.channel, db_channel=db_channel)
 
         await ctx.send(_('✨ Oh look, ducks! Ducks are everywhere!'))
@@ -262,6 +265,9 @@ class RefillMagazines(Item):
     db_name: str = "item_refill_magazines"
 
     async def use_item(self, ctx: MyContext, db_player=None, **kwargs):
+        if self.uses != 1:
+            raise InvalidUsesCount()
+
         _ = await ctx.get_translate_function(user_language=True)
 
         db_player = db_player or await get_player(ctx.author, ctx.channel)
