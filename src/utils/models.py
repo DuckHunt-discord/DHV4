@@ -449,7 +449,7 @@ class UserInventory(Model):
         return f"<Inventory user={self.user}>"
 
     class Meta:
-        db_table = 'inventories'
+        table = 'inventories'
 
 
 class DiscordUser(Model):
