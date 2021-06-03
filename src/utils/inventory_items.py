@@ -11,6 +11,7 @@ from utils.models import UserInventory, DiscordUser, get_user_inventory, get_fro
 class InvalidUsesCount(Exception):
     pass
 
+
 class NotInInventory(Exception):
     pass
 
