@@ -590,7 +590,7 @@ class Player(Model):
         self.magazines = level_info["magazines"]
         self.bullets = level_info["bullets"]
 
-        self.change_roles(bot)
+        await self.change_roles(bot)
 
     def serialize(self, serialize_fields=None):
         DONT_SERIALIZE = {'weapon_sabotaged_by', 'sabotaged_weapons', 'channel', 'member'}
