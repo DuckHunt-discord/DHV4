@@ -423,8 +423,18 @@ class AccessLevel(IntEnum):
 
 
 class UserInventory(Model):
-    user: fields.ForeignKeyRelation["DiscordUser"] = \
-        fields.OneToOneField('models.DiscordUser', related_name='inventory', on_delete=fields.CASCADE, pk=True)
+    # Okay, tortoise suck big time on this
+    # But you can't add a primary key on a ForeignKey like you can in django
+    # Or you won't be able to save the model
+    # So, until they fix https://github.com/tortoise/tortoise-orm/issues/443,
+    # I'm defining the field as a BigIntField which should hopefully fix the save issues
+    # But we will loose all the fk goodness such as prefetching, CASCADING, ...
+    # Welp.
+
+    # user: fields.ForeignKeyRelation["DiscordUser"] = \
+    #     fields.OneToOneField('models.DiscordUser', related_name='inventory', on_delete=fields.CASCADE, pk=True)
+
+    user_id = fields.BigIntField(pk=True)
 
     # Boxes
     lootbox_welcome_left = fields.IntField(default=1)
@@ -458,7 +468,7 @@ class DiscordUser(Model):
 
     support_tickets: fields.ReverseRelation[SupportTicket]
     closed_tickets: fields.ReverseRelation[SupportTicket]
-    inventory: fields.OneToOneRelation[UserInventory]
+    # inventory: fields.OneToOneRelation[UserInventory]
 
 
     members: fields.ReverseRelation["DiscordMember"]
