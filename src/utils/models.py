@@ -1127,7 +1127,7 @@ async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, disco
         db_user = user
 
     async with DB_LOCKS[(db_user, )]:
-        inventory, created = await UserInventory.get_or_create(user=db_user)
+        inventory, created = await UserInventory.get_or_create(user_id=db_user.discord_id)
 
     return inventory
 
