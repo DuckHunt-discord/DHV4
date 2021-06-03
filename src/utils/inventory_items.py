@@ -123,7 +123,7 @@ class Lootbox(Item):
             uses = sum([int(random.randint(0, 100) < luck) for i in range(uses * self.uses)])
 
             if uses != 0:
-                given.append(ItemCls(uses=uses))
+                given.append(ItemCls(self.inventory, uses=uses))
 
         return given
 
