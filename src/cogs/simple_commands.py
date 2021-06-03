@@ -267,7 +267,7 @@ class SimpleCommands(Cog):
     @commands.command(hidden=True, )
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     @dont_block
-    async def vote_boss_spawn(self, ctx: MyContext, yes_trigger: int = 5, no_trigger: int = 1):
+    async def vote_boss_spawn(self, ctx: MyContext, yes_trigger: int = 5, no_trigger: int = 1, time_to_wait: int = 60):
         """
         Vote for a boss to spawn for a minute.
         This is an unfair vote: while it needs people to vote quickly for a boss,
@@ -283,7 +283,7 @@ class SimpleCommands(Cog):
         await message.add_reaction("🦆")
         await message.add_reaction("❌")
 
-        await asyncio.sleep(61)
+        await asyncio.sleep(time_to_wait + 1)
 
         try:
             message = await ctx.channel.fetch_message(message.id)
