@@ -283,7 +283,15 @@ class SimpleCommands(Cog):
         await message.add_reaction("🦆")
         await message.add_reaction("❌")
 
-        await asyncio.sleep(time_to_wait + 1)
+        await asyncio.sleep(int((time_to_wait - 10)/2))
+        to_delete = await ctx.reply("⏰ Halfway there...")
+        await asyncio.sleep(int((time_to_wait - 10)/2) )
+        await to_delete.delete()
+        to_edit = await ctx.reply("⏰ 10 seconds left...")
+        await asyncio.sleep(5)
+        await to_edit.edit(content="⏰ 5 seconds left...")
+        await asyncio.sleep(5)
+        await to_edit.edit(content="⏰ And done...")
 
         try:
             message = await ctx.channel.fetch_message(message.id)
