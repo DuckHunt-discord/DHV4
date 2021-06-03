@@ -33,7 +33,11 @@ class Item(abc.ABC):
 
     @property
     def shortcode(self):
-        return self._shortcode or self.db_name.replace(" ", "_").lower()
+        return self.get_shortcode()
+
+    @classmethod
+    def get_shortcode(cls):
+        return cls._shortcode or cls.db_name.replace(" ", "_").lower()
 
     def is_in_inventory(self):
         """
@@ -316,7 +320,7 @@ LOOTBOXES: typing.List[typing.Type[Item]] = [WelcomePackage, FoieGras, Voted]
 
 ALL_INVENTORY: typing.List[typing.Type[Item]] = LOOTBOXES + ITEMS
 
-ITEMS_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Item.shortcode: _Item for _Item in ITEMS}
-LOOTBOXES_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Lootbox.shortcode: _Lootbox for _Lootbox in LOOTBOXES}
+ITEMS_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Item.get_shortcode(): _Item for _Item in ITEMS}
+LOOTBOXES_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Lootbox.get_shortcode(): _Lootbox for _Lootbox in LOOTBOXES}
 
 ALL_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {**ITEMS_SHORTCODE, **LOOTBOXES_SHORTCODE}
