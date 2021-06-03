@@ -245,6 +245,14 @@ class SimpleCommands(Cog):
         """
         await ctx.reply("👀")
 
+    @commands.command(hidden=True, aliases=["girafe", "giraf"])
+    @checks.channel_enabled()
+    async def giraffe(self, ctx: MyContext):
+        """
+        I hav long nek
+        """
+        await ctx.reply("🦒")
+
     @commands.command(hidden=True)
     @checks.channel_enabled()
     async def cow(self, ctx: MyContext):
