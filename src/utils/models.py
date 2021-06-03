@@ -562,7 +562,7 @@ class Player(Model):
                              'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience',
                              'givebacks'}
 
-    def do_prestige(self, bot, kept_exp):
+    async def do_prestige(self, bot, kept_exp):
         """
         Reset a player data, persisting his/her ID. What's left to do is.
         """

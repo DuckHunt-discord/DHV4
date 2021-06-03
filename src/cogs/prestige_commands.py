@@ -113,7 +113,7 @@ class PrestigeCommands(Cog):
             e.add_field(name=_("✨ New run"),
                         value=_("You'll restart the game with {kept_exp} experience.", kept_exp=kept_exp))
 
-            db_hunter.do_prestige(bot=ctx.bot, kept_exp=kept_exp)
+            await db_hunter.do_prestige(bot=ctx.bot, kept_exp=kept_exp)
 
             await db_hunter.save()
 
