@@ -4,12 +4,11 @@ from typing import List
 
 import discord
 from babel.dates import format_timedelta
-from discord.ext import commands, tasks
+from discord.ext import tasks
 
-from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.cog_class import Cog
-from utils.interaction import get_timedelta
-from utils.models import get_enabled_channels, DiscordChannel, Player, DiscordUser
+from utils.inventory_items import FoieGras
+from utils.models import DiscordUser, get_user_inventory
 
 
 class DuckBoss(Cog):
@@ -92,8 +91,8 @@ class DuckBoss(Cog):
 
                 for discorduser in discordusers:
                     discorduser.boss_kills += 1
-                    discorduser.add_to_inventory(INV_COMMON_ITEMS['foie_gras'])
-                    await discorduser.save(update_fields=['inventory', 'boss_kills'])
+                    await FoieGras.give_to(discorduser)
+                    await discorduser.save(update_fields=['boss_kills'])
 
                 new_embed = discord.Embed(
                     title=random.choice(["The boss was defeated !"]),

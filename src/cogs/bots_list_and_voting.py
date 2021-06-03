@@ -11,9 +11,9 @@ from discord.ext import commands
 from utils.cog_class import Cog
 from typing import Tuple, List
 from utils import checks
-from cogs.inventory_commands import INV_COMMON_ITEMS
 from utils.ctx_class import MyContext
-from utils.models import DiscordUser, get_from_db, BotList, Vote, Player
+from utils.inventory_items import Voted
+from utils.models import DiscordUser, get_from_db, BotList, Vote, Player, get_user_inventory
 
 
 class BotsListVoting(Cog):
@@ -145,12 +145,11 @@ class BotsListVoting(Cog):
         db_user: DiscordUser = await get_from_db(user)
 
         vote = Vote(user=db_user, bot_list=bot_list, multiplicator=multiplicator)
-        await vote.save()
-
-        db_user.add_to_inventory(INV_COMMON_ITEMS["i_voted"])
 
         if not is_test:
             self.bot.logger.info(f"{multiplicator} vote(s) recorded for {user.name}#{user.discriminator} on {bot_list.name}.")
+            await vote.save()
+            await Voted.give_to(db_user)
             await db_user.save()
         else:
             self.bot.logger.warning(f"{multiplicator} test vote(s) received for {user.name}#{user.discriminator}. Not saved.")

@@ -422,12 +422,44 @@ class AccessLevel(IntEnum):
                 raise commands.BadArgument(_("Can't set such a high level"))
 
 
+class UserInventory(Model):
+    user: fields.ForeignKeyRelation["DiscordUser"] = \
+        fields.OneToOneField('DiscordUser', related_name='inventory', on_delete=fields.CASCADE, primary_key=True)
+
+    # Boxes
+    lootbox_welcome_left = fields.IntField(default=1)
+    lootbox_boss_left    = fields.IntField(default=0)
+    lootbox_vote_left    = fields.IntField(default=0)
+
+    # Unobtainable items
+    item_vip_card_left = fields.IntField(default=0)
+
+    # Loot
+    item_mini_exp_boost_left   = fields.IntField(default=0)
+    item_norm_exp_boost_left   = fields.IntField(default=0)
+    item_maxi_exp_boost_left   = fields.IntField(default=0)
+    item_one_bullet_left       = fields.IntField(default=0)
+    item_spawn_ducks_left      = fields.IntField(default=0)
+    item_refill_magazines_left = fields.IntField(default=0)
+
+    def __str__(self):
+        return f"{self.user} inventory"
+
+    def __repr__(self):
+        return f"<Inventory user={self.user}>"
+
+    class Meta:
+        db_table = 'inventories'
+
+
 class DiscordUser(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
 
     support_tickets: fields.ReverseRelation[SupportTicket]
     closed_tickets: fields.ReverseRelation[SupportTicket]
+    inventory: fields.OneToOneRelation[UserInventory]
+
 
     members: fields.ReverseRelation["DiscordMember"]
 
@@ -438,7 +470,6 @@ class DiscordUser(Model):
     name = fields.TextField()
     discriminator = fields.CharField(4)
 
-    inventory = fields.JSONField(default=list)
     trophys = fields.JSONField(default=dict)
 
     ping_friendly = fields.BooleanField(default=True)
@@ -460,19 +491,6 @@ class DiscordUser(Model):
 
     async def support_ticket_count(self, **filter_kwargs) -> int:
         return await SupportTicket.filter(user=self, **filter_kwargs).count()
-
-    def add_to_inventory(self, item_to_give, item_number=None):
-        for item_in_inventory in self.inventory:
-            if item_in_inventory["type"] == item_to_give["type"] and \
-                    item_in_inventory.get("action", "") == item_to_give.get("action", "") and \
-                    item_in_inventory.get("amount", 0) == item_to_give.get("amount", 0):
-                item_in_inventory["uses"] = item_in_inventory.get("uses", 1) + item_to_give.get("uses", 1)
-                break
-        else:
-            if item_number:
-                self.inventory.insert(item_number, copy.deepcopy(item_to_give))
-            else:
-                self.inventory.append(copy.deepcopy(item_to_give))
 
     class Meta:
         table = "users"
@@ -1090,6 +1108,18 @@ async def get_player(member: discord.Member, channel: discord.TextChannel, giveb
             await db_obj.maybe_giveback()
 
         return db_obj
+
+
+async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, discord.Member]) -> UserInventory:
+    if not isinstance(user, DiscordUser):
+        db_user = await get_from_db(user, as_user=True)
+    else:
+        db_user = user
+
+    async with DB_LOCKS[(db_user, )]:
+        inventory, created = await UserInventory.get_or_create(user=db_user)
+
+    return inventory
 
 
 async def get_enabled_channels():
