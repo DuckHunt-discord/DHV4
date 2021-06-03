@@ -95,7 +95,7 @@ class InventoryCommands(Cog):
             return
 
         try:
-            await Item.use_by(ctx, db_channel=db_channel)
+            await Item.use_by(ctx, uses=item_uses, db_channel=db_channel)
         except InvalidUsesCount:
             await ctx.send(_("❌ You can't use this item that many times."))
             return
