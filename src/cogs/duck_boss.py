@@ -87,7 +87,7 @@ class DuckBoss(Cog):
                 # Kill the boss
                 users = await reaction.users().flatten()
                 ids = [u.id for u in users]
-                discordusers: List[DiscordUser] = await DiscordUser.filter(discord_id__in=ids).only('inventory', 'boss_kills', 'discord_id').all()
+                discordusers: List[DiscordUser] = await DiscordUser.filter(discord_id__in=ids).only('boss_kills', 'discord_id').all()
 
                 for discorduser in discordusers:
                     discorduser.boss_kills += 1
