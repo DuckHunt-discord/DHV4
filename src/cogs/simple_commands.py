@@ -1,3 +1,4 @@
+import asyncio
 import datetime
 import random
 import time
@@ -11,9 +12,10 @@ from discord.ext import commands, menus
 from utils import checks
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
+from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
 from utils.images import get_random_image
-from utils.models import get_from_db
+from utils.models import get_from_db, AccessLevel
 from utils.translations import TRANSLATORS, get_pct_complete
 
 SECOND = 1
@@ -261,6 +263,56 @@ class SimpleCommands(Cog):
         It's impossible.
         """
         await ctx.reply("And yet, it's <@202484200438366208>")
+
+    @commands.command(hidden=True, )
+    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
+    @dont_block
+    async def vote_boss_spawn(self, ctx: MyContext, yes_trigger: int = 5, no_trigger: int = 1):
+        """
+        Vote for a boss to spawn for a minute.
+        This is an unfair vote: while it needs people to vote quickly for a boss,
+        if someones vote against, the boss won't spawn.
+        """
+
+        message = await ctx.send('**A vote to spawn a boss is in progress**\n'
+                                 f'React with 🦆 to spawn a boss (needs {yes_trigger} votes in 1 minute), or\n'
+                                 f'react with ❌ to prevent the boss spawn (needs {no_trigger} votes in 1 minute, '
+                                 f'wins in the case of a tie)\n'
+                                 f'Yes, this is a social experiment, and it\'s starting **NOW**.')
+
+        await message.add_reaction("🦆")
+        await message.add_reaction("❌")
+
+        await asyncio.sleep(61)
+
+        try:
+            message = await ctx.channel.fetch_message(message.id)
+        except:
+            await ctx.reply("❌ Re-fetching the message failed. Cancelling.")
+
+        got_yes = 0
+        got_no = 0
+
+        for reaction in message.reactions:
+            if str(reaction.emoji) == "❌":
+                got_no = reaction.count
+            elif str(reaction.emoji) == "🦆":
+                got_yes = reaction.count
+
+        # Remove our own
+        got_yes -= 1
+        got_no -= 1
+
+        if got_no >= no_trigger:
+            await message.reply(f"Got {got_no} no votes. Not spawning a boss.")
+            return
+        elif got_yes <= yes_trigger:
+            await message.reply(f"Didn't get enough yes votes ({got_yes} < {yes_trigger}). Not spawning a boss.")
+            return
+        elif got_yes <= yes_trigger:
+            await message.reply(f"🦆 Alright. I'm spawning a boss. Congratulations.")
+            boss_cog = self.bot.get_cog('DuckBoss')
+            await boss_cog.spawn_boss()
 
     @commands.command(hidden=True)
     @checks.channel_enabled()
