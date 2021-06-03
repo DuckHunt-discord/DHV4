@@ -281,6 +281,7 @@ class RefillMagazines(Item):
             await super().use_item(ctx, db_player=db_player, **kwargs)
             db_player.magazines = max(mags, new_mags)
             db_player.bullets = max(bullets, new_bullets)
+            await db_player.save()
             await ctx.send(_('✨ Yay! Free ammo!'))
         else:
             await ctx.send(_('❌ Your ammo is already full!'))
