@@ -1,16 +1,11 @@
-import asyncio
-import random
-
 import discord
 from discord.ext import commands
-from discord.ext import menus
 
 from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.ducks import spawn_random_weighted_duck
 from utils.inventory_items import ALL_INVENTORY, ALL_SHORTCODE, InvalidUsesCount, NotInInventory
-from utils.models import get_from_db, get_player, DiscordUser
+from utils.models import get_from_db, DiscordUser
 
 
 class InventoryCommands(Cog):
