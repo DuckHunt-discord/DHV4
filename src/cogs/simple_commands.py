@@ -251,7 +251,16 @@ class SimpleCommands(Cog):
         """
         I hav long nek
         """
-        await ctx.reply("🦒")
+        await ctx.reply("🦒")\
+
+    @commands.command(hidden=True,)
+    @checks.channel_enabled()
+    @checks.is_in_server(195260081036591104)
+    async def impossible(self, ctx: MyContext):
+        """
+        It's impossible.
+        """
+        await ctx.reply("And yet, it's <@202484200438366208>")
 
     @commands.command(hidden=True)
     @checks.channel_enabled()
