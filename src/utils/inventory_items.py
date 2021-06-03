@@ -122,7 +122,7 @@ class Lootbox(Item):
     async def get_items_to_give(self) -> typing.List[Item]:
         given = []
         for ItemCls, luck, uses in self.items_inside:
-            uses = sum([int(random.randint(0, 100) < luck) for i in range(uses * self.uses)])
+            uses = sum([int(random.randint(0, 99) < luck) for i in range(uses * self.uses)])
 
             if uses != 0:
                 given.append(ItemCls(self.inventory, uses=uses))
