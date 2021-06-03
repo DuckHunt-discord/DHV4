@@ -273,10 +273,10 @@ class SimpleCommands(Cog):
         This is an unfair vote: while it needs people to vote quickly for a boss,
         if someones vote against, the boss won't spawn.
         """
-
+        ftd = format_timedelta(datetime.timedelta(seconds=time_to_wait), locale='en', threshold=1.1)
         message = await ctx.send('**A vote to spawn a boss is in progress**\n'
                                  f'React with 🦆 to spawn a boss (needs {yes_trigger} votes in 1 minute), or\n'
-                                 f'react with ❌ to prevent the boss spawn (needs {no_trigger} votes in 1 minute, '
+                                 f'react with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, '
                                  f'wins in the case of a tie)\n'
                                  f'Yes, this is a social experiment, and it\'s starting **NOW**.')
 
