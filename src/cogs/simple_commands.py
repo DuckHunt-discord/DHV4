@@ -265,7 +265,7 @@ class SimpleCommands(Cog):
         """
         await ctx.reply("And yet, it's <@202484200438366208>")
 
-    @commands.command(hidden=True, )
+    @commands.command(hidden=True)
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     @dont_block
     async def vote_boss_spawn(self, ctx: MyContext, yes_trigger: int = 5, no_trigger: int = 1, time_to_wait: int = 60):
@@ -277,9 +277,9 @@ class SimpleCommands(Cog):
         ftd = format_timedelta(datetime.timedelta(seconds=time_to_wait), locale='en', threshold=1.1)
         message = await ctx.send('**A vote to spawn a boss is in progress**\n'
                                  f'React with 🦆 to spawn a boss (needs {yes_trigger} votes in {ftd}), or\n'
-                                 f'react with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, '
+                                 f'React with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, '
                                  f'wins in the case of a tie)\n'
-                                 f'If **exactly** {no_trigger} no votes are casted, no-voters will receive 2 boxes '
+                                 f'➡️ If **exactly** {no_trigger} no votes are casted, no-voters will receive 2 boxes '
                                  f'of foie gras each.\n'
                                  f'Yes, this is a social experiment, and it\'s starting **NOW**.')
 
