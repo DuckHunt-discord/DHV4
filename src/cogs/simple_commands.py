@@ -15,6 +15,7 @@ from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
 from utils.images import get_random_image
+from utils.inventory_items import FoieGras
 from utils.models import get_from_db, AccessLevel
 from utils.translations import TRANSLATORS, get_pct_complete
 
@@ -278,6 +279,8 @@ class SimpleCommands(Cog):
                                  f'React with 🦆 to spawn a boss (needs {yes_trigger} votes in {ftd}), or\n'
                                  f'react with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, '
                                  f'wins in the case of a tie)\n'
+                                 f'If **exactly** {no_trigger} no votes are casted, no-voters will receive 2 boxes '
+                                 f'of foie gras each.\n'
                                  f'Yes, this is a social experiment, and it\'s starting **NOW**.')
 
         await message.add_reaction("🦆")
@@ -300,10 +303,12 @@ class SimpleCommands(Cog):
 
         got_yes = 0
         got_no = 0
+        no_react = None
 
         for reaction in message.reactions:
             if str(reaction.emoji) == "❌":
                 got_no = reaction.count
+                no_react = reaction
             elif str(reaction.emoji) == "🦆":
                 got_yes = reaction.count
 
@@ -311,7 +316,12 @@ class SimpleCommands(Cog):
         got_yes -= 1
         got_no -= 1
 
-        if got_no >= no_trigger:
+        if got_no == no_trigger:
+            await message.reply(f"Got exactly {got_no} no votes. Giving them 2 boxes of foie gras each..")
+            async for user in no_react.users():
+                await FoieGras.give_to(user, uses=2)
+            return
+        elif got_no > no_trigger:
             await message.reply(f"Got {got_no} no votes. Not spawning a boss.")
             return
         elif got_yes <= yes_trigger:
