@@ -220,6 +220,8 @@ class DiscordChannel(Model):
     use_emojis = fields.BooleanField(default=True)
     enabled = fields.BooleanField(default=False)
 
+    anti_trigger_wording = fields.BooleanField(default=False)
+
     allow_global_items = fields.BooleanField(default=True)
 
     tax_on_user_send = PercentageField(default=5)

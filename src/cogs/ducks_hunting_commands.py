@@ -165,9 +165,14 @@ class DucksHuntingCommands(Cog):
             await asyncio.sleep(2)
 
             if has_kill_licence:
-                await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
-                                  "You should send your complaints to the CACAD. At least, you had a ~~kill~~ suicide licence. [**MISSED**: -2 exp]",
-                                  ))
+                if db_channel.anti_trigger_wording:
+                    await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
+                                      "You should send your complaints to the CACAD. Your licence to kill saved your experience. [**MISSED**: -2 exp]",
+                                      ))
+                else:
+                    await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
+                                      "You should send your complaints to the CACAD. At least, you had a ~~kill~~ suicide licence. [**MISSED**: -2 exp]",
+                                      ))
             else:
                 await ctx.reply(_("... And the bullet flew straight into your face, killing you instantly. "
                                   "You should send your complaints to the CACAD. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]",
@@ -307,8 +312,13 @@ class DucksHuntingCommands(Cog):
                 if murder:
                     if hunter_coat_color != Coats.RED:
                         if db_target.id == db_hunter.id:
-                            await ctx.reply(_("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
-                                              ))
+                            if db_channel.anti_trigger_wording:
+                                await ctx.reply(_("🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
+                                                  ))
+                            else:
+                                await ctx.reply(
+                                    _("🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
+                                      ))
                         else:
                             await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player_name} head, and pulled the trigger. "
                                               "[**WEAPON CONFISCATED**][**MURDER**: -15 exp]",
@@ -316,8 +326,14 @@ class DucksHuntingCommands(Cog):
                                               ))
                     else:
                         if db_target.id == db_hunter.id:
-                            await ctx.reply(_("🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]",
-                                              ))
+                            if db_channel.anti_trigger_wording:
+                                await ctx.reply(
+                                    _("🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]",
+                                      ))
+                            else:
+                                await ctx.reply(
+                                    _("🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]",
+                                      ))
                         else:
                             await ctx.reply(_("🔫 You took your weapon out, aiming it directly towards {player_name} head, and pulled the trigger. "
                                               "[**RED COAT**: Kept weapon][**MURDER**: -15 exp]",

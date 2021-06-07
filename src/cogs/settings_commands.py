@@ -470,10 +470,9 @@ class SettingsCommands(Cog):
         if db_channel.use_webhooks:
             await ctx.send(_("Webhooks are used in this channel."))
         else:
-            await ctx.send(_("Webhooks are not used in this channel.")) \
- \
-            @ settings.command()
+            await ctx.send(_("Webhooks are not used in this channel."))
 
+    @settings.command()
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     @checks.channel_enabled()
     async def allow_global_items(self, ctx: MyContext, value: Optional[bool] = None):
@@ -969,6 +968,28 @@ class SettingsCommands(Cog):
                          channel=ctx.channel,
                          value=db_channel.super_ducks_max_life))
 
+    @settings.command()
+    @checks.needs_access_level(models.AccessLevel.MODERATOR)
+    @checks.channel_enabled()
+    async def anti_trigger_wording(self, ctx: MyContext, value: bool = None):
+        """
+        Avoid references to triggering actions/words.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if value is not None:
+            db_channel.anti_trigger_wording = value
+            await db_channel.save()
+
+        if db_channel.anti_trigger_wording:
+            await ctx.send(_("On {channel.mention}, anti-trigger wording is enabled.",
+                             channel=ctx.channel,))
+        else:
+            await ctx.send(_("On {channel.mention}, anti-trigger wording is disabled.",
+                             channel=ctx.channel
+                             ))
+
     @settings.command(aliases=["night", "sleep", "sleeping_ducks"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     @checks.channel_enabled()
@@ -1128,7 +1149,6 @@ class SettingsCommands(Cog):
             db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
             await ctx.reply(_("👍️ Role added to the auto_roles list."))
 
-
         # Sorted by lowest role first.
         current_mapping = sorted(db_channel.levels_to_roles_ids_mapping.items(), key=lambda kv: int(kv[0]))
 
@@ -1141,7 +1161,8 @@ class SettingsCommands(Cog):
                 role = guild.get_role(role_id)
                 if not role:
                     del db_channel.levels_to_roles_ids_mapping[str(level_id)]
-                    message.append(_(level['name']).title() + " - " + _('Deleted role 🗑️ ID: {role_id}', role_id=role_id))
+                    message.append(
+                        _(level['name']).title() + " - " + _('Deleted role 🗑️ ID: {role_id}', role_id=role_id))
                 else:
                     message.append(_(level['name']).title() + " - " + role.mention)
 
@@ -1152,7 +1173,8 @@ class SettingsCommands(Cog):
         await db_channel.save()
         await ctx.reply(message)
 
-    @settings.command(aliases=["prestige_roles", "prestige_role", "apr", "autoprestigeroles", "auto_prestige_role", "autoprestigerole"])
+    @settings.command(aliases=["prestige_roles", "prestige_role", "apr", "autoprestigeroles", "auto_prestige_role",
+                               "autoprestigerole"])
     @checks.needs_access_level(models.AccessLevel.ADMIN)
     async def auto_prestige_roles(self, ctx: MyContext, prestige_id: int = None, role: discord.Role = None):
         """
