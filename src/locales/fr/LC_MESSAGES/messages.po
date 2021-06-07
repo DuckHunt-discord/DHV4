@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-05-25 13:18+0200\n"
+"POT-Creation-Date: 2021-06-07 12:32+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -174,13 +174,6 @@ msgstr ""
 
 msgid "Give something to some player."
 msgstr "Donne quelque chose à un autre joueur."
-
-msgid ""
-"Compress and sort your inventory, to fuse items together. You shouldn't have "
-"to use this."
-msgstr ""
-"Compressez et triez votre inventaire, pour fusionner les objets entre eux. "
-"Vous ne devriez pas avoir à utiliser cela."
 
 msgid "Use one of the items in your inventory."
 msgstr "Utilise l'un des items de ton inventaire"
@@ -653,6 +646,9 @@ msgstr "Fixer le nombre de vies minimum d'un super canard."
 msgid "Set the maximum lives of a super duck"
 msgstr "Fixer le nombre de vies maximum d'un super canard."
 
+msgid "Avoid references to triggering actions/words."
+msgstr ""
+
 msgid ""
 "Set the night time. Only some exclusive ducks spawn during the night.\n"
 "\n"
@@ -925,6 +921,18 @@ msgstr "Je n'ai qu'un seul œil"
 
 msgid "Who doesn't need eyes"
 msgstr "Qui n'a pas besoin d'yeux"
+
+msgid "I hav long nek"
+msgstr ""
+
+msgid "It's impossible."
+msgstr ""
+
+msgid ""
+"Vote for a boss to spawn for a minute.\n"
+"This is an unfair vote: while it needs people to vote quickly for a boss,\n"
+"if someones vote against, the boss won't spawn."
+msgstr ""
 
 msgid "Who doesn't need cows ?"
 msgstr "Qui n'a pas besoin de vaches ?"
@@ -1328,6 +1336,12 @@ msgstr ""
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. Your licence to kill saved your "
+"experience. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. At least, you had a ~~kill~~ "
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
@@ -1373,6 +1387,9 @@ msgstr ""
 "films, par le pouvoir de l'amour, tu as fait en sorte que la balle touche "
 "l'arbre de l'amour 🌳 à la place. [**RATÉ** : -2 exp]"
 
+msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr "🔫 Tu t'es suicidé. [**ARME CONFISQUÉE**] [**MEURTRE** : -15 exp]"
 
@@ -1382,6 +1399,9 @@ msgid ""
 msgstr ""
 "🔫 Tu sors ton arme, tu la pointes directement sur la tête de {player_name} "
 "et tu appuies sur la détente. [**ARME CONFISQUÉE**] [**MEURTRE** : -15 exp]"
+
+msgid "🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
 
 msgid ""
 "🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
@@ -1739,78 +1759,14 @@ msgstr ""
 "provient pas de CommandError, et n'est pas gérée par notre gestionnaire "
 "d'erreurs. Veuillez en informer le propriétaire du bot."
 
-msgid "A welcome gift"
-msgstr "Un cadeau de bienvenue"
-
-msgid "Open it in your inventory"
-msgstr "Ouvre le dans ton inventaire"
-
-msgid "A clean box of foie gras"
-msgstr "Une boîte de foie gras bien propre"
-
-msgid "The boss dropped that when he died"
-msgstr "Le boss a laissé tomber ça quand il est mort"
-
-msgid "A little something for helping the bot"
-msgstr "Un petit quelque chose pour aider le bot."
-
-msgid "Thanks for voting for DuckHunt"
-msgstr "Merci d'avoir voté pour DuckHunt !"
-
-msgid "VIP Card"
-msgstr "Carte VIP"
-
-msgid "A nice and shiny card that allow you to set a server as VIP."
-msgstr "Une jolie carte brillante qui permet de définir un serveur comme VIP."
-
-msgid "A book in a foreign language"
-msgstr "Un livre dans une langue étrangère"
-
-msgid "Can you read it ?"
-msgstr "Pouvez-vous le lire ?"
-
-msgid "A book"
-msgstr "Un livre"
-
-msgid "Reading it will give you experience"
-msgstr "Sa lecture te permet d'acquérir de l'expérience"
-
-msgid "An encyclopedia"
-msgstr "Une encyclopédie"
-
-msgid "Reading it will give you a lot of experience"
-msgstr "Sa lecture vous permettra d'acquérir beaucoup d'expérience"
-
-msgid "A bullet"
-msgstr "Une balle"
-
-msgid ""
-"This is just a normal bullet, but it might help you to get that special "
-"achievement"
-msgstr ""
-"C'est une balle normale, mais elle pourrait vous aider à obtenir ce succès "
-"spécial."
-
-msgid "A good ol' egg"
-msgstr "Un bon vieil œuf"
-
-msgid "Crack it open !"
-msgstr "Ouvre-le donc !"
-
-msgid "A free card for magazines"
-msgstr "Une carte cadeau pour des chargeurs gratuits"
-
-msgid "Redeem it to refill your weapon."
-msgstr "Utilise-la pour recharger ton arme."
+msgid "Your inventory"
+msgstr "Ton inventaire"
 
 msgid "A lot of air and a starved mosquito."
 msgstr "Beaucoup d'air et un moustique affamé."
 
-msgid "`{prefix}inv use item_number` to use an item"
-msgstr "`{prefix}inv use item_number` pour utiliser un objet"
-
-msgid "Your inventory"
-msgstr "Ton inventaire"
+msgid "`{prefix}inv use shortcode` to use an item"
+msgstr ""
 
 msgid "❌ Unknown item."
 msgstr "❌ Objet inconnu."
@@ -1818,38 +1774,17 @@ msgstr "❌ Objet inconnu."
 msgid "👌 Item has been given to {target.name}."
 msgstr "👌 L'objet a été donné à {target.name}."
 
-msgid "🎒 Your inventory has been sorted."
-msgstr "🎒 Votre inventaire a été trié."
-
 msgid "❌ Items usage is disabled on this channel."
 msgstr "❌ L'utilisation des objets est désactivée sur ce salon."
 
-msgid "❌ Unknown item number."
-msgstr "❌ Numéro d'article inconnu."
-
-msgid "Lootbox opened"
-msgstr "Lootbox ouverte"
-
-msgid "❌ {guild.name} is already VIP."
-msgstr "❌ {guild.name} est déjà VIP."
-
-msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr "✨ {guild.name} est maintenant VIP ! Merci."
-
-msgid ""
-"✨ You learned a lot, adding {amount} experience points to your profile."
+msgid "❌ The number of items to use must be a number greater or equal to 1."
 msgstr ""
-"✨ Tu as beaucoup appris, en ajoutant {amount} points d'expérience à ton "
-"profil."
 
-msgid "✨ Yay! Free ammo!"
-msgstr "✨ Trop bien ! Des munitions gratuites !"
+msgid "❌ You can't use this item that many times."
+msgstr ""
 
-msgid "✨ Oh, is this a bullet ?"
-msgstr "✨ Oh, c'est une balle ?"
-
-msgid "✨ Oh look, ducks! Ducks are everywhere!"
-msgstr "✨ Oh regarde, des canards ! Ils sont partout !"
+msgid "❌ You don't have that item."
+msgstr ""
 
 msgid "Prestige Information"
 msgstr "Informations sur le prestige"
@@ -2454,6 +2389,12 @@ msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
 msgstr ""
 "Sur {channel.mention}, les super canards auront un minimum de {value} de vie."
 ""
+
+msgid "On {channel.mention}, anti-trigger wording is enabled."
+msgstr ""
+
+msgid "On {channel.mention}, anti-trigger wording is disabled."
+msgstr ""
 
 msgid ""
 "❌ I'm sorry, I couldn't understand the time you entered for night_start. I'm "
@@ -4386,6 +4327,95 @@ msgid ""
 msgstr ""
 "Les munitions AP et explosives sont désactivées. Les super canards valent "
 "plus d'expérience, puisqu'ils sont plus rares."
+
+msgid "Lootbox opened"
+msgstr "Lootbox ouverte"
+
+msgid "VIP card"
+msgstr ""
+
+msgid "A nice and shiny card that allow you to set a server as VIP."
+msgstr "Une jolie carte brillante qui permet de définir un serveur comme VIP."
+
+msgid "❌ {guild.name} is already VIP."
+msgstr "❌ {guild.name} est déjà VIP."
+
+msgid "✨ {guild.name} is now VIP! Thanks."
+msgstr "✨ {guild.name} est maintenant VIP ! Merci."
+
+msgid "A book"
+msgstr "Un livre"
+
+msgid "Reading it will give you experience."
+msgstr ""
+
+msgid ""
+"✨ You learned a lot, adding {amount} experience points to your profile."
+msgstr ""
+"✨ Tu as beaucoup appris, en ajoutant {amount} points d'expérience à ton "
+"profil."
+
+msgid "A book in a foreign language"
+msgstr "Un livre dans une langue étrangère"
+
+msgid "Can you read it ?"
+msgstr "Pouvez-vous le lire ?"
+
+msgid "An encyclopedia"
+msgstr "Une encyclopédie"
+
+msgid "Reading it will give you a lot of experience ?"
+msgstr ""
+
+msgid "A bullet"
+msgstr "Une balle"
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement."
+msgstr ""
+
+msgid "✨ Oh, is this a bullet ?"
+msgstr "✨ Oh, c'est une balle ?"
+
+msgid "A good ol' egg"
+msgstr "Un bon vieil œuf"
+
+msgid "Crack it open !"
+msgstr "Ouvre-le donc !"
+
+msgid "✨ Oh look, ducks! Ducks are everywhere!"
+msgstr "✨ Oh regarde, des canards ! Ils sont partout !"
+
+msgid "A free card for magazines"
+msgstr "Une carte cadeau pour des chargeurs gratuits"
+
+msgid "Redeem it to refill your weapon."
+msgstr "Utilise-la pour recharger ton arme."
+
+msgid "✨ Yay! Free ammo!"
+msgstr "✨ Trop bien ! Des munitions gratuites !"
+
+msgid "❌ Your ammo is already full!"
+msgstr ""
+
+msgid "A welcome gift"
+msgstr "Un cadeau de bienvenue"
+
+msgid "Open it in your inventory"
+msgstr "Ouvre le dans ton inventaire"
+
+msgid "A clean box of foie gras"
+msgstr "Une boîte de foie gras bien propre"
+
+msgid "The boss dropped that when he died"
+msgstr "Le boss a laissé tomber ça quand il est mort"
+
+msgid "A little something for helping the bot"
+msgstr "Un petit quelque chose pour aider le bot."
+
+msgid "Thanks for voting for DuckHunt"
+msgstr "Merci d'avoir voté pour DuckHunt !"
 
 msgid "Negative cheater ?"
 msgstr "Tricheur inversé ?"

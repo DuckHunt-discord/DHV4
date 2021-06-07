@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-05-25 13:18+0200\n"
+"POT-Creation-Date: 2021-06-07 12:32+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -136,13 +136,6 @@ msgstr ""
 
 msgid "Give something to some player."
 msgstr "Adj valamit egy másik játékosnak."
-
-msgid ""
-"Compress and sort your inventory, to fuse items together. You shouldn't have "
-"to use this."
-msgstr ""
-"Tömörítsd és rendezd az eszköztárad, hogy egyesíts elemeket. Nem kellene "
-"használnod ezt a parancsot."
 
 msgid "Use one of the items in your inventory."
 msgstr "Felhasználja az egyik elemet az eszköztáradból."
@@ -560,6 +553,9 @@ msgstr ""
 msgid "Set the maximum lives of a super duck"
 msgstr ""
 
+msgid "Avoid references to triggering actions/words."
+msgstr ""
+
 msgid ""
 "Set the night time. Only some exclusive ducks spawn during the night.\n"
 "\n"
@@ -790,6 +786,18 @@ msgid "I only get one eye"
 msgstr ""
 
 msgid "Who doesn't need eyes"
+msgstr ""
+
+msgid "I hav long nek"
+msgstr ""
+
+msgid "It's impossible."
+msgstr ""
+
+msgid ""
+"Vote for a boss to spawn for a minute.\n"
+"This is an unfair vote: while it needs people to vote quickly for a boss,\n"
+"if someones vote against, the boss won't spawn."
 msgstr ""
 
 msgid "Who doesn't need cows ?"
@@ -1093,6 +1101,12 @@ msgstr ""
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. Your licence to kill saved your "
+"experience. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. At least, you had a ~~kill~~ "
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
@@ -1122,12 +1136,18 @@ msgid ""
 "[**MISSED**: -2 exp]"
 msgstr ""
 
+msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
+msgid "🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
 
 msgid ""
@@ -1391,76 +1411,14 @@ msgid ""
 "owner."
 msgstr ""
 
-msgid "A welcome gift"
-msgstr "Egy üdvözlő ajándék"
-
-msgid "Open it in your inventory"
-msgstr "Nyisd ki az eszköztáradban."
-
-msgid "A clean box of foie gras"
-msgstr "Egy tiszta doboz libamáj"
-
-msgid "The boss dropped that when he died"
-msgstr ""
-
-msgid "A little something for helping the bot"
-msgstr "Egy kicsi dolog, a bot segítéséért"
-
-msgid "Thanks for voting for DuckHunt"
-msgstr "Köszi a DuckHunt-ra szavazást!"
-
-msgid "VIP Card"
-msgstr "VIP Kártya"
-
-msgid "A nice and shiny card that allow you to set a server as VIP."
-msgstr "Egy szép és fényes kártya"
-
-msgid "A book in a foreign language"
-msgstr "Egy könyv egy idegen nyelven"
-
-msgid "Can you read it ?"
-msgstr "El tudod olvasni?"
-
-msgid "A book"
-msgstr "Egy könyv"
-
-msgid "Reading it will give you experience"
-msgstr "Az elolvasása tapasztalati pontokat fog adni neked"
-
-msgid "An encyclopedia"
-msgstr "Egy enciklopédia"
-
-msgid "Reading it will give you a lot of experience"
-msgstr "Az elolvasása rengeteg tapasztalati pontot fog adni neked"
-
-msgid "A bullet"
-msgstr "Egy golyó"
-
-msgid ""
-"This is just a normal bullet, but it might help you to get that special "
-"achievement"
-msgstr "Ez csak egy átlagos golyó, de segíthet annak a speciális"
-
-msgid "A good ol' egg"
-msgstr "Egy jó régi tojás"
-
-msgid "Crack it open !"
-msgstr "Törd fel!"
-
-msgid "A free card for magazines"
-msgstr "Egy ingyen kártya tölténytárakért"
-
-msgid "Redeem it to refill your weapon."
-msgstr "Váltsd be, hogy újratöltsd a fegyvered."
+msgid "Your inventory"
+msgstr "Az eszköztárad"
 
 msgid "A lot of air and a starved mosquito."
 msgstr ""
 
-msgid "`{prefix}inv use item_number` to use an item"
+msgid "`{prefix}inv use shortcode` to use an item"
 msgstr ""
-
-msgid "Your inventory"
-msgstr "Az eszköztárad"
 
 msgid "❌ Unknown item."
 msgstr "❌ Ismeretlen tárgy."
@@ -1468,37 +1426,17 @@ msgstr "❌ Ismeretlen tárgy."
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
 
-msgid "🎒 Your inventory has been sorted."
-msgstr "🎒Az eszköztárad el lett rendezve."
-
 msgid "❌ Items usage is disabled on this channel."
 msgstr "❌ A tárgyhasználat ki van kapcsolva ezen a csatornán."
 
-msgid "❌ Unknown item number."
-msgstr "❌ Ismeretlen elem szám."
-
-msgid "Lootbox opened"
-msgstr "Zsákmánydoboz kinyitva"
-
-msgid "❌ {guild.name} is already VIP."
-msgstr "❌ {guild.name} már VIP."
-
-msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr "✨ {guild.name} mostantól VIP! Köszönöm."
-
-msgid ""
-"✨ You learned a lot, adding {amount} experience points to your profile."
+msgid "❌ The number of items to use must be a number greater or equal to 1."
 msgstr ""
-"✨ Sokat tanultál, hozzáadva {amount} tapasztalati pontot a profilodhoz."
 
-msgid "✨ Yay! Free ammo!"
-msgstr "✨ Ez az! Ingyen lőszer!"
+msgid "❌ You can't use this item that many times."
+msgstr ""
 
-msgid "✨ Oh, is this a bullet ?"
-msgstr "✨ Ó, ez egy golyó?"
-
-msgid "✨ Oh look, ducks! Ducks are everywhere!"
-msgstr "✨ Ó nézd, kacsák! Kacsák mindenhol!"
+msgid "❌ You don't have that item."
+msgstr ""
 
 msgid "Prestige Information"
 msgstr "Presztízs infomáció"
@@ -1967,6 +1905,12 @@ msgid ""
 msgstr ""
 
 msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
+msgstr ""
+
+msgid "On {channel.mention}, anti-trigger wording is enabled."
+msgstr ""
+
+msgid "On {channel.mention}, anti-trigger wording is disabled."
 msgstr ""
 
 msgid ""
@@ -3632,6 +3576,94 @@ msgid ""
 msgstr ""
 "Az AP-k és a felrobbanó lövedékek ki vannak kapcsolva. A szuperkacsák több "
 "tapasztalati pontot érnek, mert egyre ritkábbak."
+
+msgid "Lootbox opened"
+msgstr "Zsákmánydoboz kinyitva"
+
+msgid "VIP card"
+msgstr ""
+
+msgid "A nice and shiny card that allow you to set a server as VIP."
+msgstr "Egy szép és fényes kártya"
+
+msgid "❌ {guild.name} is already VIP."
+msgstr "❌ {guild.name} már VIP."
+
+msgid "✨ {guild.name} is now VIP! Thanks."
+msgstr "✨ {guild.name} mostantól VIP! Köszönöm."
+
+msgid "A book"
+msgstr "Egy könyv"
+
+msgid "Reading it will give you experience."
+msgstr ""
+
+msgid ""
+"✨ You learned a lot, adding {amount} experience points to your profile."
+msgstr ""
+"✨ Sokat tanultál, hozzáadva {amount} tapasztalati pontot a profilodhoz."
+
+msgid "A book in a foreign language"
+msgstr "Egy könyv egy idegen nyelven"
+
+msgid "Can you read it ?"
+msgstr "El tudod olvasni?"
+
+msgid "An encyclopedia"
+msgstr "Egy enciklopédia"
+
+msgid "Reading it will give you a lot of experience ?"
+msgstr ""
+
+msgid "A bullet"
+msgstr "Egy golyó"
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement."
+msgstr ""
+
+msgid "✨ Oh, is this a bullet ?"
+msgstr "✨ Ó, ez egy golyó?"
+
+msgid "A good ol' egg"
+msgstr "Egy jó régi tojás"
+
+msgid "Crack it open !"
+msgstr "Törd fel!"
+
+msgid "✨ Oh look, ducks! Ducks are everywhere!"
+msgstr "✨ Ó nézd, kacsák! Kacsák mindenhol!"
+
+msgid "A free card for magazines"
+msgstr "Egy ingyen kártya tölténytárakért"
+
+msgid "Redeem it to refill your weapon."
+msgstr "Váltsd be, hogy újratöltsd a fegyvered."
+
+msgid "✨ Yay! Free ammo!"
+msgstr "✨ Ez az! Ingyen lőszer!"
+
+msgid "❌ Your ammo is already full!"
+msgstr ""
+
+msgid "A welcome gift"
+msgstr "Egy üdvözlő ajándék"
+
+msgid "Open it in your inventory"
+msgstr "Nyisd ki az eszköztáradban."
+
+msgid "A clean box of foie gras"
+msgstr "Egy tiszta doboz libamáj"
+
+msgid "The boss dropped that when he died"
+msgstr ""
+
+msgid "A little something for helping the bot"
+msgstr "Egy kicsi dolog, a bot segítéséért"
+
+msgid "Thanks for voting for DuckHunt"
+msgstr "Köszi a DuckHunt-ra szavazást!"
 
 msgid "Negative cheater ?"
 msgstr "Negatív csaló?"

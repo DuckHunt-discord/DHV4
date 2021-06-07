@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-05-25 13:18+0200\n"
+"POT-Creation-Date: 2021-06-07 12:32+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -132,11 +132,6 @@ msgstr ""
 
 msgid "Give something to some player."
 msgstr "給某個玩家一些東西。"
-
-msgid ""
-"Compress and sort your inventory, to fuse items together. You shouldn't have "
-"to use this."
-msgstr "壓縮和分類你的庫存，將物品融合在一起。你不應該使用這個。"
 
 msgid "Use one of the items in your inventory."
 msgstr "使用庫存中的一項。"
@@ -471,6 +466,9 @@ msgstr "設置超級鴨子的最低生命值"
 msgid "Set the maximum lives of a super duck"
 msgstr "設置超級鴨子的最高生命值"
 
+msgid "Avoid references to triggering actions/words."
+msgstr ""
+
 msgid ""
 "Set the night time. Only some exclusive ducks spawn during the night.\n"
 "\n"
@@ -682,6 +680,18 @@ msgid "I only get one eye"
 msgstr ""
 
 msgid "Who doesn't need eyes"
+msgstr ""
+
+msgid "I hav long nek"
+msgstr ""
+
+msgid "It's impossible."
+msgstr ""
+
+msgid ""
+"Vote for a boss to spawn for a minute.\n"
+"This is an unfair vote: while it needs people to vote quickly for a boss,\n"
+"if someones vote against, the boss won't spawn."
 msgstr ""
 
 msgid "Who doesn't need cows ?"
@@ -970,6 +980,12 @@ msgstr ""
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. Your licence to kill saved your "
+"experience. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. At least, you had a ~~kill~~ "
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
@@ -999,12 +1015,18 @@ msgid ""
 "[**MISSED**: -2 exp]"
 msgstr ""
 
+msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
 
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
+msgid "🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
 
 msgid ""
@@ -1268,75 +1290,13 @@ msgid ""
 "owner."
 msgstr ""
 
-msgid "A welcome gift"
-msgstr ""
-
-msgid "Open it in your inventory"
-msgstr "在您的庫存中打開它"
-
-msgid "A clean box of foie gras"
-msgstr "一盒乾淨的鴨肝"
-
-msgid "The boss dropped that when he died"
-msgstr "首領死的時候掉落的"
-
-msgid "A little something for helping the bot"
-msgstr "幫助機器人的小東西"
-
-msgid "Thanks for voting for DuckHunt"
-msgstr "感謝為DuckHunt投票"
-
-msgid "VIP Card"
-msgstr "貴賓卡"
-
-msgid "A nice and shiny card that allow you to set a server as VIP."
-msgstr "一張漂亮而閃亮的卡片，允許你將服務器設置為VIP。"
-
-msgid "A book in a foreign language"
-msgstr "一本外籍語言的書"
-
-msgid "Can you read it ?"
-msgstr "你能看懂嗎？"
-
-msgid "A book"
-msgstr "一本書"
-
-msgid "Reading it will give you experience"
-msgstr "讀了它，你會得到經驗值"
-
-msgid "An encyclopedia"
-msgstr "一部本百科全書"
-
-msgid "Reading it will give you a lot of experience"
-msgstr "讀了它，你會得到很多經驗"
-
-msgid "A bullet"
-msgstr "一顆子彈"
-
-msgid ""
-"This is just a normal bullet, but it might help you to get that special "
-"achievement"
-msgstr "這只是一顆普通的子彈，但它可能會幫助你獲得一個特殊的成就。"
-
-msgid "A good ol' egg"
-msgstr ""
-
-msgid "Crack it open !"
-msgstr ""
-
-msgid "A free card for magazines"
-msgstr ""
-
-msgid "Redeem it to refill your weapon."
+msgid "Your inventory"
 msgstr ""
 
 msgid "A lot of air and a starved mosquito."
 msgstr ""
 
-msgid "`{prefix}inv use item_number` to use an item"
-msgstr ""
-
-msgid "Your inventory"
+msgid "`{prefix}inv use shortcode` to use an item"
 msgstr ""
 
 msgid "❌ Unknown item."
@@ -1345,35 +1305,16 @@ msgstr ""
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
 
-msgid "🎒 Your inventory has been sorted."
-msgstr ""
-
 msgid "❌ Items usage is disabled on this channel."
 msgstr ""
 
-msgid "❌ Unknown item number."
+msgid "❌ The number of items to use must be a number greater or equal to 1."
 msgstr ""
 
-msgid "Lootbox opened"
+msgid "❌ You can't use this item that many times."
 msgstr ""
 
-msgid "❌ {guild.name} is already VIP."
-msgstr ""
-
-msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr ""
-
-msgid ""
-"✨ You learned a lot, adding {amount} experience points to your profile."
-msgstr ""
-
-msgid "✨ Yay! Free ammo!"
-msgstr ""
-
-msgid "✨ Oh, is this a bullet ?"
-msgstr ""
-
-msgid "✨ Oh look, ducks! Ducks are everywhere!"
+msgid "❌ You don't have that item."
 msgstr ""
 
 msgid "Prestige Information"
@@ -1832,6 +1773,12 @@ msgid ""
 msgstr ""
 
 msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
+msgstr ""
+
+msgid "On {channel.mention}, anti-trigger wording is enabled."
+msgstr ""
+
+msgid "On {channel.mention}, anti-trigger wording is disabled."
 msgstr ""
 
 msgid ""
@@ -3478,6 +3425,93 @@ msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
 "they are getting rare."
 msgstr "AP和爆裂彈被禁用。超級鴨子更值錢了，因為它們越來越稀有。"
+
+msgid "Lootbox opened"
+msgstr ""
+
+msgid "VIP card"
+msgstr ""
+
+msgid "A nice and shiny card that allow you to set a server as VIP."
+msgstr "一張漂亮而閃亮的卡片，允許你將服務器設置為VIP。"
+
+msgid "❌ {guild.name} is already VIP."
+msgstr ""
+
+msgid "✨ {guild.name} is now VIP! Thanks."
+msgstr ""
+
+msgid "A book"
+msgstr "一本書"
+
+msgid "Reading it will give you experience."
+msgstr ""
+
+msgid ""
+"✨ You learned a lot, adding {amount} experience points to your profile."
+msgstr ""
+
+msgid "A book in a foreign language"
+msgstr "一本外籍語言的書"
+
+msgid "Can you read it ?"
+msgstr "你能看懂嗎？"
+
+msgid "An encyclopedia"
+msgstr "一部本百科全書"
+
+msgid "Reading it will give you a lot of experience ?"
+msgstr ""
+
+msgid "A bullet"
+msgstr "一顆子彈"
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement."
+msgstr ""
+
+msgid "✨ Oh, is this a bullet ?"
+msgstr ""
+
+msgid "A good ol' egg"
+msgstr ""
+
+msgid "Crack it open !"
+msgstr ""
+
+msgid "✨ Oh look, ducks! Ducks are everywhere!"
+msgstr ""
+
+msgid "A free card for magazines"
+msgstr ""
+
+msgid "Redeem it to refill your weapon."
+msgstr ""
+
+msgid "✨ Yay! Free ammo!"
+msgstr ""
+
+msgid "❌ Your ammo is already full!"
+msgstr ""
+
+msgid "A welcome gift"
+msgstr ""
+
+msgid "Open it in your inventory"
+msgstr "在您的庫存中打開它"
+
+msgid "A clean box of foie gras"
+msgstr "一盒乾淨的鴨肝"
+
+msgid "The boss dropped that when he died"
+msgstr "首領死的時候掉落的"
+
+msgid "A little something for helping the bot"
+msgstr "幫助機器人的小東西"
+
+msgid "Thanks for voting for DuckHunt"
+msgstr "感謝為DuckHunt投票"
 
 msgid "Negative cheater ?"
 msgstr "負面的作弊者？"
