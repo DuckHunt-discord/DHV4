@@ -13,7 +13,7 @@ from typing import Tuple, List
 from utils import checks
 from utils.ctx_class import MyContext
 from utils.inventory_items import Voted
-from utils.models import DiscordUser, get_from_db, BotList, Vote, Player, get_user_inventory
+from utils.models import DiscordUser, get_from_db, BotList, Vote, Player
 
 
 class BotsListVoting(Cog):

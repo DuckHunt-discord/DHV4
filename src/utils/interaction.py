@@ -126,7 +126,7 @@ async def get_webhook_if_possible(bot: 'MyBot', channel: typing.Union[DiscordCha
     else:
         url = random.choice(db_channel.webhook_urls)
         try:
-            webhook = discord.Webhook.from_url(url, adapter=discord.AsyncWebhookAdapter(bot.client_session))
+            webhook = discord.Webhook.from_url(url, session=bot.client_session)
         except discord.InvalidArgument:
             db_channel.webhook_urls.remove(url)
             await db_channel.save()

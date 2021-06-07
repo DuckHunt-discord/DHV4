@@ -1,6 +1,3 @@
-from enum import Enum
-
-
 def _(message):
     return message
 

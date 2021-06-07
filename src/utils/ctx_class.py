@@ -18,8 +18,8 @@ from utils.logger import LoggerConstant
 
 
 class MyContext(commands.Context):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.bot: 'MyBot'
 
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)

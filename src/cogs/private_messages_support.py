@@ -5,11 +5,12 @@ from typing import Dict, List
 
 import babel
 import discord
+import pytz
 from babel import Locale
 from babel.dates import format_datetime, format_timedelta
 from discord import RawReactionActionEvent
 from discord.ext import commands, menus, tasks
-from discord.utils import snowflake_time
+from discord.utils import snowflake_time, utcnow
 from tortoise import timezone
 
 from cogs.tags import TagMenuSource, TagName
@@ -92,7 +93,7 @@ class PrivateMessagesSupport(Cog):
         If it's too old, consider the channel inactive and close the ticket.
         """
         category = await self.get_forwarding_category()
-        now = datetime.datetime.now()
+        now = utcnow()
         one_day_ago = now - datetime.timedelta(days=1)
         for ticket_channel in category.text_channels:
             last_message_id = ticket_channel.last_message_id

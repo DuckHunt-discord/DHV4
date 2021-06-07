@@ -1,16 +1,14 @@
-import asyncio
 import collections
 import datetime
-from typing import Optional, List
+import typing
+from typing import Optional
 
 import aiohttp
 import discord
-import typing
-
 from discord import Guild
+from discord.ext import commands
 from discord.ext.commands import MaxConcurrency, BucketType
 from discord.ext.commands.bot import AutoShardedBot
-from discord.ext import commands
 
 from utils import config as config
 from utils.ctx_class import MyContext

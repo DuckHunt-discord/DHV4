@@ -254,7 +254,7 @@ class SimpleCommands(Cog):
         """
         I hav long nek
         """
-        await ctx.reply("🦒")\
+        await ctx.reply("🦒")
 
     @commands.command(hidden=True,)
     @checks.channel_enabled()
@@ -288,7 +288,7 @@ class SimpleCommands(Cog):
 
         await asyncio.sleep(int((time_to_wait - 10)/2))
         to_delete = await ctx.reply("⏰ Halfway there...")
-        await asyncio.sleep(int((time_to_wait - 10)/2) )
+        await asyncio.sleep(int((time_to_wait - 10)/2))
         await to_delete.delete()
         to_edit = await ctx.reply("⏰ 10 seconds left...")
         await asyncio.sleep(5)

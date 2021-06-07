@@ -337,6 +337,7 @@ class RestAPI(Cog):
         await self.runner.setup()
         self.site = web.TCPSite(self.runner, listen_ip, listen_port)
         await self.site.start()
+        # noinspection HttpUrlsUsage
         self.bot.logger.info(f"DuckHunt JSON API listening on http://{listen_ip}:{listen_port}")
 
 
