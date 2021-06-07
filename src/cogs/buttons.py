@@ -28,7 +28,7 @@ class Buttons(Cog):
         """
         Click on the button to count.
         """
-        await ctx.send(view=CounterView())
+        await ctx.send(content="Click me to count!", view=CounterView())
 
 
 setup = Buttons.setup
