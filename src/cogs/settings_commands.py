@@ -369,6 +369,27 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("There will be very big ducks on this channel.", ))
 
+    @templates.command(aliases=["maths"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def math(self, ctx: MyContext):
+        """
+        Math lessons gamemode.
+
+        Most of the ducks are Pr. Ducks.
+
+        All the other settings are reset to their default values.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        await self.set_default(db_channel)
+
+        db_channel.spawn_weight_prof_ducks *= 20
+
+        await db_channel.save()
+
+        await ctx.send(_("Your math test will start soon.", ))
+
     # Guild settings #
 
     @settings.command()
