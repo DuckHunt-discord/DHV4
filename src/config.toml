@@ -1,7 +1,7 @@
 website_url = "https://duckhunt.me/"
 
 [bot]
-prefixes = ["duckhunt", "dh!", "dh", "Dh", "Dh!", "dH!", "dH", "DH!", "DH"]
+prefixes = ["beta", "b!", "b", "B"]
 description = """Discord Version 4 of DuckHunt, the popular game bot"""
 playing = "Ducks are everywhere"
 commands_are_case_insensitive = true
@@ -18,8 +18,8 @@ password = "mybot"
 database = "mybot"
 
 [duckhunt_public_log]
-server_id = 195260081036591104
-channel_id = 793563942416416788
+server_id = 734810932529856652
+channel_id = 851554104710922240
 
 [auth.discord]
 # Your bot token. You can find it on the Bot page of the Developper portal
@@ -57,23 +57,23 @@ cogs_to_load = ['cogs.error_handling',
 wiki_url = "https://duckhunt.me/docs/"
 
 [cogs.DuckBoss]
-boss_channel_id = 794950988845940768
+boss_channel_id = 851554201104547901
 required_bangs = 40
 role_ping_id = 803708518716014652
 
 [cogs.SupportServerCommands]
 # That's the ID of your server where the command will be ran
-support_server_id = 195260081036591104
+support_server_id = 734810932529856652
 # ID of an empty channel that will be used as a status dashboard.
-status_channel_id = 795389911163338775
+status_channel_id = 851554104710922240
 
 [cogs.Community]
-servers = [195260081036591104]
+servers = [734810932529856652]
 rpg_role_name = "Ping me for RPG bot events"
 moderators_that_can_delete_with_reactions = [251996890369884161]
 
 [cogs.PrivateMessagesSupport]
-forwarding_category = 821732328018935818
+forwarding_category = 851553794826698792
 
 [cogs.RestAPI]
 listen_ip = "127.0.0.1"
@@ -87,9 +87,7 @@ global_access_keys = [
 
 [cogs.Tags]
 allowed_in_guilds = [
-    195260081036591104, # DuckHunt Support Server
     734810932529856652, # DuckHunt Beta
-    819743660895371315, # 765471470347485204's server because they asked nicely
 ]
 
 
