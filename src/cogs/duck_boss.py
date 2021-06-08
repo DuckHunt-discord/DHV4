@@ -5,6 +5,7 @@ from typing import List
 import discord
 from babel.dates import format_timedelta
 from discord.ext import tasks
+from discord.utils import utcnow
 
 from utils.cog_class import Cog
 from utils.inventory_items import FoieGras
@@ -50,7 +51,7 @@ class DuckBoss(Cog):
         new_embed.set_image(url="https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png")
         new_embed.add_field(name="Health", value=f"{boss_life - bangs}/{boss_life}")
         if boss_message:
-            time_delta = datetime.datetime.now() - boss_message.created_at
+            time_delta = utcnow() - boss_message.created_at
             new_embed.set_footer(text=f"The boss spawned {format_timedelta(time_delta, locale='en_US')} ago")
         else:
             new_embed.set_footer(text=f"The boss just spawned")
