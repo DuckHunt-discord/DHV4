@@ -956,7 +956,7 @@ class SettingsCommands(Cog):
             db_channel.super_ducks_min_life = value
             await db_channel.save()
 
-        await ctx.send(_("On {channel.mention}, super ducks will get a maximum of {value} lives.",
+        await ctx.send(_("On {channel.mention}, super ducks will get a minimum of {value} lives.",
                          channel=ctx.channel,
                          value=db_channel.super_ducks_min_life))
 
