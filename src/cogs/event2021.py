@@ -130,9 +130,9 @@ class Event2021(Cog):
         if db_target.electricity_in_inventory:
             embed.add_field(name="Inv: electricity", value=f"{db_target.electricity_in_inventory}", inline=True)
 
-        if db_target.defuse_kits_in_inventory:
+        if db_target.defuse_kits_bought:
             embed.add_field(name="Inv: defuse_kits",
-                            value=f"{db_target.defuse_kits_in_inventory} ({db_target.defuse_kits_bought} total)",
+                            value=f"{db_target.defuse_kits_bought} bought",
                             inline=True)
 
         embed.set_footer(text="For more information, run the `dh!tag landmines` command.")
