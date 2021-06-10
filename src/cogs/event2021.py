@@ -221,7 +221,7 @@ class Event2021(Cog):
         if ctx.guild:
             await ctx.message.delete()
 
-        if value <= 50:
+        if value < 50:
             await ctx.author.send("❌ A landmine must have a value higher than 50.")
             return
 
