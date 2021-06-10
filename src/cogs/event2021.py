@@ -191,6 +191,7 @@ class Event2021(Cog):
     @shop.command(aliases=["l", "lm", "mine", "landmines"])
     async def landmine(self, ctx: MyContext, value: int, word: str):
         """
+        [THIS COMMAND WORKS IN DMs]
         Buy a landmine that will trigger on a specific word.
 
         A landmine has a value, at least greater than 2, that will be used to determine it's price and the damage done
