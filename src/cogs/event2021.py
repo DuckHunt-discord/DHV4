@@ -427,8 +427,11 @@ class Event2021(Cog):
     @scoreboard_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
-        await asyncio.sleep(60)
+        await asyncio.sleep(5)
         await self.bot.wait_until_ready()
 
+    @scoreboard_loop.error
+    async def scoreboard_error(self, exception):
+        self.bot.logger.exception(f"Error in scoreboard loop: {exception}")
 
 setup = Event2021.setup
