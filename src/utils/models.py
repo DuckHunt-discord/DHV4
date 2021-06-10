@@ -433,7 +433,7 @@ def get_valid_words(message_content) -> typing.List[str]:
     words = []
 
     for word in set(cleaned_content.lower().split()):
-        if len(word) >= 3 and not word.startswith("<@"):
+        if len(word) >= 3:
             words.append(word)
 
     return words
