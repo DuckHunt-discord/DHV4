@@ -3,6 +3,7 @@ import collections
 import copy
 import datetime
 import random
+import string
 import time
 
 import babel.lists
@@ -424,6 +425,112 @@ class AccessLevel(IntEnum):
                 raise commands.BadArgument(_("Can't set such a high level"))
 
 
+def get_valid_words(message_content) -> typing.List[str]:
+    allowed_chars = string.ascii_letters + string.digits + string.whitespace
+
+    cleaned_content = ''.join(filter(lambda character: character in allowed_chars, message_content))
+
+    words = []
+
+    for word in set(cleaned_content.lower().split()):
+        if len(word) >= 3:
+            words.append(word)
+
+    return words
+
+
+class Event2021UserData(Model):
+    # See Inventory for why this isn't a OneToOneField.
+    landmines_bought: fields.ReverseRelation['Event2021Landmines']
+    landmines_stopped: fields.ReverseRelation['Event2021Landmines']
+
+    user_id = fields.BigIntField(pk=True)
+
+    # General statistics
+    first_played = fields.DatetimeField(auto_now_add=True)
+    last_seen = fields.DatetimeField(auto_now_add=True)
+    messages_sent = fields.IntField(default=0)
+    words_sent = fields.IntField(default=0)
+    points_recovered = fields.IntField(default=0)
+    points_acquired = fields.IntField(default=0)
+    points_current = fields.IntField(default=0)
+    points_exploded = fields.IntField(default=0)
+    points_spent = fields.IntField(default=0)
+
+    # Inventory
+
+    ## Landmines
+    landmines_in_inventory = fields.IntField(default=0)
+
+    ## Safes
+    safes_in_inventory = fields.IntField(default=0)
+
+    ## Electricity
+    electricity_in_inventory = fields.IntField(default=0)
+
+    ## Defuse kits
+    defuse_kits_bought = fields.IntField(default=0)
+
+    def add_points_for_message(self, message_content):
+        words = get_valid_words(message_content)
+        words_count = len(words)
+        if words_count > 0:
+            self.words_sent += words_count
+            self.messages_sent += 1
+            earned = max(0, int((words_count + random.randint(-1, words_count)) * (self.electricity_in_inventory / 5)))
+            self.points_acquired += earned
+            self.points_current  += earned
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return f"@{self.user_id} 2021 event data"
+
+    class Meta:
+        table = 'event2021userdata'
+
+
+class Event2021Landmines(Model):
+    placed_by = fields.ForeignKeyField('models.Event2021UserData', related_name='landmines_bought',
+                                      on_delete=fields.CASCADE)
+
+    placed = fields.DatetimeField(auto_now_add=True)
+    word = fields.CharField(max_length=50)
+
+    value = fields.IntField()
+    exploded = fields.IntField(null=True)
+
+    tripped = fields.BooleanField(default=False)
+    disarmed = fields.BooleanField(default=False)
+
+    stopped_by = fields.ForeignKeyField('models.Event2021UserData', null=True, blank=True, on_delete=fields.SET_NULL,
+                                        related_name='landmines_stopped')
+    stopped_at = fields.DatetimeField(null=True)
+
+    def value_for(self, db_target: Event2021UserData) -> int:
+        base_value = max(1, (self.value / 100) * len(self.word))
+        safes = db_target.safes_in_inventory
+
+        safe_value = base_value / ((safes * 0.33) + 1)
+        current_points = db_target.points_current
+
+        points_left = current_points - safe_value
+
+        if points_left < 0:
+            beginner_value = safe_value + points_left + (-points_left / 4)
+        else:
+            beginner_value = safe_value
+
+        return max(10, int(beginner_value))
+
+    def __str__(self):
+        return f"{self.userdata.user_id} 2021 event landmine on {self.word} for {self.value}"
+
+    class Meta:
+        table = 'event2021landmines'
+
+
 class UserInventory(Model):
     # Okay, tortoise suck big time on this
     # But you can't add a primary key on a ForeignKey like you can in django
@@ -455,10 +562,10 @@ class UserInventory(Model):
     item_refill_magazines_left = fields.IntField(default=0)
 
     def __str__(self):
-        return f"{self.user} inventory"
+        return f"{self.user_id} inventory"
 
     def __repr__(self):
-        return f"<Inventory user={self.user}>"
+        return f"<Inventory user_id={self.user_id}>"
 
     class Meta:
         table = 'inventories'
@@ -1132,6 +1239,30 @@ async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, disco
         inventory, created = await UserInventory.get_or_create(user_id=db_user.discord_id)
 
     return inventory
+
+
+async def get_user_eventdata(user: typing.Union[DiscordUser, discord.User, discord.Member]) -> Event2021UserData:
+    if not isinstance(user, DiscordUser):
+        db_user = await get_from_db(user, as_user=True)
+    else:
+        db_user = user
+
+    async with DB_LOCKS[(db_user, )]:
+        eventdata, created = await Event2021UserData.get_or_create(user_id=db_user.discord_id)
+
+    return eventdata
+
+
+async def get_landmine(message_content: str) -> typing.Optional[Event2021Landmines]:
+    words = get_valid_words(message_content)
+    if words:
+        return await Event2021Landmines\
+            .filter(tripped=False, disarmed=False)\
+            .order_by('placed')\
+            .filter(word__in=words)\
+            .first()
+    else:
+        return None
 
 
 async def get_enabled_channels():

@@ -1,0 +1,361 @@
+import asyncio
+import datetime
+
+import discord
+from discord.ext import commands, tasks
+from discord.ext.commands import MaxConcurrency, BucketType
+
+from utils import models
+from utils.bot_class import MyBot
+from utils.checks import NotInChannel
+from utils.cog_class import Cog
+from utils.ctx_class import MyContext
+from utils.interaction import purge_channel_messages
+
+
+class Event2021(Cog):
+    def __init__(self, bot: MyBot, *args, **kwargs):
+        super().__init__(bot, *args, **kwargs)
+        self.concurrency = MaxConcurrency(number=1, per=BucketType.user, wait=True)
+        self.scoreboard_loop.start()
+
+    def cog_unload(self):
+        self.scoreboard_loop.cancel()
+
+
+    async def is_in_command_channel(self, ctx):
+        channel_id = await self.config()['commands_channel_id']
+        if ctx.channel.id != channel_id:
+            raise NotInChannel(must_be_in_channel_id=channel_id)
+
+        return True
+
+    async def user_can_play(self, user):
+        if user.bot:
+            return False
+
+        return True
+
+    @Cog.listener()
+    async def on_message(self, message: discord.Message):
+        if not message.content:
+            # Message has no text
+            return
+
+        if not message.guild:
+            return
+
+        if message.guild != self.config()['server_id']:
+            return
+
+        if not self.user_can_play(message.author):
+            return
+
+        ctx = await self.bot.get_context(message, cls=MyContext)
+        if ctx.valid:
+            # It's just a command.
+            return
+
+        try:
+            await self.concurrency.acquire(message)
+            db_target = await models.get_user_eventdata(message.author)
+            added_points = db_target.add_points_for_message(message.content)
+
+            landmine = await models.get_landmine(message.content)
+
+            if landmine:
+                landmine.stopped_by = db_target
+                landmine.stopped_at = datetime.datetime.utcnow()
+                landmine.tripped = True
+
+                explosion_value = landmine.value_for(db_target)
+                landmine.exploded = explosion_value
+
+                db_target.points_exploded += explosion_value
+                db_target.points_current -= explosion_value
+                await landmine.save()
+                await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{landmine.placed_by}>. "
+                                f"It exploded, taking away **{explosion_value} points** from your account.")
+
+            if landmine or added_points:
+                await db_target.save()
+        finally:
+            await self.concurrency.release(message)
+
+    @commands.group(aliases=["event"], name="event2021", case_insensitive=True)
+    async def event(self, ctx: MyContext):
+        """
+        This command group contains all commends related to the 2021 "Landmines" event on the DuckHunt server.
+        """
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
+
+    @event.command()
+    async def me(self, ctx: MyContext, target: discord.Member = None):
+        """
+        View your event statistics.
+        """
+        if target is None:
+            target = ctx.author
+
+        if not self.user_can_play(target):
+            await ctx.reply("They can't play the game :(")
+
+        await self.is_in_command_channel(ctx)
+
+        db_target = await models.get_user_eventdata(target)
+
+        embed = discord.Embed(
+            title=f"{target.name} event statistics",
+            colour=discord.Color.green()
+        )
+        embed.description = "The most important currency in the game are the points, which are used in the shop to buy " \
+                            "stuff. The available points show how many ponts you have and how many you acquired in " \
+                            "total.\n" \
+                            "You can get points by sending (long) messages. Some shop items may help you get more. " \
+                            "Be careful not to spam, server rules **still apply** during the event." \
+                            "At the end of the game, the player having the greater amount of points will win."
+
+        embed.add_field(name="Available points", value=f"{db_target.points_current}/{db_target.points_acquired}",
+                        inline=False)
+        embed.add_field(name="Messages sent", value=f"{db_target.messages_sent} ({db_target.words_sent} words)",
+                        inline=False)
+
+        # Inventory
+        if db_target.landmines_in_inventory:
+            embed.add_field(name="Inv: landmines", value=f"{db_target.landmines_in_inventory}", inline=True)
+
+        if db_target.safes_in_inventory:
+            embed.add_field(name="Inv: safes", value=f"{db_target.safes_in_inventory}", inline=True)
+
+        if db_target.electricity_in_inventory:
+            embed.add_field(name="Inv: electricity", value=f"{db_target.electricity_in_inventory}", inline=True)
+
+        if db_target.defuse_kits_in_inventory:
+            embed.add_field(name="Inv: defuse_kits",
+                            value=f"{db_target.defuse_kits_in_inventory} ({db_target.defuse_kits_bought} total)",
+                            inline=True)
+
+        embed.set_footer(text="For more information, run the `dh!tag landmines` command.")
+        embed.set_author(name=str(target), icon_url=str(target.avatar_url_as(format="jpg", size=256)))
+
+        await ctx.reply(embed=embed)
+
+    @event.group(aliases=["s", "buy"], case_insensitive=True)
+    async def shop(self, ctx: MyContext):
+        """
+        Buy useful supplies from the Warlord shop.
+        """
+        await self.is_in_command_channel(ctx)
+
+        if not ctx.invoked_subcommand:
+            await ctx.send_help(ctx.command)
+
+    @shop.command(aliases=["l", "lm", "mine", "landmines"])
+    async def landmine(self, ctx: MyContext, value: int, word: str):
+        """
+        Buy a landmine that will trigger on a specific word.
+
+        A landmine has a value, at least greater than 2, that will be used to determine it's price and the damage done to the person that steps
+        on it.
+        The word must be at least 2 characters long, and must only contain letters. The steps are case-insensitive.
+        The longer it is, the higher the power.
+        """
+        await ctx.message.delete()
+        await self.is_in_command_channel(ctx)
+        if value <= 2:
+            await ctx.author.send("❌ A landmine must have a value higher than 2.")
+            return
+
+        word = models.get_valid_words(word)
+        if len(word) != 1:
+            await ctx.author.send("❌ The word must only contain letters.")
+            return
+        else:
+            word = word[0]
+
+        try:
+            await self.concurrency.acquire(ctx.message)
+            db_user = await models.get_user_eventdata(ctx.author)
+
+            if db_user.points_current <= value:
+                await ctx.author.send(f"❌ You don't have {value} points, you can't buy a landmine as powerful as this.")
+                return
+
+            landmine = models.Event2021Landmines(
+                placed_by=db_user,
+                word=word,
+                value=value,
+            )
+            db_user.points_current -= value
+            db_user.points_spent += value
+
+            await db_user.save()
+            await landmine.save()
+            await ctx.author.send(f"💣️ You placed a `{value * len(word)} points` landmine on `{word}`.")
+        finally:
+            await self.concurrency.release(ctx.message)
+
+    @shop.command(aliases=["s", "safe"])
+    async def safes(self, ctx: MyContext, count: int = 1):
+        """
+        Buy safes, allowing you to keep some of your points when stepping on a mine.
+        You should buy multiple of them to really have an effect. A safe cost 100 points.
+        """
+        await self.is_in_command_channel(ctx)
+        safe_price = 100
+        if count < 1:
+            await ctx.reply(f"❌ If you come here, it's to buy safes. Not to sell them. "
+                                  f"No you don't get to try them before. Buy or leave.")
+            return
+
+        total_price = safe_price * count
+
+        try:
+            await self.concurrency.acquire(ctx.message)
+            db_user = await models.get_user_eventdata(ctx.author)
+
+            if db_user.points_current <= total_price:
+                await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
+                return
+
+            db_user.safes_in_inventory += count
+            db_user.points_current -= total_price
+            db_user.points_spent += total_price
+
+            await db_user.save()
+            await ctx.reply(f"🏦 You bought {count} safes to protect your points.")
+        finally:
+            await self.concurrency.release(ctx.message)
+
+    @shop.command(aliases=["e", "elec"])
+    async def electricity(self, ctx: MyContext, count: int):
+        """
+        Buy electricity, allowing for more efficient points generation. A watt cost 50 points.
+        You should buy many watts if you want them to have a real effect.
+        """
+        await self.is_in_command_channel(ctx)
+        elec_price = 50
+
+        if count < 1:
+            await ctx.author.send(f"❌ If you come here, it's to buy electricity. Not to sell it. "
+                                  f"Buy or leave.")
+            return
+
+        total_price = elec_price * count
+
+        try:
+            await self.concurrency.acquire(ctx.message)
+            db_user = await models.get_user_eventdata(ctx.author)
+
+            if db_user.points_current <= total_price:
+                await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
+                return
+
+            db_user.electricity_in_inventory += count
+            db_user.points_current -= total_price
+            db_user.points_spent += total_price
+
+            await db_user.save()
+            await ctx.reply(f"⚡️ You bought {count} watts of electricity to generate more points.")
+        finally:
+            await self.concurrency.release(ctx.message)
+
+    @shop.command(aliases=["d", "defuse", "defuse_kits"])
+    async def defuse_kit(self, ctx: MyContext, *, words: str):
+        """
+        Buy a defuse kit. You can use it on a sentence. If it's used, you collect the landmine value, minus the price
+        of the defuse kit (60 points). If you don't use it, you'll just have to pay a restocking fee of 15 points.
+
+        You need at least 60 points to use one.
+        """
+        await self.is_in_command_channel(ctx)
+        words_list = models.get_valid_words(words)
+
+        if len(words_list) < 1:
+            await ctx.reply(f"❌ Please give (as much) valid words as you want to the defuse kit.")
+            return
+
+        landmine = await models.get_landmine(words)
+
+        try:
+            await self.concurrency.acquire(ctx.message)
+            db_user = await models.get_user_eventdata(ctx.author)
+
+            if db_user.points_current <= 60:
+                await ctx.reply(f"❌ You don't have 60 points, so you can't buy a defuse kit.")
+                return
+
+            db_user.defuse_kits_bought += 1
+
+            if landmine:
+                landmine.stopped_by = db_user
+                landmine.disarmed = True
+                landmine.stopped_at = datetime.datetime.utcnow()
+
+                money_recovered = landmine.value
+                db_user.points_current -= 60
+                db_user.points_spent += 60
+                db_user.points_recovered += money_recovered
+                db_user.points_current += money_recovered
+
+                got_points = money_recovered - 60
+
+                if got_points > 0:
+                    await ctx.reply(f"💰️ You used the defuse kit on `{landmine.word}`, and defused "
+                                    f"<@{landmine.placed_by_id}> landmine, that has a `{landmine.value}` points value."
+                                    f"You got {got_points} points, congratulations.",
+                                    delete_on_invoke_removed=False)
+                else:
+                    await ctx.reply(f"💸️ You used the defuse kit on `{landmine.word}`, and defused "
+                                    f"<@{landmine.placed_by_id}> landmine, that has a `{landmine.value}` points value."
+                                    f"You've lost {-got_points} points, because the value of the landmine was lower "
+                                    f"than the defuse kit price. Sorry!",
+                                    delete_on_invoke_removed=False)
+
+                await landmine.save()
+            else:
+                db_user.points_current -= 15
+                db_user.points_spent += 15
+
+                await ctx.reply(f"♻️️ You didn't use the defuse kit, and sold it back to the shop. "
+                                f"You are sure that there isn't any mine on any of those words: `" +
+                                ', '.join(words_list) +
+                                '`.',
+                                delete_on_invoke_removed=False)
+
+            await db_user.save()
+        finally:
+            await self.concurrency.release(ctx.message)
+
+    @tasks.loop(minutes=1)
+    async def scoreboard_loop(self):
+        scoreboard_channel = self.bot.get_channel(self.config()["scoreboard_channel_id"])
+        if not scoreboard_channel or not isinstance(scoreboard_channel, discord.TextChannel):
+            self.bot.logger.warning("The status channel for the landmines event is misconfigured.")
+            return
+
+        self.bot.logger.debug("Updating scoreboard message", guild=scoreboard_channel.guild, channel=scoreboard_channel)
+        embed = discord.Embed(colour=discord.Colour.blurple(),
+                              title=f"Event scoreboard")
+
+        players_count = await models.Event2021UserData.all().count()
+
+        embed.description = f"Tracking {players_count} players data for the current scoreboard"
+
+        top_players = await models.Event2021UserData.all().order_by('-points_current').limit(10)
+
+        for i, top_player in enumerate(top_players):
+            embed.add_field(name=f"{top_player.points_current} points", value=f"<@{top_player.user_id}>", inline=i > 3)
+
+        await purge_channel_messages(scoreboard_channel)
+        await scoreboard_channel.send(embed=embed)
+
+    @scoreboard_loop.before_loop
+    async def before(self):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(60)
+        await self.bot.wait_until_ready()
+
+
+setup = Event2021.setup

@@ -47,6 +47,7 @@ cogs_to_load = ['cogs.error_handling',
                 'cogs.duck_boss',
                 'cogs.prestige_commands',
                 'cogs.bots_list_and_voting',
+                'cogs.event2021',
                 'cogs.rest_api',
                 'jishaku',
                 ]
@@ -94,6 +95,13 @@ allowed_in_guilds = [
 
 [cogs.BotsListVoting]
 statcord_token = "abcdef"
+
+[cogs.Event2021]
+# That's the ID of the server where the event will be enabled
+server_id = 195260081036591104
+scoreboard_channel_id = 852285234438471720
+commands_channel_id = 852285369553780756
+
 
 [random_ducks]
 assets_path = 'assets/Random Ducks'
