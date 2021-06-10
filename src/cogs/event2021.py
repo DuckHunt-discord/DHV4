@@ -292,7 +292,7 @@ class Event2021(Cog):
             await self.concurrency.release(ctx.message)
 
     @shop.command(aliases=["e", "elec"])
-    async def electricity(self, ctx: MyContext, count: int):
+    async def electricity(self, ctx: MyContext, count: int = 1):
         """
         Buy electricity, allowing for more efficient points generation. A watt cost 250 points.
         You should buy many watts if you want them to have a real effect.
