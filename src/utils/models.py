@@ -509,8 +509,11 @@ class Event2021Landmines(Model):
                                         related_name='landmines_stopped')
     stopped_at = fields.DatetimeField(null=True)
 
+    def base_value(self) -> float:
+        return (self.value / 100) * len(self.word)
+
     def value_for(self, db_target: Event2021UserData) -> int:
-        base_value = (self.value / 100) * len(self.word)
+        base_value = self.base_value()
         safes = db_target.safes_in_inventory
 
         safe_value = base_value / ((safes * 0.33) + 1)
