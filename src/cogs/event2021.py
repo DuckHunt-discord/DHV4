@@ -411,7 +411,7 @@ class Event2021(Cog):
         embed.add_field(name="Players tracked", value=str(players_count))
         embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
         embed.add_field(name="Biggest active mine",
-                        value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters))`, placed by <@{biggest_mine.placed_by_id}>",
+                        value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters)`, placed by <@{biggest_mine.placed_by_id}>",
                         inline=False)
 
         await scoreboard_channel.send(embed=embed)
