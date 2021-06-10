@@ -199,8 +199,10 @@ class Event2021(Cog):
         The longer it is, the higher the power. An exploding landmine gives you the point damage, and half it's value
         back.
         """
-        await ctx.message.delete()
         await self.is_in_command_channel(ctx, allow_dm=True)
+        if ctx.guild:
+            await ctx.message.delete()
+
         if value <= 50:
             await ctx.author.send("❌ A landmine must have a value higher than 50.")
             return
