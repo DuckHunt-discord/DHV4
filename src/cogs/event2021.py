@@ -240,7 +240,7 @@ class Event2021(Cog):
             await self.concurrency.acquire(ctx.message)
             db_user = await models.get_user_eventdata(ctx.author)
 
-            if db_user.points_current <= value:
+            if db_user.points_current < value:
                 await ctx.author.send(f"❌ You don't have {value} points, you can't buy a landmine as powerful as this.")
                 return
 
@@ -278,7 +278,7 @@ class Event2021(Cog):
             await self.concurrency.acquire(ctx.message)
             db_user = await models.get_user_eventdata(ctx.author)
 
-            if db_user.points_current <= total_price:
+            if db_user.points_current < total_price:
                 await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
                 return
 
@@ -311,7 +311,7 @@ class Event2021(Cog):
             await self.concurrency.acquire(ctx.message)
             db_user = await models.get_user_eventdata(ctx.author)
 
-            if db_user.points_current <= total_price:
+            if db_user.points_current < total_price:
                 await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
                 return
 
@@ -345,7 +345,7 @@ class Event2021(Cog):
             await self.concurrency.acquire(ctx.message)
             db_user = await models.get_user_eventdata(ctx.author)
 
-            if db_user.points_current <= 30:
+            if db_user.points_current < 30:
                 await ctx.reply(f"❌ You don't have 30 points, so you can't buy a defuse kit.")
                 return
 
