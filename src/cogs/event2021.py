@@ -82,11 +82,16 @@ class Event2021(Cog):
                 db_target.points_current -= explosion_value
 
                 placed_by = await landmine.placed_by
+
+                if placed_by.user_id == db_target.user_id:
+                    placed_by = db_target
+
                 placed_by.points_won += explosion_value
                 placed_by.points_current += explosion_value + landmine.value / 2
 
                 message_text = discord.utils.escape_mentions(landmine.message)
-                await placed_by.save()
+                if placed_by.user_id != db_target.user_id:
+                    await placed_by.save()
 
                 await landmine.save()
                 if message_text:
