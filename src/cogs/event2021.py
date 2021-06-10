@@ -47,6 +47,9 @@ class Event2021(Cog):
         if message.guild.id != self.config()['server_id']:
             return
 
+        if message.channel.id not in self.config()['enabled_on']:
+            return
+
         if not await self.user_can_play(message.author):
             return
 
@@ -95,6 +98,8 @@ class Event2021(Cog):
     async def event(self, ctx: MyContext):
         """
         This command group contains all commends related to the 2021 "Landmines" event on the DuckHunt server.
+
+        Go see Warlord in the shop.
         """
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
@@ -150,7 +155,7 @@ class Event2021(Cog):
 
         await ctx.reply(embed=embed)
 
-    @event.group(aliases=["s", "buy"], case_insensitive=True)
+    @event.group(aliases=["s", "buy", "use"], case_insensitive=True)
     async def shop(self, ctx: MyContext):
         """
         Buy useful supplies from the Warlord shop.
