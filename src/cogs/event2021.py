@@ -217,7 +217,7 @@ class Event2021(Cog):
             await ctx.author.send("❌ A landmine must have a value higher than 50.")
             return
 
-        if len(message_text) <= 1000:
+        if len(message_text) > 1000:
             await ctx.author.send("❌ The message left on the landmine must be less than 1000 characters.")
             return
 
