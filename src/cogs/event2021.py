@@ -55,6 +55,8 @@ class Event2021(Cog):
             # It's just a command.
             return
 
+        await self.bot.wait_until_ready()
+
         try:
             await self.concurrency.acquire(message)
             db_target = await models.get_user_eventdata(message.author)
