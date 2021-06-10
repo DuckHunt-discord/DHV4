@@ -477,7 +477,7 @@ class Event2021UserData(Model):
         if words_count > 0:
             self.words_sent += words_count
             self.messages_sent += 1
-            earned = max(0, int((words_count + random.randint(-1, words_count)) * (self.electricity_in_inventory / 5)))
+            earned = max(0, int((words_count + random.randint(-1, words_count)) * (1 + (self.electricity_in_inventory / 5))))
             self.points_acquired += earned
             self.points_current  += earned
             return True
