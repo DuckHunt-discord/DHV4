@@ -70,7 +70,6 @@ class Event2021(Cog):
             landmine = await models.get_landmine(message.content)
 
             if landmine:
-
                 landmine.stopped_by = db_target
                 landmine.stopped_at = datetime.datetime.utcnow()
                 landmine.tripped = True
@@ -87,7 +86,7 @@ class Event2021(Cog):
                     placed_by = db_target
 
                 placed_by.points_won += explosion_value
-                placed_by.points_current += explosion_value + landmine.value / 2
+                placed_by.points_current += explosion_value + landmine.value / 4
 
                 message_text = discord.utils.escape_mentions(landmine.message)
                 if placed_by.user_id != db_target.user_id:
@@ -325,9 +324,9 @@ class Event2021(Cog):
     async def defuse_kit(self, ctx: MyContext, *, words: str):
         """
         Buy a defuse kit. You can use it on a sentence. If it's used, you collect the landmine value, minus the price
-        of the defuse kit (60 points). If you don't use it, you'll just have to pay a restocking fee of 15 points.
+        of the defuse kit (30 points). If you don't use it, you'll just have to pay a restocking fee of 15 points.
 
-        You need at least 60 points to use one.
+        You need at least 30 points to use one.
         """
         await self.is_in_command_channel(ctx)
         words_list = models.get_valid_words(words)
@@ -342,8 +341,8 @@ class Event2021(Cog):
             await self.concurrency.acquire(ctx.message)
             db_user = await models.get_user_eventdata(ctx.author)
 
-            if db_user.points_current <= 60:
-                await ctx.reply(f"❌ You don't have 60 points, so you can't buy a defuse kit.")
+            if db_user.points_current <= 30:
+                await ctx.reply(f"❌ You don't have 30 points, so you can't buy a defuse kit.")
                 return
 
             db_user.defuse_kits_bought += 1
@@ -354,12 +353,12 @@ class Event2021(Cog):
                 landmine.stopped_at = datetime.datetime.utcnow()
 
                 money_recovered = landmine.value
-                db_user.points_current -= 60
-                db_user.points_spent += 60
+                db_user.points_current -= 30
+                db_user.points_spent += 30
                 db_user.points_recovered += money_recovered
                 db_user.points_current += money_recovered
 
-                got_points = money_recovered - 60
+                got_points = money_recovered - 30
 
                 if got_points > 0:
                     await ctx.reply(f"💰️ You used the defuse kit on `{landmine.word}`, and defused "
