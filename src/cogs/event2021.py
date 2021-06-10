@@ -230,11 +230,11 @@ class Event2021(Cog):
     @shop.command(aliases=["e", "elec"])
     async def electricity(self, ctx: MyContext, count: int):
         """
-        Buy electricity, allowing for more efficient points generation. A watt cost 50 points.
+        Buy electricity, allowing for more efficient points generation. A watt cost 250 points.
         You should buy many watts if you want them to have a real effect.
         """
         await self.is_in_command_channel(ctx)
-        elec_price = 50
+        elec_price = 250
 
         if count < 1:
             await ctx.author.send(f"❌ If you come here, it's to buy electricity. Not to sell it. "
