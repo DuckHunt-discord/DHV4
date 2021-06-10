@@ -406,8 +406,8 @@ class Event2021(Cog):
 
         players_count = await models.Event2021UserData.all().count()
         total_mines_count   = await models.Event2021Landmines.all().count()
-        current_mines_count = await models.Event2021Landmines.all().exclude(stopped_at__isnull=True).count()
-        biggest_mine = await models.Event2021Landmines.all().exclude(stopped_at__isnull=True).order_by('-value').first()
+        current_mines_count = await models.Event2021Landmines.all().filter(stopped_at__isnull=True).count()
+        biggest_mine = await models.Event2021Landmines.all().filter(stopped_at__isnull=True).order_by('-value').first()
         embed.add_field(name="Players tracked", value=str(players_count))
         embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
         embed.add_field(name="Biggest active mine",
