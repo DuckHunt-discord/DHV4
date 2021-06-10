@@ -2,6 +2,7 @@ import asyncio
 import datetime
 
 import discord
+from babel.dates import format_timedelta
 from discord.ext import commands, tasks
 from discord.ext.commands import MaxConcurrency, BucketType
 
@@ -72,6 +73,7 @@ class Event2021(Cog):
             if landmine:
                 landmine.stopped_by = db_target
                 landmine.stopped_at = datetime.datetime.utcnow()
+                duration = landmine.stopped_at - landmine.placed
                 landmine.tripped = True
 
                 explosion_value = landmine.value_for(db_target)
@@ -93,14 +95,16 @@ class Event2021(Cog):
                     await placed_by.save()
 
                 await landmine.save()
+
+                td = format_timedelta(duration, locale="en_US")
                 if message_text:
-                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{placed_by.user_id}>. "
+                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
                                     f"It exploded, taking away **{explosion_value} points** from your account.\n\n"
                                     f"<@{placed_by.user_id}> message:\n"
                                     f"{message_text}",
                                     delete_on_invoke_removed=False)
                 else:
-                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{placed_by.user_id}>. "
+                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
                                     f"It exploded, taking away **{explosion_value} points** from your account.\n\n",
                                     delete_on_invoke_removed=False)
 
