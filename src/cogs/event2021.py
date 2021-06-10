@@ -22,9 +22,11 @@ class Event2021(Cog):
     def cog_unload(self):
         self.scoreboard_loop.cancel()
 
-    async def is_in_command_channel(self, ctx):
+    async def is_in_command_channel(self, ctx, allow_dm=False):
         channel_id = self.config()['commands_channel_id']
-        if ctx.channel.id != channel_id:
+        if allow_dm and not ctx.guild:
+            return True
+        elif ctx.channel.id != channel_id:
             raise NotInChannel(must_be_in_channel_id=channel_id)
 
         return True
@@ -198,7 +200,7 @@ class Event2021(Cog):
         back.
         """
         await ctx.message.delete()
-        await self.is_in_command_channel(ctx)
+        await self.is_in_command_channel(ctx, allow_dm=True)
         if value <= 50:
             await ctx.author.send("❌ A landmine must have a value higher than 50.")
             return
