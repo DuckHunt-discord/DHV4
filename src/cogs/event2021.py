@@ -410,7 +410,9 @@ class Event2021(Cog):
         biggest_mine = await models.Event2021Landmines.all().exclude(stopped_at__isnull=True).order_by('-value').first()
         embed.add_field(name="Players tracked", value=str(players_count))
         embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
-        embed.add_field(name="Biggest active mine", value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters))`, placed by <@{biggest_mine.placed_by_id}>")
+        embed.add_field(name="Biggest active mine",
+                        value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters))`, placed by <@{biggest_mine.placed_by_id}>",
+                        inline=False)
 
         await scoreboard_channel.send(embed=embed)
 
