@@ -191,7 +191,7 @@ class Event2021(Cog):
 
             await db_user.save()
             await landmine.save()
-            await ctx.author.send(f"💣️ You placed a `{max(1, (landmine.value / 100) * len(landmine.word))} points` landmine on `{word}`.")
+            await ctx.author.send(f"💣️ You placed a `{int(max(1, (landmine.value / 100) * len(landmine.word)))} points` landmine on `{word}`.")
         finally:
             await self.concurrency.release(ctx.message)
 
