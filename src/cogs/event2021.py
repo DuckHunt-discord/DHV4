@@ -399,12 +399,22 @@ class Event2021(Cog):
             return
 
         self.bot.logger.debug("Updating scoreboard message", guild=scoreboard_channel.guild, channel=scoreboard_channel)
-        embed = discord.Embed(colour=discord.Colour.blurple(),
-                              title=f"Event scoreboard")
+
+        embed = discord.Embed(colour=discord.Colour.dark_green(),
+                              title=f"WarTrackr")
 
         players_count = await models.Event2021UserData.all().count()
+        total_mines_count   = await models.Event2021Landmines.all().count()
+        current_mines_count = await models.Event2021Landmines.all().exclude(stopped_at__isnull=True).count()
+        biggest_mine = await models.Event2021Landmines.all().exclude(stopped_at__isnull=True).order_by('-value').first()
+        embed.add_field(name="Players tracked", value=str(players_count))
+        embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
+        embed.add_field(name="Biggest active mine", value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters))`, placed by <@{biggest_mine.placed_by_id}>")
 
-        embed.description = f"Tracking {players_count} players data for the current scoreboard"
+        await scoreboard_channel.send(embed=embed)
+
+        embed = discord.Embed(colour=discord.Colour.blurple(),
+                              title=f"Event scoreboard")
 
         top_players = await models.Event2021UserData.all().order_by('-points_current').limit(10)
 
