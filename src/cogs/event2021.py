@@ -23,7 +23,7 @@ class Event2021(Cog):
         self.scoreboard_loop.cancel()
 
     async def is_in_command_channel(self, ctx):
-        channel_id = await self.config()['commands_channel_id']
+        channel_id = self.config()['commands_channel_id']
         if ctx.channel.id != channel_id:
             raise NotInChannel(must_be_in_channel_id=channel_id)
 
