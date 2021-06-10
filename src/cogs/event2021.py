@@ -354,7 +354,7 @@ class Event2021(Cog):
         top_players = await models.Event2021UserData.all().order_by('-points_current').limit(10)
 
         for i, top_player in enumerate(top_players):
-            embed.add_field(name=f"{top_player.points_current} points", value=f"<@{top_player.user_id}>", inline=i > 3)
+            embed.add_field(name=f"{top_player.points_current} points", value=f"<@{top_player.user_id}>", inline=i > 2)
 
         await purge_channel_messages(scoreboard_channel)
         await scoreboard_channel.send(embed=embed)
