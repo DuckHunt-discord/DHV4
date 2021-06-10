@@ -130,10 +130,31 @@ class Event2021(Cog):
                             "Be careful not to spam, server rules **still apply** during the event. " \
                             "At the end of the game, the player having the greater amount of points will win."
 
-        embed.add_field(name="Available points", value=f"{db_target.points_current}/{db_target.points_acquired}",
+        embed.add_field(name="Available", value=f"{db_target.points_current} points",
                         inline=False)
+
         embed.add_field(name="Messages sent", value=f"{db_target.messages_sent} ({db_target.words_sent} words)",
                         inline=False)
+
+        if db_target.points_won:
+            embed.add_field(name="Points won by landmines", value=f"{db_target.points_won} points",
+                            inline=True)
+
+        if db_target.points_recovered:
+            embed.add_field(name="Points recovered by defusing landmines", value=f"{db_target.points_recovered} points",
+                            inline=True)
+
+        if db_target.points_acquired:
+            embed.add_field(name="Points acquired by talking", value=f"{db_target.points_acquired} points",
+                            inline=True)
+
+        if db_target.points_exploded:
+            embed.add_field(name="Points exploded by stepping on mines", value=f"{db_target.points_exploded} points",
+                            inline=True)
+
+        if db_target.points_spent:
+            embed.add_field(name="Points spent in the shop", value=f"{db_target.points_spent} points",
+                            inline=True)
 
         # Inventory
         if db_target.landmines_in_inventory:
@@ -143,7 +164,7 @@ class Event2021(Cog):
             embed.add_field(name="Inv: safes", value=f"{db_target.safes_in_inventory}", inline=True)
 
         if db_target.electricity_in_inventory:
-            embed.add_field(name="Inv: electricity", value=f"{db_target.electricity_in_inventory}", inline=True)
+            embed.add_field(name="Inv: electricity", value=f"{db_target.electricity_in_inventory} watts", inline=True)
 
         if db_target.defuse_kits_bought:
             embed.add_field(name="Inv: defuse_kits",
