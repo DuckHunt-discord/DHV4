@@ -96,7 +96,7 @@ class Event2021(Cog):
         finally:
             await self.concurrency.release(message)
 
-    @commands.group(aliases=["landmines"], name="event2021", case_insensitive=True)
+    @commands.group(aliases=["landmines", "event2021"], name="landmine", case_insensitive=True)
     async def event(self, ctx: MyContext):
         """
         This command group contains all commends related to the 2021 "Landmines" event on the DuckHunt server.
@@ -183,7 +183,7 @@ class Event2021(Cog):
         """
         Buy useful supplies from the Warlord shop.
         """
-        await self.is_in_command_channel(ctx)
+        await self.is_in_command_channel(ctx, allow_dm=True)
 
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
