@@ -47,7 +47,7 @@ class Event2021(Cog):
         if message.guild != self.config()['server_id']:
             return
 
-        if not self.user_can_play(message.author):
+        if not await self.user_can_play(message.author):
             return
 
         ctx = await self.bot.get_context(message, cls=MyContext)
@@ -97,7 +97,7 @@ class Event2021(Cog):
         if target is None:
             target = ctx.author
 
-        if not self.user_can_play(target):
+        if not await self.user_can_play(target):
             await ctx.reply("They can't play the game :(")
 
         await self.is_in_command_channel(ctx)
