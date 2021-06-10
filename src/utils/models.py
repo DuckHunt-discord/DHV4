@@ -451,6 +451,7 @@ class Event2021UserData(Model):
     last_seen = fields.DatetimeField(auto_now_add=True)
     messages_sent = fields.IntField(default=0)
     words_sent = fields.IntField(default=0)
+    points_won = fields.IntField(default=0)
     points_recovered = fields.IntField(default=0)
     points_acquired = fields.IntField(default=0)
     points_current = fields.IntField(default=0)
@@ -509,7 +510,7 @@ class Event2021Landmines(Model):
     stopped_at = fields.DatetimeField(null=True)
 
     def value_for(self, db_target: Event2021UserData) -> int:
-        base_value = max(1, (self.value / 100) * len(self.word))
+        base_value = (self.value / 100) * len(self.word)
         safes = db_target.safes_in_inventory
 
         safe_value = base_value / ((safes * 0.33) + 1)
@@ -525,7 +526,7 @@ class Event2021Landmines(Model):
         return max(10, int(beginner_value))
 
     def __str__(self):
-        return f"{self.userdata.user_id} 2021 event landmine on {self.word} for {self.value}"
+        return f"{self.placed_by.user_id} 2021 event landmine on {self.word} for {self.value}"
 
     class Meta:
         table = 'event2021landmines'

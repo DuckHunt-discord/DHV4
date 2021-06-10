@@ -63,6 +63,7 @@ class Event2021(Cog):
             landmine = await models.get_landmine(message.content)
 
             if landmine:
+
                 landmine.stopped_by = db_target
                 landmine.stopped_at = datetime.datetime.utcnow()
                 landmine.tripped = True
@@ -72,9 +73,16 @@ class Event2021(Cog):
 
                 db_target.points_exploded += explosion_value
                 db_target.points_current -= explosion_value
+
+                placed_by = await landmine.placed_by
+                placed_by.points_won += explosion_value
+                placed_by.points_current += explosion_value + landmine.value / 2
+                await placed_by.save()
+
                 await landmine.save()
-                await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{landmine.placed_by_id}>. "
-                                f"It exploded, taking away **{explosion_value} points** from your account.")
+                await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{placed_by.user_id}>. "
+                                f"It exploded, taking away **{explosion_value} points** from your account.",
+                                delete_on_invoke_removed=False)
 
             if landmine or added_points:
                 await db_target.save()
@@ -155,15 +163,16 @@ class Event2021(Cog):
         """
         Buy a landmine that will trigger on a specific word.
 
-        A landmine has a value, at least greater than 2, that will be used to determine it's price and the damage done to the person that steps
-        on it.
+        A landmine has a value, at least greater than 2, that will be used to determine it's price and the damage done
+        to the person that steps on it.
         The word must be at least 2 characters long, and must only contain letters. The steps are case-insensitive.
-        The longer it is, the higher the power.
+        The longer it is, the higher the power. An exploding landmine gives you the point damage, and half it's value
+        back.
         """
         await ctx.message.delete()
         await self.is_in_command_channel(ctx)
-        if value <= 2:
-            await ctx.author.send("❌ A landmine must have a value higher than 2.")
+        if value <= 50:
+            await ctx.author.send("❌ A landmine must have a value higher than 50.")
             return
 
         word = models.get_valid_words(word)
@@ -191,7 +200,7 @@ class Event2021(Cog):
 
             await db_user.save()
             await landmine.save()
-            await ctx.author.send(f"💣️ You placed a `{int(max(1, (landmine.value / 100) * len(landmine.word)))} points` landmine on `{word}`.")
+            await ctx.author.send(f"💣️ You placed a `{(value / 100) * len(word)} points` landmine on `{word}`.")
         finally:
             await self.concurrency.release(ctx.message)
 
