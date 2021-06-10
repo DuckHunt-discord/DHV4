@@ -44,7 +44,7 @@ class Event2021(Cog):
         if not message.guild:
             return
 
-        if message.guild != self.config()['server_id']:
+        if message.guild.id != self.config()['server_id']:
             return
 
         if not await self.user_can_play(message.author):
