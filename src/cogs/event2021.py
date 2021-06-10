@@ -233,7 +233,7 @@ class Event2021(Cog):
 
             await db_user.save()
             await landmine.save()
-            await ctx.author.send(f"💣️ You placed a `{landmine.base_value()} base value` landmine on `{word}`.")
+            await ctx.author.send(f"💣️ You placed a landmine on `{word}` that can give you at most `{landmine.base_value()}` points.")
         finally:
             await self.concurrency.release(ctx.message)
 
@@ -244,7 +244,7 @@ class Event2021(Cog):
         You should buy multiple of them to really have an effect. A safe cost 100 points.
         """
         await self.is_in_command_channel(ctx)
-        safe_price = 100
+        safe_price = 200
         if count < 1:
             await ctx.reply(f"❌ If you come here, it's to buy safes. Not to sell them. "
                                   f"No you don't get to try them before. Buy or leave.")

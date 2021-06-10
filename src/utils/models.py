@@ -510,7 +510,7 @@ class Event2021Landmines(Model):
     stopped_at = fields.DatetimeField(null=True)
 
     def base_value(self) -> float:
-        return (self.value / 100) * len(self.word)
+        return self.value * len(self.word)
 
     def value_for(self, db_target: Event2021UserData) -> int:
         base_value = self.base_value()
