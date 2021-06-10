@@ -398,7 +398,8 @@ class Event2021(Cog):
             self.bot.logger.warning("The status channel for the landmines event is misconfigured.")
             return
 
-        self.bot.logger.debug("Updating scoreboard message", guild=scoreboard_channel.guild, channel=scoreboard_channel)
+        self.bot.logger.debug("Updating scoreboard stats", guild=scoreboard_channel.guild, channel=scoreboard_channel)
+        await purge_channel_messages(scoreboard_channel)
 
         embed = discord.Embed(colour=discord.Colour.dark_green(),
                               title=f"WarTrackr")
@@ -413,6 +414,8 @@ class Event2021(Cog):
 
         await scoreboard_channel.send(embed=embed)
 
+        self.bot.logger.debug("Updating scoreboard message", guild=scoreboard_channel.guild, channel=scoreboard_channel)
+
         embed = discord.Embed(colour=discord.Colour.blurple(),
                               title=f"Event scoreboard")
 
@@ -421,7 +424,6 @@ class Event2021(Cog):
         for i, top_player in enumerate(top_players):
             embed.add_field(name=f"{top_player.points_current} points", value=f"<@{top_player.user_id}>", inline=i > 2)
 
-        await purge_channel_messages(scoreboard_channel)
         await scoreboard_channel.send(embed=embed)
 
     @scoreboard_loop.before_loop
@@ -433,5 +435,6 @@ class Event2021(Cog):
     @scoreboard_loop.error
     async def scoreboard_error(self, exception):
         self.bot.logger.exception(f"Error in scoreboard loop: {exception}")
+
 
 setup = Event2021.setup
