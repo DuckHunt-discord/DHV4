@@ -84,12 +84,21 @@ class Event2021(Cog):
                 placed_by = await landmine.placed_by
                 placed_by.points_won += explosion_value
                 placed_by.points_current += explosion_value + landmine.value / 2
+
+                message_text = discord.utils.escape_mentions(landmine.message)
                 await placed_by.save()
 
                 await landmine.save()
-                await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{placed_by.user_id}>. "
-                                f"It exploded, taking away **{explosion_value} points** from your account.",
-                                delete_on_invoke_removed=False)
+                if message_text:
+                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{placed_by.user_id}>. "
+                                    f"It exploded, taking away **{explosion_value} points** from your account.\n\n"
+                                    f"<@{placed_by.user_id}> message:\n"
+                                    f"{message_text}",
+                                    delete_on_invoke_removed=False)
+                else:
+                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{placed_by.user_id}>. "
+                                    f"It exploded, taking away **{explosion_value} points** from your account.\n\n",
+                                    delete_on_invoke_removed=False)
 
             if landmine or added_points:
                 await db_target.save()
@@ -189,7 +198,7 @@ class Event2021(Cog):
             await ctx.send_help(ctx.command)
 
     @shop.command(aliases=["l", "lm", "mine", "landmines"])
-    async def landmine(self, ctx: MyContext, value: int, word: str):
+    async def landmine(self, ctx: MyContext, value: int, word: str, *, message_text: str = ""):
         """
         [THIS COMMAND WORKS IN DMs]
         Buy a landmine that will trigger on a specific word.
@@ -206,6 +215,10 @@ class Event2021(Cog):
 
         if value <= 50:
             await ctx.author.send("❌ A landmine must have a value higher than 50.")
+            return
+
+        if len(message_text) <= 1000:
+            await ctx.author.send("❌ The message left on the landmine must be less than 1000 characters.")
             return
 
         word = models.get_valid_words(word)
@@ -227,6 +240,7 @@ class Event2021(Cog):
                 placed_by=db_user,
                 word=word,
                 value=value,
+                message=message_text,
             )
             db_user.points_current -= value
             db_user.points_spent += value
@@ -247,7 +261,7 @@ class Event2021(Cog):
         safe_price = 200
         if count < 1:
             await ctx.reply(f"❌ If you come here, it's to buy safes. Not to sell them. "
-                                  f"No you don't get to try them before. Buy or leave.")
+                            f"No you don't get to try them before. Buy or leave.")
             return
 
         total_price = safe_price * count

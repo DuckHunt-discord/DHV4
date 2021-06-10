@@ -498,6 +498,7 @@ class Event2021Landmines(Model):
 
     placed = fields.DatetimeField(auto_now_add=True)
     word = fields.CharField(max_length=50)
+    message = fields.CharField(blank=True, default="", max_length=2000)
 
     value = fields.IntField()
     exploded = fields.IntField(null=True)
