@@ -112,7 +112,7 @@ class Event2021(Cog):
                             "stuff. The available points show how many ponts you have and how many you acquired in " \
                             "total.\n" \
                             "You can get points by sending (long) messages. Some shop items may help you get more. " \
-                            "Be careful not to spam, server rules **still apply** during the event." \
+                            "Be careful not to spam, server rules **still apply** during the event. " \
                             "At the end of the game, the player having the greater amount of points will win."
 
         embed.add_field(name="Available points", value=f"{db_target.points_current}/{db_target.points_acquired}",
