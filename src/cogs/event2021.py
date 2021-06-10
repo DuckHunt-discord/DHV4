@@ -73,7 +73,7 @@ class Event2021(Cog):
                 db_target.points_exploded += explosion_value
                 db_target.points_current -= explosion_value
                 await landmine.save()
-                await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{landmine.placed_by}>. "
+                await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed by <@{landmine.placed_by_id}>. "
                                 f"It exploded, taking away **{explosion_value} points** from your account.")
 
             if landmine or added_points:
