@@ -96,7 +96,7 @@ class Event2021(Cog):
         finally:
             await self.concurrency.release(message)
 
-    @commands.group(aliases=["landmines", "event2021"], name="landmine", case_insensitive=True)
+    @commands.group(aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True)
     async def event(self, ctx: MyContext):
         """
         This command group contains all commends related to the 2021 "Landmines" event on the DuckHunt server.
