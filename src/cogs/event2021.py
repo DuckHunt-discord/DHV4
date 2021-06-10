@@ -22,7 +22,6 @@ class Event2021(Cog):
     def cog_unload(self):
         self.scoreboard_loop.cancel()
 
-
     async def is_in_command_channel(self, ctx):
         channel_id = await self.config()['commands_channel_id']
         if ctx.channel.id != channel_id:
@@ -82,7 +81,7 @@ class Event2021(Cog):
         finally:
             await self.concurrency.release(message)
 
-    @commands.group(aliases=["event"], name="event2021", case_insensitive=True)
+    @commands.group(aliases=["landmines"], name="event2021", case_insensitive=True)
     async def event(self, ctx: MyContext):
         """
         This command group contains all commends related to the 2021 "Landmines" event on the DuckHunt server.
