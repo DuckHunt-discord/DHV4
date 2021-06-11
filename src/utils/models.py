@@ -468,6 +468,7 @@ class Event2021UserData(Model):
 
     ## Electricity
     electricity_in_inventory = fields.IntField(default=0)
+    gloves_in_inventory      = fields.IntField(default=0)
 
     ## Defuse kits
     defuse_kits_bought = fields.IntField(default=0)
