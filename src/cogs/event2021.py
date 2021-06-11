@@ -6,6 +6,7 @@ import discord
 from babel.dates import format_timedelta
 from discord.ext import commands, tasks
 from discord.ext.commands import MaxConcurrency, BucketType
+from tortoise.functions import Sum
 
 from utils import models
 from utils.bot_class import MyBot
@@ -504,12 +505,19 @@ class Event2021(Cog):
             .filter(points_current__lte=0) \
             .count()
 
+        total_electricity = (await models.Event2021UserData.all()
+                             .annotate(sum=Sum('electricity_in_inventory'))
+                             .first()
+                             .values_list('sum', flat=True))[0]
+
         embed.add_field(name="Players tracked", value=str(players_count))
         embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
         embed.add_field(name="Biggest active mine",
                         value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters)`, placed by <@{biggest_mine.placed_by_id}>",
                         inline=False)
         embed.add_field(name="Players in the negative", value=str(negatives_count))
+
+        embed.add_field(name="Current (nail-)breaker load", value=f"{total_electricity} watts")
 
         await scoreboard_channel.send(embed=embed)
 
