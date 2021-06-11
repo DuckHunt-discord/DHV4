@@ -457,6 +457,11 @@ class Event2021UserData(Model):
     points_current = fields.IntField(default=0)
     points_exploded = fields.IntField(default=0)
     points_spent = fields.IntField(default=0)
+    points_shocked = fields.IntField(default=0)
+    points_found = fields.IntField(default=0)
+    shocked_times = fields.IntField(default=0)
+    found_times = fields.IntField(default=0)
+    shocks_prevented = fields.IntField(default=0)
 
     # Inventory
 
@@ -469,6 +474,7 @@ class Event2021UserData(Model):
     ## Electricity
     electricity_in_inventory = fields.IntField(default=0)
     gloves_in_inventory      = fields.IntField(default=0)
+    gloves_bought            = fields.IntField(default=0)
 
     ## Defuse kits
     defuse_kits_bought = fields.IntField(default=0)

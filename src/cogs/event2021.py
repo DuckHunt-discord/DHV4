@@ -115,10 +115,12 @@ class Event2021(Cog):
                 elec = db_target.electricity_in_inventory
                 gloves = db_target.gloves_in_inventory
                 if random.randint(0, 100) == 50 and points > 10:
-                    burned = int(elec / 100)
+                    db_target.shocked_times += 1
+                    burned = int(elec / 100) + 1
 
                     if gloves > burned:
                         db_target.gloves_in_inventory -= burned
+                        db_target.shocks_prevented += 1
                         await db_target.save()
                         await ctx.reply(
                             f"⚡️🧤 Unfortunately, you touched the nail-breaker, but you had gloves on."
@@ -136,10 +138,12 @@ class Event2021(Cog):
                         .first()
 
                     if negative_person:
+                        db_target.points_shocked += real_lost
                         db_target.points_current -= real_lost
                         negative_person.points_current += real_lost
-                        await db_target.save()
+                        negative_person.points_found += real_lost
                         await negative_person.save()
+                        await db_target.save()
 
                         await ctx.reply(
                             f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost} points on the floor."
@@ -149,6 +153,7 @@ class Event2021(Cog):
                     else:
                         real_lost = int(real_lost/2)
                         db_target.points_current -= real_lost
+                        db_target.points_shocked += real_lost
                         await db_target.save()
 
                         await ctx.reply(
@@ -378,6 +383,7 @@ class Event2021(Cog):
         """
         Buy gloves, to protect yourself from electric shocks.
         """
+        return
         await self.is_in_command_channel(ctx)
         glove_price = 250
 
@@ -396,7 +402,9 @@ class Event2021(Cog):
                 await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
                 return
 
-            db_user.electricity_in_inventory += count
+            db_user.gloves_in_inventory += count
+            db_user.gloves_bought += count
+
             db_user.points_current -= total_price
             db_user.points_spent += total_price
 
