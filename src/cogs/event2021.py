@@ -373,7 +373,7 @@ class Event2021(Cog):
         finally:
             await self.concurrency.release(ctx.message)
 
-    @shop.command(aliases=["e", "elec"])
+    @shop.command(aliases=["g", "glove"], disabled=True)
     async def gloves(self, ctx: MyContext, count: int = 1):
         """
         Buy gloves, to protect yourself from electric shocks.
