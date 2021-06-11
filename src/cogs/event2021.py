@@ -384,7 +384,6 @@ class Event2021(Cog):
         """
         Buy gloves, to protect yourself from electric shocks.
         """
-        return
         await self.is_in_command_channel(ctx)
         glove_price = 250
 
