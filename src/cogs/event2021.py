@@ -378,13 +378,12 @@ class Event2021(Cog):
         """
         Buy gloves, to protect yourself from electric shocks.
         """
-        return
         await self.is_in_command_channel(ctx)
         glove_price = 250
 
         if count < 1:
-            await ctx.author.send(f"❌ If you come here, it's to buy gloves. Not to sell it. "
-                                  f"Buy or leave.")
+            await ctx.reply(f"❌ If you come here, it's to buy gloves. Not to sell it. "
+                            f"Buy or leave.")
             return
 
         total_price = glove_price * count
