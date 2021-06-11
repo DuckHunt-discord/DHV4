@@ -65,8 +65,14 @@ class Event2021(Cog):
 
         try:
             await self.concurrency.acquire(message)
+
             db_target = await models.get_user_eventdata(message.author)
+
+            # Phase 4 - Ignore electricity
+            curr_elec = db_target.electricity_in_inventory
+            db_target.electricity_in_inventory = 0
             added_points = db_target.add_points_for_message(message.content)
+            db_target.electricity_in_inventory = curr_elec
 
             landmine = await models.get_landmine(message.content)
 
