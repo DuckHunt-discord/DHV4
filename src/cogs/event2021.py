@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import random
 
 import discord
 from babel.dates import format_timedelta
@@ -68,11 +69,7 @@ class Event2021(Cog):
 
             db_target = await models.get_user_eventdata(message.author)
 
-            # Phase 4 - Ignore electricity
-            curr_elec = db_target.electricity_in_inventory
-            db_target.electricity_in_inventory = 0
             added_points = db_target.add_points_for_message(message.content)
-            db_target.electricity_in_inventory = curr_elec
 
             landmine = await models.get_landmine(message.content)
 
@@ -113,6 +110,49 @@ class Event2021(Cog):
                     await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
                                     f"It exploded, taking away **{explosion_value} points** from your account.\n\n",
                                     delete_on_invoke_removed=False)
+            else:
+                points = db_target.points_current
+                elec = db_target.electricity_in_inventory
+                gloves = db_target.gloves_in_inventory
+                if random.randint(0, 100) == 50 and points > 10:
+                    burned = int(elec / 100)
+
+                    if gloves > burned:
+                        db_target.gloves_in_inventory -= burned
+                        await db_target.save()
+                        await ctx.reply(
+                            f"⚡️🧤 Unfortunately, you touched the nail-breaker, but you had gloves on."
+                            f"`{burned}` of your gloves burned, but you didn't loose any points.",
+                            delete_on_invoke_removed=False)
+
+                    lost = 10 * elec
+
+                    real_lost = min(lost, points)
+
+                    negative_person = await models.Event2021UserData\
+                        .filter(points_current__lte=0)\
+                        .order_by('points_current')\
+                        .first()
+
+                    if negative_person:
+                        db_target.points_current -= real_lost
+                        negative_person.points_current += real_lost
+                        await db_target.save()
+                        await negative_person.save()
+
+                        await ctx.reply(
+                            f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost} points on the floor."
+                            f"<@{negative_person.user_id}> ran and took them all before you could bend down.",
+                            delete_on_invoke_removed=False)
+                    else:
+                        real_lost = int(real_lost/2)
+                        db_target.points_current -= real_lost
+                        await db_target.save()
+
+                        await ctx.reply(
+                            f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost*2} points on the floor."
+                            f"You managed to collect {real_lost} points before they all disappeared.",
+                            delete_on_invoke_removed=False)
 
             if landmine or added_points:
                 await db_target.save()
