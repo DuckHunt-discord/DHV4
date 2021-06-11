@@ -124,6 +124,7 @@ class Event2021(Cog):
                             f"⚡️🧤 Unfortunately, you touched the nail-breaker, but you had gloves on."
                             f"`{burned}` of your gloves burned, but you didn't loose any points.",
                             delete_on_invoke_removed=False)
+                        return
 
                     lost = 10 * elec
 
@@ -144,6 +145,7 @@ class Event2021(Cog):
                             f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost} points on the floor."
                             f"<@{negative_person.user_id}> ran and took them all before you could bend down.",
                             delete_on_invoke_removed=False)
+                        return
                     else:
                         real_lost = int(real_lost/2)
                         db_target.points_current -= real_lost
@@ -153,6 +155,7 @@ class Event2021(Cog):
                             f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost*2} points on the floor."
                             f"You managed to collect {real_lost} points before they all disappeared.",
                             delete_on_invoke_removed=False)
+                        return
 
             if landmine or added_points:
                 await db_target.save()
@@ -367,6 +370,38 @@ class Event2021(Cog):
 
             await db_user.save()
             await ctx.reply(f"⚡️ You bought {count} watts of electricity to generate more points.")
+        finally:
+            await self.concurrency.release(ctx.message)
+
+    @shop.command(aliases=["e", "elec"])
+    async def gloves(self, ctx: MyContext, count: int = 1):
+        """
+        Buy gloves, to protect yourself from electric shocks.
+        """
+        await self.is_in_command_channel(ctx)
+        glove_price = 250
+
+        if count < 1:
+            await ctx.author.send(f"❌ If you come here, it's to buy gloves. Not to sell it. "
+                                  f"Buy or leave.")
+            return
+
+        total_price = glove_price * count
+
+        try:
+            await self.concurrency.acquire(ctx.message)
+            db_user = await models.get_user_eventdata(ctx.author)
+
+            if db_user.points_current < total_price:
+                await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
+                return
+
+            db_user.electricity_in_inventory += count
+            db_user.points_current -= total_price
+            db_user.points_spent += total_price
+
+            await db_user.save()
+            await ctx.reply(f"🧤 You bought {count} gloves that will protect you against shocks.")
         finally:
             await self.concurrency.release(ctx.message)
 
