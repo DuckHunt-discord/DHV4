@@ -142,6 +142,7 @@ class Event2021(Cog):
                         db_target.points_current -= real_lost
                         negative_person.points_current += real_lost
                         negative_person.points_found += real_lost
+                        negative_person.found_times += 1
                         await negative_person.save()
                         await db_target.save()
 
