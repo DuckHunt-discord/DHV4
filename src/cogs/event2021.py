@@ -101,15 +101,17 @@ class Event2021(Cog):
 
                 td = format_timedelta(duration, locale="en_US")
                 if message_text:
-                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
-                                    f"It exploded, taking away **{explosion_value} points** from your account.\n\n"
-                                    f"<@{placed_by.user_id}> message:\n"
-                                    f"{message_text}",
-                                    delete_on_invoke_removed=False)
+                    await ctx.reply(
+                        f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
+                        f"It exploded, taking away **{explosion_value} points** from your account.\n\n"
+                        f"<@{placed_by.user_id}> message:\n"
+                        f"{message_text}",
+                        delete_on_invoke_removed=False)
                 else:
-                    await ctx.reply(f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
-                                    f"It exploded, taking away **{explosion_value} points** from your account.\n\n",
-                                    delete_on_invoke_removed=False)
+                    await ctx.reply(
+                        f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
+                        f"It exploded, taking away **{explosion_value} points** from your account.\n\n",
+                        delete_on_invoke_removed=False)
             else:
                 points = db_target.points_current
                 elec = db_target.electricity_in_inventory
@@ -132,9 +134,9 @@ class Event2021(Cog):
 
                     real_lost = min(lost, points)
 
-                    negative_person = await models.Event2021UserData\
-                        .filter(points_current__lte=0)\
-                        .order_by('points_current')\
+                    negative_person = await models.Event2021UserData \
+                        .filter(points_current__lte=0) \
+                        .order_by('points_current') \
                         .first()
 
                     if negative_person:
@@ -152,13 +154,13 @@ class Event2021(Cog):
                             delete_on_invoke_removed=False)
                         return
                     else:
-                        real_lost = int(real_lost/2)
+                        real_lost = int(real_lost / 2)
                         db_target.points_current -= real_lost
                         db_target.points_shocked += real_lost
                         await db_target.save()
 
                         await ctx.reply(
-                            f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost*2} points on the floor."
+                            f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost * 2} points on the floor."
                             f"You managed to collect {real_lost} points before they all disappeared.",
                             delete_on_invoke_removed=False)
                         return
@@ -310,7 +312,8 @@ class Event2021(Cog):
 
             await db_user.save()
             await landmine.save()
-            await ctx.author.send(f"💣️ You placed a landmine on `{word}` that can give you at most `{landmine.base_value()}` points.")
+            await ctx.author.send(
+                f"💣️ You placed a landmine on `{word}` that can give you at most `{landmine.base_value()}` points.")
         finally:
             await self.concurrency.release(ctx.message)
 
@@ -361,7 +364,6 @@ class Event2021(Cog):
             return
 
         total_price = elec_price * count
-
         try:
             await self.concurrency.acquire(ctx.message)
             db_user = await models.get_user_eventdata(ctx.author)
@@ -494,14 +496,20 @@ class Event2021(Cog):
                               title=f"WarTrackr")
 
         players_count = await models.Event2021UserData.all().count()
-        total_mines_count   = await models.Event2021Landmines.all().count()
+        total_mines_count = await models.Event2021Landmines.all().count()
         current_mines_count = await models.Event2021Landmines.all().filter(stopped_at__isnull=True).count()
         biggest_mine = await models.Event2021Landmines.all().filter(stopped_at__isnull=True).order_by('-value').first()
+
+        negatives_count = await models.Event2021UserData \
+            .filter(points_current__lte=0) \
+            .count()
+
         embed.add_field(name="Players tracked", value=str(players_count))
         embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
         embed.add_field(name="Biggest active mine",
                         value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters)`, placed by <@{biggest_mine.placed_by_id}>",
                         inline=False)
+        embed.add_field(name="Players in the negative", value=str(negatives_count))
 
         await scoreboard_channel.send(embed=embed)
 
