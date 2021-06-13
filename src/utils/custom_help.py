@@ -36,7 +36,7 @@ class EmbedHelpCommand(commands.HelpCommand):
     COLOUR = discord.Colour.blurple()
 
     def get_ending_note(self, _):
-        return _('Use {prefix}{help} [command] for more info on a command.', prefix=self.clean_prefix, help=self.invoked_with)
+        return _('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with)
 
     def get_command_signature(self, command):
         return '{0.qualified_name} {0.signature}'.format(command)
