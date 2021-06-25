@@ -12,7 +12,7 @@ LEVELS = [
     {"level": 2, "expMin": 20,    "name": _("noob"), "accuracy": 70, "reliability": 86, "bullets": 6, "magazines": 2},     # Beginner's luck
     {"level": 3, "expMin": 50,    "name": _("trainee"), "accuracy": 54, "reliability": 87, "bullets": 6, "magazines": 2},  # Beginner's luck
     {"level": 4, "expMin": 90,    "name": _("duck misser"), "accuracy": 58, "reliability": 88, "bullets": 8, "magazines": 2},
-    {"level": 5, "expMin": 140,   "name": _("member of the Comitee Against Ducks"), "accuracy": 59, "reliability": 89, "bullets": 8, "magazines": 2},
+    {"level": 5, "expMin": 140,   "name": _("member of the Committee Against Ducks"), "accuracy": 59, "reliability": 89, "bullets": 8, "magazines": 2},
     {"level": 6, "expMin": 200,   "name": _("duck hater"), "accuracy": 60, "reliability": 90, "bullets": 8, "magazines": 2},
     {"level": 7, "expMin": 270,   "name": _("duck pest"), "accuracy": 65, "reliability": 93, "bullets": 4, "magazines": 3},
     {"level": 8, "expMin": 350,   "name": _("duck hassler"), "accuracy": 67, "reliability": 93, "bullets": 4, "magazines": 3},

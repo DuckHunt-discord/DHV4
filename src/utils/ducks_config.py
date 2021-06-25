@@ -15,6 +15,7 @@ DUCKS_IMAGES = {
     'super_alt1': 'https://cdn.discordapp.com/attachments/795225915248214036/804671999502581770/super_duck_Calgeka_Alunden.png',
     'prof': 'https://cdn.discordapp.com/attachments/795225915248214036/795259596091949116/prof_duck_calgeka.png',
     'mechanical': 'https://cdn.discordapp.com/attachments/795225915248214036/795259584528646154/mechanical_duck_calgeka.png',
+    'mechanical_alt1': 'https://cdn.discordapp.com/attachments/795225915248214036/857926338946269214/mechanical_duck_Calgeka_Bliup.png',
     'moad': 'https://cdn.discordapp.com/attachments/795225915248214036/795259587480780880/mother_of_all_ducks_calgeka.png',
     'moad_alt1': 'https://cdn.discordapp.com/attachments/795225915248214036/804671584019152922/mother_of_all_ducks_Calgeka_Eleisya.png',
     'moad_alt2': 'https://cdn.discordapp.com/attachments/795225915248214036/804671604725907466/mother_of_all_ducks_Calgeka_Eleisya_2.png',
@@ -177,7 +178,7 @@ mechanical = {
     **normal,
     'faces': ['%_%', '%>%', "% _ %", '• _ %', '% _ •'],
     'emojis': [DUCKS_EMOJIS['mechanical']],
-    'avatar_urls': [DUCKS_IMAGES['mechanical']],
+    'avatar_urls': [DUCKS_IMAGES['mechanical'], DUCKS_IMAGES['mechanical_alt1']],
     'usernames': normal['usernames'] + [_("Duck 2000"), _("Omega Duck")],
     'shouts': [_("BZZZZZAAAAK"), _("BZAAAACK"), _("BZAACK")],
 }
