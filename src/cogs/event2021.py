@@ -113,58 +113,6 @@ class Event2021(Cog):
                         f"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by.user_id}>. "
                         f"It exploded, taking away **{explosion_value} points** from your account.\n\n",
                         delete_on_invoke_removed=False)
-            else:
-                points = db_target.points_current
-                elec = db_target.electricity_in_inventory
-                gloves = db_target.gloves_in_inventory
-                if random.randint(0, 100) == 50 and points > 10:
-                    db_target.shocked_times += 1
-                    burned = int(elec / 100) + 1
-
-                    if gloves > burned:
-                        db_target.gloves_in_inventory -= burned
-                        db_target.shocks_prevented += 1
-                        await db_target.save()
-                        await ctx.reply(
-                            f"⚡️🧤 Unfortunately, you touched the nail-breaker, but you had gloves on."
-                            f"`{burned}` of your gloves burned, but you didn't loose any points.",
-                            delete_on_invoke_removed=False)
-                        return
-
-                    lost = 10 * elec
-
-                    real_lost = min(lost, points)
-
-                    negative_person = await models.Event2021UserData \
-                        .filter(points_current__lte=0) \
-                        .order_by('points_current') \
-                        .first()
-
-                    if negative_person:
-                        db_target.points_shocked += real_lost
-                        db_target.points_current -= real_lost
-                        negative_person.points_current += real_lost
-                        negative_person.points_found += real_lost
-                        negative_person.found_times += 1
-                        await negative_person.save()
-                        await db_target.save()
-
-                        await ctx.reply(
-                            f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost} points on the floor."
-                            f"<@{negative_person.user_id}> ran and took them all before you could bend down.",
-                            delete_on_invoke_removed=False)
-                        return
-                    else:
-                        real_lost = int(real_lost / 2)
-                        db_target.points_current -= real_lost
-                        db_target.points_shocked += real_lost
-                        await db_target.save()
-
-                        await ctx.reply(
-                            f"⚡️ Unfortunately, you touched the nail-breaker, and lost {real_lost * 2} points on the floor."
-                            f"You managed to collect {real_lost} points before they all disappeared.",
-                            delete_on_invoke_removed=False)
-                        return
 
             if landmine or added_points:
                 await db_target.save()
@@ -231,21 +179,6 @@ class Event2021(Cog):
 
         if db_target.points_spent:
             embed.add_field(name="Points spent in the shop", value=f"{db_target.points_spent} points",
-                            inline=True)
-
-        # Inventory
-        if db_target.landmines_in_inventory:
-            embed.add_field(name="Inv: landmines", value=f"{db_target.landmines_in_inventory}", inline=True)
-
-        if db_target.safes_in_inventory:
-            embed.add_field(name="Inv: safes", value=f"{db_target.safes_in_inventory}", inline=True)
-
-        if db_target.electricity_in_inventory:
-            embed.add_field(name="Inv: electricity", value=f"{db_target.electricity_in_inventory} watts", inline=True)
-
-        if db_target.defuse_kits_bought:
-            embed.add_field(name="Inv: defuse_kits",
-                            value=f"{db_target.defuse_kits_bought} bought",
                             inline=True)
 
         embed.set_footer(text="For more information, run the `dh!tag landmines` command.")
@@ -315,104 +248,6 @@ class Event2021(Cog):
             await landmine.save()
             await ctx.author.send(
                 f"💣️ You placed a landmine on `{word}` that can give you at most `{landmine.base_value()}` points.")
-        finally:
-            await self.concurrency.release(ctx.message)
-
-    @shop.command(aliases=["s", "safe"])
-    async def safes(self, ctx: MyContext, count: int = 1):
-        """
-        Buy safes, allowing you to keep some of your points when stepping on a mine.
-        You should buy multiple of them to really have an effect. A safe cost 100 points.
-        """
-        await self.is_in_command_channel(ctx)
-        safe_price = 200
-        if count < 1:
-            await ctx.reply(f"❌ If you come here, it's to buy safes. Not to sell them. "
-                            f"No you don't get to try them before. Buy or leave.")
-            return
-
-        total_price = safe_price * count
-
-        try:
-            await self.concurrency.acquire(ctx.message)
-            db_user = await models.get_user_eventdata(ctx.author)
-
-            if db_user.points_current < total_price:
-                await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
-                return
-
-            db_user.safes_in_inventory += count
-            db_user.points_current -= total_price
-            db_user.points_spent += total_price
-
-            await db_user.save()
-            await ctx.reply(f"🏦 You bought {count} safes to protect your points.")
-        finally:
-            await self.concurrency.release(ctx.message)
-
-    @shop.command(aliases=["e", "elec"])
-    async def electricity(self, ctx: MyContext, count: int = 1):
-        """
-        Buy electricity, allowing for more efficient points generation. A watt cost 250 points.
-        You should buy many watts if you want them to have a real effect.
-        """
-        await self.is_in_command_channel(ctx)
-        elec_price = 250
-
-        if count < 1:
-            await ctx.author.send(f"❌ If you come here, it's to buy electricity. Not to sell it. "
-                                  f"Buy or leave.")
-            return
-
-        total_price = elec_price * count
-        try:
-            await self.concurrency.acquire(ctx.message)
-            db_user = await models.get_user_eventdata(ctx.author)
-
-            if db_user.points_current < total_price:
-                await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
-                return
-
-            db_user.electricity_in_inventory += count
-            db_user.points_current -= total_price
-            db_user.points_spent += total_price
-
-            await db_user.save()
-            await ctx.reply(f"⚡️ You bought {count} watts of electricity to generate more points.")
-        finally:
-            await self.concurrency.release(ctx.message)
-
-    @shop.command(aliases=["g", "glove"])
-    async def gloves(self, ctx: MyContext, count: int = 1):
-        """
-        Buy gloves, to protect yourself from electric shocks.
-        """
-        await self.is_in_command_channel(ctx)
-        glove_price = 250
-
-        if count < 1:
-            await ctx.reply(f"❌ If you come here, it's to buy gloves. Not to sell it. "
-                            f"Buy or leave.")
-            return
-
-        total_price = glove_price * count
-
-        try:
-            await self.concurrency.acquire(ctx.message)
-            db_user = await models.get_user_eventdata(ctx.author)
-
-            if db_user.points_current < total_price:
-                await ctx.reply(f"❌ You don't have {total_price} points, so you can't pay the invoice.")
-                return
-
-            db_user.gloves_in_inventory += count
-            db_user.gloves_bought += count
-
-            db_user.points_current -= total_price
-            db_user.points_spent += total_price
-
-            await db_user.save()
-            await ctx.reply(f"🧤 You bought {count} gloves that will protect you against shocks.")
         finally:
             await self.concurrency.release(ctx.message)
 
@@ -505,19 +340,12 @@ class Event2021(Cog):
             .filter(points_current__lte=0) \
             .count()
 
-        total_electricity = (await models.Event2021UserData.all()
-                             .annotate(sum=Sum('electricity_in_inventory'))
-                             .first()
-                             .values_list('sum', flat=True))[0]
-
         embed.add_field(name="Players tracked", value=str(players_count))
         embed.add_field(name="Mines count", value=f"{current_mines_count} mines placed, {total_mines_count} created")
         embed.add_field(name="Biggest active mine",
                         value=f"Valued at `{biggest_mine.value} ({len(biggest_mine.word)} letters)`, placed by <@{biggest_mine.placed_by_id}>",
                         inline=False)
         embed.add_field(name="Players in the negative", value=str(negatives_count))
-
-        embed.add_field(name="Current (nail-)breaker load", value=f"{total_electricity} watts")
 
         await scoreboard_channel.send(embed=embed)
 

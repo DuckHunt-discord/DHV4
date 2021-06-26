@@ -457,24 +457,8 @@ class Event2021UserData(Model):
     points_current = fields.IntField(default=0)
     points_exploded = fields.IntField(default=0)
     points_spent = fields.IntField(default=0)
-    points_shocked = fields.IntField(default=0)
-    points_found = fields.IntField(default=0)
-    shocked_times = fields.IntField(default=0)
-    found_times = fields.IntField(default=0)
-    shocks_prevented = fields.IntField(default=0)
 
     # Inventory
-
-    ## Landmines
-    landmines_in_inventory = fields.IntField(default=0)
-
-    ## Safes
-    safes_in_inventory = fields.IntField(default=0)
-
-    ## Electricity
-    electricity_in_inventory = fields.IntField(default=0)
-    gloves_in_inventory      = fields.IntField(default=0)
-    gloves_bought            = fields.IntField(default=0)
 
     ## Defuse kits
     defuse_kits_bought = fields.IntField(default=0)
@@ -485,9 +469,9 @@ class Event2021UserData(Model):
         if words_count > 0:
             self.words_sent += words_count
             self.messages_sent += 1
-            earned = max(0, int((words_count + random.randint(-1, words_count)) * (1 + (self.electricity_in_inventory / 5))))
+            earned = max(0, int((words_count + random.randint(-1, words_count))))
             self.points_acquired += earned
-            self.points_current  += earned
+            self.points_current += earned
             return True
         else:
             return False
@@ -517,22 +501,20 @@ class Event2021Landmines(Model):
                                         related_name='landmines_stopped')
     stopped_at = fields.DatetimeField(null=True)
 
-    def base_value(self) -> float:
+    def base_value(self) -> int:
         return self.value * len(self.word)
 
     def value_for(self, db_target: Event2021UserData) -> int:
         base_value = self.base_value()
-        safes = db_target.safes_in_inventory
 
-        safe_value = base_value / ((safes * 0.33) + 1)
         current_points = db_target.points_current
 
-        points_left = current_points - safe_value
+        points_left = current_points - base_value
 
         if points_left < 0:
-            beginner_value = safe_value + points_left + (-points_left / 4)
+            beginner_value = base_value + points_left + (-points_left / 4)
         else:
-            beginner_value = safe_value
+            beginner_value = base_value
 
         return max(10, int(beginner_value))
 
