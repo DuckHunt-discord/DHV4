@@ -471,7 +471,7 @@ class Event2021UserData(Model):
             self.messages_sent += 1
             earned = max(0, int((words_count + random.randint(-1, words_count))))
 
-            if self.points_current <= 0:
+            if self.points_current <= -10:
                 earned *= max(2, int(abs(self.points_current) / 1000) + 2)
 
             self.points_acquired += earned
