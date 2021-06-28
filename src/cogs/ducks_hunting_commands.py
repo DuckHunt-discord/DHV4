@@ -248,7 +248,7 @@ class DucksHuntingCommands(Cog):
                 else:
                     player_name = db_target.member.user.name
 
-                if not murder and target_coat_color == Coats.ORANGE and random.randint(0, 100) <= 75:
+                if not murder and target_coat_color == Coats.ORANGE and random.randint(1, 100) <= 75:
                     db_hunter.shooting_stats['near_misses'] += 1
                     db_target.shooting_stats['near_missed'] += 1
 

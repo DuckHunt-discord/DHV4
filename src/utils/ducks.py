@@ -959,7 +959,7 @@ class ArmoredDuck(SuperDuck):
         if self.bot.current_event == Events.UN_TREATY:
             return 1
         minus = 0
-        if random.randint(0, 100) < 90:
+        if random.randint(1, 100) < 90:
             minus = 1
 
         return await super().get_damage() - minus
