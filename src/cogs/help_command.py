@@ -11,6 +11,9 @@ from utils.ctx_class import MyContext
 
 
 class ButtonsHelpCommand(commands.MinimalHelpCommand):
+    async def send(self, *args, **kwargs):
+        await self.get_destination().send(*args, **kwargs)
+
     async def send_bot_help(self, mapping):
         ctx = self.context
         bot = ctx.bot
@@ -32,7 +35,7 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
 
         embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
 
-        await ctx.send("<https://duckhunt.me/docs>", embed=embed, view=view)
+        await self.send("<https://duckhunt.me/docs>", embed=embed, view=view)
 
     async def send_cog_help(self, cog):
         ctx = self.context
@@ -62,7 +65,7 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
 
         embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
 
-        await ctx.send("<https://duckhunt.me/docs>", embed=embed, view=view)
+        await self.send("<https://duckhunt.me/docs>", embed=embed, view=view)
 
     async def send_group_help(self, group):
         ctx = self.context
@@ -92,7 +95,7 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
 
         embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
 
-        await ctx.send("<https://duckhunt.me/docs>", embed=embed, view=view)
+        await self.send("<https://duckhunt.me/docs>", embed=embed, view=view)
 
     async def send_command_help(self, command):
         _ = await self.context.get_translate_function()
@@ -105,7 +108,17 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
 
         embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
 
-        await self.get_destination().send(embed=embed)
+        await self.send(embed=embed)
+
+
+class ButtonsHelpInteraction(commands.MinimalHelpCommand):
+    def __init__(self, context: MyContext, interaction: discord.Interaction, **options):
+        super().__init__(**options)
+        self.interaction = interaction
+        self.context = context
+
+    async def send(self, *args, **kwargs):
+        await self.interaction.response.send_message(*args, **kwargs, ephemeral=True)
 
 
 async def filter_commands(commands, *, context=None, sort=False, key=None):
@@ -162,13 +175,14 @@ class CogHelpButton(discord.ui.Button):
     Buttons to direct user to a cog help.
     """
 
-    def __init__(self, cog: Cog):
+    def __init__(self, context: MyContext, cog: Cog):
         custom_id = f"bot_help_cog:{type(cog).__name__}"
         super().__init__(style=getattr(discord.ButtonStyle, cog.help_color), label=cog.name, custom_id=custom_id)
         self.cog = cog
+        self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f'You clicked on {self.cog.name}.', ephemeral=True)
+        await ButtonsHelpInteraction(self.context, interaction).send_cog_help(self.cog)
 
 
 class BotHelpView(discord.ui.View):
@@ -186,7 +200,7 @@ class BotHelpView(discord.ui.View):
         commands_by_cog = itertools.groupby(filtered, key=get_cog)
 
         for cog, commands in commands_by_cog:
-            self.add_item(CogHelpButton(cog))
+            self.add_item(CogHelpButton(self.ctx, cog))
 
         return self
 
@@ -196,14 +210,15 @@ class GroupHelpButton(discord.ui.Button):
     Buttons to direct user to a group help
     """
 
-    def __init__(self, group: Group):
+    def __init__(self, context: MyContext,group: Group):
         group_id = group.qualified_name.replace(' ', '_')
         custom_id = f"bot_help_group:{group_id}"
         super().__init__(style=discord.ButtonStyle.green, label=f"{group.name} ({len(group.commands)} subcommands)", custom_id=custom_id)
         self.group = group
+        self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f'You clicked on {self.group.qualified_name}.', ephemeral=True)
+        await ButtonsHelpInteraction(self.context, interaction).send_group_help(self.group)
 
 
 class CommandHelpButton(discord.ui.Button):
@@ -211,14 +226,15 @@ class CommandHelpButton(discord.ui.Button):
     Buttons to direct user to a command help
     """
 
-    def __init__(self, command: Command):
+    def __init__(self, context: MyContext, command: Command):
         command_id = command.qualified_name.replace(' ', '_')
         custom_id = f"bot_help_command:{command_id}"
         super().__init__(style=discord.ButtonStyle.green, label=command.name, custom_id=custom_id)
         self.command = command
+        self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f'You clicked on {self.command.qualified_name}.', ephemeral=True)
+        await ButtonsHelpInteraction(self.context, interaction).send_command_help(self.command)
 
 
 class CogHelpView(discord.ui.View):
@@ -243,10 +259,10 @@ class CogHelpView(discord.ui.View):
 
         for group, commands in commands_by_group:
             if group:
-                self.add_item(GroupHelpButton(group))
+                self.add_item(GroupHelpButton(self.ctx, group))
             else:
                 for command in commands:
-                    self.add_item(CommandHelpButton(command))
+                    self.add_item(CommandHelpButton(self.ctx, command))
 
         return self
 
