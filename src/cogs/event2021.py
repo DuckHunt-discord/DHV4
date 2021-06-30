@@ -1,6 +1,7 @@
 import asyncio
 import datetime
 import random
+from typing import Optional
 
 import discord
 from babel.dates import format_timedelta
@@ -118,6 +119,23 @@ class Event2021(Cog):
                 await db_target.save()
         finally:
             await self.concurrency.release(message)
+
+    @commands.command()
+    async def place(self, ctx: MyContext, value: Optional[int], word: str, *, message_text: str = ""):
+        """
+        Alias for dh!landmine shop landmine, so that you can just type dh!place instead.
+        """
+        if value is None:
+            value = 50
+
+        await self.landmine(ctx, value, word, message_text)
+
+    @commands.command()
+    async def defuse(self, ctx: MyContext, *, words: str = ""):
+        """
+        Alias for dh!landmine shop defuse_kit, so that you can just type dh!place instead.
+        """
+        await self.defuse_kit(ctx, words)
 
     @commands.group(aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True)
     async def event(self, ctx: MyContext):
