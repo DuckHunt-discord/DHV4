@@ -133,6 +133,13 @@ class ButtonsHelpInteraction(ButtonsHelp):
     async def send(self, *args, **kwargs):
         await self.interaction.response.send_message(*args, **kwargs, ephemeral=True)
 
+    @property
+    def invoked_with(self):
+        ctx = self.context
+        if ctx is None or ctx.command is None:
+            return "help"
+
+        return ctx.invoked_with
 
 async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
