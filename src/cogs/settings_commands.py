@@ -34,7 +34,14 @@ HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
 
+def _(message):
+    return message
+
+
 class SettingsCommands(Cog):
+    display_name = _("Admin: Settings")
+    help_priority = 4
+
     @commands.group(aliases=["set"])
     async def settings(self, ctx: MyContext):
         """

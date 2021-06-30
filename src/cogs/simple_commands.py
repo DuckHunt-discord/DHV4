@@ -25,6 +25,10 @@ HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
 
+def _(message):
+    return message
+
+
 class TranslatorsMenusSource(menus.ListPageSource):
     def __init__(self, ctx: MyContext, translators):
         super().__init__(list(translators.items()), per_page=6)
@@ -70,6 +74,9 @@ async def show_translators_menu(ctx, translators):
 
 
 class SimpleCommands(Cog):
+    display_name = _("Miscellaneous")
+    help_priority = 10
+
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.translators_cache = {}

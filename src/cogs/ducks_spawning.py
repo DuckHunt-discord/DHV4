@@ -20,6 +20,8 @@ DAY = 24 * HOUR
 
 
 class DucksSpawning(Cog):
+    hidden = True
+
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.index = 0

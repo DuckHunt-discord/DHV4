@@ -18,7 +18,15 @@ from babel import dates
 from utils.models import AccessLevel, get_from_db
 
 
+def _(message):
+    return message
+
+
 class SupportServerCommands(Cog):
+    display_name = _("Support team: misc")
+    help_priority = 15
+    help_color = 'red'
+
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.index = 0

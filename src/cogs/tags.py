@@ -13,6 +13,10 @@ from utils.ctx_class import MyContext
 from utils.models import AccessLevel, Tag, get_tag, get_from_db, TagAlias, DiscordUser, DiscordMember
 
 
+def _(message):
+    return message
+
+
 class TagName(commands.clean_content):
     async def convert(self, ctx, argument):
         converted = await super().convert(ctx, argument)
@@ -138,6 +142,8 @@ async def show_tagslist_embed(ctx: MyContext, tags: List[Tag]):
 
 
 class Tags(Cog):
+    display_name = _("Support: tags")
+
     async def cog_check(self, ctx: MyContext):
         if ctx.guild and ctx.guild.id in self.config()['allowed_in_guilds']:
             return True

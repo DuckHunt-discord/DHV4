@@ -18,7 +18,15 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 
 
+def _(message):
+    return message
+
+
 class DucksSpawningCommands(Cog):
+    display_name = _("Admin: Spawning")
+    help_priority = 5
+    help_color = 'red'
+
     @commands.group(aliases=["spawn", "spawnduck"])
     @checks.channel_enabled()
     @checks.needs_access_level(models.AccessLevel.ADMIN)

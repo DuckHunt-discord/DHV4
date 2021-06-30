@@ -16,7 +16,15 @@ from utils.inventory_items import Voted
 from utils.models import DiscordUser, get_from_db, BotList, Vote, Player
 
 
+def _(message):
+    return message
+
+
 class BotsListVoting(Cog):
+    display_name = _("Voting")
+    help_priority = 11
+    help_color = 'secondary'
+
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.statcord_api = statcord.Client(self.bot, self.config()['statcord_token'],

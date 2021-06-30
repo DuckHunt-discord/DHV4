@@ -12,7 +12,14 @@ from utils.levels import get_higher_level
 from utils.models import Player, get_player
 
 
+def _(message):
+    return message
+
+
 class PrestigeCommands(Cog):
+    display_name = _("Prestige")
+    help_priority = 9
+
     @commands.group(aliases=["restart"])
     @checks.channel_enabled()
     async def prestige(self, ctx: MyContext):

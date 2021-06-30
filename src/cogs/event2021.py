@@ -17,7 +17,14 @@ from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages
 
 
+def _(message):
+    return message
+
+
 class Event2021(Cog):
+    display_name = _("Event: landmines")
+    help_priority = 9
+
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.concurrency = MaxConcurrency(number=1, per=BucketType.user, wait=True)

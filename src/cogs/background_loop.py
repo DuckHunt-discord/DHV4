@@ -3,6 +3,8 @@ from utils.cog_class import Cog
 
 
 class BackgroundLoop(Cog):
+    hidden = True
+
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.index = 0

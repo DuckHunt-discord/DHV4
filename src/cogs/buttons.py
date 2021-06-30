@@ -35,6 +35,7 @@ class PersistentView(discord.ui.View):
 
 
 class Buttons(Cog):
+    hidden = True
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.persistent_views_added = False

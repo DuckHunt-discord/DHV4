@@ -27,7 +27,14 @@ class NotEnoughExperience(commands.CheckFailure):
         self.having = having
 
 
+def _(message):
+    return message
+
+
 class ShoppingCommands(Cog):
+    display_name = _("Shop")
+    help_priority = 3
+
     @commands.group(aliases=["buy", "rent", "sh", "sho"])
     @checks.channel_enabled()
     async def shop(self, ctx: MyContext):

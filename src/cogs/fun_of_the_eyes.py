@@ -133,6 +133,8 @@ def resize_image(image_bytes, w_pct, h_pct):
 
 
 class FunOfTheEyes(Cog):
+    hidden = True
+
     @commands.command(aliases=["resize"])
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     @dont_block

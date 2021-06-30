@@ -1,9 +1,9 @@
 import itertools
-from typing import Optional
+from typing import Optional, Union
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import CommandError
+from discord.ext.commands import CommandError, Command, Group
 
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
@@ -15,16 +15,104 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
         ctx = self.context
         bot = ctx.bot
 
-        view = BotHelpView(bot, ctx)
+        _ = await ctx.get_translate_function()
 
-        await ctx.send("The help is currently being coded, please wait :)", view=await view.initialize())
+        view = await BotHelpView(bot, ctx).initialize()
+
+        embed = discord.Embed(colour=discord.Colour.blurple(),
+                              title=_("DuckHunt help"),
+                              url=self.context.bot.config['website_url'] + "commands")
+
+        embed.description = _("**Welcome to DuckHunt**\n\n"
+                              "This is a help command designed to let you find all the commands in the bot.\n"
+                              "However, it's *not* the best way to get started with it. I suggest reading the wiki instead, "
+                              "here's [a link](https://duckhunt.me/docs).\n"
+                              "If you have questions, you can DM the bot, or join the [support server](https://duckhunt.me/support).\n"
+                              "Thanks for playing.")
+
+        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+
+        await ctx.send("<https://duckhunt.me/docs>", embed=embed, view=view)
+
+    async def send_cog_help(self, cog):
+        ctx = self.context
+        bot = ctx.bot
+
+        _ = await ctx.get_translate_function()
+
+        view = await CogHelpView(bot, cog, ctx).initialize()
+
+        embed = discord.Embed(colour=discord.Colour.blurple(),
+                              title=_("{cog} help", cog=cog.qualified_name),
+                              url=self.context.bot.config['website_url'] + "commands")
+
+        if cog.description:
+            embed.description = _(cog.description)
+
+        filtered = await filter_commands(cog.get_commands(), context=ctx, sort=True)
+
+        for command in filtered:
+            value = '...'
+            if command.brief:
+                value = _(command.brief)
+            elif command.help:
+                value = _(command.help).split('\n', 1)[0]
+
+            embed.add_field(name=self.get_command_signature(command), value=value, inline=False)
+
+        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+
+        await ctx.send("<https://duckhunt.me/docs>", embed=embed, view=view)
+
+    async def send_group_help(self, group):
+        ctx = self.context
+        bot = ctx.bot
+
+        _ = await ctx.get_translate_function()
+
+        view = await CogHelpView(bot, group, ctx).initialize()
+
+        embed = discord.Embed(colour=discord.Colour.blurple(),
+                              title=_("{cog} help", cog=group.qualified_name),
+                              url=self.context.bot.config['website_url'] + f"commands/{group.qualified_name.replace(' ', '/')}")
+
+        if group.description:
+            embed.description = _(group.description)
+
+        filtered = await filter_commands(group.commands, context=ctx, sort=True)
+
+        for command in filtered:
+            value = '...'
+            if command.brief:
+                value = _(command.brief)
+            elif command.help:
+                value = _(command.help).split('\n', 1)[0]
+
+            embed.add_field(name=self.get_command_signature(command), value=value, inline=False)
+
+        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+
+        await ctx.send("<https://duckhunt.me/docs>", embed=embed, view=view)
+
+    async def send_command_help(self, command):
+        _ = await self.context.get_translate_function()
+
+        embed = discord.Embed(title=_("{cog} help", cog=command.qualified_name), colour=discord.Colour.blurple(),)
+        embed.url = self.context.bot.config['website_url'] + f"commands/{command.qualified_name.replace(' ', '/')}"
+
+        if command.help:
+            embed.description = _(command.help)
+
+        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+
+        await self.get_destination().send(embed=embed)
 
 
-async def filter_commands(commands, *, context=None, sort=False, key=None, show_hidden=False):
+async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
-        key = lambda c: c.name
+        key = lambda c: (getattr(c, 'help_priority', 10), c.name)
 
-    iterator = commands if show_hidden else filter(lambda c: not c.hidden, commands)
+    iterator = commands if not context else filter(lambda c: not c.hidden, commands)
 
     if context is None:
         # if we do not need to verify the checks then we can just
@@ -51,7 +139,12 @@ async def filter_commands(commands, *, context=None, sort=False, key=None, show_
 
 def get_category(command):
     cog = command.cog
-    return cog.qualified_name if cog is not None else "\u200b"
+    return cog.name if cog is not None else "\u200b"
+
+
+def get_group_name(command):
+    group = command.group
+    return group.name if group is not None else "\u200b"
 
 
 def get_cog(command):
@@ -59,17 +152,30 @@ def get_cog(command):
     return cog if cog is not None else None
 
 
-class BotHelpButton(discord.ui.Button):
+def get_group(command):
+    group = command.group
+    return group if group is not None else None
+
+
+class CogHelpButton(discord.ui.Button):
+    """
+    Buttons to direct user to a cog help.
+    """
+
     def __init__(self, cog: Cog):
         custom_id = f"bot_help_cog:{type(cog).__name__}"
-        super().__init__(style=discord.ButtonStyle.green, label=type(cog).__name__, custom_id=custom_id)
+        super().__init__(style=getattr(discord.ButtonStyle, cog.help_color), label=cog.name, custom_id=custom_id)
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f'You clicked on {type(self.cog).__name__}.', ephemeral=True)
+        await interaction.response.send_message(f'You clicked on {self.cog.name}.', ephemeral=True)
 
 
 class BotHelpView(discord.ui.View):
+    """
+    Show buttons for all the cogs in a bot.
+    """
+
     def __init__(self, bot: MyBot, ctx: Optional[MyContext] = None):
         super().__init__(timeout=None)
         self.bot = bot
@@ -80,12 +186,74 @@ class BotHelpView(discord.ui.View):
         commands_by_cog = itertools.groupby(filtered, key=get_cog)
 
         for cog, commands in commands_by_cog:
-            self.add_item(BotHelpButton(cog))
+            self.add_item(CogHelpButton(cog))
+
+        return self
+
+
+class GroupHelpButton(discord.ui.Button):
+    """
+    Buttons to direct user to a group help
+    """
+
+    def __init__(self, group: Group):
+        group_id = group.qualified_name.replace(' ', '_')
+        custom_id = f"bot_help_group:{group_id}"
+        super().__init__(style=discord.ButtonStyle.green, label=f"{group.name} ({len(group.commands)} subcommands)", custom_id=custom_id)
+        self.group = group
+
+    async def callback(self, interaction: discord.Interaction):
+        await interaction.response.send_message(f'You clicked on {self.group.qualified_name}.', ephemeral=True)
+
+
+class CommandHelpButton(discord.ui.Button):
+    """
+    Buttons to direct user to a command help
+    """
+
+    def __init__(self, command: Command):
+        command_id = command.qualified_name.replace(' ', '_')
+        custom_id = f"bot_help_command:{command_id}"
+        super().__init__(style=discord.ButtonStyle.green, label=command.name, custom_id=custom_id)
+        self.command = command
+
+    async def callback(self, interaction: discord.Interaction):
+        await interaction.response.send_message(f'You clicked on {self.command.qualified_name}.', ephemeral=True)
+
+
+class CogHelpView(discord.ui.View):
+    """
+    Show buttons for all the commands and groups in a cog or a group.
+    """
+
+    def __init__(self, bot: MyBot, cog: Union[Cog, Group], ctx: Optional[MyContext] = None):
+        super().__init__(timeout=None)
+        self.bot = bot
+        self.cog = cog
+        self.ctx = ctx
+
+    async def initialize(self):
+        if isinstance(self.cog, Cog):
+            commands = self.cog.get_commands()
+        else:
+            commands = self.cog.commands
+
+        filtered = await filter_commands(commands, context=self.ctx, sort=True, key=get_group_name)
+        commands_by_group = itertools.groupby(filtered, key=get_group)
+
+        for group, commands in commands_by_group:
+            if group:
+                self.add_item(GroupHelpButton(group))
+            else:
+                for command in commands:
+                    self.add_item(CommandHelpButton(command))
 
         return self
 
 
 class HelpCog(Cog):
+    hidden = True
+
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.persistent_views_added = False
@@ -99,6 +267,14 @@ class HelpCog(Cog):
             # If you have the message_id you can also pass it as a keyword argument, but for this example
             # we don't have one.
             self.bot.add_view(await BotHelpView(self.bot).initialize())
+
+            for cog in self.bot.cogs:
+                self.bot.add_view(await CogHelpView(self.bot, cog).initialize())
+
+            for command in self.bot.commands:
+                if isinstance(command, Group):
+                    self.bot.add_view(await CogHelpView(self.bot, command).initialize())
+
             self.persistent_views_added = True
 
     def cog_unload(self):

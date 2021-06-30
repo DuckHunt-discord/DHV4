@@ -8,7 +8,14 @@ from utils.inventory_items import ALL_INVENTORY, ALL_SHORTCODE, InvalidUsesCount
 from utils.models import get_from_db, DiscordUser, get_user_inventory
 
 
+def _(message):
+    return message
+
+
 class InventoryCommands(Cog):
+    display_name = _("Inventory")
+    help_priority = 9
+
     @commands.command(aliases=["open"])
     @checks.channel_enabled()
     async def use(self, ctx: MyContext, item_shortcode: str, item_uses:int = 1):

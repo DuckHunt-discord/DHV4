@@ -4,7 +4,14 @@ from utils.ctx_class import MyContext
 from utils.random_ducks import get_random_duck_file
 
 
+def _(message):
+    return message
+
+
 class RandomDucks(Cog):
+    display_name = _("Images")
+    help_priority = 10
+
     @commands.command(aliases=["rd"])
     async def random_duck(self, ctx: MyContext, with_background=True):
         """

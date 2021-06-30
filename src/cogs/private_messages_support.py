@@ -24,6 +24,10 @@ from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
 
 
+def _(message):
+    return message
+
+
 class MirrorMenuPage(menus.MenuPages):
     def __init__(self, source, **kwargs):
         super().__init__(source, **kwargs)
@@ -68,6 +72,10 @@ class MirrorMenuPage(menus.MenuPages):
 
 
 class PrivateMessagesSupport(Cog):
+    display_name = _("Support team: private messages")
+    help_priority = 15
+    help_color = 'red'
+
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.webhook_cache: Dict[discord.TextChannel, discord.Webhook] = {}

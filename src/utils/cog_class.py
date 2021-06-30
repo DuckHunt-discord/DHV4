@@ -4,6 +4,16 @@ from utils.bot_class import MyBot
 
 
 class Cog(commands.Cog):
+    hidden = False
+    help_priority = 10
+    help_color = 'green'
+
+    display_name = None
+
+    @property
+    def name(self):
+        return self.display_name or self.qualified_name or type(self).__name__
+
     def __init__(self, bot: MyBot, *args, **kwargs):
         self.bot = bot
         super().__init__(*args, **kwargs)

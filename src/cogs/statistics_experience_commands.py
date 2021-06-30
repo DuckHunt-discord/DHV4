@@ -12,6 +12,10 @@ from utils.ctx_class import MyContext
 from utils.models import Player, get_player, get_from_db, DiscordChannel
 
 
+def _(message):
+    return message
+
+
 class TopScoresSource(menus.ListPageSource):
     def __init__(self, ctx: MyContext, data, title):
         super().__init__(data, per_page=6)
@@ -50,6 +54,9 @@ async def show_topscores_pages(ctx, title: str):
 
 
 class StatisticsCommands(Cog):
+    display_name = _("Statistics")
+    help_priority = 5
+
     @commands.command(aliases=["quick_stats", "quickstats"])
     @checks.channel_enabled()
     async def me(self, ctx: MyContext, target: discord.Member = None):
