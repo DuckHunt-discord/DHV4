@@ -112,9 +112,7 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
 
 
 class ButtonsHelpInteraction(commands.MinimalHelpCommand):
-    def __new__(cls, **kwargs):
-        return super(object).__new__(cls)
-
+    __new__ = object.__new__
 
     def __init__(self, context: MyContext, interaction: discord.Interaction, **options):
         super().__init__(**options)
