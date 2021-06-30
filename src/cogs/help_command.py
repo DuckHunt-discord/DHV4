@@ -151,20 +151,17 @@ class ButtonsHelpInteraction(ButtonsHelp):
 
 async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
-        key = lambda c: (getattr(c, 'help_priority', 10), c.name)
+        newkey = lambda c: (getattr(c, 'help_priority', 10), c.name)
     elif sort:
-        def key_(c):
+        def newkey(c):
             return getattr(c, 'help_priority', 10), key(c)
-
-        key = key_
-
 
     iterator = commands if not context else filter(lambda c: not c.hidden, commands)
 
     if context is None:
         # if we do not need to verify the checks then we can just
         # run it straight through normally without using await.
-        return sorted(iterator, key=key) if sort else list(iterator)
+        return sorted(iterator, key=newkey) if sort else list(iterator)
 
     # if we're here then we need to check every command if it can run
     async def predicate(cmd):
@@ -180,7 +177,7 @@ async def filter_commands(commands, *, context=None, sort=False, key=None):
             ret.append(cmd)
 
     if sort:
-        ret.sort(key=key)
+        ret.sort(key=newkey)
     return ret
 
 
