@@ -19,56 +19,6 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
 
         await ctx.send("The help is currently being coded, please wait :)", view=await view.initialize())
 
-    async def send_cog_help(self, cog):
-        bot = self.context.bot
-        if bot.description:
-            self.paginator.add_line(bot.description, empty=True)
-
-        note = self.get_opening_note()
-        if note:
-            self.paginator.add_line(note, empty=True)
-
-        if cog.description:
-            self.paginator.add_line(cog.description, empty=True)
-
-        filtered = await self.filter_commands(cog.get_commands(), sort=self.sort_commands)
-        if filtered:
-            self.paginator.add_line(f'**{cog.qualified_name} {self.commands_heading}**')
-            for command in filtered:
-                self.add_subcommand_formatting(command)
-
-            note = self.get_ending_note()
-            if note:
-                self.paginator.add_line()
-                self.paginator.add_line(note)
-
-        await self.send_pages()
-
-    async def send_group_help(self, group):
-        self.add_command_formatting(group)
-
-        filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
-        if filtered:
-            note = self.get_opening_note()
-            if note:
-                self.paginator.add_line(note, empty=True)
-
-            self.paginator.add_line(f'**{self.commands_heading}**')
-            for command in filtered:
-                self.add_subcommand_formatting(command)
-
-            note = self.get_ending_note()
-            if note:
-                self.paginator.add_line()
-                self.paginator.add_line(note)
-
-        await self.send_pages()
-
-    async def send_command_help(self, command):
-        self.add_command_formatting(command)
-        self.paginator.close_page()
-        await self.send_pages()
-
 
 async def filter_commands(commands, *, context=None, sort=False, key=None, show_hidden=False):
     if sort and key is None:
@@ -104,7 +54,7 @@ def get_category(command, *, no_category=None):
     return cog.qualified_name if cog is not None else no_category
 
 
-class BotHelpButton(discord.ui.button):
+class BotHelpButton(discord.ui.Button):
     def __init__(self, cog: Cog):
         custom_id = f"bot_help_cog:{cog.name}"
         super().__init__(style=discord.ButtonStyle.green, label=cog.name, custom_id=custom_id)
