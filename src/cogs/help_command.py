@@ -231,7 +231,7 @@ class BotHelpView(discord.ui.View):
             if cog is not None:
                 self.add_item(CogHelpButton(self.ctx, cog))
             else:
-                self.ctx.logger.warning(f"Commands not in cog: {commands}")
+                self.ctx.logger.warning(f"Commands not in cog: {[command.qualified_name for command in commands]}")
 
         return self
 
