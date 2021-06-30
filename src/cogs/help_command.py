@@ -51,7 +51,7 @@ async def filter_commands(commands, *, context=None, sort=False, key=None, show_
 
 def get_category(command, *, no_category="\u200b"):
     cog = command.cog
-    return cog.qualified_name if cog is not None else no_category
+    return cog if cog is not None else no_category
 
 
 class BotHelpButton(discord.ui.Button):
@@ -75,7 +75,8 @@ class BotHelpView(discord.ui.View):
         commands_by_cog = itertools.groupby(filtered, key=get_category)
 
         for cog, commands in commands_by_cog:
-            self.add_item(BotHelpButton(cog))
+            if not isinstance(cog, str):
+                self.add_item(BotHelpButton(cog))
 
         return self
 
