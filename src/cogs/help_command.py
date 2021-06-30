@@ -115,7 +115,7 @@ class ButtonsHelp:
     async def send_command_help(self, command):
         _ = await self.context.get_translate_function()
 
-        embed = discord.Embed(title=_("{cog} help", cog=command.qualified_name), colour=discord.Colour.blurple(),)
+        embed = discord.Embed(title=_("{cog} help", cog=command.qualified_name), colour=discord.Colour.blurple(), )
         embed.url = self.context.bot.config['website_url'] + f"commands/{command.qualified_name.replace(' ', '/')}"
 
         if command.help:
@@ -244,7 +244,7 @@ class GroupHelpButton(discord.ui.Button):
     Buttons to direct user to a group help
     """
 
-    def __init__(self, context: MyContext,group: Group):
+    def __init__(self, context: MyContext, group: Group):
         group_id = group.qualified_name.replace(' ', '_')
         custom_id = f"bot_help_group:{group_id}"
         super().__init__(style=discord.ButtonStyle.green, label=f"{group.name} ({len(group.commands)} subcommands)", custom_id=custom_id)
@@ -283,6 +283,13 @@ class CogHelpView(discord.ui.View):
         self.ctx = ctx
 
     async def initialize(self):
+        if self.ctx:
+            _ = await self.ctx.get_translate_function()
+        else:
+            def _(s):
+                return s
+
+        items_shown = 0
         if isinstance(self.cog, Cog):
             commands = self.cog.get_commands()
         else:
@@ -293,6 +300,11 @@ class CogHelpView(discord.ui.View):
         filtered = await filter_commands(commands, context=self.ctx, sort=True, key=get_group_name)
 
         for command in filtered:
+            items_shown += 1
+            if items_shown >= 5 * 5:
+                self.add_item(discord.ui.Button(style=discord.ButtonStyle.secondary,
+                                                label=_("... More available online"),
+                                                url=self.bot.config['website_url'] + f"commands/{self.cog.qualified_name.replace(' ', '/')}"))
             if isinstance(command, Group):
                 self.add_item(GroupHelpButton(self.ctx, command))
             else:
