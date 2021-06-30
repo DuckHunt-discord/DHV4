@@ -49,9 +49,14 @@ async def filter_commands(commands, *, context=None, sort=False, key=None, show_
     return ret
 
 
-def get_category(command, *, no_category="\u200b"):
+def get_category(command):
     cog = command.cog
-    return cog if cog is not None else no_category
+    return cog.qualified_name if cog is not None else "\u200b"
+
+
+def get_cog(command):
+    cog = command.cog
+    return cog if cog is not None else None
 
 
 class BotHelpButton(discord.ui.Button):
@@ -72,11 +77,10 @@ class BotHelpView(discord.ui.View):
 
     async def initialize(self):
         filtered = await filter_commands(self.bot.commands, context=self.ctx, sort=True, key=get_category)
-        commands_by_cog = itertools.groupby(filtered, key=get_category)
+        commands_by_cog = itertools.groupby(filtered, key=get_cog)
 
         for cog, commands in commands_by_cog:
-            if not isinstance(cog, str):
-                self.add_item(BotHelpButton(cog))
+            self.add_item(BotHelpButton(cog))
 
         return self
 
