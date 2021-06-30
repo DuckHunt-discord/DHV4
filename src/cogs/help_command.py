@@ -15,7 +15,59 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
         ctx = self.context
         bot = ctx.bot
 
-        await ctx.send("The help is currently being coded, please wait :)", view=BotHelpView(bot, ctx))
+        view = BotHelpView(bot, ctx)
+
+        await ctx.send("The help is currently being coded, please wait :)", view=await view.initialize())
+
+    async def send_cog_help(self, cog):
+        bot = self.context.bot
+        if bot.description:
+            self.paginator.add_line(bot.description, empty=True)
+
+        note = self.get_opening_note()
+        if note:
+            self.paginator.add_line(note, empty=True)
+
+        if cog.description:
+            self.paginator.add_line(cog.description, empty=True)
+
+        filtered = await self.filter_commands(cog.get_commands(), sort=self.sort_commands)
+        if filtered:
+            self.paginator.add_line(f'**{cog.qualified_name} {self.commands_heading}**')
+            for command in filtered:
+                self.add_subcommand_formatting(command)
+
+            note = self.get_ending_note()
+            if note:
+                self.paginator.add_line()
+                self.paginator.add_line(note)
+
+        await self.send_pages()
+
+    async def send_group_help(self, group):
+        self.add_command_formatting(group)
+
+        filtered = await self.filter_commands(group.commands, sort=self.sort_commands)
+        if filtered:
+            note = self.get_opening_note()
+            if note:
+                self.paginator.add_line(note, empty=True)
+
+            self.paginator.add_line(f'**{self.commands_heading}**')
+            for command in filtered:
+                self.add_subcommand_formatting(command)
+
+            note = self.get_ending_note()
+            if note:
+                self.paginator.add_line()
+                self.paginator.add_line(note)
+
+        await self.send_pages()
+
+    async def send_command_help(self, command):
+        self.add_command_formatting(command)
+        self.paginator.close_page()
+        await self.send_pages()
 
 
 async def filter_commands(commands, *, context=None, sort=False, key=None, show_hidden=False):
@@ -66,11 +118,16 @@ class BotHelpView(discord.ui.View):
     def __init__(self, bot: MyBot, ctx: Optional[MyContext] = None):
         super().__init__(timeout=None)
         self.bot = bot
-        filtered = await filter_commands(bot.commands, context=ctx, sort=True, key=get_category)
+        self.ctx = ctx
+
+    async def initialize(self):
+        filtered = await filter_commands(self.bot.commands, context=self.ctx, sort=True, key=get_category)
         commands_by_cog = itertools.groupby(filtered, key=get_category)
 
         for cog, commands in commands_by_cog:
             self.add_item(BotHelpButton(cog))
+
+        return self
 
 
 class HelpCog(Cog):
@@ -86,7 +143,7 @@ class HelpCog(Cog):
             # In order to do this you need to first send a message with the View, which is shown below.
             # If you have the message_id you can also pass it as a keyword argument, but for this example
             # we don't have one.
-            self.bot.add_view(BotHelpView(self.bot))
+            self.bot.add_view(await BotHelpView(self.bot).initialize())
             self.persistent_views_added = True
 
     def cog_unload(self):
