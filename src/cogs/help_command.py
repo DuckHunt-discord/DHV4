@@ -291,14 +291,12 @@ class CogHelpView(discord.ui.View):
         self.ctx.logger.debug(f"Displaying {len(commands)} subcommands")
 
         filtered = await filter_commands(commands, context=self.ctx, sort=True, key=get_group_name)
-        commands_by_group = itertools.groupby(filtered, key=get_group)
 
-        for group, commands in commands_by_group:
-            if group:
-                self.add_item(GroupHelpButton(self.ctx, group))
+        for command in filtered:
+            if isinstance(command, Group):
+                self.add_item(GroupHelpButton(self.ctx, command))
             else:
-                for command in commands:
-                    self.add_item(CommandHelpButton(self.ctx, command))
+                self.add_item(CommandHelpButton(self.ctx, command))
 
         return self
 
