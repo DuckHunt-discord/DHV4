@@ -211,8 +211,14 @@ class CogHelpButton(discord.ui.Button):
     """
 
     def __init__(self, context: MyContext, cog: Cog):
+        if context:
+            _ = await self.context.get_translate_function()
+        else:
+            def _(s):
+                return s
+
         custom_id = f"bot_help_cog:{type(cog).__name__}"
-        super().__init__(style=getattr(discord.ButtonStyle, getattr(cog, 'help_color', 'green')), label=cog.name, custom_id=custom_id)
+        super().__init__(style=getattr(discord.ButtonStyle, getattr(cog, 'help_color', 'green')), label=_(cog.name), custom_id=custom_id)
         self.cog = cog
         self.context = context
 
@@ -239,7 +245,8 @@ class BotHelpView(discord.ui.View):
             if cog is not None:
                 self.add_item(CogHelpButton(self.ctx, cog))
             else:
-                self.ctx.logger.warning(f"Commands not in cog: {[command.qualified_name for command in commands]}")
+                # Don't show the help command in the help command, ffs
+                pass
 
         return self
 

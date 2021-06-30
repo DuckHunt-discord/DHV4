@@ -212,7 +212,7 @@ class PrivateMessagesSupport(Cog):
             self.bot.logger.debug(f"[SUPPORT] creating a webhook for {user.name}#{user.discriminator}.")
 
             webhook = await channel.create_webhook(name=f"{user.name}#{user.discriminator}",
-                                                   avatar=await user.avatar_url_as(format="png", size=512).read(),
+                                                   avatar=await user.avatar.replace(format="png", size=512).read(),
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
             self.bot.logger.debug(f"[SUPPORT] channel created for {user.name}#{user.discriminator}.")

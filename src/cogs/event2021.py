@@ -208,7 +208,7 @@ class Event2021(Cog):
                             inline=True)
 
         embed.set_footer(text="For more information, run the `dh!tag landmines` command.")
-        embed.set_author(name=str(target), icon_url=str(target.avatar_url_as(format="jpg", size=256)))
+        embed.set_author(name=str(target), icon_url=str(target.avatar.replace(format="jpg", size=256)))
 
         await ctx.reply(embed=embed)
 
