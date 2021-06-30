@@ -19,6 +19,13 @@ class ButtonsHelp:
     def get_command_signature(self, command):
         return f'{self.context.clean_prefix}{command.qualified_name} {command.signature}'
 
+    @property
+    def invoked_with(self):
+        try:
+            return super().invoked_with
+        except AttributeError:
+            return "help"
+
     async def send(self, *args, **kwargs):
         raise RuntimeError('ButtonsHelp subclass must provide a send method.')
 
@@ -140,6 +147,7 @@ class ButtonsHelpInteraction(ButtonsHelp):
             return "help"
 
         return ctx.invoked_with
+
 
 async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
