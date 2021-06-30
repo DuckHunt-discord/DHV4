@@ -152,6 +152,9 @@ class ButtonsHelpInteraction(ButtonsHelp):
 async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
         key = lambda c: (getattr(c, 'help_priority', 10), c.name)
+    elif sort:
+        key = lambda c: (getattr(c, 'help_priority', 10), key(c))
+
 
     iterator = commands if not context else filter(lambda c: not c.hidden, commands)
 
@@ -284,6 +287,8 @@ class CogHelpView(discord.ui.View):
             commands = self.cog.get_commands()
         else:
             commands = self.cog.commands
+
+        self.ctx.logger.debug(f"Displaying {len(commands)} subcommands")
 
         filtered = await filter_commands(commands, context=self.ctx, sort=True, key=get_group_name)
         commands_by_group = itertools.groupby(filtered, key=get_group)
