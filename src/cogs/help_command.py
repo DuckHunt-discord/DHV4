@@ -10,9 +10,17 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 
 
-class ButtonsHelpCommand(commands.MinimalHelpCommand):
+class ButtonsHelp:
+    def __init__(self, *args, **kwargs):
+        self.context: MyContext = None
+
+        super().__init__(*args, **kwargs)
+
+    def get_command_signature(self, command):
+        return f'{self.context.clean_prefix}{command.qualified_name} {command.signature}'
+
     async def send(self, *args, **kwargs):
-        await self.get_destination().send(*args, **kwargs)
+        raise RuntimeError('ButtonsHelp subclass must provide a send method.')
 
     async def send_bot_help(self, mapping):
         ctx = self.context
@@ -111,7 +119,12 @@ class ButtonsHelpCommand(commands.MinimalHelpCommand):
         await self.send(embed=embed)
 
 
-class ButtonsHelpInteraction(commands.MinimalHelpCommand):
+class ButtonsHelpCommand(ButtonsHelp, commands.MinimalHelpCommand):
+    async def send(self, *args, **kwargs):
+        await self.get_destination().send(*args, **kwargs)
+
+
+class ButtonsHelpInteraction(ButtonsHelp):
     def __new__(cls, *args, **kwargs):
         return object.__new__(cls)
 
