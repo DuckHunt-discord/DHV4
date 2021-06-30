@@ -200,7 +200,10 @@ class BotHelpView(discord.ui.View):
         commands_by_cog = itertools.groupby(filtered, key=get_cog)
 
         for cog, commands in commands_by_cog:
-            self.add_item(CogHelpButton(self.ctx, cog))
+            if cog is not None:
+                self.add_item(CogHelpButton(self.ctx, cog))
+            else:
+                self.ctx.logger.warning(f"Commands not in cog: {commands}")
 
         return self
 
