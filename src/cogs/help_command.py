@@ -61,7 +61,7 @@ def get_cog(command):
 
 class BotHelpButton(discord.ui.Button):
     def __init__(self, cog: Cog):
-        custom_id = f"bot_help_cog:{cog.name}"
+        custom_id = f"bot_help_cog:{type(cog).__name__}"
         super().__init__(style=discord.ButtonStyle.green, label=cog.name, custom_id=custom_id)
         self.cog = cog
 
