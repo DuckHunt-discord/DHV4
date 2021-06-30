@@ -58,4 +58,5 @@ class Buttons(Cog):
         # However this is outside of the scope of this simple example.
         await ctx.send("What's your favourite colour?", view=PersistentView())
 
+
 setup = Buttons.setup
