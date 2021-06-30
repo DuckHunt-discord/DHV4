@@ -62,11 +62,11 @@ def get_cog(command):
 class BotHelpButton(discord.ui.Button):
     def __init__(self, cog: Cog):
         custom_id = f"bot_help_cog:{type(cog).__name__}"
-        super().__init__(style=discord.ButtonStyle.green, label=cog.name, custom_id=custom_id)
+        super().__init__(style=discord.ButtonStyle.green, label=type(cog).__name__, custom_id=custom_id)
         self.cog = cog
 
     async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message(f'You clicked on {self.cog.name}.', ephemeral=True)
+        await interaction.response.send_message(f'You clicked on {type(self.cog).__name__}.', ephemeral=True)
 
 
 class BotHelpView(discord.ui.View):
