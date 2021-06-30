@@ -169,7 +169,7 @@ def get_category(command):
 
 
 def get_group_name(command):
-    group = command.group
+    group = command.parent
     return group.name if group is not None else "\u200b"
 
 
@@ -179,7 +179,7 @@ def get_cog(command):
 
 
 def get_group(command):
-    group = command.group
+    group = command.parent
     return group if group is not None else None
 
 
