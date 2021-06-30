@@ -57,3 +57,5 @@ class Buttons(Cog):
         # In a more complicated program you might fetch the message_id from a database for use later.
         # However this is outside of the scope of this simple example.
         await ctx.send("What's your favourite colour?", view=PersistentView())
+
+setup = Buttons.setup
