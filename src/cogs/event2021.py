@@ -136,14 +136,14 @@ class Event2021(Cog):
         if value is None:
             value = 50
 
-        await self.landmine(ctx, value, word, message_text)
+        await self.landmine(ctx, value, word, message_text=message_text)
 
     @commands.command()
     async def defuse(self, ctx: MyContext, *, words: str = ""):
         """
         Alias for dh!landmine shop defuse_kit, so that you can just type dh!place instead.
         """
-        await self.defuse_kit(ctx, words)
+        await self.defuse_kit(ctx, words=words)
 
     @commands.group(aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True)
     async def event(self, ctx: MyContext):
