@@ -151,10 +151,14 @@ class ButtonsHelpInteraction(ButtonsHelp):
 
 async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
-        newkey = lambda c: (getattr(c, 'help_priority', 10), c.name)
+        def newkey(c):
+            return c.name
     elif sort:
         def newkey(c):
-            return getattr(c, 'help_priority', 10), key(c)
+            return key(c)
+    else:
+        def newkey(c):
+            return c
 
     iterator = commands if not context else filter(lambda c: not c.hidden, commands)
 
@@ -228,7 +232,8 @@ class BotHelpView(discord.ui.View):
 
     async def initialize(self):
         filtered = await filter_commands(self.bot.commands, context=self.ctx, sort=True, key=get_category)
-        commands_by_cog = itertools.groupby(filtered, key=get_cog)
+        commands_by_cog = list(itertools.groupby(filtered, key=get_cog))
+        commands_by_cog.sort(lambda kv: (getattr(kv[0], 'help_priority', 10), kv[0].name))
 
         for cog, commands in commands_by_cog:
             if cog is not None:
