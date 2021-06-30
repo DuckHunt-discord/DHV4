@@ -198,7 +198,7 @@ class CogHelpButton(discord.ui.Button):
         self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await ButtonsHelpInteraction().send_cog_help(self.cog)
+        await ButtonsHelpInteraction(self.context, interaction).send_cog_help(self.cog)
 
 
 class BotHelpView(discord.ui.View):
@@ -237,7 +237,7 @@ class GroupHelpButton(discord.ui.Button):
         self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await ButtonsHelpInteraction().send_group_help(self.group)
+        await ButtonsHelpInteraction(self.context, interaction).send_group_help(self.group)
 
 
 class CommandHelpButton(discord.ui.Button):
@@ -253,7 +253,7 @@ class CommandHelpButton(discord.ui.Button):
         self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await ButtonsHelpInteraction().send_command_help(self.command)
+        await ButtonsHelpInteraction(self.context, interaction).send_command_help(self.command)
 
 
 class CogHelpView(discord.ui.View):
