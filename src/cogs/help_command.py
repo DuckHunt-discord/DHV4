@@ -233,7 +233,7 @@ class BotHelpView(discord.ui.View):
     async def initialize(self):
         filtered = await filter_commands(self.bot.commands, context=self.ctx, sort=True, key=get_category)
         commands_by_cog = list(itertools.groupby(filtered, key=get_cog))
-        commands_by_cog.sort(lambda kv: (getattr(kv[0], 'help_priority', 10), kv[0].name))
+        commands_by_cog.sort(key=lambda kv: (getattr(kv[0], 'help_priority', 10), kv[0].name))
 
         for cog, commands in commands_by_cog:
             if cog is not None:
