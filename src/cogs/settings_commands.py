@@ -40,6 +40,7 @@ def _(message):
 
 class SettingsCommands(Cog):
     display_name = _("Admin: Settings")
+    help_color = 'red'
     help_priority = 4
 
     @commands.group(aliases=["set"])

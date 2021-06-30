@@ -24,6 +24,7 @@ def _(message):
 class Event2021(Cog):
     display_name = _("Event: landmines")
     help_priority = 9
+    help_color = 'primary'
 
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)

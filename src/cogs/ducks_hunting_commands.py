@@ -31,7 +31,6 @@ def _(message):
 class DucksHuntingCommands(Cog):
     display_name = _("Hunting")
     help_priority = 1
-    help_color = 'primary'
 
     @commands.command(aliases=["pan", "pew", "pow", "pang", "shoot", "bong", "bonk", "kill", "kablam", "eattheduck", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
     @checks.channel_enabled()
