@@ -147,14 +147,18 @@ class HelpCog(Cog):
             self.persistent_views_added = True
 
     def cog_unload(self):
+        self.bot.logger.debug("Restoring previous help command...")
         self.bot.help_command = self.old_help_command
+        self.bot.logger.debug("Help command restored...")
 
     @classmethod
     def setup(cls, bot: MyBot):
         cog = cls(bot)
         bot.add_cog(cog)
+        bot.logger.debug("Replacing previous help command...")
         cog.old_help_command = bot.help_command
         bot.help_command = ButtonsHelpCommand()
+        bot.logger.debug("Help command replaced...")
 
         return cog
 
