@@ -49,7 +49,7 @@ async def filter_commands(commands, *, context=None, sort=False, key=None, show_
     return ret
 
 
-def get_category(command, *, no_category=None):
+def get_category(command, *, no_category="\u200b"):
     cog = command.cog
     return cog.qualified_name if cog is not None else no_category
 
