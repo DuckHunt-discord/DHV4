@@ -153,7 +153,10 @@ async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
         key = lambda c: (getattr(c, 'help_priority', 10), c.name)
     elif sort:
-        key = lambda c: (getattr(c, 'help_priority', 10), key(c))
+        def key_(c):
+            return getattr(c, 'help_priority', 10), key(c)
+
+        key = key_
 
 
     iterator = commands if not context else filter(lambda c: not c.hidden, commands)
