@@ -141,7 +141,7 @@ class Event2021(Cog):
     @commands.command()
     async def defuse(self, ctx: MyContext, *, words: str = ""):
         """
-        Alias for dh!landmine shop defuse_kit, so that you can just type dh!place instead.
+        Alias for dh!landmine shop defuse_kit, so that you can just type dh!defuse instead.
         """
         await self.defuse_kit(ctx, words=words)
 
