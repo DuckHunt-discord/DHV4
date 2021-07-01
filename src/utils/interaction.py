@@ -180,13 +180,13 @@ async def make_message_embed(message: discord.Message):
 
     if not message.guild:
         embed.set_footer(text=f"Private message",
-                         icon_url=str(message.guild.icon_url))
+                         icon_url=str(message.guild.icon.url))
     elif message.channel.nsfw:
         embed.set_footer(text=f"{message.guild.name}: [NSFW] #{message.channel.name}",
-                         icon_url=str(message.guild.icon_url))
+                         icon_url=str(message.guild.icon.url))
     else:
         embed.set_footer(text=f"{message.guild.name}: #{message.channel.name}",
-                         icon_url=str(message.guild.icon_url))
+                         icon_url=str(message.guild.icon.url))
 
     embed.timestamp = message.created_at
 
