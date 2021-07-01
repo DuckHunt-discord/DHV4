@@ -1,20 +1,14 @@
-import time
-import typing
-
-import discord
-from discord.ext import commands
-
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from typing import List
+from discord.ext import commands
+import discord
 
 SECOND = 1
 MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
-
-from discord.ext import commands
-import discord
 
 
 class PersistentView(discord.ui.View):
@@ -33,9 +27,6 @@ class PersistentView(discord.ui.View):
     async def grey(self, button: discord.ui.Button, interaction: discord.Interaction):
         await interaction.response.send_message('This is grey.', ephemeral=True)
 
-from typing import List
-from discord.ext import commands
-import discord
 
 # Defines a custom button that contains the logic of the game.
 # The ['TicTacToe'] bit is for type hinting purposes to tell your IDE or linter
@@ -152,8 +143,10 @@ class TicTacToe(discord.ui.View):
 
         return None
 
+
 class Buttons(Cog):
     hidden = True
+
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.persistent_views_added = False
