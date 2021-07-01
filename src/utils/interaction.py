@@ -13,6 +13,8 @@ from utils.models import get_from_db, DiscordChannel
 
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
+    from utils.cog_class import Cog
+    from utils.ctx_class import MyContext
 
 
 class EmbedCounterPaginator(menus.ListPageSource):
@@ -191,3 +193,46 @@ async def make_message_embed(message: discord.Message):
     embed.timestamp = message.created_at
 
     return embed
+
+
+async def confirm_action(ctx: MyContext,
+                         content: str = None,
+                         confirm_label: str = None,
+                         cancel_label: str = None,
+                         **message_kwargs) -> typing.Optional[bool]:
+    _ = await ctx.get_translate_function(user_language=True)
+
+    if confirm_label is None:
+        confirm_label = _('Confirm')
+
+    if cancel_label is None:
+        cancel_label = _('Cancel')
+
+    class ConfirmView(discord.ui.View):
+        def __init__(self):
+            super().__init__()
+            self.value = None
+
+        # This one is similar to the confirmation button except sets the inner value to `False`
+        @discord.ui.button(label=cancel_label, style=discord.ButtonStyle.red)
+        async def cancel(self, button: discord.ui.Button, interaction: discord.Interaction):
+            # await interaction.response.send_message('Cancelling', ephemeral=True)
+            self.value = False
+            self.stop()
+
+        # When the confirm button is pressed, set the inner value to `True` and
+        # stop the View from listening to more input.
+        @discord.ui.button(label=confirm_label, style=discord.ButtonStyle.green)
+        async def confirm(self, button: discord.ui.Button, interaction: discord.Interaction):
+            # await interaction.response.send_message('Confirming', ephemeral=True)
+            self.value = True
+            self.stop()
+
+
+    view = ConfirmView()
+
+    await ctx.send(content, view=view)
+    # Wait for the View to stop listening for input...
+    await view.wait()
+
+    return view.value

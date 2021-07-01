@@ -308,7 +308,7 @@ class CogHelpView(discord.ui.View):
         for command in filtered:
             items_shown += 1
             if items_shown >= 5 * 3:
-                self.add_item(discord.ui.Button(style=discord.ButtonStyle.secondary,
+                self.add_item(discord.ui.Button(style=discord.ButtonStyle.blurple,
                                                 label=_("... More available online"),
                                                 url=self.bot.config['website_url'] + f"commands/{self.cog.qualified_name.replace(' ', '/')}"))
                 break

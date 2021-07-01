@@ -24,7 +24,7 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.ducks import compute_sun_state
 from utils.ducks_config import max_ducks_per_day
-from utils.interaction import create_and_save_webhook
+from utils.interaction import create_and_save_webhook, confirm_action
 from utils.levels import get_level_info_from_id
 from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState
 
@@ -831,20 +831,17 @@ class SettingsCommands(Cog):
             elif value > maximum_value:
                 db_member = await get_from_db(ctx.author)
                 if db_member.get_access_level() >= models.AccessLevel.BOT_MODERATOR:
-                    await ctx.send(_(
-                        "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
-                        "The number of ducks per day is limited to ensure resources are used fairly.\n "
-                        "Please say `Yes` to proceed as requested, with {value} ducks per day on the channel.",
-                        maximum_value=maximum_value,
-                        value=int(value),
-                    ))
+                    res = await confirm_action(ctx,
+                                               _(
+                                                   "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
+                                                   "The number of ducks per day is limited to ensure resources are used fairly.\n "
+                                                   "Please click `Confirm` to proceed as requested, with {value} ducks per day on the channel.",
+                                                   maximum_value=maximum_value,
+                                                   value=int(value),
+                                               ),
+                                               )
 
-                    def check(message: discord.Message):
-                        return ctx.author == message.author and message.content.lower() == "yes"
-
-                    try:
-                        await self.bot.wait_for('message', timeout=20, check=check)
-                    except asyncio.TimeoutError:
+                    if not res:
                         await ctx.send(_("🛑 Operation cancelled."))
                         return
 
@@ -1013,7 +1010,7 @@ class SettingsCommands(Cog):
 
         if db_channel.anti_trigger_wording:
             await ctx.send(_("On {channel.mention}, anti-trigger wording is enabled.",
-                             channel=ctx.channel,))
+                             channel=ctx.channel, ))
         else:
             await ctx.send(_("On {channel.mention}, anti-trigger wording is disabled.",
                              channel=ctx.channel
