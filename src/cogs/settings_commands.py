@@ -834,7 +834,7 @@ class SettingsCommands(Cog):
                     res = await confirm_action(ctx,
                                                _(
                                                    "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
-                                                   "The number of ducks per day is limited to ensure resources are used fairly.\n "
+                                                   "The number of ducks per day is limited to ensure resources are used fairly.\n"
                                                    "Please click `Confirm` to proceed as requested, with {value} ducks per day on the channel.",
                                                    maximum_value=maximum_value,
                                                    value=int(value),
