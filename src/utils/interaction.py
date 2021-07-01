@@ -164,7 +164,7 @@ def anti_bot_zero_width(mystr: str):
 
 async def make_message_embed(message: discord.Message):
     embed = discord.Embed(color=discord.Colour.blurple())
-    embed.set_author(name=message.author.name, icon_url=str(message.author.avatar_url))
+    embed.set_author(name=message.author.name, icon_url=str(message.author.avatar.url))
     embed.description = message.content
 
     if len(message.attachments) == 1:
