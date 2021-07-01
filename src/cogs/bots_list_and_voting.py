@@ -23,7 +23,7 @@ def _(message):
 class BotsListVoting(Cog):
     display_name = _("Voting")
     help_priority = 11
-    help_color = 'secondary'
+    help_color = 'green'
 
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)

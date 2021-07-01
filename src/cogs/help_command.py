@@ -212,7 +212,7 @@ class CogHelpButton(discord.ui.Button):
 
     def __init__(self, context: MyContext, cog: Cog):
         custom_id = f"bot_help_cog:{type(cog).__name__}"
-        super().__init__(style=getattr(discord.ButtonStyle, getattr(cog, 'help_color', 'green')), label=cog.name, custom_id=custom_id)
+        super().__init__(style=getattr(discord.ButtonStyle, getattr(cog, 'help_color', 'grey')), label=cog.name, custom_id=custom_id)
         self.cog = cog
         self.context = context
 
