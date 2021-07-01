@@ -237,7 +237,8 @@ class BotHelpView(discord.ui.View):
 
         for cog, commands in commands_by_cog:
             if cog is not None:
-                self.add_item(CogHelpButton(self.ctx, cog))
+                if not getattr(cog, 'hidden', False):
+                    self.add_item(CogHelpButton(self.ctx, cog))
             else:
                 # Don't show the help command in the help command, ffs
                 pass
