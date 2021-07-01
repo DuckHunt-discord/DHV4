@@ -195,7 +195,7 @@ async def make_message_embed(message: discord.Message):
     return embed
 
 
-async def confirm_action(ctx: MyContext,
+async def confirm_action(ctx,
                          content: str = None,
                          confirm_label: str = None,
                          cancel_label: str = None,
