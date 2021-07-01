@@ -5,7 +5,6 @@ import uvloop
 
 from utils.bot_class import MyBot
 from utils.config import load_config
-from utils.custom_help import EmbedHelpCommand
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
