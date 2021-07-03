@@ -464,7 +464,7 @@ class PrivateMessagesSupport(Cog):
                     close_embed.set_image(url="attachment://random_duck.png")
 
                     async with forwarding_channel.typing():
-                        await forwarding_channel.send(content="🚮 Deleting channel... Don't send messages anymore!")
+                        await forwarding_channel.send(content=f"🚮 Deleting channel following a click by {interaction.user.name}#{interaction.user.discriminator}... Don't send messages anymore!")
 
                         try:
                             await message.author.send(file=file, embed=close_embed)
