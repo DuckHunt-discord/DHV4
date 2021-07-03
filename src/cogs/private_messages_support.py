@@ -425,7 +425,7 @@ class PrivateMessagesSupport(Cog):
 
         self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message prepared.")
 
-        if "close" in message.lower():
+        if "close" in message.content.lower():
             outer = self
 
             class CloseView(discord.ui.View):
