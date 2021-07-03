@@ -429,11 +429,6 @@ class PrivateMessagesSupport(Cog):
             outer = self
 
             class CloseView(discord.ui.View):
-                def __init__(self):
-                    super().__init__()
-
-                # When the confirm button is pressed, set the inner value to `True` and
-                # stop the View from listening to more input.
                 @discord.ui.button(label="Close the DM", style=discord.ButtonStyle.blurple)
                 async def confirm(self, button: discord.ui.Button, interaction: discord.Interaction):
                     await interaction.response.send_message('Closing...', ephemeral=True)
