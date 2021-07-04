@@ -75,7 +75,15 @@ class CommandButton(BigButtonMixin, ui.Button):
 
     async def callback(self, interaction: Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
-        if not self.command_can_run or await self.command.can_run(ctx):
+        can_run = not self.command_can_run
+
+        try:
+            can_run = can_run or await self.command.can_run(ctx)
+        except:
+            _ = await ctx.get_translate_function(user_language=True)
+            await interaction.response.send_message(_('❌ You cannot run this command.'), ephemeral=True)
+
+        if can_run:
             return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
 
 
