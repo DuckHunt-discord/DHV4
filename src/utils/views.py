@@ -135,7 +135,17 @@ class AuthorizedUserMixin(View):
         return authorized_ids == '__all__' or interaction.user.id in authorized_ids
 
     async def interaction_check(self, interaction: Interaction) -> bool:
-        return await self.is_user_authorized(interaction) and await super().interaction_check(interaction)
+        if await self.is_user_authorized(interaction):
+            return await super().interaction_check(interaction)
+        else:
+            await self.authorization_check_failed(interaction)
+            return False
+
+    async def authorization_check_failed(self, interaction):
+        ctx = await get_context_from_interaction(self.bot, interaction)
+        _ = await ctx.get_translate_function(user_language=True)
+
+        await interaction.response.send_message(_('You are not allowed to click on this button'), ephemeral=True)
 
 
 class DisableViewOnTimeoutMixin(View):
