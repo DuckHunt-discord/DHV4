@@ -69,6 +69,7 @@ async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discor
     except asyncio.TimeoutError:
         pass
     else:
+        bot.logger.debug(f"Deleting message {message_to_delete.id} following deletion of invoke - {watch_message.id}")
         await message_to_delete.delete(delay=(random.randrange(1, 10) / 10))
 
 
