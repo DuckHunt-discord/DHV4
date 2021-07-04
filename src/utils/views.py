@@ -188,22 +188,20 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
 
     @ui.button(label='cancel', style=ButtonStyle.red)
     async def cancel(self, button: ui.Button, interaction: Interaction):
+        self.value = False
+
         self.disable()
+        self.stop()
         await self.refresh_message()
 
-        self.value = False
-        self.stop()
-
-    # When the confirm button is pressed, set the inner value to `True` and
-    # stop the View from listening to more input.
     @ui.button(label='confirm', style=ButtonStyle.green)
     async def confirm(self, button: ui.Button, interaction: Interaction):
         # await interaction.response.send_message('Confirming', ephemeral=True)
-        self.disable()
-        await self.refresh_message()
-
         self.value = True
+
+        self.disable()
         self.stop()
+        await self.refresh_message()
 
     async def send(self, *args, **kwargs):
         await super().send(self.ctx, *args, **kwargs)
