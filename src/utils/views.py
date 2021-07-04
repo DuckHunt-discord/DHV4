@@ -47,7 +47,12 @@ class BigButtonMixin(ui.Button):
 
 
 class CommandButton(BigButtonMixin, ui.Button):
-    def __init__(self, bot, command, command_args=None, command_kwargs=None, *args, **kwargs):
+    def __init__(self, bot, command, command_args=None, command_kwargs=None, command_can_run=False, *args, **kwargs):
+        """
+        Button to execute a command.
+
+        Command_can_run must be true if the checks should be ran before starting the command.
+        """
         super().__init__(*args, **kwargs)
 
         if command_kwargs is None:
@@ -57,9 +62,10 @@ class CommandButton(BigButtonMixin, ui.Button):
             command_args = []
 
         self.bot = bot
-        self.command = command
+        self.command: Command = command
         self.command_args = command_args
         self.command_kwargs = command_kwargs
+        self.command_can_run = command_can_run
 
     async def get_command_args(self, interaction: Interaction):
         return self.command_args
@@ -69,7 +75,8 @@ class CommandButton(BigButtonMixin, ui.Button):
 
     async def callback(self, interaction: Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
-        return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
+        if not self.command_can_run or await self.command.can_run(ctx):
+            return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
 
 
 class View(ui.View):
@@ -89,6 +96,9 @@ class View(ui.View):
         return self
 
     async def send(self, where: Messageable, *args, **kwargs):
+        if len(args) == 0 and kwargs.get('content', None) is None:
+            kwargs['content'] = "\u200b"  # Zero width space, to send the view only.
+
         self.sent_to = where
         self.sent_message = await where.send(*args, view=self, **kwargs)
         return self.sent_message
