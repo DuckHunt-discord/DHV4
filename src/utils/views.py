@@ -273,6 +273,8 @@ class NitroButton(BigButtonMixin, ui.Button):
             description="Hmm, it seems someone already claimed this gift."
         )
 
+        second_embed.set_thumbnail(url="https://i.imgur.com/w9aiD6F.png")
+
         await self.view.sent_message.edit(embed=second_embed, view=self.view)
 
 
