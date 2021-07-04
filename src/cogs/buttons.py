@@ -1,9 +1,12 @@
+from discord import ButtonStyle
 from discord.ext import commands
 
 from utils.bot_class import MyBot
+from utils.checks import needs_access_level
 from utils.cog_class import Cog
+from utils.models import AccessLevel
 
-from utils.views import init_all_persistant_command_views
+from utils.views import init_all_persistant_command_views, CommandView
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -31,6 +34,11 @@ class Buttons(Cog):
             self.bot.logger.info("Command persistant views loaded")
 
             self.persistent_views_added = True
+
+    @commands.command()
+    @needs_access_level(AccessLevel.BOT_MODERATOR)
+    async def create_command_button(self, ctx, *, command_name: str):
+        await CommandView(self.bot, command_to_be_ran=command_name, label=command_name, style=ButtonStyle.blurple).send(ctx)
 
 
 setup = Buttons.setup
