@@ -230,4 +230,4 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
 
 async def init_all_persistant_command_views(bot: MyBot):
     for command in bot.walk_commands():
-        bot.add_view(CommandView(bot, command, persist=True))
+        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple))
