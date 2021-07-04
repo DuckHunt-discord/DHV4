@@ -285,7 +285,7 @@ class NitroView(View):
         self.add_item(NitroButton(button_pad_to=29, label='Accept', style=ButtonStyle.green))
 
 
-async def nitro_prank(ctx):
+async def nitro_prank(ctx: MyContext):
     first_embed = discord.Embed(
         colour=discord.Colour.dark_theme(),
         title='A WILD GIFT APPEARS!',
@@ -294,7 +294,7 @@ async def nitro_prank(ctx):
 
     first_embed.set_thumbnail(url="https://i.imgur.com/w9aiD6F.png")
 
-    await NitroView(ctx.bot).send(ctx, embed=first_embed)
+    await NitroView(ctx.bot).send(ctx, embed=first_embed, delete_on_invoke_removed=False)
 
 
 async def init_all_persistant_command_views(bot: MyBot):
