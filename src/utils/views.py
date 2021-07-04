@@ -1,6 +1,7 @@
 from abc import ABC
 from typing import Iterable, List, Any, Optional, Dict, Union
 
+import discord
 from discord import ui, Interaction, ButtonStyle, Message
 from discord.abc import Messageable
 from discord.ext.commands import Command
@@ -38,12 +39,13 @@ class BigButtonMixin(ui.Button):
         return value.center(self.button_pad_to, "⠀")
 
     @property
-    def label(self):
-        return super().label
+    def label(self) -> Optional[str]:
+        """Optional[:class:`str`]: The label of the button, if available."""
+        return self._underlying.label
 
     @label.setter
-    def label(self, value):
-        super().label.fset(self, self.pad_value(value))
+    def label(self, value: Optional[str]):
+        self._underlying.label = self.pad_value(value) if value is not None else value
 
 
 class CommandButton(BigButtonMixin, ui.Button):
@@ -253,6 +255,44 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         ret = interaction.user.id == self.ctx.author.id
 
         return ret
+
+
+class NitroButton(BigButtonMixin, ui.Button):
+    button_pad_to = 29
+
+    async def callback(self, interaction: Interaction):
+        await interaction.response.send_message("https://media.giphy.com/media/g7GKcSzwQfugw/giphy.mp4", ephemeral=True)
+        self.label = "Claimed"
+        self.style = ButtonStyle.gray
+        self.view.disable()
+        self.view.stop()
+
+        second_embed = discord.Embed(
+            colour=discord.Colour.dark_theme(),
+            title='A WILD GIFT APPEARS!',
+            description="Hmm, it seems someone already claimed this gift."
+        )
+
+        await self.view.sent_message.edit(embed=second_embed, view=self.view)
+
+
+class NitroView(View):
+    def __init__(self, bot):
+        super().__init__(bot)
+
+        self.add_item(NitroButton(label='Accept', style=ButtonStyle.green))
+
+
+async def nitro_prank(ctx):
+    first_embed = discord.Embed(
+        colour=discord.Colour.dark_theme(),
+        title='A WILD GIFT APPEARS!',
+        description="**Nitro**\nExpires in 48 hours."
+    )
+
+    first_embed.set_thumbnail(url="https://i.imgur.com/w9aiD6F.png")
+
+    await NitroView(ctx.bot).send(ctx, embed=first_embed)
 
 
 async def init_all_persistant_command_views(bot: MyBot):
