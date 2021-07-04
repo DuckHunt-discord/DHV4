@@ -105,7 +105,7 @@ class DuckBoss(Cog):
                                                        "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png"]))
                 new_embed.add_field(name="Health", value=f"0/{boss_life}")
 
-                time_delta = datetime.datetime.now() - boss_message.created_at
+                time_delta = utcnow() - boss_message.created_at
                 new_embed.set_footer(text=f"The boss lived for {format_timedelta(time_delta, locale='en_US')}.")
 
                 await boss_message.edit(embed=new_embed)
