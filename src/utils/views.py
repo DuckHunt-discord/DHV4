@@ -71,9 +71,6 @@ class CommandButton(BigButtonMixin, ui.Button):
         ctx = await get_context_from_interaction(self.bot, interaction)
         return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
 
-
-
-
 class View(ui.View):
     def __init__(self, bot, timeout=None):
         self.bot = bot
@@ -145,6 +142,8 @@ class CommandView(AuthorizedUserMixin, View):
 
     Invoke like so:
     view = CommandView(bot, command, authorized_users=[ctx.author.id], label=_('Do something'), style=discord.ButtonStyle.grey)
+
+    This view won't be persisted when command_args, command_kwargs or authorized_users are passed.
     """
 
     def __init__(self,
@@ -163,6 +162,9 @@ class CommandView(AuthorizedUserMixin, View):
 
         if command_to_be_ran is None:
             raise RuntimeError("The command passed can't be found.")
+
+        if command_args or command_kwargs or authorized_users != '__all__':
+            persist = False
 
         if persist:
             persistance_id = f"command_view:f{command_to_be_ran.qualified_name}"
@@ -223,3 +225,8 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         ret = interaction.user.id == self.ctx.author.id
 
         return ret
+
+
+async def init_all_persistant_command_views(bot: MyBot):
+    for command in bot.walk_commands():
+        bot.add_view(CommandView(bot, command, persist=True))

@@ -48,6 +48,7 @@ cogs_to_load = ['cogs.error_handling',
                 'cogs.bots_list_and_voting',
                 'cogs.event2021',
                 'cogs.rest_api',
+                'cogs.buttons',
                 'cogs.help_command',
                 'jishaku',
                 ]
