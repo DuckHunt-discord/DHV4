@@ -22,6 +22,7 @@ from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket, AccessLevel, Tag
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
+from utils.views import CommandView
 
 
 def _(message):
@@ -425,65 +426,21 @@ class PrivateMessagesSupport(Cog):
 
         self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message prepared.")
 
+        send_kwargs = {
+            "content": message.content,
+            "embeds": embeds,
+            "files": files,
+            "allowed_mentions":discord.AllowedMentions.none(),
+            "wait": True
+        }
+
         if "close" in message.content.lower():
-            outer = self
+            view = CommandView(self.bot, self.close, command_kwargs={"reason": "Asked closed"}, label=_('Close the DM'), style=discord.ButtonStyle.blurple)
 
-            class CloseView(discord.ui.View):
-                @discord.ui.button(label="Close the DM", style=discord.ButtonStyle.blurple)
-                async def confirm(self, button: discord.ui.Button, interaction: discord.Interaction):
-                    await interaction.response.send_message('Closing...', ephemeral=True)
-                    db_user = await get_from_db(message.author, as_user=True)
-
-                    ticket = await db_user.get_or_create_support_ticket()
-                    ticket.close(await get_from_db(interaction.user, as_user=True), "Asked closed")
-
-                    await ticket.save()
-
-                    language = db_user.language
-
-                    _ = get_translate_function(outer.bot, language)
-
-                    close_embed = discord.Embed(
-                        color=discord.Color.red(),
-                        title=_("DM Closed"),
-                        description=_("Your support ticket was closed following your request and the history deleted. "
-                                      "Thanks for using DuckHunt DM support. "
-                                      "Keep in mind, sending another message here will open a new ticket!\n"
-                                      "In the meantime, here's a nice duck picture for you to look at !"),
-                    )
-
-                    close_embed.add_field(name=_("Support server"), value=_("For all your questions, there is a support server. "
-                                                                            "Click [here](https://duckhunt.me/support) to join."))
-
-                    file = await get_random_duck_file(outer.bot)
-                    close_embed.set_image(url="attachment://random_duck.png")
-
-                    async with forwarding_channel.typing():
-                        await forwarding_channel.send(content=f"🚮 Deleting channel following a click by {interaction.user.name}#{interaction.user.discriminator}... Don't send messages anymore!")
-
-                        try:
-                            await message.author.send(file=file, embed=close_embed)
-                        except:
-                            pass
-
-                        await asyncio.sleep(5)  # To let people stop writing
-
-                        await outer.clear_caches(forwarding_channel)
-
-                        await forwarding_channel.delete(
-                            reason=f"{interaction.user.name}#{interaction.user.discriminator} ({interaction.user.id}) closed the DM.")
-                    self.stop()
-
-            view = CloseView()
+            await view.send(forwarding_webhook,
+                            **send_kwargs)
         else:
-            view = None
-
-        await forwarding_webhook.send(content=message.content,
-                                      embeds=embeds,
-                                      files=files,
-                                      allowed_mentions=discord.AllowedMentions.none(),
-                                      view=view,
-                                      wait=True)
+            await forwarding_webhook.send(**send_kwargs)
 
         self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message forwarded.")
 

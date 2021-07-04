@@ -24,9 +24,10 @@ from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.ducks import compute_sun_state
 from utils.ducks_config import max_ducks_per_day
-from utils.interaction import create_and_save_webhook, confirm_action
+from utils.interaction import create_and_save_webhook
 from utils.levels import get_level_info_from_id
 from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState
+from utils.views import ConfirmView
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -831,15 +832,15 @@ class SettingsCommands(Cog):
             elif value > maximum_value:
                 db_member = await get_from_db(ctx.author)
                 if db_member.get_access_level() >= models.AccessLevel.BOT_MODERATOR:
-                    res = await confirm_action(ctx,
-                                               _(
-                                                   "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
-                                                   "The number of ducks per day is limited to ensure resources are used fairly.\n"
-                                                   "Please click `Confirm` to proceed as requested, with {value} ducks per day on the channel.",
-                                                   maximum_value=maximum_value,
-                                                   value=int(value),
-                                               ),
-                                               )
+                    res = await ConfirmView(ctx, _).send(
+                        _(
+                            "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
+                            "The number of ducks per day is limited to ensure resources are used fairly.\n"
+                            "Please click `Confirm` to proceed as requested, with {value} ducks per day on the channel.",
+                            maximum_value=maximum_value,
+                            value=int(value),
+                        ),
+                    )
 
                     if not res:
                         await ctx.send(_("🛑 Operation cancelled."))
