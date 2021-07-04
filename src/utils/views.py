@@ -71,6 +71,7 @@ class CommandButton(BigButtonMixin, ui.Button):
         ctx = await get_context_from_interaction(self.bot, interaction)
         return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
 
+
 class View(ui.View):
     def __init__(self, bot, timeout=None):
         self.bot = bot
