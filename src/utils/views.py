@@ -182,6 +182,7 @@ class CommandView(AuthorizedUserMixin, View):
                  command_kwargs: Optional[Dict[str, Any]] = None,
                  authorized_users: Iterable[int] = '__all__',
                  persist: bool = True,
+                 command_can_run: bool = False,
                  **button_kwargs, ):
 
         super().__init__(bot)
@@ -196,13 +197,13 @@ class CommandView(AuthorizedUserMixin, View):
             persist = False
 
         if persist:
-            persistance_id = f"command_view:f{command_to_be_ran.qualified_name}"
+            persistance_id = f"cmd:cn{command_to_be_ran.qualified_name}:cr{int(command_can_run)}"
         else:
             persistance_id = None
 
         self.authorized_users_ids = authorized_users
 
-        self.add_item(CommandButton(bot, command_to_be_ran, command_args, command_kwargs, custom_id=persistance_id, row=0, **button_kwargs))
+        self.add_item(CommandButton(bot, command_to_be_ran, command_args, command_kwargs, custom_id=persistance_id, row=0, command_can_run=command_can_run, **button_kwargs))
 
 
 class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
@@ -256,4 +257,5 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
 
 async def init_all_persistant_command_views(bot: MyBot):
     for command in bot.walk_commands():
-        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple))
+        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=True))
+        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=False))
