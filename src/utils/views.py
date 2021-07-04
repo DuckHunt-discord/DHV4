@@ -145,7 +145,7 @@ class AuthorizedUserMixin(View):
         ctx = await get_context_from_interaction(self.bot, interaction)
         _ = await ctx.get_translate_function(user_language=True)
 
-        await interaction.response.send_message(_('You are not allowed to click on this button'), ephemeral=True)
+        await interaction.response.send_message(_('❌ You are not allowed to click on this button'), ephemeral=True)
 
 
 class DisableViewOnTimeoutMixin(View):
