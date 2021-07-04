@@ -27,9 +27,9 @@ async def get_context_from_interaction(bot: MyBot, interaction: Interaction) -> 
 
 
 class BigButtonMixin(ui.Button):
-    button_pad_to = 78
+    def __init__(self, *args, button_pad_to: int = 78, label: Optional[str] = None, **kwargs):
+        self.button_pad_to = button_pad_to
 
-    def __init__(self, *args, label: Optional[str] = None,  **kwargs):
         if label:
             label = self.pad_value(label)
 
@@ -258,10 +258,10 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
 
 
 class NitroButton(BigButtonMixin, ui.Button):
-    button_pad_to = 29
-
     async def callback(self, interaction: Interaction):
         await interaction.response.send_message("https://media.giphy.com/media/g7GKcSzwQfugw/giphy.mp4", ephemeral=True)
+        self.button_pad_to = 40
+
         self.label = "Claimed"
         self.style = ButtonStyle.gray
         self.view.disable()
@@ -282,7 +282,7 @@ class NitroView(View):
     def __init__(self, bot):
         super().__init__(bot)
 
-        self.add_item(NitroButton(label='Accept', style=ButtonStyle.green))
+        self.add_item(NitroButton(button_pad_to=29, label='Accept', style=ButtonStyle.green))
 
 
 async def nitro_prank(ctx):
