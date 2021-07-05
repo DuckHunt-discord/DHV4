@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-06-07 12:32+0200\n"
+"POT-Creation-Date: 2021-07-04 17:29+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -89,6 +89,52 @@ msgid "Removes all ducks from the channel"
 msgstr "Verwijdert alle eenden uit het kanaal."
 
 msgid ""
+"Alias for dh!landmine shop landmine, so that you can just type dh!place "
+"instead."
+msgstr ""
+
+msgid ""
+"Alias for dh!landmine shop defuse_kit, so that you can just type dh!defuse "
+"instead."
+msgstr ""
+
+msgid ""
+"This command group contains all commends related to the 2021 \"Landmines\" "
+"event on the DuckHunt server.\n"
+"\n"
+"Go see Warlord in the shop."
+msgstr ""
+
+msgid "View your event statistics."
+msgstr ""
+
+msgid "Buy useful supplies from the Warlord shop."
+msgstr ""
+
+msgid ""
+"[THIS COMMAND WORKS IN DMs]\n"
+"Buy a landmine that will trigger on a specific word.\n"
+"\n"
+"A landmine has a value, at least greater than 2, that will be used to "
+"determine it's price and the damage done\n"
+"to the person that steps on it.\n"
+"The word must be at least 2 characters long, and must only contain letters. "
+"The steps are case-insensitive.\n"
+"The longer it is, the higher the power. An exploding landmine gives you the "
+"point damage, and half it's value\n"
+"back."
+msgstr ""
+
+msgid ""
+"Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
+"the landmine value, minus the price\n"
+"of the defuse kit (30 points). If you don't use it, you'll just have to pay "
+"a restocking fee of 15 points.\n"
+"\n"
+"You need at least 30 points to use one."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -118,6 +164,21 @@ msgid ""
 "  • webp for an animated WebP, a new-ish format that discord doesn't support "
 "at all. Try opening those in your\n"
 "    browser"
+msgstr ""
+
+msgid "Buttons to direct user to a cog help."
+msgstr ""
+
+msgid "Show buttons for all the cogs in a bot."
+msgstr ""
+
+msgid "Buttons to direct user to a group help"
+msgstr ""
+
+msgid "Buttons to direct user to a command help"
+msgstr ""
+
+msgid "Show buttons for all the commands and groups in a cog or a group."
 msgstr ""
 
 msgid "Alias for dh!inv use, so that you can just type dh!use instead."
@@ -446,6 +507,14 @@ msgstr ""
 "Super eenden hebben tonnen leven !\n"
 "\n"
 "Alle andere instellingen worden teruggezet naar de standaardwaarden."
+
+msgid ""
+"Math lessons gamemode.\n"
+"\n"
+"Most of the ducks are Pr. Ducks.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
 
 msgid ""
 "Change/view the server prefix.\n"
@@ -1096,6 +1165,9 @@ msgid ""
 "use as a base for editing a tag."
 msgstr ""
 
+msgid "Voting"
+msgstr ""
+
 msgid "Please wait while I check where you can vote..."
 msgstr "Wacht even terwijl ik kijk waar je kunt stemmen..."
 
@@ -1151,6 +1223,9 @@ msgid ""
 msgstr ""
 "{rpg_role.mention}, you might want to click the reaction above/do what the "
 "bot says."
+
+msgid "Hunting"
+msgstr ""
 
 msgid ""
 "The bot is still starting up, please wait a minute and retry. Ducks haven't "
@@ -1405,6 +1480,9 @@ msgstr "Je bent levend en wel."
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr "Je eet {brains} 🧠 en komt weer bij bewustzijn."
 
+msgid "Admin: Spawning"
+msgstr ""
+
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
 "spawn today."
@@ -1606,6 +1684,36 @@ msgstr ""
 "niet afkomstig is van CommandError en niet wordt afgehandeld door onze "
 "foutbehandelaar. Informeer de eigenaar."
 
+msgid "Event: landmines"
+msgstr ""
+
+msgid "DuckHunt help"
+msgstr ""
+
+msgid ""
+"**Welcome to DuckHunt**\n"
+"\n"
+"This is a help command designed to let you find all the commands in the bot.\n"
+"However, it's *not* the best way to get started with it. I suggest reading "
+"the wiki instead, here's [a link](https://duckhunt.me/docs).\n"
+"If you have questions, you can DM the bot, or join the [support "
+"server](https://duckhunt.me/support).\n"
+"Thanks for playing."
+msgstr ""
+
+msgid "Use {prefix}{help} [command] for more info on a command."
+msgstr ""
+"Gebruik {prefix}{help} [commando] voor meer informatie over een commando."
+
+msgid "{cog} help"
+msgstr ""
+
+msgid "... More available online"
+msgstr ""
+
+msgid "Inventory"
+msgstr ""
+
 msgid "Your inventory"
 msgstr "Je inventaris."
 
@@ -1631,6 +1739,9 @@ msgid "❌ You can't use this item that many times."
 msgstr ""
 
 msgid "❌ You don't have that item."
+msgstr ""
+
+msgid "Prestige"
 msgstr ""
 
 msgid "Prestige Information"
@@ -1779,6 +1890,9 @@ msgid ""
 msgstr ""
 "💰️ Je hebt {exp} ervaring uit de prestigebank gehaald. Kom snel terug!"
 
+msgid "Support team: private messages"
+msgstr ""
+
 msgid "DM Timed Out"
 msgstr ""
 
@@ -1832,6 +1946,9 @@ msgstr ""
 msgid "This is an automatic message."
 msgstr ""
 
+msgid "Close the DM"
+msgstr ""
+
 msgid "DM Closed"
 msgstr ""
 
@@ -1863,6 +1980,12 @@ msgid "Your language preference wasn't changed."
 msgstr ""
 
 msgid "Your preferred language is now {new_language}."
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Admin: Settings"
 msgstr ""
 
 msgid "You can view the channel settings here: "
@@ -1897,6 +2020,9 @@ msgstr "🦘 Australische instellingen zijn op dit kanaal toegepast."
 
 msgid "There will be very big ducks on this channel."
 msgstr "☢ Er zullen zeer grote eenden op dit kanaal komen🍀."
+
+msgid "Your math test will start soon."
+msgstr ""
 
 msgid "The server prefix is set to `{prefix}`."
 msgstr "Het servervoorvoegsel is ingesteld op '{prefix}'."
@@ -2099,8 +2225,8 @@ msgid ""
 "⚠️️ You should not set that higher than {maximum_value}, however, you have "
 "the required permissions to proceed. The number of ducks per day is limited "
 "to ensure resources are used fairly.\n"
-" Please say `Yes` to proceed as requested, with {value} ducks per day on the "
-"channel."
+"Please click `Confirm` to proceed as requested, with {value} ducks per day "
+"on the channel."
 msgstr ""
 
 msgid "🛑 Operation cancelled."
@@ -2169,8 +2295,8 @@ msgstr ""
 "❌️ Je moet een lagere waarde opgeven dan die is ingesteld in "
 "`super_ducks_max_life`!"
 
-msgid "On {channel.mention}, super ducks will get a maximum of {value} lives."
-msgstr "Op {channel.mention} krijgen supereenden maximaal {value} levens."
+msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
+msgstr "Op {channel.mention} krijgen supereenden minimaal {value} levens."
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
@@ -2178,9 +2304,6 @@ msgid ""
 msgstr ""
 "❌️ Je moet een hogere waarde opgeven dan die is ingesteld in "
 "`super_ducks_min_life`!"
-
-msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
-msgstr "Op {channel.mention} krijgen supereenden minimaal {value} levens."
 
 msgid "On {channel.mention}, anti-trigger wording is enabled."
 msgstr ""
@@ -2314,6 +2437,9 @@ msgstr "Je wordt nu NIET gepingt in antwoorden van de bot."
 
 msgid "Your language is set to `{language}` [{language_name}]."
 msgstr "Uw taal is ingesteld op `{language}` [{language_name}]."
+
+msgid "Shop"
+msgstr ""
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
 msgstr "❌ Oeps, je hebt al te veel kogels in je wapen."
@@ -2663,6 +2789,9 @@ msgstr ""
 "vertalen ?** Neem contact op met Eyesofcreeper#0001 op de supportserver "
 "(`{ctx.prefix}invite`). Bedankt!"
 
+msgid "Miscellaneous"
+msgstr ""
+
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr "Pong. — Tijd genomen: {miliseconds}ms"
 
@@ -2763,6 +2892,9 @@ msgstr ""
 msgid "{exp} experience"
 msgstr "{exp} ervaring"
 
+msgid "Statistics"
+msgstr ""
+
 msgid "{target.name} statistics (click me!)."
 msgstr "{target.name} statistieken (klik me!)."
 
@@ -2786,9 +2918,6 @@ msgstr "{level_reliability} % (Werkelijk: {real_reliability} %)"
 
 msgid "Reliability"
 msgstr "Betrouwbaarheid"
-
-msgid "Prestige"
-msgstr ""
 
 msgid "Level {level}"
 msgstr ""
@@ -3011,6 +3140,9 @@ msgstr ""
 "niet gestopt ... Je kunt`{ctx.prefix}settings enabled False` gebruiken om "
 "het spel te stoppen."
 
+msgid "Support team: misc"
+msgstr ""
+
 msgid "Most used commands"
 msgstr "Meest gebruikte commando's"
 
@@ -3033,6 +3165,9 @@ msgid "{u} uses, {r} revisions."
 msgstr ""
 
 msgid "Page {current_page}/{maximum} ({entries} tags)"
+msgstr ""
+
+msgid "Support: tags"
 msgstr ""
 
 msgid "❌ You didn't specify what you want your tag to say."
@@ -3342,16 +3477,6 @@ msgid ""
 "This is not a valid color. You can choose between {colors}, or `random` for "
 "a random color."
 msgstr ""
-
-msgid "Use {prefix}{help} [command] for more info on a command."
-msgstr ""
-"Gebruik {prefix}{help} [commando] voor meer informatie over een commando."
-
-msgid "No Category"
-msgstr "Geen categorie"
-
-msgid "{cog_name} Commands"
-msgstr "{cog_name} Commando's"
 
 msgid "normal"
 msgstr "Normaal"
@@ -4139,8 +4264,8 @@ msgstr "stagiair"
 msgid "duck misser"
 msgstr "eendenmisser"
 
-msgid "member of the Comitee Against Ducks"
-msgstr "lid van het Comité Tegen Eenden"
+msgid "member of the Committee Against Ducks"
+msgstr ""
 
 msgid "duck hater"
 msgstr "eendenhater"
@@ -4264,3 +4389,15 @@ msgstr "Je bent een level omhoog gegaan!"
 
 msgid "You leveled down!"
 msgstr "Je bent een level omlaag gegaan!"
+
+msgid "❌ You cannot run this command."
+msgstr ""
+
+msgid "❌ You are not allowed to click on this button"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
