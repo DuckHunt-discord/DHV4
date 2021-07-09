@@ -27,7 +27,16 @@ async def get_context_from_interaction(bot: MyBot, interaction: Interaction) -> 
 
 
 class BigButtonMixin(ui.Button):
+    """
+    Makes buttons bigger, by padding them using invisible characters.
+    It works well on desktop, but not very well on mobile, because text might be truncated there.
+
+    Use with caution.
+    """
     def __init__(self, *args, button_pad_to: int = 78, label: Optional[str] = None, **kwargs):
+        """
+        Adds a new argument to button creation : the total length of the button (invalid if higher than 80).
+        """
         self.button_pad_to = button_pad_to
 
         if label:
@@ -36,6 +45,9 @@ class BigButtonMixin(ui.Button):
         super().__init__(*args, label=label, **kwargs)
 
     def pad_value(self, value: str) -> str:
+        """
+        Override this function to change how padding is applied to the label
+        """
         return value.center(self.button_pad_to, "⠀")
 
     @property
@@ -51,9 +63,9 @@ class BigButtonMixin(ui.Button):
 class CommandButton(BigButtonMixin, ui.Button):
     def __init__(self, bot, command, command_args=None, command_kwargs=None, command_can_run=False, *args, **kwargs):
         """
-        Button to execute a command.
+        Button to execute a command. A list of args and kwargs can be passed to run the command with those args.
 
-        Command_can_run must be true if the checks should be ran before starting the command.
+        To run checks before running the command, use command_can_run=True.
         """
         super().__init__(*args, **kwargs)
 
@@ -70,9 +82,17 @@ class CommandButton(BigButtonMixin, ui.Button):
         self.command_can_run = command_can_run
 
     async def get_command_args(self, interaction: Interaction):
+        """
+        Get all the command arguments. By default, this uses the list provided when creating the button,
+        but behavior can be changed here.
+        """
         return self.command_args
 
     async def get_command_kwargs(self, interaction: Interaction):
+        """
+        Get all the command keyword arguments. By default, this uses the dictionary provided when creating
+        the button, but behavior can be changed here.
+        """
         return self.command_kwargs
 
     async def callback(self, interaction: Interaction):
@@ -90,6 +110,9 @@ class CommandButton(BigButtonMixin, ui.Button):
 
 
 class View(ui.View):
+    """
+    Nicer view subclass, providing some convenience methods for subclasses.
+    """
     def __init__(self, bot, timeout=None):
         self.bot = bot
         self.sent_to: Optional[Messageable] = None
@@ -98,7 +121,7 @@ class View(ui.View):
 
     def disable(self):
         """
-        Disable all the items in the view
+        Disable all the items in the view. You MUST edit the message (see refresh_message) to disable the buttons in the message.
         """
         for item in self.children:
             item.disabled = True
@@ -106,6 +129,11 @@ class View(ui.View):
         return self
 
     async def send(self, where: Messageable, *args, **kwargs):
+        """
+        Used to send the view in a message somewhere. Use this to be able to call refresh_message later.
+
+        Args and kwargs are passed to the where.send method.
+        """
         if len(args) == 0 and kwargs.get('content', None) is None:
             kwargs['content'] = "\u200b"  # Zero width space, to send the view only.
 
@@ -114,7 +142,9 @@ class View(ui.View):
         return self.sent_message
 
     async def refresh_message(self):
-        """Refresh the view on the message where it was sent."""
+        """
+        Refresh the view on the message where it was sent.
+        """
         if self.sent_to:
             await self.sent_message.edit(view=self)
         else:
@@ -125,15 +155,13 @@ class AuthorizedUserMixin(View):
     authorized_users_ids = []
 
     async def get_authorized_users_ids(self) -> Iterable[int]:
-        """|coro|
-
+        """
         Returns a list of users authorized to run the callback.
         """
         return self.authorized_users_ids
 
     async def is_user_authorized(self, interaction: Interaction) -> bool:
-        """|coro|
-
+        """
         Check if the user is authorized to run the callback.
 
         Parameters
@@ -152,6 +180,15 @@ class AuthorizedUserMixin(View):
             return False
 
     async def authorization_check_failed(self, interaction):
+        """
+        Function ran when the authorization check failed. Use this to send a message to the user
+        instead of just failing the view in the client.
+
+        Parameters
+        -----------
+        interaction: :class:`.Interaction`
+            The interaction that triggered this UI item.
+        """
         ctx = await get_context_from_interaction(self.bot, interaction)
         _ = await ctx.get_translate_function(user_language=True)
 
@@ -159,6 +196,9 @@ class AuthorizedUserMixin(View):
 
 
 class DisableViewOnTimeoutMixin(View):
+    """
+    Mixin to automatically disable buttons in the view when the view times out.
+    """
     async def on_timeout(self):
         self.disable()
         await self.refresh_message()
@@ -209,6 +249,9 @@ class CommandView(AuthorizedUserMixin, View):
 
 
 class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
+    """
+    Sends a confirmation view, with two buttons : cancel and confirm.
+    """
     def __init__(self, ctx: MyContext, _,  timeout=60):
         super().__init__(ctx.bot, timeout=timeout)
         self.ctx = ctx
@@ -217,6 +260,7 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         self.cancel.label = _('Cancel')
         self.confirm.label = _('Confirm')
 
+    # Ignore passed labels, they are overridden in __init__
     @ui.button(label='cancel', style=ButtonStyle.red)
     async def cancel(self, button: ui.Button, interaction: Interaction):
         self.value = False
@@ -235,6 +279,13 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         await self.refresh_message()
 
     async def send(self, *args, **kwargs):
+        """
+        Run the whole confirmation flow: send the view, wait for input (or timeout), and return the status
+
+        If this returns True, the action was confirmed.
+        If this returns False, the action was cancelled.
+        If this returns None, a timeout happened.
+        """
         await super().send(self.ctx, *args, **kwargs)
 
         # Wait for the View to stop listening for input...
@@ -243,9 +294,8 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         return self.value
 
     async def is_user_authorized(self, interaction: Interaction) -> bool:
-        """|coro|
-
-        Check if the user is authorized to run the callback.
+        """
+        Restrict buttons to the user that triggered the confirmation.
 
         Parameters
         -----------
@@ -258,6 +308,9 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
 
 
 class NitroButton(BigButtonMixin, ui.Button):
+    """
+    A basic button to demonstrate the above system. This shows a fake, rick-rolling "you've got Nitro" embed+button.
+    """
     async def callback(self, interaction: Interaction):
         await interaction.response.send_message("https://media.giphy.com/media/g7GKcSzwQfugw/giphy.mp4", ephemeral=True)
         self.button_pad_to = 40
@@ -279,6 +332,9 @@ class NitroButton(BigButtonMixin, ui.Button):
 
 
 class NitroView(View):
+    """
+    The view for the nitro button above.
+    """
     def __init__(self, bot):
         super().__init__(bot)
 
@@ -286,6 +342,9 @@ class NitroView(View):
 
 
 async def nitro_prank(ctx: MyContext):
+    """
+    The full view process for the nitro button above.
+    """
     first_embed = discord.Embed(
         colour=discord.Colour.dark_theme(),
         title='A WILD GIFT APPEARS!',
@@ -298,6 +357,11 @@ async def nitro_prank(ctx: MyContext):
 
 
 async def init_all_persistant_command_views(bot: MyBot):
+    """
+    Convenience function to initialize CommandViews for every command in the bot, making them persist.
+
+    Note that CommandViews with parameters are not persisted by default.
+    """
     for command in bot.walk_commands():
         bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=True))
         bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=False))
