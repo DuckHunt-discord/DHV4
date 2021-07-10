@@ -108,7 +108,7 @@ class CloseReasonSelect(discord.ui.Select):
         if tag_to_send:
             await interaction.response.send_message(f"Closing with {stored_reason}, but sending {tag_to_send} beforehand...", ephemeral=True)
             tag_command   = self.bot.get_command('private_support tag')
-            await ctx.invoke(tag_command, tag_to_send)
+            await ctx.invoke(tag_command, tag_name=tag_to_send)
             await asyncio.sleep(1)
         else:
             await interaction.response.send_message(f"Closing with {stored_reason}...", ephemeral=True)
