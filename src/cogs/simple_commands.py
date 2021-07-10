@@ -331,10 +331,10 @@ class SimpleCommands(Cog):
         elif got_no > no_trigger:
             await message.reply(f"Got {got_no} no votes. Not spawning a boss.")
             return
-        elif got_yes <= yes_trigger:
+        elif got_yes < yes_trigger:
             await message.reply(f"Didn't get enough yes votes ({got_yes} < {yes_trigger}). Not spawning a boss.")
             return
-        elif got_yes <= yes_trigger:
+        elif got_yes >= yes_trigger:
             await message.reply(f"🦆 Alright. I'm spawning a boss. Congratulations.")
             boss_cog = self.bot.get_cog('DuckBoss')
             await boss_cog.spawn_boss()
