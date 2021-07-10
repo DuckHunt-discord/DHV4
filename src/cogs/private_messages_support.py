@@ -83,7 +83,7 @@ class CloseReasonSelect(discord.ui.Select):
         'Unresponsive': ('☠️', 'User did not respond', None),
         'Unrelated': ('⁉️', 'Not a support DM', 'groupself'),
         'Thanks': ('🙃', 'Complimented the bot', None),
-        'Spam': ('💬️', 'Spam', None),
+        'Spam': ('💬', 'Spam', None),
     }
 
     def __init__(self, bot):
