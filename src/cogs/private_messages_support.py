@@ -22,7 +22,7 @@ from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket, AccessLevel, Tag
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
-from utils.views import CommandView
+from utils.views import CommandView, get_context_from_interaction, View
 
 
 def _(message):
@@ -72,6 +72,57 @@ class MirrorMenuPage(menus.MenuPages):
         return super().stop()
 
 
+class CloseReasonSelect(discord.ui.Select):
+    reasons = {
+        # shown reason : Emoji, stored reason, tag_to_send
+        'No help needed': ('❌', 'No help needed', None),
+        'DM Commands': ('🤖', 'DM Commands', 'dm_commands'),
+        'Support given': ('✅', 'Support was provided and the matter resolved', None),
+        'Requested': ('🤷', 'Closed on request', None),
+        'Insults': ('🤬', 'Insults in DM', None),
+        'Unresponsive': ('☠️', 'User did not respond', None),
+        'Unrelated': ('⁉️', 'Not a support DM', 'groupself'),
+        'Thanks': ('🙃', 'Complimented the bot', None),
+        'Spam': ('💬️', 'Spam', None),
+    }
+
+    def __init__(self, bot):
+        self.bot = bot
+
+        options = []
+
+        for reason_label, extra_info in self.reasons.items():
+            reason_emoji, stored_reason, tag_to_send = extra_info
+            options.append(discord.SelectOption(label=reason_label, emoji=reason_emoji))
+
+        super().__init__(custom_id="private_messages_support:close_select_reason", placeholder="Quick DM closing", min_values=1, max_values=1,
+                         options=options
+                         )
+
+    async def callback(self, interaction: discord.Interaction):
+        ctx = await get_context_from_interaction(self.bot, interaction)
+        reason_info = self.reasons[self.values[0]]
+        reason_emoji, stored_reason, tag_to_send = reason_info
+
+        close_command = self.bot.get_command('private_support close')
+        if tag_to_send:
+            await interaction.response.send_message(f"Closing with {stored_reason}, but sending {tag_to_send} beforehand...", ephemeral=True)
+            tag_command   = self.bot.get_command('private_support tag')
+            await ctx.invoke(tag_command, tag_to_send)
+            await asyncio.sleep(1)
+        else:
+            await interaction.response.send_message(f"Closing with {stored_reason}...", ephemeral=True)
+
+        await ctx.invoke(close_command, reason=stored_reason)
+
+
+class CloseReasonSelectView(View):
+    def __init__(self, bot):
+        super().__init__(bot, timeout=None)
+
+        self.add_item(CloseReasonSelect(bot))
+
+
 class PrivateMessagesSupport(Cog):
     display_name = _("Support team: private messages")
     help_priority = 15
@@ -91,6 +142,12 @@ class PrivateMessagesSupport(Cog):
                 (?:app\s?\.\s?com\s?/invite|\.\s?gg)\s?/ # All the domains
                 ((?!.*[Ii10OolL]).[a-zA-Z0-9]{5,12}|[a-zA-Z0-9\-]{2,32}) # Rest of the fucking owl.
                 """, flags=re.VERBOSE | re.IGNORECASE)
+        self.views_added = False
+
+    async def on_ready(self):
+        if not self.views_added:
+            self.bot.add_view(CloseReasonSelectView(self.bot))
+            self.views_added = True
 
     def cog_unload(self):
         self.background_loop.cancel()
@@ -330,7 +387,7 @@ class PrivateMessagesSupport(Cog):
                 info_embed.add_field(name=f"#{player_data.channel} [DISABLED]",
                                      value=f"[Statistics](https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id}) - {player_data.experience} exp")
 
-        await channel.send(embed=info_embed)
+        await CloseReasonSelectView(self.bot).send(channel, embed=info_embed)
 
         _ = get_translate_function(self.bot, db_user.language)
 
