@@ -60,7 +60,7 @@ class BigButtonMixin(ui.Button):
         self._underlying.label = self.pad_value(value) if value is not None else value
 
 
-class CommandButton(BigButtonMixin, ui.Button):
+class CommandButton(ui.Button):
     def __init__(self, bot, command, command_args=None, command_kwargs=None, command_can_run=False, *args, **kwargs):
         """
         Button to execute a command. A list of args and kwargs can be passed to run the command with those args.
