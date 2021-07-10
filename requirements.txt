@@ -1,11 +1,11 @@
-jishaku~=2.0.0
+jishaku==2.1.0
 toml~=0.10.1
 uvloop~=0.15.0
 parsedatetime~=2.6
 pytz
 #discord.py[voice]>=1.7.2
 git+https://github.com/Rapptz/discord.py.git
-tortoise-orm[accel]>=0.17.2
+tortoise-orm[accel]>=0.17.5
 aerich
 asyncpg==0.23.0
 python-rapidjson
@@ -19,5 +19,5 @@ aiohttp[speedups]~=3.7.3
 aiohttp_cors~=0.7.0
 polib~=1.1.0
 tqdm~=4.61
-pillow>=8.0
+pillow>=8.3.1
 statcord.py~=3.1.0
