@@ -496,7 +496,14 @@ class DucksHuntingCommands(Cog):
 
             db_hunter.hugged['players'] += 1
             await db_hunter.save()
-            await ctx.reply(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
+            if target.id == 687932431314976790:
+                # https://discord.com/channels/195260081036591104/195260081036591104/863475741840506900
+                # https://discord.com/channels/195260081036591104/195260081036591104/863057530423083009
+                await ctx.reply(_("{you.mention} hugged {other.mention}. "
+                                  "They hate you even more for hugging them. Don't know why tho... Try shooting them in the face.", you=ctx.author, other=target))
+            else:
+                await ctx.reply(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
+
             return
 
         duck = await ctx.target_next_duck()
