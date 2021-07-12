@@ -133,11 +133,15 @@ class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
     def __init__(self, bot):
         self.bot = bot
 
+        reverse_lookup = {}
         options = []
 
         for tag_name, extra_info in self.tags.items():
             tag_emoji, tag_shown = extra_info
             options.append(discord.SelectOption(label=tag_shown, emoji=tag_emoji))
+            reverse_lookup[tag_shown] = tag_name
+
+        self.reverse_lookup = reverse_lookup
 
         super().__init__(custom_id="private_messages_support:common_tag_select", placeholder="Quick tag selector", min_values=1, max_values=1,
                          options=options
@@ -145,7 +149,7 @@ class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
 
     async def callback(self, interaction: discord.Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
-        tag_name = self.values[0]
+        tag_name = self.reverse_lookup[self.values[0]]
 
         tag_command = self.bot.get_command('private_support tag')
 
