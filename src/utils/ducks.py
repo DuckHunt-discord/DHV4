@@ -459,7 +459,7 @@ class Duck:
 
         bot.ducks_spawned[self.channel].append(self)
 
-    async def shoot(self, args):
+    async def shoot(self, args) -> Optional[bool]:
         if await self.will_frighten():
             return await self.frighten()
 
@@ -469,6 +469,7 @@ class Duck:
             await self.kill(damage, args)
         else:
             await self.hurt(damage, args)
+        return None
 
     async def hug(self, args):
         if self.leave_on_hug:
@@ -700,20 +701,21 @@ class PrDuck(Duck):
                   hurter=hurter,
                   operation=self.operation))
             await self.release()
-            return
+            return False
         except ValueError:
             await self.send(_("{hurter.mention}, Just give me digits !",
                               hurter=hurter))
             await self.release()
-            return
+            return False
 
         if result != self.answer:
             await self.send(_("{hurter.mention}, that's not the correct answer !",
                               hurter=hurter))
             await self.release()
-            return
+            return False
         else:
             await super().shoot(args)
+            return True
 
     async def get_exp_value(self):
         return round(await super().get_exp_value() * 1.2)
