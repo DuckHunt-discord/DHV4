@@ -382,6 +382,9 @@ class DucksHuntingCommands(Cog):
             if result is False and db_hunter.is_powerup_active('detector'):
                 db_hunter.bullets += 1
                 db_hunter.shooting_stats['bullets_used'] -= 1
+                # Since the detector is used here.
+                db_hunter.active_powerups['detector'] -= 1
+                db_hunter.shooting_stats['shots_stopped_by_detector'] += 1
                 await db_hunter.save()
         elif db_hunter.is_powerup_active('detector'):
             db_hunter.active_powerups['detector'] -= 1
