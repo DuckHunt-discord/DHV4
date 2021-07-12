@@ -60,7 +60,19 @@ class BigButtonMixin(ui.Button):
         self._underlying.label = self.pad_value(value) if value is not None else value
 
 
-class CommandButton(ui.Button):
+class AutomaticDeferMixin(ui.Item, ABC):
+    """
+    Add this to prevent the action from erroring out client-side, by deferring it anyway.
+    """
+    async def callback(self, interaction: Interaction):
+        await super().callback(interaction)
+
+        if not interaction.response.is_done():
+            # Hopefully prevent the button from erroring out.
+            await interaction.response.defer()
+
+
+class CommandButton(AutomaticDeferMixin, ui.Button):
     def __init__(self, bot, command, command_args=None, command_kwargs=None, command_can_run=False, *args, **kwargs):
         """
         Button to execute a command. A list of args and kwargs can be passed to run the command with those args.
@@ -104,6 +116,7 @@ class CommandButton(ui.Button):
         except:
             _ = await ctx.get_translate_function(user_language=True)
             await interaction.response.send_message(_('❌ You cannot run this command.'), ephemeral=True)
+            return
 
         if can_run:
             return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
