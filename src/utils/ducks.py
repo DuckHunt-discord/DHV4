@@ -459,7 +459,7 @@ class Duck:
 
         bot.ducks_spawned[self.channel].append(self)
 
-    async def shoot(self, args):
+    async def shoot(self, args) -> Optional[bool]:
         if await self.will_frighten():
             return await self.frighten()
 
@@ -469,6 +469,7 @@ class Duck:
             await self.kill(damage, args)
         else:
             await self.hurt(damage, args)
+        return None
 
     async def hug(self, args):
         if self.leave_on_hug:
