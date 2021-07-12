@@ -124,10 +124,10 @@ class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
         'quickguide': ('🦆', 'How to play'),
         'dm_unrelated': ('⁉️', 'Unrelated DMs'),
         'leveling_up': ('☝️', 'Leveling up'),
-        'lore_v4': ('📖', 'Lore (why do we kill ducks ?)'),
+        'lore_v4': ('📖', 'Lore'),
         'commands': ('❕', 'Commands list'),
         'wiki': ('🌱', 'Wiki'),
-        'groupself': ('💬', 'Groupself (consider closing)'),
+        'groupself': ('💬', 'Groupself (close?)'),
     }
 
     def __init__(self, bot):
