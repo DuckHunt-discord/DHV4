@@ -14,6 +14,7 @@ from discord.utils import snowflake_time, utcnow
 from tortoise import timezone
 
 from cogs.tags import TagMenuSource, TagName
+from utils import views
 from utils.bot_class import MyBot
 from utils.checks import NotInServer, NotInChannel
 from utils.cog_class import Cog
@@ -116,11 +117,47 @@ class CloseReasonSelect(discord.ui.Select):
         await ctx.invoke(close_command, reason=stored_reason)
 
 
+class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
+    tags = {
+        # tag to send : Emoji, shown name
+        'setup': ('⚙️', 'How to setup'),
+        'quickguide': ('🦆', 'How to play'),
+        'dm_unrelated': ('⁉️', 'Unrelated DMs'),
+        'leveling_up': ('☝️', 'Leveling up'),
+        'lore_v4': ('📖', 'Lore (why do we kill ducks ?)'),
+        'commands': ('❕', 'Commands list'),
+        'wiki': ('🌱', 'Wiki'),
+        'groupself': ('💬', 'Groupself (consider closing)'),
+    }
+
+    def __init__(self, bot):
+        self.bot = bot
+
+        options = []
+
+        for tag_name, extra_info in self.tags.items():
+            tag_emoji, tag_shown = extra_info
+            options.append(discord.SelectOption(label=tag_shown, emoji=tag_emoji))
+
+        super().__init__(custom_id="private_messages_support:common_tag_select", placeholder="Quick tag selector", min_values=1, max_values=1,
+                         options=options
+                         )
+
+    async def callback(self, interaction: discord.Interaction):
+        ctx = await get_context_from_interaction(self.bot, interaction)
+        tag_name = self.values[0]
+
+        tag_command = self.bot.get_command('private_support tag')
+
+        await ctx.invoke(tag_command, tag_name=tag_name)
+
+
 class CloseReasonSelectView(View):
     def __init__(self, bot):
         super().__init__(bot, timeout=None)
 
         self.add_item(CloseReasonSelect(bot))
+        self.add_item(CommonTagSelect(bot))
 
 
 def get_close_reason_view(bot, reason_shortcode, reason_stored):
