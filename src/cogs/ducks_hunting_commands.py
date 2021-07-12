@@ -378,7 +378,12 @@ class DucksHuntingCommands(Cog):
         if duck:
             db_hunter.shooting_stats['shots_with_duck'] += 1
             duck.db_target_lock_by = db_hunter  # Since we have unsaved data
-            await duck.shoot(args)
+            result = await duck.shoot(args)
+            if result is not None:
+                if not result and db_hunter.is_powerup_active('detector'):
+                    db_hunter.bullets += 1
+                    db_hunter.shooting_stats['bullets_used'] -= 1
+                    await db_hunter.save()
         elif db_hunter.is_powerup_active('detector'):
             db_hunter.active_powerups['detector'] -= 1
             db_hunter.shooting_stats['shots_stopped_by_detector'] += 1
