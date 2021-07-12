@@ -25,7 +25,7 @@ from utils.translations import get_translate_function
 from utils.views import CommandView, get_context_from_interaction, View
 
 
-def _(message, **kwargs):
+def _(message):
     return message
 
 
@@ -129,7 +129,7 @@ def get_close_reason_view(bot, reason_shortcode, reason_stored):
                        close_command,
                        persist=f"private_messages_support:close_reason:{reason_shortcode}",
                        command_kwargs={"reason": reason_stored},
-                       label=_('Close the DM ({reason})', reason=reason_shortcode),
+                       label=f'Close the DM ({reason_shortcode})',
                        style=discord.ButtonStyle.blurple)
 
 
