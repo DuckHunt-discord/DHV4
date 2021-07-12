@@ -223,7 +223,7 @@ class CommandView(AuthorizedUserMixin, View):
                  command_args: Optional[List[Any]] = None,
                  command_kwargs: Optional[Dict[str, Any]] = None,
                  authorized_users: Iterable[int] = '__all__',
-                 persist: bool = True,
+                 persist: Union[bool, str] = True,
                  command_can_run: bool = False,
                  **button_kwargs, ):
 
@@ -235,10 +235,12 @@ class CommandView(AuthorizedUserMixin, View):
         if command_to_be_ran is None:
             raise RuntimeError("The command passed can't be found.")
 
-        if command_args or command_kwargs or authorized_users != '__all__':
+        if isinstance(persist, bool) and command_args or command_kwargs or authorized_users != '__all__':
             persist = False
 
-        if persist:
+        if isinstance(persist, str):
+            persistance_id = persist
+        elif persist:
             persistance_id = f"cmd:cn{command_to_be_ran.qualified_name}:cr{int(command_can_run)}"
         else:
             persistance_id = None

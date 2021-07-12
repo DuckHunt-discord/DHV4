@@ -25,7 +25,7 @@ from utils.translations import get_translate_function
 from utils.views import CommandView, get_context_from_interaction, View
 
 
-def _(message):
+def _(message, **kwargs):
     return message
 
 
@@ -123,6 +123,16 @@ class CloseReasonSelectView(View):
         self.add_item(CloseReasonSelect(bot))
 
 
+def get_close_reason_view(bot, reason_shortcode, reason_stored):
+    close_command = bot.get_command('private_support close')
+    return CommandView(bot,
+                       close_command,
+                       persist=f"private_messages_support:close_reason:{reason_shortcode}",
+                       command_kwargs={"reason": reason_stored},
+                       label=_('Close the DM ({reason})', reason=reason_shortcode),
+                       style=discord.ButtonStyle.blurple)
+
+
 class PrivateMessagesSupport(Cog):
     display_name = _("Support team: private messages")
     help_priority = 15
@@ -147,6 +157,9 @@ class PrivateMessagesSupport(Cog):
     async def on_ready(self):
         if not self.views_added:
             self.bot.add_view(CloseReasonSelectView(self.bot))
+            self.bot.add_view(get_close_reason_view(self.bot, "asked", "Asked closed"))
+            self.bot.add_view(get_close_reason_view(self.bot, "invites", "Sent the bot an invite"))
+
             self.views_added = True
 
     def cog_unload(self):
@@ -283,7 +296,7 @@ class PrivateMessagesSupport(Cog):
                 self.webhook_cache[channel] = webhook
         return channel
 
-    async def send_mirrored_message(self, channel: discord.TextChannel, user: discord.User, db_user=None,
+    async def send_mirrored_message(self, channel: discord.TextChannel, user: discord.User, db_user=None, support_view=None,
                                     **send_kwargs):
         self.bot.logger.info(f"[SUPPORT] Sending mirror message to {user.name}#{user.discriminator}")
 
@@ -291,7 +304,10 @@ class PrivateMessagesSupport(Cog):
         language = db_user.language
         _ = get_translate_function(self.bot, language)
 
-        channel_message = await channel.send(**send_kwargs)
+        if support_view:
+            channel_message = await support_view.send(channel, **send_kwargs)
+        else:
+            channel_message = await channel.send(**send_kwargs)
 
         try:
             await user.send(**send_kwargs)
@@ -465,7 +481,9 @@ class PrivateMessagesSupport(Cog):
 
             dm_invite_embed.set_footer(text=_("This is an automatic message."))
 
-            await self.send_mirrored_message(forwarding_channel, user, db_user=db_user, embed=dm_invite_embed)
+            view = get_close_reason_view(self.bot, "invites", "Sent the bot an invite")
+
+            await self.send_mirrored_message(forwarding_channel, user, db_user=db_user, embed=dm_invite_embed, support_view=view)
 
     async def handle_dm_message(self, message: discord.Message):
         self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
@@ -487,13 +505,12 @@ class PrivateMessagesSupport(Cog):
             "content": message.content,
             "embeds": embeds,
             "files": files,
-            "allowed_mentions":discord.AllowedMentions.none(),
+            "allowed_mentions": discord.AllowedMentions.none(),
             "wait": True
         }
 
         if "close" in message.content.lower():
-            view = CommandView(self.bot, self.close, command_kwargs={"reason": "Asked closed"}, label=_('Close the DM'), style=discord.ButtonStyle.blurple)
-
+            view = get_close_reason_view(self.bot, "asked", "Asked closed")
             await view.send(forwarding_webhook,
                             **send_kwargs)
         else:
