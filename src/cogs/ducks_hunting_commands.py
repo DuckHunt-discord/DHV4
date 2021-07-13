@@ -5,6 +5,7 @@ from typing import Optional, Union
 from urllib.parse import quote_plus
 
 import discord
+from discord import ButtonStyle
 from discord.ext import commands
 
 from utils import checks
@@ -17,6 +18,7 @@ from babel.dates import format_timedelta
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_player, Player, get_random_player
+from utils.views import CommandView
 
 
 def compute_luck(luck_pct):
@@ -101,7 +103,17 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_when_jammed'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="reload",
+                label="Reload",
+                style=ButtonStyle.blurple,
+                command_can_run=True,
+            ).send(
+                ctx,
+                content=_("☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"),
+                reference=ctx.message
+            )
             return False
 
         if db_hunter.bullets <= 0:
@@ -123,10 +135,20 @@ class DucksHuntingCommands(Cog):
                 db_hunter.shooting_stats['shots_with_empty_magazine'] += 1
                 await db_hunter.save()
 
-                await ctx.reply(_("🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | Magazines: {current_magazines}/{max_magazines}",
+                await CommandView(
+                    self.bot,
+                    command_to_be_ran="reload",
+                    label="Reload",
+                    style=ButtonStyle.blurple,
+                    command_can_run=True,
+                ).send(
+                    ctx,
+                    content=_("🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | Magazines: {current_magazines}/{max_magazines}",
                                   max_bullets=level_info['bullets'],
                                   max_magazines=level_info['magazines'],
-                                  current_magazines=db_hunter.magazines))
+                                  current_magazines=db_hunter.magazines),
+                    reference=ctx.message
+                )
                 return False
 
         # Jamming
@@ -142,7 +164,17 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['shots_jamming_weapon'] += 1
             db_hunter.active_powerups['jammed'] = 1
             await db_hunter.save()
-            await ctx.reply(_("💥 Your weapon jammed. Reload it and consider buying grease next time."))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="reload",
+                label="Reload",
+                style=ButtonStyle.blurple,
+                command_can_run=True,
+            ).send(
+                ctx,
+                content=_("💥 Your weapon jammed. Reload it and consider buying grease next time."),
+                reference=ctx.message
+            )
             return False
 
         db_hunter.bullets -= 1
