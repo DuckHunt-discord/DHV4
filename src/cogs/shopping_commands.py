@@ -744,7 +744,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['kill_licence'] += 1
 
         await db_hunter.save()
-        await ctx.reply(_("💸 You bought a kill licence. Accidental kills are now allowed. "
+        await ctx.reply(_("💸 You bought a kill license. Accidental kills are now allowed. "
                           "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["30", "autoreload", "autoreloader", "automatic_reloader", "automaticreloader", "auto_reloader", "auto_reload"])

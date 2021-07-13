@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-07-04 17:29+0200\n"
+"POT-Creation-Date: 2021-07-13 14:09+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:513
+#: ../cogs/ducks_hunting_commands.py:520
 msgid "Revive yourself by eating brains"
 msgstr ""
 
@@ -256,40 +256,40 @@ msgstr ""
 msgid "Get some more experience..."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:100
+#: ../cogs/private_messages_support.py:211
 msgid ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:496
+#: ../cogs/private_messages_support.py:611
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
 "interact with remote users."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:507
+#: ../cogs/private_messages_support.py:622
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:556
+#: ../cogs/private_messages_support.py:671
 msgid ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:584
+#: ../cogs/private_messages_support.py:699
 msgid "Block the user from opening further DMs channels."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:595
+#: ../cogs/private_messages_support.py:710
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:624
+#: ../cogs/private_messages_support.py:739
 msgid ""
 "Suggest a new language to the user. This will show them a prompt asking them "
 "if they want to switch to this new\n"
@@ -1421,20 +1421,27 @@ msgid ""
 "happy that you are loving it."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:499
+#: ../cogs/ducks_hunting_commands.py:502
+#, python-brace-format
+msgid ""
+"{you.mention} hugged {other.mention}. They hate you even more for hugging "
+"them. Don't know why tho... Try shooting them in the face."
+msgstr ""
+
+#: ../cogs/ducks_hunting_commands.py:505
 #, python-brace-format
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:506
+#: ../cogs/ducks_hunting_commands.py:513
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:525
+#: ../cogs/ducks_hunting_commands.py:532
 msgid "You are already alive and well."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:535
+#: ../cogs/ducks_hunting_commands.py:542
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consiousness."
 msgstr ""
@@ -1908,15 +1915,15 @@ msgstr ""
 msgid "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:76
+#: ../cogs/private_messages_support.py:178
 msgid "Support team: private messages"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:149
+#: ../cogs/private_messages_support.py:260
 msgid "DM Timed Out"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:150
+#: ../cogs/private_messages_support.py:261
 msgid ""
 "It seems like nothing has been said here for a long time, so I've gone ahead "
 "and closed your ticket, deleting its history. Thanks for using DuckHunt DM "
@@ -1924,19 +1931,19 @@ msgid ""
 "sending a message here."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:157
-#: ../cogs/private_messages_support.py:533
+#: ../cogs/private_messages_support.py:268
+#: ../cogs/private_messages_support.py:648
 msgid "Support server"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:158
-#: ../cogs/private_messages_support.py:533
+#: ../cogs/private_messages_support.py:269
+#: ../cogs/private_messages_support.py:648
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:339
+#: ../cogs/private_messages_support.py:453
 msgid ""
 "Welcome to DuckHunt private messages support.\n"
 "Messages here are relayed to a select group of volunteers and bot moderators "
@@ -1946,25 +1953,25 @@ msgid ""
 "you, otherwise, we'll get back to you in a few minutes."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:345
+#: ../cogs/private_messages_support.py:459
 msgid "Support tickets are deleted after 24 hours of inactivity"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:380
+#: ../cogs/private_messages_support.py:494
 msgid "Attachments persistence"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:382
+#: ../cogs/private_messages_support.py:496
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:402
+#: ../cogs/private_messages_support.py:516
 msgid "This is not how you invite DuckHunt."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:404
+#: ../cogs/private_messages_support.py:518
 msgid ""
 "DuckHunt, like other discord bots, can't join servers by using an invite "
 "link.\n"
@@ -1974,19 +1981,15 @@ msgid ""
 "you."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:409
+#: ../cogs/private_messages_support.py:523
 msgid "This is an automatic message."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:438
-msgid "Close the DM"
-msgstr ""
-
-#: ../cogs/private_messages_support.py:526
+#: ../cogs/private_messages_support.py:641
 msgid "DM Closed"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:527
+#: ../cogs/private_messages_support.py:642
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
 "DuckHunt DM support. Keep in mind, sending another message here will open a "
@@ -1994,15 +1997,15 @@ msgid ""
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:620 ../cogs/tags.py:170
+#: ../cogs/private_messages_support.py:735 ../cogs/tags.py:170
 msgid "❌ There is no tag with that name."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:647
+#: ../cogs/private_messages_support.py:762
 msgid "Language change offer"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:649
+#: ../cogs/private_messages_support.py:764
 #, python-brace-format
 msgid ""
 "DuckHunt support suggests you change your personal language from "
@@ -2010,17 +2013,17 @@ msgid ""
 "messages you get in private message from DuckHunt to {suggested_language}."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:659
+#: ../cogs/private_messages_support.py:774
 msgid ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:677
+#: ../cogs/private_messages_support.py:792
 msgid "Your language preference wasn't changed."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:687
+#: ../cogs/private_messages_support.py:802
 #, python-brace-format
 msgid "Your preferred language is now {new_language}."
 msgstr ""
@@ -2871,7 +2874,7 @@ msgstr ""
 #: ../cogs/shopping_commands.py:747
 #, python-brace-format
 msgid ""
-"💸 You bought a kill licence. Accidental kills are now allowed. [Bought: -"
+"💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
@@ -4930,18 +4933,18 @@ msgstr ""
 msgid "You leveled down!"
 msgstr ""
 
-#: ../utils/views.py:84
+#: ../utils/views.py:118
 msgid "❌ You cannot run this command."
 msgstr ""
 
-#: ../utils/views.py:156
+#: ../utils/views.py:208
 msgid "❌ You are not allowed to click on this button"
 msgstr ""
 
-#: ../utils/views.py:214
+#: ../utils/views.py:275
 msgid "Cancel"
 msgstr ""
 
-#: ../utils/views.py:215
+#: ../utils/views.py:276
 msgid "Confirm"
 msgstr ""
