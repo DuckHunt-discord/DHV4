@@ -73,11 +73,9 @@ class AutomaticDeferMixin(ui.Item, ABC):
 
 
 class CommandButton(AutomaticDeferMixin, ui.Button):
-    def __init__(self, bot, command, command_args=None, command_kwargs=None, command_can_run=False, *args, **kwargs):
+    def __init__(self, bot, command, command_args=None, command_kwargs=None, *args, **kwargs):
         """
         Button to execute a command. A list of args and kwargs can be passed to run the command with those args.
-
-        To run checks before running the command, use command_can_run=True.
         """
         super().__init__(*args, **kwargs)
 
@@ -91,7 +89,6 @@ class CommandButton(AutomaticDeferMixin, ui.Button):
         self.command: Command = command
         self.command_args = command_args
         self.command_kwargs = command_kwargs
-        self.command_can_run = command_can_run
 
     async def get_command_args(self, interaction: Interaction):
         """
@@ -109,10 +106,9 @@ class CommandButton(AutomaticDeferMixin, ui.Button):
 
     async def callback(self, interaction: Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
-        can_run = not self.command_can_run
 
         try:
-            can_run = can_run or await self.command.can_run(ctx)
+            can_run = await self.command.can_run(ctx)
         except:
             _ = await ctx.get_translate_function(user_language=True)
             await interaction.response.send_message(_('❌ You cannot run this command.'), ephemeral=True)
@@ -237,7 +233,6 @@ class CommandView(AuthorizedUserMixin, View):
                  command_kwargs: Optional[Dict[str, Any]] = None,
                  authorized_users: Iterable[int] = '__all__',
                  persist: Union[bool, str] = True,
-                 command_can_run: bool = False,
                  **button_kwargs, ):
 
         super().__init__(bot)
@@ -254,13 +249,13 @@ class CommandView(AuthorizedUserMixin, View):
         if isinstance(persist, str):
             persistance_id = persist
         elif persist:
-            persistance_id = f"cmd:cn{command_to_be_ran.qualified_name}:cr{int(command_can_run)}"
+            persistance_id = f"cmd:cn{command_to_be_ran.qualified_name}"
         else:
             persistance_id = None
 
         self.authorized_users_ids = authorized_users
 
-        self.add_item(CommandButton(bot, command_to_be_ran, command_args, command_kwargs, custom_id=persistance_id, row=0, command_can_run=command_can_run, **button_kwargs))
+        self.add_item(CommandButton(bot, command_to_be_ran, command_args, command_kwargs, custom_id=persistance_id, row=0, **button_kwargs))
 
 
 class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
@@ -378,5 +373,7 @@ async def init_all_persistant_command_views(bot: MyBot):
     Note that CommandViews with parameters are not persisted by default.
     """
     for command in bot.walk_commands():
-        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=True))
-        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=False))
+        bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple))
+        # Having command_can_run set to false is a security risk : buttons IDs can be faked, thereby allowing users to run arbitrary commands without checks.
+        # https://discord.com/channels/336642139381301249/669155775700271126/864496918671261717
+        # bot.add_view(CommandView(bot, command, persist=True, label=f'{command.qualified_name}', style=ButtonStyle.blurple, command_can_run=False))

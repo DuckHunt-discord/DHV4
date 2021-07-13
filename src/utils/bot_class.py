@@ -154,6 +154,10 @@ class MyBot(AutoShardedBot):
         self.top_users[ctx.author.id] += 1
         ctx.logger.info(f"{ctx.message.clean_content}")
 
+    async def on_interaction(self, interaction: discord.Interaction):
+        data = interaction.data
+        self.logger.info(f"Interaction received: {data}", guild=interaction.guild, channel=interaction.channel, member=interaction.user, )
+
     async def on_shard_ready(self, shard_id):
         self.shards_ready.add(shard_id)
 

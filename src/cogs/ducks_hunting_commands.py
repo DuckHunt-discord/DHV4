@@ -108,7 +108,6 @@ class DucksHuntingCommands(Cog):
                 command_to_be_ran="reload",
                 label="Reload",
                 style=ButtonStyle.blurple,
-                command_can_run=True,
             ).send(
                 ctx,
                 content=_("☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"),
@@ -140,7 +139,6 @@ class DucksHuntingCommands(Cog):
                     command_to_be_ran="reload",
                     label="Reload",
                     style=ButtonStyle.blurple,
-                    command_can_run=True,
                 ).send(
                     ctx,
                     content=_("🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | Magazines: {current_magazines}/{max_magazines}",
@@ -169,7 +167,6 @@ class DucksHuntingCommands(Cog):
                 command_to_be_ran="reload",
                 label="Reload",
                 style=ButtonStyle.blurple,
-                command_can_run=True,
             ).send(
                 ctx,
                 content=_("💥 Your weapon jammed. Reload it and consider buying grease next time."),

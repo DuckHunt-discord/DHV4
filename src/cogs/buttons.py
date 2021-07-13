@@ -39,7 +39,7 @@ class Buttons(Cog):
     @commands.command()
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def create_command_button(self, ctx: MyContext, *, command_name: str):
-        await CommandView(self.bot, command_to_be_ran=command_name, label=command_name, style=ButtonStyle.blurple, command_can_run=True).send(ctx)
+        await CommandView(self.bot, command_to_be_ran=command_name, label=command_name, style=ButtonStyle.blurple).send(ctx)
 
     @commands.command(hidden=True)
     @needs_access_level(AccessLevel.BOT_OWNER)
