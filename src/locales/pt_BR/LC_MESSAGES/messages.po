@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-07-04 17:29+0200\n"
+"POT-Creation-Date: 2021-07-13 14:09+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -1423,6 +1423,11 @@ msgid ""
 "happy that you are loving it."
 msgstr ""
 
+msgid ""
+"{you.mention} hugged {other.mention}. They hate you even more for hugging "
+"them. Don't know why tho... Try shooting them in the face."
+msgstr ""
+
 msgid "{you.mention} hugged {other.mention}. They feel loved."
 msgstr ""
 
@@ -1831,9 +1836,6 @@ msgid ""
 msgstr ""
 
 msgid "This is an automatic message."
-msgstr ""
-
-msgid "Close the DM"
 msgstr ""
 
 msgid "DM Closed"
@@ -2503,11 +2505,9 @@ msgid "❌ You already use a kill license."
 msgstr "❌ Você já está usando uma licença para matar."
 
 msgid ""
-"💸 You bought a kill licence. Accidental kills are now allowed. [Bought: -"
+"💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
-"💸 Você comprou uma licença para matar. Mortes acidentais são agora "
-"permitidas. [Comprado: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 
 msgid "❌ You already have an automatic reloader."
 msgstr "❌ Você já tem um recarregador automático."
