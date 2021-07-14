@@ -6,6 +6,7 @@ import typing
 from discord import Message, Interaction
 from discord.errors import InvalidArgument
 from discord.ext import commands
+from discord.utils import MISSING
 
 from utils.models import get_from_db
 from utils.translations import translate, ntranslate, get_translate_function, get_ntranslate_function
@@ -65,10 +66,15 @@ class MyContext(commands.Context):
             else:
                 file = message_file
 
-        send_as_ephemeral = not force_public and self.is_next_send_ephemeral()
+        send_as_ephemeral = not force_public and self.is_next_send_ephemeral() and not files and not file
 
         if send_as_ephemeral:
-            message = await self.interaction.response.send_message(content, file=file, files=files, **kwargs)
+            message = await self.interaction.response.send_message(content,
+                                                                   embed=kwargs.get('embed', MISSING),
+                                                                   embeds=kwargs.get('embeds', MISSING),
+                                                                   view=kwargs.get('view', MISSING),
+                                                                   tts=kwargs.get('tts', False),
+                                                                   ephemeral=True)
         elif reply:
             db_user = await get_from_db(self.author, as_user=True)
 
