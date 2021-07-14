@@ -3,7 +3,7 @@ import io
 
 import discord
 import typing
-from discord import Message
+from discord import Message, Interaction
 from discord.errors import InvalidArgument
 from discord.ext import commands
 
@@ -21,14 +21,30 @@ class MyContext(commands.Context):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.bot: 'MyBot'
+        self.interaction: typing.Optional[Interaction] = None  # Injected later.
+        self._prefix: typing.Optional[str] = None
 
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
+    @property
+    def prefix(self):
+        if self._prefix is not None:
+            return self._prefix
+        else:
+            # Most probably an invalid context, made for running commands with buttons.
+            return "dh!"
+
+    @prefix.setter
+    def prefix(self, value):
+        self._prefix = value
+
+    def is_next_send_ephemeral(self):
+        return self.interaction and not self.interaction.response.is_done()
+
     async def reply(self, *args, **kwargs) -> discord.Message:
-        # pip3.9 install git+https://github.com/Rapptz/discord.py.git
         return await self.send(*args, **kwargs, reply=True)
 
-    async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, reply=False, **kwargs) -> Message:
+    async def send(self, content=None, *, delete_on_invoke_removed=True, file=None, files=None, reply=False, force_public=False, **kwargs) -> Message:
         # Case for a too-big message
         if content and len(content) > 1990:
             self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
@@ -49,18 +65,48 @@ class MyContext(commands.Context):
             else:
                 file = message_file
 
-        if reply:
+        send_as_ephemeral = not force_public and self.is_next_send_ephemeral()
+
+        if send_as_ephemeral:
+            message = await self.interaction.response.send_message(content, file=file, files=files, **kwargs)
+        elif reply:
             db_user = await get_from_db(self.author, as_user=True)
-            try:
-                message = await super().reply(content, file=file, files=files, allowed_mentions=discord.AllowedMentions(replied_user=db_user.ping_friendly), **kwargs)
-            except discord.errors.HTTPException:
-                # Can't reply, probably that the message we are replying to was deleted.
+
+            if self.interaction:
+                # We can't respond to the interaction, but it's a button click,
+                # so the reply would reply to the message containing the button, which is probably not what we want.
+                # Instead, we'll mention the user in the text.
+
+                # Get the mention depending of if the user likes pings.
+                if db_user.ping_friendly:
+                    mention = self.author.mention
+                else:
+                    mention = f"{self.author.name}#{self.author.discriminator}"
+
+                # Patch the content to add a mention.
+                if content:
+                    content = mention + " > " + content
+                else:
+                    content = mention
+
+                # Then send the message normally.
                 message = await super().send(content, file=file, files=files, **kwargs)
+            else:
+                try:
+                    # Send a normal reply
+                    message = await super().reply(content, file=file, files=files, allowed_mentions=discord.AllowedMentions(replied_user=db_user.ping_friendly), **kwargs)
+                except discord.errors.HTTPException:
+                    # Can't reply, probably that the message we are replying to was deleted.
+                    # Just send the message instead.
+                    # TODO: Maybe add the replied user just like above.
+                    #       Not sure if the use-case makes sense here.
+                    message = await super().send(content, file=file, files=files, **kwargs)
         else:
             message = await super().send(content, file=file, files=files, **kwargs)
 
         # Message deletion if source is deleted
-        if delete_on_invoke_removed:
+        # Except if the message was only shown to the user.
+        if delete_on_invoke_removed and not send_as_ephemeral:
             asyncio.ensure_future(delete_messages_if_message_removed(self.bot, self.message, message))
 
         return message
