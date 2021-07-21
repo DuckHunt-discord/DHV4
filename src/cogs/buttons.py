@@ -2,6 +2,7 @@ import discord
 from discord import ButtonStyle
 from discord.ext import commands
 
+from utils import checks
 from utils.bot_class import MyBot
 from utils.checks import needs_access_level
 from utils.cog_class import Cog
@@ -17,7 +18,7 @@ DAY = 24 * HOUR
 
 
 class GamepadView(View):
-    def __init__(self, bot: MyBot):
+    def __init__(self, bot: MyBot, _=lambda s: s):
         super().__init__(bot)
 
         bang_command = bot.get_command("bang")
@@ -27,12 +28,12 @@ class GamepadView(View):
         shop_mag_command = bot.get_command("shop magazine")
         shop_clover_command = bot.get_command("shop clover")
 
-        self.add_item(CommandButton(bot, bang_command, [], {'target': None}, custom_id="gamepad_bang", row=0, label='🔫 Bang', style=discord.ButtonStyle.red))
-        self.add_item(CommandButton(bot, hug_command, [], {'target': None}, custom_id="gamepad_hug", row=0, label='🤗 Hug', style=discord.ButtonStyle.green))
-        self.add_item(CommandButton(bot, reload_command, [], {}, custom_id="gamepad_reload", row=1, label='♻️ Reload', style=discord.ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_mag_command, [], {}, custom_id="gamepad_magazine", row=2, label='Buy magazine', style=discord.ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_bul_command, [], {}, custom_id="gamepad_bullet", row=2, label='Buy a bullet', style=discord.ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_clover_command, [], {}, custom_id="gamepad_clover", row=2, label='🍀 Buy a clover', style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, bang_command, [], {'target': None}, custom_id="gamepad_bang", row=0, label=_('🔫 Bang'), style=discord.ButtonStyle.red))
+        self.add_item(CommandButton(bot, hug_command, [], {'target': None}, custom_id="gamepad_hug", row=0, label=_('🤗 Hug'), style=discord.ButtonStyle.green))
+        self.add_item(CommandButton(bot, reload_command, [], {}, custom_id="gamepad_reload", row=1, label=_('♻️ Reload'), style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_mag_command, [], {}, custom_id="gamepad_magazine", row=2, label=_('Buy a magazine'), style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_bul_command, [], {}, custom_id="gamepad_bullet", row=2, label=_('Buy a bullet'), style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_clover_command, [], {}, custom_id="gamepad_clover", row=2, label=_('🍀 Buy a clover'), style=discord.ButtonStyle.blurple))
 
 
 class Buttons(Cog):
@@ -69,9 +70,10 @@ class Buttons(Cog):
         await nitro_prank(ctx)
 
     @commands.command(hidden=True)
-    @needs_access_level(AccessLevel.BOT_OWNER)
+    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.MODERATOR)
     async def gamepad(self, ctx: MyContext):
-        await GamepadView(self.bot).send(ctx)
+        await GamepadView(self.bot, await ctx.get_translate_function()).send(ctx)
 
 
 setup = Buttons.setup
