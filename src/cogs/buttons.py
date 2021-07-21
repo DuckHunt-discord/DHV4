@@ -23,10 +23,16 @@ class GamepadView(View):
         bang_command = bot.get_command("bang")
         hug_command = bot.get_command("hug")
         reload_command = bot.get_command("reload")
+        shop_bul_command = bot.get_command("shop bullet")
+        shop_mag_command = bot.get_command("shop magazine")
+        shop_clover_command = bot.get_command("shop clover")
 
         self.add_item(CommandButton(bot, bang_command, [], {'target': None}, custom_id="gamepad_bang", row=0, label='🔫 Bang', style=discord.ButtonStyle.red))
         self.add_item(CommandButton(bot, hug_command, [], {'target': None}, custom_id="gamepad_hug", row=0, label='🤗 Hug', style=discord.ButtonStyle.green))
         self.add_item(CommandButton(bot, reload_command, [], {}, custom_id="gamepad_reload", row=1, label='♻️ Reload', style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_mag_command, [], {}, custom_id="gamepad_magazine", row=2, label='Buy magazine', style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_bul_command, [], {}, custom_id="gamepad_bullet", row=2, label='Buy a bullet', style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_clover_command, [], {}, custom_id="gamepad_clover", row=2, label='🍀 Buy a clover', style=discord.ButtonStyle.blurple))
 
 
 class Buttons(Cog):
