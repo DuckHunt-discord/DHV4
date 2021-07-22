@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-07-13 14:09+0200\n"
+"POT-Creation-Date: 2021-07-21 21:19+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -1262,6 +1262,24 @@ msgstr "Вы можете проголосовать на {bl_name}."
 
 msgid "You might be able to vote on {bl_name}"
 msgstr "Возможно, вы можете проголосовать на {bl_name}."
+
+msgid "🔫 Bang"
+msgstr ""
+
+msgid "🤗 Hug"
+msgstr ""
+
+msgid "♻️ Reload"
+msgstr ""
+
+msgid "Buy a magazine"
+msgstr ""
+
+msgid "Buy a bullet"
+msgstr ""
+
+msgid "🍀 Buy a clover"
+msgstr ""
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr ""
