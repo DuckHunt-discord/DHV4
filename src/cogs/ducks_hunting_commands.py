@@ -55,9 +55,17 @@ class DucksHuntingCommands(Cog):
         if db_hunter.is_powerup_active("dead"):
             db_hunter.shooting_stats['shots_when_dead'] += 1
             await db_hunter.save()
-            await ctx.reply(_("☠️ It's a little cold in there... Maybe because **you are DEAD**! have you tried eating BRAINS ? `{ctx.prefix}revive`...",
-                              ctx=ctx,
-                              ))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="revive",
+                label="Eat some brains",
+                style=ButtonStyle.blurple,
+            ).send(
+                ctx,
+                content=_("☠️ It's a little cold in there... Maybe because **you are DEAD**! "
+                          "Have you tried eating BRAINS? `{ctx.prefix}revive`...",ctx=ctx),
+                reference=ctx.message
+            )
             return False
 
         if db_hunter.is_powerup_active('wet'):
@@ -65,17 +73,35 @@ class DucksHuntingCommands(Cog):
             await db_hunter.save()
 
             td = get_timedelta(db_hunter.active_powerups['wet'], now)
-            await ctx.reply(_("🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) or something, or buy new ones (`{ctx.prefix}shop clothes`)",
-                              ctx=ctx,
-                              time_delta=format_timedelta(td, locale=language_code)))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="shop clothes",
+                label="Buy new clothes (7xp)",
+                style=ButtonStyle.blurple,
+            ).send(
+                ctx,
+                content=_("🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) or something, "
+                          "or buy new ones (`{ctx.prefix}shop clothes`)",
+                          ctx=ctx, time_delta=format_timedelta(td, locale=language_code)),
+                reference=ctx.message
+            )
             return False
 
         if db_hunter.is_powerup_active("confiscated"):
             db_hunter.shooting_stats['shots_when_confiscated'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
-                              ctx=ctx))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="shop weapon",
+                label="Buy back weapon (30xp)",
+                style=ButtonStyle.blurple,
+            ).send(
+                ctx,
+                content=_("⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx.prefix}freetime`), "
+                          "or buy it back in the shop (`{ctx.prefix}shop weapon`)", ctx=ctx),
+                reference=ctx.message
+            )
             return False
 
         sabotage = db_hunter.weapon_sabotaged_by
@@ -126,9 +152,19 @@ class DucksHuntingCommands(Cog):
                 else:
                     db_hunter.shooting_stats['failed_autoreloads'] += 1
                     await db_hunter.save()
-                    await ctx.reply(_("🦉 Backpack empty ! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: 0/{max_magazines} [**Autoreload failed**]",
-                                      max_bullets=level_info['bullets'],
-                                      max_magazines=level_info['magazines'],))
+                    await CommandView(
+                        self.bot,
+                        command_to_be_ran="shop magazine",
+                        label="Buy magazine (13xp)",
+                        style=ButtonStyle.blurple,
+                    ).send(
+                        ctx,
+                        content=_("🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | "
+                                  "Magazines: 0/{max_magazines} [**Autoreload failed**]",
+                                  max_bullets=level_info['bullets'],
+                                  max_magazines=level_info['magazines'],),
+                        reference=ctx.message
+                    )
                     return False
             else:
                 db_hunter.shooting_stats['shots_with_empty_magazine'] += 1
@@ -442,9 +478,17 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1
             await db_hunter.save()
 
-            await ctx.reply(_("Huh... You don't have a weapon, it has been confiscated. "
-                              "Wait for freetime (`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)",
-                              ctx=ctx))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="shop weapon",
+                label="Buy back weapon (30xp)",
+                style=ButtonStyle.blurple,
+            ).send(
+                ctx,
+                content=_("Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
+                          "(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)", ctx=ctx),
+                reference=ctx.message
+            )
             return False
 
         if db_hunter.is_powerup_active('jammed'):
@@ -482,12 +526,21 @@ class DucksHuntingCommands(Cog):
         elif db_hunter.magazines <= 0:
             db_hunter.shooting_stats['empty_reloads'] += 1
             await db_hunter.save()
-            await ctx.reply(_("🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | "
-                              "Bullets: {current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/{max_magazines} ",
-                              current_bullets=db_hunter.bullets,
-                              max_bullets=level_info["bullets"],
-                              current_magazines=db_hunter.magazines,
-                              max_magazines=level_info["magazines"]))
+            await CommandView(
+                self.bot,
+                command_to_be_ran="shop magazine",
+                label="Buy magazine (13xp)",
+                style=ButtonStyle.blurple,
+            ).send(
+                ctx,
+                content=_("🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | "
+                          "Bullets: {current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/{max_magazines} ",
+                          current_bullets=db_hunter.bullets,
+                          max_bullets=level_info["bullets"],
+                          current_magazines=db_hunter.magazines,
+                          max_magazines=level_info["magazines"]),
+                reference=ctx.message
+            )
             return False
 
     @commands.command()
