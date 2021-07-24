@@ -61,6 +61,9 @@ class Buttons(Cog):
     @commands.command(hidden=True)
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def create_command_button(self, ctx: MyContext, *, command_name: str):
+        """
+        Create a Command view for a given command.
+        """
         await CommandView(self.bot, command_to_be_ran=command_name, label=command_name, style=ButtonStyle.blurple).send(ctx)
 
     @commands.command(hidden=True)
@@ -73,6 +76,9 @@ class Buttons(Cog):
     @checks.channel_enabled()
     @needs_access_level(AccessLevel.MODERATOR)
     async def gamepad(self, ctx: MyContext):
+        """
+        Create a GamePadView to allow playing the game with buttons.
+        """
         await GamepadView(self.bot, await ctx.get_translate_function()).send(ctx)
 
 
