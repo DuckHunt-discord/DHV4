@@ -2,9 +2,11 @@
   "extends": [
     "config:base",
     ":assignee(paris-ci)",
-    ":automergeBranch",
-    ":automergeDigest",
     ":automergeMinor",
+    ":dependencyDashboard",
+    ":automergePr",
+    ":prImmediately",
+    ":rebaseStalePrs",
     ":disableRateLimiting",
     ":label(🤖 Automatic)"
   ],
