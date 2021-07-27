@@ -1,4 +1,4 @@
-jishaku==2.1.0
+jishaku==2.2.0
 toml==0.10.2
 uvloop==0.15.3
 parsedatetime==2.6
