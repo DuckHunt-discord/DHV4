@@ -99,7 +99,7 @@ class Community(Cog):
                     if not match_guild:
                         continue
 
-                    match_channel = match_guild.get_channel(match_channel_id)
+                    match_channel = match_guild.get_channel(match_channel_id) or match_guild.get_thread(match_channel_id)
 
                     if not match_channel:
                         continue
