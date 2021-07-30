@@ -22,67 +22,67 @@ msgstr ""
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
-msgstr ""
+msgstr "Pozvi niekoho na beta server, aby mohli skúsiť bota skôr ako ostatní "
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "Vystrel po kačke ktorá sa prvá objavila v kanáli."
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "Prebi si zbraň."
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr ""
+msgstr "Objími kačku ktorá sa prvá ukázala v kanali."
 
 msgid "Revive yourself by eating brains"
-msgstr ""
+msgstr "Oživ sa jedením mozgov "
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "Spawnne náhodnú kačku "
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
-msgstr ""
+msgstr "Spawnne viac kačiek, z toho (aspoň) jedna je mechanická "
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "Spawnne normálnu kačku "
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "Spawnne super kačku "
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "Spawnne káčatko "
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "Spawnne kačku profesora."
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
-msgstr ""
+msgstr "Spawnne kačku ducha. Samozrejme, spawn správa sa neukáže."
 
 msgid "Spawns a MOAD."
-msgstr ""
+msgstr "Spawnne MOAD."
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
-msgstr ""
+msgstr "Spawnne obrnenú kačku, táto kačku odmietne väčšinu 1 dmg útokov."
 
 msgid "Spawns a golden duck."
-msgstr ""
+msgstr "Spawnne zlatú kačku."
 
 msgid "Spawns a plastic duck."
-msgstr ""
+msgstr "Spawnne plastovú kačku."
 
 msgid "Spawns a kamikaze duck."
-msgstr ""
+msgstr "Spawnne kamikadze kačku."
 
 msgid "Spawns a night duck."
-msgstr ""
+msgstr "Spawnne nočnú kačku."
 
 msgid "Spawns a sleeping duck."
-msgstr ""
+msgstr "Spawnne spiacu kačku."
 
 msgid "Show ducks currently on the channel"
-msgstr ""
+msgstr "Ukáže kačice momentálne v kanáli "
 
 msgid "Removes all ducks from the channel"
-msgstr ""
+msgstr "Odstráni všetky kačice z kanálu "
 
 msgid ""
 "Alias for dh!landmine shop landmine, so that you can just type dh!place "
