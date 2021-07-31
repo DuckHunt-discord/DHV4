@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.9
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -36,7 +36,7 @@ WORKDIR /duckhunt/src/
 
 # Compile messages catalogs
 #RUN pybabel compile -d locales/
-RUN for dirr in ./locales/*/LC_MESSAGES/ ; do msgfmt ${dirr}messages.po -o ${dirr}messages.mo ; echo ${dirr} compiled; done
+RUN for dirr in ./locales/*/LC_MESSAGES/ ; do msgfmt "${dirr}messages.po" -o "${dirr}messages.mo" ; echo "${dirr} compiled"; done
 
 ENTRYPOINT ["sh"]
 CMD ["/duckhunt/docker_run.sh"]
