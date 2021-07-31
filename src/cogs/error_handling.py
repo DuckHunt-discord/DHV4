@@ -167,6 +167,18 @@ class CommandErrorHandler(Cog):
                     else:
                         return
 
+                elif isinstance(exception, checks.LandminesDisabled):
+                    db_guild = await get_from_db(ctx.guild)
+
+                    if db_guild.channel_disabled_message:
+                        message = _(
+                            "Landmines commands cannot be ran on this channel. "
+                            "Admins can disable this message by running `dh!settings channel_disabled_message False`, "
+                            "or can enable the channel with `dh!settings landmines_commands_enabled True`.",
+                            exception=exception)
+                    else:
+                        return
+
                 elif isinstance(exception, checks.BotIgnore):
                     return
                 else:

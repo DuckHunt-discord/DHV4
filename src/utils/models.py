@@ -221,6 +221,9 @@ class DiscordChannel(Model):
     use_emojis = fields.BooleanField(default=True)
     enabled = fields.BooleanField(default=False)
 
+    landmines_commands_enabled = fields.BooleanField(default=False)  # Can members run landmine commands here
+    landmines_enabled = fields.BooleanField(default=False)           # Do messages sent here count in the game ?
+
     anti_trigger_wording = fields.BooleanField(default=False)
 
     allow_global_items = fields.BooleanField(default=True)
@@ -433,18 +436,22 @@ def get_valid_words(message_content) -> typing.List[str]:
     words = []
 
     for word in set(cleaned_content.lower().split()):
-        if len(word) >= 3:
+        if 3 <= len(word) <= 40:
             words.append(word)
 
     return words
 
 
-class Event2021UserData(Model):
-    # See Inventory for why this isn't a OneToOneField.
-    landmines_bought: fields.ReverseRelation['Event2021Landmines']
-    landmines_stopped: fields.ReverseRelation['Event2021Landmines']
+class LandminesUserData(Model):
+    landmines_bought: fields.ReverseRelation['LandminesPlaced']
+    landmines_stopped: fields.ReverseRelation['LandminesPlaced']
 
-    user_id = fields.BigIntField(pk=True)
+    # This is waiting for a fix of https://github.com/tortoise/tortoise-orm/issues/822
+    # member: fields.ForeignKeyRelation["DiscordMember"] = \
+    #     fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE, pk=True)
+
+    member_id = fields.BigIntField(pk=True)
+
 
     # General statistics
     first_played = fields.DatetimeField(auto_now_add=True)
@@ -481,15 +488,14 @@ class Event2021UserData(Model):
             return False
 
     def __str__(self):
-        return f"@{self.user_id} 2021 event data"
+        return f"@{self.member_id} landmines data"
 
     class Meta:
-        table = 'event2021userdata'
+        table = 'landmines_userdata'
 
 
-class Event2021Landmines(Model):
-    placed_by = fields.ForeignKeyField('models.Event2021UserData', related_name='landmines_bought',
-                                      on_delete=fields.CASCADE)
+class LandminesPlaced(Model):
+    placed_by = fields.ForeignKeyField('models.LandminesUserData', related_name='landmines_bought', on_delete=fields.CASCADE)
 
     placed = fields.DatetimeField(auto_now_add=True)
     word = fields.CharField(max_length=50)
@@ -501,14 +507,14 @@ class Event2021Landmines(Model):
     tripped = fields.BooleanField(default=False)
     disarmed = fields.BooleanField(default=False)
 
-    stopped_by = fields.ForeignKeyField('models.Event2021UserData', null=True, blank=True, on_delete=fields.SET_NULL,
+    stopped_by = fields.ForeignKeyField('models.LandminesUserData', null=True, blank=True, on_delete=fields.SET_NULL,
                                         related_name='landmines_stopped')
     stopped_at = fields.DatetimeField(null=True)
 
     def base_value(self) -> int:
         return self.value * len(self.word)
 
-    def value_for(self, db_target: Event2021UserData) -> int:
+    def value_for(self, db_target: LandminesUserData) -> int:
         base_value = self.base_value()
 
         current_points = db_target.points_current
@@ -523,10 +529,10 @@ class Event2021Landmines(Model):
         return max(10, int(beginner_value))
 
     def __str__(self):
-        return f"{self.placed_by.user_id} 2021 event landmine on {self.word} for {self.value}"
+        return f"{self.placed_by.member_id} landmine on {self.word} for {self.value}"
 
     class Meta:
-        table = 'event2021landmines'
+        table = 'landmines_placed'
 
 
 class UserInventory(Model):
@@ -952,6 +958,8 @@ class Player(Model):
 
 
 class DiscordMember(Model):
+    landmines: fields.ReverseRelation['LandminesUserData']
+
     id = fields.IntField(pk=True)
     guild: fields.ForeignKeyRelation[DiscordGuild] = \
         fields.ForeignKeyField('models.DiscordGuild',
@@ -1229,25 +1237,31 @@ async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, disco
     return inventory
 
 
-async def get_user_eventdata(user: typing.Union[DiscordUser, discord.User, discord.Member]) -> Event2021UserData:
-    if not isinstance(user, DiscordUser):
-        db_user = await get_from_db(user, as_user=True)
+async def get_member_landminesdata(member: typing.Union[DiscordMember, discord.Member]) -> LandminesUserData:
+    if not isinstance(member, DiscordMember):
+        db_member = await get_from_db(member)
     else:
-        db_user = user
+        db_member = member
 
-    async with DB_LOCKS[(db_user, )]:
-        eventdata, created = await Event2021UserData.get_or_create(user_id=db_user.discord_id)
+    async with DB_LOCKS[(db_member, )]:
+        eventdata, created = await LandminesUserData.get_or_create(member_id=db_member.pk)
 
     return eventdata
 
 
-async def get_landmine(message_content: str) -> typing.Optional[Event2021Landmines]:
+async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message_content: str) -> typing.Optional[LandminesPlaced]:
+    if not isinstance(guild, DiscordGuild):
+        db_guild = await get_from_db(guild)
+    else:
+        db_guild = guild
+
     words = get_valid_words(message_content)
     if words:
-        return await Event2021Landmines\
+        return await LandminesPlaced\
             .filter(tripped=False, disarmed=False)\
             .order_by('placed')\
             .filter(word__in=words)\
+            .filter(placed_by__member__guild=db_guild)\
             .first()
     else:
         return None

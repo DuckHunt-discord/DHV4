@@ -1323,6 +1323,48 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("{target.mention} now has a access of {level.name}.", level=level, target=target))
 
+    # Landmines settings #
+
+    @settings.command(aliases=["landmines_enable", "landmines_disabled", "landmines_disable", "landmines_on", "landmines_off"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def landmines_enabled(self, ctx: MyContext, value: bool = None):
+        """
+        Allow the landmines game to take place here.
+
+        This means that messages sent here will award points, and mines can be stpped on here.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if value is not None:
+            db_channel.landmines_enabled = value
+            await db_channel.save()
+
+        if db_channel.landmines_enabled:
+            await ctx.send(_("The landmines game is enabled in {channel.mention}, users can trip on landmines and earn points here.", channel=ctx.channel))
+        else:
+            await ctx.send(_("The landmines game is disabled in {channel.mention}, users can't trip on landmines and earn points here.", channel=ctx.channel))
+
+    @settings.command(aliases=["landmines_commands_enable", "landmines_commands_disabled", "landmines_commands_disable", "landmines_commands_on", "landmines_commands_off"])
+    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    async def landmines_commands_enabled(self, ctx: MyContext, value: bool = None):
+        """
+        Allow landmines commands to be ran in this channel.
+
+        This is useful to limit defuses, stats and more to a selected channel.
+        """
+        db_channel = await get_from_db(ctx.channel)
+        _ = await ctx.get_translate_function()
+
+        if value is not None:
+            db_channel.landmines_commands_enabled = value
+            await db_channel.save()
+
+        if db_channel.landmines_commands_enabled:
+            await ctx.send(_("Members can run landmines commands in {channel.mention}.", channel=ctx.channel))
+        else:
+            await ctx.send(_("Members can't run landmines commands in {channel.mention}", channel=ctx.channel))
+
     # User settings #
 
     @settings.command(aliases=["ping_friendly", "i_luv_pings", "pings", "my_pings", "my_ping"])

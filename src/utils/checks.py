@@ -34,6 +34,10 @@ class ChannelDisabled(commands.CheckFailure):
     """Exception raised when the channel wasn't enabled."""
 
 
+class LandminesDisabled(commands.CheckFailure):
+    """Exception raised when the channel wasn't enabled."""
+
+
 def is_in_server(must_be_in_guild_id):
     def predicate(ctx):
         if not ctx.guild:
@@ -78,3 +82,19 @@ def channel_enabled():
 
     # noinspection PyTypeChecker
     return commands.check(predictate)
+
+
+def landmines_commands_enabled():
+    async def predictate(ctx):
+        if ctx.guild:
+            db_channel = await get_from_db(ctx.channel)
+            if db_channel.landmines_commands_enabled:
+                return True
+            else:
+                raise LandminesDisabled()
+        else:
+            return True
+
+    # noinspection PyTypeChecker
+    return commands.check(predictate)
+

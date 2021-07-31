@@ -13,9 +13,9 @@ commands_are_case_insensitive = true
 enable = true
 host = "127.0.0.1"
 port = "5432"
-user = "mybot"
-password = "mybot"
-database = "mybot"
+user = "duckhunt"
+password = "duckhunt"
+database = "duckhunt"
 
 [duckhunt_public_log]
 server_id = 734810932529856652
@@ -47,7 +47,7 @@ cogs_to_load = ['cogs.error_handling',
                 'cogs.duck_boss',
                 'cogs.prestige_commands',
                 'cogs.bots_list_and_voting',
-                'cogs.event2021',
+                'cogs.landmines',
                 'cogs.rest_api',
                 'cogs.buttons',
                 'cogs.help_command',
@@ -96,18 +96,6 @@ allowed_in_guilds = [
 [cogs.BotsListVoting]
 statcord_token = "abcdef"
 
-[cogs.Event2021]
-# That's the ID of the server where the event will be enabled
-server_id = 195260081036591104
-scoreboard_channel_id = 852285234438471720
-commands_channel_id = 852285369553780756
-enabled_on = [
-    852285369553780756,
-    195260081036591104,
-    441204489882435595,
-    698797845334982676,
-    750786468422615140,
-]
 
 [random_ducks]
 assets_path = 'assets/Random Ducks'
