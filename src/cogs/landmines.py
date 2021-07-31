@@ -19,7 +19,7 @@ def _(message):
 
 
 class Event2021(Cog):
-    display_name = _("Event: landmines")
+    display_name = _("Landmines")
     help_priority = 9
     help_color = 'primary'
 
@@ -244,7 +244,7 @@ class Event2021(Cog):
             member = ctx.author
         else:
             try:
-                member = guild.fetch_member(ctx.author.id)
+                member = await guild.fetch_member(ctx.author.id)
             except HTTPException:
                 await ctx.author.send(_("❌ You aren't in that guild."))
                 return
@@ -383,12 +383,12 @@ class Event2021(Cog):
         stats_embed = discord.Embed(colour=discord.Colour.dark_green(),
                                     title=_("Landmines statistics"))
 
-        players_count = await models.LandminesUserData.all().filter(member__guild=db_guild).count()
+        players_count = await models.LandminesFilterUserData.all().filter(member__guild=db_guild).count()
         total_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).count()
         current_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).count()
         biggest_mine = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).order_by('-value').first()
 
-        negatives_count = await models.LandminesUserData \
+        negatives_count = await models.LandminesFilterUserData \
             .filter(points_current__lte=0) \
             .filter(member__guild=db_guild) \
             .count()
@@ -407,7 +407,7 @@ class Event2021(Cog):
         top_embed = discord.Embed(colour=discord.Colour.blurple(),
                                   title=_("Event scoreboard"))
 
-        top_players = await models.LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
+        top_players = await models.LandminesFilterUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
 
         for i, top_player in enumerate(top_players):
             top_member = await top_player.member

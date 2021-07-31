@@ -447,10 +447,8 @@ class LandminesUserData(Model):
     landmines_stopped: fields.ReverseRelation['LandminesPlaced']
 
     # This is waiting for a fix of https://github.com/tortoise/tortoise-orm/issues/822
-    # member: fields.ForeignKeyRelation["DiscordMember"] = \
-    #     fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE, pk=True)
-
-    member_id = fields.BigIntField(pk=True)
+    member: fields.ForeignKeyRelation["DiscordMember"] = \
+        fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE)
 
 
     # General statistics
@@ -488,7 +486,7 @@ class LandminesUserData(Model):
             return False
 
     def __str__(self):
-        return f"@{self.member_id} landmines data"
+        return f"@{self.member} landmines data"
 
     class Meta:
         table = 'landmines_userdata'
@@ -582,7 +580,6 @@ class DiscordUser(Model):
     support_tickets: fields.ReverseRelation[SupportTicket]
     closed_tickets: fields.ReverseRelation[SupportTicket]
     # inventory: fields.OneToOneRelation[UserInventory]
-
 
     members: fields.ReverseRelation["DiscordMember"]
 
