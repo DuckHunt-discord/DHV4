@@ -536,10 +536,10 @@ class LandminesPlaced(Model):
 
 
 class UserInventory(Model):
-    # Okay, tortoise suck big time on this
+    # There is another bug in tortoise preventing this.
     # But you can't add a primary key on a ForeignKey like you can in django
     # Or you won't be able to save the model
-    # So, until they fix https://github.com/tortoise/tortoise-orm/issues/443,
+    # So, until they fix https://github.com/tortoise/tortoise-orm/issues/822
     # I'm defining the field as a BigIntField which should hopefully fix the save issues
     # But we will loose all the fk goodness such as prefetching, CASCADING, ...
     # Welp.
