@@ -448,7 +448,7 @@ class LandminesUserData(Model):
 
     # This is waiting for a fix of https://github.com/tortoise/tortoise-orm/issues/822
     member: fields.ForeignKeyRelation["DiscordMember"] = \
-        fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE)
+        fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE, pk=True)
 
 
     # General statistics
