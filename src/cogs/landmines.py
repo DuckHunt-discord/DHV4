@@ -143,7 +143,7 @@ class Event2021(Cog):
     @checks.landmines_commands_enabled()
     async def event(self, ctx: MyContext):
         """
-        This command group contains all commends related to the 2021 "Landmines" event on the DuckHunt server.
+        This command group contains all commands related to the 2021 "Landmines" event on the DuckHunt server.
 
         Go see Warlord in the shop.
         """

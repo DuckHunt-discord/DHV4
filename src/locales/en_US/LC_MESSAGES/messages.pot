@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-08-01 13:22+0200\n"
+"POT-Creation-Date: 2021-08-01 13:42+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -206,7 +206,7 @@ msgstr ""
 
 #: ../cogs/landmines.py:145
 msgid ""
-"This command group contains all commends related to the 2021 \"Landmines\" "
+"This command group contains all commands related to the 2021 \"Landmines\" "
 "event on the DuckHunt server.\n"
 "\n"
 "Go see Warlord in the shop."
