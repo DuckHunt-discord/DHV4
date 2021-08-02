@@ -729,7 +729,11 @@ class PrivateMessagesSupport(Cog):
             support_pages.other = dm_pages
 
             await support_pages.start(ctx)
-            await dm_pages.start(ctx, channel=await user.create_dm())
+            try:
+                await dm_pages.start(ctx, channel=await user.create_dm())
+            except discord.Forbidden as e:
+                _ = await ctx.get_translate_function()
+                await ctx.reply(_("❌ Can't send a message to this user: {e}.", e=e))
         else:
             _ = await ctx.get_translate_function()
             await ctx.reply(_("❌ There is no tag with that name."))
