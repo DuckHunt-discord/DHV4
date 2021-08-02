@@ -143,9 +143,7 @@ class Event2021(Cog):
     @checks.landmines_commands_enabled()
     async def event(self, ctx: MyContext):
         """
-        This command group contains all commands related to the 2021 "Landmines" event on the DuckHunt server.
-
-        Go see Warlord in the shop.
+        This command group contains all commands related to "Landmines" game.
         """
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
@@ -157,56 +155,56 @@ class Event2021(Cog):
         """
         View your event statistics.
         """
+        _ = await ctx.get_translate_function()
         if target is None:
             target = ctx.author
 
         if not await self.user_can_play(target):
-            await ctx.reply("They can't play the game :(")
+            await ctx.reply(_("They can't play the game :("))
 
         db_target = await models.get_member_landminesdata(target)
 
         embed = discord.Embed(
-            title=f"{target.name} event statistics",
+            title=_("{target.name} event statistics", target=target),
             colour=discord.Color.green()
         )
-        embed.description = "The most important currency in the game are the points, which are used in the shop to buy " \
-                            "stuff. The available points show how many ponts you have and how many you acquired in " \
-                            "total.\n" \
-                            "You can get points by sending (long) messages. Some shop items may help you get more. " \
-                            "Be careful not to spam, server rules **still apply** during the event. " \
-                            "At the end of the game, the player having the greater amount of points will win."
+        embed.description = _("The most important currency in the game are the points, which are used in the shop to buy "
+                              "stuff. The available points show how many ponts you have and how many you acquired in "
+                              "total.\n"
+                              "You can get points by sending (long) messages. Some shop items may help you get more. "
+                              "Be careful not to spam, server rules **still apply** during the event. "
+                              "At the end of the game, the player having the greater amount of points will win.")
 
-        embed.add_field(name="Available", value=f"{db_target.points_current} points",
+        embed.add_field(name=_("Available"), value=_("{db_target.points_current} points", db_target=db_target),
                         inline=False)
 
-        embed.add_field(name="Messages sent", value=f"{db_target.messages_sent} ({db_target.words_sent} words)",
+        embed.add_field(name=_("Messages sent"), value=_("{db_target.messages_sent} ({db_target.words_sent} words)", db_target=db_target),
                         inline=False)
 
         if db_target.points_won:
-            embed.add_field(name="Points won by landmines", value=f"{db_target.points_won} points",
+            embed.add_field(name=_("Points won by landmines"), value=_("{db_target.points_won} points", db_target=db_target),
                             inline=True)
 
         if db_target.points_recovered:
-            embed.add_field(name="Points recovered by defusing landmines", value=f"{db_target.points_recovered} points",
+            embed.add_field(name=_("Points recovered by defusing landmines"), value=_("{db_target.points_recovered} points", db_target=db_target),
                             inline=True)
 
         if db_target.points_acquired:
-            embed.add_field(name="Points acquired by talking", value=f"{db_target.points_acquired} points",
+            embed.add_field(name=_("Points acquired by talking"), value=_("{db_target.points_acquired} points", db_target=db_target),
                             inline=True)
 
         if db_target.points_exploded:
-            embed.add_field(name="Points exploded by stepping on mines", value=f"{db_target.points_exploded} points",
+            embed.add_field(name=_("Points exploded by stepping on mines"), value=_("{db_target.points_exploded} points", db_target=db_target),
                             inline=True)
 
         if db_target.points_spent:
-            embed.add_field(name="Points spent in the shop", value=f"{db_target.points_spent} points",
+            embed.add_field(name=_("Points spent in the shop"), value=_("{db_target.points_spent} points", db_target=db_target),
                             inline=True)
 
-        embed.set_footer(text="For more information, run the `dh!tag landmines` command.")
+        embed.set_footer(text=_("For more information on how to place a mine, run the `dh!lm landmines` command."))
         embed.set_author(name=str(target), icon_url=str(target.avatar.replace(format="jpg", size=256)))
 
         await ctx.reply(embed=embed)
-
 
     @event.command(aliases=["hl", "hlm", "hmine", "hlandmines"])
     @commands.guild_only()
