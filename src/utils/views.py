@@ -18,6 +18,9 @@ async def get_context_from_interaction(bot: MyBot, interaction: Interaction) -> 
     This might not work in DMs
     """
     fake_message = interaction.message
+
+    if fake_message is None:
+        fake_message = interaction.channel.last_message or await interaction.channel.fetch_message(interaction.channel.last_message_id)
     fake_message.author = interaction.user
 
     ctx = await bot.get_context(fake_message, cls=MyContext)
