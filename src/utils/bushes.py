@@ -2,6 +2,7 @@
 import time
 
 from utils.images import get_random_image
+from utils.models import DiscordMember, Player
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -122,8 +123,10 @@ class Silencer(BushObject):
     db = 'silencer'
     took_message = _('Searching the bushes around the duck, you found... **A new silencer**.')
 
-    async def give(self, db_channel, db_hunter):
+    async def give(self, db_channel, db_hunter: Player):
         db_hunter.active_powerups["silencer"] = int(time.time()) + DAY
+        if db_hunter.prestige >= 6:
+            db_hunter.active_powerups["silencer"] += DAY
         return True
 
 
