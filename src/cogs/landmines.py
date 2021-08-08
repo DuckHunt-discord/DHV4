@@ -397,6 +397,8 @@ class Event2021(Cog):
         stats_embed = discord.Embed(colour=discord.Colour.dark_green(),
                                     title=_("Landmines statistics"))
 
+        stats_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/"
+
         players_count = await models.LandminesUserData.all().filter(member__guild=db_guild).count()
         total_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).count()
         current_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).count()
@@ -422,6 +424,8 @@ class Event2021(Cog):
 
         top_embed = discord.Embed(colour=discord.Colour.blurple(),
                                   title=_("Event scoreboard"))
+        top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/"
+
 
         top_players = await models.LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
 
