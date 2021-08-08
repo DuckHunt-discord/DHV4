@@ -82,7 +82,7 @@ class Event2021(Cog):
             if landmine:
                 _ = await ctx.get_translate_function()
                 landmine.stopped_by = db_target
-                landmine.stopped_at = datetime.datetime.now(datetime.timezone.utc)
+                landmine.stopped_at = datetime.datetime.utcnow()
                 duration = landmine.stopped_at - landmine.placed
                 landmine.tripped = True
 
