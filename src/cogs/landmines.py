@@ -7,6 +7,7 @@ from babel.dates import format_timedelta
 from discord import HTTPException, Thread
 from discord.ext import commands, tasks
 from discord.ext.commands import MaxConcurrency, BucketType
+from tortoise import timezone
 
 from utils import models, checks
 from utils.bot_class import MyBot
@@ -82,7 +83,7 @@ class Event2021(Cog):
             if landmine:
                 _ = await ctx.get_translate_function()
                 landmine.stopped_by = db_target
-                landmine.stopped_at = datetime.datetime.utcnow()
+                landmine.stopped_at = timezone.now()
                 duration = landmine.stopped_at - landmine.placed
                 landmine.tripped = True
 
@@ -334,7 +335,7 @@ class Event2021(Cog):
             if landmine:
                 landmine.stopped_by = db_data
                 landmine.disarmed = True
-                landmine.stopped_at = datetime.datetime.utcnow()
+                landmine.stopped_at = timezone.now()
 
                 money_recovered = landmine.value
                 db_data.points_current -= 30
