@@ -347,19 +347,23 @@ class Event2021(Cog):
                 placed_by = await landmine.placed_by
                 placed_by_member = await placed_by.member
 
+                duration = landmine.stopped_at - landmine.placed
+
+                td = format_timedelta(duration, locale=await ctx.get_language_code())
+
                 if got_points > 0:
                     await ctx.reply(_("💰️ You used the defuse kit on `{landmine.word}`, and defused "
-                                      "<@{placed_by_member.user_id}> landmine, that has a `{landmine.value}` points value."
+                                      "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
                                       "You got {got_points} points, congratulations.",
                                       landmine=landmine, got_points=got_points, placed_by_member=placed_by_member),
-                                    delete_on_invoke_removed=False)
+                                    delete_on_invoke_removed=False, td=td)
                 else:
                     await ctx.reply(_("💸️ You used the defuse kit on `{landmine.word}`, and defused "
-                                      "<@{placed_by_member.user_id}> landmine, that has a `{landmine.value}` points value."
+                                      "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
                                       "You've lost {-got_points} points, because the value of the landmine was lower "
                                       "than the defuse kit price. Sorry!",
                                       landmine=landmine, got_points=got_points, placed_by_member=placed_by_member),
-                                    delete_on_invoke_removed=False)
+                                    delete_on_invoke_removed=False, td=td)
 
                 await landmine.save()
             else:
