@@ -35,6 +35,7 @@ class MyBot(AutoShardedBot):
         self.top_users = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
         self.shards_ready = set()
+        self.socket_stats = collections.Counter()
         self._client_session: Optional[aiohttp.ClientSession] = None
         self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
         self.enabled_channels: typing.Dict[discord.TextChannel, DucksLeft] = {}
@@ -45,7 +46,6 @@ class MyBot(AutoShardedBot):
 
         self.loop.run_until_complete(self.async_setup())
         self.logger.debug("End of init, bot object is ready")
-
 
     @property
     def client_session(self):
@@ -92,6 +92,9 @@ class MyBot(AutoShardedBot):
             self.logger.exception(f"Couldn't publish message to announcement channel: {e}. "
                                   f"Too many messages published recently ?")
             return False
+
+    async def on_socket_response(self, msg):
+        self.socket_stats[msg.get('t')] += 1
 
     async def on_message(self, message):
         if not self.is_ready():

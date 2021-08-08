@@ -1,7 +1,7 @@
 """
 Some example of commands that can be used only in the bot support server.
 """
-
+import asyncio
 import datetime
 import time
 
@@ -289,6 +289,14 @@ class SupportServerCommands(Cog):
             await db_user.save()
 
         await ctx.reply(f"User {user.name}#{user.discriminator} (`{user.id}`) updated.")
+
+    @manage_bot.command()
+    async def socketstats(self, ctx):
+        delta = discord.utils.utcnow() - self.bot.uptime
+        minutes = delta.total_seconds() / 60
+        total = sum(self.bot.socket_stats.values())
+        cpm = total / minutes
+        await ctx.send(f'{total} socket events observed ({cpm:.2f}/minute):\n{self.bot.socket_stats}')
 
 
 setup = SupportServerCommands.setup
