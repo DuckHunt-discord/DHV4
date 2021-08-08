@@ -48,12 +48,15 @@ class DuckBoss(Cog):
             description="React with 🔫 to kill it.",
         )
 
-        new_embed.set_image(url="https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png")
         new_embed.add_field(name="Health", value=f"{boss_life - bangs}/{boss_life}")
         if boss_message:
             time_delta = utcnow() - boss_message.created_at
+            old_embed = boss_message.embeds[0]
+            new_embed.set_image(url=old_embed.image.url)
             new_embed.set_footer(text=f"The boss spawned {format_timedelta(time_delta, locale='en_US')} ago")
         else:
+            new_embed.set_image(url=random.choice(["https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png",
+                                                   "https://media.discordapp.net/attachments/795225915248214036/873971254888108092/boss_llama_Calgeka.png"]))
             new_embed.set_footer(text=f"The boss just spawned")
 
         return new_embed
