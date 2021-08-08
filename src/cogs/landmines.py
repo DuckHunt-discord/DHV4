@@ -424,7 +424,7 @@ class Event2021(Cog):
 
         top_embed = discord.Embed(colour=discord.Colour.blurple(),
                                   title=_("Event scoreboard"))
-        top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/"
+        top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/?discord_embeds=sucks"
 
 
         top_players = await models.LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
