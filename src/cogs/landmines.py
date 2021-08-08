@@ -356,15 +356,15 @@ class Event2021(Cog):
                     await ctx.reply(_("💰️ You used the defuse kit on `{landmine.word}`, and defused "
                                       "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
                                       "You got {got_points} points, congratulations.",
-                                      landmine=landmine, got_points=got_points, placed_by_member=placed_by_member),
-                                    delete_on_invoke_removed=False, td=td)
+                                      landmine=landmine, got_points=got_points, placed_by_member=placed_by_member, td=td),
+                                    delete_on_invoke_removed=False)
                 else:
                     await ctx.reply(_("💸️ You used the defuse kit on `{landmine.word}`, and defused "
                                       "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
                                       "You've lost {-got_points} points, because the value of the landmine was lower "
                                       "than the defuse kit price. Sorry!",
-                                      landmine=landmine, got_points=got_points, placed_by_member=placed_by_member),
-                                    delete_on_invoke_removed=False, td=td)
+                                      landmine=landmine, got_points=got_points, placed_by_member=placed_by_member, td=td),
+                                    delete_on_invoke_removed=False)
 
                 await landmine.save()
             else:
