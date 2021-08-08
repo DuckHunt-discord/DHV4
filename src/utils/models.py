@@ -1208,6 +1208,9 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
 
             return db_obj
+        else:
+            obj_type_name = type(discord_object).__name__
+            print(f"Unknown object type passed to get_from_db <type:{obj_type_name}>, <obj:{discord_object}>")
 
 
 async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextChannel]):
