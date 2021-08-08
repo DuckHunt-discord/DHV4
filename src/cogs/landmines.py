@@ -4,7 +4,7 @@ from typing import Optional
 import babel.lists
 import discord
 from babel.dates import format_timedelta
-from discord import HTTPException
+from discord import HTTPException, Thread
 from discord.ext import commands, tasks
 from discord.ext.commands import MaxConcurrency, BucketType
 
@@ -35,6 +35,10 @@ class Event2021(Cog):
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
+        required_permissions = discord.Permissions(send_messages=True, read_messages=True,
+                                                   read_message_history=True, attach_files=True,
+                                                   )
+
         if not message.content:
             # Message has no text
             return
@@ -42,7 +46,16 @@ class Event2021(Cog):
         if not message.guild:
             return
 
-        db_channel = await models.get_from_db(message.channel)
+        if not message.channel.permissions_for(message.guild.me).is_superset(required_permissions):
+            # No perms
+            return
+
+        if isinstance(message.channel, Thread):
+            channel = message.channel.parent
+        else:
+            channel = message.channel
+
+        db_channel = await models.get_from_db(channel)
 
         if not db_channel.landmines_enabled:
             return
