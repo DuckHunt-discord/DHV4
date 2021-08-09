@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-07-21 21:19+0200\n"
+"POT-Creation-Date: 2021-08-02 20:55+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -17,6 +17,12 @@ msgstr "Gère les votes des utilisateurs pour top.gg."
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr "Envoie un lien pour voter pour DuckHunt sur les listes de bots."
+
+msgid "Create a Command view for a given command."
+msgstr ""
+
+msgid "Create a GamePadView to allow playing the game with buttons."
+msgstr ""
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -90,78 +96,6 @@ msgstr "Montre les canards actuellement présents sur le salon."
 
 msgid "Removes all ducks from the channel"
 msgstr "Retire tous les canards du salon."
-
-msgid ""
-"Alias for dh!landmine shop landmine, so that you can just type dh!place "
-"instead."
-msgstr ""
-"Alias pour l'utilisation de dh!landmine shop landmine, pour pouvoir taper "
-"dh!place à la place (heh)."
-
-msgid ""
-"Alias for dh!landmine shop defuse_kit, so that you can just type dh!defuse "
-"instead."
-msgstr ""
-"Alias pour l'utilisation de dh!landmine shop defuse_kit, pour pouvoir taper "
-"dh!defuse à la place."
-
-msgid ""
-"This command group contains all commends related to the 2021 \"Landmines\" "
-"event on the DuckHunt server.\n"
-"\n"
-"Go see Warlord in the shop."
-msgstr ""
-"Ce groupe de commandes contient toutes les commandes pour l'event 2021 des "
-"landmines (mines) sur le serveur DuckHunt.\n"
-"\n"
-"Allez voir Warlord dans son magasin."
-
-msgid "View your event statistics."
-msgstr "Affiche vos statistiques de l'event."
-
-msgid "Buy useful supplies from the Warlord shop."
-msgstr "Achète des objets utiles dans le magasin de Warlord."
-
-msgid ""
-"[THIS COMMAND WORKS IN DMs]\n"
-"Buy a landmine that will trigger on a specific word.\n"
-"\n"
-"A landmine has a value, at least greater than 2, that will be used to "
-"determine it's price and the damage done\n"
-"to the person that steps on it.\n"
-"The word must be at least 2 characters long, and must only contain letters. "
-"The steps are case-insensitive.\n"
-"The longer it is, the higher the power. An exploding landmine gives you the "
-"point damage, and half it's value\n"
-"back."
-msgstr ""
-"[CETTE COMMANDE MARCHE EN MESSAGE PRIVÉ]\n"
-"Achète une mine qui se lève sur un mot en particulier.\n"
-"\n"
-"Une mine a une valeur, au moins plus grande que 2, qui sera utilisée pour "
-"déterminer son prix et les dégâts transmis \n"
-"a la personne qui marchera dessus.\n"
-"Le mot doit être d'au moins 2 caractères de long, et ne contenir que des "
-"lettres. \n"
-"Les étapes sont insensibles a la casse.\n"
-"Le plus long le mot, plus l'explosion sera puissante. Quand une mine "
-"explose, elle vous donne la moitié de sa valeur et les dégâts infligés a "
-"l'autre joueur."
-
-msgid ""
-"Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
-"the landmine value, minus the price\n"
-"of the defuse kit (30 points). If you don't use it, you'll just have to pay "
-"a restocking fee of 15 points.\n"
-"\n"
-"You need at least 30 points to use one."
-msgstr ""
-"Achète un kit de désamorçage. En l'utilisant sur une phrase, vous "
-"récupérerez la valeur d'une mine présente sur la phrase, moins le prix du "
-"kit en lui même (30 points). Si le kit n'est pas utilisé, vous devrez juste "
-"payer des frais de restockage de 15 points.\n"
-"\n"
-"Vous avez besoin de 30 points pour acheter le kit."
 
 msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
@@ -266,6 +200,68 @@ msgstr "Donne quelque chose à un autre joueur."
 
 msgid "Use one of the items in your inventory."
 msgstr "Utilise l'un des items de ton inventaire"
+
+msgid ""
+"Alias for dh!landmine landmine, so that you can just type dh!place instead."
+msgstr ""
+
+msgid ""
+"Alias for dh!landmine defuse_kit, so that you can just type dh!defuse "
+"instead."
+msgstr ""
+
+msgid "This command group contains all commands related to \"Landmines\" game."
+msgstr ""
+
+msgid "View your event statistics."
+msgstr "Affiche vos statistiques de l'event."
+
+msgid "This command explains how to place a landmine"
+msgstr ""
+
+msgid ""
+"[THIS COMMAND WORKS IN DMs]\n"
+"Buy a landmine that will trigger on a specific word.\n"
+"\n"
+"A landmine has a value, at least greater than 2, that will be used to "
+"determine it's price and the damage done\n"
+"to the person that steps on it.\n"
+"The word must be at least 2 characters long, and must only contain letters. "
+"The steps are case-insensitive.\n"
+"The longer it is, the higher the power. An exploding landmine gives you the "
+"point damage, and half it's value\n"
+"back."
+msgstr ""
+"[CETTE COMMANDE MARCHE EN MESSAGE PRIVÉ]\n"
+"Achète une mine qui se lève sur un mot en particulier.\n"
+"\n"
+"Une mine a une valeur, au moins plus grande que 2, qui sera utilisée pour "
+"déterminer son prix et les dégâts transmis \n"
+"a la personne qui marchera dessus.\n"
+"Le mot doit être d'au moins 2 caractères de long, et ne contenir que des "
+"lettres. \n"
+"Les étapes sont insensibles a la casse.\n"
+"Le plus long le mot, plus l'explosion sera puissante. Quand une mine "
+"explose, elle vous donne la moitié de sa valeur et les dégâts infligés a "
+"l'autre joueur."
+
+msgid ""
+"Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
+"the landmine value, minus the price\n"
+"of the defuse kit (30 points). If you don't use it, you'll just have to pay "
+"a restocking fee of 15 points.\n"
+"\n"
+"You need at least 30 points to use one."
+msgstr ""
+"Achète un kit de désamorçage. En l'utilisant sur une phrase, vous "
+"récupérerez la valeur d'une mine présente sur la phrase, moins le prix du "
+"kit en lui même (30 points). Si le kit n'est pas utilisé, vous devrez juste "
+"payer des frais de restockage de 15 points.\n"
+"\n"
+"Vous avez besoin de 30 points pour acheter le kit."
+
+msgid "Show statistics about landmines on this server."
+msgstr ""
 
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
@@ -837,6 +833,19 @@ msgstr "Voir les permissions actuelles."
 
 msgid "Edit the current permissions for a specific user"
 msgstr "Modifier les permissions actuelles pour un utilisateur spécifique."
+
+msgid ""
+"Allow the landmines game to take place here.\n"
+"\n"
+"This means that messages sent here will award points, and mines can be "
+"stpped on here."
+msgstr ""
+
+msgid ""
+"Allow landmines commands to be ran in this channel.\n"
+"\n"
+"This is useful to limit defuses, stats and more to a selected channel."
+msgstr ""
 
 msgid "Set your preference on whether replies from the bot should ping you"
 msgstr "Indiquez si vous préférez que les réponses du bot vous mentionnent."
@@ -1418,11 +1427,9 @@ msgstr ""
 "réessayez. Les canards n'ont pas été perdus."
 
 msgid ""
-"☠️ It's a little cold in there... Maybe because **you are DEAD**! have you "
-"tried eating BRAINS ? `{ctx.prefix}revive`..."
+"☠️ It's a little cold in there... Maybe because **you are DEAD**! Have you "
+"tried eating BRAINS? `{ctx.prefix}revive`..."
 msgstr ""
-"☠️ Il fait un peu froid là-dedans... Peut-être parce que **vous êtes MORT** "
-"! Avez-vous essayé de manger des cerveaux ? `{ctx.prefix}revive`..."
 
 msgid ""
 "🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) "
@@ -1453,11 +1460,9 @@ msgstr ""
 "prefix}reload`)"
 
 msgid ""
-"🦉 Backpack empty ! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines:"
-" 0/{max_magazines} [**Autoreload failed**]"
+"🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: "
+"0/{max_magazines} [**Autoreload failed**]"
 msgstr ""
-"🦉 Sac a dos vide ! Achète des chargeurs ! | **Balles** : 0/{max_bullets} | "
-"Chargeurs : 0/{max_magazines} [**Echec du rechargement automatique**]"
 
 msgid ""
 "🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | "
@@ -1857,6 +1862,12 @@ msgstr ""
 "ce message avec `dh!settings channel_disabled_message False`, ou démarrer le "
 "jeu avec `dh!settings enabled True`."
 
+msgid ""
+"Landmines commands cannot be ran on this channel. Admins can disable this "
+"message by running `dh!settings channel_disabled_message False`, or can "
+"enable the channel with `dh!settings landmines_commands_enabled True`."
+msgstr ""
+
 msgid "Check error running this command: {err_data}"
 msgstr "Vérifiez l'erreur en exécutant cette commande : {err_data}"
 
@@ -1911,9 +1922,6 @@ msgstr ""
 "provient pas de CommandError, et n'est pas gérée par notre gestionnaire "
 "d'erreurs. Veuillez en informer le propriétaire du bot."
 
-msgid "Event: landmines"
-msgstr ""
-
 msgid "DuckHunt help"
 msgstr ""
 
@@ -1967,6 +1975,179 @@ msgid "❌ You can't use this item that many times."
 msgstr ""
 
 msgid "❌ You don't have that item."
+msgstr ""
+
+msgid "Landmines"
+msgstr ""
+
+msgid ""
+"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
+"<@{placed_by_member.user_id}>. It exploded, taking away **{explosion_value} "
+"points** from your account.\n"
+"\n"
+"<@{placed_by_member.user_id}> message:\n"
+"{message_text}"
+msgstr ""
+
+msgid ""
+"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
+"<@{placed_by_member.user_id}>. It exploded, taking away **{explosion_value} "
+"points** from your account.\n"
+"\n"
+msgstr ""
+
+msgid "They can't play the game :("
+msgstr ""
+
+msgid "{target.name} event statistics"
+msgstr ""
+
+msgid ""
+"The most important currency in the game are the points, which are used in "
+"the shop to buy stuff. The available points show how many ponts you have and "
+"how many you acquired in total.\n"
+"You can get points by sending (long) messages. Some shop items may help you "
+"get more. Be careful not to spam, server rules **still apply** during the "
+"event. At the end of the game, the player having the greater amount of "
+"points will win."
+msgstr ""
+
+msgid "Available"
+msgstr ""
+
+msgid "{db_target.points_current} points"
+msgstr ""
+
+msgid "Messages sent"
+msgstr ""
+
+msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
+msgstr ""
+
+msgid "Points won by landmines"
+msgstr ""
+
+msgid "{db_target.points_won} points"
+msgstr ""
+
+msgid "Points recovered by defusing landmines"
+msgstr ""
+
+msgid "{db_target.points_recovered} points"
+msgstr ""
+
+msgid "Points acquired by talking"
+msgstr ""
+
+msgid "{db_target.points_acquired} points"
+msgstr ""
+
+msgid "Points exploded by stepping on mines"
+msgstr ""
+
+msgid "{db_target.points_exploded} points"
+msgstr ""
+
+msgid "Points spent in the shop"
+msgstr ""
+
+msgid "{db_target.points_spent} points"
+msgstr ""
+
+msgid ""
+"For more information on how to place a mine, run the `dh!lm landmines` "
+"command."
+msgstr ""
+
+msgid ""
+"To place a landmine, send a DM to the bot with the following command: ```\n"
+"dh!landmine place {ctx.guild.id} your_mine_value your_mine_word "
+"a_message_to_send_when_the_mine_explodes\n"
+"```\n"
+"The value must be at least 50 points, and a word must be at least 3 "
+"characters long."
+msgstr ""
+
+msgid "❌ You aren't in that guild."
+msgstr ""
+
+msgid ""
+"❌ On what server do you want to place this landmine ? You need to add the "
+"Guild ID at the start of your command. See `dh!landmines landmine_how_to`"
+msgstr ""
+
+msgid "❌ A landmine must have a value higher than 50."
+msgstr ""
+
+msgid "❌ The message left on the landmine must be less than 1500 characters."
+msgstr ""
+
+msgid "❌ The word must only contain letters."
+msgstr ""
+
+msgid ""
+"❌ You don't have {value} points, you can't buy a landmine as powerful as "
+"this."
+msgstr ""
+
+msgid ""
+"💣️ You placed a landmine on `{word}` that can give you at most "
+"`{base_value}` points."
+msgstr ""
+
+msgid "❌ Please give (as much) valid words as you want to the defuse kit."
+msgstr ""
+
+msgid "❌ You don't have 30 points, so you can't buy a defuse kit."
+msgstr ""
+
+msgid ""
+"💰️ You used the defuse kit on `{landmine.word}`, and defused "
+"<@{placed_by_member.user_id}> landmine, that has a `{landmine.value}` points "
+"value.You got {got_points} points, congratulations."
+msgstr ""
+
+msgid ""
+"💸️ You used the defuse kit on `{landmine.word}`, and defused "
+"<@{placed_by_member.user_id}> landmine, that has a `{landmine.value}` points "
+"value.You've lost {-got_points} points, because the value of the landmine "
+"was lower than the defuse kit price. Sorry!"
+msgstr ""
+
+msgid ""
+"♻️️ You didn't use the defuse kit, and sold it back to the shop. You are "
+"sure that there isn't any mine on any of those words: \n"
+"```\n"
+"{words}\n"
+"```"
+msgstr ""
+
+msgid "Landmines statistics"
+msgstr ""
+
+msgid "Players tracked"
+msgstr ""
+
+msgid "Mines count"
+msgstr ""
+
+msgid "{current_mines_count} mines placed, {total_mines_count} created"
+msgstr ""
+
+msgid "Biggest active mine"
+msgstr ""
+
+msgid ""
+"Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
+msgstr ""
+
+msgid "Players in the negative"
+msgstr ""
+
+msgid "Event scoreboard"
+msgstr ""
+
+msgid "{points} points"
 msgstr ""
 
 msgid "Prestige"
@@ -2705,6 +2886,22 @@ msgstr "❌ {target.mention}, vous ne pouvez pas vous bannir !"
 
 msgid "{target.mention} now has a access of {level.name}."
 msgstr "{target.mention} a maintenant un accès équivalent à {level.name}."
+
+msgid ""
+"The landmines game is enabled in {channel.mention}, users can trip on "
+"landmines and earn points here."
+msgstr ""
+
+msgid ""
+"The landmines game is disabled in {channel.mention}, users can't trip on "
+"landmines and earn points here."
+msgstr ""
+
+msgid "Members can run landmines commands in {channel.mention}."
+msgstr ""
+
+msgid "Members can't run landmines commands in {channel.mention}"
+msgstr ""
 
 msgid "You'll now be pinged in replies from the bot."
 msgstr "Tu seras maintenant mentionné par les réponses du bot."
