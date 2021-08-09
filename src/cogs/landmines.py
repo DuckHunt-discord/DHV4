@@ -253,16 +253,16 @@ class Event2021(Cog):
             guild = ctx.guild
             member = ctx.author
         else:
+            if guild is None:
+                await ctx.author.send(_("❌ On what server do you want to place this landmine ? You need to add the Guild ID at the start of your command. "
+                                    "See `dh!landmines landmine_how_to`"))
+                return
             try:
                 member = await guild.fetch_member(ctx.author.id)
             except HTTPException:
                 await ctx.author.send(_("❌ You aren't in that guild."))
                 return
 
-        if guild is None:
-            await ctx.author.send(_("❌ On what server do you want to place this landmine ? You need to add the Guild ID at the start of your command. "
-                                    "See `dh!landmines landmine_how_to`"))
-            return
 
         if value < 50:
             await ctx.author.send(_("❌ A landmine must have a value higher than 50."))
