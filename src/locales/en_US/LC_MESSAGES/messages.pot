@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-08-02 20:55+0200\n"
+"POT-Creation-Date: 2021-08-09 20:50+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -193,30 +193,30 @@ msgstr ""
 msgid "Use one of the items in your inventory."
 msgstr ""
 
-#: ../cogs/landmines.py:125
+#: ../cogs/landmines.py:139
 msgid ""
 "Alias for dh!landmine landmine, so that you can just type dh!place instead."
 msgstr ""
 
-#: ../cogs/landmines.py:137
+#: ../cogs/landmines.py:151
 msgid ""
 "Alias for dh!landmine defuse_kit, so that you can just type dh!defuse "
 "instead."
 msgstr ""
 
-#: ../cogs/landmines.py:145
+#: ../cogs/landmines.py:159
 msgid "This command group contains all commands related to \"Landmines\" game."
 msgstr ""
 
-#: ../cogs/landmines.py:155
+#: ../cogs/landmines.py:169
 msgid "View your event statistics."
 msgstr ""
 
-#: ../cogs/landmines.py:213
+#: ../cogs/landmines.py:227
 msgid "This command explains how to place a landmine"
 msgstr ""
 
-#: ../cogs/landmines.py:225
+#: ../cogs/landmines.py:239
 msgid ""
 "[THIS COMMAND WORKS IN DMs]\n"
 "Buy a landmine that will trigger on a specific word.\n"
@@ -231,7 +231,7 @@ msgid ""
 "back."
 msgstr ""
 
-#: ../cogs/landmines.py:295
+#: ../cogs/landmines.py:309
 msgid ""
 "Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
 "the landmine value, minus the price\n"
@@ -241,7 +241,7 @@ msgid ""
 "You need at least 30 points to use one."
 msgstr ""
 
-#: ../cogs/landmines.py:372
+#: ../cogs/landmines.py:390
 msgid "Show statistics about landmines on this server."
 msgstr ""
 
@@ -296,7 +296,7 @@ msgstr ""
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:739
+#: ../cogs/private_messages_support.py:743
 msgid ""
 "Suggest a new language to the user. This will show them a prompt asking them "
 "if they want to switch to this new\n"
@@ -1793,11 +1793,11 @@ msgstr ""
 msgid "❌ You don't have that item."
 msgstr ""
 
-#: ../cogs/landmines.py:22
+#: ../cogs/landmines.py:23
 msgid "Landmines"
 msgstr ""
 
-#: ../cogs/landmines.py:102
+#: ../cogs/landmines.py:116
 #, python-brace-format
 msgid ""
 "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
@@ -1808,7 +1808,7 @@ msgid ""
 "{message_text}"
 msgstr ""
 
-#: ../cogs/landmines.py:111
+#: ../cogs/landmines.py:125
 #, python-brace-format
 msgid ""
 "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
@@ -1817,16 +1817,16 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../cogs/landmines.py:163
+#: ../cogs/landmines.py:177
 msgid "They can't play the game :("
 msgstr ""
 
-#: ../cogs/landmines.py:168
+#: ../cogs/landmines.py:182
 #, python-brace-format
 msgid "{target.name} event statistics"
 msgstr ""
 
-#: ../cogs/landmines.py:171
+#: ../cogs/landmines.py:185
 msgid ""
 "The most important currency in the game are the points, which are used in "
 "the shop to buy stuff. The available points show how many ponts you have and "
@@ -1837,76 +1837,76 @@ msgid ""
 "points will win."
 msgstr ""
 
-#: ../cogs/landmines.py:178
+#: ../cogs/landmines.py:192
 msgid "Available"
 msgstr ""
 
-#: ../cogs/landmines.py:178
+#: ../cogs/landmines.py:192
 #, python-brace-format
 msgid "{db_target.points_current} points"
 msgstr ""
 
-#: ../cogs/landmines.py:181
+#: ../cogs/landmines.py:195
 msgid "Messages sent"
 msgstr ""
 
-#: ../cogs/landmines.py:181
+#: ../cogs/landmines.py:195
 #, python-brace-format
 msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
 msgstr ""
 
-#: ../cogs/landmines.py:185
+#: ../cogs/landmines.py:199
 msgid "Points won by landmines"
 msgstr ""
 
-#: ../cogs/landmines.py:185
+#: ../cogs/landmines.py:199
 #, python-brace-format
 msgid "{db_target.points_won} points"
 msgstr ""
 
-#: ../cogs/landmines.py:189
+#: ../cogs/landmines.py:203
 msgid "Points recovered by defusing landmines"
 msgstr ""
 
-#: ../cogs/landmines.py:189
+#: ../cogs/landmines.py:203
 #, python-brace-format
 msgid "{db_target.points_recovered} points"
 msgstr ""
 
-#: ../cogs/landmines.py:193
+#: ../cogs/landmines.py:207
 msgid "Points acquired by talking"
 msgstr ""
 
-#: ../cogs/landmines.py:193
+#: ../cogs/landmines.py:207
 #, python-brace-format
 msgid "{db_target.points_acquired} points"
 msgstr ""
 
-#: ../cogs/landmines.py:197
+#: ../cogs/landmines.py:211
 msgid "Points exploded by stepping on mines"
 msgstr ""
 
-#: ../cogs/landmines.py:197
+#: ../cogs/landmines.py:211
 #, python-brace-format
 msgid "{db_target.points_exploded} points"
 msgstr ""
 
-#: ../cogs/landmines.py:201
+#: ../cogs/landmines.py:215
 msgid "Points spent in the shop"
 msgstr ""
 
-#: ../cogs/landmines.py:201
+#: ../cogs/landmines.py:215
 #, python-brace-format
 msgid "{db_target.points_spent} points"
 msgstr ""
 
-#: ../cogs/landmines.py:204
+#: ../cogs/landmines.py:218
 msgid ""
 "For more information on how to place a mine, run the `dh!lm landmines` "
 "command."
 msgstr ""
 
-#: ../cogs/landmines.py:217
+#: ../cogs/landmines.py:231
 #, python-brace-format
 msgid ""
 "To place a landmine, send a DM to the bot with the following command: ```\n"
@@ -1917,67 +1917,67 @@ msgid ""
 "characters long."
 msgstr ""
 
-#: ../cogs/landmines.py:245
-msgid "❌ You aren't in that guild."
-msgstr ""
-
-#: ../cogs/landmines.py:249
+#: ../cogs/landmines.py:257
 msgid ""
 "❌ On what server do you want to place this landmine ? You need to add the "
 "Guild ID at the start of your command. See `dh!landmines landmine_how_to`"
 msgstr ""
 
-#: ../cogs/landmines.py:254
+#: ../cogs/landmines.py:263
+msgid "❌ You aren't in that guild."
+msgstr ""
+
+#: ../cogs/landmines.py:268
 msgid "❌ A landmine must have a value higher than 50."
 msgstr ""
 
-#: ../cogs/landmines.py:258
+#: ../cogs/landmines.py:272
 msgid "❌ The message left on the landmine must be less than 1500 characters."
 msgstr ""
 
-#: ../cogs/landmines.py:263
+#: ../cogs/landmines.py:277
 msgid "❌ The word must only contain letters."
 msgstr ""
 
-#: ../cogs/landmines.py:273
+#: ../cogs/landmines.py:287
 #, python-brace-format
 msgid ""
 "❌ You don't have {value} points, you can't buy a landmine as powerful as "
 "this."
 msgstr ""
 
-#: ../cogs/landmines.py:287
+#: ../cogs/landmines.py:301
 #, python-brace-format
 msgid ""
 "💣️ You placed a landmine on `{word}` that can give you at most `{base_value}` "
 "points."
 msgstr ""
 
-#: ../cogs/landmines.py:306
+#: ../cogs/landmines.py:320
 msgid "❌ Please give (as much) valid words as you want to the defuse kit."
 msgstr ""
 
-#: ../cogs/landmines.py:316
+#: ../cogs/landmines.py:330
 msgid "❌ You don't have 30 points, so you can't buy a defuse kit."
 msgstr ""
 
-#: ../cogs/landmines.py:338
+#: ../cogs/landmines.py:356
 #, python-brace-format
 msgid ""
 "💰️ You used the defuse kit on `{landmine.word}`, and defused "
-"<@{placed_by_member.user_id}> landmine, that has a `{landmine.value}` points "
-"value.You got {got_points} points, congratulations."
+"<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
+"`{landmine.value}` points value.You got {got_points} points, congratulations."
 msgstr ""
 
-#: ../cogs/landmines.py:344
+#: ../cogs/landmines.py:362
 msgid ""
 "💸️ You used the defuse kit on `{landmine.word}`, and defused "
-"<@{placed_by_member.user_id}> landmine, that has a `{landmine.value}` points "
-"value.You've lost {-got_points} points, because the value of the landmine "
-"was lower than the defuse kit price. Sorry!"
+"<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
+"`{landmine.value}` points value.You've lost {-got_points} points, because "
+"the value of the landmine was lower than the defuse kit price. Sorry!"
 msgstr ""
 
-#: ../cogs/landmines.py:356
+#: ../cogs/landmines.py:374
 #, python-brace-format
 msgid ""
 "♻️️ You didn't use the defuse kit, and sold it back to the shop. You are sure "
@@ -1987,42 +1987,42 @@ msgid ""
 "```"
 msgstr ""
 
-#: ../cogs/landmines.py:380
+#: ../cogs/landmines.py:398
 msgid "Landmines statistics"
 msgstr ""
 
-#: ../cogs/landmines.py:392
+#: ../cogs/landmines.py:412
 msgid "Players tracked"
 msgstr ""
 
-#: ../cogs/landmines.py:393
+#: ../cogs/landmines.py:413
 msgid "Mines count"
 msgstr ""
 
-#: ../cogs/landmines.py:394
+#: ../cogs/landmines.py:414
 #, python-brace-format
 msgid "{current_mines_count} mines placed, {total_mines_count} created"
 msgstr ""
 
-#: ../cogs/landmines.py:399
+#: ../cogs/landmines.py:419
 msgid "Biggest active mine"
 msgstr ""
 
-#: ../cogs/landmines.py:400
+#: ../cogs/landmines.py:420
 #, python-brace-format
 msgid ""
 "Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
 msgstr ""
 
-#: ../cogs/landmines.py:403
+#: ../cogs/landmines.py:423
 msgid "Players in the negative"
 msgstr ""
 
-#: ../cogs/landmines.py:406
+#: ../cogs/landmines.py:426
 msgid "Event scoreboard"
 msgstr ""
 
-#: ../cogs/landmines.py:412
+#: ../cogs/landmines.py:434
 #, python-brace-format
 msgid "{points} points"
 msgstr ""
@@ -2280,15 +2280,20 @@ msgid ""
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:735 ../cogs/tags.py:170
+#: ../cogs/private_messages_support.py:736
+#, python-brace-format
+msgid "❌ Can't send a message to this user: {e}."
+msgstr ""
+
+#: ../cogs/private_messages_support.py:739 ../cogs/tags.py:170
 msgid "❌ There is no tag with that name."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:762
+#: ../cogs/private_messages_support.py:766
 msgid "Language change offer"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:764
+#: ../cogs/private_messages_support.py:768
 #, python-brace-format
 msgid ""
 "DuckHunt support suggests you change your personal language from "
@@ -2296,17 +2301,17 @@ msgid ""
 "messages you get in private message from DuckHunt to {suggested_language}."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:774
+#: ../cogs/private_messages_support.py:778
 msgid ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:792
+#: ../cogs/private_messages_support.py:796
 msgid "Your language preference wasn't changed."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:802
+#: ../cogs/private_messages_support.py:806
 #, python-brace-format
 msgid "Your preferred language is now {new_language}."
 msgstr ""
@@ -3895,15 +3900,15 @@ msgstr ""
 msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
-#: ../utils/bot_class.py:143
+#: ../utils/bot_class.py:146
 msgid "https://duckhunt.me/support"
 msgstr ""
 
-#: ../utils/bot_class.py:144
+#: ../utils/bot_class.py:147
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr ""
 
-#: ../utils/bot_class.py:134
+#: ../utils/bot_class.py:137
 #, python-brace-format
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "
@@ -3923,77 +3928,77 @@ msgid ""
 "this message!"
 msgstr ""
 
-#: ../utils/bushes.py:20
+#: ../utils/bushes.py:21
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**."
 msgstr ""
 
-#: ../utils/bushes.py:21
+#: ../utils/bushes.py:22
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**. You didn't take it, you had already too many..."
 msgstr ""
 
-#: ../utils/bushes.py:39
+#: ../utils/bushes.py:40
 msgid "Searching the bushes around the duck, you found... **Nothing**."
 msgstr ""
 
-#: ../utils/bushes.py:44
+#: ../utils/bushes.py:45
 msgid "Searching the bushes around the duck, you found... **A lot of bushes**."
 msgstr ""
 
-#: ../utils/bushes.py:49
+#: ../utils/bushes.py:50
 msgid "Searching the bushes around the duck, you found... **A rare duck pin**."
 msgstr ""
 
-#: ../utils/bushes.py:54
+#: ../utils/bushes.py:55
 msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
 
-#: ../utils/bushes.py:62
+#: ../utils/bushes.py:63
 msgid "Searching the bushes around the duck, you found... **A bullet**."
 msgstr ""
 
-#: ../utils/bushes.py:63
+#: ../utils/bushes.py:64
 msgid ""
 "Searching the bushes around the duck, you found... **A bullet**. You didn't "
 "take it, you had already too many in your magazine anyway..."
 msgstr ""
 
-#: ../utils/bushes.py:79
+#: ../utils/bushes.py:80
 msgid "Searching the bushes around the duck, you found... **A magazine**."
 msgstr ""
 
-#: ../utils/bushes.py:80
+#: ../utils/bushes.py:81
 msgid ""
 "Searching the bushes around the duck, you found... **A magazine**. You "
 "didn't take it, you had already too many in your backpack..."
 msgstr ""
 
-#: ../utils/bushes.py:96
+#: ../utils/bushes.py:97
 msgid ""
 "Searching the bushes around the duck, you found... **A box of explosive "
 "ammo**. 💥"
 msgstr ""
 
-#: ../utils/bushes.py:105
+#: ../utils/bushes.py:106
 msgid ""
 "Searching the bushes around the duck, you found... **An almost empty box of "
 "explosive ammo**."
 msgstr ""
 
-#: ../utils/bushes.py:114
+#: ../utils/bushes.py:115
 msgid ""
 "Searching the bushes around the duck, you found... **Tons of Duck Grease**."
 msgstr ""
 
-#: ../utils/bushes.py:123
+#: ../utils/bushes.py:124
 msgid "Searching the bushes around the duck, you found... **A new silencer**."
 msgstr ""
 
-#: ../utils/bushes.py:132
+#: ../utils/bushes.py:135
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
 msgstr ""
@@ -5240,18 +5245,18 @@ msgstr ""
 msgid "You leveled down!"
 msgstr ""
 
-#: ../utils/views.py:114
+#: ../utils/views.py:117
 msgid "❌ You cannot run this command."
 msgstr ""
 
-#: ../utils/views.py:204
+#: ../utils/views.py:207
 msgid "❌ You are not allowed to click on this button"
 msgstr ""
 
-#: ../utils/views.py:270
+#: ../utils/views.py:273
 msgid "Cancel"
 msgstr ""
 
-#: ../utils/views.py:271
+#: ../utils/views.py:274
 msgid "Confirm"
 msgstr ""
