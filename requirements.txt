@@ -7,7 +7,7 @@ pytz
 git+https://github.com/Rapptz/discord.py.git
 tortoise-orm[accel]==0.17.6
 aerich
-asyncpg==0.23.0
+asyncpg==0.24.0
 python-rapidjson
 ciso8601
 seam-carving
