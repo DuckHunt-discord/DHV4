@@ -436,7 +436,7 @@ def get_valid_words(message_content) -> typing.List[str]:
     words = []
 
     for word in set(cleaned_content.lower().split()):
-        if 3 <= len(word) <= 40:
+        if 3 <= len(word) <= 40 and (len(word) > 25 or len(word) < 15 or not set(word).issubset(set(string.digits))):
             words.append(word)
 
     return words
