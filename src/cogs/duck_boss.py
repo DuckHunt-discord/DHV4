@@ -103,9 +103,12 @@ class DuckBoss(Cog):
                     color=discord.Color.red(),
                     description=f"Thanks to the {bangs} players who helped in this quest. Check your inventories with `dh!inv` for these drops.",
                 )
-
-                new_embed.set_image(url=random.choice(["https://cdn.discordapp.com/attachments/795225915248214036/807309301181055056/deadboss_Calgeka.png",
-                                                       "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png"]))
+                if "boss_llama_Calgeka.png" in str(boss_message.embeds[0].image.url):
+                    # Special case the llama.
+                    new_embed.set_image(url="https://cdn.discordapp.com/attachments/795225915248214036/875072800866586654/deadboss_llama_Calgeka.png")
+                else:
+                    new_embed.set_image(url=random.choice(["https://cdn.discordapp.com/attachments/795225915248214036/807309301181055056/deadboss_Calgeka.png",
+                                                           "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png"]))
                 new_embed.add_field(name="Health", value=f"0/{boss_life}")
 
                 time_delta = utcnow() - boss_message.created_at
