@@ -1,5 +1,5 @@
 import datetime
-from typing import Optional
+from typing import Optional, List
 
 import babel.lists
 import discord
@@ -255,14 +255,13 @@ class Event2021(Cog):
         else:
             if guild is None:
                 await ctx.author.send(_("❌ On what server do you want to place this landmine ? You need to add the Guild ID at the start of your command. "
-                                    "See `dh!landmines landmine_how_to`"))
+                                        "See `dh!landmines landmine_how_to`"))
                 return
             try:
                 member = await guild.fetch_member(ctx.author.id)
             except HTTPException:
                 await ctx.author.send(_("❌ You aren't in that guild."))
                 return
-
 
         if value < 50:
             await ctx.author.send(_("❌ A landmine must have a value higher than 50."))
@@ -278,6 +277,21 @@ class Event2021(Cog):
             return
         else:
             word = word[0]
+
+        protect = await models.get_word_protect_for(guild, word)
+
+        if protect:
+            protect_db_data = await protect.protected_by
+            protect_db_member = await protect_db_data.member
+            protect_db_user = await protect_db_member.user
+
+            if protect.message:
+                await ctx.author.send(
+                    _("❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it — {protect.message}.", value=value, user=protect_db_user, protect=protect))
+            else:
+                await ctx.author.send(_("❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it.", value=value, user=protect_db_user, protect=protect))
+
+            return
 
         try:
             await self.concurrency.acquire(ctx.message)
@@ -299,6 +313,106 @@ class Event2021(Cog):
             await db_data.save()
             await landmine.save()
             await ctx.author.send(_("💣️ You placed a landmine on `{word}` that can give you at most `{base_value}` points.", word=word, base_value=landmine.base_value()))
+        finally:
+            await self.concurrency.release(ctx.message)
+
+    @event.command(aliases=["p", "s", "shield", "prot"])
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
+    async def protect(self, ctx: MyContext, word: str, *, message_text: str = ""):
+        """
+        Buy a shield that will be placed on a given word. A shield will defuse all landmines placed on that word,
+        and will prevent further landmines from being placed on it.
+
+        A shield is a very powerful item, that'll cost 500 points for any given word.
+        You can however add a message that will be sent when trying to place a mine.
+        """
+        _ = await ctx.get_translate_function()
+        ngettext = await ctx.get_ntranslate_function()
+
+        words_list = models.get_valid_words(word)
+
+        if len(words_list) != 1:
+            await ctx.reply(_("❌ Please give one valid words to protect."))
+            return
+
+        word = words_list[0]
+
+        try:
+            await self.concurrency.acquire(ctx.message)
+
+            protect = await models.get_word_protect_for(ctx.guild, word)
+
+            if protect:
+                protect_db_data = await protect.protected_by
+                protect_db_member = await protect_db_data.member
+                protect_db_user = await protect_db_member.user
+
+                await ctx.send(
+                    _("❌ This word is already protected by {user.name}#{user.discriminator}.", user=protect_db_user))
+                return
+
+            db_data = await models.get_member_landminesdata(ctx.author)
+
+            if db_data.points_current < 500:
+                await ctx.reply(_("❌ You don't have 500 points, so you can't buy a shield to protect a word."))
+                return
+            else:
+                db_data.points_current -= 500
+                db_data.points_spent += 500
+
+            db_data.shields_bought += 1
+
+            await models.LandminesProtects.create(
+                protected_by=db_data,
+                word=word,
+                message=message_text
+            )
+
+            landmines: List[models.LandminesPlaced] = await models.get_landmine(ctx.guild, word, as_list=True)
+            ret = [_("You placed a shield on `{word}` for 500 points.", word=word)]
+
+            now = timezone.now()
+            got_points = 0
+            landmines_list = []
+
+            for landmine in landmines:
+                landmine.stopped_by = db_data
+                landmine.disarmed = True
+                landmine.stopped_at = now
+
+                money_recovered = landmine.value
+                db_data.points_recovered += money_recovered
+                db_data.points_current += money_recovered
+
+                got_points += money_recovered
+
+                placed_by = await landmine.placed_by
+                placed_by_member = await placed_by.member
+
+                duration = landmine.stopped_at - landmine.placed
+
+                td = format_timedelta(duration, locale=await ctx.get_language_code())
+
+                landmines_list.append(_("- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)",
+                                        value=money_recovered, placed_by_member=placed_by_member, td=td))
+
+                await landmine.save()
+
+            if len(landmines):
+                ret.append(ngettext(
+                    "You defused the following landmine for a value of {got_points} points.",
+                    "You defused {n} landmines placed on that word, for a total value of {got_points} points.",
+                    len(landmines),
+                    got_points=got_points,
+                ))
+
+                ret.extend(landmines_list)
+            else:
+                ret.append(_("There were no active landmines on that word to be defused."))
+
+            await db_data.save()
+            await ctx.reply("\n".join(ret))
         finally:
             await self.concurrency.release(ctx.message)
 
@@ -425,7 +539,6 @@ class Event2021(Cog):
         top_embed = discord.Embed(colour=discord.Colour.blurple(),
                                   title=_("Event scoreboard"))
         top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/?discord_embeds=sucks"
-
 
         top_players = await models.LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
 

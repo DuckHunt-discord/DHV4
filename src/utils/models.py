@@ -222,7 +222,7 @@ class DiscordChannel(Model):
     enabled = fields.BooleanField(default=False)
 
     landmines_commands_enabled = fields.BooleanField(default=False)  # Can members run landmine commands here
-    landmines_enabled = fields.BooleanField(default=False)           # Do messages sent here count in the game ?
+    landmines_enabled = fields.BooleanField(default=False)  # Do messages sent here count in the game ?
 
     anti_trigger_wording = fields.BooleanField(default=False)
 
@@ -450,7 +450,6 @@ class LandminesUserData(Model):
     member: fields.ForeignKeyRelation["DiscordMember"] = \
         fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE, db_index=True)
 
-
     # General statistics
     first_played = fields.DatetimeField(auto_now_add=True)
     last_seen = fields.DatetimeField(auto_now_add=True)
@@ -467,6 +466,7 @@ class LandminesUserData(Model):
 
     ## Defuse kits
     defuse_kits_bought = fields.IntField(default=0)
+    shields_bought = fields.IntField(default=0)
 
     def add_points_for_message(self, message_content):
         words = get_valid_words(message_content)
@@ -533,6 +533,31 @@ class LandminesPlaced(Model):
         table = 'landmines_placed'
 
 
+class LandminesProtects(Model):
+    protected_by = fields.ForeignKeyField('models.LandminesUserData', related_name='words_protected', on_delete=fields.CASCADE)
+    placed = fields.DatetimeField(auto_now_add=True)
+    word = fields.CharField(max_length=50)
+    message = fields.CharField(blank=True, default="", max_length=2000)
+
+    def __str__(self):
+        return f"{self.protected_by.member} protected word on {self.word}"
+
+    class Meta:
+        table = 'landmines_protected'
+
+
+async def get_word_protect_for(guild, word):
+    if not isinstance(guild, DiscordGuild):
+        db_guild = await get_from_db(guild)
+    else:
+        db_guild = guild
+
+    return await LandminesProtects \
+        .filter(word=word) \
+        .filter(protected_by__member__guild=db_guild) \
+        .first()
+
+
 class UserInventory(Model):
     # There is another bug in tortoise preventing this.
     # But you can't add a primary key on a ForeignKey like you can in django
@@ -549,18 +574,18 @@ class UserInventory(Model):
 
     # Boxes
     lootbox_welcome_left = fields.IntField(default=1)
-    lootbox_boss_left    = fields.IntField(default=0)
-    lootbox_vote_left    = fields.IntField(default=0)
+    lootbox_boss_left = fields.IntField(default=0)
+    lootbox_vote_left = fields.IntField(default=0)
 
     # Unobtainable items
     item_vip_card_left = fields.IntField(default=0)
 
     # Loot
-    item_mini_exp_boost_left   = fields.IntField(default=0)
-    item_norm_exp_boost_left   = fields.IntField(default=0)
-    item_maxi_exp_boost_left   = fields.IntField(default=0)
-    item_one_bullet_left       = fields.IntField(default=0)
-    item_spawn_ducks_left      = fields.IntField(default=0)
+    item_mini_exp_boost_left = fields.IntField(default=0)
+    item_norm_exp_boost_left = fields.IntField(default=0)
+    item_maxi_exp_boost_left = fields.IntField(default=0)
+    item_one_bullet_left = fields.IntField(default=0)
+    item_spawn_ducks_left = fields.IntField(default=0)
     item_refill_magazines_left = fields.IntField(default=0)
 
     def __str__(self):
@@ -884,7 +909,7 @@ class Player(Model):
         channel: discord.TextChannel = guild.get_channel(db_channel.discord_id)
 
         # Now is time to give roles.
-        roles_mapping:    typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
+        roles_mapping: typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
         prestige_mapping: typing.Dict[str, str] = db_channel.prestige_to_roles_ids_mapping
         #             (int-like) level nb, discord role ID
 
@@ -1241,7 +1266,7 @@ async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, disco
     else:
         db_user = user
 
-    async with DB_LOCKS[(db_user, )]:
+    async with DB_LOCKS[(db_user,)]:
         inventory, created = await UserInventory.get_or_create(user_id=db_user.discord_id)
 
     return inventory
@@ -1253,13 +1278,13 @@ async def get_member_landminesdata(member: typing.Union[DiscordMember, discord.M
     else:
         db_member = member
 
-    async with DB_LOCKS[(db_member, )]:
+    async with DB_LOCKS[(db_member,)]:
         eventdata, created = await LandminesUserData.get_or_create(member_id=db_member.pk)
 
     return eventdata
 
 
-async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message_content: str) -> typing.Optional[LandminesPlaced]:
+async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message_content: str, as_list:bool = False) -> typing.Union[typing.Optional[LandminesPlaced], typing.List[LandminesPlaced]]:
     if not isinstance(guild, DiscordGuild):
         db_guild = await get_from_db(guild)
     else:
@@ -1267,14 +1292,22 @@ async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message
 
     words = get_valid_words(message_content)
     if words:
-        return await LandminesPlaced\
-            .filter(tripped=False, disarmed=False)\
-            .order_by('placed')\
-            .filter(word__in=words)\
-            .filter(placed_by__member__guild=db_guild)\
-            .first()
+        qs = LandminesPlaced \
+            .filter(tripped=False, disarmed=False) \
+            .order_by('placed') \
+            .filter(word__in=words) \
+            .filter(placed_by__member__guild=db_guild) \
+
+        if as_list:
+            return await qs
+        else:
+            return await qs.first()
+
     else:
-        return None
+        if as_list:
+            return []
+        else:
+            return None
 
 
 async def get_enabled_channels():
