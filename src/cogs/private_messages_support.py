@@ -85,6 +85,7 @@ class CloseReasonSelect(discord.ui.Select):
         'Unrelated': ('⁉️', 'Not a support DM', 'groupself'),
         'Thanks': ('🙃', 'Complimented the bot', None),
         'Spam': ('💬', 'Spam', None),
+        'Scam': ('☢️', 'User sent a scam message to the bot', None),
     }
 
     def __init__(self, bot):
