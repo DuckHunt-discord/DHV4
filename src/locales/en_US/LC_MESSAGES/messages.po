@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-08-09 20:50+0200\n"
+"POT-Creation-Date: 2021-08-11 21:22+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
@@ -281,7 +281,25 @@ msgstr ""
 "point damage, and half it's value\n"
 "back."
 
-#: ../cogs/landmines.py:309
+#: ../cogs/landmines.py:320
+msgid ""
+"Buy a shield that will be placed on a given word. A shield will defuse all "
+"landmines placed on that word,\n"
+"and will prevent further landmines from being placed on it.\n"
+"\n"
+"A shield is a very powerful item, that'll cost 500 points for any given word."
+"\n"
+"You can however add a message that will be sent when trying to place a mine."
+msgstr ""
+"Buy a shield that will be placed on a given word. A shield will defuse all "
+"landmines placed on that word,\n"
+"and will prevent further landmines from being placed on it.\n"
+"\n"
+"A shield is a very powerful item, that'll cost 500 points for any given word."
+"\n"
+"You can however add a message that will be sent when trying to place a mine."
+
+#: ../cogs/landmines.py:417
 msgid ""
 "Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
 "the landmine value, minus the price\n"
@@ -297,7 +315,7 @@ msgstr ""
 "\n"
 "You need at least 30 points to use one."
 
-#: ../cogs/landmines.py:390
+#: ../cogs/landmines.py:498
 msgid "Show statistics about landmines on this server."
 msgstr "Show statistics about landmines on this server."
 
@@ -2450,28 +2468,46 @@ msgstr ""
 msgid "❌ You aren't in that guild."
 msgstr "❌ You aren't in that guild."
 
-#: ../cogs/landmines.py:268
+#: ../cogs/landmines.py:267
 msgid "❌ A landmine must have a value higher than 50."
 msgstr "❌ A landmine must have a value higher than 50."
 
-#: ../cogs/landmines.py:272
+#: ../cogs/landmines.py:271
 msgid "❌ The message left on the landmine must be less than 1500 characters."
 msgstr "❌ The message left on the landmine must be less than 1500 characters."
 
-#: ../cogs/landmines.py:277
+#: ../cogs/landmines.py:276
 msgid "❌ The word must only contain letters."
 msgstr "❌ The word must only contain letters."
 
 #: ../cogs/landmines.py:287
 #, python-brace-format
 msgid ""
+"❌ This word is currently protected by {user.name}#{user.discriminator}, you "
+"can't place a mine on it — {protect.message}."
+msgstr ""
+"❌ This word is currently protected by {user.name}#{user.discriminator}, you "
+"can't place a mine on it — {protect.message}."
+
+#: ../cogs/landmines.py:289
+#, python-brace-format
+msgid ""
+"❌ This word is currently protected by {user.name}#{user.discriminator}, you "
+"can't place a mine on it."
+msgstr ""
+"❌ This word is currently protected by {user.name}#{user.discriminator}, you "
+"can't place a mine on it."
+
+#: ../cogs/landmines.py:298
+#, python-brace-format
+msgid ""
 "❌ You don't have {value} points, you can't buy a landmine as powerful as "
 "this."
 msgstr ""
 "❌ You don't have {value} points, you can't buy a landmine as powerful as "
 "this."
 
-#: ../cogs/landmines.py:301
+#: ../cogs/landmines.py:312
 #, python-brace-format
 msgid ""
 "💣️ You placed a landmine on `{word}` that can give you at most "
@@ -2480,15 +2516,58 @@ msgstr ""
 "💣️ You placed a landmine on `{word}` that can give you at most "
 "`{base_value}` points."
 
-#: ../cogs/landmines.py:320
+#: ../cogs/landmines.py:333
+msgid "❌ Please give one valid words to protect."
+msgstr "❌ Please give one valid words to protect."
+
+#: ../cogs/landmines.py:346
+#, python-brace-format
+msgid "❌ This word is already protected by {user.name}#{user.discriminator}."
+msgstr "❌ This word is already protected by {user.name}#{user.discriminator}."
+
+#: ../cogs/landmines.py:352
+msgid ""
+"❌ You don't have 500 points, so you can't buy a shield to protect a word."
+msgstr ""
+"❌ You don't have 500 points, so you can't buy a shield to protect a word."
+
+#: ../cogs/landmines.py:367
+#, python-brace-format
+msgid "You placed a shield on `{word}` for 500 points."
+msgstr "You placed a shield on `{word}` for 500 points."
+
+#: ../cogs/landmines.py:391
+#, python-brace-format
+msgid ""
+"- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
+msgstr ""
+"- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
+
+#: ../cogs/landmines.py:398
+#, python-brace-format
+msgid "You defused the following landmine for a value of {got_points} points."
+msgid_plural ""
+"You defused {n} landmines placed on that word, for a total value of "
+"{got_points} points."
+msgstr[0] ""
+"You defused the following landmine for a value of {got_points} points."
+msgstr[1] ""
+"You defused {n} landmines placed on that word, for a total value of "
+"{got_points} points."
+
+#: ../cogs/landmines.py:406
+msgid "There were no active landmines on that word to be defused."
+msgstr "There were no active landmines on that word to be defused."
+
+#: ../cogs/landmines.py:428
 msgid "❌ Please give (as much) valid words as you want to the defuse kit."
 msgstr "❌ Please give (as much) valid words as you want to the defuse kit."
 
-#: ../cogs/landmines.py:330
+#: ../cogs/landmines.py:438
 msgid "❌ You don't have 30 points, so you can't buy a defuse kit."
 msgstr "❌ You don't have 30 points, so you can't buy a defuse kit."
 
-#: ../cogs/landmines.py:356
+#: ../cogs/landmines.py:464
 #, python-brace-format
 msgid ""
 "💰️ You used the defuse kit on `{landmine.word}`, and defused "
@@ -2501,7 +2580,7 @@ msgstr ""
 "`{landmine.value}` points value.You got {got_points} points, congratulations."
 ""
 
-#: ../cogs/landmines.py:362
+#: ../cogs/landmines.py:470
 msgid ""
 "💸️ You used the defuse kit on `{landmine.word}`, and defused "
 "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
@@ -2513,7 +2592,7 @@ msgstr ""
 "`{landmine.value}` points value.You've lost {-got_points} points, because "
 "the value of the landmine was lower than the defuse kit price. Sorry!"
 
-#: ../cogs/landmines.py:374
+#: ../cogs/landmines.py:482
 #, python-brace-format
 msgid ""
 "♻️️ You didn't use the defuse kit, and sold it back to the shop. You are "
@@ -2528,43 +2607,43 @@ msgstr ""
 "{words}\n"
 "```"
 
-#: ../cogs/landmines.py:398
+#: ../cogs/landmines.py:506
 msgid "Landmines statistics"
 msgstr "Landmines statistics"
 
-#: ../cogs/landmines.py:412
+#: ../cogs/landmines.py:520
 msgid "Players tracked"
 msgstr "Players tracked"
 
-#: ../cogs/landmines.py:413
+#: ../cogs/landmines.py:521
 msgid "Mines count"
 msgstr "Mines count"
 
-#: ../cogs/landmines.py:414
+#: ../cogs/landmines.py:522
 #, python-brace-format
 msgid "{current_mines_count} mines placed, {total_mines_count} created"
 msgstr "{current_mines_count} mines placed, {total_mines_count} created"
 
-#: ../cogs/landmines.py:419
+#: ../cogs/landmines.py:527
 msgid "Biggest active mine"
 msgstr "Biggest active mine"
 
-#: ../cogs/landmines.py:420
+#: ../cogs/landmines.py:528
 #, python-brace-format
 msgid ""
 "Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
 msgstr ""
 "Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
 
-#: ../cogs/landmines.py:423
+#: ../cogs/landmines.py:531
 msgid "Players in the negative"
 msgstr "Players in the negative"
 
-#: ../cogs/landmines.py:426
+#: ../cogs/landmines.py:534
 msgid "Event scoreboard"
 msgstr "Event scoreboard"
 
-#: ../cogs/landmines.py:434
+#: ../cogs/landmines.py:541
 #, python-brace-format
 msgid "{points} points"
 msgstr "{points} points"
@@ -4150,23 +4229,23 @@ msgstr "Statistics"
 msgid "{target.name} statistics (click me!)."
 msgstr "{target.name} statistics (click me!)."
 
-#: ../cogs/statistics_experience_commands.py:79 ../utils/models.py:858
+#: ../cogs/statistics_experience_commands.py:79 ../utils/models.py:884
 msgid "Bullets"
 msgstr "Bullets"
 
-#: ../cogs/statistics_experience_commands.py:80 ../utils/models.py:861
+#: ../cogs/statistics_experience_commands.py:80 ../utils/models.py:887
 msgid "Magazines"
 msgstr "Magazines"
 
-#: ../cogs/statistics_experience_commands.py:81 ../utils/models.py:844
+#: ../cogs/statistics_experience_commands.py:81 ../utils/models.py:870
 msgid "Experience"
 msgstr "Experience"
 
-#: ../cogs/statistics_experience_commands.py:82 ../utils/models.py:845
+#: ../cogs/statistics_experience_commands.py:82 ../utils/models.py:871
 msgid "Level"
 msgstr "Level"
 
-#: ../cogs/statistics_experience_commands.py:84 ../utils/models.py:850
+#: ../cogs/statistics_experience_commands.py:84 ../utils/models.py:876
 msgid "Accuracy"
 msgstr "Accuracy"
 
@@ -4176,7 +4255,7 @@ msgstr "Accuracy"
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr "{level_reliability} % (Real: {real_reliability} %)"
 
-#: ../cogs/statistics_experience_commands.py:88 ../utils/models.py:854
+#: ../cogs/statistics_experience_commands.py:88 ../utils/models.py:880
 msgid "Reliability"
 msgstr "Reliability"
 
@@ -6147,11 +6226,11 @@ msgstr "This is not a valid level. Choose between {levels}"
 msgid "Can't set such a high level"
 msgstr "Can't set such a high level"
 
-#: ../utils/models.py:866
+#: ../utils/models.py:892
 msgid "You leveled up!"
 msgstr "You leveled up!"
 
-#: ../utils/models.py:870
+#: ../utils/models.py:896
 msgid "You leveled down!"
 msgstr "You leveled down!"
 
