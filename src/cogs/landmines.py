@@ -286,7 +286,7 @@ class Event2021(Cog):
             protect_db_user = await protect_db_member.user
 
             protect.protect_count += 1
-            protect.save()
+            await protect.save()
 
             if protect.message:
                 await ctx.author.send(
