@@ -536,6 +536,7 @@ class LandminesPlaced(Model):
 class LandminesProtects(Model):
     protected_by = fields.ForeignKeyField('models.LandminesUserData', related_name='words_protected', on_delete=fields.CASCADE)
     placed = fields.DatetimeField(auto_now_add=True)
+    protect_count = fields.IntField(default=0)
     word = fields.CharField(max_length=50)
     message = fields.CharField(blank=True, default="", max_length=2000)
 

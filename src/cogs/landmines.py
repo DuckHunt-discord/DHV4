@@ -285,6 +285,9 @@ class Event2021(Cog):
             protect_db_member = await protect_db_data.member
             protect_db_user = await protect_db_member.user
 
+            protect.protect_count += 1
+            protect.save()
+
             if protect.message:
                 await ctx.author.send(
                     _("❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it — {protect.message}.", value=value, user=protect_db_user, protect=protect))
