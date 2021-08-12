@@ -123,6 +123,7 @@ class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
         'setup': ('⚙️', 'How to setup'),
         'quickguide': ('🦆', 'How to play'),
         'dm_unrelated': ('⁉️', 'Unrelated DMs'),
+        'dm_commands': ('🤖', 'DM Commands (close?)'),
         'leveling_up': ('☝️', 'Leveling up'),
         'lore_v4': ('📖', 'Lore'),
         'commands': ('❕', 'Commands list'),
