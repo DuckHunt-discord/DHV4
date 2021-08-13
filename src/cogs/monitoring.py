@@ -120,7 +120,7 @@ class Monitoring(Cog):
 
     @Cog.listener()
     async def on_socket_raw_receive(self, payload: Union[str, bytes]):
-        self.ws_send_timings.append(get_now())
+        self.ws_recv_timings.append(get_now())
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -128,7 +128,7 @@ class Monitoring(Cog):
 
     @Cog.listener()
     async def on_command(self, ctx: MyContext):
-        self.command_error_timings.append(get_now())
+        self.command_timings.append(get_now())
 
     @Cog.listener()
     async def on_command_error(self, ctx: MyContext, error: CommandError):
@@ -136,7 +136,7 @@ class Monitoring(Cog):
 
     @Cog.listener()
     async def on_command_completion(self, ctx: MyContext):
-        self.command_error_timings.append(get_now())
+        self.command_completion_timings.append(get_now())
 
 
 
