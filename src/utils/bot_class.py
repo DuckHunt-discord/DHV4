@@ -9,6 +9,7 @@ from discord import Guild
 from discord.ext import commands
 from discord.ext.commands import MaxConcurrency, BucketType
 from discord.ext.commands.bot import AutoShardedBot
+from tortoise import timezone
 
 from utils import config as config
 from utils.ctx_class import MyContext
@@ -33,7 +34,7 @@ class MyBot(AutoShardedBot):
         super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.top_users = collections.Counter()
-        self.uptime = datetime.datetime.utcnow()
+        self.uptime = timezone.now()
         self.shards_ready = set()
         self.socket_stats = collections.Counter()
         self._client_session: Optional[aiohttp.ClientSession] = None
