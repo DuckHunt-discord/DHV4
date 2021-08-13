@@ -9,6 +9,7 @@ from typing import Union
 import discord
 import pytz
 from discord.ext import commands, tasks, menus
+from tortoise import timezone
 
 from utils import checks
 from utils.cog_class import Cog
@@ -145,7 +146,7 @@ class Emergencies(Cog):
 
     @manage_bot.command()
     async def socketstats(self, ctx):
-        delta = discord.utils.utcnow() - self.bot.uptime
+        delta = timezone.now() - self.bot.uptime
         minutes = delta.total_seconds() / 60
         total = sum(self.bot.socket_stats.values())
         cpm = total / minutes
