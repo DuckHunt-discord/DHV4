@@ -94,8 +94,8 @@ class MyBot(AutoShardedBot):
                                   f"Too many messages published recently ?")
             return False
 
-    async def on_socket_response(self, msg):
-        self.socket_stats[msg.get('t')] += 1
+    async def on_socket_event_type(self, event_type):
+        self.socket_stats[event_type] += 1
 
     async def on_message(self, message):
         if not self.is_ready():
