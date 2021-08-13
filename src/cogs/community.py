@@ -4,6 +4,7 @@ import re
 
 import discord
 from discord.ext import commands
+from tortoise import timezone
 
 from utils import checks, models
 from utils.bot_class import MyBot
@@ -18,7 +19,7 @@ from utils.models import get_from_db, AccessLevel
 
 async def wait_cd(monitored_player, ctx, name, dt):
     _ = await ctx.get_translate_function(user_language=True)
-    now = datetime.datetime.utcnow()
+    now = timezone.now()
 
     seconds = (dt - now).total_seconds()
     seconds = max(seconds, 1)
@@ -123,7 +124,7 @@ class Community(Cog):
                     await ctx.send(embed=embed)
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
-        now = datetime.datetime.utcnow()
+        now = timezone.now()
         cooldowns = []
 
         for field in embed.fields:

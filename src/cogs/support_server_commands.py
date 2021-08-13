@@ -8,6 +8,7 @@ import time
 import discord
 import pytz
 from discord.ext import commands, tasks, menus
+from tortoise import timezone
 
 from utils import checks
 from utils.cog_class import Cog
@@ -41,7 +42,7 @@ class SupportServerCommands(Cog):
     #    return ret
 
     def get_bot_uptime(self):
-        return dates.format_timedelta(self.bot.uptime - datetime.datetime.utcnow(), locale='en')
+        return dates.format_timedelta(self.bot.uptime - timezone.now(), locale='en')
 
     @tasks.loop(seconds=30)
     async def background_loop(self):
@@ -106,10 +107,10 @@ class SupportServerCommands(Cog):
         else:
             embed.add_field(name="Boss Loop", value=f"❌ Unloaded", inline=True)
 
-        embed.timestamp = datetime.datetime.utcnow()
+        embed.timestamp = timezone.now()
 
         next_it = self.background_loop.next_iteration
-        now = pytz.utc.localize(datetime.datetime.utcnow())
+        now = timezone.now()
 
         delta = dates.format_timedelta(next_it - now, locale='en')
         embed.set_footer(text=f"This should update every {delta} - Last update")

@@ -6,6 +6,7 @@ import discord
 from babel.dates import format_timedelta
 from discord.ext import tasks
 from discord.utils import utcnow
+from tortoise import timezone
 
 from utils.cog_class import Cog
 from utils.inventory_items import FoieGras
@@ -50,7 +51,7 @@ class DuckBoss(Cog):
 
         new_embed.add_field(name="Health", value=f"{boss_life - bangs}/{boss_life}")
         if boss_message:
-            time_delta = utcnow() - boss_message.created_at
+            time_delta = timezone.now() - boss_message.created_at
             old_embed = boss_message.embeds[0]
             new_embed.set_image(url=old_embed.image.url)
             new_embed.set_footer(text=f"The boss spawned {format_timedelta(time_delta, locale='en_US')} ago")
@@ -111,7 +112,7 @@ class DuckBoss(Cog):
                                                            "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png"]))
                 new_embed.add_field(name="Health", value=f"0/{boss_life}")
 
-                time_delta = utcnow() - boss_message.created_at
+                time_delta = timezone.now() - boss_message.created_at
                 new_embed.set_footer(text=f"The boss lived for {format_timedelta(time_delta, locale='en_US')}.")
 
                 await boss_message.edit(embed=new_embed)

@@ -19,6 +19,7 @@ import re
 import parsedatetime as pdt
 from dateutil.relativedelta import relativedelta
 from discord.ext import commands
+from tortoise import timezone
 
 from .formats import Plural, human_join
 
@@ -39,7 +40,7 @@ class ShortTime:
             raise commands.BadArgument('invalid time provided')
 
         data = {k: int(v) for k, v in match.groupdict(default="0").items()}
-        now = now or datetime.datetime.utcnow()
+        now = now or timezone.now()
         self.dt = now + relativedelta(**data)
 
     @classmethod
@@ -51,7 +52,7 @@ class HumanTime:
     calendar = pdt.Calendar(version=pdt.VERSION_CONTEXT_STYLE)
 
     def __init__(self, argument, *, now=None):
-        now = now or datetime.datetime.utcnow()
+        now = now or timezone.now()
         dt, status = self.calendar.parseDT(argument, sourceTime=now)
         if not status.hasDateOrTime:
             raise commands.BadArgument('invalid time provided, try e.g. "tomorrow" or "3 days"')
@@ -190,7 +191,7 @@ class UserFriendlyTime(commands.Converter):
 
 # noinspection SpellCheckingInspection
 def human_timedelta(dt, *, source=None, accuracy=3, brief=False, suffix=True):
-    now = source or datetime.datetime.utcnow()
+    now = source or timezone.now()
     # Microsecond free zone
     now = now.replace(microsecond=0)
     dt = dt.replace(microsecond=0)

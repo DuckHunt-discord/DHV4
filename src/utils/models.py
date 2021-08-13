@@ -86,7 +86,7 @@ class SupportTicket(Model):
             reason = ""
 
         self.closed = True
-        self.closed_at = datetime.datetime.utcnow()
+        self.closed_at = timezone.now()
         self.closed_by = by_user
         self.close_reason = reason
 
