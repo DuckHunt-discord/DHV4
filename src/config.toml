@@ -31,6 +31,7 @@ token = ""
 # bots_list_and_voting must be loaded before rest_api
 cogs_to_load = ['cogs.error_handling',
                 'cogs.emergencies',
+                'cogs.monitoring',
                 'cogs.tags',
                 'cogs.simple_commands',
                 'cogs.background_loop',

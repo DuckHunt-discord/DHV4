@@ -4,6 +4,7 @@ The emergencies command group, allowing for finer control of the bot, raw debugg
 import asyncio
 import datetime
 import time
+from typing import Union
 
 import discord
 import pytz
@@ -29,7 +30,8 @@ class Emergencies(Cog):
 
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
-        self.index = 0
+        self.ws_send_timings = []
+        self.ws_recv_timings = []
 
     @commands.group(aliases=["bot_administration", "emergencies"])
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
