@@ -1,15 +1,18 @@
 """
 Bot monitoring.
 """
+import asyncio
 import time
 from datetime import timedelta
 from typing import Union, List, Callable
 
 import discord
+from discord.ext import tasks
 from discord.ext.commands import CommandError
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.models import BotState
 
 
 def _(message):
@@ -19,6 +22,7 @@ def _(message):
 def get_now():
     return int(time.time())
 
+DB_MEASURE_INTERVAL = timedelta(minutes=10)
 
 def filter_count_event_list(events: List[int], count_predicate: Callable, keep_predicate: Callable) -> int:
     """
@@ -66,14 +70,28 @@ class Monitoring(Cog):
         self.command_timings = []
         self.command_error_timings = []
         self.command_completion_timings = []
+        self.background_loop.start()
 
-    async def get_statistics(self, over=timedelta(minutes=10), delete_older_than=timedelta(hours=1)):
+    def cog_unload(self):
+        self.background_loop.cancel()
+
+    @tasks.loop(minutes=10)
+    async def background_loop(self):
+        await self.save_statistics_to_database()
+
+    @background_loop.before_loop
+    async def before(self):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(DB_MEASURE_INTERVAL.total_seconds())
+
+    async def get_statistics(self, over=DB_MEASURE_INTERVAL, delete_older_than=timedelta(hours=1)):
         now = get_now()
         count_predicate = get_predicate(over, now)
         keep_predicate = get_predicate(delete_older_than, now)
 
         stats = {
             # Event counts
+            "measure_interval": over.total_seconds(),
             "ws_send": filter_count_event_list(self.ws_send_timings, count_predicate, keep_predicate),
             "ws_recv": filter_count_event_list(self.ws_recv_timings, count_predicate, keep_predicate),
             "messages": filter_count_event_list(self.message_timings, count_predicate, keep_predicate),
@@ -83,11 +101,17 @@ class Monitoring(Cog):
 
             # Curent state
             "guilds": len(self.bot.guilds),
-            "shards": len(self.bot.shards),
+            "users": len(self.bot.users),
+            "shards": self.bot.shard_count,
             "ready": self.bot.is_ready(),
             "ws_ratelimited": self.bot.is_ws_ratelimited(),
             "ws_latency": self.bot.latency,
         }
+
+        return stats
+
+    async def save_statistics_to_database(self):
+        await BotState.create(**await self.get_statistics())
 
     # These are all "dumb" event listeners that record the time every time an event is triggered.
     @Cog.listener()

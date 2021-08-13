@@ -1164,6 +1164,28 @@ class TagAlias(Model):
         return f"{self.name} -> {self.tag.name}"
 
 
+class BotState(Model):
+    datetime = fields.DatetimeField(auto_now_add=True)
+
+    measure_interval = fields.IntField()  # The event stats are (usually) based on a 10 minutes interval
+    ws_send = fields.IntField()
+    ws_recv = fields.IntField()
+    messages = fields.IntField()
+    commands = fields.IntField()
+    command_errors = fields.IntField()
+    command_completions = fields.IntField()
+
+    guilds = fields.IntField()
+    users = fields.IntField()
+    shards = fields.IntField()
+    ready = fields.BooleanField()
+    ws_ratelimited = fields.BooleanField()
+    ws_latency = fields.FloatField()  # miliseconds
+
+    class Meta:
+        table = 'botstate'
+
+
 async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
     tag: typing.Optional[Tag] = await Tag.filter(name=name).first()
     if tag:
