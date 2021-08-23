@@ -18,6 +18,6 @@ python-dateutil==2.8.2
 aiohttp[speedups]==3.7.4.post0
 aiohttp_cors==0.7.0
 polib==1.1.1
-tqdm==4.62.1
+tqdm==4.62.2
 pillow==8.3.1
 statcord.py==3.1.0
