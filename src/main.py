@@ -33,7 +33,13 @@ allowed_mentions = discord.AllowedMentions(
     users=True,
 )
 
-bot = MyBot(description=config["bot"]["description"], intents=intents, allowed_mentions=allowed_mentions, enable_debug_events=True, chunk_guilds_at_startup=False)
+bot = MyBot(
+    description=config["bot"]["description"],
+    intents=intents,
+    allowed_mentions=allowed_mentions,
+    enable_debug_events=True,
+    chunk_guilds_at_startup=False,
+)
 
 for cog_name in config["cogs"]["cogs_to_load"]:
     try:
