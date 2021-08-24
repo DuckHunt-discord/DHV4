@@ -17,6 +17,8 @@ msgstr ""
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr ""
+"Trimite link-ul pe care îl poți folosi pentru a vota DuckHunt în listele de "
+"boți"
 
 msgid "Create a Command view for a given command."
 msgstr ""
@@ -28,8 +30,8 @@ msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
 msgstr ""
-"Invita pe cineva in serverul beta, lesandu l sa incerce bot ul inaintea "
-"celorlalti "
+"Invită pe cineva în serverul beta, lăsându-l să încerce bot-ul înaintea "
+"celorlalți "
 
 msgid "Shoot at the duck that appeared first on the channel."
 msgstr "Impusca rata care a aparut prima pe canal"
@@ -383,7 +385,7 @@ msgid "/stats\n"
 msgstr ""
 
 msgid "Commands to view and edit settings"
-msgstr ""
+msgstr "Comenzi pentru a vedea și edita setările"
 
 msgid "Set your server settings to specific, designed modes"
 msgstr ""
@@ -1725,7 +1727,7 @@ msgid "✨ Current prestige level ✨️"
 msgstr ""
 
 msgid "You have reached level {level}"
-msgstr ""
+msgstr "Ai ajuns la nivelul {level}"
 
 msgid ""
 "**Remember**, using prestige means losing your statistics and most of your "
@@ -1733,55 +1735,57 @@ msgid ""
 msgstr ""
 
 msgid "Level 1"
-msgstr ""
+msgstr "Nivelul 1"
 
 msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
 msgstr ""
+"**Ochelari de soare invincibili**: Nu va mai trebui să cumperi ochelari de "
+"soare vreodată"
 
 msgid "Level 2"
-msgstr ""
+msgstr "Nivelul 2"
 
 msgid "**Coat colour**: Choose the colour of your coat"
-msgstr ""
+msgstr "**Culoarea pelerinei**: Alege-ți culoarea pelerinei tale de ploaie"
 
 msgid "Level 3"
-msgstr ""
+msgstr "Nivelul 3"
 
 msgid "**Daily command**: Get more experience every day"
 msgstr ""
 
 msgid "Level 4"
-msgstr ""
+msgstr "Nivelul 4"
 
 msgid "**Icelandic water**: Wet others for longer"
 msgstr ""
 
 msgid "Level 5"
-msgstr ""
+msgstr "Nivelul 5"
 
 msgid "**Untearable coat**: Buy it for life"
 msgstr ""
 
 msgid "Level 6"
-msgstr ""
+msgstr "Nivelul 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
 
 msgid "Level 7"
-msgstr ""
+msgstr "Nivelul 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
 msgstr ""
 
 msgid "Level 8"
-msgstr ""
+msgstr "Nivelul 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
 msgstr ""
 
 msgid "Level 9"
-msgstr ""
+msgstr "Nivelul 9"
 
 msgid "**???**: Suggestions are welcome"
 msgstr ""
@@ -1829,7 +1833,7 @@ msgid ""
 msgstr ""
 
 msgid "Support server"
-msgstr ""
+msgstr "Serverul suport"
 
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
@@ -1857,7 +1861,7 @@ msgid ""
 msgstr ""
 
 msgid "This is not how you invite DuckHunt."
-msgstr ""
+msgstr "Nu așa inviți DuckHunt."
 
 msgid ""
 "DuckHunt, like other discord bots, can't join servers by using an invite "
@@ -1872,7 +1876,7 @@ msgid "This is an automatic message."
 msgstr ""
 
 msgid "DM Closed"
-msgstr ""
+msgstr "DM închis"
 
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
@@ -1902,7 +1906,7 @@ msgid ""
 msgstr ""
 
 msgid "Your language preference wasn't changed."
-msgstr ""
+msgstr "Preferința ta pentru limbă nu a fost schimbată"
 
 msgid "Your preferred language is now {new_language}."
 msgstr ""
@@ -4053,10 +4057,10 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Ai crescut în nivel!"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Ai coborât în nivel!"
 
 msgid "❌ You cannot run this command."
 msgstr ""
@@ -4065,7 +4069,7 @@ msgid "❌ You are not allowed to click on this button"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Anulează"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmă"
