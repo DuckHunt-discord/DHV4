@@ -17,7 +17,7 @@ from babel.dates import format_timedelta
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_player, Player, get_random_player
+from utils.models import get_from_db, get_player, Player, get_random_player, DiscordUser, DiscordChannel
 from utils.views import CommandView
 
 
@@ -576,11 +576,30 @@ class DucksHuntingCommands(Cog):
                 return
 
         elif target:
+            db_channel: DiscordChannel = await get_from_db(ctx.channel)
+            mentions_in_channel = db_channel.mentions_when_killed
+            allowed_mentions = []
+            if mentions_in_channel:
+                db_you: DiscordUser = await get_from_db(ctx.author, as_user=True)
+                db_target: DiscordUser = await get_from_db(target, as_user=True)
+
+                if db_you.ping_friendly:
+                    allowed_mentions.append(ctx.author)
+
+                if db_target.ping_friendly:
+                    allowed_mentions.append(target)
+
+            allowed_mentions = discord.AllowedMentions(users=allowed_mentions)
+
+            you_mention = ctx.author.mention
+            target_mention = target.mention
+
             if target.id == self.bot.user.id:
                 db_hunter.hugged['duckhunt'] += 1
                 await db_hunter.save()
-                await ctx.reply(_("{you.mention} hugged {other.mention}. "
-                                  "The developer of the bot is really happy that you are loving it.", you=ctx.author, other=target))
+                await ctx.reply(_("{you_mention} hugged {target_mention}. "
+                                  "The developer of the bot is really happy that you love it.", you_mention=you_mention, target_mention=target_mention),
+                                allowed_mentions=allowed_mentions)
                 return
 
             db_hunter.hugged['players'] += 1
@@ -588,10 +607,11 @@ class DucksHuntingCommands(Cog):
             if target.id == 687932431314976790:
                 # https://discord.com/channels/195260081036591104/195260081036591104/863475741840506900
                 # https://discord.com/channels/195260081036591104/195260081036591104/863057530423083009
-                await ctx.reply(_("{you.mention} hugged {other.mention}. "
-                                  "They hate you even more for hugging them. Don't know why tho... Try shooting them in the face.", you=ctx.author, other=target))
+                await ctx.reply(_("{you_mention} hugged {target_mention}. "
+                                  "They hate you even more for hugging them. Don't know why tho... Try shooting them in the face.", you_mention=you_mention, target_mention=target_mention),
+                                allowed_mentions=allowed_mentions)
             else:
-                await ctx.reply(_("{you.mention} hugged {other.mention}. They feel loved.", you=ctx.author, other=target))
+                await ctx.reply(_("{you_mention} hugged {target_mention}. They feel loved.", you_mention=you_mention, target_mention=target_mention), allowed_mentions=allowed_mentions)
 
             return
 
