@@ -326,7 +326,7 @@ class PrivateMessagesSupport(Cog):
             self.bot.logger.debug(f"[SUPPORT] creating a webhook for {user.name}#{user.discriminator}.")
 
             webhook = await channel.create_webhook(name=f"{user.name}#{user.discriminator}",
-                                                   avatar=await user.avatar.replace(format="png", size=512).read(),
+                                                   avatar=await user.display_avatar.replace(format="png", size=512).read(),
                                                    reason="Received a DM.")
             self.webhook_cache[channel] = webhook
             self.bot.logger.debug(f"[SUPPORT] channel created for {user.name}#{user.discriminator}.")
@@ -387,7 +387,7 @@ class PrivateMessagesSupport(Cog):
                                  "provided for support purposes only. \n" \
                                  "Nothing was sent to the user about this."
 
-        info_embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=str(user.avatar.url))
+        info_embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=str(user.display_avatar.url))
         info_embed.set_footer(text="Private statistics")
 
         ticket_count = await db_user.support_ticket_count()
@@ -478,7 +478,7 @@ class PrivateMessagesSupport(Cog):
 
         support_embed = discord.Embed(color=discord.Color.blurple(), title="Support response")
         support_embed.set_author(name=f"{message.author.name}#{message.author.discriminator}",
-                                 icon_url=str(message.author.avatar.url))
+                                 icon_url=str(message.author.display_avatar.url))
         support_embed.description = message.content
 
         if len(message.attachments) == 1:
@@ -775,7 +775,7 @@ class PrivateMessagesSupport(Cog):
                               )
 
         embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}",
-                         icon_url=str(ctx.author.avatar.url))
+                         icon_url=str(ctx.author.display_avatar.url))
 
         embed.set_footer(text=_("Press ✅ to accept the change, or do nothing to reject. "
                                 "Use the [dh!settings my_lang language_code] command in a game channel to edit later."))
