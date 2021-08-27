@@ -141,6 +141,7 @@ def main():
     failed_files: Dict[pathlib.Path, List[str]] = {}
     failed_files_embeds: Dict[pathlib.Path, List[discord.Embed]] = {}
     for po_file in LOCALES_DIRECTORY.rglob("*.po"):
+        print(f"➡️ {po_file}")
         result, messages, embeds = check_po_file(po_file)
         if result:
             print(f"✅ {po_file}")
