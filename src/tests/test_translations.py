@@ -82,16 +82,16 @@ def check_po_file(file: pathlib.Path) -> Tuple[bool, List[str], List[discord.Emb
                                 f"ID_: {message_id_keys} ({message_id})\n"
                                 f"STR: {message_string} ({e})")
 
-                e = discord.Embed(color=ERROR_COLOR,
-                                  title=lang_name,
-                                  description=f"Bad f-string formatting")
+                em = discord.Embed(color=ERROR_COLOR,
+                                   title=lang_name,
+                                   description=f"Bad f-string formatting")
 
-                e.add_field(name="Keys in english", value=str(message_id_keys), inline=False)
-                e.add_field(name="Error", value=str(e), inline=False)
+                em.add_field(name="Keys in english", value=str(message_id_keys), inline=False)
+                em.add_field(name="Error", value=str(e), inline=False)
 
-                e.add_field(name="English message", value=message_id[:250], inline=False)
-                e.add_field(name="Translated message", value=message_string[:250], inline=False)
-                embeds.append(e)
+                em.add_field(name="English message", value=message_id[:250], inline=False)
+                em.add_field(name="Translated message", value=message_string[:250], inline=False)
+                embeds.append(em)
 
                 result = False
             else:
