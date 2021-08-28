@@ -2199,7 +2199,7 @@ msgid ""
 "❌ This word is currently protected by {user.name}#{user.discriminator}, you "
 "can't place a mine on it — {protect.message}."
 msgstr ""
-"❌ Dieses Wort ist derzeit durch {user.name}#{user.discriminator}} geschützt, "
+"❌ Dieses Wort ist derzeit durch {user.name}#{user.discriminator} geschützt, "
 "Sie können keine Mine darauf platzieren - {protect.message}."
 
 msgid ""
