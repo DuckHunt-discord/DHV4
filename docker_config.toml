@@ -91,6 +91,7 @@ allowed_in_guilds = [
     195260081036591104, # DuckHunt Support Server
     734810932529856652, # DuckHunt Beta
     819743660895371315, # 765471470347485204's server because they asked nicely
+    514232441498763279, # Devision server (enhanced discord.py)
 ]
 
 [cogs.BotsListVoting]
