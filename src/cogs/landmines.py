@@ -13,6 +13,7 @@ from utils import models, checks
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
+from utils.models import get_from_db, DiscordMember, AccessLevel
 
 
 def _(message):
@@ -30,6 +31,11 @@ class Event2021(Cog):
 
     async def user_can_play(self, user: discord.Member):
         if user.bot:
+            return False
+
+        db_member: DiscordMember = await get_from_db(user)
+
+        if db_member.get_access_level() == AccessLevel.BANNED:
             return False
 
         return True
