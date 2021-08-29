@@ -110,7 +110,7 @@ class MyContext(commands.Context):
             else:
                 try:
                     # Send a normal reply
-                    message = await super().reply(content, file=file, files=files, allowed_mentions=discord.AllowedMentions(replied_user=db_user.ping_friendly), **kwargs)
+                    message = await super().reply(content, file=file, files=files, allowed_mentions=allowed_mentions, **kwargs)
                 except discord.errors.HTTPException:
                     # Can't reply, probably that the message we are replying to was deleted.
                     # Just send the message instead.
