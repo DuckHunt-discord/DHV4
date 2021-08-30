@@ -2005,7 +2005,7 @@ msgstr ""
 "commencer. Je suggère plutôt à la place de lire le wiki, [disponible "
 "ici](https://duckhunt.me/docs). \n"
 "Si vous avez des questions, vous pouvez envoyer un DM au bot ou rejoindre le "
-"[serveur de support](https://duckhunt.me /support). \n"
+"[serveur de support](https://duckhunt.me/support). \n"
 "Merci de jouer avec nous :)"
 
 msgid "Use {prefix}{help} [command] for more info on a command."

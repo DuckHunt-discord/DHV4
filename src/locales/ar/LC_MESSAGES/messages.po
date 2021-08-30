@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8"
 
 msgid "Creates votes handlers for specific bots lists"
-msgstr ""
+msgstr "إنشاء معالجات الأصوات لقوائم برامج روبوتات محددة"
 
 msgid "Handle users votes for fateslist"
 msgstr ""

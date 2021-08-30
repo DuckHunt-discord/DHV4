@@ -1822,8 +1822,8 @@ msgstr ""
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
-"Введите {prefix}{help} [команда] для получения дополнительной информации о "
-"команде."
+"Введите {prefix}{help} [команда], чтобы получить больше информации о команде."
+""
 
 msgid "{cog} help"
 msgstr ""
