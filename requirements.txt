@@ -5,7 +5,7 @@ parsedatetime==2.6
 pytz
 #discord.py[voice]>=1.7.2
 git+https://github.com/Rapptz/discord.py.git
-tortoise-orm[accel]==0.17.6
+tortoise-orm[accel]==0.17.7
 aerich
 asyncpg==0.24.0
 python-rapidjson
