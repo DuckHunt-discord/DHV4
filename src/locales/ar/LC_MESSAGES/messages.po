@@ -10,16 +10,16 @@ msgid "Creates votes handlers for specific bots lists"
 msgstr "إنشاء معالجات الأصوات لقوائم برامج روبوتات محددة"
 
 msgid "Handle users votes for fateslist"
-msgstr ""
+msgstr "يعامل بتصويت المستعملون لفيتس ليست"
 
 msgid "Handle users votes for top.gg"
-msgstr ""
+msgstr "يعامل بتصويت المستعملون لتوب.جيجي"
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
-msgstr ""
+msgstr "يرسل الرابط يمكنك ان تستخدمه لتصويت لدك هنط علي قواءم الروبوتات"
 
 msgid "Create a Command view for a given command."
-msgstr ""
+msgstr "اصنع نظره لامر روبوت لامر روبوت معطي "
 
 msgid "Create a GamePadView to allow playing the game with buttons."
 msgstr ""
@@ -27,7 +27,7 @@ msgstr ""
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
-msgstr "قم بدعوة شخص ما إلى خادم بيتا ، والسماح له بتجربة الروبوت قبل الآخرين"
+msgstr "قم بدعوة شخص ما إلى الخواديم بيتا لسماحه بتجربة الروبوت قبل الآخرين"
 
 msgid "Shoot at the duck that appeared first on the channel."
 msgstr "أطلق النار على البطة التي ظهرت أولاً في القناة."
