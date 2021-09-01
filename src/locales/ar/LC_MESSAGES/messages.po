@@ -19,10 +19,10 @@ msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr "يرسل الرابط يمكنك ان تستخدمه لتصويت لدك هنط علي قواءم الروبوتات"
 
 msgid "Create a Command view for a given command."
-msgstr "اصنع نظره لامر روبوت لامر روبوت معطي "
+msgstr "اصنع منظر لامر روبوت لامر روبوت معطي "
 
 msgid "Create a GamePadView to allow playing the game with buttons."
-msgstr ""
+msgstr "اصنع منظر لوحة اللعبة للسمح بلعب اللعبه بأزرار"
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
@@ -36,58 +36,58 @@ msgid "Reload your gun."
 msgstr "أعد تحميل بندقيتك"
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr "عانق البطة التي ظهرت أولاً في القناة."
+msgstr "أطلق النار على البطة التي ظهرت أولاً في القناة."
 
 msgid "Revive yourself by eating brains"
-msgstr ""
+msgstr "احياء نفسك باكل العقول"
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "يفرخ بطة عشوائية"
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
-msgstr ""
+msgstr "يفرخ العديد من البط، منها (على الأقل) واحدة ميكانيكية"
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "يفرخ يفرخ بطة عادية"
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "يفرخ بطة فائقة"
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "يفرخ بطة طفل"
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "يفرخ بطه أستاذ"
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
-msgstr ""
+msgstr "يفرخ بطة شبح. لن تكون هناك رسالة توليد، من الواضح."
 
 msgid "Spawns a MOAD."
-msgstr ""
+msgstr "يفرخ  MOAD"
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
-msgstr ""
+msgstr "يفرخ بطة مدرعة، ستقاوم معظم ضربات  قوة 1"
 
 msgid "Spawns a golden duck."
-msgstr ""
+msgstr "يفرخ بطة ذهبية."
 
 msgid "Spawns a plastic duck."
-msgstr ""
+msgstr "يفرخ بطة بلاستيكية."
 
 msgid "Spawns a kamikaze duck."
-msgstr ""
+msgstr "يفرخ بطة كاميكازي."
 
 msgid "Spawns a night duck."
-msgstr ""
+msgstr "يفرخ بطة ليلية."
 
 msgid "Spawns a sleeping duck."
-msgstr ""
+msgstr "يولد بطة نائمة."
 
 msgid "Show ducks currently on the channel"
-msgstr ""
+msgstr "عرض البط حاليًا على القناة"
 
 msgid "Removes all ducks from the channel"
-msgstr ""
+msgstr "يزيل جميع البط من القناة"
 
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
@@ -97,6 +97,10 @@ msgid ""
 "These commands do not use the translation system, and will always show in "
 "english"
 msgstr ""
+"إدارة الحالة الحالية للبوت عن طريق بدء ووقف تفريخ البط ، المغادره، وتخطيط "
+"تفريخ البط لمدة يوم.\n"
+"\n"
+"لا تستخدم هذه الأوامر نظام الترجمة، وستظهر دائمًا باللغة الإنجليزية"
 
 msgid ""
 "Reset ducks planning, setting the ducks left to spawn counts to a value "
@@ -121,7 +125,7 @@ msgid "Force a boss to spawn"
 msgstr ""
 
 msgid "Force the current event to change, and reroll a new one."
-msgstr ""
+msgstr "فرض تغيير الحدث الحالي، وإعادة تدوير حدث جديد."
 
 msgid "Congratulate an user giving them a trophy."
 msgstr ""
