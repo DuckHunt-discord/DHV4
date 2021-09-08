@@ -2341,34 +2341,38 @@ msgid "**Icelandic water**: Wet others for longer"
 msgstr "**Air Islandia**: Basahkan lainnya untuk lebih lama"
 
 msgid "Level 5"
-msgstr ""
+msgstr "Level 5"
 
 msgid "**Untearable coat**: Buy it for life"
-msgstr ""
+msgstr "**Mantel yang tidak dapat dirobek**: Beli untuk seumur hidup"
 
 msgid "Level 6"
-msgstr ""
+msgstr "Level 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
+"**Peredam kelas militer**: Peredam suara yang lebih baik yang bertahan dua "
+"kali lebih lama"
 
 msgid "Level 7"
-msgstr ""
+msgstr "Level 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
-msgstr ""
+msgstr "**Lisensi permanen untuk membunuh**: Layanan rahasia DuckHunt"
 
 msgid "Level 8"
-msgstr ""
+msgstr "Level 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
 msgstr ""
+"**Pak amunisi yang lebih besar**: Muatkan dua kali lebih banyak peluru di "
+"senapanmu"
 
 msgid "Level 9"
-msgstr ""
+msgstr "Level 9"
 
 msgid "**???**: Suggestions are welcome"
-msgstr ""
+msgstr "**???**: Saran dipersilahkan"
 
 msgid ""
 "❌ You haven't unlocked prestige yet. See `{ctx.prefix}prestige info` to "
@@ -2378,21 +2382,25 @@ msgstr ""
 "mempelajari lebih lanjut."
 
 msgid "Prestige {old_prestige} -> {new_prestige}"
-msgstr ""
+msgstr "Prestige {old_prestige} -> {new_prestige}"
 
 msgid "You used prestige after reaching {pct}% of the required threshold."
 msgstr ""
+"Kamu menggunakan prestige setelah mencapai {pct}% dari ambang yang "
+"diperlukan."
 
 msgid "✨ New run"
-msgstr ""
+msgstr "✨ Petualangan baru"
 
 msgid "You'll restart the game with {kept_exp} experience."
-msgstr ""
+msgstr "Kamu akan memulai ulang permainan dengan {kept_exp} pengalaman."
 
 msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
 msgstr ""
+"❌ Tingkat prestigemu belum cukup tinggi. Lihat info prestige `{ctx."
+"prefix}prestige info` untuk mempelajari lebih lanjut."
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr "❌ Kamu sudah mengklaim hadiah harian Anda hari ini. Coba lagi besok."
@@ -2449,15 +2457,17 @@ msgid "Support tickets are deleted after 24 hours of inactivity"
 msgstr "Tiket bantuan dihapus setelah 24 jam tidak aktif"
 
 msgid "Attachments persistence"
-msgstr ""
+msgstr "Kegigihan lampiran"
 
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 msgstr ""
+"Gambar dan data terlampir lainnya ke pesan akan dihapus setelah tiket Anda "
+"ditutup. Pastikan untuk menyimpannya terlebih dahulu jika Anda mau."
 
 msgid "This is not how you invite DuckHunt."
-msgstr ""
+msgstr "Ini bukan caramu mengundang DuckHunt."
 
 msgid ""
 "DuckHunt, like other discord bots, can't join servers by using an invite "
@@ -2467,12 +2477,18 @@ msgid ""
 "quickstart). If you need more help, you can ask here and we'll get back to "
 "you."
 msgstr ""
+"DuckHunt, seperti bot Discord lainnya, tidak dapat bergabung dengan server "
+"dengan menggunakan link undangan.\n"
+"Anda harus menjadi server Administrator dan mengundang bot dengan mengikuti "
+"[panduan ini](https://duckhunt.me/docs/bot-administration/admin-quickstart). "
+"Jika Anda membutuhkan bantuan lebih lanjut, Anda dapat bertanya di sini dan "
+"kami akan menghubungi Anda kembali."
 
 msgid "This is an automatic message."
-msgstr ""
+msgstr "Ini adalah pesan otomatis."
 
 msgid "DM Closed"
-msgstr ""
+msgstr "DM Ditutup"
 
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
@@ -2480,98 +2496,113 @@ msgid ""
 "new ticket!\n"
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
+"Tiket dukungan Anda ditutup dan riwayat dihapus. Terima kasih telah "
+"menggunakan dukungan pesan pribadi DuckHunt. Perlu diingat, mengirim pesan "
+"lain di sini akan membuka tiket baru!\n"
+"Sementara itu, inilah gambar bebek yang bagus untuk kamu lihat!"
 
 msgid "❌ Can't send a message to this user: {e}."
-msgstr ""
+msgstr "❌ Tidak dapat mengirim pesan ke pengguna ini: {e}."
 
 msgid "❌ There is no tag with that name."
-msgstr ""
+msgstr "❌ Tidak ada tag dengan nama itu."
 
 msgid "Language change offer"
-msgstr ""
+msgstr "Penawaran perubahan bahasa"
 
 msgid ""
 "DuckHunt support suggests you change your personal language from "
 "{current_language} to {suggested_language}. This will translate all the "
 "messages you get in private message from DuckHunt to {suggested_language}."
 msgstr ""
+"Dukungan DuckHunt menyarankan Anda mengubah bahasa pribadi Anda dari "
+"{current_language} menjadi {suggested_language}. Ini akan menerjemahkan "
+"semua pesan yang Anda dapatkan dalam pesan pribadi dari DuckHunt ke "
+"{suggested_language}."
 
 msgid ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
 msgstr ""
+"Tekan ✅ untuk menerima perubahan, atau tidak melakukan apa pun untuk ditolak."
+" Gunakan command [dh!settings my_lang language_code] dalam channel permainan "
+"untuk mengedit nanti."
 
 msgid "Your language preference wasn't changed."
-msgstr ""
+msgstr "Preferensi bahasa Anda tidak berubah."
 
 msgid "Your preferred language is now {new_language}."
-msgstr ""
+msgstr "Bahasa pilihan Anda sekarang {new_language}."
 
 msgid "Images"
-msgstr ""
+msgstr "Gambar"
 
 msgid "Admin: Settings"
-msgstr ""
+msgstr "Admin: Pengaturan"
 
 msgid "You can view the channel settings here: "
-msgstr ""
+msgstr "Anda dapat melihat pengaturan channel di sini: "
 
 msgid "Defaults settings have been restored."
-msgstr ""
+msgstr "Pengaturan bawaan telah dipulihkan."
 
 msgid "DHV3-Like settings have been applied to this channel."
-msgstr ""
+msgstr "Pengaturan seperti DHV3 telah diterapkan ke channel ini."
 
 msgid "Casual mode settings have been applied to this channel."
-msgstr ""
+msgstr "Pengaturan mode kasual telah diterapkan ke channel ini."
 
 msgid "Hardcore mode settings have been applied to this channel."
-msgstr ""
+msgstr "Pengaturan mode hardcore telah diterapkan ke channel ini."
 
 msgid "👻 Haunted House settings have been applied to this channel."
-msgstr ""
+msgstr "👻 Pengaturan Rumah Hantu telah diterapkan ke channel ini."
 
 msgid "🤖 Robot fest settings have been applied to this channel."
-msgstr ""
+msgstr "🤖 Pengaturan Robot fest telah diterapkan untuk channel ini."
 
 msgid "🐙 Hydra settings have been applied to this channel."
-msgstr ""
+msgstr "🐙 Pengaturan Hydra telah diterapkan ke channel ini."
 
 msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
-msgstr ""
+msgstr "☢ Pengaturan Radiasi nuklir telah diterapkan ke channel ini 🍀."
 
 msgid "🦘 Australia settings have been applied to this channel."
-msgstr ""
+msgstr "🦘 Pengaturan Australia telah diterapkan ke channel ini."
 
 msgid "There will be very big ducks on this channel."
-msgstr ""
+msgstr "Akan ada bebek yang sangat besar di channel ini."
 
 msgid "Your math test will start soon."
-msgstr ""
+msgstr "Tes matematika kamu akan segera dimulai."
 
 msgid "The server prefix is set to `{prefix}`."
-msgstr ""
+msgstr "Prefix server diatur ke `{prefix}`."
 
 msgid "There is no specific prefix set for this guild."
-msgstr ""
+msgstr "Tidak ada prefix spesifik yang ditetapkan untuk guild ini."
 
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
 msgstr ""
+"Kamu dapat memanggil saya dengan salah satu prefix global: "
+"{global_prefixes_list}"
 
 msgid ""
 "❌ Unknown locale. If you wish to go back to the default, english language, "
 "use `{ctx.prefix}{ctx.command.qualified_name} en`"
 msgstr ""
+"❌ Lokal tak dikenal. Jika Anda ingin kembali ke default, bahasa inggris, "
+"gunakan `{ctx.prefix}{ctx.command.qualified_name} en`"
 
 msgid "This server language is set to `{language}` [{language_name}]."
-msgstr ""
+msgstr "Bahasa server ini diatur ke `{language}` [{language_name}]."
 
 msgid "There is no specific language set for this guild."
-msgstr ""
+msgstr "Tidak ada bahasa khusus yang ditetapkan untuk guild ini."
 
 msgid "Webhooks are used in this channel."
-msgstr ""
+msgstr "Webhook digunakan dalam channel ini."
 
 msgid "Webhooks are not used in this channel."
 msgstr ""
