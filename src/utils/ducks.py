@@ -333,6 +333,8 @@ class Duck:
                      experience=experience,
                      )
         else:
+            if hugger.id == 296573428293697536:  # ⚜WistfulWizzz⚜#5928
+                return _("<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!")
             return _(
                 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck hates you, because you killed all his family. [**FAIL**: {experience} exp]",
                 hugger=hugger,

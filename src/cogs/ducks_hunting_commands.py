@@ -619,7 +619,10 @@ class DucksHuntingCommands(Cog):
         if duck:
             await duck.hug(args)
         else:
-            await ctx.reply(_("What are you trying to hug, exactly? A tree?"))
+            if ctx.author.id == 296573428293697536:  # ⚜WistfulWizzz⚜#5928
+                await ctx.reply(_("You hugged a tree, Wizzz?!"))
+            else:
+                await ctx.reply(_("What are you trying to hug, exactly? A tree?"))
             db_hunter.hugged["nothing"] += 1
             await db_hunter.save()
 
