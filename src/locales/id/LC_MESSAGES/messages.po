@@ -2179,7 +2179,7 @@ msgstr[1] ""
 "{got_points} poin."
 
 msgid "There were no active landmines on that word to be defused."
-msgstr "Tidak ada ranjau aktif untuk dijinakkan."
+msgstr "Tidak ada ranjau aktif di kata itu untuk dijinakkan."
 
 msgid "❌ Please give (as much) valid words as you want to the defuse kit."
 msgstr ""
@@ -2207,7 +2207,7 @@ msgid ""
 "the value of the landmine was lower than the defuse kit price. Sorry!"
 msgstr ""
 "💸️ Kamu menggunakan defuse kit pada `{landmine.word}`, dan menjinakkan <@ "
-"{placed_by_member.user_id} > ranjau darat (ditempatkan {td} yang lalu), yang "
+"{placed_by_member.user_id}> ranjau darat (ditempatkan {td} yang lalu), yang "
 "memiliki nilai poin `{landmine.value}`. Anda telah kehilangan {-got_points} "
 "poin, karena nilai ranjau darat lebih rendah dari harga kit defuse. Maaf!"
 
