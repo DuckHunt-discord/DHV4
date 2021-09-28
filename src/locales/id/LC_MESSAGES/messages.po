@@ -2853,10 +2853,10 @@ msgid "I couldn't DM you... Are your DMs blocked ?"
 msgstr "Aku tidak bisa DM Anda... Apakah DM Anda diblokir?"
 
 msgid "Channel disabled messages are enabled."
-msgstr "Pesan channel dinonaktifkan diaktifkan."
+msgstr "Pesan channel nonaktif diaktifkan."
 
 msgid "Channel disabled messages are disabled. The bot will stay silent."
-msgstr "Pesan channel dinonaktifkan dinonaktifkan. Bot akan tetap diam."
+msgstr "Pesan channel nonaktif dinonaktifkan. Bot akan tetap diam."
 
 msgid ""
 "❌ Unknown level number. Please check the table here: <https://duckhunt.me/"
