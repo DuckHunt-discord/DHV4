@@ -425,7 +425,10 @@ class PrivateMessagesSupport(Cog):
                                    add_direction=True,
                                    format="short",
                                    locale="en")
-            value = f"Closed {ftd} by {last_ticket.closed_by.name}."
+            if last_ticket.closed_by:
+                value = f"Closed {ftd} by {last_ticket.closed_by.name}."
+            else:
+                value = f"Closed {ftd} by the bot."
 
             if last_ticket.close_reason:
                 value += f"\n{last_ticket.close_reason}"
