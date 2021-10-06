@@ -103,9 +103,11 @@ async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordCha
             webhook: discord.Webhook
             if webhook.name == "DuckHunt":
                 db_channel.webhook_urls.append(webhook.url)
-        if len(db_channel.webhook_urls) == 0 or force and not len(db_channel.webhook_urls) > 5:
+        if len(db_channel.webhook_urls) == 0 or (force and len(db_channel.webhook_urls) <= 5):
             webhook = await channel.create_webhook(name="DuckHunt", reason="Better Ducks")
             db_channel.webhook_urls.append(webhook.url)
+        else:
+            return None
 
     except discord.Forbidden:
         db_channel.use_webhooks = False
