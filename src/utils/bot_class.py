@@ -31,7 +31,7 @@ class MyBot(AutoShardedBot):
         #activity = discord.Game(self.config["bot"]["playing"])
         self.current_event: Events = Events.CALM
         activity = discord.Game(self.current_event.value[0])
-        super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
+        super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], slash_commands=True, slash_command_guilds=[734810932529856652], **kwargs)
         self.commands_used = collections.Counter()
         self.top_users = collections.Counter()
         self.uptime = timezone.now()
