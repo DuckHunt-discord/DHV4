@@ -116,6 +116,7 @@ class CommandButton(AutomaticDeferMixin, ui.Button):
         try:
             can_run = await self.command.can_run(ctx)
         except Exception as e:
+            ctx.logger.info(f"Can run is false for {self} - {e}")
             _ = await ctx.get_translate_function(user_language=True)
             await interaction.response.send_message(_('❌ You cannot run this command.'), ephemeral=True)
             return
