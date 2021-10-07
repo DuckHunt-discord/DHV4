@@ -21,10 +21,13 @@ async def get_context_from_interaction(bot: MyBot, interaction: Interaction) -> 
 
     if fake_message is None:
         fake_message = interaction.channel.last_message or await interaction.channel.fetch_message(interaction.channel.last_message_id)
+        bot.logger.debug("Got last message from cache/network for get_context")
     fake_message.author = interaction.user
 
     ctx = await bot.get_context(fake_message, cls=MyContext)
     ctx.interaction = interaction
+
+    bot.logger.debug(f"Created fake_context {ctx}")
 
     return ctx
 
@@ -112,7 +115,7 @@ class CommandButton(AutomaticDeferMixin, ui.Button):
 
         try:
             can_run = await self.command.can_run(ctx)
-        except:
+        except Exception as e:
             _ = await ctx.get_translate_function(user_language=True)
             await interaction.response.send_message(_('❌ You cannot run this command.'), ephemeral=True)
             return
