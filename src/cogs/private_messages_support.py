@@ -459,8 +459,12 @@ class PrivateMessagesSupport(Cog):
               "Messages here are relayed to a select group of volunteers and bot moderators to help you use the bot. "
               "For general questions, we also have a support server "
               "[here](https://duckhunt.me/support).\n"
-              "If you opened the ticket by mistake, just say `close` and we'll close it for you, otherwise, we'll get "
-              "back to you in a few minutes.")
+              "If you opened the ticket by mistake, just say `close` and we will close it for you. "
+              "Please note that CLOSE IS NOT A COMMAND. You do not need to include any prefix or to spam it. "
+              "The bot does not closes tickets, human support volunteers do. When they are online and have the time. \n"
+              "In any other cases, we'll get back to you as fast as possible. "
+              "We are human, do not expect us to reply within 10 seconds. \n"
+              "Ask your question right away, no need to wait for an answer. (More on that : https://dontasktoask.com) \n")
         welcome_embed.set_footer(text=_("Support tickets are deleted after 24 hours of inactivity"))
 
         try:
