@@ -651,7 +651,7 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats['max_brains_eaten_at_once'] = max(db_hunter.shooting_stats['max_brains_eaten_at_once'], dead_times)
             await db_hunter.save()
 
-            await ctx.reply(_("You eat {brains} 🧠 and regain consiousness.", brains=dead_times))
+            await ctx.reply(_("You eat {brains} 🧠 and regain consciousness.", brains=dead_times))
 
 
 
