@@ -599,7 +599,9 @@ class ShoppingCommands(Cog):
 
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
-        await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
+        # We don't want to send a level down message here.
+        # https://github.com/DuckHunt-discord/DHV4/issues/41
+        db_hunter.experience -= -ITEM_COST
 
         db_target.weapon_sabotaged_by = db_hunter
         db_hunter.bought_items['sabotage'] += 1
