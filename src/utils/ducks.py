@@ -485,7 +485,7 @@ class Duck:
         await self.increment_hugs()
         await self.release()
 
-        await db_hugger.edit_experience_with_levelups(ctx=None, delta=experience, bot=self.bot)
+        await db_hugger.edit_experience_with_levelups(ctx=self.channel, delta=experience, bot=self.bot)
 
         await db_hugger.save()
 
