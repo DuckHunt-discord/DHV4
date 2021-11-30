@@ -179,9 +179,6 @@ class MyBot(AutoShardedBot):
         for message in messages:
             self.logger.info(message)
 
-        for message in messages:
-            print(message)
-
 
 async def get_prefix(bot: MyBot, message: discord.Message):
     forced_prefixes = bot.config["bot"]["prefixes"][:]
