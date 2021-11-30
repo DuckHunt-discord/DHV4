@@ -1243,7 +1243,7 @@ async def get_from_db(discord_object, as_user=False):
                                        user=await get_from_db(discord_object, as_user=True))
                 await db_obj.save()
             return db_obj
-        elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.Member) and as_user:
+        elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.ClientUser) or (isinstance(discord_object, discord.Member) and as_user):
             db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
             if not db_obj:
                 db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name,
@@ -1256,6 +1256,8 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
 
             return db_obj
+        elif isinstance(discord_object, discord.Thread):
+            return await get_from_db(discord_object.parent)
         else:
             obj_type_name = type(discord_object).__name__
             print(f"Unknown object type passed to get_from_db <type:{obj_type_name}>, <obj:{discord_object}>")
