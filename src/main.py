@@ -37,7 +37,7 @@ bot = MyBot(
     description=config["bot"]["description"],
     intents=intents,
     allowed_mentions=allowed_mentions,
-    enable_debug_events=True,
+    enable_debug_events=False,
     chunk_guilds_at_startup=False,
 )
 
