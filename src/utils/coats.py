@@ -53,7 +53,7 @@ class Coats(Enum):
         if argument.upper() == "RANDOM":
             return None
         try:
-            return getattr(cls, argument.upper())
+            return getattr(cls, argument.upper().replace(' ', '_'))
         except AttributeError:
             _ = await ctx.get_translate_function()
             raise commands.BadArgument(_("This is not a valid color. "

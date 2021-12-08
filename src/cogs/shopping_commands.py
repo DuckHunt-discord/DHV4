@@ -684,7 +684,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp].\n**I couldn't DM you this message**", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
     @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
-    async def coat(self, ctx: MyContext, color: Optional[Coats] = None):
+    async def coat(self, ctx: MyContext, *, color: Optional[Coats] = None):
         """
         Protect yourself from water. If you are already wet, it also can be used as a change. [15 exp/24 hrs]
         """
