@@ -601,7 +601,7 @@ class ShoppingCommands(Cog):
 
         # We don't want to send a level down message here.
         # https://github.com/DuckHunt-discord/DHV4/issues/41
-        db_hunter.experience -= -ITEM_COST
+        db_hunter.experience -= ITEM_COST
 
         db_target.weapon_sabotaged_by = db_hunter
         db_hunter.bought_items['sabotage'] += 1
