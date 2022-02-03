@@ -455,17 +455,19 @@ class PrivateMessagesSupport(Cog):
 
         welcome_embed = discord.Embed(color=discord.Color.green(), title="Support ticket opened")
         welcome_embed.description = \
-            _("Welcome to DuckHunt private messages support.\n"
-              "Messages here are relayed to a select group of volunteers and bot moderators to help you use the bot. "
+            _("**It seems that you have sent a DM to the bot.** \n"
+              "Welcome to DuckHunt private messages support.\n"
+              "If you opened the ticket by mistake, just say `close` and we will close it for you. "
+              "Please note that **CLOSE IS NOT A COMMAND**. "
+              "Please do not include any prefix or to spam it. \n\n"
+              "Messages here are relayed to a select group of bot helpers to help you use the bot. "
               "For general questions, we also have a support server "
               "[here](https://duckhunt.me/support).\n"
-              "If you opened the ticket by mistake, just say `close` and we will close it for you. "
-              "Please note that CLOSE IS NOT A COMMAND. You do not need to include any prefix or to spam it. "
-              "The bot does not closes tickets, human support volunteers do. When they are online and have the time. \n"
               "In any other cases, we'll get back to you as fast as possible. "
-              "We are human, do not expect us to reply within 10 seconds. \n"
-              "Ask your question right away, no need to wait for an answer. (More on that : https://dontasktoask.com) \n")
-        welcome_embed.set_footer(text=_("Support tickets are deleted after 24 hours of inactivity"))
+              "We are human and sometimes offline,"
+              "to get a faster answer, ask your question right away. "
+              "(More on that : https://dontasktoask.com)"
+        welcome_embed.set_footer(text=_("Support tickets are automatically deleted after 24 hours of inactivity"))
 
         try:
             await user.send(embed=welcome_embed)
@@ -524,7 +526,7 @@ class PrivateMessagesSupport(Cog):
             dm_invite_embed = discord.Embed(color=discord.Color.purple(),
                                             title=_("This is not how you invite DuckHunt."))
             dm_invite_embed.description = \
-                _("DuckHunt, like other discord bots, can't join servers by using an invite link.\n"
+                _("DuckHunt, like all other discord bots, can't join servers by using an invite link.\n"
                   "You instead have to be a server Administrator and to invite the bot by following "
                   "[this guide](https://duckhunt.me/docs/bot-administration/admin-quickstart). If you need more help, "
                   "you can ask here and we'll get back to you.")
