@@ -3,9 +3,10 @@ import io
 
 import discord
 import typing
-from discord import Message, Interaction
+from discord import Message, Interaction, AllowedMentions
 from discord.errors import InvalidArgument
 from discord.ext import commands
+from discord.mentions import default
 from discord.utils import MISSING
 
 from utils.models import get_from_db
@@ -16,6 +17,23 @@ if typing.TYPE_CHECKING:
 
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
+
+
+def merge_allowed_mentions(ctx: 'MyContext', first: AllowedMentions, second: AllowedMentions) -> AllowedMentions:
+    # Creates a new AllowedMentions by merging from another one.
+    # Merge is done by using the 'self' values unless explicitly
+    # overridden by the 'other' values.
+    user_replied = ctx.author
+
+    everyone = first.everyone if second.everyone is default else second.everyone
+    users = first.users if second.users is default else second.users
+    roles = first.roles if second.roles is default else second.roles
+    replied_user = first.replied_user if second.replied_user is default else second.replied_user
+    if replied_user:
+        if user_replied in users:
+            users.remove(user_replied)
+
+    return AllowedMentions(everyone=everyone, roles=roles, users=users, replied_user=replied_user)
 
 
 class MyContext(commands.Context):
@@ -86,7 +104,7 @@ class MyContext(commands.Context):
                                                                    ephemeral=True)
         elif reply:
             db_user = await get_from_db(self.author, as_user=True)
-            allowed_mentions = discord.AllowedMentions(replied_user=db_user.ping_friendly).merge(allowed_mentions)
+            allowed_mentions = merge_allowed_mentions(self, discord.AllowedMentions(replied_user=db_user.ping_friendly), allowed_mentions)
 
             if self.interaction:
                 # We can't respond to the interaction, but it's a button click,
