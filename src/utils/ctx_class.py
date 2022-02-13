@@ -18,24 +18,6 @@ if typing.TYPE_CHECKING:
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
 
-
-def merge_allowed_mentions(ctx: 'MyContext', first: AllowedMentions, second: AllowedMentions) -> AllowedMentions:
-    # Creates a new AllowedMentions by merging from another one.
-    # Merge is done by using the 'self' values unless explicitly
-    # overridden by the 'other' values.
-    user_replied = ctx.author
-
-    everyone = first.everyone if second.everyone is default else second.everyone
-    users = first.users if second.users is default else second.users
-    roles = first.roles if second.roles is default else second.roles
-    replied_user = first.replied_user if second.replied_user is default else second.replied_user
-    if replied_user:
-        if user_replied in users:
-            users.remove(user_replied)
-
-    return AllowedMentions(everyone=everyone, roles=roles, users=users, replied_user=replied_user)
-
-
 class MyContext(commands.Context):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -70,9 +52,10 @@ class MyContext(commands.Context):
                    files=None,
                    reply=False,
                    force_public=False,
-                   allowed_mentions=discord.AllowedMentions(),
+                   allowed_mentions=None,
                    **kwargs) -> Message:
-
+        if allowed_mentions is None:
+            allowed_mentions = discord.AllowedMentions()
         # Case for a too-big message
         if content and len(content) > 1990:
             self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
@@ -104,7 +87,7 @@ class MyContext(commands.Context):
                                                                    ephemeral=True)
         elif reply:
             db_user = await get_from_db(self.author, as_user=True)
-            allowed_mentions = merge_allowed_mentions(self, discord.AllowedMentions(replied_user=db_user.ping_friendly), allowed_mentions)
+            allowed_mentions = discord.AllowedMentions(replied_user=db_user.ping_friendly).merge(allowed_mentions)
 
             if self.interaction:
                 # We can't respond to the interaction, but it's a button click,
