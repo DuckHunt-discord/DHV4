@@ -466,7 +466,7 @@ class PrivateMessagesSupport(Cog):
               "In any other cases, we'll get back to you as fast as possible. "
               "We are human and sometimes offline,"
               "to get a faster answer, ask your question right away. "
-              "(More on that : https://dontasktoask.com)"
+              "(More on that : https://dontasktoask.com)")
         welcome_embed.set_footer(text=_("Support tickets are automatically deleted after 24 hours of inactivity"))
 
         try:
