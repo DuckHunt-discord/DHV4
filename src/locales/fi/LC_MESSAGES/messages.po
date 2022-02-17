@@ -7,17 +7,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8"
 
 msgid "Creates votes handlers for specific bots lists"
-msgstr ""
+msgstr "Luo äänten käsittelijöitä tietyille bots-luetteloille"
 
 msgid "Handle users votes for fateslist"
-msgstr ""
+msgstr "Käsittelee käyttäjien ääniä fateslistille"
 
 msgid "Handle users votes for top.gg"
-msgstr ""
+msgstr "Käsitelee käyttäjien ääniä top.gg:lle"
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
-msgstr ""
-"Lähettää linkin, jonka avulla voit äänestää DuckHuntia bottien listoilla"
+msgstr "Lähettää linkin, jonka avulla voit äänestää DuckHuntia bottilistoilla"
 
 msgid "Create a Command view for a given command."
 msgstr "Luo komentonäkymä annetulle komennolle."
@@ -101,7 +100,8 @@ msgid ""
 "english"
 msgstr ""
 "Hallitse botin nykytilaa käynnistämällä ja pysäyttämällä ankkojen "
-"syntyminen, poistuminen, sekä ajoitus ankkojen syntymiselle päivän aikana."
+"syntyminen, poistuminen, sekä säädä ajoitusta ankkojen syntymiselle päivän "
+"aikana."
 
 msgid ""
 "Reset ducks planning, setting the ducks left to spawn counts to a value "
@@ -174,10 +174,10 @@ msgid "Show buttons for all the cogs in a bot."
 msgstr ""
 
 msgid "Buttons to direct user to a group help"
-msgstr ""
+msgstr "Painikkeet, joilla käyttäjä ohjataan ryhmän ohjeeseen"
 
 msgid "Buttons to direct user to a command help"
-msgstr ""
+msgstr "Painikkeet, jotka ohjaavat käyttäjän komento-ohjeeseen"
 
 msgid "Show buttons for all the commands and groups in a cog or a group."
 msgstr ""
@@ -269,6 +269,10 @@ msgid ""
 "\n"
 "It returns the count of matching events."
 msgstr ""
+"Tämä funktio laskee predikaattia vastaavien tapahtumien määrän ja suodattaa "
+"tapahtumaluettelon paikallaan toisen jälkeen.\n"
+"\n"
+"Se palauttaa yhteensopivien tapahtumien lukumäärän."
 
 msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
 msgstr ""
@@ -475,7 +479,7 @@ msgid "Commands to view and edit settings"
 msgstr "Komennot asetusten tarkastelemiseksi ja muokkaamiseksi"
 
 msgid "Set your server settings to specific, designed modes"
-msgstr ""
+msgstr "Aseta palvelimen asetukset tiettyihin, suunniteltuihin tiloihin"
 
 msgid "Restore default settings for DuckHunt V4."
 msgstr "Palauta DuckHunt V4:n oletusasetukset."
@@ -810,6 +814,15 @@ msgid ""
 "BOT_MODERATOR = 500\n"
 "BOT_OWNER = 600"
 msgstr ""
+"Komennot käyttöoikeuksien muokkaamiseen.\n"
+"\n"
+"BANNED = 0\n"
+"DEFAULT = 50\n"
+"TRUSTED = 100\n"
+"MODERATOR = 200\n"
+"ADMIN = 300\n"
+"BOT_MODERATOR = 500\n"
+"BOT_OWNER = 600"
 
 msgid "View the current permissions"
 msgstr "Katso nykyiset käyttöoikeudet"
@@ -833,9 +846,15 @@ msgid ""
 "\n"
 "This is useful to limit defuses, stats and more to a selected channel."
 msgstr ""
+"Salli maamiinakomentojen suorittaminen tällä kanavalla.\n"
+"\n"
+"Tämä on hyödyllistä, kun haluat rajoittaa miinanraivaukset, tilastot ja muut "
+"valitulle kanavalle."
 
 msgid "Set your preference on whether replies from the bot should ping you"
 msgstr ""
+"Aseta haluamasi asetukset sen suhteen, pitäisikö botin vastausten pingata "
+"sinua"
 
 msgid ""
 "Change/view your own language.\n"
@@ -847,19 +866,29 @@ msgid ""
 "Some messages will use your preferred language, usually when the bot "
 "communicates with you in DM."
 msgstr ""
+"Vaihda/katsele omaa kieltäsi.\n"
+"\n"
+"Määritä kielesi 2/5-kirjaimisena koodina. Jos asut esimerkiksi Ranskassa, "
+"käytä fr tai fr_FR.\n"
+"Québecissä voit käyttää fr_CA.\n"
+"\n"
+"Joissakin viesteissä käytetään haluamaasi kieltä, yleensä silloin, kun botti "
+"kommunikoi kanssasi DM."
 
 msgid "Buy items here"
-msgstr ""
+msgstr "Osta tuotteita täältä"
 
 msgid "Adds a bullet to your current magazine. [7 exp]"
-msgstr ""
+msgstr "Lisää luoti nykyiseen lippaaseen. [7 exp]"
 
 msgid "Adds a magazine in your backpack. [13 exp]"
-msgstr ""
+msgstr "Lisää reppuusi lippaan. [13 exp]"
 
 msgid ""
 "Buy AP ammo to double the damage you do to super ducks. [15 exp/24 hrs]"
 msgstr ""
+"Osta AP-ammuksia, jotta voit kaksinkertaistaa superankoille aiheuttamasi "
+"vahingon. [15 exp/24 tuntia]"
 
 msgid ""
 "Buy Explosive ammo to TRIPLE the damage you do to super ducks. [25 exp/24 "
@@ -920,54 +949,71 @@ msgid ""
 "Their gun will jam and explode in their face the next time they press the "
 "trigger. [14* exp]"
 msgstr ""
+"Sabotoi toisen pelaajan asetta.\n"
+"Hänen aseensa jumiutuu ja räjähtää hänen kasvoillaan, kun hän seuraavan "
+"kerran painaa liipaisinta. [14* exp]"
 
 msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
 msgstr ""
+"Aseta houkutuslintu, jotta ankat parittelisivat seuraavan 10 minuutin aikana."
+" [8 exp]"
 
 msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
-msgstr ""
+msgstr "Synnyttää valesorsan tasan 90 sekunnissa. [15 exp]"
 
 msgid ""
 "Protect yourself from water. If you are already wet, it also can be used as "
 "a change. [15 exp/24 hrs]"
 msgstr ""
+"Suojaudu vedeltä. Jos olet jo kastunut, sitä voidaan käyttää myös "
+"vaihtovälineenä. [15 exp/24 tuntia]"
 
 msgid ""
 "Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
 msgstr ""
+"Vältä rangaistuksia, jos tapat vahingossa toisen metsästäjän. [15 exp/24 "
+"tuntia]"
 
 msgid ""
 "Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
 msgstr ""
+"Lataa aseesi automaattisesti uudelleen aina kun se on tarpeen. [35 exp/24 "
+"tuntia]"
 
 msgid ""
 "Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
 msgstr ""
+"Älä enää koskaan missaa laukausta Ohjautuvien luotien avulla. [150 exp / "
+"Rajoitettu kesto]"
 
 msgid ""
 "Check that the bot is online, give the latency between the bot and Discord "
 "servers."
 msgstr ""
+"Tarkistaa, että botti on verkossa ja ilmoittaa botin ja Discord-palvelimien "
+"välisen latenssin."
 
 msgid "Returns the wiki URL"
-msgstr ""
+msgstr "Palauttaa wikin URL-osoitteen"
 
 msgid "Get the URL to invite the bot"
-msgstr ""
+msgstr "Hae URL-osoite botin kutsumiseen"
 
 msgid "Get a discord invite to the support server."
-msgstr ""
+msgstr "Hanki discord-kutsu tukipalvelimelle."
 
 msgid ""
 "Get the time when you'll get free magazines and your weapon back from the "
 "police"
 msgstr ""
+"Saat ajan, jolloin saat ilmaiset lippaat ja aseesi takaisin poliisilta"
 
 msgid "Get the bot prefixes"
-msgstr ""
+msgstr "Hae botin etuliitteet"
 
 msgid "Thanks to those fine people who (helped) make the bot"
 msgstr ""
+"Kiitokset niille hienoille ihmisille, jotka (auttoivat) tekemään botin"
 
 msgid "Thanks to those fine people who (helped) translate the bot"
 msgstr ""
@@ -1139,13 +1185,25 @@ msgid ""
 "You can add mentions at the end of your message to allow others to control "
 "the tag pagination too."
 msgstr ""
+"Näyttää tietyn tunnisteen nimen perusteella.\n"
+"\n"
+"Komento hyväksyy tunnisteiden nimet tai aliakset, ja näyttää ne mukavassa "
+"paginaattorissa suoraan Discordissa.\n"
+"Voit klikata otsikossa olevaa linkkiä lukeaksesi tagin verkossa, jos haluat.\n"
+"\n"
+"Voit lisätä viestisi loppuun mainintoja, jotta muutkin voivat hallita tagien "
+"paginointia."
 
 msgid "Commands to interact with tags : creations, editions, deletions, ..."
 msgstr ""
+"Komennot tunnisteiden kanssa toimimiseen: luominen, muokkaaminen, "
+"poistaminen, ...."
 
 msgid ""
 "Create a new tag. The tag name must not be an existing tag or tag alias."
 msgstr ""
+"Luo uusi tunniste. Tunnisteen nimi ei saa olla olemassa oleva tunniste tai "
+"tunnisteen alias."
 
 msgid ""
 "Alias an existing tag to a new name.\n"
@@ -1160,12 +1218,14 @@ msgid "Delete an existing tag."
 msgstr "Poista olemassa olevan tunniste."
 
 msgid "List all the existing tags."
-msgstr ""
+msgstr "Luettele kaikki olemassa olevat tunnisteet."
 
 msgid ""
 "View the raw version of the tag, with markdown escaped. This is useful to "
 "use as a base for editing a tag."
 msgstr ""
+"Näytä tagin raakaversio, jossa markdown on poistettu. Tätä on hyödyllistä "
+"käyttää pohjana tagin muokkaamisessa."
 
 msgid "Voting"
 msgstr "Äänestys"
@@ -1213,54 +1273,62 @@ msgid "You can vote on {bl_name}"
 msgstr "Voit äänestää {bl_name}"
 
 msgid "You might be able to vote on {bl_name}"
-msgstr ""
+msgstr "Voit ehkä äänestää {bl_name}"
 
 msgid "🔫 Bang"
-msgstr ""
+msgstr "🔫 Bang"
 
 msgid "🤗 Hug"
-msgstr ""
+msgstr "🤗 Halaus"
 
 msgid "♻️ Reload"
-msgstr ""
+msgstr "♻️ Lataus"
 
 msgid "Buy a magazine"
-msgstr ""
+msgstr "Osta lipas"
 
 msgid "Buy a bullet"
-msgstr ""
+msgstr "Osta luoti"
 
 msgid "🍀 Buy a clover"
-msgstr ""
+msgstr "🍀 Osta apila"
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
-msgstr ""
+msgstr "{monitored_player.mention}, RPG jäähy: **{name}** päättynyt."
 
 msgid "Here's the invite you requested {invite}"
-msgstr ""
+msgstr "Tässä on pyytämäsi kutsu {invite}"
 
 msgid ""
 "{rpg_role.mention}, you might want to click the reaction above/do what the "
 "bot says."
 msgstr ""
+"{rpg_role.mention}, sinun kannattaa ehkä klikata yllä olevaa reaktiota/tehdä "
+"niin kuin botti sanoo."
 
 msgid "Hunting"
-msgstr ""
+msgstr "Metsästys"
 
 msgid ""
 "The bot is still starting up, please wait a minute and retry. Ducks haven't "
 "been lost."
 msgstr ""
+"Botti käynnistyy yhä, odota hetki ja yritä uudelleen. Ankat eivät ole "
+"kadonneet."
 
 msgid ""
 "☠️ It's a little cold in there... Maybe because **you are DEAD**! Have you "
 "tried eating BRAINS? `{ctx.prefix}revive`..."
 msgstr ""
+"☠️ On vähän kylmä... Ehkä siksi, että **sinä olet KUOLLUT**! Oletko "
+"kokeillut syödä AIVOJA? `{ctx.prefix}revive`..."
 
 msgid ""
 "🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) "
 "or something, or buy new ones (`{ctx.prefix}shop clothes`)"
 msgstr ""
+"🚰 Älä viitsi! Vaatteesi ovat märät, kuivaa ne ainakin (**{time_delta}**) "
+"tai jotain, tai osta uudet (`{ctx.prefix}shop clothes`)"
 
 msgid ""
 "⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx."
@@ -1275,6 +1343,8 @@ msgstr ""
 msgid ""
 "☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"
 msgstr ""
+"☁️ Aseesi on jumissa. Lataa se uudelleen puhdistaaksesi sen ! (`{ctx."
+"prefix}reload`)"
 
 msgid ""
 "🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: "
@@ -1288,41 +1358,60 @@ msgstr ""
 
 msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
+"💥 Aseesi jumiutui. Lataa se uudelleen ja harkitse rasvan ostamista ensi "
+"kerralla."
 
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
 msgstr ""
+"✨ Otat uudet ohjautuvat luodit pakkauksen ulkopuolelle, asetat ne aseeseesi "
+"ja ammut silmät kiinni..."
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. Your licence to kill saved your "
 "experience. [**MISSED**: -2 exp]"
 msgstr ""
+"... Luoti lensi suoraan kasvoihisi ja tappoi sinut välittömästi. Sinun "
+"pitäisi lähettää valituksesi CACAD:lle. Tappolupasi pelasti kokemuksesi. "
+"[**MISSATTU**: -2 kokemusta]"
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. At least, you had a ~~kill~~ "
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
+"... Luoti lensi suoraan kasvoihisi ja tappoi sinut välittömästi. Sinun "
+"pitäisi lähettää valituksesi CACAD:lle. Ainakin sinulla oli ~~kill~~ "
+"itsemurhalupa. [**MISSATTU**: -2 kokemusta]"
 
 msgid ""
 "... And the bullet flew straight into your face, killing you instantly. You "
 "should send your complaints to the CACAD. [**WEAPON "
 "CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
+"... Luoti lensi suoraan kasvoihisi ja tappoi sinut välittömästi. Sinun "
+"pitäisi lähettää valituksesi CACAD:lle. [**ASE TAKAVARIKOITU**][**MISSATTU**:"
+" -2 kokemusta][**MURHAAJA**: -15 kokemusta]"
 
 msgid ""
 "🔫 You missed the duck... And *almost* shot {player_name} in the head, "
 "missing them by a few hairs. Their orange coat saved them. [**MISSED**: -2 "
 "exp]"
 msgstr ""
+"🔫 Missasit ankan... Ja *melkein* ammuit {player_name} päähän, ohi muutaman "
+"hiuksen verran. Oranssi takki pelasti heidät. [**MISSATTU**: -2 kokemusta]"
 
 msgid ""
 "🔫 You took your weapon out, aimed it towards {player_name} head, but they "
 "had a pink coat just like yours. Using the power of love, you missed them on "
 "purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]"
 msgstr ""
+"🔫 Otit aseesi esiin ja tähtäsit sillä kohti {player_name} päätä, mutta "
+"hänellä oli vaaleanpunainen takki aivan kuten sinulla. Käyttämällä rakkauden "
+"voimaa, ohitit heidät tahallasi ja osuit rakkauden puuhun 🌳. [**MISSATTU**: "
+"-2 kokemusta]"
 
 msgid ""
 "🔫 You missed the duck... And you saw your bullet go towards {player_name} "
@@ -1330,60 +1419,88 @@ msgid ""
 "using the power of love, you made the bullet hit the love tree 🌳 instead. "
 "[**MISSED**: -2 exp]"
 msgstr ""
+"🔫 Missasit ankan... Ja näit luodin menevän kohti {pelaajan_nimi} päätä, "
+"mutta hänellä oli vaaleanpunainen takki aivan kuten sinulla. Aivan kuten "
+"elokuvissa, käyttämällä rakkauden voimaa, sait luodin osumaan rakkauden "
+"puuhun 🌳 sen sijaan. [**MISSATTU**: -2 kokemusta]"
 
 msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
+"🔫 Olet nyt kuollut. [**ASE TAKAVARIKOITU**][**MURHA**: -15 kokemusta]"
 
 msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
-msgstr ""
+msgstr "🔫 Teit itsemurhan. [**ASE TAKAVARIKOITU**][**MURHA**: -15 kokemusta]"
 
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
+"🔫 Otit aseesi esiin, tähtäsit sen suoraan {player_name}:n päätä kohti ja "
+"painoit liipaisinta. [**ASE TAKAVARIKOITU**][**MURHA**: -15 kokemusta]"
 
 msgid "🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
+"🔫 Olet nyt kuollut. [**PUNAINEN TAKKI**: Säilytit aseen][**MURHA**: -15 "
+"kokemusta]"
 
 msgid ""
 "🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
+"🔫 Teit itsemurhan. [**PUNAINEN TAKKI**: Säilytit aseen][**MURHA**: -15 "
+"kokemusta]"
 
 msgid ""
 "🔫 You took your weapon out, aiming it directly towards {player_name} head, "
 "and pulled the trigger. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
 msgstr ""
+"🔫 Otit aseesi esiin, tähtäsit sen suoraan {player_name}:n päätä kohti ja "
+"painoit liipaisinta. [**PUNAINEN TAKKI**: Säilytit aseen][**MURHA**: -15 "
+"kokemusta]"
 
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head. You died. You are "
 "legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]"
 msgstr ""
+"🔫 Missasit ankan... Ja ammuit itseäsi päähän. Sinä kuolit. Sinulla on "
+"laillinen oikeus tappaa ~~ihmisiä~~itseäsi. [**MISSATTU**: -2 kokemusta]"
 
 msgid ""
 "🔫 You missed the duck... And shot {player_name} in the head, killing them "
 "on the spot. You are legally allowed to kill people. [**MISSED**: -2 exp]"
 msgstr ""
+"🔫 Missasit ankan... Ja ammuit {player_name} päähän, tappaen hänet siihen "
+"paikkaan. Sinulla on laillinen oikeus tappaa ihmisiä. [**MISSATTU**: -2 "
+"kokemusta]"
 
 msgid ""
 "🔫 You missed the duck... And shot yourself in the head, dying instantly. "
 "[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
+"🔫 Missasit ankan... Ja ammuit itseäsi päähän, kuolit välittömästi. [**ASE "
+"TAKAVARIKOITU**][**MISSATTU**: -2 kokemusta][**MURHA**: -15 kokemusta]"
 
 msgid ""
 "🔫 You missed the duck... And shot {player_name} in the head, killing them "
 "on the spot. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 "
 "exp]"
 msgstr ""
+"🔫 Missasit ankan... Ja ammuit {player_name} päähän, tappaen hänet siihen "
+"paikkaan. [**ASE TAKAVARIKOITU**][**MISSATTU**: -2 kokemusta][**MURHA**: -15 "
+"kokemusta]"
 
 msgid ""
 "🌲 What did you try to aim at ? I guess you shot that tree, over here. "
 "[**MISSED**: -2 exp]"
 msgstr ""
+"🌲 Mihin yritit tähdätä ? Taisit ampua tuohon puuhun, tuolla. [**MISSATTU**: "
+"-2 kokemusta]"
 
 msgid ""
 "🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector "
 "stopped the shot."
 msgstr ""
+"🕵️ Hei sinä siellä! Rauhoitu, ei täällä ole ankkoja. Infrapunatunnistimesi "
+"pysäytti laukauksen."
 
 msgid ""
 "❓️ What are you trying to kill exactly ? There are no ducks here. "
@@ -1472,7 +1589,7 @@ msgid "You eat {brains} 🧠 and regain consciousness."
 msgstr "Sinä syöt {brains} 🧠 ja palaat tajuihisi."
 
 msgid "Admin: Spawning"
-msgstr ""
+msgstr "Admin: Synnyttää"
 
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
@@ -1495,7 +1612,7 @@ msgid ""
 msgstr ""
 
 msgid "{ducks_spawned_count} ducks removed."
-msgstr ""
+msgstr "{ducks_spawned_count} ankkaa poistettu."
 
 msgid "Support team: emergencies"
 msgstr "Tukitiimi: hätätilanteet"
@@ -1574,37 +1691,54 @@ msgstr ""
 
 msgid "You need to be in a server with ID {exception.must_be_in_guild_id}."
 msgstr ""
+"Sinun on oltava palvelimella, jonka ID on {exception.must_be_in_guild_id}."
 
 msgid ""
 "You need to be in the {correct_channel.name} channel (`{exception."
 "must_be_in_channel_id}`)."
 msgstr ""
+"Sinun on oltava {correct_channel.name} -kanavalla (`{exception."
+"must_be_in_channel_id}`)."
 
 msgid "You need to be in a channel with ID {exception.must_be_in_channel_id}."
 msgstr ""
+"Sinun on oltava kanavassa, jonka ID on {exception.must_be_in_channel_id}."
 
 msgid ""
 "You don't have enough experience to enjoy this item. You'd need at least "
 "{exception.needed} exp, but you only have {exception.having}."
 msgstr ""
+"Sinulla ei ole tarpeeksi kokemusta nauttiaksesi tästä tuotteesta. "
+"Tarvitsisit vähintään {exception.needed} kokemusta, mutta sinulla on vain "
+"{exception.having}."
 
 msgid ""
 "Your access level is too low : you have an access level of {exception."
 "current_access.name}, and you need at least {exception.required_access.name}."
 ""
 msgstr ""
+"Käyttöoikeustasosi on liian matala : sinulla on käyttöoikeustaso {exception."
+"current_access.name}, ja tarvitset vähintään {exception.required_access."
+"name}."
 
 msgid ""
 "The game isn't running on this channel. Admins can disable this message by "
 "running `dh!settings channel_disabled_message False`, or can enable the "
 "channel with `dh!settings enabled True`."
 msgstr ""
+"Peli ei pyöri tällä kanavalla. Ylläpitäjät voivat poistaa tämän viestin "
+"käytöstä ajamalla `dh!settings channel_disabled_message False` tai ottaa "
+"kanavan käyttöön komennolla `dh!settings enabled True`."
 
 msgid ""
 "Landmines commands cannot be ran on this channel. Admins can disable this "
 "message by running `dh!settings channel_disabled_message False`, or can "
 "enable the channel with `dh!settings landmines_commands_enabled True`."
 msgstr ""
+"Tällä kanavalla ei voi suorittaa maamiinakomentoja. Ylläpitäjät voivat "
+"poistaa tämän viestin käytöstä ajamalla `dh!settings "
+"channel_disabled_message False` tai ottaa kanavan käyttöön komennolla "
+"`dh!settings landmines_commands_enabled True`."
 
 msgid "Check error running this command: {err_data}"
 msgstr "Tarkista virhe tämän komennon suorittamisessa: {err_data}"
@@ -1622,33 +1756,42 @@ msgstr ""
 "ylläpitäjiin."
 
 msgid "This command is overused. Please try again {some_time}."
-msgstr ""
+msgstr "Tätä komentoa käytetään liikaa. Yritä uudelleen {some_time}."
 
 msgid ""
 "This should not have happened. A command raised an error that does not comes "
 "from CommandError. Please inform the owner."
 msgstr ""
+"Näin ei olisi pitänyt tapahtua. Komento aiheutti virheen, joka ei tule "
+"CommandErrorista. Ilmoita asiasta omistajalle."
 
 msgid ""
 "You are above the limits of DuckHunt database. Try to reduce your "
 "expectations. Database message: `{exception}`"
 msgstr ""
+"Olet DuckHunt-tietokannan rajojen yläpuolella. Yritä vähentää kokemustasi. "
+"Tietokannan viesti: `{exception}`"
 
 msgid ""
 "Missing permissions, please check I can embed links here. `{exception}`"
 msgstr ""
+"Puuttuvat oikeudet, tarkista, että voin upottaa linkkejä tänne. "
+"`{exception}`"
 
 msgid "Missing permissions, please check I can add reactions here."
-msgstr ""
+msgstr "Puuttuvat oikeudet, tarkista, että voin lisätä reaktioita tänne."
 
 msgid ""
 "This should not have happened. A command raised an error that does not come "
 "from CommandError, and isn't handled by our error handler. Please inform the "
 "owner."
 msgstr ""
+"Näin ei olisi pitänyt tapahtua. Komento aiheutti virheen, joka ei tule "
+"CommandErrorista eikä virheenkäsittelijämme käsittele sitä. Ilmoita asiasta "
+"omistajalle."
 
 msgid "DuckHunt help"
-msgstr ""
+msgstr "DuckHunt ohjeet"
 
 msgid ""
 "**Welcome to DuckHunt**\n"
@@ -1660,48 +1803,57 @@ msgid ""
 "server](https://duckhunt.me/support).\n"
 "Thanks for playing."
 msgstr ""
+"**Tervetuloa DuckHuntiin*\n"
+"\n"
+"Tämä on apukomento, jonka tarkoituksena on auttaa sinua löytämään kaikki "
+"botin komennot.\n"
+"Se *ei* kuitenkaan ole paras tapa päästä alkuun sen kanssa. Suosittelen sen "
+"sijaan wikin lukemista, tässä on [linkki](https://duckhunt.me/docs).\n"
+"Jos sinulla on kysyttävää, voit lähettää botille DM:n tai liittyä "
+"[tukipalvelimeen](https://duckhunt.me/support).\n"
+"Kiitos pelaamisesta."
 
 msgid "Use {prefix}{help} [command] for more info on a command."
-msgstr ""
+msgstr "Käytä {prefix}{help} [komento] saadaksesi lisätietoja komennosta."
 
 msgid "{cog} help"
 msgstr ""
 
 msgid "... More available online"
-msgstr ""
+msgstr "... Lisää saatavilla verkossa"
 
 msgid "Inventory"
-msgstr ""
+msgstr "Tavaraluettelo"
 
 msgid "Your inventory"
-msgstr ""
+msgstr "Tavaraluettelosi"
 
 msgid "A lot of air and a starved mosquito."
-msgstr ""
+msgstr "Paljon ilmaa ja nälkäinen hyttynen."
 
 msgid "`{prefix}inv use shortcode` to use an item"
-msgstr ""
+msgstr "`{prefix}inv use lyhenne` käyttääksesi esineen"
 
 msgid "❌ Unknown item."
-msgstr ""
+msgstr "❌ Tuntematon esine."
 
 msgid "👌 Item has been given to {target.name}."
-msgstr ""
+msgstr "👌 Esine on annettu käyttäjälle {target.name}."
 
 msgid "❌ Items usage is disabled on this channel."
-msgstr ""
+msgstr "❌ Esineiden käyttö on poistettu käytöstä tällä kanavalla."
 
 msgid "❌ The number of items to use must be a number greater or equal to 1."
-msgstr ""
+msgstr "❌ Käytettävien esineiden lukumäärän on oltava vähintään 1."
 
 msgid "❌ You can't use this item that many times."
-msgstr ""
+msgstr "❌ Tätä esinettä ei voi käyttää niin monta kertaa."
 
 msgid "❌ You don't have that item."
-msgstr ""
+msgstr "❌ Sinulla ei ole tuota esinettä."
 
 msgid "Landmines"
-msgstr ""
+msgstr "Maamiinat"
 
 msgid ""
 "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
@@ -1711,6 +1863,12 @@ msgid ""
 "<@{placed_by_member.user_id}> message:\n"
 "{message_text}"
 msgstr ""
+"💥 Astuit `{landmine.word}` miinaan, jonka asetti {td} sitten "
+"<@{placed_by_member.user_id}>. Se räjähti ja vei **{explosion_value} "
+"pisteitä** tililtäsi.\n"
+"\n"
+"<@{placed_by_member.user_id}> viesti:\n"
+"{message_text}"
 
 msgid ""
 "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
@@ -1718,12 +1876,16 @@ msgid ""
 "points** from your account.\n"
 "\n"
 msgstr ""
+"💥 Astuit `{landmine.word}` miinaan, jonka asetti {td} sitten "
+"<@{placed_by_member.user_id}>. Se räjähti ja vei **{explosion_value} "
+"pisteitä** tililtäsi.\n"
+"</@{placed_by_member.user_id}>"
 
 msgid "They can't play the game :("
-msgstr ""
+msgstr "He eivät voi pelata peliä :("
 
 msgid "{target.name} event statistics"
-msgstr ""
+msgstr "{target.name} tapahtumatilastot"
 
 msgid ""
 "The most important currency in the game are the points, which are used in "
@@ -1734,15 +1896,22 @@ msgid ""
 "event. At the end of the game, the player having the greater amount of "
 "points will win."
 msgstr ""
+"Pelin tärkein valuutta ovat pisteet, joita käytetään kaupassa tavaroiden "
+"ostamiseen. Käytettävissä olevat pisteet näyttävät, kuinka monta pistettä "
+"sinulla on ja kuinka monta olet hankkinut yhteensä.\n"
+"Voit saada pisteitä lähettämällä (pitkiä) viestejä. Joidenkin kaupan "
+"esineiden avulla voit saada enemmän. Varo roskapostittamasta, palvelimen "
+"säännöt **ovat edelleen voimassa** tapahtuman aikana. Pelin lopussa se "
+"pelaaja, jolla on enemmän pisteitä, voittaa."
 
 msgid "Available"
-msgstr ""
+msgstr "Saatavilla"
 
 msgid "{db_target.points_current} points"
-msgstr ""
+msgstr "{db_target.points_current} pistettä"
 
 msgid "Messages sent"
-msgstr ""
+msgstr "Lähetetyt viestit"
 
 msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
 msgstr "{db_target.messages_sent} ({db_target.words_sent} sanaa)"
@@ -1903,16 +2072,16 @@ msgid ""
 msgstr ""
 
 msgid "Landmines statistics"
-msgstr ""
+msgstr "Maamiinoja koskevat tilastot"
 
 msgid "Players tracked"
-msgstr ""
+msgstr "Seuratut pelaajat"
 
 msgid "Mines count"
-msgstr ""
+msgstr "Miinojen määrä"
 
 msgid "{current_mines_count} mines placed, {total_mines_count} created"
-msgstr ""
+msgstr "{current_mines_count} miinaa asetettu, {total_mines_count} luotu"
 
 msgid "Biggest active mine"
 msgstr "Suurin aktiivinen miina"
@@ -1920,6 +2089,8 @@ msgstr "Suurin aktiivinen miina"
 msgid ""
 "Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
 msgstr ""
+"Arvo on `{biggest_mine.value} ({letters} merkkiä)`, jonka on asettanut: "
+"<@{user}>"
 
 msgid "Players in the negative"
 msgstr "Pelaajat, joiden tulos on negatiivinen"
@@ -1931,13 +2102,13 @@ msgid "{points} points"
 msgstr "{points} pistettä"
 
 msgid "Support team: monitoring"
-msgstr ""
+msgstr "Tukitiimi: monitoroi"
 
 msgid "Prestige"
-msgstr ""
+msgstr "Arvotaso"
 
 msgid "Prestige Information"
-msgstr ""
+msgstr "Arvotaso-tiedot"
 
 msgid ""
 "Prestige is a way for you to restart the DuckHunt adventure, resetting your "
@@ -1945,97 +2116,115 @@ msgid ""
 "In exchange for the reset, you'll get new items to help you progress faster.\n"
 "\n"
 msgstr ""
+"Arvotaso on keino aloittaa DuckHunt-seikkailu uudelleen ja nollata tilisi "
+"(kokemus, tilastot, ...)\n"
+"Vastineeksi nollauksesta saat uusia esineitä, jotka auttavat sinua etenemään "
+"nopeammin.\n"
+"\n"
 
 msgid ""
 "Prestige will be unlocked when you reach the maximum level. You are at "
 "{pct}% there (you need {missing_exp} more experience)."
 msgstr ""
+"Arvotaso avautuu, kun saavutat enimmäistason. Olet {pct}% (tarvitset "
+"{missing_exp} lisää kokemusta)."
 
 msgid ""
 "Prestige is available for you now ! Go ahead and use `{ctx.prefix}prestige "
 "confirm`. By using it now, you'll keep {kept_exp} exp."
 msgstr ""
+"Arvotaso on nyt käytettävissäsi ! Mene eteenpäin ja käytä `{ctx."
+"prefix}prestige confirm`. Käyttämällä sitä nyt, pidät {kept_exp} exp."
 
 msgid "Prestige daily bonus"
-msgstr ""
+msgstr "Arvotason päivittäinen bonus"
 
 msgid ""
 "You can get around {experience} experience every day by using the daily "
 "command."
 msgstr ""
+"Voit saada {experience} kokemusta joka päivä käyttämällä daily-komentoa."
 
 msgid "✨ Current prestige level ✨️"
-msgstr ""
+msgstr "✨ Nykyinen arvotaso ✨️"
 
 msgid "You have reached level {level}"
-msgstr ""
+msgstr "Olet saavuttanut tason {level}"
 
 msgid ""
 "**Remember**, using prestige means losing your statistics and most of your "
 "experience. However, you'll get the following items to help you"
 msgstr ""
+"**Muista**, että arvotason käyttäminen tarkoittaa tilastojesi ja suurimman "
+"osan kokemuksestasi menettämistä. Saat kuitenkin seuraavia esineitä avuksesi"
 
 msgid "Level 1"
-msgstr ""
+msgstr "Taso 1"
 
 msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
-msgstr ""
+msgstr "**Särkymättömät aurinkolasit**: Älä koskaan enää osta aurinkolaseja"
 
 msgid "Level 2"
-msgstr ""
+msgstr "Taso 2"
 
 msgid "**Coat colour**: Choose the colour of your coat"
-msgstr ""
+msgstr "**Väri**: Valitse takkisi väri"
 
 msgid "Level 3"
-msgstr ""
+msgstr "Taso 3"
 
 msgid "**Daily command**: Get more experience every day"
-msgstr ""
+msgstr "**Päiväkäsky**: Hanki lisää kokemusta joka päivä"
 
 msgid "Level 4"
-msgstr ""
+msgstr "Taso 4"
 
 msgid "**Icelandic water**: Wet others for longer"
-msgstr ""
+msgstr "**Islantilainen vesi**: Kosteuttaa muita pelaajia pidempään"
 
 msgid "Level 5"
-msgstr ""
+msgstr "Taso 5"
 
 msgid "**Untearable coat**: Buy it for life"
-msgstr ""
+msgstr "**Repeämätön takki**: Osta se loppuelämäksesi"
 
 msgid "Level 6"
-msgstr ""
+msgstr "Taso 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
+"**Sotilasluokan äänenvaimennin**: Parempi äänenvaimennin, joka kestää kaksi "
+"kertaa kauemmin"
 
 msgid "Level 7"
-msgstr ""
+msgstr "Taso 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
-msgstr ""
+msgstr "**Pysyvä lupa tappaa**: Salainen DuckHunt-palvelu"
 
 msgid "Level 8"
-msgstr ""
+msgstr "Taso 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
 msgstr ""
+"**Suurempi ampumatarvikepakkaus**: Lataa aseeseesi kaksi kertaa enemmän "
+"luoteja"
 
 msgid "Level 9"
-msgstr ""
+msgstr "Taso 9"
 
 msgid "**???**: Suggestions are welcome"
-msgstr ""
+msgstr "**???**: Ehdotukset ovat tervetulleita"
 
 msgid ""
 "❌ You haven't unlocked prestige yet. See `{ctx.prefix}prestige info` to "
 "learn more."
 msgstr ""
+"❌ Et ole vielä avannut arvotasoa. Katso `{ctx.prefix}prestige info` "
+"saadaksesi lisätietoja."
 
 msgid "Prestige {old_prestige} -> {new_prestige}"
-msgstr ""
+msgstr "Arvotaso {old_prestige} -> {new_prestige}"
 
 msgid "You used prestige after reaching {pct}% of the required threshold."
 msgstr ""
@@ -2044,22 +2233,26 @@ msgid "✨ New run"
 msgstr ""
 
 msgid "You'll restart the game with {kept_exp} experience."
-msgstr ""
+msgstr "Aloitat pelin uudelleen {kept_exp}-kokemuksella."
 
 msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
 msgstr ""
+"❌ Arvostustasosi ei ole vielä tarpeeksi korkea. Katso `{ctx.prefix}prestige "
+"info` saadaksesi lisätietoja."
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr ""
+"❌ Olet jo lunastanut päivittäisen palkkiosii tänään. Yritä huomenna "
+"uudelleen."
 
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
-msgstr ""
+msgstr "💰️ Otit {exp} kokemusta arvovaltapankista. Tule pian takaisin!"
 
 msgid "Support team: private messages"
-msgstr ""
+msgstr "Tukitiimi: yksityisviestit"
 
 msgid "DM Timed Out"
 msgstr "DM Aikakatkaistiin"
@@ -2207,7 +2400,7 @@ msgid "DHV3-Like settings have been applied to this channel."
 msgstr "Tähän kanavaan on sovellettu DHV3:n kaltaisia asetuksia."
 
 msgid "Casual mode settings have been applied to this channel."
-msgstr ""
+msgstr "Tähän kanavaan on sovellettu satunnaistilan asetuksia."
 
 msgid "Hardcore mode settings have been applied to this channel."
 msgstr "Tähän kanavaan on sovellettu Hardcore-tilan asetuksia."
@@ -2307,26 +2500,31 @@ msgstr ""
 "maailmassa ?"
 
 msgid "Ducks will spawn on {channel.mention}"
-msgstr ""
+msgstr "Ankat syntyvät kanavalle {channel.mention}"
 
 msgid "Ducks won't spawn on {channel.mention}"
-msgstr ""
+msgstr "Ankat eivät synny kanavalla {kanavan.maininta}"
 
 msgid ""
 "On {channel.mention}, players will pay {tax}% of tax to the bot when they "
 "share some experience."
 msgstr ""
+"Pelaajat maksavat {channel.mention}-kanavalla {tax} % veroa botille, kun he "
+"jakavat kokemusta toisilleen."
 
 msgid ""
 "Players won't have to pay any tax when sending experience to others in "
 "{channel.mention}"
 msgstr ""
+"Pelaajien ei tarvitse maksaa veroa, kun he lähettävät kokemusta muille "
+"pelaajille {channel.mention} kanavalla"
 
 msgid "On {channel.mention}, players will be mentionned when they get killed."
-msgstr ""
+msgstr "Pelaajat mainitaan, kun heidät tapetaan kanavalla {channel.mention}."
 
 msgid "Players won't get mentions when they get killed in {channel.mention}"
 msgstr ""
+"Pelaajat eivät saa mainintoja, kun heidät tapetaan {channel.mention}:ssä"
 
 msgid "On {channel.mention}, players will see the lives count of super ducks."
 msgstr ""
@@ -2608,7 +2806,7 @@ msgid "Your language is set to `{language}` [{language_name}]."
 msgstr ""
 
 msgid "Shop"
-msgstr ""
+msgstr "Kauppa"
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
 msgstr ""
@@ -2654,7 +2852,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ Your gun is already using explosive ammo for {time_delta}!"
-msgstr ""
+msgstr "❌ Aseesi käyttää jo räjähtäviä ammuksia {time_delta}!"
 
 msgid ""
 "💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
@@ -2662,7 +2860,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ Your gun isn't confiscated, why would you need a new one ?"
-msgstr ""
+msgstr "❌ Aseesi ei ole takavarikoitu, miksi tarvitsisit uuden?"
 
 msgid ""
 "💸 You bribed the police and bought back your weapon. The fun continues. "
@@ -2671,7 +2869,7 @@ msgstr ""
 
 msgid ""
 "❌ Your gun is already perfectly greased, you don't need any more of that."
-msgstr ""
+msgstr "❌ Aseesi on jo täydellisesti rasvattu, et tarvitse sitä enempää."
 
 msgid ""
 "💸 You added some grease to your weapon to reduce jamming for a day. [Bought:"
@@ -2682,6 +2880,8 @@ msgid ""
 "❌ You added a new sight to your weapon recently. You don't need a new one "
 "for your next {uses} shots."
 msgstr ""
+"❌ Lisäsit äskettäin aseeseesi uuden tähtäimen. Et tarvitse uutta seuraaviin "
+"{uses} laukauksiisi."
 
 msgid ""
 "💸 You added a sight to your weapon to improve your accuracy for the next "
@@ -2692,6 +2892,8 @@ msgid ""
 "❌ You already have that infrared detector on your weapon. It is still good "
 "for {times} missed shots."
 msgstr ""
+"❌ Sinulla on jo infrapunailmaisin aseessasi. Se on edelleen hyvä {times} "
+"ohilaukausten varalta."
 
 msgid ""
 "💸 You added an infrared detector to your weapon. If you can't see ducks, "
@@ -2703,6 +2905,8 @@ msgid ""
 "❌ You already use a silencer. It's still good for {time_delta}, come back "
 "then."
 msgstr ""
+"❌ Käytät jo äänenvaimenninta. Se toimii vielä {time_delta}, tule takaisin "
+"sitten."
 
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
@@ -2720,15 +2924,22 @@ msgid ""
 "Unfortunately, there is a cop around and you don't have enough exp to pay a "
 "littering fine of {fine} exp."
 msgstr ""
+"❌ Yritit heittää vanhan apilasi ostaaksesi uuden kukkakaupasta. "
+"Valitettavasti paikalla on poliisi, eikä sinulla ole tarpeeksi kokemusta "
+"maksaaksesi roskaamissakkoa {fine} kokemuksen verran."
 
 msgid ""
 "🍀 You throw your old clover to buy a new one at the new florist. "
 "Unfortunately, a cop catches you and fines you {fine} exp for littering."
 msgstr ""
+"🍀 Heität vanhan apilasi maahan ostaaksesi uuden kukkakaupasta. "
+"Valitettavasti poliisi saa sinut kiinni ja sakottaa sinulta {fine} kokemusta "
+"roskaamisesta."
 
 msgid ""
 "❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
 msgstr ""
+"❌ Käytät jo nelilehtistä apilaa. Kokeile onneasi uudelleen {time_delta}!"
 
 msgid ""
 "🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
@@ -2758,10 +2969,10 @@ msgid ""
 msgstr ""
 
 msgid "❌ Don't play with fire, kid! Go somewhere else."
-msgstr ""
+msgstr "älä leiki tulella, poika! Mene jonnekin muualle."
 
 msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
-msgstr ""
+msgstr "❌ En usko, että {target.mention} osaa pelata DuckHuntia vielä..."
 
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
@@ -2796,18 +3007,23 @@ msgid ""
 msgstr ""
 
 msgid "❌ That weapon is already sabotaged."
-msgstr ""
+msgstr "❌ Tuo ase on jo sabotoitu."
 
 msgid ""
 "💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: "
 "-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Sabotoit {target.mention} aseen... Hän ei tiedä... vielä! [Ostettu: -"
+"{ITEM_COST} kokemuksella, yhteensä {db_hunter.experience} kokemusta]"
 
 msgid ""
 "I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
 "name} weapon... They don't know... yet! [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"En voinut lähettää sinulle DM:ää... Onko DM:si estetty? Joka tapauksessa, "
+"sabotoit {kohde.nimi} aseen... Hän ei tiedä... vielä! [Ostettu: -{ITEM_COST} "
+"kokemuksella, yhteensä {db_hunter.experience} kokemusta]"
 
 msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
@@ -2826,7 +3042,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ I'm afraid you cannot choose your coat color yet."
-msgstr ""
+msgstr "❌ Pelkäänpä, ettet voi vielä valita takkisi väriä."
 
 msgid ""
 "💸 You bought a new, **{color}** coat. \n"
@@ -2841,7 +3057,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ You already use a kill license."
-msgstr ""
+msgstr "❌ Käytät jo tappolisenssiä."
 
 msgid ""
 "💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
@@ -2849,7 +3065,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ You already have an automatic reloader."
-msgstr ""
+msgstr "❌ Sinulla on jo automaattinen latauslaite."
 
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
@@ -2858,7 +3074,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ You already have homing bullets."
-msgstr ""
+msgstr "❌ Sinulla on jo ohjautuvat luodit."
 
 msgid ""
 "💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee "
@@ -2867,7 +3083,7 @@ msgid ""
 msgstr ""
 
 msgid "The beloved DuckHunt translators"
-msgstr ""
+msgstr "Rakkaat DuckHunt-kääntäjät"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -2875,62 +3091,79 @@ msgid ""
 "?** Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). "
 "Thanks!"
 msgstr ""
+"Itse botti on Eyesofcreeperin tekemä, ja siihen ovat osallistuneet ihmiset, "
+"jotka on mainittu kohdassa `{ctx.prefix}credits`. **Haluatko auttaa tämän "
+"botin kääntämisessä?** Ota yhteyttä Eyesofcreeper#0001:een tukipalvelimella "
+"(`{ctx.prefix}invite`). Kiitos!"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Sekalaiset"
 
 msgid "Pong. — Time taken: {miliseconds}ms"
-msgstr ""
+msgstr "Pong. — Aikaa kului: {miliseconds}ms"
 
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
 "({formatted_precise_delta})"
 msgstr ""
+"Saat takaisin aseesi ja lippaat {formatted_delta} "
+"({formatted_precise_delta}).."
 
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
 "global prefixes : {global_prefixes_list}"
 msgstr ""
+"Etuliitteeni on {local_prefix}. Voit myös kutsua minua millä tahansa "
+"globaalilla etuliitteellä: {global_prefixes_list}"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, but these fine people down there "
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
+"Itse botti on Eyesofcreeperin tekemä, mutta nämä hienot ihmiset auttavat "
+"grafiikan, ideoiden, kuvien ja muiden asioiden kanssa. Muista vilkuttaa "
+"heille, jos näet heidät."
 
 msgid "Developer"
-msgstr ""
+msgstr "Kehittäjä"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
-msgstr ""
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") teki tämän botin."
 
 msgid "Designer"
-msgstr ""
+msgstr "Suunnittelija"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
+"<@465207298890006529> (\"Calgeka\") teki monet Ankkojen käyttämistä "
+"avatareista."
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
+"<@376052158573051906> (\"Globloxmen\") tekivät paljon ankkoja, joita löytyy "
+"kaikkialta pelistä. Liity /r/dailyducks subredditiin."
 
 msgid "Ideas"
-msgstr ""
+msgstr "Ideat"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
 "Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 msgstr ""
+"Botti perustuu käyttäjän MenzAgitat (IRC, #boulets EpiKnet). Verkkosivusto: "
+"https://www.boulets.oqp.me/irc/aide_duck_hunt.html ideaan."
 
 msgid "Translations"
-msgstr ""
+msgstr "Käännökset"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
-msgstr ""
+msgstr "Botti on käännetty MONILLE kielille! Kääntäjät listattuna "
 
 msgid "**DuckHunt credits**"
 msgstr ""
@@ -2939,96 +3172,104 @@ msgid ""
 "The bot itself is made by Eyesofcreeper, but a lot of people helped with "
 "graphics, ideas, images, and more."
 msgstr ""
+"Itse botti on Eyesofcreeperin tekemä, mutta monet ihmiset auttoivat "
+"grafiikoilla, ideoilla, kuvilla ja muulla."
 
 msgid ""
 "To see more information about that bot, you'll need to give it the "
 "`embed_links` permission. Contact your friendly neighbourhood server admin."
 msgstr ""
+"Jos haluat nähdä lisätietoja kyseisestä botista, sinun on annettava sille "
+"`embed_links`-oikeus. Ota yhteyttä ystävälliseen palvelimen ylläpitäjään."
 
 msgid "You don't have to go right now"
-msgstr ""
+msgstr "Sinun ei tarvitse mennä juuri nyt"
 
 msgid "Hi, fellow cow lover"
-msgstr ""
+msgstr "Hei, lehmänystävä"
 
 msgid "Current event: "
-msgstr ""
+msgstr "Ajankohtainen tapahtuma "
 
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
 msgstr ""
+"Tapahtumat kestävät tunnin alusta loppuun. Päättymiseen {formatted_td}"
 
 msgid "{exp} experience"
-msgstr ""
+msgstr "{exp} kokemus"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Tilastot"
 
 msgid "{target.name} statistics (click me!)."
-msgstr ""
+msgstr "{target.name} tilastot (klikkaa minua!)."
 
 msgid "Bullets"
-msgstr ""
+msgstr "Luodit"
 
 msgid "Magazines"
-msgstr ""
+msgstr "Lippaat"
 
 msgid "Experience"
-msgstr ""
+msgstr "Kokemus"
 
 msgid "Level"
-msgstr ""
+msgstr "Taso"
 
 msgid "Accuracy"
-msgstr ""
+msgstr "Tarkkuus"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
-msgstr ""
+msgstr "{level_reliability} % (Aito: {real_reliability} %)"
 
 msgid "Reliability"
-msgstr ""
+msgstr "Luotettavuus"
 
 msgid "Level {level}"
-msgstr ""
+msgstr "Taso {level}"
 
 msgid "{target.name} shooting stats."
-msgstr ""
+msgstr "{target.name} ampumistilastot"
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
 "life {revives} times eating a total of {brains_eaten} brains"
 msgstr ""
+"{shots_when_dead} yritettyä laukausta kuolleena. {target.mention} heräsi "
+"henkiin {revives} kertaa syöden yhteensä {brains_eaten} aivoa.."
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
-msgstr ""
+msgstr "{shots} laukausta yritetty ampua märkänä."
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
+"{shots} laukauksia yritettiin, kun {target.mention} ase takavarikoitiin."
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
-msgstr ""
+msgstr "{shots} laukausta yritettiin ampua sabotoidulla aseella."
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
-msgstr ""
+msgstr "{shots} laukausta yritettiin ampua jumiutuneella aseella."
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
 msgstr ""
@@ -3124,72 +3365,84 @@ msgid "Never killed any"
 msgstr ""
 
 msgid "{target.name} kill counts."
-msgstr ""
+msgstr "{target.name} tapot."
 
 msgid "{target.name} hugs counts."
-msgstr ""
+msgstr "{target.name} halit."
 
 msgid "Players"
-msgstr ""
+msgstr "Pelaajat"
 
 msgid "Hugs when dead"
-msgstr ""
+msgstr "Halaukset kuolleena"
 
 msgid "{target.name} hurt counts."
-msgstr ""
+msgstr "{target.name} vahingoitukset."
 
 msgid "{target.name} resisted counts."
 msgstr ""
 
 msgid "{target.name} scared ducks."
-msgstr ""
+msgstr "{target.name} säikäytti ankat."
 
 msgid "{target.name} achievements."
-msgstr ""
+msgstr "{target.name} saavutukset."
 
 msgid "❌ You cant send experience to yourself."
-msgstr ""
+msgstr "❌ Et voi lähettää kokemuksia itsellesi."
 
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
-msgstr ""
+msgstr "❌ En ole varma, että {target.mention} osaa pelata DuckHuntia."
 
 msgid "❌ You need to send more experience than this."
-msgstr ""
+msgstr "❌ Sinun on lähetettävä enemmän kokemusta kuin tämä."
 
 msgid "❌ You don't have enough experience 🤣."
-msgstr ""
+msgstr "❌ Sinulla ei ole tarpeeksi kokemusta 🤣."
 
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
 "tax_on_user_send}% was applied to this transaction (taking {tax} exp out of "
 "the total sent)."
 msgstr ""
+"🏦 Lähetit {recived} kokemusta {vastaanottajan.maininta}. Tähän tapahtumaan "
+"sovellettiin {db_channel.tax_on_user_send} %:n veroa (ottamalla {tax} "
+"kokemusta pois lähetettyjen kokemusten kokonaismäärästä)."
 
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
-msgstr ""
+msgstr "💰️ Annoit {amount} kokemusta {reciver.mention}."
 
 msgid "Top Scores on #{channel}"
-msgstr ""
+msgstr "Parhaat pisteet kanavalla #{channel}"
 
 msgid ""
 "{target.name}#{target.discriminator} data was deleted from this channel."
 msgstr ""
+"{target.name}#{target.discriminator} tiedot poistettiin tältä kanavalta."
 
 msgid ""
 "❌ The channel {channel.mention} still exists on the server. Please run the "
 "command from there."
 msgstr ""
+"❌ Kanava {channel.mention} on edelleen olemassa palvelimella. Suorita "
+"komento sieltä."
 
 msgid ""
 "❌ The channel used to exist but on a different server. I can't confirm you "
 "have the correct rights on that server. Please use this command in the right "
 "server, or contact support : <https://duckhunt.me/support>."
 msgstr ""
+"❌ Kanava on ollut olemassa, mutta eri palvelimella. En voi vahvistaa, että "
+"sinulla on oikeat oikeudet kyseisellä palvelimella. Käytä tätä komentoa "
+"oikealla palvelimella tai ota yhteyttä asiakaspalveluun : <https://duckhunt."
+"me/support>."
 
 msgid ""
 "❌ I can't find a channel with that ID. Please check the given ID, or contact "
 "support : <https://duckhunt.me/support>."
 msgstr ""
+"❌ En löydä kanavaa, jolla on tämä tunnus. Tarkista annettu tunnus tai ota "
+"yhteyttä asiakaspalveluun: <https://duckhunt.me/support>."
 
 msgid ""
 "Scores and hunters data were removed from the game, but the game wasn't "
@@ -3198,25 +3451,28 @@ msgid ""
 msgstr ""
 
 msgid "Support team: misc"
-msgstr ""
+msgstr "Tukitiimi: muut"
 
 msgid "Most used commands"
-msgstr ""
+msgstr "Käytetyimmät komennot"
 
 msgid "{n} uses"
-msgstr ""
+msgstr "{n} käyttää"
 
 msgid "Top users"
-msgstr ""
+msgstr "Parhaat käyttäjät"
 
 msgid "{n} commands used"
-msgstr ""
+msgstr "{n} käytetyt komennot"
 
 msgid ""
 "This is the list of all the tags on this server. They are ordered by "
 "official tags and most used first.\n"
 "The list doesn't include tag aliases"
 msgstr ""
+"Tämä on luettelo kaikista tämän palvelimen tunnisteista. Ne on järjestetty "
+"virallisten tunnisteiden mukaan ja eniten käytetyt ensin.\n"
+"Luettelo ei sisällä tunnisteiden peitenimiä"
 
 msgid "{u} uses, {r} revisions."
 msgstr ""
@@ -3225,22 +3481,22 @@ msgid "Page {current_page}/{maximum} ({entries} tags)"
 msgstr ""
 
 msgid "Support: tags"
-msgstr ""
+msgstr "Tuki: tunnisteet"
 
 msgid "❌ You didn't specify what you want your tag to say."
-msgstr ""
+msgstr "❌ Et määrittänyt, mitä haluat tagisi kertovan."
 
 msgid "❌ This tag already exists."
-msgstr ""
+msgstr "❌ Tämä tunniste on jo olemassa."
 
 msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
-msgstr ""
+msgstr "👌 Tunniste luotu: {tag.name} (`{tag.pk}`)"
 
 msgid "❌ Both tags already exists, what are you trying to do ?"
-msgstr ""
+msgstr "❌ Molemmat tunnisteet ovat jo olemassa, mitä yrität tehdä?"
 
 msgid "❌ None of your tags exist."
-msgstr ""
+msgstr "❌ Mitään tunnisteistasi ei ole olemassa."
 
 msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
@@ -3248,49 +3504,49 @@ msgid ""
 msgstr ""
 
 msgid "❌ This tag doesn't exist yet. You might want to create it."
-msgstr ""
+msgstr "❌ Tätä tunnusta ei ole vielä olemassa. Haluat ehkä luoda sen."
 
 msgid "❌ You don't own that tag, you can't edit it."
-msgstr ""
+msgstr "❌ Et omista tuota tagia, et voi muokata sitä."
 
 msgid "👌 Tag {tag.name} edited."
 msgstr ""
 
 msgid "❌ This tag doesn't exist."
-msgstr ""
+msgstr "❌ Tätä tagia ei ole olemassa."
 
 msgid "❌ You don't own that tag, you can't delete it."
-msgstr ""
+msgstr "❌ Et omista tuota tunnusta, etkä voi poistaa sitä."
 
 msgid "👌 Tag {tag.name} deleted."
 msgstr ""
 
 msgid "Murderer"
-msgstr ""
+msgstr "Murhaaja"
 
 msgid "Kill another hunter."
-msgstr ""
+msgstr "Tapa toinen metsästäjä."
 
 msgid "Big spender"
-msgstr ""
+msgstr "Iso tuhlaaja"
 
 msgid "Spend more than 2000 experience."
-msgstr ""
+msgstr "Kuluta yli 2000 kokemusta."
 
 msgid "A hunter joined the chat"
-msgstr ""
+msgstr "Metsästäjä liittyi keskusteluun"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "Pelaa yli viikon ajan."
 
 msgid "We are starting to know each other"
-msgstr ""
+msgstr "Alamme tutustua toisiimme"
 
 msgid "Play for more than a month."
-msgstr ""
+msgstr "Pelaa yli kuukauden ajan."
 
 msgid "Wanna be friends ?"
-msgstr ""
+msgstr "Haluatko olla ystävä?"
 
 msgid "Play for more than a year."
 msgstr ""
@@ -3591,7 +3847,7 @@ msgstr ""
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] ""
+msgstr[0] "joista yksi on vauva ankka"
 msgstr[1] ""
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
@@ -3603,19 +3859,19 @@ msgid ""
 msgstr ""
 
 msgid "golden"
-msgstr ""
+msgstr "kultainen"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
-msgstr[0] ""
+msgstr[0] "joista yksi on kultainen ankka"
 msgstr[1] ""
 
 msgid "plastic"
-msgstr ""
+msgstr "muovi"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
-msgstr[0] ""
+msgstr[0] "joista yksi on valmistettu muovista"
 msgstr[1] ""
 
 msgid "kamikaze"
@@ -3645,7 +3901,7 @@ msgid ""
 msgstr ""
 
 msgid "super"
-msgstr ""
+msgstr "super"
 
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
@@ -3661,7 +3917,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "armored"
-msgstr ""
+msgstr "panssaroitu"
 
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
@@ -3679,112 +3935,116 @@ msgid ""
 msgstr ""
 
 msgid "night"
-msgstr ""
+msgstr "yö"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "joista yksi on yöankka"
+msgstr[1] "joista {this_ducks_killed} on yöankkoja.."
 
 msgid "sleeping"
-msgstr ""
+msgstr "nukkuu"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "joista yksi on nukkuva ankka"
+msgstr[1] "joista {this_ducks_killed} ovat nukkuvia ankkoja"
 
 msgid "KWAK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "KWAAK"
-msgstr ""
+msgstr "KWAAK"
 
 msgid "KWAAAK"
-msgstr ""
+msgstr "KWAAAK"
 
 msgid "COUAK"
-msgstr ""
+msgstr "COUAK"
 
 msgid "COUAAK"
-msgstr ""
+msgstr "COUAAK"
 
 msgid "COUAAAK"
-msgstr ""
+msgstr "COUAAAK"
 
 msgid "QUAK"
-msgstr ""
+msgstr "QUAK"
 
 msgid "QUAAK"
-msgstr ""
+msgstr "QUAAK"
 
 msgid "QUAAAK"
-msgstr ""
+msgstr "QUAAAK"
 
 msgid "QUACK"
-msgstr ""
+msgstr "QUACK"
 
 msgid "QUAACK"
-msgstr ""
+msgstr "QUAACK"
 
 msgid "QUAAACK"
-msgstr ""
+msgstr "QUAAACK"
 
 msgid "COUAC"
-msgstr ""
+msgstr "COUAC"
 
 msgid "COUAAC"
-msgstr ""
+msgstr "COUAAC"
 
 msgid "COUAAAC"
-msgstr ""
+msgstr "COUAAAC"
 
 msgid "COUACK"
-msgstr ""
+msgstr "COUACK"
 
 msgid "*cries*"
-msgstr ""
+msgstr "*itkee*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "Hei maailma"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Miten voit tänään?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Älä tapa minua..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Minäkin rakastan sinua!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Älkää ampuko minua! Olen vale ankka!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
+"**Ankkafakta**: Jotkut ankat voivat lentää jopa 332 mailia yhden päivän "
+"aikana!"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "**Ankkafakta**: Ankan selän höyhenet ovat vedenpitäviä."
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "**Ankkafakta**: Ankoilla on kolme silmäluomea!"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
+"**Ankkafakta**: Lajista riippuen ankka voi elää 2-12 vuotta. Ei kuitenkaan "
+"tämän pelin ankat..."
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "Olen näkymätön, älkää vaivautuko tappamaan minua!"
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Kuka on se pikku ████ joka tappoi ystäväni?"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "Et voi pyrkiä hyvään..."
 
 msgid "The duck left."
-msgstr ""
+msgstr "Ankka poistui."
 
 msgid "The duck right."
 msgstr ""
@@ -3905,22 +4165,22 @@ msgid "A duck"
 msgstr ""
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "Herra Ankka"
 
 msgid "RealDuck"
-msgstr ""
+msgstr "AitoAnkka"
 
 msgid "The ghost never appeared."
-msgstr ""
+msgstr "Haamu ei koskaan ilmestynyt."
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Näkymätön ankka"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Haamu ankka"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Boooo ankka"
 
 msgid "Pr. Duck"
 msgstr ""
@@ -3929,25 +4189,25 @@ msgid "EnsDuck"
 msgstr ""
 
 msgid "**COIN**"
-msgstr ""
+msgstr "**KOLIKKO**"
 
 msgid "**Piou** ?"
 msgstr ""
 
 msgid "**Coin** ?"
-msgstr ""
+msgstr "**Kolikko** ?"
 
 msgid "**Coin**!"
-msgstr ""
+msgstr "**Kolikko**!"
 
 msgid "**COIIIIIINNNNNN**!"
-msgstr ""
+msgstr "**KOLIKKKKKOOOOOOO**!"
 
 msgid "Smol Duck"
 msgstr ""
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "Mini Ankka"
 
 msgid "Ducky"
 msgstr ""
@@ -3956,103 +4216,103 @@ msgid "Duckie"
 msgstr ""
 
 msgid "£!"
-msgstr ""
+msgstr "£!"
 
 msgid "Free money !"
-msgstr ""
+msgstr "Ilmaista rahaa !"
 
 msgid "It's free money"
-msgstr ""
+msgstr "Se on ilmaista rahaa"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "Kultainen ankka"
 
 msgid "Golden Goose"
 msgstr ""
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Kiiltävä ankka"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Rikas ankka"
 
 msgid "£?"
-msgstr ""
+msgstr "£?"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Onko sinulla rahaa?"
 
 msgid "It's paid money"
-msgstr ""
+msgstr "Se on maksettua rahaa"
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Muovi Ankka"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Köyhä ankka"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "Limainen ankka"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
-msgstr ""
+msgstr "**ÄLÄ LIIKU TAI KAIKKI RÄJÄHTÄÄ!"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "Tapan teidät kaikki!"
 
 msgid "The Kamikaze Duck"
-msgstr ""
+msgstr "Kamikaze ankka"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "Räjähde ankka"
 
 msgid "Boom Duck"
 msgstr ""
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "Dynamiitti Ankka"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
-msgstr ""
+msgstr "Kamikaze-ankka räjähti ja tappoi kaikki kanavan ankat."
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "Ankka 2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "Omega-ankka"
 
 msgid "BZZZZZAAAAK"
-msgstr ""
+msgstr "BZZZZZZAAAAK"
 
 msgid "BZAAAACK"
-msgstr ""
+msgstr "BZAAAACK"
 
 msgid "BZAACK"
-msgstr ""
+msgstr "BZAACK"
 
 msgid "Big Duck"
-msgstr ""
+msgstr "Iso Ankka"
 
 msgid "Strong Duck"
-msgstr ""
+msgstr "Vahva ankka"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "Raskas ankka"
 
 msgid "**I am your mother...**"
-msgstr ""
+msgstr "**Olen äitisi...**"
 
 msgid "Ms. Duck"
-msgstr ""
+msgstr "Neiti Ankka"
 
 msgid "Mom"
-msgstr ""
+msgstr "Äiti"
 
 msgid "Mommy"
-msgstr ""
+msgstr "Äiti"
 
 msgid "MOAD"
-msgstr ""
+msgstr "MOAD"
 
 msgid "Mooooom"
 msgstr ""
@@ -4193,73 +4453,73 @@ msgid "A free card for magazines"
 msgstr ""
 
 msgid "Redeem it to refill your weapon."
-msgstr ""
+msgstr "Lunasta se täyttääkseen aseesi uudelleen."
 
 msgid "✨ Yay! Free ammo!"
-msgstr ""
+msgstr "✨ Jee! Ilmaisia ammuksia!"
 
 msgid "❌ Your ammo is already full!"
-msgstr ""
+msgstr "❌ Ammuksesi ovat jo täynnä!"
 
 msgid "A welcome gift"
-msgstr ""
+msgstr "Tervetuliaislahja"
 
 msgid "Open it in your inventory"
-msgstr ""
+msgstr "Avaa se inventaariossasi"
 
 msgid "A clean box of foie gras"
-msgstr ""
+msgstr "Puhdas laatikko hanhenmaksaruokaa"
 
 msgid "The boss dropped that when he died"
-msgstr ""
+msgstr "Pomo pudotti sen kuollessaan"
 
 msgid "A little something for helping the bot"
-msgstr ""
+msgstr "Jotain pientä botin auttamisesta"
 
 msgid "Thanks for voting for DuckHunt"
-msgstr ""
+msgstr "Kiitos, että äänestit DuckHuntia"
 
 msgid "Negative cheater ?"
-msgstr ""
+msgstr "Negatiivinen huijari ?"
 
 msgid "Duck Hugger ?"
-msgstr ""
+msgstr "Ankan halaaja ?"
 
 msgid "What are you doing ?"
-msgstr ""
+msgstr "Mitä sinä teet ?"
 
 msgid "public danger"
-msgstr ""
+msgstr "yleinen vaara"
 
 msgid "tourist"
-msgstr ""
+msgstr "turisti"
 
 msgid "noob"
-msgstr ""
+msgstr "aloittelija"
 
 msgid "trainee"
-msgstr ""
+msgstr "harjoittelija"
 
 msgid "duck misser"
-msgstr ""
+msgstr "ankan missaaja"
 
 msgid "member of the Committee Against Ducks"
-msgstr ""
+msgstr "ankkojen vastaisen komitean jäsen"
 
 msgid "duck hater"
-msgstr ""
+msgstr "ankan vihaaja"
 
 msgid "duck pest"
-msgstr ""
+msgstr "ankka tuholainen"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "ankka häslääjä"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "ankan nyppijä"
 
 msgid "hunter"
-msgstr ""
+msgstr "metsästäjä"
 
 msgid "duck inside out turner"
 msgstr ""
@@ -4271,25 +4531,25 @@ msgid "duck chewer"
 msgstr ""
 
 msgid "duck eater"
-msgstr ""
+msgstr "ankan syöjä"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "ankan talloja"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "ankka purkaja"
 
 msgid "duck demolisher"
 msgstr ""
 
 msgid "duck killer"
-msgstr ""
+msgstr "ankan tappaja"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "ankan nylkijä"
 
 msgid "duck predator"
-msgstr ""
+msgstr "ankka saalistaja"
 
 msgid "duck chopper"
 msgstr ""
@@ -4316,13 +4576,13 @@ msgid "duck impaler"
 msgstr "ankan keihästys"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "ankanpoistolaite"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "ankkojen kauhu"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "ankka räjäyttäjä"
 
 msgid "duck destructor"
 msgstr "Ankan tuhoaja"
@@ -4334,34 +4594,34 @@ msgid "duck pulverizer"
 msgstr ""
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "ankan hajottaja"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "ankka sumutin"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "ankka tuhoaja"
 
 msgid "serial duck killer"
 msgstr ""
 
 msgid "duck genocider"
-msgstr ""
+msgstr "ankkojen kansanmurhaaja"
 
 msgid "old noob"
-msgstr ""
+msgstr "vanha aloittelija"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "ankanpaahdin"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "työtön ankkalajin sukupuuttoon ajamisen vuoksi"
 
 msgid "This is not a valid level. Choose between {levels}"
-msgstr ""
+msgstr "Tämä ei ole pätevä taso. Valitse {levels}"
 
 msgid "Can't set such a high level"
-msgstr ""
+msgstr "Ei voi asettaa näin korkeaa tasoa"
 
 msgid "You leveled up!"
 msgstr "Sait uuden tason!"
