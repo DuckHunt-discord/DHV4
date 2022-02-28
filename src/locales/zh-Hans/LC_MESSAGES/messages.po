@@ -66,7 +66,7 @@ msgid "Spawns a MOAD."
 msgstr "生成一只鸭母亲"
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
-msgstr "生成一隻裝甲鴨，可以抵擋最多1的傷害。"
+msgstr "生成一只带着盔甲的鸭。大部分情况下，这只鸭不会从1威力的子弹受到伤害。"
 
 msgid "Spawns a golden duck."
 msgstr "生成一只金鸭子"
