@@ -35,7 +35,7 @@ class ShoppingCommands(Cog):
     display_name = _("Shop")
     help_priority = 3
 
-    @commands.group(aliases=["buy", "rent", "sh", "sho"])
+    @commands.group(aliases=["buy", "rent", "sh", "sho"], case_insensitive=True)
     @checks.channel_enabled()
     async def shop(self, ctx: MyContext):
         """
