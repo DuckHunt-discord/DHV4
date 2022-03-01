@@ -1756,7 +1756,7 @@ msgid "You are already alive and well."
 msgstr "Sie sind bereits lebendig und gesund."
 
 msgid "You eat {brains} 🧠 and regain consciousness."
-msgstr "Du isst {Gehirne} 🧠 und kommst wieder zu Bewusstsein."
+msgstr "Du isst {brains} 🧠 und kommst wieder zu Bewusstsein."
 
 msgid "Admin: Spawning"
 msgstr "Verwaltung: Ablaichen"
