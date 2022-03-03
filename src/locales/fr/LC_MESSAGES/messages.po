@@ -4305,7 +4305,7 @@ msgstr ""
 "+{experience} exp]"
 
 msgid "<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!"
-msgstr ""
+msgstr "<:Wizzz:505828171397070848> Wizzz charmant canard! Trop mignon !"
 
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
