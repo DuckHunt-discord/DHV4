@@ -4,7 +4,6 @@ import io
 import discord
 import typing
 from discord import Message, Interaction, AllowedMentions
-from discord.errors import InvalidArgument
 from discord.ext import commands
 from discord.mentions import default
 from discord.utils import MISSING
@@ -17,6 +16,7 @@ if typing.TYPE_CHECKING:
 
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
+
 
 class MyContext(commands.Context):
     def __init__(self, **kwargs):
@@ -64,13 +64,13 @@ class MyContext(commands.Context):
             content = None
 
             if file is not None and files is not None:
-                raise InvalidArgument('Cannot pass both file and files parameter to send()')
+                raise ValueError('Cannot pass both file and files parameter to send()')
             elif file is not None:
                 files = [message_file, file]
                 file = None
             elif files is not None:
                 if len(files) == 10:
-                    raise InvalidArgument('Content is too big, and too many files were provided')
+                    raise ValueError('Content is too big, and too many files were provided')
                 else:
                     files = [message_file] + files
             else:
