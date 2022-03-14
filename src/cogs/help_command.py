@@ -353,9 +353,9 @@ class HelpCog(Cog):
         self.bot.logger.debug("Help command restored...")
 
     @classmethod
-    def setup(cls, bot: MyBot):
+    async def setup(cls, bot: MyBot):
         cog = cls(bot)
-        bot.add_cog(cog)
+        await bot.add_cog(cog)
         bot.logger.debug("Replacing previous help command...")
         cog.old_help_command = bot.help_command
         bot.help_command = ButtonsHelpCommand()

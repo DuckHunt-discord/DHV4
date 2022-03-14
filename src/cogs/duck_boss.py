@@ -65,7 +65,7 @@ class DuckBoss(Cog):
     @tasks.loop(minutes=1)
     async def background_loop(self):
         channel = self.bot.get_channel(self.config()['boss_channel_id'])
-        latest_messages = await channel.history(limit=1).flatten()
+        latest_messages = [message async for message in channel.history(limit=1)]
 
         if not latest_messages:
             boss_message = None

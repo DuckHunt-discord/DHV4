@@ -44,8 +44,6 @@ class MyBot(AutoShardedBot):
         self.allow_ducks_spawning = True
 
         self._duckhunt_public_log = None
-
-        self.loop.run_until_complete(self.async_setup())
         self.logger.debug("End of init, bot object is ready")
 
     @property
