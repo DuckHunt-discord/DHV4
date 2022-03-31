@@ -28,17 +28,19 @@ class MyBot(AutoShardedBot):
         self.logger.debug("Running sync init")
         self.config: dict = {}
         self.reload_config()
-        #activity = discord.Game(self.config["bot"]["playing"])
+        # activity = discord.Game(self.config["bot"]["playing"])
         self.current_event: Events = Events.CALM
         activity = discord.Game(self.current_event.value[0])
-        super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
+        super().__init__(*args, command_prefix=get_prefix, activity=activity,
+                         case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.top_users = collections.Counter()
         self.uptime = timezone.now()
         self.shards_ready = set()
         self.socket_stats = collections.Counter()
         self._client_session: Optional[aiohttp.ClientSession] = None
-        self.ducks_spawned: collections.defaultdict[discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
+        self.ducks_spawned: collections.defaultdict[
+            discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
         self.enabled_channels: typing.Dict[discord.TextChannel, DucksLeft] = {}
         self.concurrency = MaxConcurrency(number=1, per=BucketType.channel, wait=True)
         self.allow_ducks_spawning = True
@@ -72,6 +74,13 @@ class MyBot(AutoShardedBot):
         if self.config['database']['enable']:
             await init_db_connection(self.config['database'])
 
+        for cog_name in self.config["cogs"]["cogs_to_load"]:
+            try:
+                await self.load_extension(cog_name)
+                self.logger.debug(f"> {cog_name} loaded!")
+            except Exception as e:
+                self.logger.exception('> Failed to load extension {}\n{}: {}'.format(cog_name, type(e).__name__, e))
+
     def get_logging_channel(self):
         if not self._duckhunt_public_log:
             config = self.config['duckhunt_public_log']
@@ -86,7 +95,8 @@ class MyBot(AutoShardedBot):
             await message.publish()
             return True
         except discord.Forbidden:
-            self.logger.warning("Couldn't publish message to announcement channel, I don't have the required permissions")
+            self.logger.warning(
+                "Couldn't publish message to announcement channel, I don't have the required permissions")
             return False
         except discord.HTTPException as e:
             self.logger.exception(f"Couldn't publish message to announcement channel: {e}. "
@@ -132,20 +142,22 @@ class MyBot(AutoShardedBot):
         if db_user.first_use and "help" not in ctx.command.name:
             _ = await ctx.get_translate_function(user_language=True)
 
-            ctx.logger.info(f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
+            ctx.logger.info(
+                f"It's the first time that {ctx.author.name}#{ctx.author.discriminator} is intreracting with us. Sending welcome DM.")
             try:
-                await ctx.author.send(_("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
-                                        "and also provide you with links to the DuckHunt wiki.\n"
-                                        "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
-                                        "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
-                                        "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
-                                        "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
-                                        "Your scores and channel leaderboards are available online (click the title in `dh!me` after playing for a while), and on Discord."
-                                        "If you want to learn more about the game, use the wiki! <{wiki_link}>\n"
-                                        "We also monitor the bot DMs, so if you have further questions, just answer this message!",
-                                        support_server_link=_("https://duckhunt.me/support"),
-                                        wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
-                ))
+                await ctx.author.send(
+                    _("Hello! The following message (written by the owner of DuckHunt) will give you a brief introduction to the bot, "
+                      "and also provide you with links to the DuckHunt wiki.\n"
+                      "First of all, thank you for using my bot! If you have any unanswered questions after reading this message and the wiki, "
+                      "you are more than welcome to ask for help in the support channels at <{support_server_link}>.\n\n"
+                      "When a duck spawns you shoot at it by using the `dh!bang` command.\n"
+                      "You can reload your ammunition with `dh!reload` and buy new magazines with `dh!shop magazine` or `dh!shop 2`.\n"
+                      "Your scores and channel leaderboards are available online (click the title in `dh!me` after playing for a while), and on Discord."
+                      "If you want to learn more about the game, use the wiki! <{wiki_link}>\n"
+                      "We also monitor the bot DMs, so if you have further questions, just answer this message!",
+                      support_server_link=_("https://duckhunt.me/support"),
+                      wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
+                      ))
             except discord.Forbidden:
                 ctx.logger.debug(
                     f"Couldn't send the welcome DM, forbidden.")
@@ -159,7 +171,8 @@ class MyBot(AutoShardedBot):
 
     async def on_interaction(self, interaction: discord.Interaction):
         data = interaction.data
-        self.logger.info(f"Interaction received: {data}", guild=interaction.guild, channel=interaction.channel, member=interaction.user, )
+        self.logger.info(f"Interaction received: {data}", guild=interaction.guild, channel=interaction.channel,
+                         member=interaction.user, )
 
     async def on_shard_ready(self, shard_id):
         self.shards_ready.add(shard_id)
@@ -171,7 +184,8 @@ class MyBot(AutoShardedBot):
         messages = ["-----------", f"The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
         total_members = len(self.users)
         messages.append(f"I see {len(self.guilds)} guilds, and {total_members} members.")
-        messages.append(f"To invite your bot to your server, use the following link: https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489")
+        messages.append(
+            f"To invite your bot to your server, use the following link: https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489")
         cogs_count = len(self.cogs)
         messages.append(f"{cogs_count} cogs are loaded")
         messages.append("-----------")

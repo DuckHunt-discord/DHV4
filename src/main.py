@@ -43,13 +43,6 @@ bot = MyBot(
 
 
 async def main():
-    for cog_name in config["cogs"]["cogs_to_load"]:
-        try:
-            await bot.load_extension(cog_name)
-            bot.logger.debug(f"> {cog_name} loaded!")
-        except Exception as e:
-            bot.logger.exception('> Failed to load extension {}\n{}: {}'.format(cog_name, type(e).__name__, e))
-
     async with bot:
         await bot.start(config['auth']['discord']['token'])
 
