@@ -19,10 +19,10 @@ class Cog(commands.Cog):
         super().__init__(*args, **kwargs)
 
     @classmethod
-    def setup(cls, bot: MyBot):
-        return bot.add_cog(cls(bot))
+    async def setup(cls, bot: MyBot):
+        return await bot.add_cog(cls(bot))
 
-    def config(self):
+    async def config(self):
         config = self.bot.config
         cog_config = config["cogs"].get(self.qualified_name, {})
         return cog_config

@@ -1,4 +1,5 @@
-jishaku==2.3.2
+#jishaku==2.3.2
+git+https://github.com/Gorialis/jishaku.git
 toml==0.10.2
 uvloop==0.16.0
 parsedatetime==2.6

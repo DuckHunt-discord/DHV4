@@ -29,6 +29,8 @@ class BotsListVoting(Cog):
 
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
+
+    async def cog_load(self):
         self.statcord_api = statcord.Client(self.bot, self.config()['statcord_token'],
                                             custom1=self.statcord_custom_value_ducks_spawned,
                                             custom2=self.statcord_custom_value_players_count)
