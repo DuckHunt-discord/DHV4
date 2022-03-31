@@ -361,7 +361,7 @@ class Duck:
                 try:
                     await webhook.send(content, **this_webhook_parameters, **kwargs)
                     return
-                except (discord.NotFound, discord.InvalidArgument) as e:
+                except (discord.NotFound, ValueError) as e:
                     db_channel: DiscordChannel = await get_from_db(self.channel)
                     self.bot.logger.warning(f"Removing webhook {webhook.url} on #{self.channel.name} on {self.channel.guild.id} from planification because {e}.")
                     db_channel.webhook_urls.remove(webhook.url)
