@@ -90,7 +90,7 @@ class DuckBoss(Cog):
 
             if bangs >= boss_life:
                 # Kill the boss
-                users = await reaction.users().flatten()
+                users = [u async for u in reaction.users()]
                 ids = [u.id for u in users]
                 discordusers: List[DiscordUser] = await DiscordUser.filter(discord_id__in=ids).only('boss_kills', 'discord_id').all()
 
