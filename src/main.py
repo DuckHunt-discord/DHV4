@@ -12,13 +12,13 @@ config = load_config()
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.Intents
 intents = discord.Intents.none()
-intents.guilds = True
+intents.message_content = True  # Privileged
 intents.messages = True
+intents.guilds = True
 intents.reactions = True
 
-intents.messages = True  # Privileged
-intents.presences = False  # Privileged
 intents.members = False  # Privileged
+intents.presences = False  # Privileged
 intents.bans = False
 intents.emojis = False
 intents.integrations = False
