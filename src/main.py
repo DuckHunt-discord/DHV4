@@ -16,6 +16,7 @@ intents.guilds = True
 intents.messages = True
 intents.reactions = True
 
+intents.messages = True  # Privileged
 intents.presences = False  # Privileged
 intents.members = False  # Privileged
 intents.bans = False
