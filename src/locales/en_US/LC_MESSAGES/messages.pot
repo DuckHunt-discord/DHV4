@@ -4,25 +4,25 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2021-10-16 13:37+0200\n"
+"POT-Creation-Date: 2022-03-31 11:06+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
-#: ../cogs/bots_list_and_voting.py:73
+#: ../cogs/bots_list_and_voting.py:75
 msgid "Creates votes handlers for specific bots lists"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:78
+#: ../cogs/bots_list_and_voting.py:80
 msgid "Handle users votes for fateslist"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:117
+#: ../cogs/bots_list_and_voting.py:119
 msgid "Handle users votes for top.gg"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:253
+#: ../cogs/bots_list_and_voting.py:255
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr ""
 
@@ -332,34 +332,34 @@ msgid ""
 "If it's too old, consider the channel inactive and close the ticket."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:620
+#: ../cogs/private_messages_support.py:613
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
 "interact with remote users."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:631
+#: ../cogs/private_messages_support.py:624
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:680
+#: ../cogs/private_messages_support.py:673
 msgid ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:708
+#: ../cogs/private_messages_support.py:701
 msgid "Block the user from opening further DMs channels."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:719
+#: ../cogs/private_messages_support.py:712
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:752
+#: ../cogs/private_messages_support.py:745
 msgid ""
 "Suggest a new language to the user. This will show them a prompt asking them "
 "if they want to switch to this new\n"
@@ -409,56 +409,56 @@ msgid ""
 "c806-4066-8387-1d5144b7fa72`"
 msgstr ""
 
-#: ../cogs/rest_api.py:70
+#: ../cogs/rest_api.py:73
 msgid ""
 "/channels/\n"
 "\n"
 "Get all channels enabled on the bot"
 msgstr ""
 
-#: ../cogs/rest_api.py:91
+#: ../cogs/rest_api.py:94
 msgid ""
 "/channels/<channel_id>\n"
 "\n"
 "Get information about a specific channel ID"
 msgstr ""
 
-#: ../cogs/rest_api.py:124
+#: ../cogs/rest_api.py:127
 msgid ""
 "/channels/<channel_id>/settings\n"
 "\n"
 "Get information about a specific channel ID"
 msgstr ""
 
-#: ../cogs/rest_api.py:141
+#: ../cogs/rest_api.py:144
 msgid ""
 "/channels/<channel_id>/top\n"
 "\n"
 "Get players data, ordered by experience"
 msgstr ""
 
-#: ../cogs/rest_api.py:163
+#: ../cogs/rest_api.py:167
 msgid ""
 "/channels/<channel_id>/player/<player_id>\n"
 "\n"
 "Get players data, ordered by experience"
 msgstr ""
 
-#: ../cogs/rest_api.py:228
+#: ../cogs/rest_api.py:232
 msgid ""
 "/help/commands\n"
 "\n"
 "Get list of commands"
 msgstr ""
 
-#: ../cogs/rest_api.py:242
+#: ../cogs/rest_api.py:246
 msgid ""
 "/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
 msgstr ""
 
-#: ../cogs/rest_api.py:273
+#: ../cogs/rest_api.py:277
 msgid ""
 "/stats\n"
 "\n"
@@ -843,55 +843,55 @@ msgstr ""
 msgid "Clean your gun, removing sabotage and sand. [7 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:452
+#: ../cogs/shopping_commands.py:455
 msgid "Dazzle another hunter using the power of sunlight. [7 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:492
+#: ../cogs/shopping_commands.py:495
 msgid ""
 "Throw sand into another player weapon.\n"
 "This will increase their jamming chances for their next shot. [7 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:524
+#: ../cogs/shopping_commands.py:527
 msgid ""
 "Throw a bucket of water on the hunter of your choice,\n"
 "forcing them to wait 1h for their clothes to dry before hunting again. [10 "
 "exp/1* hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:567
+#: ../cogs/shopping_commands.py:570
 msgid ""
 "Sabotage the weapon of another player.\n"
 "Their gun will jam and explode in their face the next time they press the "
 "trigger. [14* exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:614
+#: ../cogs/shopping_commands.py:619
 msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:648
+#: ../cogs/shopping_commands.py:653
 msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:683
+#: ../cogs/shopping_commands.py:688
 msgid ""
 "Protect yourself from water. If you are already wet, it also can be used as "
 "a change. [15 exp/24 hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:726
+#: ../cogs/shopping_commands.py:731
 msgid ""
 "Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:752
+#: ../cogs/shopping_commands.py:757
 msgid ""
 "Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:779
+#: ../cogs/shopping_commands.py:784
 msgid ""
 "Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
 msgstr ""
@@ -1147,53 +1147,53 @@ msgstr ""
 msgid "Voting"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:258
+#: ../cogs/bots_list_and_voting.py:260
 msgid "Please wait while I check where you can vote..."
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:267
+#: ../cogs/bots_list_and_voting.py:269
 msgid "You can vote !"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:268
+#: ../cogs/bots_list_and_voting.py:270
 msgid "Thanks for supporting the bot by voting !"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:273
+#: ../cogs/bots_list_and_voting.py:275
 msgid "You might be able to vote !"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:274
+#: ../cogs/bots_list_and_voting.py:276
 msgid ""
 "Thanks for supporting the bot by voting as much as you can. It makes a "
 "difference !"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:278
+#: ../cogs/bots_list_and_voting.py:280
 msgid "Oh no! No bot list is currently available for you to vote."
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:279
+#: ../cogs/bots_list_and_voting.py:281
 msgid "There is nowhere for you to vote at the time !"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:280
+#: ../cogs/bots_list_and_voting.py:282
 msgid ""
 "Thanks for supporting the bot. It makes a difference! \n"
 "Unfortunately, you voted everywhere you could for now, but you can check "
 "back in a few hours."
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:284
+#: ../cogs/bots_list_and_voting.py:286
 msgid "Click me to vote"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:286
+#: ../cogs/bots_list_and_voting.py:288
 #, python-brace-format
 msgid "You can vote on {bl_name}"
 msgstr ""
 
-#: ../cogs/bots_list_and_voting.py:290
+#: ../cogs/bots_list_and_voting.py:292
 #, python-brace-format
 msgid "You might be able to vote on {bl_name}"
 msgstr ""
@@ -2291,77 +2291,67 @@ msgstr ""
 
 #: ../cogs/private_messages_support.py:263
 msgid ""
-"It seems like nothing has been said here for a long time, so I've gone ahead "
-"and closed your ticket, deleting its history. Thanks for using DuckHunt DM "
-"support. If you need anything else, feel free to open a new ticket by "
-"sending a message here."
+"Tickets expire after 24 hours of inactivity.Got a question ? Ask it here or "
+"in [the support server](https://duckhunt.me/support).Thank you for using the "
+"DuckHunt ticket system !"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:270
-#: ../cogs/private_messages_support.py:657
+#: ../cogs/private_messages_support.py:268
+#: ../cogs/private_messages_support.py:650
 msgid "Support server"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:271
-#: ../cogs/private_messages_support.py:657
+#: ../cogs/private_messages_support.py:269
+#: ../cogs/private_messages_support.py:650
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:458
+#: ../cogs/private_messages_support.py:456
 msgid ""
-"Welcome to DuckHunt private messages support.\n"
-"Messages here are relayed to a select group of volunteers and bot moderators "
-"to help you use the bot. For general questions, we also have a support "
-"server [here](https://duckhunt.me/support).\n"
-"If you opened the ticket by mistake, just say `close` and we will close it "
-"for you. Please note that CLOSE IS NOT A COMMAND. You do not need to include "
-"any prefix or to spam it. The bot does not closes tickets, human support "
-"volunteers do. When they are online and have the time. \n"
-"In any other cases, we'll get back to you as fast as possible. We are human, "
-"do not expect us to reply within 10 seconds. \n"
-"Ask your question right away, no need to wait for an answer. (More on that : "
-"https://dontasktoask.com) \n"
+"DMing any message to the bot will open a ticket.\n"
+"You have a question ? [Ask it](https://dontasktoask) to our human volunteers."
+"You opened the ticket by mistake ? Type `close` (*once, no prefix needed) "
+"and we, human volonteers will close it"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:468
-msgid "Support tickets are deleted after 24 hours of inactivity"
+#: ../cogs/private_messages_support.py:460
+msgid "Support tickets are automatically deleted after 24 hours of inactivity"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:503
+#: ../cogs/private_messages_support.py:495
 msgid "Attachments persistence"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:505
+#: ../cogs/private_messages_support.py:497
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:525
+#: ../cogs/private_messages_support.py:517
 msgid "This is not how you invite DuckHunt."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:527
+#: ../cogs/private_messages_support.py:519
 msgid ""
-"DuckHunt, like other discord bots, can't join servers by using an invite "
-"link.\n"
-"You instead have to be a server Administrator and to invite the bot by "
-"following [this guide](https://duckhunt.me/docs/bot-administration/admin-"
-"quickstart). If you need more help, you can ask here and we'll get back to "
-"you."
+"To invide DuckHunt, you need :\n"
+"- To be a server Administrator.- To click on the [following link](https://"
+"duckhunt.me/invite)More info on [this guide](https://duckhunt.me/docs/bot-"
+"administration/admin-quickstart). If you need more help, you can ask here "
+"and we'll get back to you."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:532
+#: ../cogs/private_messages_support.py:525
 msgid "This is an automatic message."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:650
+#: ../cogs/private_messages_support.py:643
 msgid "DM Closed"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:651
+#: ../cogs/private_messages_support.py:644
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
 "DuckHunt DM support. Keep in mind, sending another message here will open a "
@@ -2369,20 +2359,20 @@ msgid ""
 "In the meantime, here's a nice duck picture for you to look at !"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:745
+#: ../cogs/private_messages_support.py:738
 #, python-brace-format
 msgid "❌ Can't send a message to this user: {e}."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:748 ../cogs/tags.py:170
+#: ../cogs/private_messages_support.py:741 ../cogs/tags.py:170
 msgid "❌ There is no tag with that name."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:775
+#: ../cogs/private_messages_support.py:768
 msgid "Language change offer"
 msgstr ""
 
-#: ../cogs/private_messages_support.py:777
+#: ../cogs/private_messages_support.py:770
 #, python-brace-format
 msgid ""
 "DuckHunt support suggests you change your personal language from "
@@ -2390,17 +2380,17 @@ msgid ""
 "messages you get in private message from DuckHunt to {suggested_language}."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:787
+#: ../cogs/private_messages_support.py:780
 msgid ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:805
+#: ../cogs/private_messages_support.py:798
 msgid "Your language preference wasn't changed."
 msgstr ""
 
-#: ../cogs/private_messages_support.py:815
+#: ../cogs/private_messages_support.py:808
 #, python-brace-format
 msgid "Your preferred language is now {new_language}."
 msgstr ""
@@ -2745,7 +2735,7 @@ msgid ""
 "`super_ducks_max_life` !"
 msgstr ""
 
-#: ../cogs/settings_commands.py:965 ../cogs/settings_commands.py:994
+#: ../cogs/settings_commands.py:965
 #, python-brace-format
 msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
 msgstr ""
@@ -2754,6 +2744,11 @@ msgstr ""
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
 "`super_ducks_min_life` !"
+msgstr ""
+
+#: ../cogs/settings_commands.py:994
+#, python-brace-format
+msgid "On {channel.mention}, super ducks will get a maximum of {value} lives."
 msgstr ""
 
 #: ../cogs/settings_commands.py:1013
@@ -3148,25 +3143,25 @@ msgid ""
 "your outfit. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:448
+#: ../cogs/shopping_commands.py:451
 #, python-brace-format
 msgid ""
 "💸 You've just cleaned your weapon. Could've just shot once, but heh ¯"
 "\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:460 ../cogs/shopping_commands.py:501
-#: ../cogs/shopping_commands.py:532 ../cogs/shopping_commands.py:575
+#: ../cogs/shopping_commands.py:463 ../cogs/shopping_commands.py:504
+#: ../cogs/shopping_commands.py:535 ../cogs/shopping_commands.py:578
 msgid "❌ Don't play with fire, kid! Go somewhere else."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:463 ../cogs/shopping_commands.py:504
-#: ../cogs/shopping_commands.py:535 ../cogs/shopping_commands.py:578
+#: ../cogs/shopping_commands.py:466 ../cogs/shopping_commands.py:507
+#: ../cogs/shopping_commands.py:538 ../cogs/shopping_commands.py:581
 #, python-brace-format
 msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:485
+#: ../cogs/shopping_commands.py:488
 #, python-brace-format
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your "
@@ -3174,53 +3169,53 @@ msgid ""
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:488
+#: ../cogs/shopping_commands.py:491
 #, python-brace-format
 msgid ""
 "💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your "
 "mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:520
+#: ../cogs/shopping_commands.py:523
 #, python-brace-format
 msgid ""
 "💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:559
+#: ../cogs/shopping_commands.py:562
 #, python-brace-format
 msgid ""
 "💸 You threw water on {target.mention}... But they have a raincoat on. [Fail: "
 "-{ITEM_COST} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:561
+#: ../cogs/shopping_commands.py:564
 #, python-brace-format
 msgid ""
 "💸 You threw some icelandic water on {target.mention}... They can't hunt for "
 "**three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:563
+#: ../cogs/shopping_commands.py:566
 #, python-brace-format
 msgid ""
 "💸 You threw water on {target.mention}... They can't hunt for an hour! "
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:594
+#: ../cogs/shopping_commands.py:597
 msgid "❌ That weapon is already sabotaged."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:607
+#: ../cogs/shopping_commands.py:612
 #, python-brace-format
 msgid ""
 "💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:609
+#: ../cogs/shopping_commands.py:614
 #, python-brace-format
 msgid ""
 "I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
@@ -3228,21 +3223,21 @@ msgid ""
 "{db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:644
+#: ../cogs/shopping_commands.py:649
 #, python-brace-format
 msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:677
+#: ../cogs/shopping_commands.py:682
 #, python-brace-format
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
 "seconds. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:679
+#: ../cogs/shopping_commands.py:684
 #, python-brace-format
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
@@ -3250,11 +3245,11 @@ msgid ""
 "**I couldn't DM you this message**"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:697
+#: ../cogs/shopping_commands.py:702
 msgid "❌ I'm afraid you cannot choose your coat color yet."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:708
+#: ../cogs/shopping_commands.py:713
 #, python-brace-format
 msgid ""
 "💸 You bought a new, **{color}** coat. \n"
@@ -3268,22 +3263,22 @@ msgid ""
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:738
+#: ../cogs/shopping_commands.py:743
 msgid "❌ You already use a kill license."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:747
+#: ../cogs/shopping_commands.py:752
 #, python-brace-format
 msgid ""
 "💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:762
+#: ../cogs/shopping_commands.py:767
 msgid "❌ You already have an automatic reloader."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:774
+#: ../cogs/shopping_commands.py:779
 #, python-brace-format
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
@@ -3291,11 +3286,11 @@ msgid ""
 "{db_hunter.experience} exp]"
 msgstr ""
 
-#: ../cogs/shopping_commands.py:789
+#: ../cogs/shopping_commands.py:794
 msgid "❌ You already have homing bullets."
 msgstr ""
 
-#: ../cogs/shopping_commands.py:801
+#: ../cogs/shopping_commands.py:806
 #, python-brace-format
 msgid ""
 "💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee "
@@ -3989,15 +3984,15 @@ msgstr ""
 msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
-#: ../utils/bot_class.py:147
+#: ../utils/bot_class.py:158
 msgid "https://duckhunt.me/support"
 msgstr ""
 
-#: ../utils/bot_class.py:148
+#: ../utils/bot_class.py:159
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr ""
 
-#: ../utils/bot_class.py:138
+#: ../utils/bot_class.py:149
 #, python-brace-format
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "

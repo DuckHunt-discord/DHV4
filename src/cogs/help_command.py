@@ -13,7 +13,6 @@ from utils.ctx_class import MyContext
 class ButtonsHelp:
     def __init__(self, *args, **kwargs):
         self.context: MyContext = None
-
         super().__init__(*args, **kwargs)
 
     def get_command_signature(self, command):
@@ -364,4 +363,7 @@ class HelpCog(Cog):
         return cog
 
 
-setup = HelpCog.setup
+#setup = HelpCog.setup
+
+async def setup(*args, **kwargs):
+    pass
