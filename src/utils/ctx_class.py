@@ -4,7 +4,7 @@ import io
 import discord
 import typing
 from discord import Message, Interaction, AllowedMentions
-from discord.errors import InvalidArgument
+
 from discord.ext import commands
 from discord.mentions import default
 from discord.utils import MISSING
@@ -17,6 +17,11 @@ if typing.TYPE_CHECKING:
 
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
+
+
+class InvalidArgument(Exception):
+    pass
+
 
 class MyContext(commands.Context):
     def __init__(self, **kwargs):
@@ -107,17 +112,20 @@ class MyContext(commands.Context):
                     content = mention
 
                 # Then send the message normally.
-                message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions, **kwargs)
+                message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions,
+                                             **kwargs)
             else:
                 try:
                     # Send a normal reply
-                    message = await super().reply(content, file=file, files=files, allowed_mentions=allowed_mentions, **kwargs)
+                    message = await super().reply(content, file=file, files=files, allowed_mentions=allowed_mentions,
+                                                  **kwargs)
                 except discord.errors.HTTPException:
                     # Can't reply, probably that the message we are replying to was deleted.
                     # Just send the message instead.
                     # TODO: Maybe add the replied user just like above.
                     #       Not sure if the use-case makes sense here.
-                    message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions, **kwargs)
+                    message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions,
+                                                 **kwargs)
         else:
             message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions, **kwargs)
 
@@ -191,4 +199,3 @@ class MyContext(commands.Context):
             return db_channel.enabled
         else:
             return False
-
