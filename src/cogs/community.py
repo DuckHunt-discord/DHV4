@@ -55,7 +55,7 @@ class Community(Cog):
         await ctx.reply(_(f"Here's the invite you requested {invite}", invite=invite.url))
 
     async def is_in_server(self, message):
-        return message.guild and message.guild.id in self.config()["servers"]
+        return message.guild and message.guild.id in (await self.config())["servers"]
 
     @Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
