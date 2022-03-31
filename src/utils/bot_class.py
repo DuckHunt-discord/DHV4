@@ -45,7 +45,6 @@ class MyBot(AutoShardedBot):
 
         self._duckhunt_public_log = None
 
-        self.loop.run_until_complete(self.async_setup())
         self.logger.debug("End of init, bot object is ready")
 
     @property
@@ -62,7 +61,7 @@ class MyBot(AutoShardedBot):
     def reload_config(self):
         self.config = config.load_config()
 
-    async def async_setup(self):
+    async def setup_hook(self):
         """
         This function is run once, and is used to setup the bot async features, like the ClientSession from aiohttp.
         """
