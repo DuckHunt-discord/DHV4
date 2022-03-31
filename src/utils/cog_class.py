@@ -22,7 +22,7 @@ class Cog(commands.Cog):
     async def setup(cls, bot: MyBot):
         return await bot.add_cog(cls(bot))
 
-    async def config(self):
+    def config(self):
         config = self.bot.config
         cog_config = config["cogs"].get(self.qualified_name, {})
         return cog_config

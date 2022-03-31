@@ -25,7 +25,9 @@ class DucksSpawning(Cog):
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.index = 0
-        self.background_loop = bot.loop.create_task(self.loop())
+
+    async def cog_load(self) -> None:
+        self.background_loop = self.bot.loop.create_task(self.loop())
         self.interval = 1
         self.last_planned_day = 0
         self.current_iteration_public = 0
