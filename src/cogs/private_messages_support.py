@@ -260,11 +260,9 @@ class PrivateMessagesSupport(Cog):
                     inactivity_embed = discord.Embed(
                         color=discord.Color.orange(),
                         title=_("DM Timed Out"),
-                        description=_("It seems like nothing has been said here for a long time, "
-                                      "so I've gone ahead and closed your ticket, deleting its history. "
-                                      "Thanks for using DuckHunt DM support. "
-                                      "If you need anything else, feel free to open a new ticket by sending a message "
-                                      "here."),
+                        description=_("Tickets expire after 24 hours of inactivity."
+                                        "Got a question ? Ask it here or in [the support server](https://duckhunt.me/support)."
+                                        "Thank you for using the DuckHunt ticket system !"),
                     )
 
                     inactivity_embed.add_field(name=_("Support server"),
@@ -455,18 +453,10 @@ class PrivateMessagesSupport(Cog):
 
         welcome_embed = discord.Embed(color=discord.Color.green(), title="Support ticket opened")
         welcome_embed.description = \
-            _("**It seems that you have sent a DM to the bot.** \n"
-              "Welcome to DuckHunt private messages support.\n"
-              "If you opened the ticket by mistake, just say `close` and we will close it for you. "
-              "Please note that **CLOSE IS NOT A COMMAND**. "
-              "Please do not include any prefix or to spam it. \n\n"
-              "Messages here are relayed to a select group of bot helpers to help you use the bot. "
-              "For general questions, we also have a support server "
-              "[here](https://duckhunt.me/support).\n"
-              "In any other cases, we'll get back to you as fast as possible. "
-              "We are human and sometimes offline,"
-              "to get a faster answer, ask your question right away. "
-              "(More on that : https://dontasktoask.com)")
+             _("DMing any message to the bot will open a ticket.\n"
+              "You have a question ? [Ask it](https://dontasktoask) to our human volunteers."
+              "You opened the ticket by mistake ? Type `close` (*once, no prefix needed) and we, human volonteers will close it")
+        
         welcome_embed.set_footer(text=_("Support tickets are automatically deleted after 24 hours of inactivity"))
 
         try:
@@ -526,9 +516,10 @@ class PrivateMessagesSupport(Cog):
             dm_invite_embed = discord.Embed(color=discord.Color.purple(),
                                             title=_("This is not how you invite DuckHunt."))
             dm_invite_embed.description = \
-                _("DuckHunt, like all other discord bots, can't join servers by using an invite link.\n"
-                  "You instead have to be a server Administrator and to invite the bot by following "
-                  "[this guide](https://duckhunt.me/docs/bot-administration/admin-quickstart). If you need more help, "
+               _("To invide DuckHunt, you need :\n"
+                  "- To be a server Administrator."
+                  "- To click on the [following link](https://duckhunt.me/invite)"
+                  "More info on [this guide](https://duckhunt.me/docs/bot-administration/admin-quickstart). If you need more help, "
                   "you can ask here and we'll get back to you.")
 
             dm_invite_embed.set_footer(text=_("This is an automatic message."))
