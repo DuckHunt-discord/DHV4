@@ -2874,9 +2874,9 @@ msgid ""
 "in [the support server](https://duckhunt.me/support).Thank you for using the "
 "DuckHunt ticket system !"
 msgstr ""
-"Tickets expire after 24 hours of inactivity.Got a question ? Ask it here or "
-"in [the support server](https://duckhunt.me/support).Thank you for using the "
-"DuckHunt ticket system !"
+"Tickets expire after 24 hours of inactivity. Got a question? Ask it here or "
+"in [the support server](https://duckhunt.me/support). Thank you for using "
+"the DuckHunt ticket system !"
 
 #: ../cogs/private_messages_support.py:268
 #: ../cogs/private_messages_support.py:650
@@ -2900,14 +2900,14 @@ msgid ""
 "and we, human volonteers will close it"
 msgstr ""
 "DMing any message to the bot will open a ticket.\n"
-"You have a question ? [Ask it](https://dontasktoask) to our human volunteers."
-"You opened the ticket by mistake ? Type `close` (*once, no prefix needed) "
-"and we, human volonteers will close it"
+"You have a question? [Ask it](https://dontasktoask) to our human volunteers. "
+"You opened the ticket by mistake? Type `close` (*once, no prefix needed*) "
+"and we, human volonteers will close it."
 
 #: ../cogs/private_messages_support.py:460
 msgid "Support tickets are automatically deleted after 24 hours of inactivity"
 msgstr ""
-"Support tickets are automatically deleted after 24 hours of inactivity"
+"Support tickets are automatically deleted after 24 hours of inactivity."
 
 #: ../cogs/private_messages_support.py:495
 msgid "Attachments persistence"
@@ -2934,10 +2934,11 @@ msgid ""
 "and we'll get back to you."
 msgstr ""
 "To invide DuckHunt, you need :\n"
-"- To be a server Administrator.- To click on the [following link](https://"
-"duckhunt.me/invite)More info on [this guide](https://duckhunt.me/docs/bot-"
-"administration/admin-quickstart). If you need more help, you can ask here "
-"and we'll get back to you."
+"- To be a server Administrator.\n"
+"- To click on the [following link](https://duckhunt.me/invite)\n"
+"More info on [this guide](https://duckhunt.me/docs/bot-administration/admin-"
+"quickstart).\n"
+"If you need more help, you can ask here and we'll get back to you."
 
 #: ../cogs/private_messages_support.py:525
 msgid "This is an automatic message."
