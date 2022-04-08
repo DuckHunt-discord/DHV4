@@ -270,7 +270,7 @@ msgid ""
 "point damage, and half it's value\n"
 "back."
 msgstr ""
-"[يعمل هذا الأمر في الرسايل الخاصة]\n"
+"[يعمل هذا الأمر في الرسائل الخاصة]\n"
 "شراء لغم أرضي يفجر إلى كلمة معينة.\n"
 "\n"
 "اللغم أرضي له قيمة، على الأقل أكبر من 2، والتي سيتم استخدامها لتحديد سعره "
@@ -3823,10 +3823,10 @@ msgid "ZzZzZz"
 msgstr ""
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "كل شيء هادئ"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "لا شيء يحدث الآن."
 
 msgid "Ducks are migrating"
 msgstr ""
@@ -3850,7 +3850,7 @@ msgid "The safety class was canceled, beware not to shoot other hunters!"
 msgstr ""
 
 msgid "Connection problem"
-msgstr ""
+msgstr "مشكلة اتصال"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
@@ -3889,49 +3889,50 @@ msgid "Lootbox opened"
 msgstr ""
 
 msgid "VIP card"
-msgstr ""
+msgstr "بطاقة VIP"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
 
 msgid "❌ {guild.name} is already VIP."
-msgstr ""
+msgstr "❌ {guild.name} هو VIP بالفعل."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr ""
+msgstr "✨ {guild.name} اصبح الآن VIP! شكراََ."
 
 msgid "A book"
-msgstr ""
+msgstr "كتاب"
 
 msgid "Reading it will give you experience."
-msgstr ""
+msgstr "قراءته ستمنحك نقاط الخبرة"
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
-msgstr ""
+msgstr "✨ لقد تعلمت الكثير، مضيفا {amount} من النقاط الخبرة إلى ملفك الشخصي."
 
 msgid "A book in a foreign language"
-msgstr ""
+msgstr "كتاب بلغة أجنبية"
 
 msgid "Can you read it ?"
-msgstr ""
+msgstr "هل يمكنك قراته؟"
 
 msgid "An encyclopedia"
 msgstr ""
 
 msgid "Reading it will give you a lot of experience ?"
-msgstr ""
+msgstr "قراته ستمنحك الكثير من نقاط الخبرة؟"
 
 msgid "A bullet"
-msgstr ""
+msgstr "رصاصة"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement."
 msgstr ""
+"هذه مجرد رصاصة عادية، لكنها قد تساعدك في الحصول على هذا الإنجاز المميز."
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr ""
+msgstr "✨ اوه، هل هذه رصاصة؟"
 
 msgid "A good ol' egg"
 msgstr ""
@@ -3940,7 +3941,7 @@ msgid "Crack it open !"
 msgstr ""
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
-msgstr ""
+msgstr "✨ اوه انظر، بط! البط في كل مكان!"
 
 msgid "A free card for magazines"
 msgstr ""
@@ -3949,10 +3950,10 @@ msgid "Redeem it to refill your weapon."
 msgstr ""
 
 msgid "✨ Yay! Free ammo!"
-msgstr ""
+msgstr "✨ ياي! ذخيرة مجانية؟"
 
 msgid "❌ Your ammo is already full!"
-msgstr ""
+msgstr "❌ ذخيرتك ممتلئة بالفعل!"
 
 msgid "A welcome gift"
 msgstr ""
@@ -3985,10 +3986,10 @@ msgid "public danger"
 msgstr ""
 
 msgid "tourist"
-msgstr ""
+msgstr "سائح"
 
 msgid "noob"
-msgstr ""
+msgstr "لاعب مبتدا"
 
 msgid "trainee"
 msgstr ""
@@ -4000,7 +4001,7 @@ msgid "member of the Committee Against Ducks"
 msgstr ""
 
 msgid "duck hater"
-msgstr ""
+msgstr "كاره البط"
 
 msgid "duck pest"
 msgstr ""
@@ -4012,7 +4013,7 @@ msgid "duck plucker"
 msgstr ""
 
 msgid "hunter"
-msgstr ""
+msgstr "صياد"
 
 msgid "duck inside out turner"
 msgstr ""
@@ -4024,7 +4025,7 @@ msgid "duck chewer"
 msgstr ""
 
 msgid "duck eater"
-msgstr ""
+msgstr "آكل البط"
 
 msgid "duck flattener"
 msgstr ""
@@ -4036,7 +4037,7 @@ msgid "duck demolisher"
 msgstr ""
 
 msgid "duck killer"
-msgstr ""
+msgstr "قاتل البط"
 
 msgid "duck skinner"
 msgstr ""
@@ -4117,19 +4118,19 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "لقد ارتفع مستواك!"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "لقد انخفض مستواك!"
 
 msgid "❌ You cannot run this command."
-msgstr ""
+msgstr "❌ لا يمكنك تشغيل هذا الامر"
 
 msgid "❌ You are not allowed to click on this button"
-msgstr ""
+msgstr "❌ ليس مسموح لك بالضغط على هذا الزر"
 
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 msgid "Confirm"
-msgstr ""
+msgstr "تأكيد"
