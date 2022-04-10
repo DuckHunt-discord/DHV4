@@ -1285,15 +1285,16 @@ msgid "tree"
 msgstr ""
 
 msgid "❌ I have no idea what you want to hug..."
-msgstr ""
+msgstr "❌ ليس لدي فكرة عن ما تريد ان تعانق..."
 
 msgid "🌳 You hugged the tree... Thanks!"
-msgstr ""
+msgstr "🌳 لقد عانقت الشجرة... شكرا!"
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
 "happy that you love it."
 msgstr ""
+"{you_mention} عانق {target_mention}. مطور البوت سعيد حقاً انكم تحبون بعضكم."
 
 msgid ""
 "{you_mention} hugged {target_mention}. They hate you even more for hugging "
@@ -1301,10 +1302,10 @@ msgid ""
 msgstr ""
 
 msgid "{you_mention} hugged {target_mention}. They feel loved."
-msgstr ""
+msgstr "{you_mention} عانق {target_mention}. انهم يشعرون بانهم محبوبون."
 
 msgid "You hugged a tree, Wizzz?!"
-msgstr ""
+msgstr "لقد عانقت شجرة، Wizzz؟!"
 
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr ""
@@ -1391,7 +1392,7 @@ msgid ""
 msgstr ""
 
 msgid "This command can only be used in a private message."
-msgstr ""
+msgstr "هذا الامر يمكن تشغيله في رسالة خاصة فقط."
 
 msgid "This command cannot be used in a private message."
 msgstr ""
