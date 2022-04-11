@@ -454,8 +454,8 @@ class PrivateMessagesSupport(Cog):
         welcome_embed = discord.Embed(color=discord.Color.green(), title="Support ticket opened")
         welcome_embed.description = \
              _("DMing any message to the bot will open a ticket.\n"
-              "You have a question ? [Ask it](https://dontasktoask) to our human volunteers."
-              "You opened the ticket by mistake ? Type `close` (*once, no prefix needed) and we, human volonteers will close it")
+              "You have a question ? [Ask it](https://dontasktoask) to our human volunteers.\n"
+              "You opened the ticket by mistake ? Type `close` (*once, no prefix needed) and we, human volunteers will close it.")
         
         welcome_embed.set_footer(text=_("Support tickets are automatically deleted after 24 hours of inactivity"))
 
@@ -516,7 +516,7 @@ class PrivateMessagesSupport(Cog):
             dm_invite_embed = discord.Embed(color=discord.Color.purple(),
                                             title=_("This is not how you invite DuckHunt."))
             dm_invite_embed.description = \
-               _("To invide DuckHunt, you need :\n"
+               _("To invite DuckHunt, you need :\n"
                   "- To be a server Administrator."
                   "- To click on the [following link](https://duckhunt.me/invite)"
                   "More info on [this guide](https://duckhunt.me/docs/bot-administration/admin-quickstart). If you need more help, "
