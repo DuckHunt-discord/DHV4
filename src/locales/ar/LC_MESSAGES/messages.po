@@ -1522,7 +1522,7 @@ msgid "`{prefix}inv use shortcode` to use an item"
 msgstr ""
 
 msgid "❌ Unknown item."
-msgstr ""
+msgstr "❌ عنصر غير معروف."
 
 msgid "👌 Item has been given to {target.name}."
 msgstr ""
@@ -1540,7 +1540,7 @@ msgid "❌ You don't have that item."
 msgstr ""
 
 msgid "Landmines"
-msgstr ""
+msgstr "الألغام الأرضية"
 
 msgid ""
 "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
@@ -1559,7 +1559,7 @@ msgid ""
 msgstr ""
 
 msgid "They can't play the game :("
-msgstr ""
+msgstr "لا يمكنهم لعب اللعبة :("
 
 msgid "{target.name} event statistics"
 msgstr ""
@@ -1575,7 +1575,7 @@ msgid ""
 msgstr ""
 
 msgid "Available"
-msgstr ""
+msgstr "متاح"
 
 msgid "{db_target.points_current} points"
 msgstr ""
@@ -1967,7 +1967,7 @@ msgid "Your preferred language is now {new_language}."
 msgstr ""
 
 msgid "Images"
-msgstr ""
+msgstr "صور"
 
 msgid "Admin: Settings"
 msgstr ""
@@ -2006,10 +2006,10 @@ msgid "There will be very big ducks on this channel."
 msgstr ""
 
 msgid "Your math test will start soon."
-msgstr ""
+msgstr "امتحان الرياضيات الخاص بك سيبدا قريباً."
 
 msgid "The server prefix is set to `{prefix}`."
-msgstr ""
+msgstr "تم تعيين بادئة الخادم إلى `{prefix}`"
 
 msgid "There is no specific prefix set for this guild."
 msgstr ""
@@ -2653,13 +2653,13 @@ msgid ""
 msgstr ""
 
 msgid "Developer"
-msgstr ""
+msgstr "المطور"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
-msgstr ""
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") صنع هذا البوت."
 
 msgid "Designer"
-msgstr ""
+msgstr "المصمم"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
@@ -2671,7 +2671,7 @@ msgid ""
 msgstr ""
 
 msgid "Ideas"
-msgstr ""
+msgstr "الافكار"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
@@ -2679,12 +2679,14 @@ msgid ""
 msgstr ""
 
 msgid "Translations"
-msgstr ""
+msgstr "الترجمات"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
 msgstr ""
+"البوت مترجم لكثير من اللغات!\n"
+"قائمة المترجمين في `{ctx.prefix}translators`."
 
 msgid "**DuckHunt credits**"
 msgstr ""
@@ -3044,10 +3046,10 @@ msgid "Play for more than a month."
 msgstr ""
 
 msgid "Wanna be friends ?"
-msgstr ""
+msgstr "هل تريد أن نصبح أصدقاء؟"
 
 msgid "Play for more than a year."
-msgstr ""
+msgstr "العب لأكثر من عام"
 
 msgid "I don't want your damn bullets!"
 msgstr ""
@@ -3062,7 +3064,7 @@ msgid "Kill a few baby ducks."
 msgstr ""
 
 msgid "MATHS 101"
-msgstr ""
+msgstr "الرياضيات 101"
 
 msgid "Solve equations given by the Pr. Duck."
 msgstr ""
@@ -3071,7 +3073,7 @@ msgid "BRAAAAAINS!"
 msgstr ""
 
 msgid "Eat some brains and come back to life."
-msgstr ""
+msgstr "قم بأكل بعض العقول وعد إلى الحياة"
 
 msgid "Sentry gun"
 msgstr ""
@@ -3086,7 +3088,7 @@ msgid "Use the homing projectiles."
 msgstr ""
 
 msgid "You monster"
-msgstr ""
+msgstr "وحشك"
 
 msgid "Kill a MOAD that spawns a baby duck."
 msgstr ""
@@ -3098,7 +3100,7 @@ msgid "Give at least 30 exp to an hunter that lost his gun."
 msgstr ""
 
 msgid "Short memory"
-msgstr ""
+msgstr "ذاكرة قصيرة"
 
 msgid "Shoot at your own mechanical duck."
 msgstr ""
@@ -3110,7 +3112,7 @@ msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr ""
 
 msgid "https://duckhunt.me/support"
-msgstr ""
+msgstr "https://duckhunt.me/support"
 
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
 msgstr ""
@@ -3196,10 +3198,10 @@ msgid ""
 msgstr ""
 
 msgid "White"
-msgstr ""
+msgstr "أبيض"
 
 msgid "A useful coat when it rains."
-msgstr ""
+msgstr "معطف مفيد عندما تمطر."
 
 msgid "Orange"
 msgstr ""
@@ -3538,7 +3540,7 @@ msgid "You can't aim for good..."
 msgstr ""
 
 msgid "The duck left."
-msgstr ""
+msgstr "البطة غادرت."
 
 msgid "The duck right."
 msgstr ""
@@ -3561,7 +3563,7 @@ msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr ""
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "إنه موسم الأرانب"
 
 msgid "Got a spare cape?"
 msgstr ""
@@ -3570,10 +3572,10 @@ msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr ""
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "انا اسرق الاموال. انا بطة سارقة."
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "انا بطة مميزة جدا."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
@@ -3594,7 +3596,7 @@ msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "انا اقوم بعملي فقط..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
@@ -3659,7 +3661,7 @@ msgid "A duck"
 msgstr ""
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "السيد. بطة"
 
 msgid "RealDuck"
 msgstr ""
