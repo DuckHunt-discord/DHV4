@@ -650,7 +650,7 @@ class PrivateMessagesSupport(Cog):
         close_embed.add_field(name=_("Support server"), value=_("For all your questions, there is a support server. "
                                                                 "Click [here](https://duckhunt.me/support) to join."))
 
-        file = await get_random_duck_file(self.bot)
+        file, debug = await get_random_duck_file(self.bot)
         close_embed.set_image(url="attachment://random_duck.png")
 
         async with ctx.typing():

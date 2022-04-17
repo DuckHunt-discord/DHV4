@@ -99,4 +99,3 @@ statcord_token = "abcdef"
 
 [random_ducks]
 assets_path = 'assets/Random Ducks'
-composite_order = ['Body', 'Neck', 'Face', 'Hats'] # Background is included
