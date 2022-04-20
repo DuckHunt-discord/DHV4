@@ -871,16 +871,16 @@ msgid "For when you misspell the reload command."
 msgstr ""
 
 msgid "I only get one eye"
-msgstr ""
+msgstr "لدي عين واحدة فقط"
 
 msgid "Who doesn't need eyes"
-msgstr ""
+msgstr "من لا يحتاج عيون"
 
 msgid "I hav long nek"
-msgstr ""
+msgstr "لدي رقبة طويلة"
 
 msgid "It's impossible."
-msgstr ""
+msgstr "انه مستحيل."
 
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
@@ -889,10 +889,10 @@ msgid ""
 msgstr ""
 
 msgid "Who doesn't need cows ?"
-msgstr ""
+msgstr "من لا يحتاج ابقار؟"
 
 msgid "When you don't have eyes"
-msgstr ""
+msgstr "عندما لا يكون لديك عيون"
 
 msgid "I guess that just says ¯\\_(ツ)_/¯"
 msgstr ""
@@ -951,7 +951,7 @@ msgid "Give some experience to another player. This is a cheat."
 msgstr ""
 
 msgid "Who's the best ?"
-msgstr ""
+msgstr "من الأفضل؟"
 
 msgid ""
 "Delete scores for a specific user from the channel. The target can be an ID "
@@ -1038,13 +1038,13 @@ msgid ""
 msgstr ""
 
 msgid "Voting"
-msgstr ""
+msgstr "التصويت"
 
 msgid "Please wait while I check where you can vote..."
 msgstr ""
 
 msgid "You can vote !"
-msgstr ""
+msgstr "يمكنك التصويت!"
 
 msgid "Thanks for supporting the bot by voting !"
 msgstr ""
@@ -2823,34 +2823,34 @@ msgid "{shots} shots using homing bullets."
 msgstr ""
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
 msgstr ""
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵️"
 
 msgid "{shots} shots stopped by the infrared detector."
 msgstr ""
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
 msgstr ""
 
 msgid "Normal ducks"
-msgstr ""
+msgstr "البط العادي"
 
 msgid "Ghost ducks"
-msgstr ""
+msgstr "البط الأشباح"
 
 msgid "Professor ducks"
-msgstr ""
+msgstr "البط الأستاذ"
 
 msgid "Baby ducks"
-msgstr ""
+msgstr "البط الصغير"
 
 msgid "Golden ducks"
 msgstr ""
