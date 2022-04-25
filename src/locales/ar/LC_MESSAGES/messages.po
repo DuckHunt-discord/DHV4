@@ -741,7 +741,7 @@ msgid ""
 msgstr ""
 
 msgid "Buy items here"
-msgstr ""
+msgstr "قم بشراء العناصر هنا"
 
 msgid "Adds a bullet to your current magazine. [7 exp]"
 msgstr ""
@@ -845,10 +845,10 @@ msgid "Returns the wiki URL"
 msgstr ""
 
 msgid "Get the URL to invite the bot"
-msgstr ""
+msgstr "احصل على URL لدعوة البوت"
 
 msgid "Get a discord invite to the support server."
-msgstr ""
+msgstr "احصل على دعوة لخادم الدعم."
 
 msgid ""
 "Get the time when you'll get free magazines and your weapon back from the "
@@ -1788,7 +1788,7 @@ msgid "✨ Current prestige level ✨️"
 msgstr ""
 
 msgid "You have reached level {level}"
-msgstr ""
+msgstr "لقد وصلت إلى المستوى {level}"
 
 msgid ""
 "**Remember**, using prestige means losing your statistics and most of your "
@@ -1796,55 +1796,55 @@ msgid ""
 msgstr ""
 
 msgid "Level 1"
-msgstr ""
+msgstr "المستوى 1"
 
 msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
 msgstr ""
 
 msgid "Level 2"
-msgstr ""
+msgstr "المستوى 2"
 
 msgid "**Coat colour**: Choose the colour of your coat"
 msgstr ""
 
 msgid "Level 3"
-msgstr ""
+msgstr "المستوى 3"
 
 msgid "**Daily command**: Get more experience every day"
 msgstr ""
 
 msgid "Level 4"
-msgstr ""
+msgstr "المستوى 4"
 
 msgid "**Icelandic water**: Wet others for longer"
 msgstr ""
 
 msgid "Level 5"
-msgstr ""
+msgstr "المستوى 5"
 
 msgid "**Untearable coat**: Buy it for life"
 msgstr ""
 
 msgid "Level 6"
-msgstr ""
+msgstr "المستوى 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
 
 msgid "Level 7"
-msgstr ""
+msgstr "المستوى 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
 msgstr ""
 
 msgid "Level 8"
-msgstr ""
+msgstr "المستوى 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
 msgstr ""
 
 msgid "Level 9"
-msgstr ""
+msgstr "المستوى 9"
 
 msgid "**???**: Suggestions are welcome"
 msgstr ""
@@ -2319,7 +2319,7 @@ msgid "Current prestige roles mapping:"
 msgstr ""
 
 msgid "Level {i}"
-msgstr ""
+msgstr "المستوى {i}"
 
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
@@ -2362,7 +2362,7 @@ msgid "Your language is set to `{language}` [{language_name}]."
 msgstr ""
 
 msgid "Shop"
-msgstr ""
+msgstr "المتجر"
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
 msgstr ""
@@ -3435,7 +3435,7 @@ msgid ""
 msgstr ""
 
 msgid "night"
-msgstr ""
+msgstr "الليل"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
