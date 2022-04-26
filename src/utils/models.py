@@ -1222,7 +1222,7 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
 
             return db_obj
-        elif isinstance(discord_object, discord.TextChannel):
+        elif isinstance(discord_object, discord.TextChannel) or isinstance(discord_object, discord.VoiceChannel):
             db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
             if not db_obj:
                 db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name,

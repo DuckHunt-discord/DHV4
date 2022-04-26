@@ -66,7 +66,7 @@ class Event2021(Cog):
 
         if not db_channel:
             ctx: MyContext = await self.bot.get_context(message, cls=MyContext)
-            ctx.logger.warning(f"Channel {channel} ({type(channel).__name__} not found in database by get_from_db, weird..")
+            ctx.logger.warning(f"Channel {channel} ({type(channel).__name__}) not found in database by get_from_db, weird..")
             ctx.logger.warning(f"Channel {channel.id} not found in database by get_from_db, weird.")
             return
 
