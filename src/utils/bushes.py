@@ -45,6 +45,15 @@ class Bushes(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **A lot of bushes**.')
 
 
+class USBCCharger(BushObject):
+    db = 'trash_usbc_charger'
+    # TRANSLATORS: This is a joke message that probably only works in French, but try to adapt anyway.
+    #  When translating to french, a magazine is the same as a power supply/a charger,
+    #  so this might make people happy for a second.
+    #  Yes, I am indeed cruel.
+    took_message = _('Searching the bushes around the duck, you found... **An USB-C charger**.')
+
+
 class DuckPin(BushObject):
     db = 'trash_pin'
     took_message = _('Searching the bushes around the duck, you found... **A rare duck pin**.')
@@ -143,7 +152,7 @@ del _
 
 # noinspection PyInterpreter
 bushes = {
-    Nothing: 20, Bushes: 20, Picture: 15, DuckPin: 1,
+    Nothing: 20, Bushes: 20, Picture: 15,  USBCCharger: 3, DuckPin: 1,
     Bullet: 20,
     Magazine: 15,
     ExplosiveAmmo: 2, PartialExplosiveAmmo: 6,
