@@ -260,9 +260,9 @@ class PrivateMessagesSupport(Cog):
                     inactivity_embed = discord.Embed(
                         color=discord.Color.orange(),
                         title=_("DM Timed Out"),
-                        description=_("Tickets expire after 24 hours of inactivity."
+                        description=_("Tickets expire after 24 hours of inactivity.\n"
                                       "Got a question? Ask it here or in [the support server](https://duckhunt.me/support)."
-                                      "Thank you for using the DuckHunt ticket system !"),
+                                      "Thank you for using the DuckHunt ticket system!"),
                     )
 
                     inactivity_embed.add_field(name=_("Support server"),
