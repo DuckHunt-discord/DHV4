@@ -261,7 +261,7 @@ class PrivateMessagesSupport(Cog):
                         color=discord.Color.orange(),
                         title=_("DM Timed Out"),
                         description=_("Tickets expire after 24 hours of inactivity.\n"
-                                      "Got a question? Ask it here or in [the support server](https://duckhunt.me/support)."
+                                      "Got a question? Ask it here or in [the support server](https://duckhunt.me/support).\n"
                                       "Thank you for using the DuckHunt ticket system!"),
                     )
 
