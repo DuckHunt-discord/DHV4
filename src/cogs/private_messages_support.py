@@ -190,7 +190,7 @@ class PrivateMessagesSupport(Cog):
         self.invites_regex = re.compile(
             r"""
                 discord      # Literally just discord
-                (?:app\s?\.\s?com\s?/invite|\.\s?gg)\s?/ # All the domains
+                (?:(?:app)?\s?\.\s?com\s?\/invite|\.\s?gg)\s?\/ # All the domains
                 ((?!.*[Ii10OolL]).[a-zA-Z0-9]{5,12}|[a-zA-Z0-9\-]{2,32}) # Rest of the fucking owl.
                 """, flags=re.VERBOSE | re.IGNORECASE)
         self.views_added = False
