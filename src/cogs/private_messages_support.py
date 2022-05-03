@@ -77,15 +77,14 @@ class CloseReasonSelect(discord.ui.Select):
     reasons = {
         # shown reason : Emoji, stored reason, tag_to_send
         'No help needed': ('❌', 'No help needed', None),
-        'DM Commands': ('🤖', 'DM Commands', 'dm_commands'),
         'Support given': ('✅', 'Support was provided and the matter resolved', None),
-        'Requested': ('🤷', 'Closed on request', None),
-        'Insults': ('🤬', 'Insults in DM', None),
-        'Unresponsive': ('☠️', 'User did not respond', None),
-        'Unrelated': ('⁉️', 'Not a support DM', 'groupself'),
-        'Thanks': ('🙃', 'Complimented the bot', None),
+        'DM Commands': ('🤖', 'DM Commands', 'dm_commands'),
+        'Unrelated': ('⁉️', 'Not a support DM', 'dm_unrelated'),
         'Spam': ('💬', 'Spam', None),
         'Scam': ('☢️', 'User sent a scam message to the bot', 'scams'),
+        'Insults': ('🤬', 'Insults in DM', None),
+        'Unresponsive': ('☠️', 'User did not respond', None),
+        'Thanks': ('🙃', 'Complimented the bot', None),
     }
 
     def __init__(self, bot):
@@ -123,13 +122,12 @@ class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
         # tag to send : Emoji, shown name
         'setup': ('⚙️', 'How to setup'),
         'quickguide': ('🦆', 'How to play'),
-        'dm_unrelated': ('⁉️', 'Unrelated DMs'),
+        'dm_unrelated': ('⁉️', 'Unrelated DMs (close?)'),
         'dm_commands': ('🤖', 'DM Commands (close?)'),
         'leveling_up': ('☝️', 'Leveling up'),
         'lore_v4': ('📖', 'Lore'),
         'commands': ('❕', 'Commands list'),
         'wiki': ('🌱', 'Wiki'),
-        'groupself': ('💬', 'Groupself (close?)'),
     }
 
     def __init__(self, bot):
