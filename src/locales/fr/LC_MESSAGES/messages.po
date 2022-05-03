@@ -2502,7 +2502,7 @@ msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 msgstr ""
-"Pour toutes vos question, rejoignez le serveur de support. Cliquez "
+"Pour toutes vos questions, rejoignez le serveur de support. Cliquez "
 "[ici](https://duckhunt.me/support) pour le rejoindre."
 
 msgid ""

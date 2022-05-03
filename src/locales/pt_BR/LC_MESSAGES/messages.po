@@ -4315,7 +4315,7 @@ msgid "Reading it will give you a lot of experience ?"
 msgstr ""
 
 msgid "A bullet"
-msgstr ""
+msgstr "Um cartucho"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
