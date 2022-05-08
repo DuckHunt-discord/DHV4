@@ -1441,7 +1441,7 @@ msgid "♻️ Reload"
 msgstr "♻️ Nachladen"
 
 msgid "Buy a magazine"
-msgstr "Eine Zeitschrift kaufen"
+msgstr "Eine Magazin kaufen"
 
 msgid "Buy a bullet"
 msgstr "Kaufen Sie eine Patrone"
@@ -5001,7 +5001,7 @@ msgid "✨ Oh look, ducks! Ducks are everywhere!"
 msgstr "✨ Oh schau, Enten! Enten sind überall!"
 
 msgid "A free card for magazines"
-msgstr "Eine kostenlose Karte für Zeitschriften"
+msgstr "Eine kostenlose Karte für Magazine"
 
 msgid "Redeem it to refill your weapon."
 msgstr "Lösen Sie es ein, um Ihre Waffe wieder aufzufüllen."
