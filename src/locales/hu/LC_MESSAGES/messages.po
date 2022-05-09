@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 
 msgid "Force a boss to spawn"
-msgstr ""
+msgstr "Kényszeríti egy főgonosz leidéződését"
 
 msgid "Force the current event to change, and reroll a new one."
 msgstr ""
@@ -941,6 +941,9 @@ msgid ""
 "forcing them to wait 1h for their clothes to dry before hunting again. [10 "
 "exp/1* hrs]"
 msgstr ""
+"Önts egy vödörnyi vizet egy általad választott vadászra,\n"
+"ezzel 1 óra várakozásra kényszeríteni őket, hogy megszáradjon a ruhájuk, "
+"mielőtt újra vadászhatnak. [10 tp/1* óra]"
 
 msgid ""
 "Sabotage the weapon of another player.\n"
@@ -1025,7 +1028,7 @@ msgid "I only get one eye"
 msgstr "Csak egy szemem van"
 
 msgid "Who doesn't need eyes"
-msgstr ""
+msgstr "Kinek nincs szüksége szemekre?"
 
 msgid "I hav long nek"
 msgstr "Hoszú nyakm van"
@@ -1038,18 +1041,22 @@ msgid ""
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
 "if someones vote against, the boss won't spawn."
 msgstr ""
+"Szavazás egy főgonosz leidéződésére egy percig.\n"
+"Ez a szavazás nem fer: bár gyorsan kell szavazni az embereknek a főgonosz "
+"leidéződéséhez,\n"
+"ha bárki ellenszavaz, a főgonosz nem lesz megidézve."
 
 msgid "Who doesn't need cows ?"
-msgstr "Kinek nincs szüksége tehenekre ?"
+msgstr "Kinek nincs szüksége tehenekre?"
 
 msgid "When you don't have eyes"
 msgstr "Amikor nincsenek szemeid"
 
 msgid "I guess that just says ¯\\_(ツ)_/¯"
-msgstr ""
+msgstr "Azt hiszem, ez csak azt mondja, hogy ¯\\_(ツ)_/¯"
 
 msgid "When you need some good laughs"
-msgstr ""
+msgstr "Amikor egy jó nevetésre van szükséged"
 
 msgid ""
 "See the current global event.\n"
@@ -1065,32 +1072,43 @@ msgid "This returns the current bot time."
 msgstr "Ez elküldi a jelenlegi bot időt"
 
 msgid "Get some quickstats about yourself (or someone else)."
-msgstr ""
+msgstr "Szerezz meg gyors statisztikákat magadról (vagy valaki másról)."
 
 msgid "Get shooting stats (for you or someone else)."
-msgstr ""
+msgstr "Szerezz meg lövési statisztikákat (magadról vagy valaki másról)."
 
 msgid "Get best times to kill of ducks (for you or someone else)."
 msgstr ""
+"Szerezd meg a legjobb kacsaölési időket (magadról vagy valaki másról)."
 
 msgid "Get number of each type of duck killed (for you or someone else)."
 msgstr ""
+"Szerezd meg az egyes kacsafajtákból leölt kacsák számát (magadról vagy "
+"valaki másról)."
 
 msgid "Get number of each type of duck hugged (for you or someone else)."
 msgstr ""
+"Szerezd meg az egyes kacsafajtákból megölelt kacsák számát (magadról vagy "
+"valaki másról)."
 
 msgid "Get number of each type of duck hurt (for you or someone else)."
 msgstr ""
+"Szerezd meg az egyes kacsafajtákból megsebzett kacsák számát (magadról vagy "
+"valaki másról)."
 
 msgid ""
 "Get number of each type of duck that resisted a shot (for you or someone "
 "else)."
 msgstr ""
+"Szerezd meg az egyes kacsafajtákból ellenált kacsák számát (magadról vagy "
+"valaki másról)."
 
 msgid ""
 "Get number of each type of duck that fled following a shot (for you or "
 "someone else)."
 msgstr ""
+"Szerezd meg az egyes kacsafajtákból lövés után elmenekült kacsák számát "
+"(magadról vagy valaki másról)."
 
 msgid "Show your/someone else achievements in the channel"
 msgstr "Megmutatja a saját vagy valaki más előrelépéseit ebben a csatornában."
@@ -1099,7 +1117,7 @@ msgid "Send some of your experience to another player."
 msgstr "Elküldheted a tapasztalatod részét egy másik játékosnak."
 
 msgid "Give some experience to another player. This is a cheat."
-msgstr "Ad tapasztalatot egy másik játékosnak. Ez egy csalás."
+msgstr "Adj tapasztalatot egy másik játékosnak. Ez egy csalás."
 
 msgid "Who's the best ?"
 msgstr "Ki a legjobb?"
@@ -1277,7 +1295,7 @@ msgid ""
 "☠️ It's a little cold in there... Maybe because **you are DEAD**! Have you "
 "tried eating BRAINS? `{ctx.prefix}revive`..."
 msgstr ""
-"☠️ Kicsit hideg van itt... Talán mert **HALOTT vagy**! Próbáltál enni néhány "
+"☠️ Kicsit hideg van ott... Talán mert **HALOTT vagy**! Próbáltál enni néhány "
 "AGYAT? `{ctx.prefix}revive`..."
 
 msgid ""
@@ -1289,6 +1307,9 @@ msgid ""
 "⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx."
 "prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
 msgstr ""
+"⛔️ Ó, ne! A fegyvered el lett kobozva. Várd meg a szabadidőt (`{ctx."
+"prefix}freetime`), vagy vásárold vissza a boltban (`{ctx.prefix}shop "
+"weapon`)"
 
 msgid ""
 "💥 Your weapon was sabotaged and exploded in your face. You can thank "
@@ -1307,6 +1328,8 @@ msgid ""
 "🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: "
 "0/{max_magazines} [**Autoreload failed**]"
 msgstr ""
+"🦉 A hátizsákod üres! Vásárolj tölténytárakat | **Golyók**: 0/{max_bullets} "
+"| Tölténytárak: 0/{max_magazines} [**Automatikus újratöltés sikertelen**]"
 
 msgid ""
 "🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | "
@@ -1333,7 +1356,7 @@ msgid ""
 "experience. [**MISSED**: -2 exp]"
 msgstr ""
 "... és a golyó pont az arcodba repült, azonnal megölve téged. Küldd el a "
-"panaszaidat a KEP-nek. Az ölési licenszed megmentetted a tapasztalati "
+"panaszaidat a KKEE-nek. Az ölési licenszed megmentetted a tapasztalati "
 "pontjaidat. [**FÉLRELÖVÉS**: -2 tapasztalat]"
 
 msgid ""
@@ -1342,7 +1365,7 @@ msgid ""
 "suicide licence. [**MISSED**: -2 exp]"
 msgstr ""
 "... és a golyó pont az arcodba repült, azonnal megölve téged. Küldd el a "
-"panaszaidat a KEP-nek. Legalább volt egy ~~ölési~~ öngyilkossági lcenszed. "
+"panaszaidat a KKEE-nek. Legalább volt egy ~~ölési~~ öngyilkossági lcenszed. "
 "[**FÉLRELÖVÉS**: -2 tapasztalat]"
 
 msgid ""
@@ -1351,7 +1374,7 @@ msgid ""
 "CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
 msgstr ""
 "... és a golyó pont az arcodba repült, azonnal megölve téged. Küldd el a "
-"panaszaidat a KEP-nek. [**FEGYVER ELKOBOZVA**][**FÉLRELÖVÉS**: -2 "
+"panaszaidat a KKEE-nek. [**FEGYVER ELKOBOZVA**][**FÉLRELÖVÉS**: -2 "
 "tapasztalat][**GYILKOSSÁG**: -15 tapasztalat]"
 
 msgid ""
@@ -1365,6 +1388,10 @@ msgid ""
 "had a pink coat just like yours. Using the power of love, you missed them on "
 "purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]"
 msgstr ""
+"🔫 Elővetted a fegyvered, ráirányítottad {player_name} fejére, de nekik "
+"ugyanolyan rózsaszín kabátjuk volt, mint neked. A szerelem erejével direkt "
+"félrelőttél, és helyette rálőttél a szerelemfára 🌳. [**FÉLRELÖVÉS**: -2 "
+"tapasztalat]"
 
 msgid ""
 "🔫 You missed the duck... And you saw your bullet go towards {player_name} "
@@ -1372,6 +1399,10 @@ msgid ""
 "using the power of love, you made the bullet hit the love tree 🌳 instead. "
 "[**MISSED**: -2 exp]"
 msgstr ""
+"🔫 Félrelőttél... és láttad a golyót {player_name} feje felé repülni, de "
+"nekik ugyanolyan rózsaszín kabátjuk volt, mint neked. Mint a filmekben, a "
+"szerelem erejével direkt félrelőttél, és helyette rálőttél a szerelemfára 🌳."
+" [**FÉLRELÖVÉS**: -2 tapasztalat]"
 
 msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
 msgstr ""
@@ -1456,6 +1487,9 @@ msgid ""
 "(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
 "weapon`)"
 msgstr ""
+"Huh... Nincs fegyvered, elkobozták. Várd meg a szabadidőt (`{ctx."
+"prefix}freetime`), vagy vásárold vissza a boltban (`{ctx.prefix}shop "
+"weapon`)"
 
 msgid "☀️️ You unjam your weapon !"
 msgstr ""
@@ -1503,7 +1537,7 @@ msgid ""
 msgstr ""
 
 msgid "{you_mention} hugged {target_mention}. They feel loved."
-msgstr ""
+msgstr "{you_mention} megölelte {target_mention}-t. Szeretve érzik magukat."
 
 msgid "You hugged a tree, Wizzz?!"
 msgstr "Megöleltél egy fát, Wizzz?!"
@@ -1518,7 +1552,7 @@ msgid "You eat {brains} 🧠 and regain consciousness."
 msgstr ""
 
 msgid "Admin: Spawning"
-msgstr ""
+msgstr "Admin: Leidézés"
 
 msgid ""
 "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
@@ -1654,7 +1688,7 @@ msgid ""
 msgstr ""
 
 msgid "Check error running this command: {err_data}"
-msgstr ""
+msgstr "Ellenőrzési hiba a parancs futtatásakor: {err_data}"
 
 msgid "The provided command was not found."
 msgstr "Ez a parancs nem található."
@@ -1667,7 +1701,7 @@ msgid ""
 msgstr ""
 
 msgid "This command is overused. Please try again {some_time}."
-msgstr ""
+msgstr "Ez a parancs túlhasznált. Próbáld újra {some_time}."
 
 msgid ""
 "This should not have happened. A command raised an error that does not comes "
@@ -1720,6 +1754,8 @@ msgstr ""
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
+"Használd a {prefix}{help} [command] parancsot több információért egy "
+"parancsról."
 
 msgid "{cog} help"
 msgstr "{cog} help"
@@ -1737,7 +1773,7 @@ msgid "A lot of air and a starved mosquito."
 msgstr "Rengeteg levegő és egy kiéhezett szúnyog."
 
 msgid "`{prefix}inv use shortcode` to use an item"
-msgstr ""
+msgstr "`{prefix}inv use rövidkód` egy tárgy használatához"
 
 msgid "❌ Unknown item."
 msgstr "❌ Ismeretlen tárgy."
@@ -1750,15 +1786,16 @@ msgstr "❌ A tárgyhasználat ki van kapcsolva ezen a csatornán."
 
 msgid "❌ The number of items to use must be a number greater or equal to 1."
 msgstr ""
+"❌ A használandó tárgyak száma 1-nél nagyobbnak vagy egyenlőnek kell lennie."
 
 msgid "❌ You can't use this item that many times."
 msgstr "❌ Nem használhatod ezt a tárgyat ennyiszer."
 
 msgid "❌ You don't have that item."
-msgstr ""
+msgstr "❌ Nincs tulajdonodban az a tárgy."
 
 msgid "Landmines"
-msgstr ""
+msgstr "Aknák"
 
 msgid ""
 "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
@@ -1780,7 +1817,7 @@ msgid "They can't play the game :("
 msgstr ""
 
 msgid "{target.name} event statistics"
-msgstr ""
+msgstr "{target.name} esemény statisztika"
 
 msgid ""
 "The most important currency in the game are the points, which are used in "
@@ -1793,46 +1830,46 @@ msgid ""
 msgstr ""
 
 msgid "Available"
-msgstr ""
+msgstr "Elérhető"
 
 msgid "{db_target.points_current} points"
-msgstr ""
+msgstr "{db_target.points_current} pont"
 
 msgid "Messages sent"
-msgstr ""
+msgstr "Elküldött üzenetek"
 
 msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
-msgstr ""
+msgstr "{db_target.messages_sent} ({db_target.words_sent} szó)"
 
 msgid "Points won by landmines"
-msgstr ""
+msgstr "Pontok megszerezve aknáktól"
 
 msgid "{db_target.points_won} points"
-msgstr ""
+msgstr "{db_target.points_won} pont"
 
 msgid "Points recovered by defusing landmines"
-msgstr ""
+msgstr "Pontok visszaszerezve aknák hatástalanításával"
 
 msgid "{db_target.points_recovered} points"
-msgstr ""
+msgstr "{db_target.points_recovered} pont"
 
 msgid "Points acquired by talking"
-msgstr ""
+msgstr "Pontok megszerezve beszéd által"
 
 msgid "{db_target.points_acquired} points"
-msgstr ""
+msgstr "{db_target.points_acquired} pont"
 
 msgid "Points exploded by stepping on mines"
-msgstr ""
+msgstr "Pontok felrobbantva aknára lépéssel"
 
 msgid "{db_target.points_exploded} points"
-msgstr ""
+msgstr "{db_target.points_exploded} pont"
 
 msgid "Points spent in the shop"
-msgstr ""
+msgstr "Pontok elköltve a boltban"
 
 msgid "{db_target.points_spent} points"
-msgstr ""
+msgstr "{db_target.points_spent} pont"
 
 msgid ""
 "For more information on how to place a mine, run the `dh!lm landmines` "
@@ -1854,10 +1891,10 @@ msgid ""
 msgstr ""
 
 msgid "❌ You aren't in that guild."
-msgstr ""
+msgstr "❌ Nem vagy abban a szerverben."
 
 msgid "❌ A landmine must have a value higher than 50."
-msgstr ""
+msgstr "❌ Egy aknának 50-nél nagyobb értékűnek kell lennie."
 
 msgid "❌ The message left on the landmine must be less than 1500 characters."
 msgstr ""
@@ -2880,6 +2917,10 @@ msgid ""
 "Against the Comitee Against Ducks) in China. Try them soon! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Mostantól a vadonatúj Célvezető Lövedékeket használod a KKEE által "
+"(Koalíció a Kacsaellenes Egyesület Ellen), amit Kínában gyártottak. Próbáld "
+"ki hamarosan! [Megvásárolva: -{ITEM_COST} tp, összesen {db_hunter."
+"experience} tp]"
 
 msgid "The beloved DuckHunt translators"
 msgstr "A szeretett DuckHunt fordítók"
@@ -3508,18 +3549,20 @@ msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
 "chance to get shot by another hunter."
 msgstr ""
+"Magasabb láthatóság: Megnöveli az esélyed kacsák elijesztésére, és csökkenti "
+"az esélyét, hogy más vadászok lelőnek."
 
 msgid "Camo"
 msgstr "Camo"
 
 msgid "Lower visibility: Less chance to frighten ducks."
-msgstr ""
+msgstr "Alacsonyabb láthatóság: Csökkenti az esélyed kacsák elijesztésére."
 
 msgid "Blue"
 msgstr "Kék"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
-msgstr ""
+msgstr "Szerencsés lelés: Megnöveli az esélyeid tárgyak találására bokrokban."
 
 msgid "Red"
 msgstr "Piros"
@@ -3527,36 +3570,39 @@ msgstr "Piros"
 msgid ""
 "Hungry for blood: Increase your murder skills, reduce murder penalties."
 msgstr ""
+"Véréhes: Növeli a gyilkossági készségeid, csökkenti a gyilkossági "
+"büntetéseid."
 
 msgid "Yellow"
 msgstr "Sárga"
 
 msgid "Sun powers: Mirrors are less effective against you."
-msgstr ""
+msgstr "A nap ereje: A tükrök kevésbé hatásosak ellened."
 
 msgid "Dark green"
 msgstr "Sötétzöld"
 
 msgid "Farming skills: Clovers give you one more experience point."
-msgstr ""
+msgstr "Mezőgazdasági készségek: A négylevelű lóherék egy extra pontot adnak."
 
 msgid "Black"
 msgstr "Fekete"
 
 msgid "Secret service: Sabotages are cheaper."
-msgstr ""
+msgstr "Titkos szolgálat: a szabotázsok olcsóbbak."
 
 msgid "Light blue"
-msgstr ""
+msgstr "Világoskék"
 
 msgid "Sea powers: You are immune to water buckets."
-msgstr ""
+msgstr "A tenger ereje: immúnis vagy vizesvödörökre."
 
 msgid "Pink"
-msgstr ""
+msgstr "Rózsaszín"
 
 msgid "Power of love: You can't kill players with the same coat color."
 msgstr ""
+"A szeretet ereje: nem ölhetsz meg játékosokat ugyanezzel a kabátszínnel."
 
 msgid ""
 "This is not a valid color. You can choose between {colors}, or `random` for "
@@ -3595,21 +3641,27 @@ msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
+"{hurter.mention} megsebezte a kacsát [**SZUPERKACSA érzékelve**: "
+"{lives_left}/{total_lives}][**Sebzés**: -{damage}]"
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
+"{hurter.mention} megsebezte a kacsát [**SZUPERKACSA érzékelve**][**Sebzés**: "
+"-{damage}]"
 
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
-msgstr ""
+msgstr "{hurter.mention}, a kacsa ELLENÁLT. [**PÁNCÉLOS KACSA érzékelve**]"
 
 msgid ""
 "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
+"{hugger.mention} megölelte a kacsát. De aranyos! [**Ölelés**: +{experience} "
+"tp]"
 
 msgid "<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!"
-msgstr ""
+msgstr "<:Wizzz:505828171397070848> Wizzz ölelősdi kacsa! De aranyos!"
 
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
@@ -3617,20 +3669,20 @@ msgid ""
 msgstr ""
 
 msgid "ghost"
-msgstr ""
+msgstr "szellem"
 
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 szellemkacsa"
+msgstr[1] "amennyiből {this_ducks_killed} szellemkacsa"
 
 msgid "prof"
-msgstr ""
+msgstr "professzor"
 
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amennyiből 1 professzorkacsa"
+msgstr[1] "amennyiből {this_ducks_killed} professzorkacsa"
 
 msgid "Huh, quick question, what's {operation} ?"
 msgstr "Huh, gyors kérdés, mennyi {operation}?"
@@ -3703,11 +3755,15 @@ msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 msgstr ""
+"A fenébe, {killer.mention}, te szívás! Megöltél egy mechanikus kacsát! Vajon "
+"ki készítette? [tp: {won_experience}]"
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 msgstr ""
+"A fenébe, {killer.mention}, te szívás! Megöltél egy mechanikus kacsát! "
+"Mindez {creator.mention} hibája! [tp: {won_experience}]"
 
 msgid "super"
 msgstr "szuper"
@@ -3718,7 +3774,7 @@ msgstr[0] "amiből 1 szuperkacsa"
 msgstr[1] "amiből {this_ducks_killed} szuperkacsa"
 
 msgid "moad"
-msgstr "moad"
+msgstr "MOAD"
 
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
@@ -3753,15 +3809,15 @@ msgstr "éjszaka"
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
 msgstr[0] "amiből 1 éjszakai kacsa"
-msgstr[1] ""
+msgstr[1] "amiből {this_ducks_killed} éjszakai kacsa"
 
 msgid "sleeping"
 msgstr "alvó"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "amiből 1 alvó kacsa"
+msgstr[1] "amiből {this_ducks_killed} alvó kacsa"
 
 msgid "KWAK"
 msgstr "KWAK"
@@ -3830,18 +3886,20 @@ msgid "Don't shoot me! I'm a fake duck!"
 msgstr "Ne lőj le! Hamis kacsa vagyok!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
-msgstr ""
+msgstr "**Kacsatény**: Néhány kacsa akár 332 métert repülhet egy nap alatt!"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "**Kacsatény**: A kacsák hátulján a tollak vízállóak."
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "**Kacsatény**: A kacsáknak három szemhéjuk van!"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
+"**Duck fact**: Fajtól függően egy kacsa 2-12 évig élhet. Viszont a kacsák "
+"ebben a játékban nem..."
 
 msgid "I am invisible, don't bother killing me"
 msgstr "Láthatatlan vagyok, ne akarj megölni"
@@ -3862,24 +3920,26 @@ msgid "STOP! It's not what you think!"
 msgstr "ÁLLJ! Ez nem az, amire gondolsz!"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "A megölésem 1562 tapasztalati pontodba fog kerülni."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
+"Van egy titkos tervem az összes vadász megölésére de már most is alig jutok "
+"levegőhöz nem hiszem hogy el tudom magyarázni neked az egészet mielőtt..."
 
 msgid "[INSERT DUCK NOISE HERE]"
 msgstr "[ILLESSZ BE KACSAHANGOT IDE]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
-msgstr ""
+msgstr "Mi történt a DuckHunt létrehozása után? ||Az ősrobbanás||."
 
 msgid "It's rabbit season."
 msgstr "Nyúlszezon van."
 
 msgid "Got a spare cape?"
-msgstr ""
+msgstr "Van egy tartalék köpenyed?"
 
 msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr "A kacsa melyik oldalán van több toll? ||Kívül||."
@@ -3900,10 +3960,10 @@ msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr ""
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*Slurp*"
 
 msgid "Hopefully you are all AFK..."
-msgstr "*Remélhetőleg mindannyian AFK-ok vagytok...*"
+msgstr "*Remélhetőleg mindannyian távol vagytok a géptől...*"
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
@@ -4319,124 +4379,124 @@ msgid "tourist"
 msgstr "túrista"
 
 msgid "noob"
-msgstr "noob"
+msgstr "pancser"
 
 msgid "trainee"
 msgstr "újonc"
 
 msgid "duck misser"
-msgstr "kacsa eltévesztő"
+msgstr "kacsatévesztő"
 
 msgid "member of the Committee Against Ducks"
-msgstr "A Kacsák Elleni Bizottság tagja"
+msgstr "tagja a Kacsaellenes Egyesületnek"
 
 msgid "duck hater"
-msgstr "kacsa-utáló"
+msgstr "kacsautáló"
 
 msgid "duck pest"
-msgstr "kacsa-károkozó"
+msgstr "a kacsák átka"
 
 msgid "duck hassler"
-msgstr "kacsa-nyiszáló"
+msgstr "kacsavágó"
 
 msgid "duck plucker"
-msgstr "kacsa pengető"
+msgstr "kacsatépő"
 
 msgid "hunter"
 msgstr "vadász"
 
 msgid "duck inside out turner"
-msgstr "kacsa-kifordító"
+msgstr "kacsák belsejéből kifordítója"
 
 msgid "duck clobber"
-msgstr "kacsa-ütő"
+msgstr "kacsáknak kesztyűbe dudálástanító"
 
 msgid "duck chewer"
-msgstr "kacsa-rágó"
+msgstr "kacsa... bagózó?"
 
 msgid "duck eater"
-msgstr "kacsa-evő"
+msgstr "kacsaevő"
 
 msgid "duck flattener"
-msgstr "kacsa-lapító"
+msgstr "kacsakalapácsoló"
 
 msgid "duck disassembler"
-msgstr "kacsa-szétszerelő"
+msgstr "kacsaszétszedő"
 
 msgid "duck demolisher"
-msgstr "kacsa-lebontó"
+msgstr "kacsapusztító"
 
 msgid "duck killer"
 msgstr "kacsaölő"
 
 msgid "duck skinner"
-msgstr "kacsa-lebőröző"
+msgstr "kacsanyúzó"
 
 msgid "duck predator"
-msgstr "kacsa-predátor"
+msgstr "kacsaragadozó"
 
 msgid "duck chopper"
-msgstr "kacsa-aprító"
+msgstr "kacsacafatoló"
 
 msgid "duck decorticator"
-msgstr "kacsa "
+msgstr "kacsahámozó"
 
 msgid "duck fragger"
-msgstr "kacsa-törő"
+msgstr "kacsadaraboló"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "kacsazúzó"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "kacsaütő"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "kacsatörő"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "kacsaroncsoló"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "kacsák karóba húzója"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "kacsabelező"
 
 msgid "ducks terror"
-msgstr "kacsa-terror"
+msgstr "kacsák réme"
 
 msgid "duck exploder"
-msgstr "kacsa-felrobbantó"
+msgstr "kacsarobbantó"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "kacsasemmisítő"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "kacsarobbantó"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "kacsaporlasztó"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "kacsaaprító"
 
 msgid "duck atomizer"
-msgstr "kacsa atomizáló"
+msgstr "kacsaatomizáló"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "a kacsákat földdel egyenlővé tevő"
 
 msgid "serial duck killer"
-msgstr "kacsa sorozatgyilkos"
+msgstr "sorozatos kacsagyilkos"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "kacsairtó"
 
 msgid "old noob"
-msgstr "öreg noob"
+msgstr "nyomi veterán"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "kacsapirító"
 
 msgid "unemployed due to extinction of the duck species"
 msgstr "munkanélküli a kacsafajok kihalása miatt"
