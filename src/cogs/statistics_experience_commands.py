@@ -355,7 +355,7 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["fightened", "fightenstats", "fightened_stats", "fightenedstats", "frighten"])
+    @commands.command(aliases=["frightened", "frightenstats", "frightened_stats", "frightenedstats", "frighten"])
     @checks.channel_enabled()
     async def frighten_stats(self, ctx: MyContext, target: discord.Member = None):
         """
