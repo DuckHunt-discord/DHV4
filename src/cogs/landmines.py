@@ -232,7 +232,7 @@ class Event2021(Cog):
 
         await ctx.reply(embed=embed)
 
-    @event.command(aliases=["hl", "hlm", "hmine", "hlandmines"])
+    @event.command(aliases=["hl", "hlm", "hmine", "hlandmines", "how_to", "guide"])
     @commands.guild_only()
     @checks.landmines_commands_enabled()
     async def landmine_how_to(self, ctx: MyContext):
