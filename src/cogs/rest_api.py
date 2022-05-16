@@ -127,7 +127,7 @@ class RestAPI(Cog):
         """
         /channels/<channel_id>/settings
 
-        Get information about a specific channel ID
+        Get settings for a specific channel ID
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
 
@@ -144,7 +144,7 @@ class RestAPI(Cog):
         """
         /channels/<channel_id>/top
 
-        Get players data, ordered by experience
+        Get players data for a specific channel ID, ordered by experience
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
 
@@ -167,7 +167,7 @@ class RestAPI(Cog):
         """
         /channels/<channel_id>/player/<player_id>
 
-        Get players data, ordered by experience
+        Get information for a specific player ID and channel ID
         """
         channel = self.bot.get_channel(int(request.match_info['channel_id']))
 
