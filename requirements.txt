@@ -21,5 +21,5 @@ aiohttp[speedups]==3.8.1
 aiohttp_cors==0.7.0
 polib==1.1.1
 tqdm==4.64.0
-pillow==9.1.0
+pillow==9.1.1
 statcord.py==3.1.0
