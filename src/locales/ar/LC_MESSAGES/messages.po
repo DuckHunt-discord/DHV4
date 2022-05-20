@@ -1892,7 +1892,7 @@ msgid ""
 msgstr ""
 
 msgid "Support server"
-msgstr ""
+msgstr "خادم الدعم"
 
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
@@ -1919,7 +1919,7 @@ msgid ""
 msgstr ""
 
 msgid "This is not how you invite DuckHunt."
-msgstr ""
+msgstr "هذه ليست الطريقة التي تدعو بها DuckHunt."
 
 msgid ""
 "To invite DuckHunt, you need :\n"
@@ -2033,7 +2033,7 @@ msgid "This server language is set to `{language}` [{language_name}]."
 msgstr ""
 
 msgid "There is no specific language set for this guild."
-msgstr ""
+msgstr "لا توجد لغة محددة محددة لهذا الخادم."
 
 msgid "Webhooks are used in this channel."
 msgstr ""
@@ -2859,10 +2859,10 @@ msgid "Baby ducks"
 msgstr "البط الصغير"
 
 msgid "Golden ducks"
-msgstr ""
+msgstr "البط الذهبي"
 
 msgid "Plastic ducks"
-msgstr ""
+msgstr "البط البلاستيكي"
 
 msgid "Kamikaze ducks"
 msgstr ""
@@ -2871,13 +2871,13 @@ msgid "Mechanical ducks"
 msgstr ""
 
 msgid "Super ducks"
-msgstr ""
+msgstr "البط الخارق"
 
 msgid "Mother of all ducks"
-msgstr ""
+msgstr "أم كل البط"
 
 msgid "Armored ducks"
-msgstr ""
+msgstr "البط المدرع"
 
 msgid "{target.name} best times."
 msgstr ""
@@ -2892,7 +2892,7 @@ msgid "{target.name} hugs counts."
 msgstr ""
 
 msgid "Players"
-msgstr ""
+msgstr "اللاعبين"
 
 msgid "Hugs when dead"
 msgstr ""
@@ -3214,7 +3214,7 @@ msgid "A useful coat when it rains."
 msgstr "معطف مفيد عندما تمطر."
 
 msgid "Orange"
-msgstr ""
+msgstr "برتقالي"
 
 msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
@@ -3222,26 +3222,26 @@ msgid ""
 msgstr ""
 
 msgid "Camo"
-msgstr ""
+msgstr "كامو"
 
 msgid "Lower visibility: Less chance to frighten ducks."
 msgstr ""
 
 msgid "Blue"
-msgstr ""
+msgstr "أزرق"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
 msgstr ""
 
 msgid "Red"
-msgstr ""
+msgstr "أحمر"
 
 msgid ""
 "Hungry for blood: Increase your murder skills, reduce murder penalties."
 msgstr ""
 
 msgid "Yellow"
-msgstr ""
+msgstr "أصفر"
 
 msgid "Sun powers: Mirrors are less effective against you."
 msgstr ""
@@ -3253,7 +3253,7 @@ msgid "Farming skills: Clovers give you one more experience point."
 msgstr ""
 
 msgid "Black"
-msgstr ""
+msgstr "أسود"
 
 msgid "Secret service: Sabotages are cheaper."
 msgstr ""
@@ -3265,7 +3265,7 @@ msgid "Sea powers: You are immune to water buckets."
 msgstr ""
 
 msgid "Pink"
-msgstr ""
+msgstr "زهري"
 
 msgid "Power of love: You can't kill players with the same coat color."
 msgstr ""
@@ -3276,7 +3276,7 @@ msgid ""
 msgstr ""
 
 msgid "normal"
-msgstr ""
+msgstr "عادي"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
@@ -3323,7 +3323,7 @@ msgid ""
 msgstr ""
 
 msgid "ghost"
-msgstr ""
+msgstr "شبح"
 
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
@@ -3331,7 +3331,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "prof"
-msgstr ""
+msgstr "أستاذ"
 
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
@@ -3353,7 +3353,7 @@ msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
 msgid "baby"
-msgstr ""
+msgstr "طفل"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
@@ -3369,7 +3369,7 @@ msgid ""
 msgstr ""
 
 msgid "golden"
-msgstr ""
+msgstr "ذهبي"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
