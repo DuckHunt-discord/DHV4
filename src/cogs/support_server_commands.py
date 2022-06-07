@@ -60,7 +60,7 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Users Count", value=f"{len(self.bot.users)}", inline=True)
         embed.add_field(name="Messages in cache", value=f"{len(self.bot.cached_messages)}", inline=True)
 
-        ping_f = status_channel.trigger_typing()
+        ping_f = status_channel.typing()
         t_1 = time.perf_counter()
         await ping_f  # tell Discord that the bot is "typing", which is a very simple request
         t_2 = time.perf_counter()

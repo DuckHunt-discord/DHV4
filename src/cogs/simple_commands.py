@@ -89,7 +89,7 @@ class SimpleCommands(Cog):
         _ = await ctx.get_translate_function()
 
         t_1 = time.perf_counter()
-        await ctx.trigger_typing()  # tell Discord that the bot is "typing", which is a very simple request
+        await ctx.typing()  # tell Discord that the bot is "typing", which is a very simple request
         t_2 = time.perf_counter()
         time_delta = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
         await ctx.send(_("Pong. — Time taken: {miliseconds}ms",
