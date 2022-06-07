@@ -651,20 +651,19 @@ class PrivateMessagesSupport(Cog):
         file, debug = await get_random_duck_file(self.bot)
         close_embed.set_image(url="attachment://random_duck.png")
 
-        async with ctx.typing():
-            await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
+        await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
 
-            try:
-                await user.send(file=file, embed=close_embed)
-            except:
-                pass
+        try:
+            await user.send(file=file, embed=close_embed)
+        except:
+            pass
 
-            await asyncio.sleep(5)  # To let people stop writing
+        await asyncio.sleep(5)  # To let people stop writing
 
-            await self.clear_caches(ctx.channel)
+        await self.clear_caches(ctx.channel)
 
-            await ctx.channel.delete(
-                reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
+        await ctx.channel.delete(
+            reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM.")
 
     @private_support.command(aliases=["not_support", "huh"])
     async def close_silent(self, ctx: MyContext, *, reason: str = None):
