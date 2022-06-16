@@ -586,7 +586,7 @@ class DucksHuntingCommands(Cog):
                 if db_you.ping_friendly:
                     allowed_mentions.append(ctx.author)
 
-                if db_target.ping_friendly:
+                if db_target.ping_friendly and ctx.author.id != target.id:
                     allowed_mentions.append(target)
 
             allowed_mentions = discord.AllowedMentions(users=allowed_mentions)
