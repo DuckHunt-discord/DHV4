@@ -133,7 +133,7 @@ class Silencer(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **A new silencer**.')
 
     async def give(self, db_channel, db_hunter: Player):
-        db_hunter.active_powerups["silencer"] = int(time.time()) + DAY
+        db_hunter.active_powerups["silencer"] = max(int(time.time()), db_hunter.active_powerups["silencer"]) + DAY
         if db_hunter.prestige >= 6:
             db_hunter.active_powerups["silencer"] += DAY
         return True
