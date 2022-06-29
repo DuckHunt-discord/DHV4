@@ -1965,13 +1965,13 @@ msgid ""
 msgstr ""
 
 msgid "❌ Can't send a message to this user: {e}."
-msgstr ""
+msgstr "❌ غير قادر على إرسال رسالة إلى هذا المستخدم: {e}"
 
 msgid "❌ There is no tag with that name."
 msgstr ""
 
 msgid "Language change offer"
-msgstr ""
+msgstr "عرض تغيير اللغة"
 
 msgid ""
 "DuckHunt support suggests you change your personal language from "
@@ -1985,10 +1985,10 @@ msgid ""
 msgstr ""
 
 msgid "Your language preference wasn't changed."
-msgstr ""
+msgstr "لم يتم تغيير تفضيلات لغتك"
 
 msgid "Your preferred language is now {new_language}."
-msgstr ""
+msgstr "لغتك المفضلة هي الآن {new_language}"
 
 msgid "Images"
 msgstr "صور"
@@ -2003,7 +2003,7 @@ msgid "You can view the channel settings here: "
 msgstr ""
 
 msgid "Defaults settings have been restored."
-msgstr ""
+msgstr "تمت استعادة الإعدادات الافتراضية"
 
 msgid "DHV3-Like settings have been applied to this channel."
 msgstr ""
@@ -2015,19 +2015,19 @@ msgid "Hardcore mode settings have been applied to this channel."
 msgstr ""
 
 msgid "👻 Haunted House settings have been applied to this channel."
-msgstr ""
+msgstr "👻 تم تطبيق إعدادات المنزل المسكون على هذه القناة."
 
 msgid "🤖 Robot fest settings have been applied to this channel."
-msgstr ""
+msgstr "🤖 تم تطبيق إعدادات مهرجان الروبوت على هذه القناة."
 
 msgid "🐙 Hydra settings have been applied to this channel."
 msgstr ""
 
 msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
-msgstr ""
+msgstr "☢ تم تطبيق إعدادات الإشعاع النووي على هذه القناة 🍀."
 
 msgid "🦘 Australia settings have been applied to this channel."
-msgstr ""
+msgstr "🦘 تم تطبيق إعدادات أستراليا على هذه القناة."
 
 msgid "There will be very big ducks on this channel."
 msgstr ""
@@ -2333,7 +2333,7 @@ msgid "Current roles mapping:"
 msgstr ""
 
 msgid "Deleted role 🗑️ ID: {role_id}"
-msgstr ""
+msgstr "دور محذوف 🗑️ ID:{role_id}"
 
 msgid "No level mapping is currently defined on this channel."
 msgstr ""
@@ -2359,10 +2359,10 @@ msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 msgstr ""
 
 msgid "No members have any specific rights in the server."
-msgstr ""
+msgstr "لا يوجد أعضاء لديهم أي حقوق محددة في الخادم."
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
-msgstr ""
+msgstr "❌ {target.mention}, لا يمكنك حظر نفسك !"
 
 msgid "{target.mention} now has a access of {level.name}."
 msgstr ""
