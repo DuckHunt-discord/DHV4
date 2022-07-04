@@ -440,7 +440,7 @@ class ShoppingCommands(Cog):
 
         # We don't want to send a level down message here.
         # https://github.com/DuckHunt-discord/DHV4/issues/41
-        db_hunter.experience -= -ITEM_COST
+        db_hunter.experience -= ITEM_COST
 
         db_hunter.active_powerups["sand"] = 0
         db_hunter.weapon_sabotaged_by = None
