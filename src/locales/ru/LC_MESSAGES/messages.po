@@ -2024,15 +2024,6 @@ msgid ""
 "- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
 msgstr ""
 
-msgid "You defused the following landmine for a value of {got_points} points."
-msgid_plural ""
-"You defused {n} landmines placed on that word, for a total value of "
-"{got_points} points."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-
 msgid "There were no active landmines on that word to be defused."
 msgstr ""
 
