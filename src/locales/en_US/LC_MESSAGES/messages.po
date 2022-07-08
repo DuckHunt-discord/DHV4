@@ -3,11 +3,11 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-04-27 14:44+0200\n"
+"POT-Creation-Date: 2022-07-07 16:02+0200\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
-"Content-Type: text/plain; charset=UTF-8"
+"Generated-By: pygettext.py 1.5"
 
 #: ../cogs/bots_list_and_voting.py:75
 msgid "Creates votes handlers for specific bots lists"
@@ -53,7 +53,7 @@ msgstr "Reload your gun."
 msgid "Hug the duck that appeared first on the channel."
 msgstr "Hug the duck that appeared first on the channel."
 
-#: ../cogs/ducks_hunting_commands.py:632
+#: ../cogs/ducks_hunting_commands.py:634
 msgid "Revive yourself by eating brains"
 msgstr "Revive yourself by eating brains"
 
@@ -412,7 +412,7 @@ msgstr ""
 msgid "Get some more experience..."
 msgstr "Get some more experience..."
 
-#: ../cogs/private_messages_support.py:213
+#: ../cogs/private_messages_support.py:211
 msgid ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
@@ -420,7 +420,7 @@ msgstr ""
 "Check for age of the last message sent in the channel.\n"
 "If it's too old, consider the channel inactive and close the ticket."
 
-#: ../cogs/private_messages_support.py:613
+#: ../cogs/private_messages_support.py:611
 msgid ""
 "The DuckHunt bot DMs are monitored. All of these commands are used to "
 "control the created channels, and to\n"
@@ -430,7 +430,7 @@ msgstr ""
 "control the created channels, and to\n"
 "interact with remote users."
 
-#: ../cogs/private_messages_support.py:624
+#: ../cogs/private_messages_support.py:622
 msgid ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
@@ -438,7 +438,7 @@ msgstr ""
 "Close the opened DM channel. Will send a message telling the user that the "
 "DM was closed."
 
-#: ../cogs/private_messages_support.py:673
+#: ../cogs/private_messages_support.py:670
 msgid ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
@@ -446,15 +446,15 @@ msgstr ""
 "Close the opened DM channel. Will not send a message, since it wasn't a "
 "support request."
 
-#: ../cogs/private_messages_support.py:701
+#: ../cogs/private_messages_support.py:698
 msgid "Block the user from opening further DMs channels."
 msgstr "Block the user from opening further DMs channels."
 
-#: ../cogs/private_messages_support.py:712
+#: ../cogs/private_messages_support.py:709
 msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
 msgstr "Send a tag to the user, as if you used the dh!tag command in his DMs."
 
-#: ../cogs/private_messages_support.py:745
+#: ../cogs/private_messages_support.py:742
 msgid ""
 "Suggest a new language to the user. This will show them a prompt asking them "
 "if they want to switch to this new\n"
@@ -543,18 +543,22 @@ msgstr ""
 "4066-8387-1d5144b7fa72`"
 
 #: ../cogs/rest_api.py:73
-msgid "/channels/\n"
+msgid ""
+"/channels/\n"
 "\n"
 "Get all channels enabled on the bot"
-msgstr "/channels/\n"
+msgstr ""
+"/channels/\n"
 "\n"
 "Get all channels enabled on the bot"
 
 #: ../cogs/rest_api.py:94
-msgid "/channels/<channel_id>\n"
+msgid ""
+"/channels/<channel_id>\n"
 "\n"
 "Get information about a specific channel ID"
-msgstr "/channels/<channel_id>\n"
+msgstr ""
+"/channels/<channel_id>\n"
 "\n"
 "Get information about a specific channel ID"
 
@@ -562,51 +566,59 @@ msgstr "/channels/<channel_id>\n"
 msgid ""
 "/channels/<channel_id>/settings\n"
 "\n"
-"Get information about a specific channel ID"
+"Get settings for a specific channel ID"
 msgstr ""
 "/channels/<channel_id>/settings\n"
 "\n"
-"Get information about a specific channel ID"
+"Get settings for a specific channel ID"
 
 #: ../cogs/rest_api.py:144
-msgid "/channels/<channel_id>/top\n"
+msgid ""
+"/channels/<channel_id>/top\n"
 "\n"
-"Get players data, ordered by experience"
-msgstr "/channels/<channel_id>/top\n"
+"Get players data for a specific channel ID, ordered by experience"
+msgstr ""
+"/channels/<channel_id>/top\n"
 "\n"
-"Get players data, ordered by experience"
+"Get players data for a specific channel ID, ordered by experience"
 
 #: ../cogs/rest_api.py:167
 msgid ""
 "/channels/<channel_id>/player/<player_id>\n"
 "\n"
-"Get players data, ordered by experience"
+"Get information for a specific player ID and channel ID"
 msgstr ""
 "/channels/<channel_id>/player/<player_id>\n"
 "\n"
-"Get players data, ordered by experience"
+"Get information for a specific player ID and channel ID"
 
 #: ../cogs/rest_api.py:232
-msgid "/help/commands\n"
+msgid ""
+"/help/commands\n"
 "\n"
 "Get list of commands"
-msgstr "/help/commands\n"
+msgstr ""
+"/help/commands\n"
 "\n"
 "Get list of commands"
 
 #: ../cogs/rest_api.py:246
-msgid "/status\n"
+msgid ""
+"/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
-msgstr "/status\n"
+msgstr ""
+"/status\n"
 "\n"
 "Check the status of every shard the bot is hosting."
 
 #: ../cogs/rest_api.py:277
-msgid "/stats\n"
+msgid ""
+"/stats\n"
 "\n"
 "Get some global statistics about the bot."
-msgstr "/stats\n"
+msgstr ""
+"/stats\n"
 "\n"
 "Get some global statistics about the bot."
 
@@ -1938,22 +1950,31 @@ msgstr ""
 
 #: ../cogs/ducks_hunting_commands.py:614
 #, python-brace-format
+msgid ""
+"{you_mention}, you just hugged yourself. You feel a little lonely, don't "
+"you?"
+msgstr ""
+"{you_mention}, you just hugged yourself. You feel a little lonely, don't "
+"you?"
+
+#: ../cogs/ducks_hunting_commands.py:616
+#, python-brace-format
 msgid "{you_mention} hugged {target_mention}. They feel loved."
 msgstr "{you_mention} hugged {target_mention}. They feel loved."
 
-#: ../cogs/ducks_hunting_commands.py:623
+#: ../cogs/ducks_hunting_commands.py:625
 msgid "You hugged a tree, Wizzz?!"
 msgstr "You hugged a tree, Wizzz?!"
 
-#: ../cogs/ducks_hunting_commands.py:625
+#: ../cogs/ducks_hunting_commands.py:627
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr "What are you trying to hug, exactly? A tree?"
 
-#: ../cogs/ducks_hunting_commands.py:644
+#: ../cogs/ducks_hunting_commands.py:646
 msgid "You are already alive and well."
 msgstr "You are already alive and well."
 
-#: ../cogs/ducks_hunting_commands.py:654
+#: ../cogs/ducks_hunting_commands.py:656
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consciousness."
 msgstr "You eat {brains} 🧠 and regain consciousness."
@@ -2860,15 +2881,15 @@ msgid ""
 msgstr ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
 
-#: ../cogs/private_messages_support.py:180
+#: ../cogs/private_messages_support.py:178
 msgid "Support team: private messages"
 msgstr "Support team: private messages"
 
-#: ../cogs/private_messages_support.py:262
+#: ../cogs/private_messages_support.py:260
 msgid "DM Timed Out"
 msgstr "DM Timed Out"
 
-#: ../cogs/private_messages_support.py:263
+#: ../cogs/private_messages_support.py:261
 msgid ""
 "Tickets expire after 24 hours of inactivity.\n"
 "Got a question? Ask it here or in [the support server](https://duckhunt.me/"
@@ -2880,13 +2901,13 @@ msgstr ""
 "support).\n"
 "Thank you for using the DuckHunt ticket system!"
 
-#: ../cogs/private_messages_support.py:268
-#: ../cogs/private_messages_support.py:650
+#: ../cogs/private_messages_support.py:266
+#: ../cogs/private_messages_support.py:648
 msgid "Support server"
 msgstr "Support server"
 
-#: ../cogs/private_messages_support.py:269
-#: ../cogs/private_messages_support.py:650
+#: ../cogs/private_messages_support.py:267
+#: ../cogs/private_messages_support.py:648
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
@@ -2894,7 +2915,7 @@ msgstr ""
 "For all your questions, there is a support server. Click [here](https://"
 "duckhunt.me/support) to join."
 
-#: ../cogs/private_messages_support.py:456
+#: ../cogs/private_messages_support.py:454
 msgid ""
 "DMing any message to the bot will open a ticket.\n"
 "You have a question? [Ask it](https://dontasktoask.com) to our human "
@@ -2908,16 +2929,16 @@ msgstr ""
 "You opened the ticket by mistake? Type `close` (*once, no prefix needed*) "
 "and we, human volunteers will close it."
 
-#: ../cogs/private_messages_support.py:460
+#: ../cogs/private_messages_support.py:458
 msgid "Support tickets are automatically deleted after 24 hours of inactivity"
 msgstr ""
 "Support tickets are automatically deleted after 24 hours of inactivity."
 
-#: ../cogs/private_messages_support.py:495
+#: ../cogs/private_messages_support.py:493
 msgid "Attachments persistence"
 msgstr "Attachments persistence"
 
-#: ../cogs/private_messages_support.py:497
+#: ../cogs/private_messages_support.py:495
 msgid ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
@@ -2925,11 +2946,11 @@ msgstr ""
 "Images and other attached data to the message will get deleted once your "
 "ticket is closed. Make sure to save them beforehand if you wish."
 
-#: ../cogs/private_messages_support.py:517
+#: ../cogs/private_messages_support.py:515
 msgid "This is not how you invite DuckHunt."
 msgstr "This is not how you invite DuckHunt."
 
-#: ../cogs/private_messages_support.py:519
+#: ../cogs/private_messages_support.py:517
 msgid ""
 "To invite DuckHunt, you need :\n"
 "- To be a server Administrator.\n"
@@ -2945,15 +2966,15 @@ msgstr ""
 "quickstart). If you need more help, you can ask here and we'll get back to "
 "you."
 
-#: ../cogs/private_messages_support.py:525
+#: ../cogs/private_messages_support.py:523
 msgid "This is an automatic message."
 msgstr "This is an automatic message."
 
-#: ../cogs/private_messages_support.py:643
+#: ../cogs/private_messages_support.py:641
 msgid "DM Closed"
 msgstr "DM Closed"
 
-#: ../cogs/private_messages_support.py:644
+#: ../cogs/private_messages_support.py:642
 msgid ""
 "Your support ticket was closed and the history deleted. Thanks for using "
 "DuckHunt DM support. Keep in mind, sending another message here will open a "
@@ -2965,20 +2986,20 @@ msgstr ""
 "new ticket!\n"
 "In the meantime, here's a nice duck picture for you to look at !"
 
-#: ../cogs/private_messages_support.py:738
+#: ../cogs/private_messages_support.py:735
 #, python-brace-format
 msgid "❌ Can't send a message to this user: {e}."
 msgstr "❌ Can't send a message to this user: {e}."
 
-#: ../cogs/private_messages_support.py:741 ../cogs/tags.py:170
+#: ../cogs/private_messages_support.py:738 ../cogs/tags.py:170
 msgid "❌ There is no tag with that name."
 msgstr "❌ There is no tag with that name."
 
-#: ../cogs/private_messages_support.py:768
+#: ../cogs/private_messages_support.py:765
 msgid "Language change offer"
 msgstr "Language change offer"
 
-#: ../cogs/private_messages_support.py:770
+#: ../cogs/private_messages_support.py:767
 #, python-brace-format
 msgid ""
 "DuckHunt support suggests you change your personal language from "
@@ -2989,7 +3010,7 @@ msgstr ""
 "{current_language} to {suggested_language}. This will translate all the "
 "messages you get in private message from DuckHunt to {suggested_language}."
 
-#: ../cogs/private_messages_support.py:780
+#: ../cogs/private_messages_support.py:777
 msgid ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
@@ -2997,11 +3018,11 @@ msgstr ""
 "Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
 "my_lang language_code] command in a game channel to edit later."
 
-#: ../cogs/private_messages_support.py:798
+#: ../cogs/private_messages_support.py:795
 msgid "Your language preference wasn't changed."
 msgstr "Your language preference wasn't changed."
 
-#: ../cogs/private_messages_support.py:808
+#: ../cogs/private_messages_support.py:805
 #, python-brace-format
 msgid "Your preferred language is now {new_language}."
 msgstr "Your preferred language is now {new_language}."
