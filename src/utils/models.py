@@ -796,7 +796,7 @@ class Player(Model):
             'i_dont_want_bullets': self.found_items.get('left_bullet', 0) >= 1,
             'baby_killer': self.killed.get('baby', 0) >= 5,
             'maths': self.killed.get('prof', 0) >= 5,
-            'brains': self.shooting_stats.get('brains_eaten', 0) >= 5,
+            'brains': self.shooting_stats.get('brains_eaten', 0) >= 1,
             'sentry_gun': self.shooting_stats.get('bullets_used', 0) >= 1000,
             'homing_killed': self.shooting_stats.get('homing_kills', 0) >= 1,
         }
