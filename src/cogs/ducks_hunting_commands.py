@@ -610,7 +610,7 @@ class DucksHuntingCommands(Cog):
                 await ctx.reply(_("{you_mention} hugged {target_mention}. "
                                   "They hate you even more for hugging them. Don't know why tho... Try shooting them in the face.", you_mention=you_mention, target_mention=target_mention),
                                 allowed_mentions=allowed_mentions)
-            else if ctx.author.id == target.id:
+            elif ctx.author.id == target.id:
                 await ctx.reply(_("{you_mention}, you just hugged yourself. You feel a little lonely, don't you?", you_mention=you_mention), allowed_mentions=allowed_mentions)
             else:
                 await ctx.reply(_("{you_mention} hugged {target_mention}. They feel loved.", you_mention=you_mention, target_mention=target_mention), allowed_mentions=allowed_mentions)
