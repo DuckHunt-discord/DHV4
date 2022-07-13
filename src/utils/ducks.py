@@ -2,6 +2,7 @@ import asyncio
 import datetime
 import random
 import time
+from enum import Enum
 from typing import Optional
 
 import discord
@@ -723,6 +724,227 @@ class PrDuck(Duck):
         return round(await super().get_exp_value() * 1.2)
 
 
+class MapTile(Enum):
+    NOTHING = "❌"
+    GRASS = "🟩"
+    WATER = "🟦"
+    TREE1 = "🌲"
+    TREE2 = "🌳"
+    TREE3 = "🌴"
+    FLOWER = "🌻"
+    ROCK = "🗿"
+    BUSH = "🌱"
+    CITY = "🏘️"
+    TOWN = "🏡"
+    CAMPING = "🏕️"
+    MOUNTAIN_NORMAL = "⛰"
+    MOUNTAIN_SNOW = "🗻"
+    DUCK = "🦆"
+
+
+XCOORDS = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭"]
+
+YCOORDS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
+
+
+class Coordinates:
+    @classmethod
+    def from_str(cls, coords):
+        coords = coords.upper().strip()
+        x = ord(coords[0]) - 65
+        y = int(coords[1]) - 1
+        return cls(x, y)
+
+    def __init__(self, x: int, y: int):
+        self.x = max(x, 0)
+        self.y = max(y, 0)
+
+    def ax(self, cnt: int) -> 'Coordinates':
+        return Coordinates(self.x + cnt, self.y)
+
+    def ay(self, cnt: int) -> 'Coordinates':
+        return Coordinates(self.x, self.y + cnt)
+
+    def __str__(self):
+        return f"{chr(self.x + 65)}{self.y + 1}"
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+
+class Map:
+    XMIN = 0
+    YMIN = 0
+    XMAX = len(XCOORDS)
+    YMAX = len(YCOORDS)
+
+    duck_x = random.randrange(XMIN, XMAX)
+    duck_y = random.randrange(YMIN, YMAX)
+
+    def __init__(self):
+        self.grid = [[MapTile.NOTHING for x in range(self.XMIN, self.XMAX)] for y in range(self.YMIN, self.YMAX)]
+
+        center_mountain_range = self.get_random_nothing_coordinates()
+        another_center = center_mountain_range.ay(1)
+
+        self.add_square(center_mountain_range, MapTile.MOUNTAIN_NORMAL, safe=True)
+
+        if self.get(another_center) == MapTile.MOUNTAIN_NORMAL:
+            self.add_square(another_center, MapTile.MOUNTAIN_NORMAL, safe=True)
+            self.set(another_center, MapTile.MOUNTAIN_SNOW)
+
+        self.set(center_mountain_range, MapTile.MOUNTAIN_SNOW)
+
+        self.duck_coords = self.get_random_nothing_coordinates()
+
+        # Add lake
+        self.add_square(self.duck_coords, MapTile.WATER)
+
+        if random.random() < 0.3:
+            self.add_square(self.duck_coords.ay(2), MapTile.WATER, safe=True)
+            self.set(self.duck_coords.ay(4), MapTile.WATER, safe=True)
+
+        if random.random() < 0.3:
+            self.add_square(self.duck_coords.ay(-2), MapTile.WATER, safe=True)
+            self.set(self.duck_coords.ay(-4), MapTile.WATER, safe=True)
+
+        if random.random() < 0.3:
+            self.add_square(self.duck_coords.ax(2), MapTile.WATER, safe=True)
+            self.set(self.duck_coords.ax(4), MapTile.WATER, safe=True)
+
+        if random.random() < 0.3:
+            self.add_square(self.duck_coords.ax(-2), MapTile.WATER, safe=True)
+            self.set(self.duck_coords.ax(-4), MapTile.WATER, safe=True)
+
+        # Add duck
+        self.set(self.duck_coords, MapTile.DUCK)
+
+        for tile in [MapTile.TREE1, MapTile.TREE1, MapTile.TREE1, MapTile.TREE1, MapTile.TREE2,
+                     MapTile.FLOWER, MapTile.FLOWER, MapTile.FLOWER,
+                     MapTile.ROCK, MapTile.BUSH, MapTile.BUSH,
+                     MapTile.CAMPING, MapTile.CAMPING, MapTile.CAMPING,
+                     MapTile.TOWN, MapTile.TOWN, MapTile.TOWN, MapTile.CITY]:
+            if random.random() < 0.3:
+                self.set(self.get_random_nothing_coordinates(), tile)
+
+        self.fill(self.get_random_nothing_coordinates(), MapTile.WATER, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.TREE2, MapTile.TREE3,  MapTile.TREE3,  MapTile.TREE3)
+
+    def get(self, coords: Coordinates):
+        try:
+            return self.grid[coords.y][coords.x]
+        except IndexError:
+            return None
+
+    def set(self, coordinates: Coordinates, tile: MapTile, safe=False) -> bool:
+        if safe and not self.get(coordinates) == MapTile.NOTHING:
+            return False
+        try:
+            self.grid[coordinates.y][coordinates.x] = tile
+            return True
+        except IndexError:
+            return False
+
+    def get_random_coordinates(self) -> Coordinates:
+        return Coordinates(random.randrange(self.XMIN, self.XMAX), random.randrange(self.YMIN, self.YMAX))
+
+    def get_random_nothing_coordinates(self) -> Coordinates:
+        nothing_blocks = []
+
+        for y in range(self.YMIN, self.YMAX):
+            for x in range(self.XMIN, self.XMAX):
+                if self.grid[y][x] == MapTile.NOTHING:
+                    nothing_blocks.append(Coordinates(x, y))
+
+        return random.choice(nothing_blocks)
+
+    def add_square(self, coordinates: Coordinates, tile: MapTile, size: int = 1, safe=False):
+        for y in range(coordinates.y - size, coordinates.y + size + 1):
+            for x in range(coordinates.x - size, coordinates.x + size + 1):
+                self.set(Coordinates(x, y), tile, safe=safe)
+
+    def fill(self, coordinates: Coordinates, *tiles: MapTile):
+        if self.get(coordinates) == MapTile.NOTHING:
+            self.set(coordinates, random.choice(tiles))
+            self.fill(coordinates.ax(-1), *tiles)
+            self.fill(coordinates.ay(-1), *tiles)
+            self.fill(coordinates.ax(1), *tiles)
+            self.fill(coordinates.ay(1), *tiles)
+
+    def get_map_string(self):
+        string = '​'.join(XCOORDS) + "🔢\n"
+        string += '\n'.join([''.join(map(lambda e: "||" + e.value + "||" if e != MapTile.NOTHING else "||" + MapTile.TREE1.value + "||", row)) + YCOORDS[i] for i, row in enumerate(self.grid)])
+
+        return string
+
+
+class CartographerDuck(Duck):
+    """
+    Duck that will need to be found in the map
+    """
+    category = _('cartographer')
+
+    def __init__(self, bot: MyBot, channel: discord.TextChannel):
+        super().__init__(bot, channel)
+        self.map: Map = Map()
+        self.duck_coords: Coordinates = self.map.duck_coords
+
+    def serialize(self):
+        return {**super().serialize(), 'duck_coords': str(self.duck_coords)}
+
+    @classmethod
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
+        d = super().deserialize(bot, channel, data)
+        d.duck_coords = Coordinates.from_str(data['duck_coords'])
+        return d
+
+    async def get_ncategory_killed(self, this_ducks_killed):
+        ngettext = await self.get_ntranslate_function()
+        return ngettext("of which one is a cartographer duck",
+                        "of which {this_ducks_killed} are cartographer ducks",
+                        this_ducks_killed,
+                        this_ducks_killed=this_ducks_killed,
+                        )
+
+    async def get_spawn_message(self) -> str:
+        _ = await self.get_translate_function()
+
+        map_str = self.map.get_map_string()
+
+        return map_str + "\n\n" + _("ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
+                                    "the number to the bang command. Example: `dh!bang A1`.")
+
+    async def shoot(self, args: list):
+        _ = await self.get_translate_function()
+        hurter = self.target_lock_by
+
+        try:
+            given_coords = Coordinates.from_str(str(args[0]))
+        except IndexError:
+            await self.send(
+                _("{hurter.mention}, You need to find the duck in the map above! Answer with `dh!bang <coordinates>`.",
+                  hurter=hurter,
+                  ))
+            await self.release()
+            return False
+        except ValueError:
+            await self.send(_("{hurter.mention}, Give coordinates like so `B3`!",
+                              hurter=hurter))
+            await self.release()
+            return False
+
+        if given_coords != self.duck_coords:
+            await self.send(_("{hurter.mention}, that's not the correct answer!",
+                              hurter=hurter))
+            await self.release()
+            return False
+        else:
+            await super().shoot(args)
+            return True
+
+    async def get_exp_value(self):
+        return round(await super().get_exp_value() * 1.3)
+
+
 class BabyDuck(Duck):
     """
     A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
@@ -1023,7 +1245,7 @@ class SleepingDuck(Duck):
 
 
 RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES = [Duck, GhostDuck, PrDuck, BabyDuck, GoldenDuck, PlasticDuck, KamikazeDuck,
-                                      MechanicalDuck, SuperDuck, MotherOfAllDucks, ArmoredDuck]
+                                      MechanicalDuck, SuperDuck, MotherOfAllDucks, ArmoredDuck, CartographerDuck]
 DUCKS_DAYTIME_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES}
 DUCKS_DAYTIME_CATEGORIES = [dc.category for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES]
 
@@ -1036,23 +1258,23 @@ DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLAS
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState=None):
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
     duck = await get_random_weighted_duck(bot, channel, db_channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState=None):
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
 
     db_channel = db_channel or await get_from_db(channel)
 
     if sun == SunState.DAY:
-        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_DAYTIME_CATEGORIES]
+        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks", 0) for category in DUCKS_DAYTIME_CATEGORIES]
         ducks = RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES
     else:
-        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks") for category in DUCKS_NIGHTTIME_CATEGORIES]
+        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks", 0) for category in DUCKS_NIGHTTIME_CATEGORIES]
         ducks = RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
 
     if bot.current_event == Events.STEROIDS and SuperDuck in ducks:

@@ -203,6 +203,14 @@ armored = {**super,
            'emojis': [DUCKS_EMOJIS['armored']],
            }
 
+cartographer = {**normal,
+                'shouts': [],
+                'usernames': [_("Dockolumbus"), _("Cartographer Duck")],
+                'avatar_urls': [DUCKS_IMAGES['prof']],
+                'emojis': [],
+                }
+
+
 night = {
     **normal,
     'shouts': [_("*coin*"), _("*Don't make a noise, it's nighttime*"), _("*Shhhhh*")],

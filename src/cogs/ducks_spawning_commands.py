@@ -12,7 +12,7 @@ from utils.interaction import get_webhook_if_possible
 
 from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, \
     PlasticDuck, KamikazeDuck, spawn_random_weighted_duck, \
-    RANDOM_SPAWN_DUCKS_CLASSES, MechanicalDuck, NightDuck, SleepingDuck
+    RANDOM_SPAWN_DUCKS_CLASSES, MechanicalDuck, NightDuck, SleepingDuck, CartographerDuck
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -154,6 +154,14 @@ class DucksSpawningCommands(Cog):
         Spawns a sleeping duck.
         """
         myduck = SleepingDuck(ctx.bot, ctx.channel)
+        await myduck.spawn()
+
+    @coin.command()
+    async def cartographer(self, ctx: MyContext):
+        """
+        Spawns a cartographer duck.
+        """
+        myduck = CartographerDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
 
     @commands.group(aliases=["ducks"])
