@@ -872,7 +872,7 @@ class Map:
 
     def get_map_string(self):
         string = '​'.join(XCOORDS) + "🔢\n"
-        string += '\n'.join([''.join(map(lambda e: "||" + e.value + "||" if e != MapTile.NOTHING else "||" + MapTile.TREE1.value + "||", row)) + YCOORDS[i] for i, row in enumerate(self.grid)])
+        string += '\n'.join([''.join(map(lambda e: "||" + anti_bot_zero_width(e.value) + "||" if e != MapTile.NOTHING else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||", row)) + YCOORDS[i] for i, row in enumerate(self.grid)])
 
         return string
 
@@ -908,7 +908,7 @@ class CartographerDuck(Duck):
     async def get_spawn_message(self) -> str:
         _ = await self.get_translate_function()
 
-        map_str = anti_bot_zero_width(self.map.get_map_string())
+        map_str = self.map.get_map_string()
 
         return map_str + "\n\n" + _("ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
                                     "the number to the bang command. Example: `dh!bang A1`.")
