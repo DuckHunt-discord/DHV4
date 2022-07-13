@@ -908,7 +908,7 @@ class CartographerDuck(Duck):
     async def get_spawn_message(self) -> str:
         _ = await self.get_translate_function()
 
-        map_str = self.map.get_map_string()
+        map_str = anti_bot_zero_width(self.map.get_map_string())
 
         return map_str + "\n\n" + _("ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
                                     "the number to the bang command. Example: `dh!bang A1`.")
