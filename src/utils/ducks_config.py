@@ -25,6 +25,7 @@ DUCKS_IMAGES = {
     'night': 'https://cdn.discordapp.com/attachments/795225915248214036/795259589930778634/night_duck_calgeka.png',
     'plastic': 'https://cdn.discordapp.com/attachments/795225915248214036/795369328694001664/plastic_duck_Calgeka.png',
     'plastic_alt1': 'https://cdn.discordapp.com/attachments/795225915248214036/804672096411058237/plastic_duck_Calgeka_Iridius.png',
+    'cartographer': 'https://cdn.discordapp.com/attachments/795225915248214036/998963916984033430/cartographer_duck_Calgeka.png',
 }
 
 DUCKS_EMOJIS = {
@@ -206,7 +207,7 @@ armored = {**super,
 cartographer = {**normal,
                 'shouts': [],
                 'usernames': [_("Dockolumbus"), _("Cartographer Duck")],
-                'avatar_urls': [DUCKS_IMAGES['prof']],
+                'avatar_urls': [DUCKS_IMAGES['cartographer']],
                 'emojis': [],
                 }
 

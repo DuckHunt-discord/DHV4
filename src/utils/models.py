@@ -263,6 +263,7 @@ class DiscordChannel(Model):
     spawn_weight_kamikaze_ducks = fields.SmallIntField(default=6)
     spawn_weight_night_ducks = fields.SmallIntField(default=100)
     spawn_weight_sleeping_ducks = fields.SmallIntField(default=5)
+    spawn_weight_cartographer_ducks = fields.SmallIntField(default=3)
 
     # Duck settings
     ducks_time_to_live = fields.SmallIntField(default=660)  # Seconds

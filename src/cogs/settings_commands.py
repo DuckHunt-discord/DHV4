@@ -126,6 +126,7 @@ class SettingsCommands(Cog):
         db_channel.spawn_weight_kamikaze_ducks = 0
         db_channel.spawn_weight_night_ducks = 0
         db_channel.spawn_weight_sleeping_ducks = 0
+        db_channel.spawn_weight_cartographer_ducks = 0
 
         db_channel.super_ducks_min_life = 3
         db_channel.super_ducks_max_life = 6
@@ -174,6 +175,7 @@ class SettingsCommands(Cog):
         db_channel.spawn_weight_golden_ducks = 5
         db_channel.spawn_weight_plastic_ducks = 2
         db_channel.spawn_weight_kamikaze_ducks = 1
+        db_channel.spawn_weight_cartographer_ducks = 2
 
         db_channel.ducks_time_to_live = 960
         db_channel.super_ducks_min_life = 3
