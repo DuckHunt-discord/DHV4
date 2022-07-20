@@ -871,7 +871,7 @@ class Map:
             self.fill(coordinates.ay(1), *tiles)
 
     def get_map_string(self):
-        string = '​'.join(XCOORDS) + "🔢\n"
+        string = '‮‭'.join(XCOORDS) + "🔢\n"
         string += '\n'.join([''.join(map(lambda e: "||" + anti_bot_zero_width(e.value) + "||" if e != MapTile.NOTHING else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||", row)) + YCOORDS[i] for i, row in enumerate(self.grid)])
 
         return string
