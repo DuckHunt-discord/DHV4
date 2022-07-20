@@ -88,6 +88,9 @@ msgstr "Synnyttä yö ankan."
 msgid "Spawns a sleeping duck."
 msgstr "Synnyttää nukkuvan ankan."
 
+msgid "Spawns a cartographer duck."
+msgstr ""
+
 msgid "Show ducks currently on the channel"
 msgstr "Näytä tällä hetkellä kanavalla olevat ankat"
 
@@ -3821,6 +3824,25 @@ msgstr ""
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
+msgid "cartographer"
+msgstr ""
+
+msgid ""
+"ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
+"letter and the number to the bang command. Example: `dh!bang A1`."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, You need to find the duck in the map above! Answer with "
+"`dh!bang <coordinates>`."
+msgstr ""
+
+msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgstr ""
+
+msgid "{hurter.mention}, that's not the correct answer!"
+msgstr ""
+
 msgid "baby"
 msgstr ""
 
@@ -4269,6 +4291,12 @@ msgid "MOAD"
 msgstr "MOAD"
 
 msgid "Mooooom"
+msgstr ""
+
+msgid "Dockolumbus"
+msgstr ""
+
+msgid "Cartographer Duck"
 msgstr ""
 
 msgid "*coin*"

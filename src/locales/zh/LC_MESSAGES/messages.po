@@ -86,6 +86,9 @@ msgstr "生成夜鴨。"
 msgid "Spawns a sleeping duck."
 msgstr "生成了一隻正在睡覺的鴨。"
 
+msgid "Spawns a cartographer duck."
+msgstr ""
+
 msgid "Show ducks currently on the channel"
 msgstr "顯示當前頻道上的鴨子"
 
@@ -3328,6 +3331,25 @@ msgstr ""
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr ""
 
+msgid "cartographer"
+msgstr ""
+
+msgid ""
+"ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
+"letter and the number to the bang command. Example: `dh!bang A1`."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, You need to find the duck in the map above! Answer with "
+"`dh!bang <coordinates>`."
+msgstr ""
+
+msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgstr ""
+
+msgid "{hurter.mention}, that's not the correct answer!"
+msgstr ""
+
 msgid "baby"
 msgstr ""
 
@@ -3774,6 +3796,12 @@ msgstr "媽媽鴨子"
 
 msgid "Mooooom"
 msgstr "Mooooom"
+
+msgid "Dockolumbus"
+msgstr ""
+
+msgid "Cartographer Duck"
+msgstr ""
 
 msgid "*coin*"
 msgstr "**金幣**！"

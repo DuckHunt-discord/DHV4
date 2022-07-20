@@ -95,6 +95,9 @@ msgstr "Fait apparaitre un canard de nuit."
 msgid "Spawns a sleeping duck."
 msgstr "Fait apparaitre un canard endormi."
 
+msgid "Spawns a cartographer duck."
+msgstr ""
+
 msgid "Show ducks currently on the channel"
 msgstr "Montre les canards actuellement présents sur le salon."
 
@@ -4355,6 +4358,25 @@ msgstr "{hurter.mention}, Donnez-moi juste des chiffres !"
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr "{hurter.mention}, ce n'est pas la bonne réponse !"
 
+msgid "cartographer"
+msgstr ""
+
+msgid ""
+"ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
+"letter and the number to the bang command. Example: `dh!bang A1`."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, You need to find the duck in the map above! Answer with "
+"`dh!bang <coordinates>`."
+msgstr ""
+
+msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgstr ""
+
+msgid "{hurter.mention}, that's not the correct answer!"
+msgstr ""
+
 msgid "baby"
 msgstr "bébé"
 
@@ -4852,6 +4874,12 @@ msgstr "MDTLC"
 
 msgid "Mooooom"
 msgstr "Môman"
+
+msgid "Dockolumbus"
+msgstr ""
+
+msgid "Cartographer Duck"
+msgstr ""
 
 msgid "*coin*"
 msgstr "*coin*"
