@@ -18,7 +18,8 @@ from utils.interaction import purge_channel_messages, EmbedCounterPaginator
 from babel import dates
 
 from utils.models import AccessLevel, get_from_db
-
+from discord import Embed
+from utils.ducks import Map, MapTile
 
 def _(message):
     return message
@@ -151,6 +152,22 @@ class Emergencies(Cog):
         total = sum(self.bot.socket_stats.values())
         cpm = total / minutes
         await ctx.send(f'{total} socket events observed ({cpm:.2f}/minute):\n{self.bot.socket_stats}')
+
+    @manage_bot.command()
+    async def asshole(self, ctx):
+        try:
+            await ctx.message.delete()
+        except discord.HTTPException:
+            pass
+        map = Map()
+        # map.set(map.duck_coords, MapTile.WATER, safe=False)
+
+        ms = map.get_map_string()
+        ms = ms.replace("🦆", "[🦆](https://duckhunt.me/cartographer)")
+        e = Embed(title="Cartographer Duck", description=ms)
+        e.add_field(name="ℹ️ Cartographer Duck", value="Find the duck in the map above, then click it a few times.")
+
+        await ctx.send(embed=e)
 
 
 setup = Emergencies.setup
