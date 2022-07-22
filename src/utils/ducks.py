@@ -751,8 +751,23 @@ class Coordinates:
     @classmethod
     def from_str(cls, coords):
         coords = coords.upper().strip()
+        if len(coords) != 2:
+            raise ValueError("Wrong coordinates length")
+
         x = ord(coords[0]) - 65
+
+        if x < 0:
+            raise ValueError("Wrong letter coordinate (it's not a letter?)")
+        elif x > len(XCOORDS):
+            raise ValueError("Wrong letter coordinate (too far away?)")
+
         y = int(coords[1]) - 1
+
+        if y < 0:
+            raise ValueError("Number coordinate too small (what?)")
+        elif y > len(YCOORDS):
+            raise ValueError("Wrong number coordinate (number too big?)")
+
         return cls(x, y)
 
     def __init__(self, x: int, y: int):
@@ -926,9 +941,9 @@ class CartographerDuck(Duck):
                   ))
             await self.release()
             return False
-        except ValueError:
-            await self.send(_("{hurter.mention}, Give coordinates like so `B3`!",
-                              hurter=hurter))
+        except ValueError as e:
+            await self.send(_("{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`",
+                              hurter=hurter, exc_message=str(e)))
             await self.release()
             return False
 
