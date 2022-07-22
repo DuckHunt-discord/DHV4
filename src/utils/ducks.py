@@ -742,7 +742,7 @@ class MapTile(Enum):
     DUCK = "🦆"
 
 
-XCOORDS = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭"]
+XCOORDS = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭",]
 
 YCOORDS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 
@@ -758,15 +758,13 @@ class Coordinates:
 
         if x < 0:
             raise ValueError("Wrong letter coordinate (it's not a letter?)")
-        elif x > len(XCOORDS):
+        elif x > len(XCOORDS) - 1:
             raise ValueError("Wrong letter coordinate (too far away?)")
 
-        y = int(coords[1]) - 1
-
-        if y < 0:
-            raise ValueError("Number coordinate too small (what?)")
-        elif y > len(YCOORDS):
-            raise ValueError("Wrong number coordinate (number too big?)")
+        try:
+            y = int(coords[1]) - 1
+        except ValueError:
+            raise ValueError("Wrong number coordinate (not a number?)")
 
         return cls(x, y)
 
