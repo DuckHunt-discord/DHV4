@@ -204,7 +204,7 @@ async def get_prefix(bot: MyBot, message: discord.Message):
         if bot.config["database"]["enable"]:
             db_guild = await get_from_db(message.guild)
             guild_prefix = db_guild.prefix
-            if guild_prefix:
+            if guild_prefix is not None:
                 forced_prefixes = [guild_prefix] + forced_prefixes
 
         return commands.when_mentioned_or(*forced_prefixes)(bot, message)
