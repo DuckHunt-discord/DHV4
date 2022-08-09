@@ -351,8 +351,9 @@ class SettingsCommands(Cog):
 
         db_channel.base_duck_exp = - abs(db_channel.base_duck_exp)
         db_channel.per_life_exp = - abs(db_channel.per_life_exp)
+        old_val_baby = db_channel.spawn_weight_baby_ducks
         db_channel.spawn_weight_baby_ducks = db_channel.spawn_weight_normal_ducks
-        db_channel.spawn_weight_normal_ducks = db_channel.spawn_weight_baby_ducks
+        db_channel.spawn_weight_normal_ducks = old_val_baby
 
         await db_channel.save()
 
