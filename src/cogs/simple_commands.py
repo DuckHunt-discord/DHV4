@@ -50,10 +50,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
         for i, item in enumerate(entries, start=offset):
             locale, translators = item
 
-            parsed_translators = []
-
-            for user in translators:
-                parsed_translators.append(f"{user.name}#{user.discriminator}")
+            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", translators)
 
             try:
                 locale_data = Locale.parse(locale)
