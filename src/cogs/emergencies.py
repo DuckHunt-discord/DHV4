@@ -4,7 +4,7 @@ The emergencies command group, allowing for finer control of the bot, raw debugg
 import asyncio
 import datetime
 import time
-from typing import Union
+from typing import Set
 
 import discord
 import pytz
