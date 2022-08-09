@@ -146,6 +146,33 @@ class Emergencies(Cog):
         await ctx.reply(f"User {user.name}#{user.discriminator} (`{user.id}`) updated.")
 
     @manage_bot.command()
+    async def update_owners(self, ctx: MyContext):
+        """
+        Update the @Have DuckHunt role members, according to
+        the owners of every guild where DuckHunt is enabled.
+        """
+        owners: Set(int) = set()
+        [owners.add(channel.guild.owner_id) for channel in self.bot.enabled_channels.keys()]
+
+        support_guild = self.bot.get_guild(195260081036591104) # DuckHunt support guild
+        owner_role = support_guild.get_role(241997218276573184) # @Have DuckHunt role
+
+        members_to_remove = filter(lambda member: member.id not in owners, owner_role.members) # List of members with the role but not owners
+        for member in members_to_remove:
+            await member.remove_roles(owner_role)
+        
+        role_member_ids = map(lambda member: member.id, owner_role.members) # List of IDs of members currently with role
+        members_ids_to_add = filter(lambda member_id: member_id not in role_member_ids, owners) # List of IDs of members not with the role but owners
+        for member_id in members_ids_to_add:
+            try:
+                member = await support_guild.fetch_member(member_id) # Check if player is in support guild
+            except discord.NotFound:
+                continue
+            await member.add_roles(owner_role)
+
+        await ctx.reply(f"{owner_role} members have been successfully updated.")
+    
+    @manage_bot.command()
     async def socketstats(self, ctx):
         delta = timezone.now() - self.bot.uptime
         minutes = delta.total_seconds() / 60
