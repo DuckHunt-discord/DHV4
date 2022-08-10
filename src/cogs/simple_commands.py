@@ -39,7 +39,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
         _ = await self.ctx.get_translate_function()
         language_code = await self.ctx.get_language_code()
 
-        embed = discord.Embed(title=_("The beloved DuckHunt translators"))
+        embed = discord.Embed(title=_("🌐 The beloved DuckHunt translators"))
 
         embed.color = discord.Color.green()
         embed.description = _("The bot itself is made by Eyesofcreeper, with contributions from people mentionned in "
@@ -48,9 +48,9 @@ class TranslatorsMenusSource(menus.ListPageSource):
 
         offset = menu.current_page * self.per_page
         for i, item in enumerate(entries, start=offset):
-            locale, translators = item
+            locale, data = item
 
-            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", translators)
+            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", data['users'])
 
             try:
                 locale_data = Locale.parse(locale)
@@ -58,7 +58,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
             except ValueError:
                 locale_display_name = locale
 
-            embed.add_field(name=f"{locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
+            embed.add_field(name=f"{data['flag_code']} {locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
                             value=format_list(parsed_translators, locale=language_code),
                             inline=False)
 
@@ -207,11 +207,12 @@ class SimpleCommands(Cog):
         _ = await ctx.get_translate_function()
 
         if not len(self.translators_cache):
-            for locale, translators_ids in TRANSLATORS.items():
+            for locale, data in TRANSLATORS.items():
                 self.translators_cache[locale] = []
-                for translator_id in translators_ids:
+                self.translators_cache[locale]['flag_code'] = data['flag_code']
+                for translator_id in data['user_ids']:
                     try:
-                        self.translators_cache[locale].append(await ctx.bot.fetch_user(translator_id))
+                        self.translators_cache[locale]['users'].append(await ctx.bot.fetch_user(translator_id))
                     except discord.NotFound:
                         ctx.logger.warning(f"Translator {translator_id} for language {locale} can't be found on discord.")
                         continue
