@@ -1682,6 +1682,12 @@ msgid ""
 "- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
 msgstr ""
 
+msgid "You defused the following landmine for a value of {got_points} points."
+msgid_plural ""
+"You defused {n} landmines placed on that word, for a total value of "
+"{got_points} points."
+msgstr[0] ""
+
 msgid "There were no active landmines on that word to be defused."
 msgstr ""
 
@@ -2042,6 +2048,14 @@ msgid ""
 "Webhooks are not used in this channel. Please enable them first. You can use "
 "`{command}` to do it."
 msgstr ""
+
+msgid ""
+"Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
+"ducks."
+msgid_plural ""
+"Your webhook was created. The bot now uses {webhooks_count} webhooks to "
+"spawn ducks."
+msgstr[0] ""
 
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
@@ -3314,8 +3328,16 @@ msgstr ""
 msgid "ghost"
 msgstr ""
 
+msgid "of which one is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] ""
+
 msgid "prof"
 msgstr "教授"
+
+msgid "of which one is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] ""
 
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
@@ -3333,6 +3355,10 @@ msgstr ""
 
 msgid "cartographer"
 msgstr ""
+
+msgid "of which one is a cartographer duck"
+msgid_plural "of which {this_ducks_killed} are cartographer ducks"
+msgstr[0] ""
 
 msgid ""
 "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
@@ -3353,6 +3379,10 @@ msgstr ""
 msgid "baby"
 msgstr ""
 
+msgid "of which one is a baby duck"
+msgid_plural "of which {this_ducks_killed} are baby ducks"
+msgstr[0] ""
+
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 
@@ -3364,11 +3394,23 @@ msgstr ""
 msgid "golden"
 msgstr ""
 
+msgid "of which one is a golden duck"
+msgid_plural "of which {this_ducks_killed} are golden ducks"
+msgstr[0] ""
+
 msgid "plastic"
 msgstr "塑膠"
 
+msgid "of which one is made of plastic"
+msgid_plural "of which {this_ducks_killed} are made of plastic"
+msgstr[0] ""
+
 msgid "kamikaze"
 msgstr "自爆"
+
+msgid "of which one is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] ""
 
 msgid "mechanical"
 msgstr "機械"

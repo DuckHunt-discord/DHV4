@@ -4364,6 +4364,11 @@ msgstr "{hurter.mention}, das ist nicht die richtige Antwort!"
 msgid "cartographer"
 msgstr ""
 
+msgid "of which one is a cartographer duck"
+msgid_plural "of which {this_ducks_killed} are cartographer ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid ""
 "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
 "letter and the number to the bang command. Example: `dh!bang A1`."

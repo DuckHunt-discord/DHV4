@@ -1985,6 +1985,13 @@ msgid ""
 "- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
 msgstr ""
 
+msgid "You defused the following landmine for a value of {got_points} points."
+msgid_plural ""
+"You defused {n} landmines placed on that word, for a total value of "
+"{got_points} points."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "There were no active landmines on that word to be defused."
 msgstr ""
 
@@ -2353,6 +2360,15 @@ msgid ""
 "Webhooks are not used in this channel. Please enable them first. You can use "
 "`{command}` to do it."
 msgstr ""
+
+msgid ""
+"Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
+"ducks."
+msgid_plural ""
+"Your webhook was created. The bot now uses {webhooks_count} webhooks to "
+"spawn ducks."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
@@ -3653,6 +3669,11 @@ msgstr ""
 msgid "normal"
 msgstr ""
 
+msgid "of which one is a normal duck"
+msgid_plural "of which {this_ducks_killed} are normal ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
@@ -3695,8 +3716,18 @@ msgstr ""
 msgid "ghost"
 msgstr ""
 
+msgid "of which one is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "prof"
 msgstr ""
+
+msgid "of which one is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
@@ -3714,6 +3745,11 @@ msgstr ""
 
 msgid "cartographer"
 msgstr ""
+
+msgid "of which one is a cartographer duck"
+msgid_plural "of which {this_ducks_killed} are cartographer ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
@@ -3734,6 +3770,11 @@ msgstr ""
 msgid "baby"
 msgstr ""
 
+msgid "of which one is a baby duck"
+msgid_plural "of which {this_ducks_killed} are baby ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 
@@ -3745,14 +3786,34 @@ msgstr ""
 msgid "golden"
 msgstr ""
 
+msgid "of which one is a golden duck"
+msgid_plural "of which {this_ducks_killed} are golden ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "plastic"
 msgstr ""
+
+msgid "of which one is made of plastic"
+msgid_plural "of which {this_ducks_killed} are made of plastic"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "kamikaze"
 msgstr ""
 
+msgid "of which one is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "mechanical"
 msgstr ""
+
+msgid "of which one is a mechanical duck"
+msgid_plural "of which {this_ducks_killed} are mechanical ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -3767,11 +3828,26 @@ msgstr ""
 msgid "super"
 msgstr ""
 
+msgid "of which one is a super duck"
+msgid_plural "of which {this_ducks_killed} are super ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "moad"
 msgstr ""
 
+msgid "of which one is a MOAD"
+msgid_plural "of which {this_ducks_killed} are MOADs"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "armored"
 msgstr ""
+
+msgid "of which one is an armored duck"
+msgid_plural "of which {this_ducks_killed} are armored ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
@@ -3786,8 +3862,18 @@ msgstr ""
 msgid "night"
 msgstr ""
 
+msgid "of which one is a night duck"
+msgid_plural "of which {this_ducks_killed} are night ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "sleeping"
 msgstr ""
+
+msgid "of which one is a sleeping duck"
+msgid_plural "of which {this_ducks_killed} are sleeping ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "KWAK"
 msgstr ""

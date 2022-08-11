@@ -3765,6 +3765,11 @@ msgstr ""
 msgid "normal"
 msgstr ""
 
+msgid "of which one is a normal duck"
+msgid_plural "of which {this_ducks_killed} are normal ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
@@ -3807,8 +3812,18 @@ msgstr ""
 msgid "ghost"
 msgstr ""
 
+msgid "of which one is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "prof"
 msgstr ""
+
+msgid "of which one is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Huh, quick question, what's {operation} ?"
 msgstr ""
@@ -3826,6 +3841,11 @@ msgstr ""
 
 msgid "cartographer"
 msgstr ""
+
+msgid "of which one is a cartographer duck"
+msgid_plural "of which {this_ducks_killed} are cartographer ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
@@ -3878,8 +3898,18 @@ msgstr[1] ""
 msgid "kamikaze"
 msgstr ""
 
+msgid "of which one is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "mechanical"
 msgstr ""
+
+msgid "of which one is a mechanical duck"
+msgid_plural "of which {this_ducks_killed} are mechanical ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
@@ -3894,11 +3924,26 @@ msgstr ""
 msgid "super"
 msgstr "super"
 
+msgid "of which one is a super duck"
+msgid_plural "of which {this_ducks_killed} are super ducks"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "moad"
 msgstr ""
 
+msgid "of which one is a MOAD"
+msgid_plural "of which {this_ducks_killed} are MOADs"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "armored"
 msgstr "panssaroitu"
+
+msgid "of which one is an armored duck"
+msgid_plural "of which {this_ducks_killed} are armored ducks"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
