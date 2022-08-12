@@ -154,7 +154,7 @@ class PrestigeCommands(Cog):
 
         await db_hunter.save()
 
-        if ctx.author.id == 618209176434507816:
+        if ctx.author.id == 957254775915806780:
             # This is just a prank for the guy who made me add the Normal Dist,
             # with "a tiny chance for it to become negative"
             # It's not really negative, but heh :)
