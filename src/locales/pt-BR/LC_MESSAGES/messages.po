@@ -4251,7 +4251,7 @@ msgstr "bebê"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] "dos quais um é um patinho"
+msgstr[0] "dos quais um é um bébé pato"
 msgstr[1] "dos quais {this_ducks_killed} são filhotes de patos"
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
