@@ -86,6 +86,7 @@ normal = {
                "<https://youtu.be/MtN1YnoL46Q>", "<https://youtu.be/_0AAbWqxIs8>", "<https://youtu.be/JZGjyxPc41o>",
                "<https://youtu.be/7jjcAuEYW9M?t=4>", "<https://youtu.be/Ru4a-js4My4?t=4>",
                "<https://youtu.be/dJyPfXAAADI?t=5>", "<https://youtu.be/q38Y5FLK63k>", "<https://youtu.be/frZHtnn1nA0>"
+               "<https://youtu.be/Y5NTgZA-xWE>",
                "https://tenor.com/4nwy.gif",
                _("I love you too!"), _("Don't shoot me! I'm a fake duck!"),
                _("**Duck fact**: Some ducks can fly up to 332 miles in a single day!"),
