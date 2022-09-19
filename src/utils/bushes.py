@@ -10,7 +10,6 @@ HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
 
-
 def _(string):
     return string
 
@@ -45,6 +44,19 @@ class Bushes(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **A lot of bushes**.')
 
 
+class ManyBushes(BushObject):
+    db = 'trash_many_bushes'
+    took_message = _('Searching the bushes around the duck, you found... **A duck ton of bushes**.')
+
+
+class Picture(BushObject):
+    db = 'trash_picture'
+    took_message = _('Searching the bushes around the duck, you found... **A picture of a duck**.')
+
+    async def send_args(self, _, result: bool):
+        return {'content': _(self.took_message), 'file': get_random_image()}
+    
+    
 class USBCCharger(BushObject):
     db = 'trash_usbc_charger'
     # TRANSLATORS: This is a joke message that probably only works in French, but try to adapt anyway.
@@ -57,14 +69,6 @@ class USBCCharger(BushObject):
 class DuckPin(BushObject):
     db = 'trash_pin'
     took_message = _('Searching the bushes around the duck, you found... **A rare duck pin**.')
-
-
-class Picture(BushObject):
-    db = 'trash_picture'
-    took_message = _('Searching the bushes around the duck, you found... **A picture of a duck**.')
-
-    async def send_args(self, _, result: bool):
-        return {'content': _(self.took_message), 'file': get_random_image()}
 
 
 class Bullet(BushObject):
@@ -152,7 +156,7 @@ del _
 
 # noinspection PyInterpreter
 bushes = {
-    Nothing: 20, Bushes: 20, Picture: 15,  USBCCharger: 3, DuckPin: 1,
+    Nothing: 20, Bushes: 20, ManyBushes: 20, Picture: 15,  USBCCharger: 3, DuckPin: 1,
     Bullet: 20,
     Magazine: 15,
     ExplosiveAmmo: 2, PartialExplosiveAmmo: 6,
