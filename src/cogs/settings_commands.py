@@ -1192,7 +1192,7 @@ class SettingsCommands(Cog):
                 if not role:
                     del db_channel.levels_to_roles_ids_mapping[str(level_id)]
                     message.append(
-                        _(level['name']).title() + " - " + _('Deleted role 🗑️ ID: {role_id}', role_id=role_id))
+                        "Level " + level_id + " - " + _(level['name']).title() + " - " + _('Deleted role 🗑️ ID: {role_id}', role_id=role_id))
                 else:
                     message.append(_(level['name']).title() + " - " + role.mention)
 
