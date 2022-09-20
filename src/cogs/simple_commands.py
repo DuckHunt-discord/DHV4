@@ -1,20 +1,20 @@
 import asyncio
-import datetime
 import random
-import time
+from time import perf_counter
+from datetime import now, timedelta
 
 import discord
-from babel import Locale
-from babel.dates import format_timedelta, format_datetime
-from babel.lists import format_list
 from discord.ext import commands, menus
+from discord.utils import format_dt
+from babel import Locale
+from babel.dates import format_timedelta
+from babel.lists import format_list
 
 from utils import checks
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
-from utils.images import get_random_image
 from utils.inventory_items import FoieGras
 from utils.models import get_from_db, AccessLevel
 from utils.translations import TRANSLATORS, get_pct_complete
@@ -85,9 +85,9 @@ class SimpleCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        t_1 = time.perf_counter()
+        t_1 = perf_counter()
         await ctx.typing()  # tell Discord that the bot is "typing", which is a very simple request
-        t_2 = time.perf_counter()
+        t_2 = perf_counter()
         time_delta = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
         await ctx.send(_("Pong. — Time taken: {miliseconds}ms",
                          miliseconds=time_delta))  # send a message telling the user the calculated ping time
@@ -127,19 +127,17 @@ class SimpleCommands(Cog):
         """
 
         _ = await ctx.get_translate_function()
-        language_code = await ctx.get_language_code()
+       
+        midnight = (
+            now() + timedelta(days=1)
+        ).replace(
+            hour=0, minute=0, second=0, microsecond=0
+        )
 
-        now = int(time.time())
-        SECONDS_SPENT_TODAY = now % 86400
-        SECONDS_LEFT_TODAY = 86400 - SECONDS_SPENT_TODAY
-        time_delta = datetime.timedelta(seconds=SECONDS_LEFT_TODAY)
+        formatted_delta = format_dt(midnight, 'R')
 
-        formatted_delta = format_timedelta(time_delta, add_direction=True, locale=language_code)
-        formatted_precise_delta = format_timedelta(time_delta, add_direction=True, locale=language_code, threshold=24)
-
-        await ctx.send(_("You'll get back your weapon and magazines {formatted_delta} ({formatted_precise_delta})",
+        await ctx.send(_("You'll get back your weapon and magazines {formatted_delta}",
                          formatted_delta=formatted_delta,
-                         formatted_precise_delta=formatted_precise_delta,
                          ))
 
     @commands.command()
@@ -279,7 +277,7 @@ class SimpleCommands(Cog):
         This is an unfair vote: while it needs people to vote quickly for a boss,
         if someones vote against, the boss won't spawn.
         """
-        ftd = format_timedelta(datetime.timedelta(seconds=time_to_wait), locale='en', threshold=1.1)
+        ftd = format_timedelta(timedelta(seconds=time_to_wait), locale='en', threshold=1.1)
         message = await ctx.send('**A vote to spawn a boss is in progress**\n'
                                  f'React with 🦆 to spawn a boss (needs {yes_trigger} votes in {ftd}), or\n'
                                  f'React with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, '
@@ -385,21 +383,19 @@ class SimpleCommands(Cog):
         better : EXPERIENCE !
         """
         _ = await ctx.get_translate_function()
-        language_code = await ctx.get_language_code()
 
-        now = time.time()
-        seconds_left = (60*60) - now % (60*60)
+        in_one_hour = (
+            now() + timedelta(hours=1)
+        ).replace(
+            minute=0, second=0, microsecond=0
+        )
 
-        td = datetime.timedelta(seconds=seconds_left)
+        formatted_td = format_dt(in_one_hour, 'R')
 
         embed = discord.Embed(title=_("Current event: ") + _(self.bot.current_event.value[0]))
         embed.description = _(self.bot.current_event.value[1])
-
-        formatted_td = format_timedelta(td, threshold=10, granularity='minute', locale=language_code)
-
         embed.set_footer(text=_("Events last for one hour from the beginning to the end of the hour. Ending in {formatted_td}",
                                 formatted_td=formatted_td))
-
         embed.color = discord.Color.dark_theme()
 
         await ctx.send(embed=embed)
@@ -411,9 +407,13 @@ class SimpleCommands(Cog):
         This returns the current bot time.
         """
 
-        language_code = await ctx.get_language_code()
-        now = datetime.datetime.utcnow()
-        await ctx.reply(format_datetime(now, format='full', locale=language_code))
+        _ = await ctx.get_translate_function()
+
+        now = str(int(now().timestamp()))
+        formatted_td = format_dt(now, 'F')
+
+        await ctx.reply(_("The bot current time is: {formatted_td}",
+                          formatted_td=formatted_td))
 
 
 setup = SimpleCommands.setup
