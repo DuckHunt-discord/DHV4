@@ -47,7 +47,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
                               "Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). Thanks!")
 
         offset = menu.current_page * self.per_page
-        for i, item in enumerate(entries, start=offset):
+        for i, item in enumerate(entries.items(), start=offset):
             locale, data = item
 
             parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", data['users'])
