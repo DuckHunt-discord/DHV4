@@ -1501,7 +1501,7 @@ msgstr ""
 
 msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
-"💥 Sua arma encravou. Recarregue-a, e considere comprar graxa na próxima vez."
+"💥 Sua arma emperrou. Recarregue-a, e considere comprar graxa na próxima vez."
 ""
 
 msgid ""
@@ -1664,7 +1664,7 @@ msgstr ""
 "prefix}shop weapon`)\n"
 
 msgid "☀️️ You unjam your weapon !"
-msgstr "☀️️ Você desencravou sua arma !"
+msgstr "☀️️ Você desemperrou sua arma !"
 
 msgid ""
 "🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
