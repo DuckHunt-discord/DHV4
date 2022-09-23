@@ -1,5 +1,6 @@
 import asyncio
 import random
+import time
 from time import perf_counter
 from datetime import timedelta, datetime
 
@@ -383,19 +384,21 @@ class SimpleCommands(Cog):
         better : EXPERIENCE !
         """
         _ = await ctx.get_translate_function()
+        language_code = await ctx.get_language_code()
 
-        in_one_hour = (
-            datetime.now() + timedelta(hours=1)
-        ).replace(
-            minute=0, second=0, microsecond=0
-        )
+        now = time.time()
+        seconds_left = (60 * 60) - now % (60 * 60)
 
-        formatted_td = format_dt(in_one_hour, 'R')
+        td = timedelta(seconds=seconds_left)
 
         embed = discord.Embed(title=_("Current event: ") + _(self.bot.current_event.value[0]))
         embed.description = _(self.bot.current_event.value[1])
+
+        formatted_td = format_timedelta(td, threshold=10, granularity='minute', locale=language_code)
+
         embed.set_footer(text=_("Events last for one hour from the beginning to the end of the hour. Ending in {formatted_td}",
                                 formatted_td=formatted_td))
+
         embed.color = discord.Color.dark_theme()
 
         await ctx.send(embed=embed)
