@@ -1,7 +1,7 @@
 import asyncio
 import random
 from time import perf_counter
-from datetime import now, timedelta
+from datetime import timedelta, datetime
 
 import discord
 from discord.ext import commands, menus
@@ -129,7 +129,7 @@ class SimpleCommands(Cog):
         _ = await ctx.get_translate_function()
        
         midnight = (
-            now() + timedelta(days=1)
+            datetime.now() + timedelta(days=1)
         ).replace(
             hour=0, minute=0, second=0, microsecond=0
         )
@@ -275,7 +275,7 @@ class SimpleCommands(Cog):
         """
         Vote for a boss to spawn for a minute.
         This is an unfair vote: while it needs people to vote quickly for a boss,
-        if someones vote against, the boss won't spawn.
+        if someone vote against, the boss won't spawn.
         """
         ftd = format_timedelta(timedelta(seconds=time_to_wait), locale='en', threshold=1.1)
         message = await ctx.send('**A vote to spawn a boss is in progress**\n'
@@ -385,7 +385,7 @@ class SimpleCommands(Cog):
         _ = await ctx.get_translate_function()
 
         in_one_hour = (
-            now() + timedelta(hours=1)
+            datetime.now() + timedelta(hours=1)
         ).replace(
             minute=0, second=0, microsecond=0
         )
@@ -409,8 +409,7 @@ class SimpleCommands(Cog):
 
         _ = await ctx.get_translate_function()
 
-        now = str(int(now().timestamp()))
-        formatted_td = format_dt(now, 'F')
+        formatted_td = format_dt(datetime.now(), 'F')
 
         await ctx.reply(_("The bot current time is: {formatted_td}",
                           formatted_td=formatted_td))
