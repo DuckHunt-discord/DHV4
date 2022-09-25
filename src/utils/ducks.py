@@ -739,7 +739,7 @@ class MapTile(Enum):
     DUCK = "🦆"
 
 
-XCOORDS = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭",]
+XCOORDS = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭", ]
 
 YCOORDS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 
@@ -837,7 +837,8 @@ class Map:
             if random() < 0.3:
                 self.set(self.get_random_nothing_coordinates(), tile)
 
-        self.fill(self.get_random_nothing_coordinates(), MapTile.WATER, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.TREE2, MapTile.TREE3,  MapTile.TREE3,  MapTile.TREE3)
+        self.fill(self.get_random_nothing_coordinates(), MapTile.WATER, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.TREE2, MapTile.TREE3,
+                  MapTile.TREE3, MapTile.TREE3)
 
     def get(self, coords: Coordinates):
         try:
@@ -882,7 +883,9 @@ class Map:
 
     def get_map_string(self):
         string = '‮‭'.join(XCOORDS) + "🔢\n"
-        string += '\n'.join([''.join(map(lambda e: "||" + anti_bot_zero_width(e.value) + "||" if e != MapTile.NOTHING else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||", row)) + YCOORDS[i] for i, row in enumerate(self.grid)])
+        string += '\n'.join([''.join(
+            map(lambda e: "||" + anti_bot_zero_width(e.value) + "||" if e != MapTile.NOTHING else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||", row)) + YCOORDS[
+                                 i] for i, row in enumerate(self.grid)])
 
         return string
 
@@ -920,8 +923,8 @@ class CartographerDuck(Duck):
 
         map_str = self.map.get_map_string()
 
-        return map_str + "\n\n" + _("ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
-                                    "the number to the bang command. Example: `dh!bang A1`.")
+        return _("ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
+                 "the number to the bang command. Example: `dh!bang A1`.") + "\n\n" + map_str
 
     async def shoot(self, args: list):
         _ = await self.get_translate_function()
