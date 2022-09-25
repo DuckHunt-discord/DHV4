@@ -3,7 +3,7 @@ from time import time
 from datetime import timedelta
 from typing import Tuple, List
 
-from discord import User, Embed, Colour
+from discord import User, Embed, Color
 from discord.ext import commands
 from discord.errors import NotFound, Forbidden
 from aiohttp import web, ClientTimeout, ContentTypeError
@@ -268,19 +268,19 @@ class BotsListVoting(Cog):
                 embed.title = _("You can vote !")
                 embed.description = _("Thanks for supporting the bot by voting !")
                 embed.url = votable_lists[0].vote_url
-                embed.colour = Colour.green()
+                embed.color = Color.green()
             elif maybe_lists:
                 text = maybe_lists[0].vote_url
                 embed.title = _("You might be able to vote !")
                 embed.description = _("Thanks for supporting the bot by voting as much as you can. It makes a difference !")
                 embed.url = maybe_lists[0].vote_url
-                embed.colour = Colour.orange()
+                embed.color = Color.orange()
             else:
                 text = _("Oh no! No bot list is currently available for you to vote.")
                 embed.title = _("There is nowhere for you to vote at the time !")
                 embed.description = _("Thanks for supporting the bot. It makes a difference! \n"
                                       "Unfortunately, you voted everywhere you could for now, but you can check back in a few hours.")
-                embed.colour = Colour.red()
+                embed.color = Color.red()
 
             click_me_to_vote = _("Click me to vote")
             for bot_list in votable_lists:

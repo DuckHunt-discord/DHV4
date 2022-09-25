@@ -3,7 +3,7 @@ Some example of commands that can be used only in the bot support server.
 """
 from time import time, perf_counter
 
-from discord import TextChannel, Embed, Colour
+from discord import TextChannel, Embed, Color
 from discord.ext.commands import command
 from discord.ext.tasks import loop
 from discord.ext.menus import MenuPages
@@ -49,7 +49,7 @@ class SupportServerCommands(Cog):
 
         self.bot.logger.debug("Updating status message", guild=status_channel.guild, channel=status_channel)
 
-        embed = Embed(colour=Colour.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=f"{self.bot.user.name}'s status")
 
         embed.add_field(name="Guilds Count", value=f"{len(self.bot.guilds)}", inline=True)

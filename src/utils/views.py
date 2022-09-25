@@ -1,7 +1,7 @@
 from abc import ABC
 from typing import Iterable, List, Any, Optional, Dict, Union
 
-from discord import Interaction, ButtonStyle, Message, Embed, Colour
+from discord import Interaction, ButtonStyle, Message, Embed, Color
 from discord.ui import Button, Item, View, button
 from discord.abc import Messageable
 from discord.ext.commands import Command
@@ -338,7 +338,7 @@ class NitroButton(BigButtonMixin, Button):
         self.view.stop()
 
         second_embed = Embed(
-            colour=Colour.dark_theme(),
+            color=Color.dark_theme(),
             title='A WILD GIFT APPEARS!',
             description="Hmm, it seems someone already claimed this gift."
         )
@@ -363,7 +363,7 @@ async def nitro_prank(ctx: MyContext):
     The full view process for the nitro button above.
     """
     first_embed = Embed(
-        colour=Colour.dark_theme(),
+        color=Color.dark_theme(),
         title='A WILD GIFT APPEARS!',
         description="**Nitro**\nExpires in 48 hours."
     )

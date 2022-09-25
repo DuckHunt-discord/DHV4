@@ -8,7 +8,7 @@ from typing import Callable, Any, Optional, Union, Type, List, Dict
 from enum import IntEnum, unique
 
 from discord import Guild, TextChannel, VoiceChannel, Thread, Embed, Member, User, ClientUser, \
-    Colour, NotFound, Forbidden
+    Color, NotFound, Forbidden
 from discord.ext.commands import BadArgument
 from tortoise import Tortoise, fields, timezone
 from tortoise.models import Model
@@ -890,11 +890,11 @@ class Player(Model):
             if old_level_info['level'] < new_level_info['level']:
                 # Level UP
                 e.title = _("You leveled up!")
-                e.color = Colour.green()
+                e.color = Color.green()
             else:
                 # Level DOWN
                 e.title = _("You leveled down!")
-                e.color = Colour.red()
+                e.color = Color.red()
 
             ensure_future(ctx.send(embed=e))
             ensure_future(self.change_roles(bot))

@@ -30,7 +30,7 @@ class EmbedCounterPaginator(ListPageSource):
         self.field_inline = field_inline
 
     async def format_page(self, menu, entries):
-        embed = Embed(title=self.embed_title, colour=self.embed_color)
+        embed = Embed(title=self.embed_title, color=self.embed_color)
 
         for elem, n in entries:
             embed.add_field(name=self.name_str.format(elem=elem),

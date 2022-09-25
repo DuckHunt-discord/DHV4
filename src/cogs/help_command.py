@@ -1,7 +1,7 @@
 from itertools import groupby
 from typing import Optional, Union
 
-from discord import Embed, Colour, Interaction, ButtonStyle
+from discord import Embed, Color, Interaction, ButtonStyle
 from discord.ui import Button, View
 from discord.ext.commands import MinimalHelpCommand, CommandError, Command, Group
 
@@ -36,7 +36,7 @@ class ButtonsHelp:
 
         view = await BotHelpView(bot, ctx).initialize()
 
-        embed = Embed(colour=Colour.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("DuckHunt help"),
                               url=self.context.bot.config['website_url'] + "commands")
 
@@ -59,7 +59,7 @@ class ButtonsHelp:
 
         view = await CogHelpView(bot, cog, ctx).initialize()
 
-        embed = Embed(colour=Colour.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{cog} help", cog=cog.qualified_name),
                               url=self.context.bot.config['website_url'] + "commands")
 
@@ -89,7 +89,7 @@ class ButtonsHelp:
 
         view = await CogHelpView(bot, group, ctx).initialize()
 
-        embed = Embed(colour=Colour.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{cog} help", cog=group.qualified_name),
                               url=self.context.bot.config['website_url'] + f"commands/{group.qualified_name.replace(' ', '/')}")
 
@@ -114,7 +114,7 @@ class ButtonsHelp:
     async def send_command_help(self, command):
         _ = await self.context.get_translate_function()
 
-        embed = Embed(title=_("{cog} help", cog=command.qualified_name), colour=Colour.blurple(), )
+        embed = Embed(title=_("{cog} help", cog=command.qualified_name), color=Color.blurple(), )
         embed.url = self.context.bot.config['website_url'] + f"commands/{command.qualified_name.replace(' ', '/')}"
 
         if command.help:

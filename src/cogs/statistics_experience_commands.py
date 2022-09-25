@@ -70,7 +70,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} statistics (click me!).", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -111,7 +111,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} shooting stats.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -245,7 +245,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} best times.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -272,7 +272,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} kill counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -297,7 +297,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} hugs counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -326,7 +326,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} hurt counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -347,7 +347,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} resisted counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -368,7 +368,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} scared ducks.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -389,7 +389,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
-        embed = Embed(colour=Color.blurple(),
+        embed = Embed(color=Color.blurple(),
                               title=_("{target.name} achievements.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"

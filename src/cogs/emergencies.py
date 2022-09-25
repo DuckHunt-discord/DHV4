@@ -3,7 +3,7 @@ The emergencies command group, allowing for finer control of the bot, raw debugg
 """
 from typing import Set
 
-from discord import Embed, Colour, User, NotFound, HTTPException
+from discord import Embed, Color, User, NotFound, HTTPException
 from discord.ext.commands import group
 from tortoise import timezone
 
@@ -70,7 +70,7 @@ class Emergencies(Cog):
 
         embed = Embed()
 
-        embed.colour = Colour.dark_red()
+        embed.color = Color.dark_red()
         embed.title = f"Maintenance: ducks won't spawn for now"
         embed.description = f"{ctx.author.mention} has stopped ducks from appearing for now, due to maintenance " \
                             f"requirements.\nStand by for a new message announcing the return of the spawns"
@@ -92,7 +92,7 @@ class Emergencies(Cog):
 
         embed = Embed()
 
-        embed.colour = Colour.dark_green()
+        embed.color = Color.dark_green()
         embed.title = f"Maintenance: ducks are able to spawn"
         embed.description = f"{ctx.author.mention} has re-enabled ducks spawns."
 

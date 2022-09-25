@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from discord import Member, Message, Permissions, Guild, Embed, Color, Colour, HTTPException, Thread
+from discord import Member, Message, Permissions, Guild, Embed, Color, HTTPException, Thread
 from discord.ext.commands import command, guild_only, group, MaxConcurrency, BucketType
 from discord.utils import escape_mentions
 from babel.lists import format_list
@@ -192,7 +192,7 @@ class Event2021(Cog):
 
         embed = Embed(
             title=_("{target.name} event statistics", target=target),
-            colour=Color.green()
+            color=Color.green()
         )
         embed.description = _("The most important currency in the game are the points, which are used in the shop to buy "
                               "stuff. The available points show how many ponts you have and how many you acquired in "
@@ -523,7 +523,7 @@ class Event2021(Cog):
 
         db_guild = await get_from_db(ctx.guild)
 
-        stats_embed = Embed(colour=Colour.dark_green(),
+        stats_embed = Embed(color=Color.dark_green(),
                                     title=_("Landmines statistics"))
 
         stats_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/"
@@ -551,7 +551,7 @@ class Event2021(Cog):
                                   inline=False)
         stats_embed.add_field(name=_("Players in the negative"), value=str(negatives_count))
 
-        top_embed = Embed(colour=Colour.blurple(),
+        top_embed = Embed(color=Color.blurple(),
                                   title=_("Event scoreboard"))
         top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/?discord_embeds=sucks"
 

@@ -762,7 +762,7 @@ class PrivateMessagesSupport(Cog):
 
         _ = get_translate_function(ctx, language_code)
 
-        embed = Embed(colour=Color.blurple(), title=_("Language change offer"))
+        embed = Embed(color=Color.blurple(), title=_("Language change offer"))
 
         embed.description = _("DuckHunt support suggests you change your personal language "
                               "from {current_language} to {suggested_language}. This will translate "

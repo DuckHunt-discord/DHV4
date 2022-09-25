@@ -5,7 +5,7 @@ from random import randint, choice
 from typing import Dict
 from time import time
 
-from discord import Embed, Colour, Status, Game, TextChannel
+from discord import Embed, Color, Status, Game, TextChannel
 
 from utils.cog_class import Cog
 from utils.ducks import deserialize_duck, spawn_random_weighted_duck
@@ -130,7 +130,7 @@ class DucksSpawning(Cog):
             await self.planify(now)
             embed = Embed()
 
-            embed.colour = Colour.green()
+            embed.color = Color.green()
             embed.title = f"It's freetime !"
             embed.description = f"Your magazines have been refilled, and confiscated weapons have just been released"
             dtnow = datetime.fromtimestamp(now)
@@ -262,7 +262,7 @@ class DucksSpawning(Cog):
 
         embed = Embed()
 
-        embed.colour = Colour.dark_green()
+        embed.color = Color.dark_green()
         embed.title = f"Bot restarted"
         embed.description = f"The bot restarted and is now ready to spawn ducks. Get your rifles out!"
         embed.add_field(name="Statistics", value=f"{len(self.bot.guilds)} servers, "
@@ -325,11 +325,11 @@ class DucksSpawning(Cog):
 
         embed = Embed()
         if self.bot.current_event == Events.CALM:
-            embed.colour = Colour.green()
+            embed.color = Color.green()
             embed.title = f"{self.bot.current_event.value[0]} (no event for now)"
             embed.description = self.bot.current_event.value[1]
         else:
-            embed.colour = Colour.orange()
+            embed.color = Color.orange()
             embed.title = f"New event : {self.bot.current_event.value[0]}"
             embed.description = self.bot.current_event.value[1]
 
