@@ -1,8 +1,8 @@
-# Fake translation
 import time
 
 from utils.images import get_random_image
-from utils.models import DiscordMember, Player
+from utils.models import Player
+
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -10,6 +10,7 @@ HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
 
+# Fake translation
 def _(string):
     return string
 

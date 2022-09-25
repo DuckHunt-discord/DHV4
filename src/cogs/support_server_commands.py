@@ -1,22 +1,16 @@
 """
 Some example of commands that can be used only in the bot support server.
 """
-import asyncio
-import datetime
 import time
 
 import discord
-import pytz
 from discord.ext import commands, tasks, menus
 from tortoise import timezone
+from babel import dates
 
-from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import purge_channel_messages, EmbedCounterPaginator
-from babel import dates
-
-from utils.models import AccessLevel, get_from_db
 
 
 def _(message):

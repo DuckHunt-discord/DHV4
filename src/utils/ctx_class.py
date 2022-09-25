@@ -1,22 +1,18 @@
 import asyncio
 import io
+import typing
 
 import discord
-import typing
-from discord import Message, Interaction, AllowedMentions
-
+from discord import Message, Interaction
 from discord.ext import commands
-from discord.mentions import default
 from discord.utils import MISSING
 
 from utils.models import get_from_db
 from utils.translations import translate, ntranslate, get_translate_function, get_ntranslate_function
-
-if typing.TYPE_CHECKING:
-    from utils.bot_class import MyBot
-
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
+if typing.TYPE_CHECKING:
+    from utils.bot_class import MyBot
 
 
 class InvalidArgument(Exception):

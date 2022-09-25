@@ -1,5 +1,4 @@
 import asyncio
-import datetime
 import re
 
 import discord
@@ -9,8 +8,6 @@ from tortoise import timezone
 from utils import checks, models
 from utils.bot_class import MyBot
 from utils.human_time import ShortTime
-
-
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import make_message_embed

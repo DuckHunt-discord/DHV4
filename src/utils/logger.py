@@ -3,6 +3,7 @@ import typing
 
 import discord
 
+
 FILE_SIZE = 10000000
 
 

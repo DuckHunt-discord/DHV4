@@ -3,6 +3,7 @@ from pathlib import Path
 
 import discord
 
+
 IMAGE_EXTS = ["*.png", "*.jpg", "*.jpeg", "*.gif"]
 
 all_images = []

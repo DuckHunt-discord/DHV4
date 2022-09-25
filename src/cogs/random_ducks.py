@@ -1,4 +1,5 @@
 from discord.ext import commands
+
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.random_ducks import get_random_duck_file

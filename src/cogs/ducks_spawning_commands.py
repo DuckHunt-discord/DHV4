@@ -3,19 +3,15 @@ import datetime
 import random
 
 import discord
-from babel.dates import format_timedelta
 from discord.ext import commands
+from babel.dates import format_timedelta
 
 from utils import checks, models
-from utils.bot_class import MyBot
-from utils.interaction import get_webhook_if_possible
-
+from utils.cog_class import Cog
+from utils.ctx_class import MyContext
 from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, \
     PlasticDuck, KamikazeDuck, spawn_random_weighted_duck, \
     RANDOM_SPAWN_DUCKS_CLASSES, MechanicalDuck, NightDuck, SleepingDuck, CartographerDuck
-
-from utils.cog_class import Cog
-from utils.ctx_class import MyContext
 
 
 def _(message):

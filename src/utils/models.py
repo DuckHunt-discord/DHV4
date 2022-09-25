@@ -1,24 +1,22 @@
 import asyncio
 import collections
-import copy
 import datetime
 import random
 import string
 import time
-
-import babel.lists
-import discord
 import typing
+from enum import IntEnum, unique
 
+import discord
 from discord.ext import commands
 from tortoise import Tortoise, fields, timezone
 from tortoise.models import Model
-
-from enum import IntEnum, unique
+import babel.lists
 
 from utils.coats import Coats
 from utils.levels import get_level_info
 from utils.translations import translate
+
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
 SECOND = 1

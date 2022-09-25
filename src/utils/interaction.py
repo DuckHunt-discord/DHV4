@@ -1,16 +1,13 @@
 import asyncio
 import datetime
-
-import discord
 import typing
-from typing import List
 import random
 
+import discord
 from discord.ext import menus
 from discord.ext.commands import MemberConverter
 
 from utils.models import get_from_db, DiscordChannel
-
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 

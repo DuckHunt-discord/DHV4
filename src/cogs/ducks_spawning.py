@@ -3,15 +3,16 @@ import datetime
 import json
 import random
 from typing import Dict
-
-import discord
-from utils.cog_class import Cog
-from utils import ducks
 from time import time
 
-from utils.ducks import deserialize_duck, compute_sun_state
+import discord
+
+from utils import ducks
+from utils.cog_class import Cog
+from utils.ducks import deserialize_duck
 from utils.events import Events
-from utils.models import get_enabled_channels, DiscordChannel, get_from_db, DucksLeft
+from utils.models import get_enabled_channels, DiscordChannel, DucksLeft
+
 
 SECOND = 1
 MINUTE = 60 * SECOND

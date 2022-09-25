@@ -1,21 +1,21 @@
 import collections
-import datetime
 import typing
 from typing import Optional
 
-import aiohttp
 import discord
 from discord import Guild
 from discord.ext import commands
 from discord.ext.commands import MaxConcurrency, BucketType
 from discord.ext.commands.bot import AutoShardedBot
+import aiohttp
 from tortoise import timezone
 
-from utils import config as config
+from utils import config
 from utils.ctx_class import MyContext
 from utils.events import Events
 from utils.logger import FakeLogger
 from utils.models import get_from_db, AccessLevel, init_db_connection, DucksLeft
+
 
 if typing.TYPE_CHECKING:
     # Prevent circular imports

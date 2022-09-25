@@ -3,21 +3,15 @@ Commands to change settings in a channel/server
 
 These commands act where they are typed!
 """
-import asyncio
 import datetime
-import time
 from typing import Optional
 from uuid import uuid4
 
-import babel.lists
-import babel.numbers
 import discord
-
-from babel import Locale
-from babel.dates import parse_time, format_timedelta, get_time_format, format_time
-
 from discord.ext import commands
 from discord.utils import escape_markdown, escape_mentions
+from babel import Locale, lists, numbers, UnknownLocaleError
+from babel.dates import parse_time, format_timedelta, get_time_format, format_time
 
 from utils import checks, ducks, models
 from utils.cog_class import Cog
@@ -28,6 +22,7 @@ from utils.interaction import create_and_save_webhook
 from utils.levels import get_level_info_from_id
 from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState
 from utils.views import ConfirmView
+
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -428,7 +423,7 @@ class SettingsCommands(Cog):
             language_code = await ctx.get_language_code()
 
             global_prefixes = self.bot.config['bot']['prefixes']
-            global_prefixes_list = babel.lists.format_list(global_prefixes, locale=language_code)
+            global_prefixes_list = lists.format_list(global_prefixes, locale=language_code)
 
             await ctx.send(_("There is no specific prefix set for this guild.") + " " +
                            _("You can call me with any of the global prefixes : {global_prefixes_list}",
@@ -452,7 +447,7 @@ class SettingsCommands(Cog):
         elif language_code:
             try:
                 locale_data = Locale.parse(language_code)
-            except (babel.UnknownLocaleError, ValueError):
+            except (UnknownLocaleError, ValueError):
                 _ = await ctx.get_translate_function()
                 # Send it twice, in english and the original language.
                 await ctx.send(
@@ -892,7 +887,7 @@ class SettingsCommands(Cog):
             await ctx.send(
                 _("❌ I don't know what type of duck you are talking about. Choose one in {allowed_ducks_types}.",
                   channel=ctx.channel,
-                  allowed_ducks_types=babel.lists.format_list(allowed_ducks_types, locale=await ctx.get_language_code())
+                  allowed_ducks_types=lists.format_list(allowed_ducks_types, locale=await ctx.get_language_code())
                   ))
             return
 
@@ -937,7 +932,7 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("On {channel.mention}, ducks will stay for {value} seconds.",
                          channel=ctx.channel,
-                         value=babel.numbers.format_decimal(db_channel.ducks_time_to_live,
+                         value=numbers.format_decimal(db_channel.ducks_time_to_live,
                                                             locale=await ctx.get_language_code())))
 
     @settings.command()
@@ -1403,7 +1398,7 @@ class SettingsCommands(Cog):
         if language_code:
             try:
                 locale_data = Locale.parse(language_code)
-            except (babel.UnknownLocaleError, ValueError):
+            except (UnknownLocaleError, ValueError):
                 _ = await ctx.get_translate_function()
                 # Send it twice, in english and the original language.
                 await ctx.reply(

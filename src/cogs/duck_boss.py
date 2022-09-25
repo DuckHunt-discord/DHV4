@@ -1,16 +1,14 @@
-import datetime
 import random
 from typing import List
 
 import discord
-from babel.dates import format_timedelta
 from discord.ext import tasks
-from discord.utils import utcnow
+from babel.dates import format_timedelta
 from tortoise import timezone
 
 from utils.cog_class import Cog
 from utils.inventory_items import FoieGras
-from utils.models import DiscordUser, get_user_inventory
+from utils.models import DiscordUser
 
 
 class DuckBoss(Cog):

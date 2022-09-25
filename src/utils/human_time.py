@@ -13,12 +13,11 @@ UserFriendlyTime: FutureTime, but allow omission of quotes
 human_timedelta convert two datetimes to a string that is humanised to tell how long went between dt and source.
 
 """
-import datetime
 import re
 
+from discord.ext import commands
 import parsedatetime as pdt
 from dateutil.relativedelta import relativedelta
-from discord.ext import commands
 from tortoise import timezone
 
 from .formats import Plural, human_join

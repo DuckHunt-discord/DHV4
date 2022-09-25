@@ -1,25 +1,19 @@
 """
 The emergencies command group, allowing for finer control of the bot, raw debugging and statistics.
 """
-import asyncio
-import datetime
-import time
 from typing import Set
 
 import discord
-import pytz
-from discord.ext import commands, tasks, menus
+from discord import Embed
+from discord.ext import commands
 from tortoise import timezone
 
 from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.interaction import purge_channel_messages, EmbedCounterPaginator
-from babel import dates
-
 from utils.models import AccessLevel, get_from_db
-from discord import Embed
-from utils.ducks import Map, MapTile
+from utils.ducks import Map
+
 
 def _(message):
     return message

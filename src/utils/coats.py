@@ -1,12 +1,11 @@
 import random
 from enum import Enum, unique
 
+from discord.ext import commands
+from babel.lists import format_list
+
 
 # Fake translation
-from babel.lists import format_list
-from discord.ext import commands
-
-
 def _(string):
     return string
 

@@ -1,10 +1,10 @@
 from collections import defaultdict
 from typing import Union, Optional
 
+from discord.ext.commands import Group
 import aiohttp_cors
 from aiohttp import web
 from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
-from discord.ext.commands import Group
 
 from utils.cog_class import Cog
 from utils.models import DiscordChannel, get_from_db, Player, AccessLevel

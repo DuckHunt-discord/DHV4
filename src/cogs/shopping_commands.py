@@ -4,8 +4,8 @@ import time
 from typing import Optional
 
 import discord
-from babel.dates import format_timedelta
 from discord.ext import commands
+from babel.dates import format_timedelta
 
 from utils import checks, ducks
 from utils.coats import Coats, get_random_coat_type
@@ -14,6 +14,7 @@ from utils.ctx_class import MyContext
 from utils.events import Events
 from utils.interaction import get_timedelta
 from utils.models import get_player, Player, get_from_db, DiscordChannel
+
 
 SECOND = 1
 MINUTE = 60 * SECOND

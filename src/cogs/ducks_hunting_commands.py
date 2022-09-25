@@ -7,14 +7,12 @@ from urllib.parse import quote_plus
 import discord
 from discord import ButtonStyle
 from discord.ext import commands
+from babel.dates import format_timedelta
 
 from utils import checks
 from utils.coats import Coats
 from utils.events import Events
 from utils.interaction import get_timedelta, SmartMemberConverter
-
-from babel.dates import format_timedelta
-
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_player, Player, get_random_player, DiscordUser, DiscordChannel

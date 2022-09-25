@@ -6,7 +6,6 @@ from typing import List
 import discord
 from discord.ext import commands, menus
 
-from utils import checks
 from utils.checks import BotIgnore
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext

@@ -2,12 +2,12 @@ import pathlib
 import random
 from functools import partial
 from io import BytesIO
-from typing import Tuple, List
 
 import discord
 from PIL import Image
 
 from utils.config import load_config
+
 
 config = load_config()['random_ducks']
 random_ducks_assets = pathlib.Path(config['assets_path'])

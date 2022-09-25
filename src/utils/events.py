@@ -1,7 +1,7 @@
-# Fake translation
 from enum import Enum, unique
 
 
+# Fake translation
 def _(string):
     return string
 

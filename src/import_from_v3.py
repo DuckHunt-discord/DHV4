@@ -3,13 +3,12 @@ import datetime
 import json
 import time
 
-from tortoise import Tortoise
 from tqdm import tqdm
 
-from utils import models
 from utils.config import load_config
 from utils.models import init_db_connection, DiscordGuild, DiscordChannel, DiscordUser, DiscordMember, AccessLevel, \
     Player
+
 
 DHV3_PLAYERS_FILE = "import_v3_data/DHV3_players.json"
 DHV3_SETTINGS_FILE = "import_v3_data/DHV3_settings.json"

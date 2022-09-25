@@ -20,6 +20,7 @@ from utils.inventory_items import FoieGras
 from utils.models import get_from_db, AccessLevel
 from utils.translations import TRANSLATORS, get_pct_complete
 
+
 SECOND = 1
 MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE

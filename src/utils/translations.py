@@ -1,10 +1,10 @@
 import gettext
-from typing import Iterable, Optional
+from typing import Optional
 
 import polib
 
-# Oldest first
 
+# Oldest first
 TRANSLATORS = {
     'ar': { 'flag_code': '🇸🇦', 'user_ids': [595682186452271108, 631821494774923264] },
     'en_US': { 'flag_code': '🇺🇸', 'user_ids': [138751484517941259] },

@@ -1,6 +1,8 @@
-import toml
 import sys
 import os
+
+import toml
+
 
 assert len(sys.argv) == 3, "Excepting config load file as first argument and output file as second argument"
 

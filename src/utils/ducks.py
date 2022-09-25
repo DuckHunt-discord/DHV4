@@ -3,15 +3,14 @@ import datetime
 import random
 import time
 from enum import Enum
+import typing
 from typing import Optional
 
 import discord
-import typing
-
-from babel.dates import format_timedelta
 from discord.utils import escape_markdown
+from babel.dates import format_timedelta
 
-from utils import config
+from utils import ducks_config
 from utils.bot_class import MyBot
 from utils.bushes import bushes_objects, bushes_weights
 from utils.coats import Coats
@@ -19,7 +18,6 @@ from utils.events import Events
 from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
 from utils.models import DiscordChannel, get_from_db, Player, get_player, SunState
 from utils.translations import translate, ntranslate
-import utils.ducks_config as ducks_config
 
 SECOND = 1
 MINUTE = 60 * SECOND

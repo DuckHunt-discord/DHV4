@@ -4,21 +4,21 @@ Testing in progress, please keep the lights off.
 """
 import time
 from functools import partial
-
-import numpy as np
 from io import BytesIO
 from typing import Optional
 
-import seam_carving
-from PIL import Image, ImageOps
 import discord
 from discord.ext import commands
+import numpy as np
+import seam_carving
+from PIL import Image, ImageOps
 
 from utils.checks import needs_access_level
 from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
+
 
 GIF_STEP = -10
 BASE_DURATION = 10

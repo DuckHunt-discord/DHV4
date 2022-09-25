@@ -1,13 +1,13 @@
 import pathlib
 import sys
 from typing import Tuple, List, Dict
-
-import discord
 import os
 import string
 
+import discord
 from babel.messages.pofile import read_po
 from babel.messages import catalog
+
 
 SRC_DIRECTORY = pathlib.Path(__file__).parent.parent
 print(f"Detected src directory: {SRC_DIRECTORY}")
