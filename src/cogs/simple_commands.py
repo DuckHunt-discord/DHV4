@@ -112,14 +112,14 @@ class SimpleCommands(Cog):
         """
 
         await ctx.send(
-            f"<https://duckhunt.me/invite>")
+            "<https://duckhunt.me/invite>")
 
     @command()
     async def support(self, ctx: MyContext):
         """
         Get a discord invite to the support server.
         """
-        await ctx.send(f"<https://duckhunt.me/support>")
+        await ctx.send("<https://duckhunt.me/support>")
 
     @command(aliases=["giveback", "ft"])
     @channel_enabled()
@@ -188,7 +188,7 @@ class SimpleCommands(Cog):
             embed.add_field(name=_("Translations"), value=_("The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."), inline=False)
 
             f = File("assets/Robot_Ducc_Globloxmen.jpg")
-            embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
+            embed.set_image(url="attachment://Robot_Ducc_Globloxmen.jpg")
 
             await ctx.send(embed=embed, file=f)
         else:
@@ -333,7 +333,7 @@ class SimpleCommands(Cog):
             await message.reply(f"Didn't get enough yes votes ({got_yes} < {yes_trigger}). Not spawning a boss.")
             return
         elif got_yes >= yes_trigger:
-            await message.reply(f"🦆 Alright. I'm spawning a boss. Congratulations.")
+            await message.reply("🦆 Alright. I'm spawning a boss. Congratulations.")
             boss_cog = self.bot.get_cog('DuckBoss')
             await boss_cog.spawn_boss()
 

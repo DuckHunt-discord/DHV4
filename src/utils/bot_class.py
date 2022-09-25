@@ -158,7 +158,7 @@ class MyBot(AutoShardedBot):
                       ))
             except Forbidden:
                 ctx.logger.debug(
-                    f"Couldn't send the welcome DM, forbidden.")
+                    "Couldn't send the welcome DM, forbidden.")
 
             db_user.first_use = False
             await db_user.save()
@@ -179,11 +179,11 @@ class MyBot(AutoShardedBot):
         self.shards_ready = set()
 
     async def on_ready(self):
-        messages = ["-----------", f"The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
+        messages = ["-----------", "The bot is ready.", f"Logged in as {self.user.name} ({self.user.id})."]
         total_members = len(self.users)
         messages.append(f"I see {len(self.guilds)} guilds, and {total_members} members.")
         messages.append(
-            f"To invite your bot to your server, use the following link: https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489")
+            "To invite your bot to your server, use the following link: https://discord.com/oauth2/authorize?client_id=187636051135823872&scope=bot&permissions=741735489")
         cogs_count = len(self.cogs)
         messages.append(f"{cogs_count} cogs are loaded")
         messages.append("-----------")

@@ -198,7 +198,7 @@ class FakeLogger:
             return f"<{member.name}#{member.discriminator}> "
 
         else:
-            return f""
+            return ""
 
     def debug(self, message: str, guild: Optional[Guild] = None,
               channel: Optional[ChannelType] = None, member: Optional[Member] = None):

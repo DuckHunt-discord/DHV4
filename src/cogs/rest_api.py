@@ -45,7 +45,7 @@ class RestAPI(Cog):
         self.bot.loop.create_task(self.run())
 
     async def cog_unload(self):
-        self.bot.logger.info(f"DuckHunt JSON API is shutting down...")
+        self.bot.logger.info("DuckHunt JSON API is shutting down...")
         self.bot.loop.create_task(self.site.stop())
 
     async def authenticate_request(self, request, channel=None):

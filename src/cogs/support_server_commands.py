@@ -74,7 +74,7 @@ class SupportServerCommands(Cog):
             mc_command_name, mc_command_uses = self.bot.commands_used.most_common(1)[0]
             embed.add_field(name="Commands (most used)", value=f"dh!{mc_command_name} ({mc_command_uses} uses)", inline=False)
         except (ValueError, IndexError):
-            embed.add_field(name="Commands", value=f"❌", inline=False)
+            embed.add_field(name="Commands", value="❌", inline=False)
 
         ds_cog = self.bot.get_cog("DucksSpawning")
         if ds_cog:
@@ -83,25 +83,25 @@ class SupportServerCommands(Cog):
             diff = now - loop_time
             diff_str = round(diff, 2)
             if loop_time == 0:
-                embed.add_field(name="Ducks Loop", value=f"⚠️ Restoring ducks...", inline=True)
+                embed.add_field(name="Ducks Loop", value="⚠️ Restoring ducks...", inline=True)
             elif diff < 2:
                 embed.add_field(name="Ducks Loop", value=f"✅ {diff_str}s off", inline=True)
             else:
                 embed.add_field(name="Ducks Loop", value=f"⚠️ {diff_str}s off", inline=True)
         else:
-            embed.add_field(name="Ducks Loop", value=f"❌ Unloaded", inline=True)
+            embed.add_field(name="Ducks Loop", value="❌ Unloaded", inline=True)
 
         boss_cog = self.bot.get_cog("DuckBoss")
         if boss_cog:
             if boss_cog.background_loop.failed():
-                embed.add_field(name="Boss Loop", value=f"❌ Failed", inline=True)
+                embed.add_field(name="Boss Loop", value="❌ Failed", inline=True)
             else:
 
                 embed.add_field(name="Boss Loop", value=f"✅ {boss_cog.iterations_spawn} spawns "
                                                         f"({ round(boss_cog.luck) }% luck), {boss_cog.background_loop.current_loop} it",
                                 inline=True)
         else:
-            embed.add_field(name="Boss Loop", value=f"❌ Unloaded", inline=True)
+            embed.add_field(name="Boss Loop", value="❌ Unloaded", inline=True)
 
         embed.timestamp = timezone.now()
 
@@ -135,7 +135,7 @@ class SupportServerCommands(Cog):
                 message += "**"
             message += f"•\t Shard ID {shard}: {round(latency, 2)}ms"
             if shard in self.bot.shards_ready:
-                message += f" (ready)"
+                message += " (ready)"
             if shard == ctx.guild.shard_id:
                 message += "**"
             message += "\n"

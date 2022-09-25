@@ -2,7 +2,7 @@ from abc import ABC
 from typing import Iterable, List, Any, Optional, Dict, Union
 
 from discord import Interaction, ButtonStyle, Message, Embed, Color
-from discord.ui import Button, Item, View, button
+from discord.ui import Button, Item, View as uiView, button
 from discord.abc import Messageable
 from discord.ext.commands import Command
 
@@ -125,7 +125,7 @@ class CommandButton(AutomaticDeferMixin, Button):
             return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
 
 
-class View(View):
+class View(uiView):
     """
     Nicer view subclass, providing some convenience methods for subclasses.
     """

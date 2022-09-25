@@ -181,7 +181,7 @@ async def make_message_embed(message: Message):
             embed.add_field(name="Attached", value=attach.url)
 
     if not message.guild:
-        embed.set_footer(text=f"Private message",
+        embed.set_footer(text="Private message",
                          icon_url=str(message.guild.icon.url))
     elif message.channel.is_nsfw():
         embed.set_footer(text=f"{message.guild.name}: [NSFW] #{message.channel.name}",

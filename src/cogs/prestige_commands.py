@@ -84,7 +84,7 @@ class PrestigeCommands(Cog):
         e.add_field(name=_("Level 9"), value=_("**???**: Suggestions are welcome"))  # TODO
 
         f = File("assets/Rich_Ducc_Globloxmen.jpg")
-        e.set_image(url=f"attachment://Rich_Ducc_Globloxmen.jpg")
+        e.set_image(url="attachment://Rich_Ducc_Globloxmen.jpg")
 
         await ctx.send(embed=e, file=f)
 

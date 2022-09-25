@@ -84,7 +84,7 @@ def check_po_file(file: Path) -> Tuple[bool, List[str], List[Embed]]:
 
                 em = Embed(color=ERROR_COLOR,
                                    title=lang_name,
-                                   description=f"Bad f-string formatting")
+                                   description="Bad f-string formatting")
 
                 em.add_field(name="Keys in english", value=str(message_id_keys), inline=False)
                 em.add_field(name="Error", value=str(e), inline=False)
@@ -109,7 +109,7 @@ def check_po_file(file: Path) -> Tuple[bool, List[str], List[Embed]]:
                                     f"ID_: {message_id_keys} ({message_id})\n"
                                     f"STR: {message_string_keys} ({message_string})")
 
-                    e.description = f"Mistranslated (missing f-keys)"
+                    e.description = "Mistranslated (missing f-keys)"
                     embeds.append(e)
 
                     result = False
@@ -118,7 +118,7 @@ def check_po_file(file: Path) -> Tuple[bool, List[str], List[Embed]]:
                                     f"ID_: {message_id_keys} ({message_id})\n"
                                     f"STR: {message_string_keys} ({message_string})")
 
-                    e.description = f"Probably mistranslated (different f-keys)"
+                    e.description = "Probably mistranslated (different f-keys)"
                     embeds.append(e)
 
                     result = False
@@ -134,9 +134,9 @@ def main():
 
     if webhook_url:
         webhook = SyncWebhook.from_url(url=webhook_url)
-        print(f"Detected webhook OS var... Logging to #l10n")
+        print("Detected webhook OS var... Logging to #l10n")
     else:
-        print(f"Webhook OS var not detected... Are we in a PR ?")
+        print("Webhook OS var not detected... Are we in a PR ?")
 
     failed_files: Dict[Path, List[str]] = {}
     failed_files_embeds: Dict[Path, List[Embed]] = {}
@@ -164,7 +164,7 @@ def main():
             for embed in embeds:
                 webhook.send(embed=embed)
     else:
-        print(f"✅ All is good !")
+        print("✅ All is good !")
     sys.exit(len(failed_files))
 
 

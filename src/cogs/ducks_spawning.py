@@ -131,8 +131,8 @@ class DucksSpawning(Cog):
             embed = Embed()
 
             embed.color = Color.green()
-            embed.title = f"It's freetime !"
-            embed.description = f"Your magazines have been refilled, and confiscated weapons have just been released"
+            embed.title = "It's freetime !"
+            embed.description = "Your magazines have been refilled, and confiscated weapons have just been released"
             dtnow = datetime.fromtimestamp(now)
             if dtnow.day == 1 and dtnow.month == 4:
                 # April 1st
@@ -147,7 +147,7 @@ class DucksSpawning(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
-        self.bot.logger.info(f"Saving ducks to cache...")
+        self.bot.logger.info("Saving ducks to cache...")
 
         ducks_spawned = self.bot.ducks_spawned
 
@@ -216,10 +216,10 @@ class DucksSpawning(Cog):
             self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
             self.bot.logger.error("Bad examples : " + ', '.join([str(c.discord_id) for c in channels_to_disable[:10]]))
         else:
-            self.bot.logger.debug(f"All the channels are available :)")
+            self.bot.logger.debug("All the channels are available :)")
 
     async def before(self):
-        self.bot.logger.info(f"Waiting for ready-ness to planify duck spawns...")
+        self.bot.logger.info("Waiting for ready-ness to planify duck spawns...")
 
         await self.bot.wait_until_ready()
         # Wait 5 seconds because discord.py can send the ready event a little bit too early
@@ -227,7 +227,7 @@ class DucksSpawning(Cog):
         # Then try again to make sure we are still good.
         await self.bot.wait_until_ready()
 
-        self.bot.logger.info(f"Restoring ducks from cache...")
+        self.bot.logger.info("Restoring ducks from cache...")
 
         ducks_count = 0
         try:
@@ -237,11 +237,11 @@ class DucksSpawning(Cog):
             self.bot.logger.warning("No ducks_spawned_cache.json found. Normal on first run.")
             serialized = {}
 
-        self.bot.logger.info(f"Loaded JSON file...")
+        self.bot.logger.info("Loaded JSON file...")
 
-        self.bot.logger.debug(f"Building channels hash table for fast-access...")
+        self.bot.logger.debug("Building channels hash table for fast-access...")
         channels = {c.id: c for c in self.bot.get_all_channels()}
-        self.bot.logger.debug(f"Hash table built, restoring ducks...")
+        self.bot.logger.debug("Hash table built, restoring ducks...")
 
         for channel_id, ducks in serialized.items():
             channel = channels.get(int(channel_id), None)
@@ -256,22 +256,22 @@ class DucksSpawning(Cog):
 
         await sleep(1)
 
-        self.bot.logger.info(f"Planifying ducks spawns for the rest of the day")
+        self.bot.logger.info("Planifying ducks spawns for the rest of the day")
 
         await self.planify()
 
         embed = Embed()
 
         embed.color = Color.dark_green()
-        embed.title = f"Bot restarted"
-        embed.description = f"The bot restarted and is now ready to spawn ducks. Get your rifles out!"
+        embed.title = "Bot restarted"
+        embed.description = "The bot restarted and is now ready to spawn ducks. Get your rifles out!"
         embed.add_field(name="Statistics", value=f"{len(self.bot.guilds)} servers, "
                                                  f"{len(self.bot.enabled_channels)} channels")
         embed.add_field(name="Help and support", value="https://duckhunt.me/support")
         embed.set_footer(text="Ducks that were on the channel previously should have been restored, and can be killed.")
         await self.bot.log_to_channel(embed=embed)
 
-        self.bot.logger.info(f"Restoring an event for the rest of the hour")
+        self.bot.logger.info("Restoring an event for the rest of the hour")
 
         try:
             with open("cache/event_cache.json", "r") as f:
@@ -289,7 +289,7 @@ class DucksSpawning(Cog):
         game = Game(self.bot.current_event.value[0])
         await self.bot.change_presence(status=Status.online, activity=game)
 
-        self.bot.logger.info(f"Ducks spawning started")
+        self.bot.logger.info("Ducks spawning started")
 
     async def calculate_ducks_per_day(self, db_channel: DiscordChannel, now: int):
         # TODO : Compute ducks sleep

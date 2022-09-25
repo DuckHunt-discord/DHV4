@@ -56,7 +56,7 @@ class DuckBoss(Cog):
         else:
             new_embed.set_image(url=choice(["https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png",
                                                    "https://media.discordapp.net/attachments/795225915248214036/873971254888108092/boss_llama_Calgeka.png"]))
-            new_embed.set_footer(text=f"The boss just spawned")
+            new_embed.set_footer(text="The boss just spawned")
 
         return new_embed
 

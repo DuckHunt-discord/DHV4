@@ -52,7 +52,7 @@ class Emergencies(Cog):
 
         await ducks_spawning_cog.planify()
 
-        await ctx.reply(f"Ducks spawns have been reset based on the current time of the day.")
+        await ctx.reply("Ducks spawns have been reset based on the current time of the day.")
 
     @manage_bot.command(aliases=["disable_spawns"])
     async def stop_spawns(self, ctx: MyContext):
@@ -71,7 +71,7 @@ class Emergencies(Cog):
         embed = Embed()
 
         embed.color = Color.dark_red()
-        embed.title = f"Maintenance: ducks won't spawn for now"
+        embed.title = "Maintenance: ducks won't spawn for now"
         embed.description = f"{ctx.author.mention} has stopped ducks from appearing for now, due to maintenance " \
                             f"requirements.\nStand by for a new message announcing the return of the spawns"
 
@@ -93,7 +93,7 @@ class Emergencies(Cog):
         embed = Embed()
 
         embed.color = Color.dark_green()
-        embed.title = f"Maintenance: ducks are able to spawn"
+        embed.title = "Maintenance: ducks are able to spawn"
         embed.description = f"{ctx.author.mention} has re-enabled ducks spawns."
 
         await self.bot.log_to_channel(embed=embed)
@@ -107,7 +107,7 @@ class Emergencies(Cog):
 
         await boss_cog.spawn_boss()
 
-        await ctx.reply(f"A boss has been spawned.")
+        await ctx.reply("A boss has been spawned.")
 
     @manage_bot.command(aliases=["event", "reroll_event", "change_event", "regen_event"])
     async def update_event(self, ctx: MyContext, force=True):
@@ -118,7 +118,7 @@ class Emergencies(Cog):
 
         await ducks_spawning_cog.change_event(force=force)
 
-        await ctx.reply(f"New event rolled.")
+        await ctx.reply("New event rolled.")
 
     @manage_bot.command()
     async def give_trophy(self, ctx: MyContext, trophy_key: str, user: User, value: bool = True):

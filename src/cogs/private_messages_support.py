@@ -274,7 +274,7 @@ class PrivateMessagesSupport(Cog):
 
                     await self.clear_caches(ticket_channel)
 
-                    await ticket_channel.delete(reason=f"Automatic deletion for inactivity.")
+                    await ticket_channel.delete(reason="Automatic deletion for inactivity.")
 
     @background_loop.before_loop
     async def before(self):
