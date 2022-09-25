@@ -1,25 +1,25 @@
-import pathlib
-import random
+from pathlib import Path
+from random import choice
 from functools import partial
 from io import BytesIO
 
-import discord
+from discord import File
 from PIL import Image
 
 from utils.config import load_config
 
 
 config = load_config()['random_ducks']
-random_ducks_assets = pathlib.Path(config['assets_path'])
+random_ducks_assets = Path(config['assets_path'])
 
 assert random_ducks_assets.exists()
 
 
-def get_random_file_from_directory(directory) -> pathlib.Path:
+def get_random_file_from_directory(directory) -> Path:
     assert directory.exists(), f"Directory {directory} does not exist"
     assert directory.is_dir(), f"{directory} is not a directory"
 
-    file_path = random.choice(list(directory.glob("*.png")))
+    file_path = choice(list(directory.glob("*.png")))
 
     return file_path
 
@@ -63,7 +63,7 @@ async def get_random_duck_file(bot, artist="Calgeka", with_background=True):
     fn = partial(get_random_duck_bytes, artist, with_background)
 
     buffer, debug = await bot.loop.run_in_executor(None, fn)
-    file = discord.File(filename="random_duck.png", fp=buffer)
+    file = File(filename="random_duck.png", fp=buffer)
 
     return file, debug
 

@@ -1,10 +1,12 @@
-import asyncio
+from asyncio import gather
 from typing import Union
 
-import discord
-from discord.ext import commands, menus
+from discord import Embed, Member, User, Color
+from discord.ext.commands import command
+from discord.ext.menus import ListPageSource, MenuPages
 
-from utils import checks, models
+from utils.checks import channel_enabled, needs_access_level
+from utils.models import AccessLevel
 from utils.achievements import achievements
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -15,7 +17,7 @@ def _(message):
     return message
 
 
-class TopScoresSource(menus.ListPageSource):
+class TopScoresSource(ListPageSource):
     def __init__(self, ctx: MyContext, data, title):
         super().__init__(data, per_page=6)
         self.ctx = ctx
@@ -23,7 +25,7 @@ class TopScoresSource(menus.ListPageSource):
 
     async def format_page(self, menu, entries):
         _ = await self.ctx.get_translate_function()
-        e = discord.Embed()
+        e = Embed()
         e.title = self.title
         e.url = f"{self.ctx.bot.config['website_url']}data/channels/{self.ctx.channel.id}"
         offset = menu.current_page * self.per_page
@@ -36,7 +38,7 @@ class TopScoresSource(menus.ListPageSource):
 
 
 async def show_topscores_pages(ctx, title: str):
-    pages = menus.MenuPages(
+    pages = MenuPages(
         source=
         TopScoresSource(
             ctx,
@@ -56,9 +58,9 @@ class StatisticsCommands(Cog):
     display_name = _("Statistics")
     help_priority = 5
 
-    @commands.command(aliases=["quick_stats", "quickstats"])
-    @checks.channel_enabled()
-    async def me(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["quick_stats", "quickstats"])
+    @channel_enabled()
+    async def me(self, ctx: MyContext, target: Member = None):
         """
         Get some quickstats about yourself (or someone else).
         """
@@ -68,7 +70,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} statistics (click me!).", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -97,9 +99,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["shoots", "shooting"])
-    @checks.channel_enabled()
-    async def shooting_stats(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["shoots", "shooting"])
+    @channel_enabled()
+    async def shooting_stats(self, ctx: MyContext, target: Member = None):
         """
         Get shooting stats (for you or someone else).
         """
@@ -109,7 +111,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} shooting stats.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -231,9 +233,9 @@ class StatisticsCommands(Cog):
             elif not_found_message:
                 embed.add_field(name=field_name, value=str(not_found_message), inline=True)
 
-    @commands.command(aliases=["times", "besttimes"])
-    @checks.channel_enabled()
-    async def best_times(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["times", "besttimes"])
+    @channel_enabled()
+    async def best_times(self, ctx: MyContext, target: Member = None):
         """
         Get best times to kill of ducks (for you or someone else).
         """
@@ -243,7 +245,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} best times.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -258,9 +260,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["kills", "killsstats", "killcounts", "kills_count", "kill_count", "killed"])
-    @checks.channel_enabled()
-    async def kills_stats(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["kills", "killsstats", "killcounts", "kills_count", "kill_count", "killed"])
+    @channel_enabled()
+    async def kills_stats(self, ctx: MyContext, target: Member = None):
         """
         Get number of each type of duck killed (for you or someone else).
         """
@@ -270,7 +272,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} kill counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -283,9 +285,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["hugs", "hugsstats", "hugged"])
-    @checks.channel_enabled()
-    async def hugs_stats(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["hugs", "hugsstats", "hugged"])
+    @channel_enabled()
+    async def hugs_stats(self, ctx: MyContext, target: Member = None):
         """
         Get number of each type of duck hugged (for you or someone else).
         """
@@ -295,7 +297,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} hugs counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -312,9 +314,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["hurt", "hurtstats"])
-    @checks.channel_enabled()
-    async def hurt_stats(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["hurt", "hurtstats"])
+    @channel_enabled()
+    async def hurt_stats(self, ctx: MyContext, target: Member = None):
         """
         Get number of each type of duck hurt (for you or someone else).
         """
@@ -324,7 +326,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} hurt counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -333,9 +335,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["resisted", "resiststats"])
-    @checks.channel_enabled()
-    async def resist_stats(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["resisted", "resiststats"])
+    @channel_enabled()
+    async def resist_stats(self, ctx: MyContext, target: Member = None):
         """
         Get number of each type of duck that resisted a shot (for you or someone else).
         """
@@ -345,7 +347,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} resisted counts.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -354,9 +356,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["frightened", "frightenstats", "frightened_stats", "frightenedstats", "frighten"])
-    @checks.channel_enabled()
-    async def frighten_stats(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["frightened", "frightenstats", "frightened_stats", "frightenedstats", "frighten"])
+    @channel_enabled()
+    async def frighten_stats(self, ctx: MyContext, target: Member = None):
         """
         Get number of each type of duck that fled following a shot (for you or someone else).
         """
@@ -366,7 +368,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} scared ducks.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -375,9 +377,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["ach"])
-    @checks.channel_enabled()
-    async def achievements(self, ctx: MyContext, target: discord.Member = None):
+    @command(aliases=["ach"])
+    @channel_enabled()
+    async def achievements(self, ctx: MyContext, target: Member = None):
         """
         Show your/someone else achievements in the channel
         """
@@ -387,7 +389,7 @@ class StatisticsCommands(Cog):
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(target, ctx.channel, giveback=True)
 
-        embed = discord.Embed(colour=discord.Color.blurple(),
+        embed = Embed(colour=Color.blurple(),
                               title=_("{target.name} achievements.", target=target))
 
         embed.url = f"{self.bot.config['website_url']}data/channels/{ctx.channel.id}/{target.id}"
@@ -399,13 +401,13 @@ class StatisticsCommands(Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["sendexp", "sendxp", "send_xp"])
-    @checks.channel_enabled()
-    async def send_exp(self, ctx: MyContext, target: discord.Member, amount: int):
+    @command(aliases=["sendexp", "sendxp", "send_xp"])
+    @channel_enabled()
+    async def send_exp(self, ctx: MyContext, target: Member, amount: int):
         """
         Send some of your experience to another player.
         """
-        _, db_channel, db_sender, db_reciver = await asyncio.gather(ctx.get_translate_function(),
+        _, db_channel, db_sender, db_reciver = await gather(ctx.get_translate_function(),
                                                                     get_from_db(ctx.channel),
                                                                     get_player(ctx.author, ctx.channel),
                                                                     get_player(target, ctx.channel))
@@ -434,7 +436,7 @@ class StatisticsCommands(Cog):
         await db_sender.edit_experience_with_levelups(ctx, -amount)
         await db_reciver.edit_experience_with_levelups(ctx, amount - tax)
 
-        await asyncio.gather(db_sender.save(), db_reciver.save())
+        await gather(db_sender.save(), db_reciver.save())
 
         await ctx.reply(_("🏦 You sent {recived} experience to {reciver.mention}. "
                           "A tax of {db_channel.tax_on_user_send}% was applied to this transaction (taking {tax} exp out of the total sent).",
@@ -445,14 +447,14 @@ class StatisticsCommands(Cog):
                           reciver=target,
                           db_channel=db_channel))
 
-    @commands.command(aliases=["giveexp", "givexp", "give_xp"])
-    @checks.channel_enabled()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    async def give_exp(self, ctx: MyContext, target: discord.Member, amount: int):
+    @command(aliases=["giveexp", "givexp", "give_xp"])
+    @channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    async def give_exp(self, ctx: MyContext, target: Member, amount: int):
         """
         Give some experience to another player. This is a cheat.
         """
-        _, db_receiver = await asyncio.gather(ctx.get_translate_function(), get_player(target, ctx.channel))
+        _, db_receiver = await gather(ctx.get_translate_function(), get_player(target, ctx.channel))
 
         if target.bot:
             await ctx.reply(_("❌ I'm not sure that {target.mention} can play DuckHunt.", target=target))
@@ -466,8 +468,8 @@ class StatisticsCommands(Cog):
                           amount=amount,
                           reciver=target, ))
 
-    @commands.command(aliases=["best", "scores"])
-    @checks.channel_enabled()
+    @command(aliases=["best", "scores"])
+    @channel_enabled()
     async def top(self, ctx: MyContext):
         """
         Who's the best ?
@@ -476,10 +478,10 @@ class StatisticsCommands(Cog):
 
         await show_topscores_pages(ctx, _("Top Scores on #{channel}", channel=ctx.channel.name))
 
-    @commands.command(aliases=["delete_user", "del_user", "del_user_id", "rem_user", "rem_user_id"])
-    @checks.needs_access_level(models.AccessLevel.MODERATOR)
-    @checks.channel_enabled()
-    async def remove_user(self, ctx: MyContext, target: Union[discord.Member, discord.User]):
+    @command(aliases=["delete_user", "del_user", "del_user_id", "rem_user", "rem_user_id"])
+    @channel_enabled()
+    @needs_access_level(AccessLevel.MODERATOR)
+    async def remove_user(self, ctx: MyContext, target: Union[Member, User]):
         """
         Delete scores for a specific user from the channel. The target can be an ID or a mention.
 
@@ -495,9 +497,9 @@ class StatisticsCommands(Cog):
 
         await ctx.send(_("{target.name}#{target.discriminator} data was deleted from this channel.", target=target))
 
-    @commands.command(aliases=["remove_all_scores_and_stats_on_this_channel"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @command(aliases=["remove_all_scores_and_stats_on_this_channel"])
+    @channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
     async def remove_all_scores_stats(self, ctx: MyContext, channel_id_to_delete: int = None):
         """
         Delete scores for all users on this channel or on the specified channel ID.

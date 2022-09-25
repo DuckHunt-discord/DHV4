@@ -1,15 +1,14 @@
-import asyncio
-import random
-import time
+from asyncio import sleep, gather
+from random import randint
+from time import time
 from typing import Optional, Union
 from urllib.parse import quote_plus
 
-import discord
-from discord import ButtonStyle
-from discord.ext import commands
+from discord import ButtonStyle, Member, AllowedMentions
+from discord.ext.commands import command
 from babel.dates import format_timedelta
 
-from utils import checks
+from utils.checks import channel_enabled
 from utils.coats import Coats
 from utils.events import Events
 from utils.interaction import get_timedelta, SmartMemberConverter
@@ -20,7 +19,7 @@ from utils.views import CommandView
 
 
 def compute_luck(luck_pct):
-    current = random.randint(1, 100)
+    current = randint(1, 100)
     return current <= luck_pct
 
 
@@ -32,8 +31,8 @@ class DucksHuntingCommands(Cog):
     display_name = _("Hunting")
     help_priority = 1
 
-    @commands.command(aliases=["pan", "pew", "pow", "pang", "shoot", "bong", "bonk", "kill", "kablam", "eattheduck", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
-    @checks.channel_enabled()
+    @command(aliases=["pan", "pew", "pow", "pang", "shoot", "bong", "bonk", "kill", "kablam", "eattheduck", "itshighnoon", "its_high_noon", "killthatfuckingduck", "kill_that_fucking_duck", "kill_that_fucking_duck_omg"])
+    @channel_enabled()
     async def bang(self, ctx: MyContext, target: Optional[SmartMemberConverter], *args):
         """
         Shoot at the duck that appeared first on the channel.
@@ -46,7 +45,7 @@ class DucksHuntingCommands(Cog):
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
         hunter_coat_color = db_hunter.get_current_coat_color()
-        now = int(time.time())
+        now = int(time())
 
         language_code = await ctx.get_language_code()
 
@@ -232,7 +231,7 @@ class DucksHuntingCommands(Cog):
 
             await ctx.reply(_("✨ You take the new homing bullets outside of their packaging, place them in your weapon and shoot with your eyes closed...",
                               ), force_public=True)
-            await asyncio.sleep(2)
+            await sleep(2)
 
             if has_kill_licence:
                 if db_channel.anti_trigger_wording:
@@ -318,7 +317,7 @@ class DucksHuntingCommands(Cog):
                 else:
                     player_name = db_target.member.user.name
 
-                if not murder and target_coat_color == Coats.ORANGE and random.randint(1, 100) <= 75:
+                if not murder and target_coat_color == Coats.ORANGE and randint(1, 100) <= 75:
                     db_hunter.shooting_stats['near_misses'] += 1
                     db_target.shooting_stats['near_missed'] += 1
 
@@ -328,7 +327,7 @@ class DucksHuntingCommands(Cog):
                             player_name=player_name,
                             ), force_public=True)
 
-                    await asyncio.gather(db_target.save(), db_hunter.save())
+                    await gather(db_target.save(), db_hunter.save())
                     return
 
                 elif hunter_coat_color == Coats.PINK and target_coat_color == Coats.PINK:
@@ -353,7 +352,7 @@ class DucksHuntingCommands(Cog):
                               "by using the power of love, you made the bullet hit the love tree 🌳 instead. [**MISSED**: -2 exp]",
                               player_name=player_name,
                             ), force_public=True)
-                    await asyncio.gather(db_target.save(), db_hunter.save())
+                    await gather(db_target.save(), db_hunter.save())
                     return
 
 
@@ -375,7 +374,7 @@ class DucksHuntingCommands(Cog):
                 db_target.active_powerups["dead"] += 1
 
                 if db_target.id != db_hunter.id:
-                    await asyncio.gather(db_target.save(), db_hunter.save())  # Save both at the same time
+                    await gather(db_target.save(), db_hunter.save())  # Save both at the same time
                 else:
                     await db_hunter.save()
 
@@ -462,15 +461,15 @@ class DucksHuntingCommands(Cog):
             await db_hunter.save()
             await ctx.reply(_("❓️ What are you trying to kill exactly ? There are no ducks here. [**MISSED**: -2 exp]"), force_public=True)
 
-    @commands.command(aliases=["rl"])
-    @checks.channel_enabled()
+    @command(aliases=["rl"])
+    @channel_enabled()
     async def reload(self, ctx: MyContext):
         """
         Reload your gun.
         """
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
-        now = int(time.time())
+        now = int(time())
 
         if db_hunter.is_powerup_active('confiscated'):
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1
@@ -541,9 +540,9 @@ class DucksHuntingCommands(Cog):
             )
             return False
 
-    @commands.command()
-    @checks.channel_enabled()
-    async def hug(self, ctx: MyContext, target: Optional[Union[discord.Member, str]], *args):
+    @command()
+    @channel_enabled()
+    async def hug(self, ctx: MyContext, target: Optional[Union[Member, str]], *args):
         """
         Hug the duck that appeared first on the channel.
         """
@@ -587,7 +586,7 @@ class DucksHuntingCommands(Cog):
                 if db_target.ping_friendly and ctx.author.id != target.id:
                     allowed_mentions.append(target)
 
-            allowed_mentions = discord.AllowedMentions(users=allowed_mentions)
+            allowed_mentions = AllowedMentions(users=allowed_mentions)
 
             you_mention = ctx.author.mention
             target_mention = target.mention
@@ -626,8 +625,8 @@ class DucksHuntingCommands(Cog):
             db_hunter.hugged["nothing"] += 1
             await db_hunter.save()
 
-    @commands.command(aliases=["cpr", "brains", "zombie", "undead"])
-    @checks.channel_enabled()
+    @command(aliases=["cpr", "brains", "zombie", "undead"])
+    @channel_enabled()
     async def revive(self, ctx: MyContext):
         """
         Revive yourself by eating brains

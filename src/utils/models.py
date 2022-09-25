@@ -1,24 +1,25 @@
-import asyncio
-import collections
-import datetime
-import random
-import string
-import time
-import typing
+from asyncio import Lock, ensure_future
+from collections import defaultdict
+from datetime import datetime, timedelta
+from random import randint, choice
+from string import ascii_letters, digits, whitespace
+from time import time
+from typing import Callable, Any, Optional, Union, Type, List, Dict
 from enum import IntEnum, unique
 
-import discord
-from discord.ext import commands
+from discord import Guild, TextChannel, VoiceChannel, Thread, Embed, Member, User, ClientUser, \
+    Colour, NotFound, Forbidden
+from discord.ext.commands import BadArgument
 from tortoise import Tortoise, fields, timezone
 from tortoise.models import Model
-import babel.lists
+from babel.lists import format_list
 
 from utils.coats import Coats
 from utils.levels import get_level_info
 from utils.translations import translate
 
 
-DB_LOCKS = collections.defaultdict(asyncio.Lock)
+DB_LOCKS = defaultdict(Lock)
 SECOND = 1
 MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
@@ -26,28 +27,28 @@ DAY = 24 * HOUR
 
 
 class DefaultDictJSONField(fields.JSONField):
-    def __init__(self, default_factory: typing.Callable = int, **kwargs: typing.Any):
+    def __init__(self, default_factory: Callable = int, **kwargs: Any):
         def make_default():
-            return collections.defaultdict(default_factory)
+            return defaultdict(default_factory)
 
         self.default_factory = default_factory
         kwargs["default"] = make_default
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
-        collections.defaultdict]:
+    def to_python_value(self, value: Optional[Union[str, dict, list]]) -> Optional[
+        defaultdict]:
         ret = super().to_python_value(value)
-        return collections.defaultdict(self.default_factory, ret)
+        return defaultdict(self.default_factory, ret)
 
-    def to_db_value(self, value: typing.Optional[collections.defaultdict],
-                    instance: typing.Union[typing.Type[Model], Model]) -> typing.Optional[str]:
+    def to_db_value(self, value: Optional[defaultdict],
+                    instance: Union[Type[Model], Model]) -> Optional[str]:
         value = dict(value)
         return super().to_db_value(value, instance)
 
 
 class PercentageField(fields.SmallIntField):
     # TODO: Use constraints when they go out :)
-    def to_db_value(self, value: typing.Any, instance: typing.Union[typing.Type[Model], Model]):
+    def to_db_value(self, value: Any, instance: Union[Type[Model], Model]):
         value = min(100, max(0, int(value)))
         return super().to_db_value(value, instance)
 
@@ -79,7 +80,7 @@ class SupportTicket(Model):
                                db_index=False,
                                null=True)
 
-    def close(self, by_user: 'DiscordUser', reason: typing.Optional[str] = None):
+    def close(self, by_user: 'DiscordUser', reason: Optional[str] = None):
         if reason is None:
             reason = ""
 
@@ -125,8 +126,8 @@ class DucksLeft:
     """
 
     def __init__(self, channel, day_ducks=None, night_ducks=None):
-        self.channel: discord.TextChannel = channel
-        self.db_channel: typing.Optional[DiscordChannel] = None
+        self.channel: TextChannel = channel
+        self.db_channel: Optional[DiscordChannel] = None
         self.day_ducks: int = day_ducks
         self.night_ducks: int = night_ducks
 
@@ -137,7 +138,7 @@ class DucksLeft:
         self.db_channel = db_channel
 
         if not now:
-            now = int(time.time())
+            now = int(time())
 
         now = now % DAY
 
@@ -171,25 +172,25 @@ class DucksLeft:
 
         return self
 
-    async def maybe_spawn_type(self, now=None) -> typing.Optional[SunState]:
+    async def maybe_spawn_type(self, now=None) -> Optional[SunState]:
         if not self.db_channel:
             self.db_channel: DiscordChannel = await get_from_db(self.channel)
 
         db_channel = self.db_channel
 
         if not now:
-            now = int(time.time())
+            now = int(time())
 
         now = now % DAY
 
         sun_state = db_channel.day_status(now)
 
         if sun_state == SunState.DAY:
-            if random.randint(0, db_channel.day_seconds_left(now)) < self.day_ducks:
+            if randint(0, db_channel.day_seconds_left(now)) < self.day_ducks:
                 self.day_ducks -= 1
                 return SunState.DAY
         elif sun_state == SunState.NIGHT:
-            if random.randint(0, db_channel.night_seconds_left(now)) < self.night_ducks:
+            if randint(0, db_channel.night_seconds_left(now)) < self.night_ducks:
                 self.night_ducks -= 1
                 return SunState.NIGHT
         return None
@@ -283,7 +284,7 @@ class DiscordChannel(Model):
             if serialize_field == "discord_id":
                 ser[serialize_field] = str(getattr(self, serialize_field))
 
-            elif isinstance(getattr(self, serialize_field), datetime.datetime):
+            elif isinstance(getattr(self, serialize_field), datetime):
                 ser[serialize_field] = str(getattr(self, serialize_field))
 
             ser[serialize_field] = getattr(self, serialize_field)
@@ -307,7 +308,7 @@ class DiscordChannel(Model):
 
     def night_seconds_left(self, now=None):
         if now is None:
-            now = int(time.time())
+            now = int(time())
 
         now = now % DAY
 
@@ -351,7 +352,7 @@ class DiscordChannel(Model):
 
     def day_status(self, now=None):
         if now is None:
-            now = int(time.time())
+            now = int(time())
 
         now = now % DAY
 
@@ -376,7 +377,7 @@ class DiscordChannel(Model):
 
     def day_seconds_left(self, now=None):
         if now is None:
-            now = int(time.time())
+            now = int(time())
 
         now = now % DAY
 
@@ -412,30 +413,30 @@ class AccessLevel(IntEnum):
             try:
                 return cls(min(int(argument), 300))
             except ValueError:
-                raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
-                                             levels=babel.lists.format_list(list(AccessLevel.__members__),
+                raise BadArgument(_("This is not a valid level. Choose between {levels}",
+                                             levels=format_list(list(AccessLevel.__members__),
                                                                             locale=await ctx.get_language_code())))
         else:
             if not argument.upper().startswith('BOT'):
                 try:
                     return getattr(cls, argument.upper())
                 except AttributeError:
-                    raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
-                                                 levels=babel.lists.format_list(list(AccessLevel.__members__),
+                    raise BadArgument(_("This is not a valid level. Choose between {levels}",
+                                                 levels=format_list(list(AccessLevel.__members__),
                                                                                 locale=await ctx.get_language_code())))
             else:
-                raise commands.BadArgument(_("Can't set such a high level"))
+                raise BadArgument(_("Can't set such a high level"))
 
 
-def get_valid_words(message_content) -> typing.List[str]:
-    allowed_chars = string.ascii_letters + string.digits + string.whitespace
+def get_valid_words(message_content) -> List[str]:
+    allowed_chars = ascii_letters + digits + whitespace
 
     cleaned_content = ''.join(filter(lambda character: character in allowed_chars, message_content))
 
     words = []
 
     for word in set(cleaned_content.lower().split()):
-        if 3 <= len(word) <= 40 and (len(word) > 25 or len(word) < 15 or not set(word).issubset(set(string.digits))):
+        if 3 <= len(word) <= 40 and (len(word) > 25 or len(word) < 15 or not set(word).issubset(set(digits))):
             words.append(word)
 
     return words
@@ -473,7 +474,7 @@ class LandminesUserData(Model):
         if words_count > 0:
             self.words_sent += words_count
             self.messages_sent += 1
-            earned = max(0, int((words_count + random.randint(-1, words_count))))
+            earned = max(0, int((words_count + randint(-1, words_count))))
 
             if self.points_current <= -10:
                 earned *= max(2, int(abs(self.points_current) / 1000) + 2)
@@ -627,7 +628,7 @@ class DiscordUser(Model):
     boss_kills = fields.IntField(default=0)
 
     async def get_or_create_support_ticket(self) -> SupportTicket:
-        support_ticket: typing.Optional[SupportTicket] = await SupportTicket.filter(user=self, closed=False).first()
+        support_ticket: Optional[SupportTicket] = await SupportTicket.filter(user=self, closed=False).first()
 
         if not support_ticket:
             support_ticket = SupportTicket(user=self)
@@ -728,7 +729,7 @@ class Player(Model):
                 setattr(self, reset_fields_name, default)
 
         # Fix auto_now_add fields since they don't get back to defaults
-        self.prestige_last_daily = timezone.now() - datetime.timedelta(days=1)
+        self.prestige_last_daily = timezone.now() - timedelta(days=1)
         self.last_giveback = timezone.now()
 
         level_info = self.level_info()
@@ -754,9 +755,9 @@ class Player(Model):
 
         for serialize_field in serialize_fields:
             value = getattr(self, serialize_field)
-            if isinstance(value, datetime.datetime):
+            if isinstance(value, datetime):
                 value = value.timestamp()
-            elif isinstance(value, datetime.timedelta):
+            elif isinstance(value, timedelta):
                 value = value.total_seconds()
             elif serialize_field == "channel_id":
                 value = str(value)
@@ -815,7 +816,7 @@ class Player(Model):
             return clover_exp
         return 0
 
-    def get_current_coat_color(self) -> typing.Optional[Coats]:
+    def get_current_coat_color(self) -> Optional[Coats]:
         if self.is_powerup_active('coat'):
             color_name = self.active_powerups.get('coat_color', None)
             if color_name:
@@ -835,7 +836,7 @@ class Player(Model):
         return li
 
     async def maybe_giveback(self):
-        now = datetime.datetime.now()
+        now = datetime.now()
         if self.last_giveback.date() != now.date():
             level_info = self.level_info()
             self.last_giveback = now
@@ -853,9 +854,9 @@ class Player(Model):
             return
         else:
             # Send level up embed.
-            guild: discord.Guild = ctx.guild
+            guild: Guild = ctx.guild
 
-            if isinstance(ctx, discord.TextChannel):
+            if isinstance(ctx, TextChannel):
                 db_guild = await get_from_db(guild)
                 language_code = db_guild.language
 
@@ -865,7 +866,7 @@ class Player(Model):
                 _ = await ctx.get_translate_function()
                 bot = ctx.bot
 
-            e = discord.Embed()
+            e = Embed()
             e.add_field(name=_("Experience"), value=f"{self.experience - delta} -> {self.experience}", inline=False)
             e.add_field(name=_("Level"),
                         value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}",
@@ -889,14 +890,14 @@ class Player(Model):
             if old_level_info['level'] < new_level_info['level']:
                 # Level UP
                 e.title = _("You leveled up!")
-                e.color = discord.Colour.green()
+                e.color = Colour.green()
             else:
                 # Level DOWN
                 e.title = _("You leveled down!")
-                e.color = discord.Colour.red()
+                e.color = Colour.red()
 
-            asyncio.ensure_future(ctx.send(embed=e))
-            asyncio.ensure_future(self.change_roles(bot))
+            ensure_future(ctx.send(embed=e))
+            ensure_future(self.change_roles(bot))
 
     async def change_roles(self, bot):
         new_level_info = self.level_info()
@@ -905,12 +906,12 @@ class Player(Model):
         db_member: DiscordMember = await self.member
         db_channel: DiscordChannel = await self.channel
         db_user: DiscordUser = await db_member.user
-        guild: discord.Guild = bot.get_guild(db_member.guild_id)
-        channel: discord.TextChannel = guild.get_channel(db_channel.discord_id)
+        guild: Guild = bot.get_guild(db_member.guild_id)
+        channel: TextChannel = guild.get_channel(db_channel.discord_id)
 
         # Now is time to give roles.
-        roles_mapping: typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
-        prestige_mapping: typing.Dict[str, str] = db_channel.prestige_to_roles_ids_mapping
+        roles_mapping: Dict[str, str] = db_channel.levels_to_roles_ids_mapping
+        prestige_mapping: Dict[str, str] = db_channel.prestige_to_roles_ids_mapping
         #             (int-like) level nb, discord role ID
 
         if not len(roles_mapping) and not len(prestige_mapping):
@@ -918,7 +919,7 @@ class Player(Model):
             return
         try:
             member = await guild.fetch_member(db_user.discord_id)
-        except discord.NotFound:
+        except NotFound:
             # Member left.
             bot.logger.info(f"Can't edit {db_user.discord_id} roles for level change: user NotFound.", guild=guild,
                             channel=channel)
@@ -959,7 +960,7 @@ class Player(Model):
 
                 bot.logger.debug(f"Roles transition for {member.id}: {member_roles} -> {new_member_roles}", guild=guild, channel=channel)
                 await member.edit(roles=new_member_roles, reason="Level change")
-            except discord.Forbidden as e:
+            except Forbidden as e:
                 # Can't set the new roles.
                 bot.logger.warning(f"Can't set {member.id} roles on {guild.id}: Forbidden - {e}", guild=guild,
                                    channel=channel)
@@ -980,7 +981,7 @@ class Player(Model):
                          "jammed"]:
             return self.active_powerups[powerup] > 0
         else:
-            now = time.time()
+            now = time()
             return self.active_powerups[powerup] >= now
 
     class Meta:
@@ -1185,8 +1186,8 @@ class BotState(Model):
         table = 'botstate'
 
 
-async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
-    tag: typing.Optional[Tag] = await Tag.filter(name=name).first()
+async def get_tag(name, increment_uses=True) -> Optional[Tag]:
+    tag: Optional[Tag] = await Tag.filter(name=name).first()
     if tag:
         if increment_uses:
             tag.uses += 1
@@ -1194,7 +1195,7 @@ async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
         return tag
     else:
         # Search for an alias
-        alias: typing.Optional[TagAlias] = await TagAlias.filter(name=name).prefetch_related("tag").first()
+        alias: Optional[TagAlias] = await TagAlias.filter(name=name).prefetch_related("tag").first()
         if alias:
             tag: Tag = alias.tag
             if increment_uses:
@@ -1211,7 +1212,7 @@ async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
 
 async def get_from_db(discord_object, as_user=False):
     async with DB_LOCKS[(discord_object, as_user)]:
-        if isinstance(discord_object, discord.Guild):
+        if isinstance(discord_object, Guild):
             db_obj = await DiscordGuild.filter(discord_id=discord_object.id).first()
             if not db_obj:
                 db_obj = DiscordGuild(discord_id=discord_object.id, name=discord_object.name)
@@ -1221,7 +1222,7 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
 
             return db_obj
-        elif isinstance(discord_object, discord.TextChannel) or isinstance(discord_object, discord.VoiceChannel):
+        elif isinstance(discord_object, TextChannel) or isinstance(discord_object, VoiceChannel):
             db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
             if not db_obj:
                 db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name,
@@ -1233,7 +1234,7 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
 
             return db_obj
-        elif isinstance(discord_object, discord.Member) and not as_user:
+        elif isinstance(discord_object, Member) and not as_user:
             db_obj = await DiscordMember.filter(user__discord_id=discord_object.id,
                                                 guild__discord_id=discord_object.guild.id).first().prefetch_related(
                 "user", "guild")
@@ -1242,7 +1243,7 @@ async def get_from_db(discord_object, as_user=False):
                                        user=await get_from_db(discord_object, as_user=True))
                 await db_obj.save()
             return db_obj
-        elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.ClientUser) or (isinstance(discord_object, discord.Member) and as_user):
+        elif isinstance(discord_object, User) or isinstance(discord_object, ClientUser) or (isinstance(discord_object, Member) and as_user):
             db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
             if not db_obj:
                 db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name,
@@ -1255,23 +1256,23 @@ async def get_from_db(discord_object, as_user=False):
                 await db_obj.save()
 
             return db_obj
-        elif isinstance(discord_object, discord.Thread):
+        elif isinstance(discord_object, Thread):
             return await get_from_db(discord_object.parent)
         else:
             obj_type_name = type(discord_object).__name__
             print(f"Unknown object type passed to get_from_db <type:{obj_type_name}>, <obj:{discord_object}>")
 
 
-async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextChannel]):
-    if isinstance(channel, discord.TextChannel):
+async def get_random_player(channel: Union[DiscordChannel, TextChannel]):
+    if isinstance(channel, TextChannel):
         db_channel = get_from_db(channel)
     else:
         db_channel = channel
 
-    return random.choice(await Player.filter(channel=db_channel).prefetch_related("member__user"))
+    return choice(await Player.filter(channel=db_channel).prefetch_related("member__user"))
 
 
-async def get_player(member: discord.Member, channel: discord.TextChannel, giveback=False):
+async def get_player(member: Member, channel: TextChannel, giveback=False):
     async with DB_LOCKS[(member, channel)]:
         db_obj = await Player.filter(member__user__discord_id=member.id,
                                      channel__discord_id=channel.id).prefetch_related('member__user').first()
@@ -1284,7 +1285,7 @@ async def get_player(member: discord.Member, channel: discord.TextChannel, giveb
         return db_obj
 
 
-async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, discord.Member]) -> UserInventory:
+async def get_user_inventory(user: Union[DiscordUser, User, Member]) -> UserInventory:
     if not isinstance(user, DiscordUser):
         db_user = await get_from_db(user, as_user=True)
     else:
@@ -1296,7 +1297,7 @@ async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, disco
     return inventory
 
 
-async def get_member_landminesdata(member: typing.Union[DiscordMember, discord.Member]) -> LandminesUserData:
+async def get_member_landminesdata(member: Union[DiscordMember, Member]) -> LandminesUserData:
     if not isinstance(member, DiscordMember):
         db_member = await get_from_db(member)
     else:
@@ -1308,7 +1309,7 @@ async def get_member_landminesdata(member: typing.Union[DiscordMember, discord.M
     return eventdata
 
 
-async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message_content: str, as_list:bool = False) -> typing.Union[typing.Optional[LandminesPlaced], typing.List[LandminesPlaced]]:
+async def get_landmine(guild: Union[DiscordGuild, Guild], message_content: str, as_list:bool = False) -> Union[Optional[LandminesPlaced], List[LandminesPlaced]]:
     if not isinstance(guild, DiscordGuild):
         db_guild = await get_from_db(guild)
     else:

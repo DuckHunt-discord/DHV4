@@ -1,17 +1,17 @@
-import asyncio
-import random
-import time
-from time import perf_counter
+from asyncio import sleep
+from random import choice
+from time import time, perf_counter
 from datetime import timedelta, datetime
 
-import discord
-from discord.ext import commands, menus
+from discord import Embed, Color, File, NotFound
+from discord.ext.commands import command
+from discord.ext.menus import ListPageSource, MenuPages
 from discord.utils import format_dt
 from babel import Locale
 from babel.dates import format_timedelta
 from babel.lists import format_list
 
-from utils import checks
+from utils.checks import channel_enabled, is_in_server, needs_access_level
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.concurrency import dont_block
@@ -31,7 +31,7 @@ def _(message):
     return message
 
 
-class TranslatorsMenusSource(menus.ListPageSource):
+class TranslatorsMenusSource(ListPageSource):
     def __init__(self, ctx: MyContext, translators):
         super().__init__(list(translators.items()), per_page=6)
         self.ctx = ctx
@@ -41,9 +41,9 @@ class TranslatorsMenusSource(menus.ListPageSource):
         _ = await self.ctx.get_translate_function()
         language_code = await self.ctx.get_language_code()
 
-        embed = discord.Embed(title=_("🌐 The beloved DuckHunt translators"))
+        embed = Embed(title=_("🌐 The beloved DuckHunt translators"))
 
-        embed.color = discord.Color.green()
+        embed.color = Color.green()
         embed.description = _("The bot itself is made by Eyesofcreeper, with contributions from people mentionned in "
                               "`{ctx.prefix}credits`. **You want to help translate this bot ?** "
                               "Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). Thanks!")
@@ -68,7 +68,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
 
 
 async def show_translators_menu(ctx, translators):
-    pages = menus.MenuPages(source=TranslatorsMenusSource(ctx, translators), clear_reactions_after=True)
+    pages = MenuPages(source=TranslatorsMenusSource(ctx, translators), clear_reactions_after=True)
     await pages.start(ctx)
 
 
@@ -80,7 +80,7 @@ class SimpleCommands(Cog):
         super().__init__(bot, *args, **kwargs)
         self.translators_cache = {}
 
-    @commands.command()
+    @command()
     async def ping(self, ctx: MyContext):
         """
         Check that the bot is online, give the latency between the bot and Discord servers.
@@ -94,7 +94,7 @@ class SimpleCommands(Cog):
         await ctx.send(_("Pong. — Time taken: {miliseconds}ms",
                          miliseconds=time_delta))  # send a message telling the user the calculated ping time
 
-    @commands.command()
+    @command()
     async def wiki(self, ctx: MyContext):
         """
         Returns the wiki URL
@@ -105,7 +105,7 @@ class SimpleCommands(Cog):
 
         await ctx.send(_(wiki_url))
 
-    @commands.command()
+    @command()
     async def invite(self, ctx: MyContext):
         """
         Get the URL to invite the bot
@@ -114,15 +114,15 @@ class SimpleCommands(Cog):
         await ctx.send(
             f"<https://duckhunt.me/invite>")
 
-    @commands.command()
+    @command()
     async def support(self, ctx: MyContext):
         """
         Get a discord invite to the support server.
         """
         await ctx.send(f"<https://duckhunt.me/support>")
 
-    @commands.command(aliases=["giveback", "ft"])
-    @checks.channel_enabled()
+    @command(aliases=["giveback", "ft"])
+    @channel_enabled()
     async def freetime(self, ctx: MyContext):
         """
         Get the time when you'll get free magazines and your weapon back from the police
@@ -142,8 +142,8 @@ class SimpleCommands(Cog):
                          formatted_delta=formatted_delta,
                          ))
 
-    @commands.command()
-    @checks.channel_enabled()
+    @command()
+    @channel_enabled()
     async def prefix(self, ctx: MyContext):
         """
         Get the bot prefixes
@@ -165,7 +165,7 @@ class SimpleCommands(Cog):
             await ctx.send(_("You can call me with any of the global prefixes : {global_prefixes_list}",
                              global_prefixes_list=global_prefixes_list))
 
-    @commands.command(aliases=["helpers", "whomadethis"])
+    @command(aliases=["helpers", "whomadethis"])
     async def credits(self, ctx: MyContext):
         """
         Thanks to those fine people who (helped) make the bot
@@ -175,9 +175,9 @@ class SimpleCommands(Cog):
         my_perms = ctx.channel.permissions_for(ctx.me)
 
         if my_perms.embed_links:
-            embed = discord.Embed()
+            embed = Embed()
 
-            embed.color = discord.Color.green()
+            embed.color = Color.green()
             embed.description = _("The bot itself is made by Eyesofcreeper, but these fine people down there help with "
                                   "graphics, ideas, images, and more. Make sure to give them a wave if you see them.")
 
@@ -187,7 +187,7 @@ class SimpleCommands(Cog):
             embed.add_field(name=_("Ideas"), value=_("Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"), inline=False)
             embed.add_field(name=_("Translations"), value=_("The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."), inline=False)
 
-            f = discord.File("assets/Robot_Ducc_Globloxmen.jpg")
+            f = File("assets/Robot_Ducc_Globloxmen.jpg")
             embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
 
             await ctx.send(embed=embed, file=f)
@@ -199,7 +199,7 @@ class SimpleCommands(Cog):
                                                 "`embed_links` permission. Contact your friendly neighbourhood server "
                                                 "admin.")]))
 
-    @commands.command(aliases=["translate"])
+    @command(aliases=["translate"])
     async def translators(self, ctx: MyContext):
         """
         Thanks to those fine people who (helped) translate the bot
@@ -213,14 +213,14 @@ class SimpleCommands(Cog):
                 for translator_id in data['user_ids']:
                     try:
                         self.translators_cache[locale]['users'].append(await ctx.bot.fetch_user(translator_id))
-                    except discord.NotFound:
+                    except NotFound:
                         ctx.logger.warning(f"Translator {translator_id} for language {locale} can't be found on discord.")
                         continue
 
         await show_translators_menu(ctx, self.translators_cache)
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def pee(self, ctx: MyContext):
         """
         For when you misspell the pan command.
@@ -229,49 +229,49 @@ class SimpleCommands(Cog):
 
         await ctx.reply(_("You don't have to go right now"))
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def reloaf(self, ctx: MyContext):
         """
         For when you misspell the reload command.
         """
         await ctx.reply("🍞")
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def eye(self, ctx: MyContext):
         """
         I only get one eye
         """
         await ctx.reply("👁️")
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def eyes(self, ctx: MyContext):
         """
         Who doesn't need eyes
         """
         await ctx.reply("👀")
 
-    @commands.command(hidden=True, aliases=["girafe", "giraf"])
-    @checks.channel_enabled()
+    @command(hidden=True, aliases=["girafe", "giraf"])
+    @channel_enabled()
     async def giraffe(self, ctx: MyContext):
         """
         I hav long nek
         """
         await ctx.reply("🦒")
 
-    @commands.command(hidden=True,)
-    @checks.channel_enabled()
-    @checks.is_in_server(195260081036591104)
+    @command(hidden=True,)
+    @channel_enabled()
+    @is_in_server(195260081036591104)
     async def impossible(self, ctx: MyContext):
         """
         It's impossible.
         """
         await ctx.reply("And yet, it's <@202484200438366208>")
 
-    @commands.command(hidden=True)
-    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
+    @command(hidden=True)
+    @needs_access_level(AccessLevel.BOT_MODERATOR)
     @dont_block
     async def vote_boss_spawn(self, ctx: MyContext, yes_trigger: int = 5, no_trigger: int = 1, time_to_wait: int = 60):
         """
@@ -291,14 +291,14 @@ class SimpleCommands(Cog):
         await message.add_reaction("🦆")
         await message.add_reaction("❌")
 
-        await asyncio.sleep(int((time_to_wait - 10)/2))
+        await sleep(int((time_to_wait - 10)/2))
         to_delete = await ctx.reply("⏰ Halfway there...")
-        await asyncio.sleep(int((time_to_wait - 10)/2))
+        await sleep(int((time_to_wait - 10)/2))
         await to_delete.delete()
         to_edit = await ctx.reply("⏰ 10 seconds left...")
-        await asyncio.sleep(5)
+        await sleep(5)
         await to_edit.edit(content="⏰ 5 seconds left...")
-        await asyncio.sleep(5)
+        await sleep(5)
         await to_edit.edit(content="⏰ And done...")
 
         try:
@@ -337,8 +337,8 @@ class SimpleCommands(Cog):
             boss_cog = self.bot.get_cog('DuckBoss')
             await boss_cog.spawn_boss()
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def cow(self, ctx: MyContext):
         """
         Who doesn't need cows ?
@@ -350,32 +350,32 @@ class SimpleCommands(Cog):
         else:
             await ctx.reply("🐄")
 
-    @commands.command(hidden=True, aliases=["foot"])
-    @checks.channel_enabled()
+    @command(hidden=True, aliases=["foot"])
+    @channel_enabled()
     async def feet(self, ctx: MyContext):
         """
         When you don't have eyes
         """
-        await ctx.reply(random.choice(["🦶", "👣", "🦶🏻", "🦶🏼", "🦶🏽", "🦶🏾", "🦶🏿"]))
+        await ctx.reply(choice(["🦶", "👣", "🦶🏻", "🦶🏼", "🦶🏽", "🦶🏾", "🦶🏿"]))
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def huh(self, ctx: MyContext):
         """
         I guess that just says ¯\\_(ツ)_/¯
         """
         await ctx.reply(r"¯\_(ツ)_/¯")
 
-    @commands.command(hidden=True)
-    @checks.channel_enabled()
+    @command(hidden=True)
+    @channel_enabled()
     async def lol(self, ctx: MyContext):
         """
         When you need some good laughs
         """
         await ctx.reply("🤣")
 
-    @commands.command(aliases=["events"])
-    @checks.channel_enabled()
+    @command(aliases=["events"])
+    @channel_enabled()
     async def event(self, ctx: MyContext):
         """
         See the current global event.
@@ -387,12 +387,12 @@ class SimpleCommands(Cog):
         _ = await ctx.get_translate_function()
         language_code = await ctx.get_language_code()
 
-        now = time.time()
+        now = time()
         seconds_left = (60 * 60) - now % (60 * 60)
 
         td = timedelta(seconds=seconds_left)
 
-        embed = discord.Embed(title=_("Current event: ") + _(self.bot.current_event.value[0]))
+        embed = Embed(title=_("Current event: ") + _(self.bot.current_event.value[0]))
         embed.description = _(self.bot.current_event.value[1])
 
         formatted_td = format_timedelta(td, threshold=10, granularity='minute', locale=language_code)
@@ -400,12 +400,12 @@ class SimpleCommands(Cog):
         embed.set_footer(text=_("Events last for one hour from the beginning to the end of the hour. Ending in {formatted_td}",
                                 formatted_td=formatted_td))
 
-        embed.color = discord.Color.dark_theme()
+        embed.color = Color.dark_theme()
 
         await ctx.send(embed=embed)
 
-    @commands.command()
-    @checks.channel_enabled()
+    @command()
+    @channel_enabled()
     async def time(self, ctx: MyContext):
         """
         This returns the current bot time.

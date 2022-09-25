@@ -1,7 +1,7 @@
-import random
+from random import choice
 from pathlib import Path
 
-import discord
+from discord import File
 
 
 IMAGE_EXTS = ["*.png", "*.jpg", "*.jpeg", "*.gif"]
@@ -11,9 +11,9 @@ for ext in IMAGE_EXTS:
     all_images.extend(Path("assets/Random").rglob(ext))
 
 
-def get_random_image() -> discord.File:
-    image_path = random.choice(all_images)
-    f = discord.File(str(image_path), filename=image_path.name)
+def get_random_image() -> File:
+    image_path = choice(all_images)
+    f = File(str(image_path), filename=image_path.name)
 
     return f
 

@@ -1,12 +1,14 @@
 """
 Some example of commands that can be used only in the bot support server.
 """
-import time
+from time import time, perf_counter
 
-import discord
-from discord.ext import commands, tasks, menus
+from discord import TextChannel, Embed, Colour
+from discord.ext.commands import command
+from discord.ext.tasks import loop
+from discord.ext.menus import MenuPages
 from tortoise import timezone
-from babel import dates
+from babel.dates import format_timedelta
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -36,18 +38,18 @@ class SupportServerCommands(Cog):
     #    return ret
 
     def get_bot_uptime(self):
-        return dates.format_timedelta(self.bot.uptime - timezone.now(), locale='en')
+        return format_timedelta(self.bot.uptime - timezone.now(), locale='en')
 
-    @tasks.loop(seconds=30)
+    @loop(seconds=30)
     async def background_loop(self):
         status_channel = self.bot.get_channel(self.config()["status_channel_id"])
-        if not status_channel or not isinstance(status_channel, discord.TextChannel):
+        if not status_channel or not isinstance(status_channel, TextChannel):
             self.bot.logger.warning("The status channel for the support server command is misconfigured.")
             return
 
         self.bot.logger.debug("Updating status message", guild=status_channel.guild, channel=status_channel)
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
+        embed = Embed(colour=Colour.blurple(),
                               title=f"{self.bot.user.name}'s status")
 
         embed.add_field(name="Guilds Count", value=f"{len(self.bot.guilds)}", inline=True)
@@ -55,9 +57,9 @@ class SupportServerCommands(Cog):
         embed.add_field(name="Messages in cache", value=f"{len(self.bot.cached_messages)}", inline=True)
 
         ping_f = status_channel.typing()
-        t_1 = time.perf_counter()
+        t_1 = perf_counter()
         await ping_f  # tell Discord that the bot is "typing", which is a very simple request
-        t_2 = time.perf_counter()
+        t_2 = perf_counter()
         ping = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
 
         embed.add_field(name="Average Latency", value=f"{round(self.bot.latency, 2)}ms", inline=True)
@@ -76,7 +78,7 @@ class SupportServerCommands(Cog):
 
         ds_cog = self.bot.get_cog("DucksSpawning")
         if ds_cog:
-            now = time.time()
+            now = time()
             loop_time = ds_cog.current_iteration_public
             diff = now - loop_time
             diff_str = round(diff, 2)
@@ -106,7 +108,7 @@ class SupportServerCommands(Cog):
         next_it = self.background_loop.next_iteration
         now = timezone.now()
 
-        delta = dates.format_timedelta(next_it - now, locale='en')
+        delta = format_timedelta(next_it - now, locale='en')
         embed.set_footer(text=f"This should update every {delta} - Last update")
 
         await purge_channel_messages(status_channel)
@@ -116,7 +118,7 @@ class SupportServerCommands(Cog):
     async def before(self):
         await self.bot.wait_until_ready()
 
-    @commands.command(aliases=["shard_status"])
+    @command(aliases=["shard_status"])
     async def shards(self, ctx: MyContext):
         """
         Check the status of every shard the bot is hosting.
@@ -144,7 +146,7 @@ class SupportServerCommands(Cog):
 
         await ctx.send(message)
 
-    @commands.command(aliases=["used_commands"])
+    @command(aliases=["used_commands"])
     async def commands_used(self, ctx: MyContext):
         """
         Shows a paginator with the most used commands on the bot. This is the poor version of a bot analytics.
@@ -152,14 +154,14 @@ class SupportServerCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        menu = menus.MenuPages(EmbedCounterPaginator(self.bot.commands_used.most_common(), per_page=10,
+        menu = MenuPages(EmbedCounterPaginator(self.bot.commands_used.most_common(), per_page=10,
                                                      embed_title=_("Most used commands"),
                                                      name_str="`dh!{elem}`",
                                                      value_str=_("{n} uses", n="{n}"),
                                                      ))
         await menu.start(ctx)
 
-    @commands.command(name="bot_users", aliases=["bot_topusers"])
+    @command(name="bot_users", aliases=["bot_topusers"])
     async def c_bot_users(self, ctx: MyContext):
         """
         Shows a paginator with the users that have used the bot the most. This is again the poor version of a bot analytics.
@@ -167,7 +169,7 @@ class SupportServerCommands(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        menu = menus.MenuPages(EmbedCounterPaginator(self.bot.top_users.most_common(), per_page=10,
+        menu = MenuPages(EmbedCounterPaginator(self.bot.top_users.most_common(), per_page=10,
                                                      embed_title=_("Top users"),
                                                      name_str="ID: `{elem}`",
                                                      value_str=_("{n} commands used", n="{n}"),

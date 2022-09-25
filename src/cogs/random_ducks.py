@@ -1,4 +1,4 @@
-from discord.ext import commands
+from discord.ext.commands import command
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -13,7 +13,7 @@ class RandomDucks(Cog):
     display_name = _("Images")
     help_priority = 10
 
-    @commands.command(aliases=["rd"])
+    @command(aliases=["rd"])
     async def random_duck(self, ctx: MyContext, artist="Calgeka", debug=False, with_background=True):
         """
         Shows a random duck image, courtesy of Globloxmen assets.

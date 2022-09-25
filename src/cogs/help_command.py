@@ -1,9 +1,9 @@
-import itertools
+from itertools import groupby
 from typing import Optional, Union
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import CommandError, Command, Group
+from discord import Embed, Colour, Interaction, ButtonStyle
+from discord.ui import Button, View
+from discord.ext.commands import MinimalHelpCommand, CommandError, Command, Group
 
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
@@ -36,7 +36,7 @@ class ButtonsHelp:
 
         view = await BotHelpView(bot, ctx).initialize()
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
+        embed = Embed(colour=Colour.blurple(),
                               title=_("DuckHunt help"),
                               url=self.context.bot.config['website_url'] + "commands")
 
@@ -59,7 +59,7 @@ class ButtonsHelp:
 
         view = await CogHelpView(bot, cog, ctx).initialize()
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
+        embed = Embed(colour=Colour.blurple(),
                               title=_("{cog} help", cog=cog.qualified_name),
                               url=self.context.bot.config['website_url'] + "commands")
 
@@ -89,7 +89,7 @@ class ButtonsHelp:
 
         view = await CogHelpView(bot, group, ctx).initialize()
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
+        embed = Embed(colour=Colour.blurple(),
                               title=_("{cog} help", cog=group.qualified_name),
                               url=self.context.bot.config['website_url'] + f"commands/{group.qualified_name.replace(' ', '/')}")
 
@@ -114,7 +114,7 @@ class ButtonsHelp:
     async def send_command_help(self, command):
         _ = await self.context.get_translate_function()
 
-        embed = discord.Embed(title=_("{cog} help", cog=command.qualified_name), colour=discord.Colour.blurple(), )
+        embed = Embed(title=_("{cog} help", cog=command.qualified_name), colour=Colour.blurple(), )
         embed.url = self.context.bot.config['website_url'] + f"commands/{command.qualified_name.replace(' ', '/')}"
 
         if command.help:
@@ -125,13 +125,13 @@ class ButtonsHelp:
         await self.send(embed=embed)
 
 
-class ButtonsHelpCommand(ButtonsHelp, commands.MinimalHelpCommand):
+class ButtonsHelpCommand(ButtonsHelp, MinimalHelpCommand):
     async def send(self, *args, **kwargs):
         await self.get_destination().send(*args, **kwargs)
 
 
 class ButtonsHelpInteraction(ButtonsHelp):
-    def __init__(self, context: MyContext, interaction: discord.Interaction, **options):
+    def __init__(self, context: MyContext, interaction: Interaction, **options):
         super().__init__(**options)
         self.interaction = interaction
         self.context = context
@@ -204,22 +204,22 @@ def get_group(command):
     return group if group is not None else None
 
 
-class CogHelpButton(discord.ui.Button):
+class CogHelpButton(Button):
     """
     Buttons to direct user to a cog help.
     """
 
     def __init__(self, context: MyContext, cog: Cog):
         custom_id = f"bot_help_cog:{type(cog).__name__}"
-        super().__init__(style=getattr(discord.ButtonStyle, getattr(cog, 'help_color', 'grey')), label=cog.name, custom_id=custom_id)
+        super().__init__(style=getattr(ButtonStyle, getattr(cog, 'help_color', 'grey')), label=cog.name, custom_id=custom_id)
         self.cog = cog
         self.context = context
 
-    async def callback(self, interaction: discord.Interaction):
+    async def callback(self, interaction: Interaction):
         await ButtonsHelpInteraction(self.context, interaction).send_cog_help(self.cog)
 
 
-class BotHelpView(discord.ui.View):
+class BotHelpView(View):
     """
     Show buttons for all the cogs in a bot.
     """
@@ -231,7 +231,7 @@ class BotHelpView(discord.ui.View):
 
     async def initialize(self):
         filtered = await filter_commands(self.bot.commands, context=self.ctx, sort=True, key=get_category)
-        commands_by_cog = list(itertools.groupby(filtered, key=get_cog))
+        commands_by_cog = list(groupby(filtered, key=get_cog))
         commands_by_cog.sort(key=lambda kv: (getattr(kv[0], 'help_priority', 10), kv[0].name) if kv[0] else (100, kv[0]))
 
         for cog, commands in commands_by_cog:
@@ -245,7 +245,7 @@ class BotHelpView(discord.ui.View):
         return self
 
 
-class GroupHelpButton(discord.ui.Button):
+class GroupHelpButton(Button):
     """
     Buttons to direct user to a group help
     """
@@ -253,15 +253,15 @@ class GroupHelpButton(discord.ui.Button):
     def __init__(self, context: MyContext, group: Group):
         group_id = group.qualified_name.replace(' ', '_')
         custom_id = f"bot_help_group:{group_id}"
-        super().__init__(style=discord.ButtonStyle.green, label=f"{group.name} ({len(group.commands)} subcommands)", custom_id=custom_id)
+        super().__init__(style=ButtonStyle.green, label=f"{group.name} ({len(group.commands)} subcommands)", custom_id=custom_id)
         self.group = group
         self.context = context
 
-    async def callback(self, interaction: discord.Interaction):
+    async def callback(self, interaction: Interaction):
         await ButtonsHelpInteraction(self.context, interaction).send_group_help(self.group)
 
 
-class CommandHelpButton(discord.ui.Button):
+class CommandHelpButton(Button):
     """
     Buttons to direct user to a command help
     """
@@ -269,15 +269,15 @@ class CommandHelpButton(discord.ui.Button):
     def __init__(self, context: MyContext, command: Command):
         command_id = command.qualified_name.replace(' ', '_')
         custom_id = f"bot_help_command:{command_id}"
-        super().__init__(style=discord.ButtonStyle.green, label=command.name, custom_id=custom_id)
+        super().__init__(style=ButtonStyle.green, label=command.name, custom_id=custom_id)
         self.command = command
         self.context = context
 
-    async def callback(self, interaction: discord.Interaction):
+    async def callback(self, interaction: Interaction):
         await ButtonsHelpInteraction(self.context, interaction).send_command_help(self.command)
 
 
-class CogHelpView(discord.ui.View):
+class CogHelpView(View):
     """
     Show buttons for all the commands and groups in a cog or a group.
     """
@@ -308,7 +308,7 @@ class CogHelpView(discord.ui.View):
         for command in filtered:
             items_shown += 1
             if items_shown >= 5 * 3:
-                self.add_item(discord.ui.Button(style=discord.ButtonStyle.blurple,
+                self.add_item(Button(style=ButtonStyle.blurple,
                                                 label=_("... More available online"),
                                                 url=self.bot.config['website_url'] + f"commands/{self.cog.qualified_name.replace(' ', '/')}"))
                 break

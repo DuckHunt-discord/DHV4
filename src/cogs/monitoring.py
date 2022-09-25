@@ -1,13 +1,13 @@
 """
 Bot monitoring.
 """
-import asyncio
-import time
+from asyncio import sleep
+from time import time
 from datetime import timedelta
 from typing import Union, List, Callable
-
-import discord
-from discord.ext import tasks
+ 
+from discord import Message
+from discord.ext.tasks import loop
 from discord.ext.commands import CommandError
 
 from utils.cog_class import Cog
@@ -20,7 +20,7 @@ def _(message):
 
 
 def get_now():
-    return int(time.time())
+    return int(time())
 
 DB_MEASURE_INTERVAL = timedelta(minutes=10)
 
@@ -75,14 +75,14 @@ class Monitoring(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
-    @tasks.loop(minutes=10)
+    @loop(minutes=10)
     async def background_loop(self):
         await self.save_statistics_to_database()
 
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
-        await asyncio.sleep(DB_MEASURE_INTERVAL.total_seconds())
+        await sleep(DB_MEASURE_INTERVAL.total_seconds())
 
     async def get_statistics(self, over=DB_MEASURE_INTERVAL, delete_older_than=timedelta(hours=1)):
         now = get_now()
@@ -123,7 +123,7 @@ class Monitoring(Cog):
         self.ws_recv_timings.append(get_now())
 
     @Cog.listener()
-    async def on_message(self, message: discord.Message):
+    async def on_message(self, message: Message):
         self.message_timings.append(get_now())
 
     @Cog.listener()

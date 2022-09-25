@@ -1,23 +1,21 @@
-import collections
-import typing
-from typing import Optional
+from collections import Counter, defaultdict, deque
+from typing import Optional, Dict, Iterable, TYPE_CHECKING
 
-import discord
+from discord import Game, TextChannel, Forbidden, HTTPException, Interaction, Message
 from discord import Guild
-from discord.ext import commands
-from discord.ext.commands import MaxConcurrency, BucketType
+from discord.ext.commands import when_mentioned_or, MaxConcurrency, BucketType
 from discord.ext.commands.bot import AutoShardedBot
-import aiohttp
+from aiohttp import ClientSession
 from tortoise import timezone
 
-from utils import config
+from utils.config import load_config
 from utils.ctx_class import MyContext
 from utils.events import Events
 from utils.logger import FakeLogger
 from utils.models import get_from_db, AccessLevel, init_db_connection, DucksLeft
 
 
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     # Prevent circular imports
     from utils.ducks import Duck
 
@@ -30,18 +28,18 @@ class MyBot(AutoShardedBot):
         self.reload_config()
         # activity = discord.Game(self.config["bot"]["playing"])
         self.current_event: Events = Events.CALM
-        activity = discord.Game(self.current_event.value[0])
+        activity = Game(self.current_event.value[0])
         super().__init__(*args, command_prefix=get_prefix, activity=activity,
                          case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
-        self.commands_used = collections.Counter()
-        self.top_users = collections.Counter()
+        self.commands_used = Counter()
+        self.top_users = Counter()
         self.uptime = timezone.now()
         self.shards_ready = set()
-        self.socket_stats = collections.Counter()
-        self._client_session: Optional[aiohttp.ClientSession] = None
-        self.ducks_spawned: collections.defaultdict[
-            discord.TextChannel, collections.deque['Duck']] = collections.defaultdict(collections.deque)
-        self.enabled_channels: typing.Dict[discord.TextChannel, DucksLeft] = {}
+        self.socket_stats = Counter()
+        self._client_session: Optional[ClientSession] = None
+        self.ducks_spawned: defaultdict[
+            TextChannel, deque['Duck']] = defaultdict(deque)
+        self.enabled_channels: Dict[TextChannel, DucksLeft] = {}
         self.concurrency = MaxConcurrency(number=1, per=BucketType.channel, wait=True)
         self.allow_ducks_spawning = True
 
@@ -57,11 +55,11 @@ class MyBot(AutoShardedBot):
             raise RuntimeError("The bot haven't been setup yet. Ensure you call bot.async_setup asap.")
 
     @property
-    def available_guilds(self) -> typing.Iterable[Guild]:
+    def available_guilds(self) -> Iterable[Guild]:
         return filter(lambda g: not g.unavailable, self.guilds)
 
     def reload_config(self):
-        self.config = config.load_config()
+        self.config = load_config()
 
     async def setup_hook(self):
         """
@@ -69,7 +67,7 @@ class MyBot(AutoShardedBot):
         """
         self.logger.debug("Running async init")
 
-        self._client_session = aiohttp.ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
+        self._client_session = ClientSession()  # There is no need to call __aenter__, since that does nothing in that case
 
         if self.config['database']['enable']:
             await init_db_connection(self.config['database'])
@@ -94,11 +92,11 @@ class MyBot(AutoShardedBot):
         try:
             await message.publish()
             return True
-        except discord.Forbidden:
+        except Forbidden:
             self.logger.warning(
                 "Couldn't publish message to announcement channel, I don't have the required permissions")
             return False
-        except discord.HTTPException as e:
+        except HTTPException as e:
             self.logger.exception(f"Couldn't publish message to announcement channel: {e}. "
                                   f"Too many messages published recently ?")
             return False
@@ -158,7 +156,7 @@ class MyBot(AutoShardedBot):
                       support_server_link=_("https://duckhunt.me/support"),
                       wiki_link=_("https://duckhunt.me/docs/players-guide/players-quickstart"),
                       ))
-            except discord.Forbidden:
+            except Forbidden:
                 ctx.logger.debug(
                     f"Couldn't send the welcome DM, forbidden.")
 
@@ -169,7 +167,7 @@ class MyBot(AutoShardedBot):
         self.top_users[ctx.author.id] += 1
         ctx.logger.info(f"{ctx.message.clean_content}")
 
-    async def on_interaction(self, interaction: discord.Interaction):
+    async def on_interaction(self, interaction: Interaction):
         data = interaction.data
         self.logger.info(f"Interaction received: {data}", guild=interaction.guild, channel=interaction.channel,
                          member=interaction.user, )
@@ -193,12 +191,12 @@ class MyBot(AutoShardedBot):
             self.logger.info(message)
 
 
-async def get_prefix(bot: MyBot, message: discord.Message):
+async def get_prefix(bot: MyBot, message: Message):
     forced_prefixes = bot.config["bot"]["prefixes"]
 
     if not message.guild:
         # Need no prefix when in DMs
-        return commands.when_mentioned_or(*forced_prefixes, "")(bot, message)
+        return when_mentioned_or(*forced_prefixes, "")(bot, message)
 
     else:
         if bot.config["database"]["enable"]:
@@ -207,4 +205,4 @@ async def get_prefix(bot: MyBot, message: discord.Message):
             if guild_prefix is not None:
                 forced_prefixes = [guild_prefix] + forced_prefixes
 
-        return commands.when_mentioned_or(*forced_prefixes)(bot, message)
+        return when_mentioned_or(*forced_prefixes)(bot, message)

@@ -1,7 +1,7 @@
-import random
+from random import choice
 from enum import Enum, unique
 
-from discord.ext import commands
+from discord.ext.commands import BadArgument
 from babel.lists import format_list
 
 
@@ -11,7 +11,7 @@ def _(string):
 
 
 def get_random_coat_type():
-    return random.choice(list(Coats))
+    return choice(list(Coats))
 
 
 @unique
@@ -55,7 +55,7 @@ class Coats(Enum):
             return getattr(cls, argument.upper().replace(' ', '_'))
         except AttributeError:
             _ = await ctx.get_translate_function()
-            raise commands.BadArgument(_("This is not a valid color. "
+            raise BadArgument(_("This is not a valid color. "
                                          "You can choose between {colors}, or `random` for a random color.",
                                          colors=format_list(list(cls.__members__),
                                                             locale=await ctx.get_language_code())))

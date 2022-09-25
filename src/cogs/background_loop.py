@@ -1,4 +1,4 @@
-from discord.ext import tasks
+from discord.ext.tasks import loop
 
 from utils.cog_class import Cog
 
@@ -14,7 +14,7 @@ class BackgroundLoop(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
-    @tasks.loop(minutes=15)
+    @loop(minutes=15)
     async def background_loop(self):
         pass
 

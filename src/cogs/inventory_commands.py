@@ -1,11 +1,11 @@
-import discord
-from discord.ext import commands
+from discord import Embed, User
+from discord.ext.commands import command, group
 
-from utils import checks, models
+from utils.checks import needs_access_level, channel_enabled
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.inventory_items import ALL_INVENTORY, ALL_SHORTCODE, InvalidUsesCount, NotInInventory
-from utils.models import get_from_db, DiscordUser, get_user_inventory
+from utils.models import get_from_db, DiscordUser, get_user_inventory, AccessLevel
 
 
 def _(message):
@@ -16,16 +16,16 @@ class InventoryCommands(Cog):
     display_name = _("Inventory")
     help_priority = 9
 
-    @commands.command(aliases=["open"])
-    @checks.channel_enabled()
+    @command(aliases=["open"])
+    @channel_enabled()
     async def use(self, ctx: MyContext, item_shortcode: str, item_uses:int = 1):
         """
         Alias for dh!inv use, so that you can just type dh!use instead.
         """
         await self.inv_use(ctx, item_shortcode, item_uses)
 
-    @commands.group(aliases=["inv"])
-    @checks.channel_enabled()
+    @group(aliases=["inv"])
+    @channel_enabled()
     async def inventory(self, ctx: MyContext):
         """
         Show your inventory content.
@@ -39,7 +39,7 @@ class InventoryCommands(Cog):
             db_user: DiscordUser = await get_from_db(ctx.author, as_user=True)
             inventory = await get_user_inventory(db_user)
 
-            embed = discord.Embed(title=_("Your inventory"))
+            embed = Embed(title=_("Your inventory"))
             empty = True
             for Item in ALL_INVENTORY:
                 item = Item(inventory)
@@ -60,8 +60,8 @@ class InventoryCommands(Cog):
             await ctx.send(embed=embed)
 
     @inventory.command(name="give")
-    @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
-    async def inv_give(self, ctx: MyContext, target: discord.User, item_shortcode: str, item_uses: int = 1):
+    @needs_access_level(AccessLevel.BOT_MODERATOR)
+    async def inv_give(self, ctx: MyContext, target: User, item_shortcode: str, item_uses: int = 1):
         """
         Give something to some player.
         """

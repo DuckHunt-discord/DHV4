@@ -1,17 +1,17 @@
-import asyncio
-import io
-import typing
+from asyncio import ensure_future
+from io import BytesIO
+from typing import Optional, TYPE_CHECKING
 
-import discord
-from discord import Message, Interaction
-from discord.ext import commands
+from discord import Message, Interaction, AllowedMentions, File
+from discord.ext.commands import Context
 from discord.utils import MISSING
+from discord.errors import HTTPException
 
 from utils.models import get_from_db
 from utils.translations import translate, ntranslate, get_translate_function, get_ntranslate_function
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
-if typing.TYPE_CHECKING:
+if TYPE_CHECKING:
     from utils.bot_class import MyBot
 
 
@@ -19,12 +19,12 @@ class InvalidArgument(Exception):
     pass
 
 
-class MyContext(commands.Context):
+class MyContext(Context):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.bot: 'MyBot'
-        self.interaction: typing.Optional[Interaction] = None  # Injected later.
-        self._prefix: typing.Optional[str] = None
+        self.interaction: Optional[Interaction] = None  # Injected later.
+        self._prefix: Optional[str] = None
 
         self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
 
@@ -43,7 +43,7 @@ class MyContext(commands.Context):
     def is_next_send_ephemeral(self):
         return self.interaction and not self.interaction.response.is_done()
 
-    async def reply(self, *args, **kwargs) -> discord.Message:
+    async def reply(self, *args, **kwargs) -> Message:
         return await self.send(*args, **kwargs, reply=True)
 
     async def send(self,
@@ -56,12 +56,12 @@ class MyContext(commands.Context):
                    allowed_mentions=None,
                    **kwargs) -> Message:
         if allowed_mentions is None:
-            allowed_mentions = discord.AllowedMentions()
+            allowed_mentions = AllowedMentions()
         # Case for a too-big message
         if content and len(content) > 1990:
             self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
 
-            message_file = discord.File(io.BytesIO(content.encode()), filename="message.txt")
+            message_file = File(BytesIO(content.encode()), filename="message.txt")
             content = None
 
             if file is not None and files is not None:
@@ -88,7 +88,7 @@ class MyContext(commands.Context):
                                                                    ephemeral=True)
         elif reply:
             db_user = await get_from_db(self.author, as_user=True)
-            allowed_mentions = discord.AllowedMentions(replied_user=db_user.ping_friendly).merge(allowed_mentions)
+            allowed_mentions = AllowedMentions(replied_user=db_user.ping_friendly).merge(allowed_mentions)
 
             if self.interaction:
                 # We can't respond to the interaction, but it's a button click,
@@ -115,7 +115,7 @@ class MyContext(commands.Context):
                     # Send a normal reply
                     message = await super().reply(content, file=file, files=files, allowed_mentions=allowed_mentions,
                                                   **kwargs)
-                except discord.errors.HTTPException:
+                except HTTPException:
                     # Can't reply, probably that the message we are replying to was deleted.
                     # Just send the message instead.
                     # TODO: Maybe add the replied user just like above.
@@ -128,7 +128,7 @@ class MyContext(commands.Context):
         # Message deletion if source is deleted
         # Except if the message was only shown to the user.
         if delete_on_invoke_removed and not send_as_ephemeral:
-            asyncio.ensure_future(delete_messages_if_message_removed(self.bot, self.message, message))
+            ensure_future(delete_messages_if_message_removed(self.bot, self.message, message))
 
         return message
 

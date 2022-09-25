@@ -1,11 +1,12 @@
-import asyncio
+from asyncio import sleep, gather, CancelledError
 import re
 
-import discord
+from discord import RawReactionActionEvent, Message, Forbidden, Embed
+from discord.utils import get as discord_get
 from discord.ext import commands
 from tortoise import timezone
 
-from utils import checks, models
+from utils.checks import needs_access_level
 from utils.bot_class import MyBot
 from utils.human_time import ShortTime
 from utils.cog_class import Cog
@@ -20,7 +21,7 @@ async def wait_cd(monitored_player, ctx, name, dt):
 
     seconds = (dt - now).total_seconds()
     seconds = max(seconds, 1)
-    await asyncio.sleep(seconds)
+    await sleep(seconds)
     ctx.logger.debug(f"{monitored_player.name} cooldown for {name} expired, notifying.")
     await ctx.send(_("{monitored_player.mention}, RPG cooldown: **{name}** expired.", name=name, monitored_player=monitored_player))
 
@@ -37,7 +38,7 @@ class Community(Cog):
             flags=re.MULTILINE | re.IGNORECASE)
 
     @commands.command()
-    @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
+    @needs_access_level(AccessLevel.BOT_MODERATOR)
     async def beta_invite(self, ctx: MyContext):
         """
         Invite someone to the beta server, letting them try the bot before the others
@@ -55,7 +56,7 @@ class Community(Cog):
         return message.guild and message.guild.id in self.config()["servers"]
 
     @Cog.listener()
-    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
+    async def on_raw_reaction_add(self, payload: RawReactionActionEvent):
         if str(payload.emoji) != '❌':
             return
 
@@ -72,7 +73,7 @@ class Community(Cog):
         await message.delete()
 
     @Cog.listener()
-    async def on_message(self, message: discord.Message):
+    async def on_message(self, message: Message):
         if not await self.is_in_server(message):
             return
 
@@ -113,14 +114,14 @@ class Community(Cog):
                             continue
                     try:
                         match_message = await match_channel.fetch_message(match_message_id)
-                    except discord.Forbidden:
+                    except Forbidden:
                         # Whoops, we don't have perms to see the message
                         continue
 
                     embed = await make_message_embed(match_message)
                     await ctx.send(embed=embed)
 
-    async def parse_embed_cooldowns(self, embed: discord.Embed):
+    async def parse_embed_cooldowns(self, embed: Embed):
         now = timezone.now()
         cooldowns = []
 
@@ -150,14 +151,14 @@ class Community(Cog):
         return cooldowns
 
     async def get_rpg_role(self, ctx):
-        return discord.utils.get(ctx.guild.roles, name=self.config()["rpg_role_name"])
+        return discord_get(ctx.guild.roles, name=self.config()["rpg_role_name"])
 
-    async def epic_rpg_pings(self, message: discord.Message):
+    async def epic_rpg_pings(self, message: Message):
         has_embeds = len(message.embeds)
         is_pingable = False
 
         if has_embeds:
-            embed: discord.Embed = message.embeds[0]
+            embed = message.embeds[0]
             is_pingable = str(embed.description).startswith("<:epicrpgarena:697563611698298922>")
             is_pingable = is_pingable or (str(embed.author.name).endswith("'s miniboss"))
             if len(embed.fields) >= 1:
@@ -175,10 +176,10 @@ class Community(Cog):
             _ = await ctx.get_translate_function()
             await ctx.send(_("{rpg_role.mention}, you might want to click the reaction above/do what the bot says.", rpg_role=rpg_role))
 
-    async def epic_rpg_cooldowns(self, message: discord.Message):
+    async def epic_rpg_cooldowns(self, message: Message):
         has_embeds = len(message.embeds)
         if has_embeds:
-            embed: discord.Embed = message.embeds[0]
+            embed = message.embeds[0]
             is_cooldown = str(embed.author.name).endswith("'s cooldowns")
         else:
             return
@@ -190,14 +191,14 @@ class Community(Cog):
             except ValueError:
                 await message.add_reaction("❌")
                 return
-            monitored_player: discord.Member = await ctx.guild.fetch_member(monitored_player_id)
+            monitored_player = await ctx.guild.fetch_member(monitored_player_id)
 
             maybe_gather = self.epic_rpg_cd_coros.get(monitored_player_id, None)
             if maybe_gather:
                 try:
                     maybe_gather.cancel()
                     await maybe_gather
-                except asyncio.CancelledError:
+                except CancelledError:
                     pass
 
             rpg_role = await self.get_rpg_role(ctx)
@@ -210,7 +211,7 @@ class Community(Cog):
 
                 await message.add_reaction("<:ah:327906673249484800>")
                 ctx.logger.debug(f"Adding monitoring for {len(coros)} cooldowns for the RPG account of {monitored_player.name}.")
-                self.epic_rpg_cd_coros[monitored_player_id] = asyncio.gather(*coros)
+                self.epic_rpg_cd_coros[monitored_player_id] = gather(*coros)
 
 
 setup = Community.setup

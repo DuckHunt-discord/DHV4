@@ -1,12 +1,13 @@
-import asyncio
-import datetime
-import random
+from asyncio import sleep
+from datetime import timedelta
+from random import choices, shuffle
 
 import discord
-from discord.ext import commands
+from discord.ext.commands import group, cooldown, BucketType
 from babel.dates import format_timedelta
 
-from utils import checks, models
+from utils.models import AccessLevel
+from utils.checks import channel_enabled, needs_access_level
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, \
@@ -23,10 +24,10 @@ class DucksSpawningCommands(Cog):
     help_priority = 5
     help_color = 'red'
 
-    @commands.group(aliases=["spawn", "spawnduck"])
-    @checks.channel_enabled()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @commands.cooldown(5, 30, commands.BucketType.channel)
+    @group(aliases=["spawn", "spawnduck"])
+    @channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @cooldown(5, 30, BucketType.channel)
     async def coin(self, ctx: MyContext):
         """
         Spawns a random duck
@@ -41,16 +42,16 @@ class DucksSpawningCommands(Cog):
         """
         how_many_ducks = max(2, min(how_many_ducks, 14))
 
-        ducks_classes = random.choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks)
+        ducks_classes = choices(RANDOM_SPAWN_DUCKS_CLASSES, k=how_many_ducks)
 
-        random.shuffle(ducks_classes)
+        shuffle(ducks_classes)
 
         ducks_classes += [MechanicalDuck]
 
         for duck_class in ducks_classes:
             myduck = duck_class(ctx.bot, ctx.channel)
             await myduck.spawn()
-            await asyncio.sleep(2)
+            await sleep(2)
 
     @coin.command()
     async def normal(self, ctx: MyContext):
@@ -160,9 +161,9 @@ class DucksSpawningCommands(Cog):
         myduck = CartographerDuck(ctx.bot, ctx.channel)
         await myduck.spawn()
 
-    @commands.group(aliases=["ducks"])
-    @checks.channel_enabled()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @group(aliases=["ducks"])
+    @channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
     async def ducks_list(self, ctx: MyContext):
         """
         Show ducks currently on the channel
@@ -193,7 +194,7 @@ class DucksSpawningCommands(Cog):
                 message.append('```')
 
                 for duck in ducks_spawned:
-                    spawned_for = datetime.timedelta(seconds=-duck.spawned_for)
+                    spawned_for = timedelta(seconds=-duck.spawned_for)
 
                     time_delta = format_timedelta(spawned_for, locale=language_code, add_direction=True)
 

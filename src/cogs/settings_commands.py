@@ -3,24 +3,26 @@ Commands to change settings in a channel/server
 
 These commands act where they are typed!
 """
-import datetime
+from datetime import datetime, timedelta
 from typing import Optional
 from uuid import uuid4
 
-import discord
-from discord.ext import commands
+from discord import Forbidden, Role, Member
+from discord.ext.commands import group
 from discord.utils import escape_markdown, escape_mentions
-from babel import Locale, lists, numbers, UnknownLocaleError
+from babel import Locale, UnknownLocaleError
+from babel.numbers import format_decimal
+from babel.lists import format_list
 from babel.dates import parse_time, format_timedelta, get_time_format, format_time
 
-from utils import checks, ducks, models
+from utils.checks import channel_enabled, needs_access_level
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.ducks import compute_sun_state
+from utils.ducks import compute_sun_state, DUCKS_CATEGORIES
 from utils.ducks_config import max_ducks_per_day
 from utils.interaction import create_and_save_webhook
 from utils.levels import get_level_info_from_id
-from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState
+from utils.models import get_from_db, DiscordMember, DiscordChannel, SunState, AccessLevel
 from utils.views import ConfirmView
 
 
@@ -39,7 +41,7 @@ class SettingsCommands(Cog):
     help_color = 'red'
     help_priority = 4
 
-    @commands.group(aliases=["set"])
+    @group(aliases=["set"])
     async def settings(self, ctx: MyContext):
         """
         Commands to view and edit settings
@@ -51,7 +53,7 @@ class SettingsCommands(Cog):
                            f"<{self.bot.config['website_url']}data/channels/{ctx.channel.id}/settings>")
 
     @settings.group(aliases=["template", "preset", "presets"])
-    @checks.channel_enabled()
+    @channel_enabled()
     async def templates(self, ctx: MyContext):
         """
         Set your server settings to specific, designed modes
@@ -74,7 +76,7 @@ class SettingsCommands(Cog):
             setattr(db_channel, field_name, getattr(db_defaults, field_name))
 
     @templates.command(aliases=["reset"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def default(self, ctx: MyContext):
         """
         Restore default settings for DuckHunt V4.
@@ -88,7 +90,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("Defaults settings have been restored.", ))
 
     @templates.command(aliases=["dhv3", "version3", "old"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def v3(self, ctx: MyContext):
         """
         Restore similar settings to DuckHunt V3, if that's your thing.
@@ -131,7 +133,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("DHV3-Like settings have been applied to this channel.", ))
 
     @templates.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def casual(self, ctx: MyContext):
         """
         Set the bot for a more casual experience.
@@ -181,7 +183,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("Casual mode settings have been applied to this channel.", ))
 
     @templates.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def hardcore(self, ctx: MyContext):
         """
         Set the bot for a more hardcore experience : less experience and more difficult ducks.
@@ -226,7 +228,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("Hardcore mode settings have been applied to this channel.", ))
 
     @templates.command(aliases=["haunted_house", "👻"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def haunted(self, ctx: MyContext):
         """
         Haunted house gamemode.
@@ -257,7 +259,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("👻 Haunted House settings have been applied to this channel.", ))
 
     @templates.command(aliases=["robots_fest", "🤖"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def robots(self, ctx: MyContext):
         """
         Robots fest gamemode.
@@ -279,7 +281,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("🤖 Robot fest settings have been applied to this channel.", ))
 
     @templates.command(aliases=["🐙"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def hydra(self, ctx: MyContext):
         """
         Hydra gamemode.
@@ -301,7 +303,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("🐙 Hydra settings have been applied to this channel.", ))
 
     @templates.command(aliases=["nuclear_radiation", "irradiation", "radiation", "radioactive", "☢️", "🍀"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def nuclear(self, ctx: MyContext):
         """
         Nuclear Radiation gamemode.
@@ -330,7 +332,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("☢ Nuclear radiation settings have been applied to this channel 🍀.", ))
 
     @templates.command(aliases=["reverse", "◀️", "🦘"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def australia(self, ctx: MyContext):
         """
         Australia (reverse) gamemode.
@@ -355,7 +357,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("🦘 Australia settings have been applied to this channel.", ))
 
     @templates.command(aliases=["VBD"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def very_big_ducks(self, ctx: MyContext):
         """
         Very Big Ducks gamemode.
@@ -377,7 +379,7 @@ class SettingsCommands(Cog):
         await ctx.send(_("There will be very big ducks on this channel.", ))
 
     @templates.command(aliases=["maths"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def math(self, ctx: MyContext):
         """
         Math lessons gamemode.
@@ -400,7 +402,7 @@ class SettingsCommands(Cog):
     # Guild settings #
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.MODERATOR)
+    @needs_access_level(AccessLevel.MODERATOR)
     async def prefix(self, ctx: MyContext, new_prefix: Optional[str] = None):
         """
         Change/view the server prefix.
@@ -423,15 +425,15 @@ class SettingsCommands(Cog):
             language_code = await ctx.get_language_code()
 
             global_prefixes = self.bot.config['bot']['prefixes']
-            global_prefixes_list = lists.format_list(global_prefixes, locale=language_code)
+            global_prefixes_list = format_list(global_prefixes, locale=language_code)
 
             await ctx.send(_("There is no specific prefix set for this guild.") + " " +
                            _("You can call me with any of the global prefixes : {global_prefixes_list}",
                              global_prefixes_list=global_prefixes_list))
 
     @settings.command(aliases=["lang", "speak"])
-    @checks.needs_access_level(models.AccessLevel.MODERATOR)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.MODERATOR)
+    @channel_enabled()
     async def language(self, ctx: MyContext, language_code: Optional[str] = None):
         """
         Change/view the server language.
@@ -480,8 +482,8 @@ class SettingsCommands(Cog):
     # Channel settings #
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def use_webhooks(self, ctx: MyContext, value: Optional[bool] = None):
         """
         Specify whether the bot should use webhooks to communicate in this channel.
@@ -501,8 +503,8 @@ class SettingsCommands(Cog):
             await ctx.send(_("Webhooks are not used in this channel."))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def allow_global_items(self, ctx: MyContext, value: Optional[bool] = None):
         """
         This controls if hunters can use special items they earned somewhere else on this channel...
@@ -523,8 +525,8 @@ class SettingsCommands(Cog):
             await ctx.send(_("Global items can't be used in this channel."))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.MODERATOR)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.MODERATOR)
+    @channel_enabled()
     async def add_webhook(self, ctx: MyContext):
         """
         Add a new webhook to the channel, to get better rate limits handling. Remember the 10 webhooks/channel limit.
@@ -554,8 +556,8 @@ class SettingsCommands(Cog):
             await ctx.send(_("I couldn't create a webhook. Double-check my permissions and try again."))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.MODERATOR)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.MODERATOR)
+    @channel_enabled()
     async def use_emojis(self, ctx: MyContext, value: bool = None):
         """
         Allow ducks to use emojis when they spawn.
@@ -573,7 +575,7 @@ class SettingsCommands(Cog):
             await ctx.send(_("That channel uses pure-text ducks. How does it feels to live in the IRC world ?"))
 
     @settings.command(aliases=["enable", "disabled", "disable", "on", "off"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def enabled(self, ctx: MyContext, value: bool = None):
         """
         Allow ducks to spawn.
@@ -600,8 +602,8 @@ class SettingsCommands(Cog):
                 pass
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def tax_on_user_send(self, ctx: MyContext, value: int = None):
         """
         Change the tax taken from users when they *send* some experience to another player.
@@ -623,8 +625,8 @@ class SettingsCommands(Cog):
                              channel=ctx.channel))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def mentions_when_killed(self, ctx: MyContext, value: bool = None):
         """
         Control if users might be pinged when they get killed. It's recommanded to set this to False on big servers.
@@ -644,8 +646,8 @@ class SettingsCommands(Cog):
                 _("Players won't get mentions when they get killed in {channel.mention}", channel=ctx.channel))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def show_duck_lives(self, ctx: MyContext, value: bool = None):
         """
         When hurting super ducks and the like, show how many lives the ducks have left.
@@ -664,8 +666,8 @@ class SettingsCommands(Cog):
             await ctx.send(_("Players won't see lives of super ducks on {channel.mention}", channel=ctx.channel))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def kill_on_miss_chance(self, ctx: MyContext, value: int = None):
         """
         Set how likely it is that a hunter will kill someone when missing a shot.
@@ -686,8 +688,8 @@ class SettingsCommands(Cog):
                              "They can still kill people voluntarily.", channel=ctx.channel))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def duck_frighten_chance(self, ctx: MyContext, value: int = None):
         """
         Set how likely it is that a hunter will frighten a duck when shooting.
@@ -709,8 +711,8 @@ class SettingsCommands(Cog):
                              channel=ctx.channel))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def clover_min_experience(self, ctx: MyContext, value: int = None):
         """
         Set the minimum experience a clover will give. Might be negative for funsies :)
@@ -739,8 +741,8 @@ class SettingsCommands(Cog):
             value=db_channel.clover_min_experience))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def clover_max_experience(self, ctx: MyContext, value: int = None):
         """
         Set the maximum experience a clover will give. Might be negative for funsies :)
@@ -764,8 +766,8 @@ class SettingsCommands(Cog):
             value=db_channel.clover_max_experience))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def base_duck_exp(self, ctx: MyContext, value: int = None):
         """
         Set the normal amount of experience a duck will give when killed.
@@ -786,8 +788,8 @@ class SettingsCommands(Cog):
                          value=db_channel.base_duck_exp))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def per_life_exp(self, ctx: MyContext, value: int = None):
         """
         Set the additional amount of experience given for every life of a super duck.
@@ -809,8 +811,8 @@ class SettingsCommands(Cog):
                          value=db_channel.per_life_exp))
 
     @settings.command(aliases=["dpd"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def ducks_per_day(self, ctx: MyContext, value: int = None):
         """
         Set the amount of ducks that will spawn every day
@@ -829,7 +831,7 @@ class SettingsCommands(Cog):
                 return
             elif value > maximum_value:
                 db_member = await get_from_db(ctx.author)
-                if db_member.get_access_level() >= models.AccessLevel.BOT_MODERATOR:
+                if db_member.get_access_level() >= AccessLevel.BOT_MODERATOR:
                     res = await ConfirmView(ctx, _).send(
                         _(
                             "⚠️️ You should not set that higher than {maximum_value}, however, you have the required permissions to proceed. "
@@ -872,8 +874,8 @@ class SettingsCommands(Cog):
                          value=db_channel.ducks_per_day))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def weights(self, ctx: MyContext, duck_type: str, value: int = None):
         """
         Set a duck probability to spawn to a certain weight. The higher the weight, the more probability for it to spawn.
@@ -881,13 +883,13 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        allowed_ducks_types = ducks.DUCKS_CATEGORIES
+        allowed_ducks_types = DUCKS_CATEGORIES
 
         if duck_type not in allowed_ducks_types:
             await ctx.send(
                 _("❌ I don't know what type of duck you are talking about. Choose one in {allowed_ducks_types}.",
                   channel=ctx.channel,
-                  allowed_ducks_types=lists.format_list(allowed_ducks_types, locale=await ctx.get_language_code())
+                  allowed_ducks_types=format_list(allowed_ducks_types, locale=await ctx.get_language_code())
                   ))
             return
 
@@ -907,8 +909,8 @@ class SettingsCommands(Cog):
                          ))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def ducks_time_to_live(self, ctx: MyContext, value: int = None):
         """
         Set for how many seconds a duck will stay on the channel before leaving
@@ -932,12 +934,12 @@ class SettingsCommands(Cog):
 
         await ctx.send(_("On {channel.mention}, ducks will stay for {value} seconds.",
                          channel=ctx.channel,
-                         value=numbers.format_decimal(db_channel.ducks_time_to_live,
+                         value=format_decimal(db_channel.ducks_time_to_live,
                                                             locale=await ctx.get_language_code())))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def super_ducks_min_life(self, ctx: MyContext, value: int = None):
         """
         Set the minimum lives of a super duck
@@ -965,8 +967,8 @@ class SettingsCommands(Cog):
                          value=db_channel.super_ducks_min_life))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def super_ducks_max_life(self, ctx: MyContext, value: int = None):
         """
         Set the maximum lives of a super duck
@@ -994,8 +996,8 @@ class SettingsCommands(Cog):
                          value=db_channel.super_ducks_max_life))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.MODERATOR)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.MODERATOR)
+    @channel_enabled()
     async def anti_trigger_wording(self, ctx: MyContext, value: bool = None):
         """
         Avoid references to triggering actions/words.
@@ -1016,8 +1018,8 @@ class SettingsCommands(Cog):
                              ))
 
     @settings.command(aliases=["night", "sleep", "sleeping_ducks"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def night_time(self, ctx: MyContext, night_start: str = None, night_end: str = None):
         """
         Set the night time. Only some exclusive ducks spawn during the night.
@@ -1031,7 +1033,7 @@ class SettingsCommands(Cog):
 
         if night_start is not None and night_end is not None:
             time_format = str(get_time_format(locale=language_code, format='medium'))
-            time_example = format_time(datetime.datetime.now(), locale=language_code, format='medium')
+            time_example = format_time(datetime.now(), locale=language_code, format='medium')
             try:
                 parsed_night_start = parse_time(night_start, locale=language_code)
             except IndexError:
@@ -1062,8 +1064,8 @@ class SettingsCommands(Cog):
 
         sun, duration_of_night, time_left_sun = await compute_sun_state(ctx.channel)
 
-        duration_of_night_td = format_timedelta(datetime.timedelta(seconds=duration_of_night), locale=language_code)
-        time_left_sun_td = format_timedelta(datetime.timedelta(seconds=time_left_sun), locale=language_code,
+        duration_of_night_td = format_timedelta(timedelta(seconds=duration_of_night), locale=language_code)
+        time_left_sun_td = format_timedelta(timedelta(seconds=time_left_sun), locale=language_code,
                                             add_direction=True)
 
         if duration_of_night == 0:
@@ -1084,8 +1086,8 @@ class SettingsCommands(Cog):
                   duration_of_night_td=duration_of_night_td))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    @checks.channel_enabled()
+    @needs_access_level(AccessLevel.ADMIN)
+    @channel_enabled()
     async def api_key(self, ctx: MyContext, enable: bool = None):
         """
         Enable/disable the DuckHunt API for this channel. Will give you an API key, keep that private.
@@ -1112,11 +1114,11 @@ class SettingsCommands(Cog):
             else:
                 await ctx.author.send(_("The API is disabled on {channel.mention}. "
                                         "Enable it with `{ctx.prefix}set api_key True`", channel=ctx.channel))
-        except discord.Forbidden:
+        except Forbidden:
             await ctx.reply(_("I couldn't DM you... Are your DMs blocked ?"))
 
     @settings.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def channel_disabled_message(self, ctx: MyContext, enable: bool = None):
         """
         Enable or disable the channel disabled message that tells you that you've ran a command in a channel that isn't enabled.
@@ -1134,8 +1136,8 @@ class SettingsCommands(Cog):
             await ctx.reply(_("Channel disabled messages are disabled. The bot will stay silent."))
 
     @settings.command(aliases=["roles", "role", "ar", "autoroles", "auto_role", "autorole"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    async def auto_roles(self, ctx: MyContext, level_id: int = None, role: discord.Role = None):
+    @needs_access_level(AccessLevel.ADMIN)
+    async def auto_roles(self, ctx: MyContext, level_id: int = None, role: Role = None):
         """
         Commands to edit auto roles. Auto roles are roles that are given automatically to members once they reach a
         certain DH level.
@@ -1200,8 +1202,8 @@ class SettingsCommands(Cog):
 
     @settings.command(aliases=["prestige_roles", "prestige_role", "apr", "autoprestigeroles", "auto_prestige_role",
                                "autoprestigerole"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    async def auto_prestige_roles(self, ctx: MyContext, prestige_id: int = None, role: discord.Role = None):
+    @needs_access_level(AccessLevel.ADMIN)
+    async def auto_prestige_roles(self, ctx: MyContext, prestige_id: int = None, role: Role = None):
         """
         Commands to edit auto prestige roles. Auto prestige roles are roles that are given automatically to members once
         they reach a certain prestige level.
@@ -1262,7 +1264,7 @@ class SettingsCommands(Cog):
         await ctx.reply(message)
 
     @settings.group(aliases=["access"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def permissions(self, ctx: MyContext):
         """
         Commands to edit permissions.
@@ -1279,14 +1281,14 @@ class SettingsCommands(Cog):
             await ctx.send_help(ctx.command)
 
     @permissions.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def view(self, ctx: MyContext):
         """
         View the current permissions
         """
         _ = await ctx.get_translate_function()
 
-        members_with_rights = await DiscordMember.filter(access_level__not=models.AccessLevel.DEFAULT,
+        members_with_rights = await DiscordMember.filter(access_level__not=AccessLevel.DEFAULT,
                                                          guild__discord_id=ctx.guild.id).prefetch_related("user").all()
 
         if members_with_rights:
@@ -1302,8 +1304,8 @@ class SettingsCommands(Cog):
             await ctx.send(_("No members have any specific rights in the server."))
 
     @permissions.command()
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
-    async def set(self, ctx: MyContext, target: discord.Member, level: models.AccessLevel):
+    @needs_access_level(AccessLevel.ADMIN)
+    async def set(self, ctx: MyContext, target: Member, level: AccessLevel):
         """
         Edit the current permissions for a specific user
         """
@@ -1311,7 +1313,7 @@ class SettingsCommands(Cog):
 
         db_member: DiscordMember = await get_from_db(target)
 
-        if level == models.AccessLevel.BANNED and target.id == ctx.author.id:
+        if level == AccessLevel.BANNED and target.id == ctx.author.id:
             await ctx.send(_("❌ {target.mention}, you cannot ban yourself !", target=target))
             return False
 
@@ -1324,7 +1326,7 @@ class SettingsCommands(Cog):
     # Landmines settings #
 
     @settings.command(aliases=["landmines_enable", "landmines_disabled", "landmines_disable", "landmines_on", "landmines_off"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def landmines_enabled(self, ctx: MyContext, value: bool = None):
         """
         Allow the landmines game to take place here.
@@ -1344,7 +1346,7 @@ class SettingsCommands(Cog):
             await ctx.send(_("The landmines game is disabled in {channel.mention}, users can't trip on landmines and earn points here.", channel=ctx.channel))
 
     @settings.command(aliases=["landmines_commands_enable", "landmines_commands_disabled", "landmines_commands_disable", "landmines_commands_on", "landmines_commands_off"])
-    @checks.needs_access_level(models.AccessLevel.ADMIN)
+    @needs_access_level(AccessLevel.ADMIN)
     async def landmines_commands_enabled(self, ctx: MyContext, value: bool = None):
         """
         Allow landmines commands to be ran in this channel.
@@ -1366,7 +1368,7 @@ class SettingsCommands(Cog):
     # User settings #
 
     @settings.command(aliases=["ping_friendly", "i_luv_pings", "pings", "my_pings", "my_ping"])
-    @checks.channel_enabled()
+    @channel_enabled()
     async def ping(self, ctx: MyContext, value: bool = None):
         """
         Set your preference on whether replies from the bot should ping you
@@ -1384,7 +1386,7 @@ class SettingsCommands(Cog):
             await ctx.reply(_("You wont be pinged anymore in replies from the bot."))
 
     @settings.command(aliases=["my_lang"])
-    @checks.channel_enabled()
+    @channel_enabled()
     async def my_language(self, ctx: MyContext, language_code: str = None):
         """
         Change/view your own language.

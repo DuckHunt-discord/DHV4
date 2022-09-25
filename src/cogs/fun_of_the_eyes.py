@@ -2,15 +2,15 @@
 Some commands for the bot owner.
 Testing in progress, please keep the lights off.
 """
-import time
+from time import perf_counter
 from functools import partial
 from io import BytesIO
 from typing import Optional
 
-import discord
-from discord.ext import commands
-import numpy as np
-import seam_carving
+from discord import User, File
+from discord.ext.commands import command
+from numpy import array as np_array
+from seam_carving import resize
 from PIL import Image, ImageOps
 
 from utils.checks import needs_access_level
@@ -46,7 +46,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct, image_format):
     final_buffer = BytesIO()
 
     # Get the numpy image
-    src = np.array(image)
+    src = np_array(image)
 
     # Get the image sizes
     start_h, start_w, _ = src.shape
@@ -72,7 +72,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct, image_format):
         # Width not yet resized
         curr_w = start_w
 
-        src = seam_carving.resize(
+        src = resize(
             src, (curr_w, curr_h),
             energy_mode='backward',  # Choose from {backward, forward}
             order='width-first',  # Choose from {width-first, height-first}
@@ -87,7 +87,7 @@ def resize_image_gif(image_bytes, w_pct, h_pct, image_format):
     # The height is resized now
     curr_h = end_h
     for curr_w in range(start_w, end_w, step_w):
-        src = seam_carving.resize(
+        src = resize(
             src, (curr_w, curr_h),
             energy_mode='backward',  # Choose from {backward, forward}
             order='width-first',  # Choose from {width-first, height-first}
@@ -114,11 +114,11 @@ def resize_image(image_bytes, w_pct, h_pct):
     image = Image.open(BytesIO(image_bytes))
     final_buffer = BytesIO()
 
-    src = np.array(image)
+    src = np_array(image)
     src_h, src_w, _ = src.shape
     dst_h, dst_w = int(src_h * (h_pct/100)), int(src_w * (w_pct/100))
 
-    dst = seam_carving.resize(
+    dst = resize(
         src, (dst_w, dst_h),
         energy_mode='backward',  # Choose from {backward, forward}
         order='width-first',  # Choose from {width-first, height-first}
@@ -135,10 +135,10 @@ def resize_image(image_bytes, w_pct, h_pct):
 class FunOfTheEyes(Cog):
     hidden = True
 
-    @commands.command(aliases=["resize"])
+    @command(aliases=["resize"])
     @needs_access_level(AccessLevel.BOT_MODERATOR)
     @dont_block
-    async def carve(self, ctx: MyContext, who: Optional[discord.User] = None,
+    async def carve(self, ctx: MyContext, who: Optional[User] = None,
                     width_pct: int = 50, height_pct: int = 50, image_format: str = "jpeg"):
         """
         Content-aware carving of an image/avatar, resizing it to reduce the width and height,
@@ -173,7 +173,7 @@ class FunOfTheEyes(Cog):
 
         status_message = await ctx.send("<a:typing:597589448607399949> Downloading image...")
         async with ctx.typing():
-            start = time.perf_counter()
+            start = perf_counter()
 
             for attachment in ctx.message.attachments:
                 if attachment.content_type.startswith('image/'):
@@ -185,7 +185,7 @@ class FunOfTheEyes(Cog):
                 else:
                     image_bytes = await ctx.author.display_avatar.replace(format="jpg", size=512).read()
 
-            end_dl = time.perf_counter()
+            end_dl = perf_counter()
             dl_time = round(end_dl - start, 1)
 
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
@@ -198,7 +198,7 @@ class FunOfTheEyes(Cog):
 
             final_buffer, src_h, src_w, dst_h, dst_w = await self.bot.loop.run_in_executor(None, fn)
 
-            end_processing = time.perf_counter()
+            end_processing = perf_counter()
             processing_time = round(end_processing-end_dl, 1)
 
             await status_message.edit(content=f"✅ Downloading image... {dl_time}s\n"
@@ -206,7 +206,7 @@ class FunOfTheEyes(Cog):
                                               f"({src_w} x {src_h} -> {dst_w} x {dst_h})\n", )
 
             # prepare the file
-            file = discord.File(filename="seam_carving." + image_format, fp=final_buffer)
+            file = File(filename="seam_carving." + image_format, fp=final_buffer)
 
             # send it
             await ctx.reply(file=file)

@@ -2,8 +2,8 @@ from collections import defaultdict
 from typing import Union, Optional
 
 from discord.ext.commands import Group
-import aiohttp_cors
-from aiohttp import web
+from aiohttp_cors import setup as cors_setup, ResourceOptions
+from aiohttp.web import json_response, Application, AppRunner, TCPSite
 from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
 
 from utils.cog_class import Cog
@@ -38,9 +38,9 @@ class RestAPI(Cog):
         super().__init__(bot, *args, **kwargs)
 
     async def cog_load(self):
-        self.app = web.Application()
-        self.cors = aiohttp_cors.setup(self.app)
-        self.runner = web.AppRunner(self.app, access_log=self.bot.logger.logger)
+        self.app = Application()
+        self.cors = cors_setup(self.app)
+        self.runner = AppRunner(self.app, access_log=self.bot.logger.logger)
         self.site = None
         self.bot.loop.create_task(self.run())
 
@@ -80,7 +80,7 @@ class RestAPI(Cog):
 
         channels = await DiscordChannel.filter(enabled=True).prefetch_related("guild").all()
 
-        return web.json_response([{
+        return json_response([{
             "channel_name": channel.name,
             "channel_discord_id": channel.discord_id,
             "guild_discord_id": channel.guild.discord_id,
@@ -104,7 +104,7 @@ class RestAPI(Cog):
         try:
             await self.authenticate_request(request, channel=channel)
         except HTTPForbidden:
-            return web.json_response(
+            return json_response(
                 {'id': channel.id,
                  'name': channel.name,
                  'authentication': False,
@@ -113,7 +113,7 @@ class RestAPI(Cog):
         ducks_spawned = self.bot.ducks_spawned[channel]
         ducks = self.bot.enabled_channels[channel]
 
-        return web.json_response(
+        return json_response(
             {'id': channel.id,
              'name': channel.name,
              'ducks': [duck.serialize() for duck in ducks_spawned],
@@ -138,7 +138,7 @@ class RestAPI(Cog):
 
         db_channel = await get_from_db(channel)
 
-        return web.json_response(db_channel.serialize())
+        return json_response(db_channel.serialize())
 
     async def channel_top(self, request):
         """
@@ -159,7 +159,7 @@ class RestAPI(Cog):
 
         fields = ["experience", "best_times", "killed", "last_giveback", "shooting_stats"]
 
-        return web.json_response([
+        return json_response([
             player.serialize(serialize_fields=fields) for player in players
         ])
 
@@ -182,7 +182,7 @@ class RestAPI(Cog):
         if not player:
             raise HTTPNotFound(reason="Unknown player/channel/user")
 
-        return web.json_response(player.serialize())
+        return json_response(player.serialize())
 
     def get_help_dict(self, group: Union[Group, Cog]):
         commands = {}
@@ -240,7 +240,7 @@ class RestAPI(Cog):
         for cog_name, cog in self.bot.cogs.items():
             help_dict = {**help_dict, **self.get_help_dict(cog)}
 
-        return web.json_response(help_dict)
+        return json_response(help_dict)
 
     async def status(self, request):
         """
@@ -265,7 +265,7 @@ class RestAPI(Cog):
                 }
             )
 
-        return web.json_response(
+        return json_response(
             {
                 "bot_latency": round(self.bot.latency, 2),
                 "shards_status": shards_status,
@@ -286,7 +286,7 @@ class RestAPI(Cog):
             self.bot.logger.exception("Couldn't get total member count.")
             total_members = 0
 
-        return web.json_response(
+        return json_response(
             {
                 "members_count": total_members,
                 "guilds_count": len(self.bot.guilds),
@@ -331,7 +331,7 @@ class RestAPI(Cog):
             resource = self.cors.add(self.app.router.add_resource(route_path))
             route = self.cors.add(
                 resource.add_route(route_method, route_coro), {
-                    "*": aiohttp_cors.ResourceOptions(
+                    "*": ResourceOptions(
                         allow_credentials=True,
                         allow_headers=("X-Requested-With", "Content-Type", "Authorization",),
                         max_age=3600,
@@ -339,7 +339,7 @@ class RestAPI(Cog):
                 })
 
         await self.runner.setup()
-        self.site = web.TCPSite(self.runner, listen_ip, listen_port)
+        self.site = TCPSite(self.runner, listen_ip, listen_port)
         await self.site.start()
         # noinspection HttpUrlsUsage
         self.bot.logger.info(f"DuckHunt JSON API listening on http://{listen_ip}:{listen_port}")
