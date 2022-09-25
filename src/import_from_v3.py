@@ -1,7 +1,7 @@
-import asyncio
-import datetime
-import json
-import time
+from asyncio import run
+from datetime import datetime
+from json import load
+from time import time
 
 from tqdm import tqdm
 
@@ -18,7 +18,7 @@ channels_cache = {}
 users_cache = {}
 members_cache = {}
 
-now = time.time()
+now = time()
 
 
 async def get_or_create_guild(guild_id: int, **kwargs):
@@ -71,11 +71,11 @@ async def main():
     print(f"Loading data from {DHV3_SETTINGS_FILE}...")
 
     with open(DHV3_SETTINGS_FILE, "r") as f:
-        settings = json.load(f)
+        settings = load(f)
 
     print(f"Loading data from {DHV3_PLAYERS_FILE}...")
     with open(DHV3_PLAYERS_FILE, "r") as f:
-        players = json.load(f)
+        players = load(f)
 
     print("JSON Data loaded into memory...")
     print("Continuing will assume an ERASED database")
@@ -212,7 +212,7 @@ async def main():
             }),
             bullets=player_obj["balles"],
             magazines=player_obj["chargeurs"],
-            last_giveback=datetime.datetime.fromtimestamp(player_obj["lastGiveback"]),
+            last_giveback=datetime.fromtimestamp(player_obj["lastGiveback"]),
             killed=remove_empty_data({
                 "normal": player_obj["killed_normal_ducks"],
                 "super": player_obj["killed_super_ducks"],
@@ -241,4 +241,4 @@ async def main():
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    run(main())

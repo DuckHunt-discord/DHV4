@@ -1,18 +1,18 @@
-import asyncio
+from asyncio import run, set_event_loop_policy
 
-import discord
-import uvloop
+from discord import Intents, AllowedMentions
+from uvloop import EventLoopPolicy
 
 from utils.bot_class import MyBot
 from utils.config import load_config
 
 
-asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+set_event_loop_policy(EventLoopPolicy())
 
 config = load_config()
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.Intents
-intents = discord.Intents.none()
+intents = Intents.none()
 intents.message_content = True  # Privileged
 intents.messages = True
 intents.guilds = True
@@ -29,7 +29,7 @@ intents.voice_states = False
 intents.typing = False
 
 # https://discordpy.readthedocs.io/en/latest/api.html#discord.AllowedMentions
-allowed_mentions = discord.AllowedMentions(
+allowed_mentions = AllowedMentions(
     everyone=False,
     roles=False,
     users=True,
@@ -49,4 +49,4 @@ async def main():
         await bot.start(config['auth']['discord']['token'])
 
 
-asyncio.run(main())
+run(main())

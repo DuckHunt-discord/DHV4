@@ -4,11 +4,11 @@ from datetime import timedelta
 from typing import Tuple, List
 
 from discord import User, Embed, Colour
-from discord.errors import NotFound, Forbidden
 from discord.ext import commands
+from discord.errors import NotFound, Forbidden
 from aiohttp import web, ClientTimeout, ContentTypeError
 from tortoise import timezone
-import statcord
+from statcord import Client as SC_Client
 
 from utils.cog_class import Cog
 from utils import checks
@@ -30,7 +30,7 @@ class BotsListVoting(Cog):
         super().__init__(bot, *args, **kwargs)
 
     async def cog_load(self):
-        self.statcord_api = statcord.Client(self.bot, self.config()['statcord_token'],
+        self.statcord_api = SC_Client(self.bot, self.config()['statcord_token'],
                                             custom1=self.statcord_custom_value_ducks_spawned,
                                             custom2=self.statcord_custom_value_players_count)
         self.statcord_api.start_loop()
