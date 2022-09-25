@@ -151,7 +151,7 @@ class UserFriendlyTime(Converter):
         # foo date time
 
         # first the first two cases:
-        dt, status, begin, end, dt_string = elements[0]
+        dt, status, begin, end = elements[0]
 
         if not status.hasDateOrTime:
             raise BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')

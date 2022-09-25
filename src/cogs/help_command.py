@@ -234,7 +234,7 @@ class BotHelpView(View):
         commands_by_cog = list(groupby(filtered, key=get_cog))
         commands_by_cog.sort(key=lambda kv: (getattr(kv[0], 'help_priority', 10), kv[0].name) if kv[0] else (100, kv[0]))
 
-        for cog, commands in commands_by_cog:
+        for cog in commands_by_cog:
             if cog is not None:
                 if not getattr(cog, 'hidden', False):
                     self.add_item(CogHelpButton(self.ctx, cog))

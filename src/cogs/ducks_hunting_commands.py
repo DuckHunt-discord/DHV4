@@ -469,7 +469,6 @@ class DucksHuntingCommands(Cog):
         """
         _ = await ctx.get_translate_function()
         db_hunter: Player = await get_player(ctx.author, ctx.channel, giveback=True)
-        now = int(time())
 
         if db_hunter.is_powerup_active('confiscated'):
             db_hunter.shooting_stats['reloads_when_confiscated'] += 1

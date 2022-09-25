@@ -93,8 +93,7 @@ class CloseReasonSelect(Select):
         options = []
 
         for reason_label, extra_info in self.reasons.items():
-            reason_emoji, stored_reason, tag_to_send = extra_info
-            options.append(SelectOption(label=reason_label, emoji=reason_emoji))
+            options.append(SelectOption(label=reason_label, emoji=extra_info.reason_emoji))
 
         super().__init__(custom_id="private_messages_support:close_select_reason", placeholder="Quick DM closing", min_values=1, max_values=1,
                          options=options
@@ -103,7 +102,7 @@ class CloseReasonSelect(Select):
     async def callback(self, interaction: Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
         reason_info = self.reasons[self.values[0]]
-        reason_emoji, stored_reason, tag_to_send = reason_info
+        _, stored_reason, tag_to_send = reason_info
 
         close_command = self.bot.get_command('private_support close')
         if tag_to_send:
@@ -648,7 +647,7 @@ class PrivateMessagesSupport(Cog):
         close_embed.add_field(name=_("Support server"), value=_("For all your questions, there is a support server. "
                                                                 "Click [here](https://duckhunt.me/support) to join."))
 
-        file, debug = await get_random_duck_file(self.bot)
+        file = await get_random_duck_file(self.bot)
         close_embed.set_image(url="attachment://random_duck.png")
 
         await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
@@ -789,7 +788,7 @@ class PrivateMessagesSupport(Cog):
             return payload.user_id == user.id and str(payload.emoji) == '✅' and payload.guild_id is None
 
         try:
-            payload = await self.bot.wait_for('raw_reaction_add', timeout=86400, check=check)
+            await self.bot.wait_for('raw_reaction_add', timeout=86400, check=check)
         except asyncio.TimeoutError:
             _ = get_translate_function(ctx, db_user.language)
             await user.send(_("Your language preference wasn't changed."))
