@@ -15,9 +15,8 @@ human_timedelta convert two datetimes to a string that is humanised to tell how 
 """
 import re
 
-from discord.ext.commands import BadArgument, Converter
-from parsedatetime import Calendar, VERSION_CONTEXT_STYLE
-from parsedatetime.pdtContext import ACU_HALFDAY
+from discord.ext import commands
+import parsedatetime as pdt
 from dateutil.relativedelta import relativedelta
 from tortoise import timezone
 
@@ -37,7 +36,7 @@ class ShortTime:
     def __init__(self, argument, *, now=None):
         match = self.compiled.fullmatch(argument)
         if match is None or not match.group(0):
-            raise BadArgument('invalid time provided')
+            raise commands.BadArgument('invalid time provided')
 
         data = {k: int(v) for k, v in match.groupdict(default="0").items()}
         now = now or timezone.now()
@@ -49,13 +48,13 @@ class ShortTime:
 
 
 class HumanTime:
-    calendar = Calendar(version=VERSION_CONTEXT_STYLE)
+    calendar = pdt.Calendar(version=pdt.VERSION_CONTEXT_STYLE)
 
     def __init__(self, argument, *, now=None):
         now = now or timezone.now()
         dt, status = self.calendar.parseDT(argument, sourceTime=now)
         if not status.hasDateOrTime:
-            raise BadArgument('invalid time provided, try e.g. "tomorrow" or "3 days"')
+            raise commands.BadArgument('invalid time provided, try e.g. "tomorrow" or "3 days"')
 
         if not status.hasTime:
             # replace it with the current time
@@ -86,17 +85,17 @@ class FutureTime(Time):
         super().__init__(argument, now=now)
 
         if self._past:
-            raise BadArgument('this time is in the past')
+            raise commands.BadArgument('this time is in the past')
 
 
-class UserFriendlyTime(Converter):
+class UserFriendlyTime(commands.Converter):
     """That way quotes aren't absolutely necessary."""
 
     def __init__(self, converter=None, *, default=None):
-        if isinstance(converter, type) and issubclass(converter, Converter):
+        if isinstance(converter, type) and issubclass(converter, commands.Converter):
             converter = converter()
 
-        if converter is not None and not isinstance(converter, Converter):
+        if converter is not None and not isinstance(converter, commands.Converter):
             raise TypeError('commands.Converter subclass necessary.')
 
         self.converter = converter
@@ -106,11 +105,11 @@ class UserFriendlyTime(Converter):
 
     async def check_constraints(self, ctx, now, remaining):
         if self.dt < now:
-            raise BadArgument('This time is in the past.')
+            raise commands.BadArgument('This time is in the past.')
 
         if not remaining:
             if self.default is None:
-                raise BadArgument('Missing argument after the time.')
+                raise commands.BadArgument('Missing argument after the time.')
             remaining = self.default
 
         if self.converter is not None:
@@ -143,7 +142,7 @@ class UserFriendlyTime(Converter):
 
         elements = calendar.nlp(argument, sourceTime=now)
         if elements is None or len(elements) == 0:
-            raise BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
+            raise commands.BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
 
         # handle the following cases:
         # "date time" foo
@@ -154,10 +153,10 @@ class UserFriendlyTime(Converter):
         dt, status, begin, end = elements[0]
 
         if not status.hasDateOrTime:
-            raise BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
+            raise commands.BadArgument('Invalid time provided, try e.g. "tomorrow" or "3 days".')
 
         if begin not in (0, 1) and end != len(argument):
-            raise BadArgument('Time is either in an inappropriate location, which '
+            raise commands.BadArgument('Time is either in an inappropriate location, which '
                                        'must be either at the end or beginning of your input, '
                                        'or I just flat out did not understand what you meant. Sorry.')
 
@@ -166,7 +165,7 @@ class UserFriendlyTime(Converter):
             dt = dt.replace(hour=now.hour, minute=now.minute, second=now.second, microsecond=now.microsecond)
 
         # if midnight is provided, just default to next day
-        if status.accuracy == ACU_HALFDAY:
+        if status.accuracy == pdt.pdtContext.ACU_HALFDAY:
             dt = dt.replace(day=now.day + 1)
 
         self.dt = dt
@@ -175,10 +174,10 @@ class UserFriendlyTime(Converter):
             if begin == 1:
                 # check if it's quoted:
                 if argument[0] != '"':
-                    raise BadArgument('Expected quote before time input...')
+                    raise commands.BadArgument('Expected quote before time input...')
 
                 if not (end < len(argument) and argument[end] == '"'):
-                    raise BadArgument('If the time is quoted, you must unquote it.')
+                    raise commands.BadArgument('If the time is quoted, you must unquote it.')
 
                 remaining = argument[end + 1:].lstrip(' ,.!')
             else:
