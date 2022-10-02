@@ -2,7 +2,7 @@ from asyncio import sleep
 from datetime import timedelta
 from random import choices, shuffle
 
-from discord import Forbidden
+import discord
 from discord.ext.commands import group, cooldown, BucketType
 from babel.dates import format_timedelta
 
@@ -208,7 +208,7 @@ class DucksSpawningCommands(Cog):
                 message.append('```')
             try:
                 await ctx.author.send(content='\n'.join(message))
-            except Forbidden:
+            except discord.Forbidden:
                 await ctx.reply("I couldn't DM you... Are your DMs blocked ?")
 
     @ducks_list.command()

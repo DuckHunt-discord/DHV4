@@ -5,7 +5,7 @@
 # Minimally patched to make it even more xgettext compatible
 # by Peter Funk <pf@artcom-gmbh.de>
 #
-# 2002-11-22 Jï¿½rgen Hermann <jh@web.de>
+# 2002-11-22 Jürgen Hermann <jh@web.de>
 # Added checks that _() only contains string literals, and
 # command line args are resolved to module lists, i.e. you
 # can now pass a filename, a module or package name, or a
@@ -14,11 +14,11 @@
 #
 
 # for selftesting
-from inspect import cleandoc
+import inspect
 
 try:
-    from fintl import gettext
-    _ = gettext
+    import fintl
+    _ = fintl.gettext
 except ImportError:
     _ = lambda s: s
 
@@ -157,17 +157,16 @@ Options:
 If `inputfile' is -, standard input is read.
 """)
 
+import os
+import importlib.machinery
+import importlib.util
 import sys
+import glob
+import time
+import getopt
 import ast
 import token
 import tokenize
-from os import walk
-from os.path import exists, isdir, join, splitext
-from importlib.machinery import SOURCE_SUFFIXES
-from importlib.util import find_spec
-from glob import glob
-from time import strftime
-from getopt import getopt, error as getopt_error
 
 __version__ = '1.5'
 
@@ -208,7 +207,7 @@ def make_escapes(pass_nonascii):
     global escapes, escape
     if pass_nonascii:
         # Allow non-ascii characters to pass through so that e.g. 'msgid
-        # "Hï¿½he"' would result not result in 'msgid "H\366he"'.  Otherwise we
+        # "Höhe"' would result not result in 'msgid "H\366he"'.  Otherwise we
         # escape any character outside the 32..126 range.
         mod = 128
         escape = escape_ascii
@@ -267,10 +266,10 @@ def getFilesForName(name):
     """Get a list of module files for a filename, a module or package name,
     or a directory.
     """
-    if not exists(name):
+    if not os.path.exists(name):
         # check for glob chars
         if containsAny(name, "*?[]"):
-            files = glob(name)
+            files = glob.glob(name)
             list = []
             for file in files:
                 list.extend(getFilesForName(file))
@@ -278,29 +277,29 @@ def getFilesForName(name):
 
         # try to find module or package
         try:
-            spec = find_spec(name)
+            spec = importlib.util.find_spec(name)
             name = spec.origin
         except ImportError:
             name = None
         if not name:
             return []
 
-    if isdir(name):
+    if os.path.isdir(name):
         # find all python files in directory
         list = []
         # get extension for python source files
-        _py_ext = SOURCE_SUFFIXES[0]
-        for root, dirs, files in walk(name):
+        _py_ext = importlib.machinery.SOURCE_SUFFIXES[0]
+        for root, dirs, files in os.walk(name):
             # don't recurse into CVS directories
             if 'CVS' in dirs:
                 dirs.remove('CVS')
             # add all *.py files to list
             list.extend(
-                [join(root, file) for file in files
-                 if splitext(file)[1] == _py_ext]
+                [os.path.join(root, file) for file in files
+                 if os.path.splitext(file)[1] == _py_ext]
                 )
         return list
-    elif exists(name):
+    elif os.path.exists(name):
         # a single file
         return [name]
 
@@ -461,7 +460,7 @@ class TokenEater:
 
     def write(self, fp):
         options = self.__options
-        timestamp = strftime('%Y-%m-%d %H:%M%z')
+        timestamp = time.strftime('%Y-%m-%d %H:%M%z')
         encoding = fp.encoding if fp.encoding else 'UTF-8'
         print(pot_header % {'time': timestamp, 'version': __version__,
                             'charset': encoding,
@@ -509,7 +508,7 @@ class TokenEater:
                         print(locline, file=fp)
                 if isdocstring:
                     print('#, docstring', file=fp)
-                    k = cleandoc(k)
+                    k = inspect.cleandoc(k)
                 print('msgid', normalize(k, encoding), file=fp)
                 print('msgstr ""\n', file=fp)
 
@@ -518,7 +517,7 @@ class TokenEater:
 def main():
     global default_keywords
     try:
-        opts, args = getopt(
+        opts, args = getopt.getopt(
             sys.argv[1:],
             'ad:DEhk:Kno:p:S:Vvw:x:X:',
             ['extract-all', 'default-domain=', 'escape', 'help',
@@ -527,7 +526,7 @@ def main():
              'style=', 'verbose', 'version', 'width=', 'exclude-file=',
              'docstrings', 'no-docstrings',
              ])
-    except getopt_error as msg:
+    except getopt.error as msg:
         usage(1, msg)
 
     # for holding option values
@@ -665,7 +664,7 @@ def main():
         closep = 0
     else:
         if options.outpath:
-            options.outfile = join(options.outpath, options.outfile)
+            options.outfile = os.path.join(options.outpath, options.outfile)
         fp = open(options.outfile, 'w')
         closep = 1
     try:

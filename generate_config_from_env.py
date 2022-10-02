@@ -1,16 +1,17 @@
-from sys import argv
-from os import environ
+import sys
+import os
 
-from toml import load, dump
+import toml
 
 
-assert len(argv) == 3, "Excepting config load file as first argument and output file as second argument"
+assert len(sys.argv) == 3, "Excepting config load file as first argument and output file as second argument"
 
-FROM_CONFIG = argv[1]
-TO_CONFIG = argv[2]
+FROM_CONFIG = sys.argv[1]
+TO_CONFIG = sys.argv[2]
+environ = os.environ
 
 with open(FROM_CONFIG, "r") as f:
-    config = load(f)
+    config = toml.load(f)
 
 config['auth']['discord']['token'] = environ['BOT_TOKEN']
 
@@ -25,4 +26,4 @@ config['cogs']['BotsListVoting']['statcord_token'] = environ['STATCORD_TOKEN']
 
 
 with open(TO_CONFIG, "w") as f:
-    dump(config, f)
+    toml.dump(config, f)
