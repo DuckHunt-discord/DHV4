@@ -237,7 +237,7 @@ class RestAPI(Cog):
 
         help_dict = {}
 
-        for _, cog in self.bot.cogs.items():
+        for cog_name, cog in self.bot.cogs.items():
             help_dict = {**help_dict, **self.get_help_dict(cog)}
 
         return json_response(help_dict)
@@ -329,7 +329,7 @@ class RestAPI(Cog):
 
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
-            self.cors.add(
+            route = self.cors.add(
                 resource.add_route(route_method, route_coro), {
                     "*": ResourceOptions(
                         allow_credentials=True,

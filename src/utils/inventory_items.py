@@ -252,7 +252,7 @@ class Egg(Item):
         _ = await ctx.get_translate_function(user_language=True)
         await super().use_item(ctx, db_channel=db_channel, **kwargs)
 
-        for _ in range(self.uses * 2):
+        for i in range(self.uses * 2):
             await spawn_random_weighted_duck(ctx.bot, ctx.channel, db_channel=db_channel)
 
         await ctx.send(_('✨ Oh look, ducks! Ducks are everywhere!'))

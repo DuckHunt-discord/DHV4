@@ -150,7 +150,7 @@ async def main():
             else:
                 discriminator = "0000"
 
-        await get_or_create_user(player_obj["id_"], name=name, discriminator=discriminator,
+        user = await get_or_create_user(player_obj["id_"], name=name, discriminator=discriminator,
                                         trophys={"v3_player": True})
 
         access = AccessLevel.DEFAULT

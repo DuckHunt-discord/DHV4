@@ -58,7 +58,7 @@ class DucksSpawning(Cog):
             # Loop part
             try:
                 await self.spawn_ducks(current_iteration)
-            except Exception:
+            except Exception as e:
                 self.bot.logger.exception("Ignoring exception inside loop and hoping for the best...")
 
             # Loop the loop
@@ -297,6 +297,8 @@ class DucksSpawning(Cog):
 
         seconds_elapsed = now % DAY
         seconds_left_in_day = DAY - seconds_elapsed
+
+        pct_day = round(seconds_elapsed / DAY, 2) * 100
 
         ducks = int((seconds_left_in_day * ducks_per_day) / DAY)
 

@@ -259,7 +259,7 @@ class BotsListVoting(Cog):
         m = await ctx.reply(_("Please wait while I check where you can vote..."))
 
         async with ctx.typing():
-            votable_lists, maybe_lists = await self.get_votable_lists(ctx.author)
+            votable_lists, maybe_lists, nope_lists = await self.get_votable_lists(ctx.author)
 
             embed = Embed()
 
@@ -306,7 +306,7 @@ class BotsListVoting(Cog):
         else:
             self.last_stats_post = int(time())
 
-        self.bot.logger.debug("Updating stats on bots list")
+        self.bot.logger.debug(f"Updating stats on bots list")
 
         server_count = len(self.bot.guilds)
         shard_count = self.bot.shard_count
