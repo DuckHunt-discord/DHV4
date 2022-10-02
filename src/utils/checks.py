@@ -1,28 +1,28 @@
-from discord.ext.commands import CheckFailure, NoPrivateMessage, check
+from discord.ext import commands
 
 from utils.ctx_class import MyContext
 from utils.models import get_from_db, AccessLevel
 
 
-class NotInServer(CheckFailure):
+class NotInServer(commands.CheckFailure):
     """Exception raised when a command is not ran in the specified server."""
 
     def __init__(self, must_be_in_guild_id):
         self.must_be_in_guild_id = must_be_in_guild_id
 
 
-class NotInChannel(CheckFailure):
+class NotInChannel(commands.CheckFailure):
     """Exception raised when a command is not ran in the specified channel."""
 
     def __init__(self, must_be_in_channel_id):
         self.must_be_in_channel_id = must_be_in_channel_id
 
 
-class BotIgnore(CheckFailure):
+class BotIgnore(commands.CheckFailure):
     """Exception raised when a member is ignored by the bot"""
 
 
-class AccessTooLow(CheckFailure):
+class AccessTooLow(commands.CheckFailure):
     """Exception raised when the access level of a Member is too low."""
 
     def __init__(self, current_access, required_access):
@@ -30,30 +30,30 @@ class AccessTooLow(CheckFailure):
         self.required_access = required_access
 
 
-class ChannelDisabled(CheckFailure):
+class ChannelDisabled(commands.CheckFailure):
     """Exception raised when the channel wasn't enabled."""
 
 
-class LandminesDisabled(CheckFailure):
+class LandminesDisabled(commands.CheckFailure):
     """Exception raised when the channel wasn't enabled."""
 
 
 def is_in_server(must_be_in_guild_id):
     def predicate(ctx):
         if not ctx.guild:
-            raise NoPrivateMessage()
+            raise commands.NoPrivateMessage()
         elif ctx.guild.id != must_be_in_guild_id:
             raise NotInServer(must_be_in_guild_id=must_be_in_guild_id)
         return True
 
     # noinspection PyTypeChecker
-    return check(predicate)
+    return commands.check(predicate)
 
 
 def needs_access_level(required_access):
     async def predicate(ctx: MyContext):
         if not ctx.guild:
-            raise NoPrivateMessage()
+            raise commands.NoPrivateMessage()
         else:
             db_user = await get_from_db(ctx.author)
 
@@ -70,7 +70,7 @@ def needs_access_level(required_access):
     predicate.access = required_access
 
     # noinspection PyTypeChecker
-    return check(predicate)
+    return commands.check(predicate)
 
 
 def channel_enabled():
@@ -81,7 +81,7 @@ def channel_enabled():
             raise ChannelDisabled()
 
     # noinspection PyTypeChecker
-    return check(predictate)
+    return commands.check(predictate)
 
 
 def landmines_commands_enabled():
@@ -96,5 +96,5 @@ def landmines_commands_enabled():
             return True
 
     # noinspection PyTypeChecker
-    return check(predictate)
+    return commands.check(predictate)
 

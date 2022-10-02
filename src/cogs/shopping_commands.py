@@ -1,14 +1,13 @@
-from asyncio import sleep, gather, ensure_future
-from random import randint
-from time import time
+import asyncio
+import random
+import time
 from typing import Optional
 
-from discord import File, Member, Forbidden, NotFound
-from discord.ext.commands import CheckFailure, group
+import discord
+from discord.ext import commands
 from babel.dates import format_timedelta
 
-from utils.checks import channel_enabled
-from utils.ducks import MechanicalDuck, spawn_random_weighted_duck
+from utils import checks, ducks
 from utils.coats import Coats, get_random_coat_type
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -23,7 +22,7 @@ HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
 
-class NotEnoughExperience(CheckFailure):
+class NotEnoughExperience(commands.CheckFailure):
     def __init__(self, needed, having):
         self.needed = needed
         self.having = having
@@ -37,8 +36,8 @@ class ShoppingCommands(Cog):
     display_name = _("Shop")
     help_priority = 3
 
-    @group(aliases=["buy", "rent", "sh", "sho"], case_insensitive=True)
-    @channel_enabled()
+    @commands.group(aliases=["buy", "rent", "sh", "sho"], case_insensitive=True)
+    @checks.channel_enabled()
     async def shop(self, ctx: MyContext):
         """
         Buy items here
@@ -131,21 +130,21 @@ class ShoppingCommands(Cog):
 
         if db_hunter.is_powerup_active("ap_ammo"):
             time_delta = get_timedelta(db_hunter.active_powerups['ap_ammo'],
-                                       time())
+                                       time.time())
 
             await ctx.reply(_("❌ Whoops, your gun is already using AP ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
         elif db_hunter.is_powerup_active("explosive_ammo"):
             time_delta = get_timedelta(db_hunter.active_powerups['explosive_ammo'],
-                                       time())
+                                       time.time())
 
             await ctx.reply(_("❌ Your gun is using some even better explosive ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["ap_ammo"] = int(time()) + DAY
+        db_hunter.active_powerups["ap_ammo"] = int(time.time()) + DAY
         db_hunter.bought_items['ap_ammo'] += 1
 
         await db_hunter.save()
@@ -172,14 +171,14 @@ class ShoppingCommands(Cog):
 
         if db_hunter.is_powerup_active("explosive_ammo"):
             time_delta = get_timedelta(db_hunter.active_powerups['explosive_ammo'],
-                                       time())
+                                       time.time())
 
             await ctx.reply(_("❌ Your gun is already using explosive ammo for {time_delta}!",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["explosive_ammo"] = int(time()) + DAY
+        db_hunter.active_powerups["explosive_ammo"] = int(time.time()) + DAY
         db_hunter.bought_items['explosive_ammo'] += 1
 
         await db_hunter.save()
@@ -206,7 +205,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items['weapon'] += 1
 
         await db_hunter.save()
-        f = File("assets/bribes.gif")
+        f = discord.File("assets/bribes.gif")
         await ctx.reply(_("💸 You bribed the police and bought back your weapon. The fun continues. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST), file=f)
 
     @shop.command(aliases=["6", "lubricant"])
@@ -226,7 +225,7 @@ class ShoppingCommands(Cog):
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["grease"] = int(time()) + DAY
+        db_hunter.active_powerups["grease"] = int(time.time()) + DAY
         db_hunter.bought_items['grease'] += 1
 
         await db_hunter.save()
@@ -298,14 +297,14 @@ class ShoppingCommands(Cog):
         if db_hunter.is_powerup_active('silencer'):
             language_code = await ctx.get_language_code()
             time_delta = get_timedelta(db_hunter.active_powerups['silencer'],
-                                       time())
+                                       time.time())
 
             await ctx.reply(_("❌ You already use a silencer. It's still good for {time_delta}, come back then.",
                               time_delta=format_timedelta(time_delta, locale=language_code)))
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["silencer"] = int(time()) + DAY
+        db_hunter.active_powerups["silencer"] = int(time.time()) + DAY
 
         if db_hunter.prestige >= 6:
             db_hunter.active_powerups["silencer"] += DAY
@@ -352,7 +351,7 @@ class ShoppingCommands(Cog):
                 ITEM_COST *= 2
             else:
                 time_delta = get_timedelta(db_hunter.active_powerups['clover'],
-                                           time())
+                                           time.time())
                 await ctx.reply(_("❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!",
                                   time_delta=format_timedelta(time_delta, locale=language_code)))
                 return False
@@ -363,9 +362,9 @@ class ShoppingCommands(Cog):
         if self.bot.current_event == Events.FLORIST:
             max_experience *= 2
 
-        clover_exp = randint(db_channel.clover_min_experience, max_experience)
+        clover_exp = random.randint(db_channel.clover_min_experience, max_experience)
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["clover"] = int(time()) + DAY
+        db_hunter.active_powerups["clover"] = int(time.time()) + DAY
         db_hunter.active_powerups["clover_exp"] = clover_exp
 
         db_hunter.bought_items['clover'] += 1
@@ -392,7 +391,7 @@ class ShoppingCommands(Cog):
         previously_had = db_hunter.is_powerup_active('sunglasses')
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["sunglasses"] = int(time()) + DAY
+        db_hunter.active_powerups["sunglasses"] = int(time.time()) + DAY
         db_hunter.active_powerups["mirror"] = 0
 
         if previously_had:
@@ -453,7 +452,7 @@ class ShoppingCommands(Cog):
         await ctx.reply(_("💸 You've just cleaned your weapon. Could've just shot once, but heh ¯\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST))
 
     @shop.command(aliases=["14"])
-    async def mirror(self, ctx: MyContext, target: Member):
+    async def mirror(self, ctx: MyContext, target: discord.Member):
         """
         Dazzle another hunter using the power of sunlight. [7 exp]
         """
@@ -483,7 +482,7 @@ class ShoppingCommands(Cog):
             db_hunter.bought_items['useless_mirror'] += 1
             stupid = True
 
-        await gather(db_hunter.save(), db_target.save())
+        await asyncio.gather(db_hunter.save(), db_target.save())
 
         if stupid:
             await ctx.reply(
@@ -493,7 +492,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using your mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["15", "handful_of_sand"])
-    async def sand(self, ctx: MyContext, target: Member):
+    async def sand(self, ctx: MyContext, target: discord.Member):
         """
         Throw sand into another player weapon.
         This will increase their jamming chances for their next shot. [7 exp]
@@ -520,12 +519,12 @@ class ShoppingCommands(Cog):
         db_target.active_powerups["grease"] = 0
         db_hunter.bought_items['sand'] += 1
 
-        await gather(db_hunter.save(), db_target.save())
+        await asyncio.gather(db_hunter.save(), db_target.save())
 
         await ctx.reply(_("💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["16", "water", "water_bucket", "bukkit", "spigot"])
-    async def bucket(self, ctx: MyContext, target: Member):
+    async def bucket(self, ctx: MyContext, target: discord.Member):
         """
         Throw a bucket of water on the hunter of your choice,
         forcing them to wait 1h for their clothes to dry before hunting again. [10 exp/1* hrs]
@@ -552,13 +551,13 @@ class ShoppingCommands(Cog):
         if not target_has_coat:
             db_hunter.bought_items['bucket'] += 1
             if db_hunter.prestige >= 4:
-                db_target.active_powerups["wet"] = int(time()) + 3 * HOUR
+                db_target.active_powerups["wet"] = int(time.time()) + 3 * HOUR
             else:
-                db_target.active_powerups["wet"] = int(time()) + HOUR
+                db_target.active_powerups["wet"] = int(time.time()) + HOUR
         else:
             db_hunter.bought_items['useless_bucket'] += 1
 
-        await gather(db_hunter.save(), db_target.save())
+        await asyncio.gather(db_hunter.save(), db_target.save())
 
         if target_has_coat:
             await ctx.reply(_("💸 You threw water on {target.mention}... But they have a raincoat on. [Fail: -{ITEM_COST} exp]", ITEM_COST=ITEM_COST, target=target))
@@ -568,7 +567,7 @@ class ShoppingCommands(Cog):
             await ctx.reply(_("💸 You threw water on {target.mention}... They can't hunt for an hour! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target))
 
     @shop.command(aliases=["17", "boom"])
-    async def sabotage(self, ctx: MyContext, target: Member):
+    async def sabotage(self, ctx: MyContext, target: discord.Member):
         """
         Sabotage the weapon of another player.
         Their gun will jam and explode in their face the next time they press the trigger. [14* exp]
@@ -585,7 +584,7 @@ class ShoppingCommands(Cog):
 
         try:
             await ctx.message.delete()
-        except Forbidden:
+        except discord.Forbidden:
             pass
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
@@ -608,11 +607,11 @@ class ShoppingCommands(Cog):
         db_target.weapon_sabotaged_by = db_hunter
         db_hunter.bought_items['sabotage'] += 1
 
-        await gather(db_hunter.save(), db_target.save())
+        await asyncio.gather(db_hunter.save(), db_target.save())
 
         try:
             await ctx.author.send(_("💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target, ))
-        except Forbidden:
+        except discord.Forbidden:
             await ctx.reply(_("I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target.name} weapon... "
                               "They don't know... yet! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, target=target,))
 
@@ -627,7 +626,7 @@ class ShoppingCommands(Cog):
 
         try:
             await ctx.message.delete()
-        except (Forbidden, NotFound):
+        except (discord.Forbidden, discord.NotFound):
             pass
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
@@ -640,13 +639,13 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
 
-        delay = randint(MINUTE, 10 * MINUTE)
+        delay = random.randint(MINUTE, 10 * MINUTE)
 
         async def spawn():
-            await sleep(delay)
-            await spawn_random_weighted_duck(self.bot, ctx.channel)
+            await asyncio.sleep(delay)
+            await ducks.spawn_random_weighted_duck(self.bot, ctx.channel)
 
-        ensure_future(spawn())
+        asyncio.ensure_future(spawn())
 
         await ctx.reply(_("💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, ))
 
@@ -661,7 +660,7 @@ class ShoppingCommands(Cog):
 
         try:
             await ctx.message.delete()
-        except Forbidden:
+        except discord.Forbidden:
             pass
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
@@ -675,14 +674,14 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
 
         async def spawn():
-            await sleep(90)
-            await MechanicalDuck(bot=self.bot, channel=ctx.channel, creator=ctx.author).spawn()
+            await asyncio.sleep(90)
+            await ducks.MechanicalDuck(bot=self.bot, channel=ctx.channel, creator=ctx.author).spawn()
 
-        ensure_future(spawn())
+        asyncio.ensure_future(spawn())
 
         try:
             await ctx.author.send(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]", db_hunter=db_hunter, ITEM_COST=ITEM_COST, channel=ctx.channel))
-        except Forbidden:
+        except discord.Forbidden:
             await ctx.reply(_("💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 seconds. [Bought: -{ITEM_COST} exp].\n**I couldn't DM you this message**", ITEM_COST=ITEM_COST, channel=ctx.channel))
 
     @shop.command(aliases=["26", "kway", "breizh", "rain_coat", "raincoat"])
@@ -706,7 +705,7 @@ class ShoppingCommands(Cog):
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["wet"] = 0
-        db_hunter.active_powerups["coat"] = int(time()) + DAY
+        db_hunter.active_powerups["coat"] = int(time.time()) + DAY
         db_hunter.active_powerups["coat_color"] = color.name
 
         db_hunter.bought_items['coat'] += 1
@@ -746,7 +745,7 @@ class ShoppingCommands(Cog):
             return False
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["kill_licence"] = int(time()) + DAY
+        db_hunter.active_powerups["kill_licence"] = int(time.time()) + DAY
 
         db_hunter.bought_items['kill_licence'] += 1
 
@@ -773,7 +772,7 @@ class ShoppingCommands(Cog):
         self.ensure_enough_experience(db_hunter, ITEM_COST)
 
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
-        db_hunter.active_powerups["reloader"] = int(time()) + DAY
+        db_hunter.active_powerups["reloader"] = int(time.time()) + DAY
 
         db_hunter.bought_items['reloader'] += 1
 

@@ -1,8 +1,8 @@
 from abc import ABC
 from typing import Iterable, List, Any, Optional, Dict, Union
 
-from discord import Interaction, ButtonStyle, Message, Embed, Color
-from discord.ui import Button, Item, View as uiView, button
+import discord
+from discord import ui, Interaction, ButtonStyle, Message
 from discord.abc import Messageable
 from discord.ext.commands import Command
 
@@ -32,7 +32,7 @@ async def get_context_from_interaction(bot: MyBot, interaction: Interaction) -> 
     return ctx
 
 
-class BigButtonMixin(Button):
+class BigButtonMixin(ui.Button):
     """
     Makes buttons bigger, by padding them using invisible characters.
     It works well on desktop, but not very well on mobile, because text might be truncated there.
@@ -66,7 +66,7 @@ class BigButtonMixin(Button):
         self._underlying.label = self.pad_value(value) if value is not None else value
 
 
-class AutomaticDeferMixin(Item, ABC):
+class AutomaticDeferMixin(ui.Item, ABC):
     """
     Add this to prevent the action from erroring out client-side, by deferring it anyway.
     """
@@ -78,7 +78,7 @@ class AutomaticDeferMixin(Item, ABC):
             await interaction.response.defer()
 
 
-class CommandButton(AutomaticDeferMixin, Button):
+class CommandButton(AutomaticDeferMixin, ui.Button):
     def __init__(self, bot, command, command_args=None, command_kwargs=None, *args, **kwargs):
         """
         Button to execute a command. A list of args and kwargs can be passed to run the command with those args.
@@ -125,7 +125,7 @@ class CommandButton(AutomaticDeferMixin, Button):
             return await ctx.invoke(self.command, *await self.get_command_args(interaction), **await self.get_command_kwargs(interaction))
 
 
-class View(uiView):
+class View(ui.View):
     """
     Nicer view subclass, providing some convenience methods for subclasses.
     """
@@ -278,16 +278,16 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         self.confirm.label = _('Confirm')
 
     # Ignore passed labels, they are overridden in __init__
-    @button(label='cancel', style=ButtonStyle.red)
-    async def cancel(self, button: Button, interaction: Interaction):
+    @ui.button(label='cancel', style=ButtonStyle.red)
+    async def cancel(self, button: ui.Button, interaction: Interaction):
         self.value = False
 
         self.disable()
         self.stop()
         await self.refresh_message()
 
-    @button(label='confirm', style=ButtonStyle.green)
-    async def confirm(self, button: Button, interaction: Interaction):
+    @ui.button(label='confirm', style=ButtonStyle.green)
+    async def confirm(self, button: ui.Button, interaction: Interaction):
         # await interaction.response.send_message('Confirming', ephemeral=True)
         self.value = True
 
@@ -324,7 +324,7 @@ class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
         return ret
 
 
-class NitroButton(BigButtonMixin, Button):
+class NitroButton(BigButtonMixin, ui.Button):
     """
     A basic button to demonstrate the above system. This shows a fake, rick-rolling "you've got Nitro" embed+button.
     """
@@ -337,8 +337,8 @@ class NitroButton(BigButtonMixin, Button):
         self.view.disable()
         self.view.stop()
 
-        second_embed = Embed(
-            color=Color.dark_theme(),
+        second_embed = discord.Embed(
+            colour=discord.Colour.dark_theme(),
             title='A WILD GIFT APPEARS!',
             description="Hmm, it seems someone already claimed this gift."
         )
@@ -362,8 +362,8 @@ async def nitro_prank(ctx: MyContext):
     """
     The full view process for the nitro button above.
     """
-    first_embed = Embed(
-        color=Color.dark_theme(),
+    first_embed = discord.Embed(
+        colour=discord.Colour.dark_theme(),
         title='A WILD GIFT APPEARS!',
         description="**Nitro**\nExpires in 48 hours."
     )

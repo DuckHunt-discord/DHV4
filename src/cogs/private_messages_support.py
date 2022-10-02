@@ -1,20 +1,19 @@
 import asyncio
-from datetime import datetime, timedelta
+import datetime
 import re
 from typing import Dict, List
 
-from discord import RawReactionActionEvent, NotFound, Forbidden, SelectOption, Interaction, \
-    ButtonStyle, TextChannel, Webhook, User, Embed, Color, Message, CategoryChannel, AllowedMentions
-from discord.ui import Select
-from discord.ext.menus import MenuPages
-from discord.ext.commands import group, NoPrivateMessage
-from discord.ext.tasks import loop
-from discord.utils import get as discord_get, snowflake_time
-from babel import Locale, UnknownLocaleError
+import discord
+from discord import RawReactionActionEvent
+from discord.ext import commands, menus, tasks
+from discord.utils import snowflake_time
+import babel
+from babel import Locale
 from babel.dates import format_datetime, format_timedelta
 from tortoise import timezone
 
 from cogs.tags import TagMenuSource, TagName
+from utils import views
 from utils.bot_class import MyBot
 from utils.checks import NotInServer, NotInChannel
 from utils.cog_class import Cog
@@ -23,19 +22,19 @@ from utils.ctx_class import MyContext
 from utils.models import get_from_db, get_tag, DiscordUser, Player, SupportTicket, AccessLevel, Tag
 from utils.random_ducks import get_random_duck_file
 from utils.translations import get_translate_function
-from utils.views import CommandView, get_context_from_interaction, View, AutomaticDeferMixin
+from utils.views import CommandView, get_context_from_interaction, View
 
 
 def _(message):
     return message
 
 
-class MirrorMenuPage(MenuPages):
+class MirrorMenuPage(menus.MenuPages):
     def __init__(self, source, **kwargs):
         super().__init__(source, **kwargs)
         self.other = None
 
-    def reaction_check(self, payload: RawReactionActionEvent) -> bool:
+    def reaction_check(self, payload: discord.RawReactionActionEvent) -> bool:
         # Allow anyone to use the menu.
         # self.ctx: MyContext
         if payload.message_id != self.message.id:
@@ -51,10 +50,10 @@ class MirrorMenuPage(MenuPages):
         if propagate and self.other:
             try:
                 await self.other.show_page(page_number, propagate=False)
-            except NotFound:
+            except discord.NotFound:
                 # Break the link, one was deleted.
                 self.other = None
-            except Forbidden:
+            except discord.Forbidden:
                 # Break the link, can't speak anymore.
                 self.other = None
 
@@ -64,16 +63,16 @@ class MirrorMenuPage(MenuPages):
         if propagate and self.other:
             try:
                 self.other.stop(propagate=False)
-            except NotFound:
+            except discord.NotFound:
                 # Break the link, one was deleted.
                 self.other = None
-            except Forbidden:
+            except discord.Forbidden:
                 # Break the link, can't speak anymore.
                 self.other = None
         return super().stop()
 
 
-class CloseReasonSelect(Select):
+class CloseReasonSelect(discord.ui.Select):
     reasons = {
         # shown reason : Emoji, stored reason, tag_to_send
         'No help needed': ('❌', 'No help needed', None),
@@ -94,13 +93,13 @@ class CloseReasonSelect(Select):
 
         for reason_label, extra_info in self.reasons.items():
             reason_emoji, stored_reason, tag_to_send = extra_info
-            options.append(SelectOption(label=reason_label, emoji=reason_emoji))
+            options.append(discord.SelectOption(label=reason_label, emoji=reason_emoji))
 
         super().__init__(custom_id="private_messages_support:close_select_reason", placeholder="Quick DM closing", min_values=1, max_values=1,
                          options=options
                          )
 
-    async def callback(self, interaction: Interaction):
+    async def callback(self, interaction: discord.Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
         reason_info = self.reasons[self.values[0]]
         reason_emoji, stored_reason, tag_to_send = reason_info
@@ -117,7 +116,7 @@ class CloseReasonSelect(Select):
         await ctx.invoke(close_command, reason=stored_reason)
 
 
-class CommonTagSelect(AutomaticDeferMixin, Select):
+class CommonTagSelect(views.AutomaticDeferMixin, discord.ui.Select):
     tags = {
         # tag to send : Emoji, shown name
         'setup': ('⚙️', 'How to setup'),
@@ -138,7 +137,7 @@ class CommonTagSelect(AutomaticDeferMixin, Select):
 
         for tag_name, extra_info in self.tags.items():
             tag_emoji, tag_shown = extra_info
-            options.append(SelectOption(label=tag_shown, emoji=tag_emoji))
+            options.append(discord.SelectOption(label=tag_shown, emoji=tag_emoji))
             reverse_lookup[tag_shown] = tag_name
 
         self.reverse_lookup = reverse_lookup
@@ -147,7 +146,7 @@ class CommonTagSelect(AutomaticDeferMixin, Select):
                          options=options
                          )
 
-    async def callback(self, interaction: Interaction):
+    async def callback(self, interaction: discord.Interaction):
         ctx = await get_context_from_interaction(self.bot, interaction)
         tag_name = self.reverse_lookup[self.values[0]]
 
@@ -171,7 +170,7 @@ def get_close_reason_view(bot, reason_shortcode, reason_stored):
                        persist=f"private_messages_support:close_reason:{reason_shortcode}",
                        command_kwargs={"reason": reason_stored},
                        label=f'Close the DM ({reason_shortcode})',
-                       style=ButtonStyle.blurple)
+                       style=discord.ButtonStyle.blurple)
 
 
 class PrivateMessagesSupport(Cog):
@@ -181,8 +180,8 @@ class PrivateMessagesSupport(Cog):
 
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
-        self.webhook_cache: Dict[TextChannel, Webhook] = {}
-        self.users_cache: Dict[int, User] = {}
+        self.webhook_cache: Dict[discord.TextChannel, discord.Webhook] = {}
+        self.users_cache: Dict[int, discord.User] = {}
         self.blocked_ids: List[int] = []
         self.index = 0
         self.background_loop.start()
@@ -206,7 +205,7 @@ class PrivateMessagesSupport(Cog):
     def cog_unload(self):
         self.background_loop.cancel()
 
-    @loop(hours=1)
+    @tasks.loop(hours=1)
     async def background_loop(self):
         """
         Check for age of the last message sent in the channel.
@@ -214,7 +213,7 @@ class PrivateMessagesSupport(Cog):
         """
         category = await self.get_forwarding_category()
         now = timezone.now()
-        one_day_ago = now - timedelta(days=1)
+        one_day_ago = now - datetime.timedelta(days=1)
         for ticket_channel in category.text_channels:
             last_message_id = ticket_channel.last_message_id
             if last_message_id:
@@ -255,8 +254,8 @@ class PrivateMessagesSupport(Cog):
 
                     _ = get_translate_function(self.bot, language)
 
-                    inactivity_embed = Embed(
-                        color=Color.orange(),
+                    inactivity_embed = discord.Embed(
+                        color=discord.Color.orange(),
                         title=_("DM Timed Out"),
                         description=_("Tickets expire after 24 hours of inactivity.\n"
                                       "Got a question? Ask it here or in [the support server](https://duckhunt.me/support).\n"
@@ -274,7 +273,7 @@ class PrivateMessagesSupport(Cog):
 
                     await self.clear_caches(ticket_channel)
 
-                    await ticket_channel.delete(reason="Automatic deletion for inactivity.")
+                    await ticket_channel.delete(reason=f"Automatic deletion for inactivity.")
 
     @background_loop.before_loop
     async def before(self):
@@ -284,7 +283,7 @@ class PrivateMessagesSupport(Cog):
     async def is_in_forwarding_channels(self, ctx):
         category = await self.get_forwarding_category()
         if not ctx.guild:
-            raise NoPrivateMessage()
+            raise commands.NoPrivateMessage()
         elif ctx.guild.id != category.guild.id:
             raise NotInServer(must_be_in_guild_id=category.guild.id)
         elif ctx.channel.category != category:
@@ -300,17 +299,17 @@ class PrivateMessagesSupport(Cog):
 
         return user
 
-    async def get_forwarding_category(self) -> CategoryChannel:
+    async def get_forwarding_category(self) -> discord.CategoryChannel:
         return self.bot.get_channel(self.config()['forwarding_category'])
 
-    async def get_or_create_channel(self, user: User) -> TextChannel:
+    async def get_or_create_channel(self, user: discord.User) -> discord.TextChannel:
         forwarding_category = await self.get_forwarding_category()
 
-        channel = discord_get(forwarding_category.text_channels, name=str(user.id))
+        channel = discord.utils.get(forwarding_category.text_channels, name=str(user.id))
         if not channel:
             self.bot.logger.info(f"[SUPPORT] creating a DM channel for {user.name}#{user.discriminator}.")
 
-            now_str = format_datetime(datetime.now(), locale='en')
+            now_str = format_datetime(datetime.datetime.now(), locale='en')
             channel = await forwarding_category.create_text_channel(
                 name=str(user.id),
                 topic=f"This is the logs of a DM with {user.name}#{user.discriminator}. "
@@ -335,7 +334,7 @@ class PrivateMessagesSupport(Cog):
                 self.webhook_cache[channel] = webhook
         return channel
 
-    async def send_mirrored_message(self, channel: TextChannel, user: User, db_user=None, support_view=None,
+    async def send_mirrored_message(self, channel: discord.TextChannel, user: discord.User, db_user=None, support_view=None,
                                     **send_kwargs):
         self.bot.logger.info(f"[SUPPORT] Sending mirror message to {user.name}#{user.discriminator}")
 
@@ -350,11 +349,11 @@ class PrivateMessagesSupport(Cog):
 
         try:
             await user.send(**send_kwargs)
-        except Forbidden:
+        except discord.Forbidden:
             await channel_message.add_reaction(emoji="❌")
             await channel.send(content="❌ Couldn't send the above message, `dh!ps close` to close the channel.")
 
-    async def handle_ticket_opening(self, channel: TextChannel, user: User):
+    async def handle_ticket_opening(self, channel: discord.TextChannel, user: discord.User):
         db_user: DiscordUser = await get_from_db(user, as_user=True)
         ticket = await db_user.get_or_create_support_ticket()
         await ticket.save()
@@ -377,7 +376,7 @@ class PrivateMessagesSupport(Cog):
         players_data = await Player.all().filter(member__user=db_user).order_by("-last_giveback").select_related(
             "channel").limit(5)
 
-        info_embed = Embed(color=Color.blurple(), title="Support information")
+        info_embed = discord.Embed(color=discord.Color.blurple(), title="Support information")
 
         info_embed.description = "Information in this box isn't meant to be shared outside of this channel, and is " \
                                  "provided for support purposes only. \n" \
@@ -449,7 +448,7 @@ class PrivateMessagesSupport(Cog):
 
         _ = get_translate_function(self.bot, db_user.language)
 
-        welcome_embed = Embed(color=Color.green(), title="Support ticket opened")
+        welcome_embed = discord.Embed(color=discord.Color.green(), title="Support ticket opened")
         welcome_embed.description = \
             _("DMing any message to the bot will open a ticket.\n"
               "You have a question? [Ask it](https://dontasktoask.com) to our human volunteers.\n"
@@ -459,11 +458,11 @@ class PrivateMessagesSupport(Cog):
 
         try:
             await user.send(embed=welcome_embed)
-        except Forbidden:
+        except discord.Forbidden:
             await channel.send(content="❌ It seems I can't send messages to the user, you might want to close the DM. "
                                        "`dh!ps close`.")
 
-    async def handle_support_message(self, message: Message):
+    async def handle_support_message(self, message: discord.Message):
         user = await self.get_user(message.channel.name)
         db_user = await get_from_db(user, as_user=True)
         language = db_user.language
@@ -473,7 +472,7 @@ class PrivateMessagesSupport(Cog):
 
         _ = get_translate_function(self.bot, language)
 
-        support_embed = Embed(color=Color.blurple(), title="Support response")
+        support_embed = discord.Embed(color=discord.Color.blurple(), title="Support response")
         support_embed.set_author(name=f"{message.author.name}#{message.author.discriminator}",
                                  icon_url=str(message.author.display_avatar.url))
         support_embed.description = message.content
@@ -501,7 +500,7 @@ class PrivateMessagesSupport(Cog):
         except Exception as e:
             await message.channel.send(f"❌: {e}\nYou can use `dh!private_support close` to close the channel.")
 
-    async def handle_auto_responses(self, message: Message):
+    async def handle_auto_responses(self, message: discord.Message):
         forwarding_channel = await self.get_or_create_channel(message.author)
         content = message.content
 
@@ -511,7 +510,7 @@ class PrivateMessagesSupport(Cog):
         _ = get_translate_function(self.bot, language)
 
         if self.invites_regex.search(content):
-            dm_invite_embed = Embed(color=Color.purple(),
+            dm_invite_embed = discord.Embed(color=discord.Color.purple(),
                                             title=_("This is not how you invite DuckHunt."))
             dm_invite_embed.description = \
                 _("To invite DuckHunt, you need :\n"
@@ -526,7 +525,7 @@ class PrivateMessagesSupport(Cog):
 
             await self.send_mirrored_message(forwarding_channel, user, db_user=db_user, embed=dm_invite_embed, support_view=view)
 
-    async def handle_dm_message(self, message: Message):
+    async def handle_dm_message(self, message: discord.Message):
         self.bot.logger.info(f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}")
         await self.bot.wait_until_ready()
 
@@ -546,7 +545,7 @@ class PrivateMessagesSupport(Cog):
             "content": message.content,
             "embeds": embeds,
             "files": files,
-            "allowed_mentions": AllowedMentions.none(),
+            "allowed_mentions": discord.AllowedMentions.none(),
             "wait": True
         }
 
@@ -559,7 +558,7 @@ class PrivateMessagesSupport(Cog):
 
         self.bot.logger.debug(f"[SUPPORT] {message.author.name}#{message.author.discriminator} message forwarded.")
 
-    async def clear_caches(self, channel: TextChannel):
+    async def clear_caches(self, channel: discord.TextChannel):
         try:
             self.users_cache.pop(int(channel.name))
         except KeyError:
@@ -573,7 +572,7 @@ class PrivateMessagesSupport(Cog):
             pass
 
     @Cog.listener()
-    async def on_message(self, message: Message):
+    async def on_message(self, message: discord.Message):
         if message.author.bot:
             # Don't listen to bots (ourselves in this case)
             return
@@ -606,7 +605,7 @@ class PrivateMessagesSupport(Cog):
                 await self.handle_dm_message(message)
                 await self.handle_auto_responses(message)
 
-    @group(aliases=["ps"])
+    @commands.group(aliases=["ps"])
     async def private_support(self, ctx: MyContext):
         """
         The DuckHunt bot DMs are monitored. All of these commands are used to control the created channels, and to
@@ -636,8 +635,8 @@ class PrivateMessagesSupport(Cog):
 
         _ = get_translate_function(self.bot, language)
 
-        close_embed = Embed(
-            color=Color.red(),
+        close_embed = discord.Embed(
+            color=discord.Color.red(),
             title=_("DM Closed"),
             description=_("Your support ticket was closed and the history deleted. "
                           "Thanks for using DuckHunt DM support. "
@@ -730,7 +729,7 @@ class PrivateMessagesSupport(Cog):
             await support_pages.start(ctx)
             try:
                 await dm_pages.start(ctx, channel=await user.create_dm())
-            except Forbidden as e:
+            except discord.Forbidden as e:
                 _ = await ctx.get_translate_function()
                 await ctx.reply(_("❌ Can't send a message to this user: {e}.", e=e))
         else:
@@ -754,7 +753,7 @@ class PrivateMessagesSupport(Cog):
 
         try:
             suggested_locale = Locale.parse(language_code)
-        except (UnknownLocaleError, ValueError):
+        except (babel.UnknownLocaleError, ValueError):
             await ctx.reply("❌ Unknown locale. You need to provide a language code here, like `fr`, `es`, `en`, ...")
             return
 
@@ -762,7 +761,7 @@ class PrivateMessagesSupport(Cog):
 
         _ = get_translate_function(ctx, language_code)
 
-        embed = Embed(color=Color.blurple(), title=_("Language change offer"))
+        embed = discord.Embed(colour=discord.Colour.blurple(), title=_("Language change offer"))
 
         embed.description = _("DuckHunt support suggests you change your personal language "
                               "from {current_language} to {suggested_language}. This will translate "

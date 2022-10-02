@@ -1,19 +1,18 @@
 from typing import Optional, List
 
-from discord import Member, Message, Permissions, Guild, Embed, Color, HTTPException, Thread
-from discord.ext.commands import command, guild_only, group, MaxConcurrency, BucketType
-from discord.utils import escape_mentions
-from babel.lists import format_list
+import discord
+from discord import HTTPException, Thread
+from discord.ext import commands
+from discord.ext.commands import MaxConcurrency, BucketType
+import babel.lists
 from babel.dates import format_timedelta
 from tortoise import timezone
 
-from utils.checks import landmines_commands_enabled
+from utils import models, checks
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, get_member_landminesdata, get_landmine, get_valid_words, \
-    get_word_protect_for, LandminesPlaced, LandminesProtects, LandminesUserData, \
-    DiscordMember, AccessLevel
+from utils.models import get_from_db, DiscordMember, AccessLevel
 
 
 def _(message):
@@ -29,7 +28,7 @@ class Event2021(Cog):
         super().__init__(bot, *args, **kwargs)
         self.concurrency = MaxConcurrency(number=1, per=BucketType.member, wait=True)
 
-    async def user_can_play(self, user: Member):
+    async def user_can_play(self, user: discord.Member):
         if user.bot:
             return False
 
@@ -41,8 +40,8 @@ class Event2021(Cog):
         return True
 
     @Cog.listener()
-    async def on_message(self, message: Message):
-        required_permissions = Permissions(send_messages=True, read_messages=True,
+    async def on_message(self, message: discord.Message):
+        required_permissions = discord.Permissions(send_messages=True, read_messages=True,
                                                    read_message_history=True, attach_files=True,
                                                    )
 
@@ -62,7 +61,7 @@ class Event2021(Cog):
         else:
             channel = message.channel
 
-        db_channel = await get_from_db(channel)
+        db_channel = await models.get_from_db(channel)
 
         if not db_channel:
             ctx: MyContext = await self.bot.get_context(message, cls=MyContext)
@@ -86,11 +85,11 @@ class Event2021(Cog):
         try:
             await self.concurrency.acquire(message)
 
-            db_target = await get_member_landminesdata(message.author)
+            db_target = await models.get_member_landminesdata(message.author)
 
             added_points = db_target.add_points_for_message(message.content)
 
-            landmine = await get_landmine(message.guild, message.content)
+            landmine = await models.get_landmine(message.guild, message.content)
 
             if landmine:
                 _ = await ctx.get_translate_function()
@@ -113,7 +112,7 @@ class Event2021(Cog):
                 placed_by.points_won += explosion_value
                 placed_by.points_current += explosion_value + landmine.value / 4
 
-                message_text = escape_mentions(landmine.message)
+                message_text = discord.utils.escape_mentions(landmine.message)
                 if placed_by.member_id != db_target.member_id:
                     await placed_by.save()
 
@@ -145,9 +144,9 @@ class Event2021(Cog):
         finally:
             await self.concurrency.release(message)
 
-    @command()
-    @landmines_commands_enabled()
-    async def place(self, ctx: MyContext, guild: Guild, value: Optional[int], word: str, *, message_text: str = ""):
+    @commands.command()
+    @checks.landmines_commands_enabled()
+    async def place(self, ctx: MyContext, guild: discord.Guild, value: Optional[int], word: str, *, message_text: str = ""):
         """
         Alias for dh!landmine landmine, so that you can just type dh!place instead.
         """
@@ -156,17 +155,17 @@ class Event2021(Cog):
 
         await self.landmine(ctx, guild, value, word, message_text=message_text)
 
-    @command()
-    @guild_only()
-    @landmines_commands_enabled()
+    @commands.command()
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
     async def defuse(self, ctx: MyContext, *, words: str = ""):
         """
         Alias for dh!landmine defuse_kit, so that you can just type dh!defuse instead.
         """
         await self.defuse_kit(ctx, words=words)
 
-    @group(aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True)
-    @landmines_commands_enabled()
+    @commands.group(aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True)
+    @checks.landmines_commands_enabled()
     async def event(self, ctx: MyContext):
         """
         This command group contains all commands related to "Landmines" game.
@@ -175,9 +174,9 @@ class Event2021(Cog):
             await ctx.send_help(ctx.command)
 
     @event.command()
-    @guild_only()
-    @landmines_commands_enabled()
-    async def me(self, ctx: MyContext, target: Member = None):
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
+    async def me(self, ctx: MyContext, target: discord.Member = None):
         """
         View your event statistics.
         """
@@ -188,11 +187,11 @@ class Event2021(Cog):
         if not await self.user_can_play(target):
             await ctx.reply(_("They can't play the game :("))
 
-        db_target = await get_member_landminesdata(target)
+        db_target = await models.get_member_landminesdata(target)
 
-        embed = Embed(
+        embed = discord.Embed(
             title=_("{target.name} event statistics", target=target),
-            color=Color.green()
+            colour=discord.Color.green()
         )
         embed.description = _("The most important currency in the game are the points, which are used in the shop to buy "
                               "stuff. The available points show how many ponts you have and how many you acquired in "
@@ -233,8 +232,8 @@ class Event2021(Cog):
         await ctx.reply(embed=embed)
 
     @event.command(aliases=["hl", "hlm", "hmine", "hlandmines", "how_to", "guide"])
-    @guild_only()
-    @landmines_commands_enabled()
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
     async def landmine_how_to(self, ctx: MyContext):
         """
         This command explains how to place a landmine
@@ -246,8 +245,8 @@ class Event2021(Cog):
                          "The value must be at least 50 points, and a word must be at least 3 characters long."))
 
     @event.command(aliases=["l", "lm", "mine", "landmines", "place"])
-    @landmines_commands_enabled()
-    async def landmine(self, ctx: MyContext, guild: Optional[Guild], value: int, word: str, *, message_text: str = ""):
+    @checks.landmines_commands_enabled()
+    async def landmine(self, ctx: MyContext, guild: Optional[discord.Guild], value: int, word: str, *, message_text: str = ""):
         """
         [THIS COMMAND WORKS IN DMs]
         Buy a landmine that will trigger on a specific word.
@@ -283,14 +282,14 @@ class Event2021(Cog):
             await ctx.author.send(_("❌ The message left on the landmine must be less than 1500 characters."))
             return
 
-        word = get_valid_words(word)
+        word = models.get_valid_words(word)
         if len(word) != 1:
             await ctx.author.send(_("❌ The word must only contain letters."))
             return
         else:
             word = word[0]
 
-        protect = await get_word_protect_for(guild, word)
+        protect = await models.get_word_protect_for(guild, word)
 
         if protect:
             protect_db_data = await protect.protected_by
@@ -310,13 +309,13 @@ class Event2021(Cog):
 
         try:
             await self.concurrency.acquire(ctx.message)
-            db_data = await get_member_landminesdata(member)
+            db_data = await models.get_member_landminesdata(member)
 
             if db_data.points_current < value:
                 await ctx.author.send(_("❌ You don't have {value} points, you can't buy a landmine as powerful as this.", value=value))
                 return
 
-            landmine = LandminesPlaced(
+            landmine = models.LandminesPlaced(
                 placed_by=db_data,
                 word=word,
                 value=value,
@@ -332,8 +331,8 @@ class Event2021(Cog):
             await self.concurrency.release(ctx.message)
 
     @event.command(aliases=["p", "s", "shield", "prot"])
-    @guild_only()
-    @landmines_commands_enabled()
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
     async def protect(self, ctx: MyContext, word: str, *, message_text: str = ""):
         """
         Buy a shield that will be placed on a given word. A shield will defuse all landmines placed on that word,
@@ -345,7 +344,7 @@ class Event2021(Cog):
         _ = await ctx.get_translate_function()
         ngettext = await ctx.get_ntranslate_function()
 
-        words_list = get_valid_words(word)
+        words_list = models.get_valid_words(word)
 
         if len(words_list) != 1:
             await ctx.reply(_("❌ Please give one valid words to protect."))
@@ -356,7 +355,7 @@ class Event2021(Cog):
         try:
             await self.concurrency.acquire(ctx.message)
 
-            protect = await get_word_protect_for(ctx.guild, word)
+            protect = await models.get_word_protect_for(ctx.guild, word)
 
             if protect:
                 protect_db_data = await protect.protected_by
@@ -367,7 +366,7 @@ class Event2021(Cog):
                     _("❌ This word is already protected by {user.name}#{user.discriminator}.", user=protect_db_user))
                 return
 
-            db_data = await get_member_landminesdata(ctx.author)
+            db_data = await models.get_member_landminesdata(ctx.author)
 
             if db_data.points_current < 500:
                 await ctx.reply(_("❌ You don't have 500 points, so you can't buy a shield to protect a word."))
@@ -378,13 +377,13 @@ class Event2021(Cog):
 
             db_data.shields_bought += 1
 
-            await LandminesProtects.create(
+            await models.LandminesProtects.create(
                 protected_by=db_data,
                 word=word,
                 message=message_text
             )
 
-            landmines: List[LandminesPlaced] = await get_landmine(ctx.guild, word, as_list=True)
+            landmines: List[models.LandminesPlaced] = await models.get_landmine(ctx.guild, word, as_list=True)
             ret = [_("You placed a shield on `{word}` for 500 points.", word=word)]
 
             now = timezone.now()
@@ -432,8 +431,8 @@ class Event2021(Cog):
             await self.concurrency.release(ctx.message)
 
     @event.command(aliases=["d", "defuse", "defuse_kits"])
-    @guild_only()
-    @landmines_commands_enabled()
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
     async def defuse_kit(self, ctx: MyContext, *, words: str):
         """
         Buy a defuse kit. You can use it on a sentence. If it's used, you collect the landmine value, minus the price
@@ -443,17 +442,17 @@ class Event2021(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        words_list = get_valid_words(words)
+        words_list = models.get_valid_words(words)
 
         if len(words_list) < 1:
             await ctx.reply(_("❌ Please give (as much) valid words as you want to the defuse kit."))
             return
 
-        landmine = await get_landmine(ctx.guild, words)
+        landmine = await models.get_landmine(ctx.guild, words)
 
         try:
             await self.concurrency.acquire(ctx.message)
-            db_data = await get_member_landminesdata(ctx.author)
+            db_data = await models.get_member_landminesdata(ctx.author)
 
             if db_data.points_current < 30:
                 await ctx.reply(_("❌ You don't have 30 points, so you can't buy a defuse kit."))
@@ -499,7 +498,7 @@ class Event2021(Cog):
             else:
                 db_data.points_current -= 15
                 db_data.points_spent += 15
-                words = format_list(words_list, locale=await ctx.get_language_code())
+                words = babel.lists.format_list(words_list, locale=await ctx.get_language_code())
                 await ctx.reply(_("♻️️ You didn't use the defuse kit, and sold it back to the shop. "
                                   "You are sure that there isn't any mine on any of those words: \n"
                                   "```\n"
@@ -513,27 +512,27 @@ class Event2021(Cog):
             await self.concurrency.release(ctx.message)
 
     @event.command()
-    @guild_only()
-    @landmines_commands_enabled()
+    @commands.guild_only()
+    @checks.landmines_commands_enabled()
     async def top(self, ctx: MyContext):
         """
         Show statistics about landmines on this server.
         """
         _ = await ctx.get_translate_function()
 
-        db_guild = await get_from_db(ctx.guild)
+        db_guild = await models.get_from_db(ctx.guild)
 
-        stats_embed = Embed(color=Color.dark_green(),
+        stats_embed = discord.Embed(colour=discord.Colour.dark_green(),
                                     title=_("Landmines statistics"))
 
         stats_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/"
 
-        players_count = await LandminesUserData.all().filter(member__guild=db_guild).count()
-        total_mines_count = await LandminesPlaced.all().filter(placed_by__member__guild=db_guild).count()
-        current_mines_count = await LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).count()
-        biggest_mine = await LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).order_by('-value').first()
+        players_count = await models.LandminesUserData.all().filter(member__guild=db_guild).count()
+        total_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).count()
+        current_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).count()
+        biggest_mine = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).order_by('-value').first()
 
-        negatives_count = await LandminesUserData \
+        negatives_count = await models.LandminesUserData \
             .filter(points_current__lte=0) \
             .filter(member__guild=db_guild) \
             .count()
@@ -551,11 +550,11 @@ class Event2021(Cog):
                                   inline=False)
         stats_embed.add_field(name=_("Players in the negative"), value=str(negatives_count))
 
-        top_embed = Embed(color=Color.blurple(),
+        top_embed = discord.Embed(colour=discord.Colour.blurple(),
                                   title=_("Event scoreboard"))
         top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/?discord_embeds=sucks"
 
-        top_players = await LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
+        top_players = await models.LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
 
         for i, top_player in enumerate(top_players):
             top_member = await top_player.member

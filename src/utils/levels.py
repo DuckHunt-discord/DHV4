@@ -1,4 +1,4 @@
-from math import inf
+import math
 
 from utils.translations import fake_translation as _
 
@@ -62,5 +62,5 @@ def get_level_info_from_id(level_id):
 
 
 def get_higher_level():
-    return get_level_info(inf)
+    return get_level_info(math.inf)
 

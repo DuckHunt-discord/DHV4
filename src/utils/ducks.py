@@ -1,11 +1,12 @@
-from asyncio import Lock, ensure_future, sleep
-from datetime import datetime, timedelta
-from random import random, randint, randrange, choice, choices
-from time import time
+import asyncio
+import datetime
+import random
+import time
 from enum import Enum
-from typing import Optional, Callable, Type
+import typing
+from typing import Optional
 
-from discord import TextChannel, Member, NotFound, Forbidden
+import discord
 from discord.utils import escape_markdown
 from babel.dates import format_timedelta
 
@@ -37,17 +38,17 @@ class Duck:
     use_bonus_exp = True
     leave_on_hug = False
 
-    def __init__(self, bot: MyBot, channel: TextChannel):
+    def __init__(self, bot: MyBot, channel: discord.TextChannel):
         self.bot = bot
         self.channel = channel
         self._db_channel: Optional[DiscordChannel] = None
 
-        self._webhook_parameters = {'avatar_url': choice(self.get_cosmetics()['avatar_urls']),
-                                    'username': choice(self.get_cosmetics()['usernames'])}
+        self._webhook_parameters = {'avatar_url': random.choice(self.get_cosmetics()['avatar_urls']),
+                                    'username': random.choice(self.get_cosmetics()['usernames'])}
 
         self.spawned_at: Optional[int] = None
-        self.target_lock = Lock()
-        self.target_lock_by: Optional[Member] = None
+        self.target_lock = asyncio.Lock()
+        self.target_lock_by: Optional[discord.Member] = None
         self.db_target_lock_by: Optional[Player] = None
 
         self._lives: Optional[int] = None
@@ -64,9 +65,9 @@ class Duck:
                 'webhook_parameters': self._webhook_parameters}
 
     @classmethod
-    def deserialize(cls, bot: MyBot, channel: TextChannel, data: dict):
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = cls(bot, channel)
-        d.spawned_at = time() - data['spawned_for']
+        d.spawned_at = time.time() - data['spawned_for']
         d.lives_left = data['lives_left']
         d._lives = data['lives']
         d._webhook_parameters = data['webhook_parameters']
@@ -79,7 +80,7 @@ class Duck:
     @property
     def spawned_for(self):
         if self.spawned_at:
-            return max(time() - self.spawned_at, 0)
+            return max(time.time() - self.spawned_at, 0)
         return None
 
     async def is_killed(self):
@@ -165,7 +166,7 @@ class Duck:
 
     # Locks #
 
-    async def target(self, member: Member = None):
+    async def target(self, member: discord.Member = None):
         await self.target_lock.acquire()
         if member:
             self.target_lock_by = member
@@ -182,28 +183,28 @@ class Duck:
 
     async def get_trace(self) -> str:
         traces = self.get_cosmetics()['traces']
-        trace = escape_markdown(choice(traces))
+        trace = escape_markdown(random.choice(traces))
 
         return anti_bot_zero_width(trace)
 
     async def get_face(self) -> str:
         db_channel = await self.get_db_channel()
 
-        dtnow = datetime.now()
+        dtnow = datetime.datetime.now()
         if dtnow.day == 1 and dtnow.month == 4 and self.category == "normal":
             if not db_channel.use_emojis:
                 faces = ["><(((º>", "< )))) ><", ">--) ) ) )*>", "><((((>", "><(((('>", "くコ:彡"]
-                face = escape_markdown(choice(faces))
+                face = escape_markdown(random.choice(faces))
             else:
                 faces = ["🐟", "🐠", "🐡"]
-                face = choice(faces)
+                face = random.choice(faces)
         else:
             if not db_channel.use_emojis:
                 faces = self.get_cosmetics()['faces']
-                face = escape_markdown(choice(faces))
+                face = escape_markdown(random.choice(faces))
             else:
                 faces = self.get_cosmetics()['emojis']
-                face = choice(faces)
+                face = random.choice(faces)
 
         return face
 
@@ -211,7 +212,7 @@ class Duck:
         _ = await self.get_translate_function()
         shouts = self.get_cosmetics()['shouts']
 
-        shout = _(choice(shouts))
+        shout = _(random.choice(shouts))
         if "http" in shout:
             return shout
         else:
@@ -221,15 +222,15 @@ class Duck:
         _ = await self.get_translate_function()
         traces = self.get_cosmetics()['bye_traces']
 
-        trace = _(choice(traces))
+        trace = _(random.choice(traces))
 
-        return anti_bot_zero_width(escape_markdown(trace))
+        return anti_bot_zero_width(discord.utils.escape_markdown(trace))
 
     async def get_bye_shout(self) -> str:
         _ = await self.get_translate_function()
         shouts = self.get_cosmetics()['bye_shouts']
 
-        shout = _(choice(shouts))
+        shout = _(random.choice(shouts))
 
         return anti_bot_zero_width(shout)
 
@@ -255,7 +256,7 @@ class Duck:
 
         locale = db_guild.language
 
-        spawned_for = timedelta(seconds=self.spawned_for)
+        spawned_for = datetime.timedelta(seconds=self.spawned_for)
         if locale.startswith("ru"):
             spawned_for_str = format_timedelta(spawned_for, locale=locale, format="short")
         else:
@@ -359,14 +360,14 @@ class Duck:
                 try:
                     await webhook.send(content, **this_webhook_parameters, **kwargs)
                     return
-                except (NotFound, ValueError) as e:
+                except (discord.NotFound, ValueError) as e:
                     db_channel: DiscordChannel = await get_from_db(self.channel)
                     self.bot.logger.warning(f"Removing webhook {webhook.url} on #{self.channel.name} on {self.channel.guild.id} from planification because {e}.")
                     db_channel.webhook_urls.remove(webhook.url)
                     await db_channel.save()
                     try:
                         await self.channel.send(content, **kwargs)
-                    except (Forbidden, NotFound):
+                    except (discord.Forbidden, discord.NotFound):
                         self.bot.logger.warning(
                             f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there {e}.")
                         try:
@@ -378,13 +379,13 @@ class Duck:
                         except KeyError:
                             pass
 
-            ensure_future(sendit())
+            asyncio.ensure_future(sendit())
             return
 
         async def sendit():
             try:
                 await self.channel.send(content, **kwargs)
-            except (Forbidden, NotFound):
+            except (discord.Forbidden, discord.NotFound):
                 self.bot.logger.warning(
                     f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there.")
                 try:
@@ -396,7 +397,7 @@ class Duck:
                 except KeyError:
                     pass
 
-        ensure_future(sendit())
+        asyncio.ensure_future(sendit())
 
     # Parameters #
 
@@ -440,7 +441,7 @@ class Duck:
                 frighten_chance += 3
             elif coat_color == Coats.CAMO:
                 frighten_chance -= 3
-            return randint(1, 100) <= frighten_chance
+            return random.randint(1, 100) <= frighten_chance
         else:
             return False
 
@@ -454,7 +455,7 @@ class Duck:
 
         if loud:
             self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
-            self.spawned_at = time()
+            self.spawned_at = time.time()
             await self.send(message)
 
         bot.ducks_spawned[self.channel].append(self)
@@ -504,19 +505,19 @@ class Duck:
         else:
             return False
 
-    async def maybe_bushes_message(self, hunter, db_hunter) -> Optional[Callable]:
+    async def maybe_bushes_message(self, hunter, db_hunter) -> typing.Optional[typing.Callable]:
         bush_chance = 13
         coat_color = db_hunter.get_current_coat_color()
 
         if coat_color == Coats.BLUE:
             bush_chance += 7
 
-        if not randint(1, 100) <= bush_chance:
+        if not random.randint(1, 100) <= bush_chance:
             return None
 
         db_channel = await self.get_db_channel()
 
-        item_found = choices(bushes_objects, bushes_weights)[0]()
+        item_found = random.choices(bushes_objects, bushes_weights)[0]()
 
         gave_item = await item_found.give(db_channel, db_hunter)
 
@@ -650,7 +651,7 @@ class GhostDuck(Duck):
 
         bot.ducks_spawned[self.channel].append(self)
 
-        self.spawned_at = time()
+        self.spawned_at = time.time()
 
 
 class PrDuck(Duck):
@@ -659,10 +660,10 @@ class PrDuck(Duck):
     """
     category = _('prof')
 
-    def __init__(self, bot: MyBot, channel: TextChannel):
+    def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
-        r1 = randint(0, 100)
-        r2 = randint(0, 100)
+        r1 = random.randint(0, 100)
+        r2 = random.randint(0, 100)
         self.operation = f"{r1} + {r2}"
         self.answer = r1 + r2
 
@@ -670,7 +671,7 @@ class PrDuck(Duck):
         return {**super().serialize(), 'operation': self.operation, 'answer': self.answer}
 
     @classmethod
-    def deserialize(cls, bot: MyBot, channel: TextChannel, data: dict):
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = super().deserialize(bot, channel, data)
         d.operation = data['operation']
         d.answer = data['answer']
@@ -788,8 +789,8 @@ class Map:
     XMAX = len(XCOORDS)
     YMAX = len(YCOORDS)
 
-    duck_x = randrange(XMIN, XMAX)
-    duck_y = randrange(YMIN, YMAX)
+    duck_x = random.randrange(XMIN, XMAX)
+    duck_y = random.randrange(YMIN, YMAX)
 
     def __init__(self):
         self.grid = [[MapTile.NOTHING for x in range(self.XMIN, self.XMAX)] for y in range(self.YMIN, self.YMAX)]
@@ -810,19 +811,19 @@ class Map:
         # Add lake
         self.add_square(self.duck_coords, MapTile.WATER)
 
-        if random() < 0.3:
+        if random.random() < 0.3:
             self.add_square(self.duck_coords.ay(2), MapTile.WATER, safe=True)
             self.set(self.duck_coords.ay(4), MapTile.WATER, safe=True)
 
-        if random() < 0.3:
+        if random.random() < 0.3:
             self.add_square(self.duck_coords.ay(-2), MapTile.WATER, safe=True)
             self.set(self.duck_coords.ay(-4), MapTile.WATER, safe=True)
 
-        if random() < 0.3:
+        if random.random() < 0.3:
             self.add_square(self.duck_coords.ax(2), MapTile.WATER, safe=True)
             self.set(self.duck_coords.ax(4), MapTile.WATER, safe=True)
 
-        if random() < 0.3:
+        if random.random() < 0.3:
             self.add_square(self.duck_coords.ax(-2), MapTile.WATER, safe=True)
             self.set(self.duck_coords.ax(-4), MapTile.WATER, safe=True)
 
@@ -834,7 +835,7 @@ class Map:
                      MapTile.ROCK, MapTile.BUSH, MapTile.BUSH,
                      MapTile.CAMPING, MapTile.CAMPING, MapTile.CAMPING,
                      MapTile.TOWN, MapTile.TOWN, MapTile.TOWN, MapTile.CITY]:
-            if random() < 0.3:
+            if random.random() < 0.3:
                 self.set(self.get_random_nothing_coordinates(), tile)
 
         self.fill(self.get_random_nothing_coordinates(), MapTile.WATER, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.TREE2, MapTile.TREE3,
@@ -856,7 +857,7 @@ class Map:
             return False
 
     def get_random_coordinates(self) -> Coordinates:
-        return Coordinates(randrange(self.XMIN, self.XMAX), randrange(self.YMIN, self.YMAX))
+        return Coordinates(random.randrange(self.XMIN, self.XMAX), random.randrange(self.YMIN, self.YMAX))
 
     def get_random_nothing_coordinates(self) -> Coordinates:
         nothing_blocks = []
@@ -866,7 +867,7 @@ class Map:
                 if self.grid[y][x] == MapTile.NOTHING:
                     nothing_blocks.append(Coordinates(x, y))
 
-        return choice(nothing_blocks)
+        return random.choice(nothing_blocks)
 
     def add_square(self, coordinates: Coordinates, tile: MapTile, size: int = 1, safe=False):
         for y in range(coordinates.y - size, coordinates.y + size + 1):
@@ -875,7 +876,7 @@ class Map:
 
     def fill(self, coordinates: Coordinates, *tiles: MapTile):
         if self.get(coordinates) == MapTile.NOTHING:
-            self.set(coordinates, choice(tiles))
+            self.set(coordinates, random.choice(tiles))
             self.fill(coordinates.ax(-1), *tiles)
             self.fill(coordinates.ay(-1), *tiles)
             self.fill(coordinates.ax(1), *tiles)
@@ -896,7 +897,7 @@ class CartographerDuck(Duck):
     """
     category = _('cartographer')
 
-    def __init__(self, bot: MyBot, channel: TextChannel):
+    def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
         self.map: Map = Map()
         self.duck_coords: Coordinates = self.map.duck_coords
@@ -905,7 +906,7 @@ class CartographerDuck(Duck):
         return {**super().serialize(), 'duck_coords': str(self.duck_coords)}
 
     @classmethod
-    def deserialize(cls, bot: MyBot, channel: TextChannel, data: dict):
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = super().deserialize(bot, channel, data)
         d.duck_coords = Coordinates.from_str(data['duck_coords'])
         return d
@@ -986,7 +987,7 @@ class BabyDuck(Duck):
         return 5
 
     async def get_hug_message(self, hugger, db_hugger, experience) -> str:
-        spawned_for = timedelta(seconds=self.spawned_for)
+        spawned_for = datetime.timedelta(seconds=self.spawned_for)
 
         db_guild = await get_from_db(self.channel.guild)
 
@@ -1071,7 +1072,7 @@ class MechanicalDuck(Duck):
     fake = True
     use_bonus_exp = False
 
-    def __init__(self, *args, creator: Optional[Member] = None, **kwargs):
+    def __init__(self, *args, creator: Optional[discord.Member] = None, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.creator = creator
@@ -1080,7 +1081,7 @@ class MechanicalDuck(Duck):
         return {**super().serialize(), 'creator': self.creator}
 
     @classmethod
-    def deserialize(cls, bot: MyBot, channel: TextChannel, data: dict):
+    def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = super().deserialize(bot, channel, data)
         d.creator = data['creator']
         return d
@@ -1149,7 +1150,7 @@ class SuperDuck(Duck):
 
         min_lives, max_lives = db_channel.super_ducks_min_life, max_life
 
-        self._lives = randint(min(min_lives, max_lives), max(min_lives, max_lives))
+        self._lives = random.randint(min(min_lives, max_lives), max(min_lives, max_lives))
 
 
 class MotherOfAllDucks(SuperDuck):
@@ -1172,7 +1173,7 @@ class MotherOfAllDucks(SuperDuck):
             # When you send two messages (one after the other but close enough),
             # they will be shown in the wrong order for *some*, but not all viewers of the channel.
             # To fix that we sleep a bit before spawning ducks
-            await sleep(.5)
+            await asyncio.sleep(.5)
             d = await spawn_random_weighted_duck(self.bot, self.channel)
             if d.category == "baby":
                 db_killer.stored_achievements['you_monster'] = True
@@ -1198,7 +1199,7 @@ class ArmoredDuck(SuperDuck):
         if self.bot.current_event == Events.UN_TREATY:
             return 1
         minus = 0
-        if randint(1, 100) < 90:
+        if random.randint(1, 100) < 90:
             minus = 1
 
         return await super().get_damage() - minus
@@ -1271,13 +1272,13 @@ DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLAS
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
+async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
     duck = await get_random_weighted_duck(bot, channel, db_channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
+async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
 
@@ -1296,18 +1297,18 @@ async def get_random_weighted_duck(bot: MyBot, channel: TextChannel, db_channel:
     if sum(weights) <= 0:  # Channel config is fucked anyways
         return Duck(bot, channel)
 
-    DuckClass: Type[Duck] = choices(ducks, weights)[0]
+    DuckClass: typing.Type[Duck] = random.choices(ducks, weights)[0]
 
     return DuckClass(bot, channel)
 
 
-def deserialize_duck(bot: MyBot, channel: TextChannel, data: dict):
+def deserialize_duck(bot: MyBot, channel: discord.TextChannel, data: dict):
     return DUCKS_CATEGORIES_TO_CLASSES[data['category']].deserialize(bot, channel, data)
 
 
 async def compute_sun_state(channel, seconds_spent_today=None):
     if seconds_spent_today is None:
-        now = int(time())
+        now = int(time.time())
         first_second = now - now % DAY
         seconds_spent_today = now - first_second
 

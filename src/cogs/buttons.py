@@ -1,3 +1,4 @@
+import discord
 from discord import ButtonStyle
 from discord.ext import commands
 
@@ -27,12 +28,12 @@ class GamepadView(View):
         shop_mag_command = bot.get_command("shop magazine")
         shop_clover_command = bot.get_command("shop clover")
 
-        self.add_item(CommandButton(bot, bang_command, [], {'target': None}, custom_id="gamepad_bang", row=0, label=_('🔫 Bang'), style=ButtonStyle.red))
-        self.add_item(CommandButton(bot, hug_command, [], {'target': None}, custom_id="gamepad_hug", row=0, label=_('🤗 Hug'), style=ButtonStyle.green))
-        self.add_item(CommandButton(bot, reload_command, [], {}, custom_id="gamepad_reload", row=1, label=_('♻️ Reload'), style=ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_mag_command, [], {}, custom_id="gamepad_magazine", row=2, label=_('Buy a magazine'), style=ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_bul_command, [], {}, custom_id="gamepad_bullet", row=2, label=_('Buy a bullet'), style=ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_clover_command, [], {}, custom_id="gamepad_clover", row=2, label=_('🍀 Buy a clover'), style=ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, bang_command, [], {'target': None}, custom_id="gamepad_bang", row=0, label=_('🔫 Bang'), style=discord.ButtonStyle.red))
+        self.add_item(CommandButton(bot, hug_command, [], {'target': None}, custom_id="gamepad_hug", row=0, label=_('🤗 Hug'), style=discord.ButtonStyle.green))
+        self.add_item(CommandButton(bot, reload_command, [], {}, custom_id="gamepad_reload", row=1, label=_('♻️ Reload'), style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_mag_command, [], {}, custom_id="gamepad_magazine", row=2, label=_('Buy a magazine'), style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_bul_command, [], {}, custom_id="gamepad_bullet", row=2, label=_('Buy a bullet'), style=discord.ButtonStyle.blurple))
+        self.add_item(CommandButton(bot, shop_clover_command, [], {}, custom_id="gamepad_clover", row=2, label=_('🍀 Buy a clover'), style=discord.ButtonStyle.blurple))
 
 
 class Buttons(Cog):

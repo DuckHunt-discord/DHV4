@@ -3,11 +3,12 @@ The emergencies command group, allowing for finer control of the bot, raw debugg
 """
 from typing import Set
 
-from discord import Embed, Color, User, NotFound, HTTPException
-from discord.ext.commands import group
+import discord
+from discord import Embed
+from discord.ext import commands
 from tortoise import timezone
 
-from utils.checks import needs_access_level
+from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel, get_from_db
@@ -28,8 +29,8 @@ class Emergencies(Cog):
         self.ws_send_timings = []
         self.ws_recv_timings = []
 
-    @group(aliases=["bot_administration", "emergencies"])
-    @needs_access_level(AccessLevel.BOT_MODERATOR)
+    @commands.group(aliases=["bot_administration", "emergencies"])
+    @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     async def manage_bot(self, ctx: MyContext):
         """
         Manage the bot current state by starting and stopping ducks spawning, leaving, and planning ducks spawn for the
@@ -52,7 +53,7 @@ class Emergencies(Cog):
 
         await ducks_spawning_cog.planify()
 
-        await ctx.reply("Ducks spawns have been reset based on the current time of the day.")
+        await ctx.reply(f"Ducks spawns have been reset based on the current time of the day.")
 
     @manage_bot.command(aliases=["disable_spawns"])
     async def stop_spawns(self, ctx: MyContext):
@@ -68,10 +69,10 @@ class Emergencies(Cog):
         await ctx.reply(f"Ducks will no longer spawn until the lock is removed with "
                         f"`{ctx.prefix}manage_bot start_spawns`.")
 
-        embed = Embed()
+        embed = discord.Embed()
 
-        embed.color = Color.dark_red()
-        embed.title = "Maintenance: ducks won't spawn for now"
+        embed.colour = discord.Colour.dark_red()
+        embed.title = f"Maintenance: ducks won't spawn for now"
         embed.description = f"{ctx.author.mention} has stopped ducks from appearing for now, due to maintenance " \
                             f"requirements.\nStand by for a new message announcing the return of the spawns"
 
@@ -90,10 +91,10 @@ class Emergencies(Cog):
         await ctx.reply(f"Ducks will now spawn. Consider planning again if they have been stopped for a while :"
                         f"`{ctx.prefix}manage_bot planify`.")
 
-        embed = Embed()
+        embed = discord.Embed()
 
-        embed.color = Color.dark_green()
-        embed.title = "Maintenance: ducks are able to spawn"
+        embed.colour = discord.Colour.dark_green()
+        embed.title = f"Maintenance: ducks are able to spawn"
         embed.description = f"{ctx.author.mention} has re-enabled ducks spawns."
 
         await self.bot.log_to_channel(embed=embed)
@@ -107,7 +108,7 @@ class Emergencies(Cog):
 
         await boss_cog.spawn_boss()
 
-        await ctx.reply("A boss has been spawned.")
+        await ctx.reply(f"A boss has been spawned.")
 
     @manage_bot.command(aliases=["event", "reroll_event", "change_event", "regen_event"])
     async def update_event(self, ctx: MyContext, force=True):
@@ -118,10 +119,10 @@ class Emergencies(Cog):
 
         await ducks_spawning_cog.change_event(force=force)
 
-        await ctx.reply("New event rolled.")
+        await ctx.reply(f"New event rolled.")
 
     @manage_bot.command()
-    async def give_trophy(self, ctx: MyContext, trophy_key: str, user: User, value: bool = True):
+    async def give_trophy(self, ctx: MyContext, trophy_key: str, user: discord.User, value: bool = True):
         """
         Congratulate an user giving them a trophy.
         """
@@ -159,7 +160,7 @@ class Emergencies(Cog):
         for member_id in members_ids_to_add:
             try:
                 member = await support_guild.fetch_member(member_id) # Check if player is in support guild
-            except NotFound:
+            except discord.NotFound:
                 continue
             await member.add_roles(owner_role)
 
@@ -177,7 +178,7 @@ class Emergencies(Cog):
     async def asshole(self, ctx):
         try:
             await ctx.message.delete()
-        except HTTPException:
+        except discord.HTTPException:
             pass
         map = Map()
         # map.set(map.duck_coords, MapTile.WATER, safe=False)

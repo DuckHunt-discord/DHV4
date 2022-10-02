@@ -1,23 +1,21 @@
 import asyncio
-from datetime import datetime
-from typing import Union, TYPE_CHECKING
-from random import randint, randrange, choice
+import datetime
+import typing
+import random
 
-from discord import Embed, Message, Color, RawMessageDeleteEvent, TextChannel, Webhook, \
-    Forbidden, HTTPException
+import discord
+from discord.ext import menus
 from discord.ext.commands import MemberConverter
-from discord.ext.menus import ListPageSource
-from discord.utils import escape_mentions, escape_markdown
 
 from utils.models import get_from_db, DiscordChannel
-if TYPE_CHECKING:
+if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
 
-class EmbedCounterPaginator(ListPageSource):
+class EmbedCounterPaginator(menus.ListPageSource):
     def __init__(self, entries, *, per_page,
                  embed_title="Counter paginator",
-                 embed_color=Color.magenta(),
+                 embed_color=discord.Color.magenta(),
                  name_str="{elem}",
                  value_str="{n}",
                  field_inline=True
@@ -30,7 +28,7 @@ class EmbedCounterPaginator(ListPageSource):
         self.field_inline = field_inline
 
     async def format_page(self, menu, entries):
-        embed = Embed(title=self.embed_title, color=self.embed_color)
+        embed = discord.Embed(title=self.embed_title, colour=self.embed_color)
 
         for elem, n in entries:
             embed.add_field(name=self.name_str.format(elem=elem),
@@ -51,16 +49,16 @@ class SmartMemberConverter(MemberConverter):
 
 
 def get_timedelta(event, now):
-    return datetime.fromtimestamp(event) - datetime.fromtimestamp(now)
+    return datetime.datetime.fromtimestamp(event) - datetime.datetime.fromtimestamp(now)
 
 
 def escape_everything(mystr: str):
-    return escape_mentions(escape_markdown(mystr))
+    return discord.utils.escape_mentions(discord.utils.escape_markdown(mystr))
 
 
-async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: Message,
-                                             message_to_delete: Message):
-    def check(message: RawMessageDeleteEvent):
+async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: discord.Message,
+                                             message_to_delete: discord.Message):
+    def check(message: discord.RawMessageDeleteEvent):
         return message.message_id == watch_message.id
 
     try:
@@ -69,11 +67,11 @@ async def delete_messages_if_message_removed(bot: 'MyBot', watch_message: Messag
         pass
     else:
         bot.logger.debug(f"Deleting message {message_to_delete.id} following deletion of invoke - {watch_message.id}")
-        await message_to_delete.delete(delay=(randrange(1, 10) / 10))
+        await message_to_delete.delete(delay=(random.randrange(1, 10) / 10))
 
 
-async def purge_channel_messages(channel: TextChannel, check=None, **kwargs):
-    def check_pinned(message: Message):
+async def purge_channel_messages(channel: discord.TextChannel, check=None, **kwargs):
+    def check_pinned(message: discord.Message):
         return not message.pinned
 
     if check is None:
@@ -84,7 +82,7 @@ async def purge_channel_messages(channel: TextChannel, check=None, **kwargs):
     return await channel.purge(check=check, **kwargs)
 
 
-async def create_and_save_webhook(bot: 'MyBot', channel: Union[DiscordChannel, TextChannel],
+async def create_and_save_webhook(bot: 'MyBot', channel: typing.Union[DiscordChannel, discord.TextChannel],
                                   force=False):
     if isinstance(channel, DiscordChannel):
         channel = bot.get_channel(channel.discord_id)
@@ -99,7 +97,7 @@ async def create_and_save_webhook(bot: 'MyBot', channel: Union[DiscordChannel, T
         webhooks = await channel.webhooks()
         db_channel.webhook_urls = []
         for webhook in webhooks:
-            webhook: Webhook
+            webhook: discord.Webhook
             if webhook.name == "DuckHunt":
                 db_channel.webhook_urls.append(webhook.url)
         if len(db_channel.webhook_urls) == 0 or (force and len(db_channel.webhook_urls) <= 5):
@@ -108,16 +106,16 @@ async def create_and_save_webhook(bot: 'MyBot', channel: Union[DiscordChannel, T
         else:
             return None
 
-    except Forbidden:
+    except discord.Forbidden:
         db_channel.use_webhooks = False
-    except HTTPException:
+    except discord.HTTPException:
         db_channel.use_webhooks = False
 
     await db_channel.save()
     return webhook
 
 
-async def get_webhook_if_possible(bot: 'MyBot', channel: Union[DiscordChannel, TextChannel]):
+async def get_webhook_if_possible(bot: 'MyBot', channel: typing.Union[DiscordChannel, discord.TextChannel]):
     if isinstance(channel, DiscordChannel):
         db_channel = channel
     else:
@@ -126,9 +124,9 @@ async def get_webhook_if_possible(bot: 'MyBot', channel: Union[DiscordChannel, T
     if len(db_channel.webhook_urls) == 0:
         webhook = await create_and_save_webhook(bot, channel)
     else:
-        url = choice(db_channel.webhook_urls)
+        url = random.choice(db_channel.webhook_urls)
         try:
-            webhook = Webhook.from_url(url, session=bot.client_session)
+            webhook = discord.Webhook.from_url(url, session=bot.client_session)
         except ValueError:
             db_channel.webhook_urls.remove(url)
             await db_channel.save()
@@ -152,20 +150,20 @@ def anti_bot_zero_width(mystr: str):
     out = []
     for char in mystr:
         if char in replacements.keys():
-            if randint(1, 100) <= 50:
-                out.append(choice(replacements[char]))
+            if random.randint(1, 100) <= 50:
+                out.append(random.choice(replacements[char]))
             else:
                 out.append(char)
         else:
             out.append(char)
-        if randint(1, 100) <= 15 and char not in ["\\", "*", "`", "~", ">", "|"]:
-            out.append(choice(addings))
+        if random.randint(1, 100) <= 15 and char not in ["\\", "*", "`", "~", ">", "|"]:
+            out.append(random.choice(addings))
 
     return ''.join(out)
 
 
-async def make_message_embed(message: Message):
-    embed = Embed(color=Color.blurple())
+async def make_message_embed(message: discord.Message):
+    embed = discord.Embed(color=discord.Colour.blurple())
     embed.set_author(name=message.author.name, icon_url=str(message.author.display_avatar.url))
     embed.description = message.content
 
@@ -181,7 +179,7 @@ async def make_message_embed(message: Message):
             embed.add_field(name="Attached", value=attach.url)
 
     if not message.guild:
-        embed.set_footer(text="Private message",
+        embed.set_footer(text=f"Private message",
                          icon_url=str(message.guild.icon.url))
     elif message.channel.is_nsfw():
         embed.set_footer(text=f"{message.guild.name}: [NSFW] #{message.channel.name}",

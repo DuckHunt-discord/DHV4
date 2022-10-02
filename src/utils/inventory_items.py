@@ -1,8 +1,8 @@
-from abc import ABC, abstractmethod
-from random import randint
-from typing import Union, Tuple, Type, List, Dict
+import abc
+import random
+import typing
 
-from discord import User, Member, Embed
+import discord
 
 from utils.ctx_class import MyContext
 from utils.ducks import spawn_random_weighted_duck
@@ -23,7 +23,7 @@ def _(s):
 
 # Abstract base classes
 
-class Item(ABC):
+class Item(abc.ABC):
     name: str = ""
     description: str = ""
     _shortcode: str = None
@@ -72,7 +72,7 @@ class Item(ABC):
         """
         setattr(self.inventory, self.db_name + "_left", 0)
 
-    @abstractmethod
+    @abc.abstractmethod
     async def use_item(self, ctx: MyContext, *,
                        db_user=None, db_guild=None, db_channel=None, db_member=None, db_player=None):
         """
@@ -83,7 +83,7 @@ class Item(ABC):
         await self.inventory.save()
 
     @classmethod
-    async def give_to(cls, user: Union[UserInventory, DiscordUser, User, Member], **kwargs):
+    async def give_to(cls, user: typing.Union[UserInventory, DiscordUser, discord.User, discord.Member], **kwargs):
         """
         Convenience method to give the item to a user
         """
@@ -97,7 +97,7 @@ class Item(ABC):
         await inventory.save()
 
     @classmethod
-    async def use_by(cls, ctx: MyContext, user: Union[UserInventory, DiscordUser, User, Member] = None, uses: int = 1, **kwargs):
+    async def use_by(cls, ctx: MyContext, user: typing.Union[UserInventory, DiscordUser, discord.User, discord.Member] = None, uses: int = 1, **kwargs):
         """
         Convenience method to make a user use the item
         """
@@ -116,14 +116,14 @@ class Item(ABC):
 
 
 class Lootbox(Item):
-    items_inside: Tuple[Type[Item], int, int] = [
+    items_inside: typing.Tuple[typing.Type[Item], int, int] = [
         # (ItemCls, luck, uses)
     ]
 
-    async def get_items_to_give(self) -> List[Item]:
+    async def get_items_to_give(self) -> typing.List[Item]:
         given = []
         for ItemCls, luck, uses in self.items_inside:
-            uses = sum([int(randint(0, 99) < luck) for i in range(uses * self.uses)])
+            uses = sum([int(random.randint(0, 99) < luck) for i in range(uses * self.uses)])
 
             if uses != 0:
                 given.append(ItemCls(self.inventory, uses=uses))
@@ -136,7 +136,7 @@ class Lootbox(Item):
         and to save the objects.
         """
         _ = await ctx.get_translate_function(user_language=True)
-        embed = Embed(title=_('Lootbox opened'))
+        embed = discord.Embed(title=_('Lootbox opened'))
         description = []
 
         items = await self.get_items_to_give()
@@ -331,12 +331,12 @@ class Voted(Lootbox):
     ]
 
 
-ITEMS: List[Type[Item]] = [VipCard, Book, ForeignBook, Encyclopedia, Bullet, Egg, RefillMagazines]
-LOOTBOXES: List[Type[Item]] = [WelcomePackage, FoieGras, Voted]
+ITEMS: typing.List[typing.Type[Item]] = [VipCard, Book, ForeignBook, Encyclopedia, Bullet, Egg, RefillMagazines]
+LOOTBOXES: typing.List[typing.Type[Item]] = [WelcomePackage, FoieGras, Voted]
 
-ALL_INVENTORY: List[Type[Item]] = LOOTBOXES + ITEMS
+ALL_INVENTORY: typing.List[typing.Type[Item]] = LOOTBOXES + ITEMS
 
-ITEMS_SHORTCODE: Dict[str, Type[Item]] = {_Item.get_shortcode(): _Item for _Item in ITEMS}
-LOOTBOXES_SHORTCODE: Dict[str, Type[Item]] = {_Lootbox.get_shortcode(): _Lootbox for _Lootbox in LOOTBOXES}
+ITEMS_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Item.get_shortcode(): _Item for _Item in ITEMS}
+LOOTBOXES_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Lootbox.get_shortcode(): _Lootbox for _Lootbox in LOOTBOXES}
 
-ALL_SHORTCODE: Dict[str, Type[Item]] = {**ITEMS_SHORTCODE, **LOOTBOXES_SHORTCODE}
+ALL_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {**ITEMS_SHORTCODE, **LOOTBOXES_SHORTCODE}

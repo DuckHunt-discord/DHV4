@@ -1,10 +1,10 @@
-from datetime import datetime
-from statistics import NormalDist
+import datetime
+import statistics
 
-from discord import Embed, Color, File
-from discord.ext.commands import group
+import discord
+from discord.ext import commands
 
-from utils.checks import channel_enabled
+from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.levels import get_higher_level
@@ -19,8 +19,8 @@ class PrestigeCommands(Cog):
     display_name = _("Prestige")
     help_priority = 9
 
-    @group(aliases=["restart"])
-    @channel_enabled()
+    @commands.group(aliases=["restart"])
+    @checks.channel_enabled()
     async def prestige(self, ctx: MyContext):
         """
         Prestige related commands. Reset your adventure for exclusive bonuses.
@@ -42,8 +42,8 @@ class PrestigeCommands(Cog):
         missing_exp = needed_exp - current_exp
         progression = round(current_exp/needed_exp * 100)
 
-        e = Embed(title=_("Prestige Information"))
-        e.color = Color.dark_theme()
+        e = discord.Embed(title=_("Prestige Information"))
+        e.color = discord.Color.dark_theme()
 
         description = _("Prestige is a way for you to restart the DuckHunt adventure, resetting your account (experience, statistics, ...)\n"
                         "In exchange for the reset, you'll get new items to help you progress faster.\n\n")
@@ -83,8 +83,8 @@ class PrestigeCommands(Cog):
         e.add_field(name=_("Level 8"), value=_("**Bigger ammo pack**: Load twice as many bullets in your gun"))
         e.add_field(name=_("Level 9"), value=_("**???**: Suggestions are welcome"))  # TODO
 
-        f = File("assets/Rich_Ducc_Globloxmen.jpg")
-        e.set_image(url="attachment://Rich_Ducc_Globloxmen.jpg")
+        f = discord.File("assets/Rich_Ducc_Globloxmen.jpg")
+        e.set_image(url=f"attachment://Rich_Ducc_Globloxmen.jpg")
 
         await ctx.send(embed=e, file=f)
 
@@ -109,11 +109,11 @@ class PrestigeCommands(Cog):
             old_prestige = db_hunter.prestige
             new_prestige = db_hunter.prestige + 1
 
-            e = Embed(title=_("Prestige {old_prestige} -> {new_prestige}",
+            e = discord.Embed(title=_("Prestige {old_prestige} -> {new_prestige}",
                                       old_prestige=old_prestige,
                                       new_prestige=new_prestige))
 
-            e.color = Color.green()
+            e.color = discord.Color.green()
 
             e.description = _("You used prestige after reaching {pct}% of the required threshold.", pct=progression)
             e.add_field(name=_("✨ New run"),
@@ -136,13 +136,13 @@ class PrestigeCommands(Cog):
                              "See `{ctx.prefix}prestige info` to learn more."))
             return False
 
-        now = datetime.now()
+        now = datetime.datetime.now()
         if db_hunter.prestige_last_daily.date() == now.date():
             await ctx.send(_("❌ You already claimed your dailies today. Try again tomorrow."))
             return False
 
         max_experience = 20 * db_hunter.prestige
-        distrib = NormalDist(max_experience/2, max_experience/6)
+        distrib = statistics.NormalDist(max_experience/2, max_experience/6)
         added_experience = int(distrib.samples(1)[0])
 
         added_experience = min(max(5, added_experience), max_experience + 5)

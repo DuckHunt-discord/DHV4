@@ -1,4 +1,4 @@
-from time import time
+import time
 
 from utils.images import get_random_image
 from utils.models import Player
@@ -111,7 +111,7 @@ class ExplosiveAmmo(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **A box of explosive ammo**. 💥')
 
     async def give(self, db_channel, db_hunter):
-        db_hunter.active_powerups["explosive_ammo"] = max(int(time()), db_hunter.active_powerups["explosive_ammo"]) + DAY
+        db_hunter.active_powerups["explosive_ammo"] = max(int(time.time()), db_hunter.active_powerups["explosive_ammo"]) + DAY
         return True
 
 
@@ -120,7 +120,7 @@ class PartialExplosiveAmmo(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **An almost empty box of explosive ammo**.')
 
     async def give(self, db_channel, db_hunter):
-        db_hunter.active_powerups["explosive_ammo"] = max(int(time()), db_hunter.active_powerups["explosive_ammo"]) + 6 * HOUR
+        db_hunter.active_powerups["explosive_ammo"] = max(int(time.time()), db_hunter.active_powerups["explosive_ammo"]) + 6 * HOUR
         return True
 
 
@@ -129,7 +129,7 @@ class Grease(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **Tons of Duck Grease**.')
 
     async def give(self, db_channel, db_hunter):
-        db_hunter.active_powerups["grease"] = max(int(time()), db_hunter.active_powerups["grease"]) + 2 * DAY
+        db_hunter.active_powerups["grease"] = max(int(time.time()), db_hunter.active_powerups["grease"]) + 2 * DAY
         return True
 
 
@@ -138,7 +138,7 @@ class Silencer(BushObject):
     took_message = _('Searching the bushes around the duck, you found... **A new silencer**.')
 
     async def give(self, db_channel, db_hunter: Player):
-        db_hunter.active_powerups["silencer"] = max(int(time()), db_hunter.active_powerups["silencer"]) + DAY
+        db_hunter.active_powerups["silencer"] = max(int(time.time()), db_hunter.active_powerups["silencer"]) + DAY
         if db_hunter.prestige >= 6:
             db_hunter.active_powerups["silencer"] += DAY
         return True

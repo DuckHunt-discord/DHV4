@@ -1,15 +1,14 @@
-from datetime import timedelta
-from traceback import format_exception
+import datetime
+import traceback
 
-from discord import Forbidden
-from discord.ext import commands #Not treeshaking to preserve clarity of file
-from discord.ext.menus import CannotAddReactions
-from babel.core import UnknownLocaleError
-from babel.dates import format_timedelta
-from tortoise.exceptions import OperationalError
+import discord
+from discord.ext import menus, commands
+import babel
+from babel import dates
+import tortoise
 
 from cogs.shopping_commands import NotEnoughExperience
-from utils import checks #Not treeshaking to preserve clarity of file
+from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.interaction import escape_everything
@@ -98,7 +97,7 @@ class CommandErrorHandler(Cog):
                 else:
                     message = f"{str(exception)} ({type(exception).__name__})"
                     ctx.logger.error(
-                        "".join(format_exception(type(exception), exception, exception.__traceback__)))
+                        "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
             elif isinstance(exception, commands.CheckFailure):
                 if isinstance(exception, commands.PrivateMessageOnly):
@@ -185,7 +184,7 @@ class CommandErrorHandler(Cog):
                 else:
                     message = _("Check error running this command: {err_data}", err_data=f"{str(exception)} ({type(exception).__name__})")
                     ctx.logger.error(
-                        "".join(format_exception(type(exception), exception, exception.__traceback__)))
+                        "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.CommandNotFound):
                 # This should be disabled.
                 message = _("The provided command was not found.")
@@ -194,43 +193,43 @@ class CommandErrorHandler(Cog):
             elif isinstance(exception, commands.CommandInvokeError):
                 message = _("There was an error running the specified command. Contact the bot admins.")
                 ctx.logger.error(
-                    "".join(format_exception(type(exception), exception, exception.__traceback__)))
+                    "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
             elif isinstance(exception, commands.errors.CommandOnCooldown):
                 if await self.bot.is_owner(ctx.author):
                     await ctx.reinvoke()
                     return
                 else:
-                    delta = timedelta(seconds=min(round(exception.retry_after, 1), 1))
+                    delta = datetime.timedelta(seconds=min(round(exception.retry_after, 1), 1))
                     # NOTE: This message uses a formatted, direction date in some_time. Formatted, it'll give
                     # something like:
                     # "This command is overused. Please try again *in 4 seconds*"
                     message = _("This command is overused. Please try again {some_time}.",
-                                some_time=format_timedelta(delta, add_direction=True, locale=(await ctx.get_language_code())))
+                                some_time=dates.format_timedelta(delta, add_direction=True, locale=(await ctx.get_language_code())))
             elif isinstance(exception, commands.errors.MaxConcurrencyReached):
                 message = f"{str(exception)}"  # The message from the lib is great.
             else:
                 message = f"{str(exception)} ({type(exception).__name__})"
                 ctx.logger.error(
-                    "".join(format_exception(type(exception), exception, exception.__traceback__)))
+                    "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
         else:
             message = _(
                 "This should not have happened. A command raised an error that does not comes from CommandError. "
                 "Please inform the owner.")
-            ctx.logger.error("".join(format_exception(type(exception), exception, exception.__traceback__)))
-            if isinstance(exception, OperationalError):
+            ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
+            if isinstance(exception, tortoise.exceptions.OperationalError):
                 message = _("You are above the limits of DuckHunt database. Try to reduce your expectations. Database message: `{exception}`",
                             exception=exception)
-            elif isinstance(exception, UnknownLocaleError):
+            elif isinstance(exception, babel.core.UnknownLocaleError):
                 message = f"Unknown server language. Fix with `{ctx.prefix}set lang en`"
-            elif isinstance(exception, Forbidden):
+            elif isinstance(exception, discord.Forbidden):
                 message = _("Missing permissions, please check I can embed links here. `{exception}`",
                             exception=exception)
-            elif isinstance(exception, CannotAddReactions):
+            elif isinstance(exception, menus.CannotAddReactions):
                 message = _("Missing permissions, please check I can add reactions here.")
             else:
                 message = _("This should not have happened. A command raised an error that does not come from CommandError, and isn't handled by our error handler. "
-                            "Please inform the owner.") + "\n```py\n" + "".join(format_exception(type(exception), exception, exception.__traceback__)) + "\n```"
-                ctx.logger.error("".join(format_exception(type(exception), exception, exception.__traceback__)))
+                            "Please inform the owner.") + "\n```py\n" + "".join(traceback.format_exception(type(exception), exception, exception.__traceback__)) + "\n```"
+                ctx.logger.error("".join(traceback.format_exception(type(exception), exception, exception.__traceback__)))
 
         if message:
             await ctx.send("❌ " + message, delete_after=DELETE_ERROR_MESSAGE_AFTER)

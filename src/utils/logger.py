@@ -1,39 +1,37 @@
+import logging
+import typing
 
-from logging import Logger, Formatter, getLogger, StreamHandler, \
-    DEBUG, INFO, WARNING, ERROR, CRITICAL
-from logging.handlers import RotatingFileHandler
-from typing import Optional
-
-from discord import Guild, ChannelType, Member
+import discord
 
 
 FILE_SIZE = 10000000
 
 
-def init_logger() -> Logger:
+def init_logger() -> logging.Logger:
     # Create the logger
 
-    base_logger = getLogger("matchmaking")
-    base_logger.setLevel(DEBUG)
+    base_logger = logging.getLogger("matchmaking")
+    base_logger.setLevel(logging.DEBUG)
 
     # noinspection SpellCheckingInspection
-    formatter = Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
+    formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 
     # Logging to a file
+    from logging.handlers import RotatingFileHandler
 
     file_handler = RotatingFileHandler('cache/all.log', 'a', FILE_SIZE, 1)
     file_handler.setFormatter(formatter)
-    file_handler.setLevel(DEBUG)
+    file_handler.setLevel(logging.DEBUG)
     base_logger.addHandler(file_handler)
 
     file_handler = RotatingFileHandler('cache/info.log', 'a', FILE_SIZE * 10, 1)
     file_handler.setFormatter(formatter)
-    file_handler.setLevel(INFO)
+    file_handler.setLevel(logging.INFO)
     base_logger.addHandler(file_handler)
 
     file_handler = RotatingFileHandler('cache/errors.log', 'a', FILE_SIZE * 10, 1)
     file_handler.setFormatter(formatter)
-    file_handler.setLevel(WARNING)
+    file_handler.setLevel(logging.WARNING)
     base_logger.addHandler(file_handler)
 
     # And to console
@@ -41,7 +39,7 @@ def init_logger() -> Logger:
     # You can probably collapse the following two StreamHandlers.
     # They list the colors codes for windows and unix systems
 
-    class _AnsiColorStreamHandler(StreamHandler):
+    class _AnsiColorStreamHandler(logging.StreamHandler):
         DEFAULT = '\x1b[0m'
         RED = '\x1b[31m'
         GREEN = '\x1b[32m'
@@ -56,29 +54,29 @@ def init_logger() -> Logger:
 
         @classmethod
         def _get_color(cls, level):
-            if level >= CRITICAL:
+            if level >= logging.CRITICAL:
                 return cls.CRITICAL
-            elif level >= ERROR:
+            elif level >= logging.ERROR:
                 return cls.ERROR
-            elif level >= WARNING:
+            elif level >= logging.WARNING:
                 return cls.WARNING
-            elif level >= INFO:
+            elif level >= logging.INFO:
                 return cls.INFO
-            elif level >= DEBUG:
+            elif level >= logging.DEBUG:
                 return cls.DEBUG
             else:
                 return cls.DEFAULT
 
         def __init__(self, stream=None):
-            StreamHandler.__init__(self, stream)
+            logging.StreamHandler.__init__(self, stream)
 
         def format(self, record):
-            text = StreamHandler.format(self, record)
+            text = logging.StreamHandler.format(self, record)
             color = self._get_color(record.levelno)
             return color + text + self.DEFAULT
 
     # noinspection SpellCheckingInspection
-    class _WinColorStreamHandler(StreamHandler):
+    class _WinColorStreamHandler(logging.StreamHandler):
         # wincon.h
         FOREGROUND_BLACK = 0x0000
         FOREGROUND_BLUE = 0x0001
@@ -110,15 +108,15 @@ def init_logger() -> Logger:
 
         @classmethod
         def _get_color(cls, level):
-            if level >= CRITICAL:
+            if level >= logging.CRITICAL:
                 return cls.CRITICAL
-            elif level >= ERROR:
+            elif level >= logging.ERROR:
                 return cls.ERROR
-            elif level >= WARNING:
+            elif level >= logging.WARNING:
                 return cls.WARNING
-            elif level >= INFO:
+            elif level >= logging.INFO:
                 return cls.INFO
-            elif level >= DEBUG:
+            elif level >= logging.DEBUG:
                 return cls.DEBUG
             else:
                 return cls.DEFAULT
@@ -128,7 +126,7 @@ def init_logger() -> Logger:
             ctypes.windll.kernel32.SetConsoleTextAttribute(self._outhdl, code)
 
         def __init__(self, stream=None):
-            StreamHandler.__init__(self, stream)
+            logging.StreamHandler.__init__(self, stream)
             # get file handle for the stream
             import ctypes.util
             # for some reason find_msvcrt() sometimes doesn't find msvcrt.dll on my system?
@@ -142,7 +140,7 @@ def init_logger() -> Logger:
         def emit(self, record):
             color = self._get_color(record.levelno)
             self._set_color(color)
-            StreamHandler.emit(self, record)
+            logging.StreamHandler.emit(self, record)
             self._set_color(self.FOREGROUND_WHITE)
 
     # select ColorStreamHandler based on platform
@@ -156,19 +154,19 @@ def init_logger() -> Logger:
         ColorStreamHandler = _AnsiColorStreamHandler
 
     steam_handler = ColorStreamHandler()
-    steam_handler.setLevel(DEBUG)
+    steam_handler.setLevel(logging.DEBUG)
 
     steam_handler.setFormatter(formatter)
     base_logger.addHandler(steam_handler)
 
-    discord_logger = getLogger('discord')
-    discord_logger.setLevel(WARNING)
+    discord_logger = logging.getLogger('discord')
+    discord_logger.setLevel(logging.WARNING)
 
     # noinspection SpellCheckingInspection
-    discord_formatter = Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
+    discord_formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 
     discord_steam_handler = ColorStreamHandler()
-    discord_steam_handler.setLevel(INFO)
+    discord_steam_handler.setLevel(logging.INFO)
     discord_steam_handler.setFormatter(discord_formatter)
     discord_logger.addHandler(discord_steam_handler)
 
@@ -176,15 +174,15 @@ def init_logger() -> Logger:
 
 
 class FakeLogger:
-    def __init__(self, logger: Logger = None):
+    def __init__(self, logger: logging.Logger = None):
         if not logger:
             logger = init_logger()
         self.logger = logger
 
     @staticmethod
-    def make_message_prefix(guild: Optional[Guild] = None,
-                            channel: Optional[ChannelType] = None,
-                            member: Optional[Member] = None):
+    def make_message_prefix(guild: typing.Optional[discord.Guild] = None,
+                            channel: typing.Optional[discord.ChannelType] = None,
+                            member: typing.Optional[discord.Member] = None):
         if guild and channel and member:
             return f"{guild.id} - #{channel.name[:15]} :: <{member.name}#{member.discriminator}> "
 
@@ -200,34 +198,34 @@ class FakeLogger:
         else:
             return ""
 
-    def debug(self, message: str, guild: Optional[Guild] = None,
-              channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def debug(self, message: str, guild: typing.Optional[discord.Guild] = None,
+              channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.debug(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def info(self, message: str, guild: Optional[Guild] = None,
-             channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def info(self, message: str, guild: typing.Optional[discord.Guild] = None,
+             channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.info(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def warn(self, message: str, guild: Optional[Guild] = None,
-             channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def warn(self, message: str, guild: typing.Optional[discord.Guild] = None,
+             channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.warning(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def warning(self, message: str, guild: Optional[Guild] = None,
-                channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def warning(self, message: str, guild: typing.Optional[discord.Guild] = None,
+                channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.warning(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def error(self, message: str, guild: Optional[Guild] = None,
-              channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def error(self, message: str, guild: typing.Optional[discord.Guild] = None,
+              channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.error(self.make_message_prefix(guild, channel, member) + str(message))
 
-    def exception(self, message: str, guild: Optional[Guild] = None,
-                  channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def exception(self, message: str, guild: typing.Optional[discord.Guild] = None,
+                  channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         return self.logger.exception(self.make_message_prefix(guild, channel, member) + str(message))
 
 
 class LoggerConstant:
-    def __init__(self, logger: FakeLogger, guild: Optional[Guild] = None,
-                 channel: Optional[ChannelType] = None, member: Optional[Member] = None):
+    def __init__(self, logger: FakeLogger, guild: typing.Optional[discord.Guild] = None,
+                 channel: typing.Optional[discord.ChannelType] = None, member: typing.Optional[discord.Member] = None):
         self.logger = logger
         self.guild = guild
         self.channel = channel

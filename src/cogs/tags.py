@@ -3,54 +3,52 @@ Tags are snippet of text that can be used to quickly send a message.
 """
 from typing import List
 
-from discord import Embed, RawReactionActionEvent
-from discord.ext.commands import command, group, clean_content, BadArgument
-from discord.ext.menus import ListPageSource, MenuPages
-from discord.utils import escape_markdown
+import discord
+from discord.ext import commands, menus
 
 from utils.checks import BotIgnore
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import AccessLevel, Tag, TagAlias, get_tag, get_from_db, DiscordUser, DiscordMember
+from utils.models import AccessLevel, Tag, get_tag, get_from_db, TagAlias, DiscordUser, DiscordMember
 
 
 def _(message):
     return message
 
 
-class TagName(clean_content):
+class TagName(commands.clean_content):
     async def convert(self, ctx, argument):
         converted = await super().convert(ctx, argument)
         lower = converted.lower().strip()
 
         if not lower:
-            raise BadArgument('Missing tag name')
+            raise commands.BadArgument('Missing tag name')
 
         if " " in lower:
-            raise BadArgument("Tags names can't contain spaces")
+            raise commands.BadArgument("Tags names can't contain spaces")
 
         if "/" in lower:
-            raise BadArgument("Tags names can't contain slashes (`/`)")
+            raise commands.BadArgument("Tags names can't contain slashes (`/`)")
 
         if "#" in lower:
-            raise BadArgument("Tags names can't contain hashes (`#`)")
+            raise commands.BadArgument("Tags names can't contain hashes (`#`)")
 
         if "?" in lower:
-            raise BadArgument("Tags names can't contain question marks (`?`)")
+            raise commands.BadArgument("Tags names can't contain question marks (`?`)")
 
         if "&" in lower:
-            raise BadArgument("Tags names can't contain and signs (`&`)")
+            raise commands.BadArgument("Tags names can't contain and signs (`&`)")
 
         if ":" in lower:
-            raise BadArgument("Tags names can't contain `:`")
+            raise commands.BadArgument("Tags names can't contain `:`")
 
         if len(lower) > 90:
-            raise BadArgument('Tag name is a maximum of 90 characters')
+            raise commands.BadArgument('Tag name is a maximum of 90 characters')
 
         return lower
 
 
-class TagMenuSource(ListPageSource):
+class TagMenuSource(menus.ListPageSource):
     def __init__(self, ctx: MyContext, tag: Tag):
         self.ctx = ctx
         self.tag = tag
@@ -60,7 +58,7 @@ class TagMenuSource(ListPageSource):
 
     async def format_page(self, menu, entry):
         _ = await self.ctx.get_translate_function(user_language=True)
-        e = Embed()
+        e = discord.Embed()
         e.title = self.tag.name.replace('_', ' ').title()
         e.url = f"https://duckhunt.me/tags/{self.tag.name}"
 
@@ -80,7 +78,7 @@ class TagMenuSource(ListPageSource):
         return e
 
 
-class MultiplayerMenuPage(MenuPages):
+class MultiplayerMenuPage(menus.MenuPages):
     def __init__(self, source, more_users=None, **kwargs):
         super().__init__(source, **kwargs)
         if more_users is None:
@@ -88,7 +86,7 @@ class MultiplayerMenuPage(MenuPages):
         else:
             self.more_users = more_users
 
-    def reaction_check(self, payload: RawReactionActionEvent) -> bool:
+    def reaction_check(self, payload: discord.RawReactionActionEvent) -> bool:
         # self.ctx: MyContext
         if payload.message_id != self.message.id:
             return False
@@ -104,7 +102,7 @@ async def show_tag_embed(ctx: MyContext, tag: Tag):
     await pages.start(ctx)
 
 
-class TagsListMenuSource(ListPageSource):
+class TagsListMenuSource(menus.ListPageSource):
     def __init__(self, ctx: MyContext, tags: List[Tag]):
         self.ctx = ctx
         self.tags = tags
@@ -113,7 +111,7 @@ class TagsListMenuSource(ListPageSource):
 
     async def format_page(self, menu, entries):
         _ = await self.ctx.get_translate_function(user_language=True)
-        e = Embed()
+        e = discord.Embed()
         e.url = "https://duckhunt.me/tags"
         e.description = _("This is the list of all the tags on this server. "
                           "They are ordered by official tags and most used first.\n"
@@ -138,7 +136,7 @@ class TagsListMenuSource(ListPageSource):
 
 
 async def show_tagslist_embed(ctx: MyContext, tags: List[Tag]):
-    pages = MenuPages(source=TagsListMenuSource(ctx, tags), clear_reactions_after=True)
+    pages = menus.MenuPages(source=TagsListMenuSource(ctx, tags), clear_reactions_after=True)
     await pages.start(ctx)
 
 
@@ -152,7 +150,7 @@ class Tags(Cog):
             # Raise BotIgnore to fail silently.
             raise BotIgnore()
 
-    @command(aliases=["t"])
+    @commands.command(aliases=["t"])
     async def tag(self, ctx: MyContext, tag_name: TagName, users: str = None):
         """
         Show a given tag based on the name.
@@ -170,7 +168,7 @@ class Tags(Cog):
             _ = await ctx.get_translate_function()
             await ctx.reply(_("❌ There is no tag with that name."))
 
-    @group()
+    @commands.group()
     async def tags(self, ctx: MyContext):
         """
         Commands to interact with tags : creations, editions, deletions, ...
@@ -311,7 +309,7 @@ class Tags(Cog):
             await ctx.reply(_("❌ This tag doesn't exist yet. You might want to create it."))
             return
 
-        escaped_content = escape_markdown(tag.content)
+        escaped_content = discord.utils.escape_markdown(tag.content)
 
         await ctx.reply(escaped_content)
 

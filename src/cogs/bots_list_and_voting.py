@@ -1,14 +1,14 @@
 import asyncio
-from time import time
-from datetime import timedelta
+import time
+import datetime
 from typing import Tuple, List
 
-from discord import User, Embed, Color
+import discord
 from discord.ext import commands
-from discord.errors import NotFound, Forbidden
-from aiohttp import web, ClientTimeout, ContentTypeError
+import aiohttp
+from aiohttp import web
 from tortoise import timezone
-from statcord import Client as SC_Client
+import statcord
 
 from utils.cog_class import Cog
 from utils import checks
@@ -30,7 +30,7 @@ class BotsListVoting(Cog):
         super().__init__(bot, *args, **kwargs)
 
     async def cog_load(self):
-        self.statcord_api = SC_Client(self.bot, self.config()['statcord_token'],
+        self.statcord_api = statcord.Client(self.bot, self.config()['statcord_token'],
                                             custom1=self.statcord_custom_value_ducks_spawned,
                                             custom2=self.statcord_custom_value_players_count)
         self.statcord_api.start_loop()
@@ -149,7 +149,7 @@ class BotsListVoting(Cog):
     async def handle_vote(self, user_id: int, bot_list: BotList, multiplicator: int = 1, is_test: bool = False) -> Tuple[bool, str]:
         try:
             user = await self.bot.fetch_user(user_id)
-        except NotFound:
+        except discord.errors.NotFound:
             self.bot.logger.warning(f"Bad user ID provided to votes API {bot_list.name}: {user_id}.")
             return False, "Unauthorized, bad user ID"
 
@@ -168,12 +168,12 @@ class BotsListVoting(Cog):
         try:
             await user.send(f"✨ Thanks for voting for DuckHunt on {bot_list.name}! "
                             f"Check your inventory with `dh!inv` in a game channel.")
-        except Forbidden:
+        except discord.errors.Forbidden:
             pass
 
         return True, "Vote recorded"
 
-    async def can_vote(self, bot_list: BotList, user: User, db_user: DiscordUser):
+    async def can_vote(self, bot_list: BotList, user: discord.User, db_user: DiscordUser):
         vote_check_url = bot_list.check_vote_url
         vote_every = bot_list.vote_every
 
@@ -184,7 +184,7 @@ class BotsListVoting(Cog):
 
             if last_vote:
                 # We wait for five more minutes just in case clocks desync'ed
-                if timezone.now() > (last_vote.at + vote_every + timedelta(minutes=5)):
+                if timezone.now() > (last_vote.at + vote_every + datetime.timedelta(minutes=5)):
                     return True
                 else:
                     return False
@@ -195,13 +195,13 @@ class BotsListVoting(Cog):
         elif not vote_check_url:
             return None
         else:
-            timeout = ClientTimeout(total=5)
+            timeout = aiohttp.ClientTimeout(total=5)
             headers = {'accept': 'application/json', "Authorization": bot_list.auth}
             self.bot.logger.debug(f"Checking user {user.id} vote on {bot_list.name}")
             try:
                 async with self.bot.client_session.get(vote_check_url.format(user=user), timeout=timeout, headers=headers) as resp:
                     json_resp = await resp.json()
-            except (asyncio.TimeoutError, ContentTypeError):
+            except (asyncio.TimeoutError, aiohttp.ContentTypeError):
                 self.bot.logger.warning(f"Checking user {user.id} vote on {bot_list.name} -> The bot list seems down.")
 
                 return False  # Can't vote if the bot list is down
@@ -230,7 +230,7 @@ class BotsListVoting(Cog):
             else:
                 return voted
 
-    async def get_votable_lists(self, user: User) -> Tuple[List[BotList], List[BotList], List[BotList]]:
+    async def get_votable_lists(self, user: discord.User) -> Tuple[List[BotList], List[BotList], List[BotList]]:
         votable_lists = []
         maybe_lists = []
         nope_lists = []
@@ -261,26 +261,26 @@ class BotsListVoting(Cog):
         async with ctx.typing():
             votable_lists, maybe_lists, nope_lists = await self.get_votable_lists(ctx.author)
 
-            embed = Embed()
+            embed = discord.Embed()
 
             if votable_lists:
                 text = votable_lists[0].vote_url
                 embed.title = _("You can vote !")
                 embed.description = _("Thanks for supporting the bot by voting !")
                 embed.url = votable_lists[0].vote_url
-                embed.color = Color.green()
+                embed.colour = discord.Colour.green()
             elif maybe_lists:
                 text = maybe_lists[0].vote_url
                 embed.title = _("You might be able to vote !")
                 embed.description = _("Thanks for supporting the bot by voting as much as you can. It makes a difference !")
                 embed.url = maybe_lists[0].vote_url
-                embed.color = Color.orange()
+                embed.colour = discord.Colour.orange()
             else:
                 text = _("Oh no! No bot list is currently available for you to vote.")
                 embed.title = _("There is nowhere for you to vote at the time !")
                 embed.description = _("Thanks for supporting the bot. It makes a difference! \n"
                                       "Unfortunately, you voted everywhere you could for now, but you can check back in a few hours.")
-                embed.color = Color.red()
+                embed.colour = discord.Colour.red()
 
             click_me_to_vote = _("Click me to vote")
             for bot_list in votable_lists:
@@ -301,10 +301,10 @@ class BotsListVoting(Cog):
         await asyncio.sleep(30)
         await self.bot.wait_until_ready()
 
-        if int(time()) - self.last_stats_post < 30 * 60:
+        if int(time.time()) - self.last_stats_post < 30 * 60:
             return "Can't post stats more than twice per hour."
         else:
-            self.last_stats_post = int(time())
+            self.last_stats_post = int(time.time())
 
         self.bot.logger.debug(f"Updating stats on bots list")
 
@@ -314,7 +314,7 @@ class BotsListVoting(Cog):
         for bot_list in await self.get_bot_list():
             stats_url = bot_list.post_stats_url
             if stats_url:
-                timeout = ClientTimeout(total=5)
+                timeout = aiohttp.ClientTimeout(total=5)
                 headers = {'Content-Type': 'application/json',
                            'accept': 'application/json',
                            "Authorization": bot_list.auth}

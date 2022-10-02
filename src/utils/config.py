@@ -1,6 +1,6 @@
-from toml import load
+import toml
 
 
 def load_config():
     with open("config.toml") as f:
-        return load(f)
+        return toml.load(f)

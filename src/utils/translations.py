@@ -1,7 +1,7 @@
-from gettext import translation
+import gettext
 from typing import Optional
 
-from polib import pofile, POFile
+import polib
 
 
 # Oldest first
@@ -28,7 +28,7 @@ TRANSLATORS = {
 
 
 def get_translation(language_code):
-    return translation('messages', localedir='locales/', languages=[language_code], fallback=True)
+    return gettext.translation('messages', localedir='locales/', languages=[language_code], fallback=True)
 
 
 def translate(message, language_code):
@@ -82,9 +82,9 @@ def fake_translation(message, language_code=None):
     return message
 
 
-def get_catalog(language_code) -> Optional[POFile]:
+def get_catalog(language_code) -> Optional[polib.POFile]:
     try:
-        return pofile(f"locales/{language_code}/LC_MESSAGES/messages.po")
+        return polib.pofile(f"locales/{language_code}/LC_MESSAGES/messages.po")
     except FileNotFoundError:
         return None
 
