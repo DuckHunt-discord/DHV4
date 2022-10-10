@@ -49,7 +49,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
                               "Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). Thanks!")
 
         offset = menu.current_page * self.per_page
-        for i, item in enumerate(entries[offset:], start=offset):
+        for i, item in enumerate(entries, start=offset):
             locale, data = item
             flag_code = data["flag_code"]
             # user_ids = data["user_ids"]
