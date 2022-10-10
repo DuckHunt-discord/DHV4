@@ -51,12 +51,11 @@ class TranslatorsMenusSource(menus.ListPageSource):
         offset = menu.current_page * self.per_page
         for i, item in enumerate(entries[offset:], start=offset):
             locale, data = item
-            await self.ctx.send(str(locale))
-            await self.ctx.send(str(data))
             flag_code = data["flag_code"]
-            user_ids = data["user_ids"]
+            # user_ids = data["user_ids"]
+            users = data["users"]
 
-            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", user_ids)
+            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", users)
 
             try:
                 locale_data = Locale.parse(locale)
@@ -212,7 +211,7 @@ class SimpleCommands(Cog):
 
         if not len(self.translators_cache):
             for locale, data in TRANSLATORS.items():
-                self.translators_cache[locale] = []
+                self.translators_cache[locale] = {}
                 self.translators_cache[locale]['flag_code'] = data['flag_code']
                 for translator_id in data['user_ids']:
                     try:
