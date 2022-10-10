@@ -51,6 +51,8 @@ class TranslatorsMenusSource(menus.ListPageSource):
         offset = menu.current_page * self.per_page
         for i, item in enumerate(entries[offset:], start=offset):
             locale, data = item
+            await self.ctx.send(str(locale))
+            await self.ctx.send(str(data))
             flag_code = data["flag_code"]
             user_ids = data["user_ids"]
 
