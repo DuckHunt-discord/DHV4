@@ -55,7 +55,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
             # user_ids = data["user_ids"]
             users = data["users"]
 
-            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", users)
+            parsed_translators = list(map(lambda user: f"{user.name}#{user.discriminator}", users))
 
             try:
                 locale_data = Locale.parse(locale)
