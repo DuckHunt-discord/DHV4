@@ -51,8 +51,10 @@ class TranslatorsMenusSource(menus.ListPageSource):
         offset = menu.current_page * self.per_page
         for i, item in enumerate(entries[offset:], start=offset):
             locale, data = item
+            flag_code = data["flag_code"]
+            user_ids = data["user_ids"]
 
-            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", data['users'])
+            parsed_translators = map(lambda user: f"{user.name}#{user.discriminator}", user_ids)
 
             try:
                 locale_data = Locale.parse(locale)
@@ -60,7 +62,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
             except ValueError:
                 locale_display_name = locale
 
-            embed.add_field(name=f"{data['flag_code']} {locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
+            embed.add_field(name=f"{flag_code} {locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
                             value=format_list(parsed_translators, locale=language_code),
                             inline=False)
 
