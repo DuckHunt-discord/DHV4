@@ -211,7 +211,7 @@ class SimpleCommands(Cog):
 
         if not len(self.translators_cache):
             for locale, data in TRANSLATORS.items():
-                self.translators_cache[locale] = {}
+                self.translators_cache[locale] = {'users': []}
                 self.translators_cache[locale]['flag_code'] = data['flag_code']
                 for translator_id in data['user_ids']:
                     try:
