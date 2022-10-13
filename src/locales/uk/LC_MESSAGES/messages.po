@@ -3677,7 +3677,7 @@ msgid "Solve equations given by the Pr. Duck."
 msgstr ""
 
 msgid "BRAAAAAINS!"
-msgstr ""
+msgstr "МОООООЗОК!"
 
 msgid "Eat some brains and come back to life."
 msgstr ""
@@ -4162,16 +4162,16 @@ msgid "KWAK"
 msgstr ""
 
 msgid "KWAAK"
-msgstr ""
+msgstr "КРЯ! КРЯ!"
 
 msgid "KWAAAK"
-msgstr ""
+msgstr "КРЯяяяЯЯЯЯ К!"
 
 msgid "COUAK"
 msgstr ""
 
 msgid "COUAAK"
-msgstr ""
+msgstr "Паляниця"
 
 msgid "COUAAAK"
 msgstr ""
@@ -4180,7 +4180,7 @@ msgid "QUAK"
 msgstr ""
 
 msgid "QUAAK"
-msgstr ""
+msgstr "Па-ля-ни-ця... кря"
 
 msgid "QUAAAK"
 msgstr "Кря-Кря"
