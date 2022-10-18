@@ -2610,7 +2610,7 @@ msgid "The server prefix is set to `{prefix}`."
 msgstr "Префікс сервера встановлюється на `{prefix}`."
 
 msgid "There is no specific prefix set for this guild."
-msgstr ""
+msgstr "Для цієї гільдії не встановлений спеціальний префікс."
 
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
