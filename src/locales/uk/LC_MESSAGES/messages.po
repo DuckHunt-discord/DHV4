@@ -2615,34 +2615,40 @@ msgstr "Для цієї гільдії не встановлений спеці�
 msgid ""
 "You can call me with any of the global prefixes : {global_prefixes_list}"
 msgstr ""
+"Ви можете зателефонувати мені за допомогою будь-якого з глобальних префіксів:"
+" {global_prefixes_list}"
 
 msgid ""
 "❌ Unknown locale. If you wish to go back to the default, english language, "
 "use `{ctx.prefix}{ctx.command.qualified_name} en`"
 msgstr ""
+"❌ Невідома локаль. Якщо ви хочете повернутися до англійської мови за "
+"замовчуванням, використовуйте `{ctx.prefix}{ctx.command.qualified_name} en`"
 
 msgid "This server language is set to `{language}` [{language_name}]."
-msgstr ""
+msgstr "Мова сервера встановлена як `{language}` [{language_name}]."
 
 msgid "There is no specific language set for this guild."
-msgstr ""
+msgstr "Для цієї гільдії не встановлена певна мова."
 
 msgid "Webhooks are used in this channel."
-msgstr ""
+msgstr "У цьому каналі використовуються веб-хуки."
 
 msgid "Webhooks are not used in this channel."
-msgstr ""
+msgstr "Веб-хуки в цьому каналі не використовуються."
 
 msgid "Global items can be used in this channel."
-msgstr ""
+msgstr "У цьому каналі можна використовувати глобальні елементи."
 
 msgid "Global items can't be used in this channel."
-msgstr ""
+msgstr "Глобальні елементи не можуть бути використані в цьому каналі."
 
 msgid ""
 "Webhooks are not used in this channel. Please enable them first. You can use "
 "`{command}` to do it."
 msgstr ""
+"На цьому каналі не використовуються веб-хуки. Будь ласка, спочатку увімкніть "
+"їх. Для цього можна використати `{command}`."
 
 msgid ""
 "Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
@@ -2658,20 +2664,22 @@ msgstr[3] ""
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
 msgstr ""
+"Мені не вдалося створити веб-хук. Перевірте мої дозволи і спробуйте ще раз."
 
 msgid "That channel uses emojis to spawn ducks."
-msgstr ""
+msgstr "Цей канал використовує смайлики для розмноження качок."
 
 msgid ""
 "That channel uses pure-text ducks. How does it feels to live in the IRC "
 "world ?"
 msgstr ""
+"Цей канал використовує качки з чистим текстом. Як це - жити у світі IRC?"
 
 msgid "Ducks will spawn on {channel.mention}"
-msgstr ""
+msgstr "Качки будуть нереститися на {channel.mention}"
 
 msgid "Ducks won't spawn on {channel.mention}"
-msgstr ""
+msgstr "Качки не будуть нереститися на {channel.mention}"
 
 msgid ""
 "On {channel.mention}, players will pay {tax}% of tax to the bot when they "
@@ -2688,36 +2696,42 @@ msgstr ""
 "{channel.mention}"
 
 msgid "On {channel.mention}, players will be mentionned when they get killed."
-msgstr ""
+msgstr "На {channel.mention} гравці будуть згадуватися, коли їх буде вбито."
 
 msgid "Players won't get mentions when they get killed in {channel.mention}"
-msgstr ""
+msgstr "Гравці не отримають згадки, якщо їх вб'ють на {channel.mention}"
 
 msgid "On {channel.mention}, players will see the lives count of super ducks."
-msgstr ""
+msgstr "На {channel.mention} гравці побачать кількість життів суперкачок."
 
 msgid "Players won't see lives of super ducks on {channel.mention}"
-msgstr ""
+msgstr "Гравці не побачать життя суперкачок на {channel.mention}"
 
 msgid ""
 "On {channel.mention}, players will kill people {pct}% of the time when "
 "missing a shot."
 msgstr ""
+"На {channel.mention} гравці будуть вбивати людей {pct}% часу при промаху."
 
 msgid ""
 "Players won't kill people randomly when missing shots on {channel.mention}. "
 "They can still kill people voluntarily."
 msgstr ""
+"Гравці не будуть вбивати людей випадковим чином, коли пропускають постріли "
+"на {channel.mention}. Вони все ще можуть вбивати людей добровільно."
 
 msgid ""
 "On {channel.mention}, players will frighten ducks {pct}% of the time when "
 "shooting."
 msgstr ""
+"На {channel.mention} гравці будуть лякати качок {pct}% часу при стрільбі."
 
 msgid ""
 "Players won't frighten ducks, making the silencer useless on {channel."
 "mention}."
 msgstr ""
+"Гравці не будуть лякати качок, що робить глушник марним на {channel.mention}."
+""
 
 msgid ""
 "⚠️ In some cases, users may get NEGATIVE experience when killing ducks with "
@@ -2776,6 +2790,7 @@ msgstr ""
 
 msgid "❌️ To disable a channel, use `{prefix}settings enabled False`."
 msgstr ""
+"❌️ Для відключення каналу використовуйте `{prefix}settings enabled False`."
 
 msgid ""
 "⚠️️ You should not set that higher than {maximum_value}, however, you have "
@@ -2784,9 +2799,14 @@ msgid ""
 "Please click `Confirm` to proceed as requested, with {value} ducks per day "
 "on the channel."
 msgstr ""
+"⚠️️ Ви не повинні встановлювати це значення вище {maximum_value}, однак, у "
+"вас є необхідні дозволи для продовження. Кількість качок на день обмежена, "
+"щоб забезпечити справедливе використання ресурсів.\n"
+"Будь ласка, натисніть \"Підтвердити\", щоб продовжити відповідно до запиту, "
+"з {value} качок в день на каналі."
 
 msgid "🛑 Operation cancelled."
-msgstr ""
+msgstr "🛑 Операцію скасовано."
 
 msgid ""
 "⚠️️ You should not set that higher than {maximum_value}, however, this is a "
@@ -2795,6 +2815,10 @@ msgid ""
 " I'm proceeding anyway as requested, with {value} ducks per day on the "
 "channel."
 msgstr ""
+"⚠️️ Ви не повинні встановлювати це значення вище {maximum_value}, однак, це "
+"VIP сервер, тому я дозволю набагато вищі ліміти, ніж зазвичай. Кількість "
+"качок на день обмежена, щоб забезпечити справедливе використання ресурсів.\n"
+" Я все одно продовжую, як просили, з {value} качок на день на каналі."
 
 msgid ""
 "⚠️️ You cannot set that higher than {maximum_value}. The number of ducks per "
@@ -2809,52 +2833,57 @@ msgstr ""
 "{donor_url}."
 
 msgid "On {channel.mention}, {value} ducks will spawn every day."
-msgstr ""
+msgstr "На {channel.mention}, {value} качки будуть нереститися щодня."
 
 msgid ""
 "❌ I don't know what type of duck you are talking about. Choose one in "
 "{allowed_ducks_types}."
 msgstr ""
+"я не знаю, про яку качку ви говорите. Виберіть одну в {allowed_ducks_types}."
 
 msgid "❌ You cannot set a negative weight."
-msgstr ""
+msgstr "❌ Ви не можете встановити від'ємну вагу."
 
 msgid "🦆 Weight for the {duck_type} is set to {value} in {channel.mention}."
-msgstr ""
+msgstr "вага для {duck_type} встановлюється на {value} в {channel.mention}."
 
 msgid "❌️ Ducks need to settle for a while in the pond before leaving."
 msgstr "❌️ Качкам перед вильотом необхідно на деякий час освоїтися у водоймі."
 
 msgid "❌️ Ducks will get bored long before that."
-msgstr ""
+msgstr "качки задовго до цього занудьгують."
 
 msgid "On {channel.mention}, ducks will stay for {value} seconds."
-msgstr ""
+msgstr "На {channel.mention} качки залишаються протягом {value} секунд."
 
 msgid "❌️ Super ducks will live !"
-msgstr ""
+msgstr "❌️ Супер качки будуть жити!"
 
 msgid ""
 "❌️ You need to provide a lower value than the one set in "
 "`super_ducks_max_life` !"
 msgstr ""
+"❌️ Потрібно вказати менше значення, ніж те, що встановлено в "
+"`super_ducks_max_life` !"
 
 msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
-msgstr ""
+msgstr "На {channel.mention} суперкачки отримають мінімум {value} життів."
 
 msgid ""
 "❌️ You need to provide a higher value than the one set in "
 "`super_ducks_min_life` !"
 msgstr ""
+"❌️ Потрібно вказати більше значення, ніж те, що встановлено в "
+"`super_ducks_min_life` !"
 
 msgid "On {channel.mention}, super ducks will get a maximum of {value} lives."
-msgstr ""
+msgstr "На {channel.mention} суперкачки отримають максимум {value} життів."
 
 msgid "On {channel.mention}, anti-trigger wording is enabled."
-msgstr ""
+msgstr "На {channel.mention} вмикається антитригерне формулювання."
 
 msgid "On {channel.mention}, anti-trigger wording is disabled."
-msgstr ""
+msgstr "На {channel.mention} антитригерне формулювання відключено."
 
 msgid ""
 "❌ I'm sorry, I couldn't understand the time you entered for night_start. I'm "
@@ -2874,40 +2903,46 @@ msgstr ""
 
 msgid ""
 "On {channel.mention}, it's currently daytime. The day will last forever."
-msgstr ""
+msgstr "На {channel.mention} зараз день. День буде тривати вічно."
 
 msgid ""
 "On {channel.mention}, it's currently daytime, and night will fall "
 "{time_left_sun_td}. Night will last for {duration_of_night_td}."
 msgstr ""
+"На {channel.mention} зараз день, а ніч настане {time_left_sun_td}. Ніч "
+"триватиме {duration_of_night_td}."
 
 msgid ""
 "On {channel.mention}, it's currently nighttime, and the sun will rise "
 "{time_left_sun_td}. A full night will last for {duration_of_night_td}."
 msgstr ""
+"На {channel.mention} зараз ніч, а сонце зійде {time_left_sun_td}. Повна ніч "
+"триватиме до {duration_of_night_td}."
 
 msgid "👌️ Api disabled here, key deleted."
-msgstr ""
+msgstr "тут відключено api, видалено ключ."
 
 msgid "👌️ Api is now ENABLED. Your API key will be DM'ed to you."
 msgstr "👌️ api тепер УВІМКНЕНО. Ваш ключ API буде переданий вам DM."
 
 msgid "{channel.mention} API key is `{api_key}`"
-msgstr ""
+msgstr "{channel.mention} Ключ API - `{api_key}`"
 
 msgid ""
 "The API is disabled on {channel.mention}. Enable it with `{ctx.prefix}set "
 "api_key True`"
 msgstr ""
+"На {channel.mention} API відключено. Увімкніть його за допомогою `{ctx."
+"prefix}set api_key True"
 
 msgid "I couldn't DM you... Are your DMs blocked ?"
 msgstr "Я не зміг написати вам DM... Твої дімейли заблоковані?"
 
 msgid "Channel disabled messages are enabled."
-msgstr ""
+msgstr "Вмикаються повідомлення про відключення каналів."
 
 msgid "Channel disabled messages are disabled. The bot will stay silent."
-msgstr ""
+msgstr "Канал відключених повідомлень відключений. Бот буде мовчати."
 
 msgid ""
 "❌ Unknown level number. Please check the table here: <https://duckhunt.me/"
@@ -2920,6 +2955,8 @@ msgid ""
 "❌ I can't assign roles. Please make sure I have the `MANAGE_ROLES` "
 "permission."
 msgstr ""
+"я не можу призначати ролі. Будь ласка, переконайтеся, що у мене є дозвіл "
+"`MANAGE_ROLES`."
 
 msgid ""
 "❌ I can't assign this role. Move my top role (currently {top_role}) above "
@@ -2929,13 +2966,13 @@ msgstr ""
 "{top_role}) над ролями, які ви хочете призначити."
 
 msgid "👍️ Role added to the auto_roles list."
-msgstr ""
+msgstr "👍️ Роль додана до списку auto_roles."
 
 msgid "Current roles mapping:"
-msgstr ""
+msgstr "Поточний розподіл ролей:"
 
 msgid "Deleted role 🗑️ ID: {role_id}"
-msgstr ""
+msgstr "Видалена роль 🗑️ ID: {role_id}"
 
 msgid "No level mapping is currently defined on this channel."
 msgstr ""
@@ -2949,10 +2986,10 @@ msgstr ""
 "experience&gt"
 
 msgid "👍️ Role added to the auto_prestige_roles list."
-msgstr ""
+msgstr "👍️ Роль додано до списку авто_престижних_ролей."
 
 msgid "Current prestige roles mapping:"
-msgstr ""
+msgstr "Картування поточних престижних ролей:"
 
 msgid "Level {i}"
 msgstr "Рівень {i}"
@@ -2965,7 +3002,7 @@ msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 msgstr "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 
 msgid "No members have any specific rights in the server."
-msgstr ""
+msgstr "Жоден учасник не має особливих прав на сервері."
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
 msgstr "❌ {target.mention}, ви не можете заборонити собі!"
@@ -2977,29 +3014,33 @@ msgid ""
 "The landmines game is enabled in {channel.mention}, users can trip on "
 "landmines and earn points here."
 msgstr ""
+"У {channel.mention} увімкнена гра з мінами, тут користувачі можуть "
+"підриватися на мінах і заробляти бали."
 
 msgid ""
 "The landmines game is disabled in {channel.mention}, users can't trip on "
 "landmines and earn points here."
 msgstr ""
+"У {channel.mention} гра з мінами відключена, користувачі не можуть наступати "
+"на міни та заробляти бали."
 
 msgid "Members can run landmines commands in {channel.mention}."
-msgstr ""
+msgstr "Учасники можуть запускати команди наземних мін в {channel.mention}."
 
 msgid "Members can't run landmines commands in {channel.mention}"
-msgstr ""
+msgstr "Учасники не можуть запускати команди наземних мін в {channel.mention}"
 
 msgid "You'll now be pinged in replies from the bot."
-msgstr ""
+msgstr "Тепер ви будете отримувати пінг у відповідях від бота."
 
 msgid "You wont be pinged anymore in replies from the bot."
-msgstr ""
+msgstr "Вас більше не будуть пінгувати у відповідях від бота."
 
 msgid "Your language is set to `{language}` [{language_name}]."
 msgstr "Ваша мова встановлена на `{language}` [{language_name}]."
 
 msgid "Shop"
-msgstr ""
+msgstr "Магазин"
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
 msgstr "❌ упс, у вас вже забагато набоїв у пістолеті."
@@ -3014,6 +3055,8 @@ msgstr ""
 msgid ""
 "💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
 msgstr ""
+"💡 Наступного разу, можливо, ви захочете придбати журнал, це буде дешевше "
+"для вас 😁"
 
 msgid ""
 "❌ Whoops, you have too many magazines in your backpack already... Try "
@@ -3120,6 +3163,8 @@ msgid ""
 "❌ You already use a silencer. It's still good for {time_delta}, come back "
 "then."
 msgstr ""
+"ти вже користуєшся глушником. Це все ще добре для {time_delta}, поверніться "
+"тоді."
 
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
@@ -3231,6 +3276,8 @@ msgid ""
 "💸 You threw water on {target.mention}... But they have a raincoat on. [Fail:"
 " -{ITEM_COST} exp]"
 msgstr ""
+"ви вилили воду на {target.mention}... Але на них дощовик. [Fail: -"
+"{ITEM_COST} exp]"
 
 msgid ""
 "💸 You threw some icelandic water on {target.mention}... They can't hunt for "
@@ -3286,6 +3333,9 @@ msgid ""
 "seconds. [Bought: -{ITEM_COST} exp].\n"
 "**I couldn't DM you this message**"
 msgstr ""
+"💸 Ви запустили механічну качку на {channel.mention}, вона відродиться через "
+"90 секунд. [Куплено: -{ITEM_COST} exp].\n"
+"**Я не зміг відправити вам це повідомлення**"
 
 msgid "❌ I'm afraid you cannot choose your coat color yet."
 msgstr "боюся, що ви поки що не можете обрати колір пальто."
@@ -3312,7 +3362,7 @@ msgstr ""
 "[Куплено: -{ITEM_COST} exp, всього {db_hunter.experience} exp]"
 
 msgid "❌ You already use a kill license."
-msgstr ""
+msgstr "ви вже використовуєте ліцензію на вбивство."
 
 msgid ""
 "💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
@@ -3334,7 +3384,7 @@ msgstr ""
 "{ITEM_COST} exp, всього {db_hunter.experience} exp]"
 
 msgid "❌ You already have homing bullets."
-msgstr ""
+msgstr "у вас вже є самонавідні кулі."
 
 msgid ""
 "💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee "
@@ -3359,10 +3409,10 @@ msgstr ""
 "Eyesofcreeper#0001 на сервері підтримки (`{ctx.prefix}invite`). Дякуємо!"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Різне"
 
 msgid "Pong. — Time taken: {miliseconds}ms"
-msgstr ""
+msgstr "Понг. - Час пішов: {miliseconds}ms"
 
 msgid ""
 "You'll get back your weapon and magazines {formatted_delta} "
@@ -3375,46 +3425,59 @@ msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
 "global prefixes : {global_prefixes_list}"
 msgstr ""
+"Мій префікс тут {local_prefix}. Ви також можете зателефонувати мені з будь-"
+"яким з глобальних префіксів: {global_prefixes_list}"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, but these fine people down there "
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
+"Сам бот створений Eyesofcreeper, але ці чудові люди допомагають з графікою, "
+"ідеями, зображеннями та іншим. Не забудьте помахати їм рукою, якщо побачите "
+"їх."
 
 msgid "Developer"
-msgstr ""
+msgstr "Розробник"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
-msgstr ""
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") зробив цього бота."
 
 msgid "Designer"
-msgstr ""
+msgstr "Дизайнер"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
+"<@465207298890006529> (\"Калгека\") зробив багато аватарок, які "
+"використовували Качки."
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
+"<@376052158573051906> (\"Globloxmen\") створили багато качок, яких ви можете "
+"знайти по всій грі. Приєднуйтесь до /r/dailyducks subreddit."
 
 msgid "Ideas"
-msgstr ""
+msgstr "Ідеї"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
 "Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 msgstr ""
+"Бот на основі оригінальної ідеї MenzAgitat (в IRC, #boulets EpiKnet). Веб-"
+"сайт: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 
 msgid "Translations"
-msgstr ""
+msgstr "Переклади"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
 msgstr ""
+"Бот перекладений на БАГАТО мов! Перекладачі вказані в розділі `{ctx."
+"prefix}translators`."
 
 msgid "**DuckHunt credits**"
 msgstr "**Кредити DuckHunt**"
@@ -3423,6 +3486,8 @@ msgid ""
 "The bot itself is made by Eyesofcreeper, but a lot of people helped with "
 "graphics, ideas, images, and more."
 msgstr ""
+"Сам бот зроблений Eyesofcreeper, але багато людей допомагали з графікою, "
+"ідеями, зображеннями та іншим."
 
 msgid ""
 "To see more information about that bot, you'll need to give it the "
@@ -3433,33 +3498,35 @@ msgstr ""
 "сервера."
 
 msgid "You don't have to go right now"
-msgstr ""
+msgstr "Вам не обов'язково їхати прямо зараз"
 
 msgid "Hi, fellow cow lover"
-msgstr ""
+msgstr "Привіт, любителю корів"
 
 msgid "Current event: "
-msgstr ""
+msgstr "Поточна подія "
 
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
 msgstr ""
+"Заходи тривають одну годину від початку до кінця години. Закінчується на "
+"{formatted_td}"
 
 msgid "{exp} experience"
 msgstr "{exp} досвід"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Статистика"
 
 msgid "{target.name} statistics (click me!)."
-msgstr ""
+msgstr "{target.name} статистика (click me!)."
 
 msgid "Bullets"
-msgstr ""
+msgstr "Кулі"
 
 msgid "Magazines"
-msgstr ""
+msgstr "Журнали"
 
 msgid "Experience"
 msgstr "Досвід роботи"
@@ -3480,159 +3547,161 @@ msgid "Level {level}"
 msgstr "Рівень {level}"
 
 msgid "{target.name} shooting stats."
-msgstr ""
+msgstr "{target.name}Статистика стрільби."
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
 "life {revives} times eating a total of {brains_eaten} brains"
 msgstr ""
+"{shots_when_dead} пострілів зроблено після смерті. {target.mention} "
+"повертався до життя {revives} разів, з'ївши в цілому {brains_eaten} мізків"
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
-msgstr ""
+msgstr "{shots} спроба пострілу у вологому стані."
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
-msgstr ""
+msgstr "{shots} пострілів при вилученні {target.mention} пістолета."
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
-msgstr ""
+msgstr "{shots} спроба пострілу із зіпсованого пістолета."
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
-msgstr ""
+msgstr "{shots} постріли із заклиненої зброї."
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
-msgstr ""
+msgstr "{shots} постріли здійснено без набоїв."
 
 msgid "{shots} shots jamming {target.mention} weapon."
-msgstr ""
+msgstr "{shots} постріли глушать {target.mention} зброю."
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
-msgstr ""
+msgstr "{bullets} кулі, що використовуються в качиному божевіллі."
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
-msgstr ""
+msgstr "{shots} постріли повз ціль."
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr "{shots} пострілів, які вбили когось ({murders} були вбивствами)."
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
-msgstr ""
+msgstr "{target.mention} було вбито {times} разів."
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
-msgstr ""
+msgstr "{shots} постріли самонавідними кулями."
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
-msgstr ""
+msgstr "[{shots}Постріли в бік качок."
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵"
 
 msgid "{shots} shots stopped by the infrared detector."
-msgstr ""
+msgstr "{shots} постріли припинені інфрачервоним детектором."
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
-msgstr ""
+msgstr "{shots} постріли без жодної качки в полі зору."
 
 msgid "Normal ducks"
 msgstr "звичайна качка"
 
 msgid "Ghost ducks"
-msgstr ""
+msgstr "Качки-привиди"
 
 msgid "Professor ducks"
-msgstr ""
+msgstr "Професорські качки"
 
 msgid "Baby ducks"
-msgstr ""
+msgstr "Каченята"
 
 msgid "Golden ducks"
-msgstr ""
+msgstr "Золоті качки"
 
 msgid "Plastic ducks"
-msgstr ""
+msgstr "Пластикові качки"
 
 msgid "Kamikaze ducks"
-msgstr ""
+msgstr "Качки-камікадзе"
 
 msgid "Mechanical ducks"
-msgstr ""
+msgstr "Механічні качки"
 
 msgid "Super ducks"
-msgstr ""
+msgstr "Супер качки"
 
 msgid "Mother of all ducks"
-msgstr ""
+msgstr "Мати всіх качок"
 
 msgid "Armored ducks"
-msgstr ""
+msgstr "Броньовані качки"
 
 msgid "{target.name} best times."
-msgstr ""
+msgstr "[{target.name}Найкращі часи."
 
 msgid "Never killed any"
-msgstr ""
+msgstr "Нікого не вбивав"
 
 msgid "{target.name} kill counts."
-msgstr ""
+msgstr "{target.name}[Вбивства рахуються."
 
 msgid "{target.name} hugs counts."
-msgstr ""
+msgstr "{target.name}Обійми рахуються."
 
 msgid "Players"
-msgstr ""
+msgstr "Гравці"
 
 msgid "Hugs when dead"
-msgstr ""
+msgstr "Обійми після смерті"
 
 msgid "{target.name} hurt counts."
-msgstr ""
+msgstr "{target.name}Постраждалі рахуються."
 
 msgid "{target.name} resisted counts."
-msgstr ""
+msgstr "{target.name} чинив опір під час підрахунку."
 
 msgid "{target.name} scared ducks."
 msgstr "{target.name} налякав качку."
 
 msgid "{target.name} achievements."
-msgstr ""
+msgstr "{target.name} досягнення."
 
 msgid "❌ You cant send experience to yourself."
 msgstr "❌ Ви не можете відправити досвід самому собі."
@@ -3659,16 +3728,19 @@ msgid "💰️ You gave {amount} experience to {reciver.mention}. "
 msgstr "💰️ Ви передали {amount} досвід {reciver.mention} "
 
 msgid "Top Scores on #{channel}"
-msgstr ""
+msgstr "Найкращі бали на #{channel}"
 
 msgid ""
 "{target.name}#{target.discriminator} data was deleted from this channel."
 msgstr ""
+"{target.name}#{target.discriminator} з цього каналу було видалено дані."
 
 msgid ""
 "❌ The channel {channel.mention} still exists on the server. Please run the "
 "command from there."
 msgstr ""
+"❌ Канал {channel.mention} все ще існує на сервері. Будь ласка, виконайте "
+"команду звідти."
 
 msgid ""
 "❌ The channel used to exist but on a different server. I can't confirm you "
@@ -3697,46 +3769,49 @@ msgstr ""
 "можете використовувати `{ctx.prefix}settings enabled False` для зупинки гри."
 
 msgid "Support team: misc"
-msgstr ""
+msgstr "Група підтримки: інша"
 
 msgid "Most used commands"
-msgstr ""
+msgstr "Найбільш використовувані команди"
 
 msgid "{n} uses"
-msgstr ""
+msgstr "{n} використання"
 
 msgid "Top users"
-msgstr ""
+msgstr "Найкращі користувачі"
 
 msgid "{n} commands used"
-msgstr ""
+msgstr "{n} використовувані команди"
 
 msgid ""
 "This is the list of all the tags on this server. They are ordered by "
 "official tags and most used first.\n"
 "The list doesn't include tag aliases"
 msgstr ""
+"Це список всіх тегів на цьому сервері. Вони впорядковані за офіційними "
+"тегами і найбільш вживані йдуть першими.\n"
+"До списку не включені псевдоніми тегів"
 
 msgid "{u} uses, {r} revisions."
-msgstr ""
+msgstr "{u} використання, {r} перегляди."
 
 msgid "Page {current_page}/{maximum} ({entries} tags)"
-msgstr ""
+msgstr "Сторінка {current_page}/{maximum} (теги {entries})"
 
 msgid "Support: tags"
-msgstr ""
+msgstr "Підтримка: теги"
 
 msgid "❌ You didn't specify what you want your tag to say."
 msgstr "❌ Ви не вказали, що саме ви хочете, щоб було написано на вашому тезі."
 
 msgid "❌ This tag already exists."
-msgstr ""
+msgstr "❌ Цей тег вже існує."
 
 msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
-msgstr ""
+msgstr "тег створено: {tag.name} (`{tag.pk}`)"
 
 msgid "❌ Both tags already exists, what are you trying to do ?"
-msgstr ""
+msgstr "❌ Обидва теги вже існують, що ви намагаєтесь зробити?"
 
 msgid "❌ None of your tags exist."
 msgstr "❌ Жоден з ваших тегів не існує."
@@ -3745,33 +3820,35 @@ msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
 "pk}`)"
 msgstr ""
+"створено псевдонім: {tag_alias.name} -&gt; {tag_alias.tag.name} (`{tag_alias."
+"pk}`)"
 
 msgid "❌ This tag doesn't exist yet. You might want to create it."
-msgstr ""
+msgstr "❌ Цей тег ще не існує. Можливо, ви захочете створити його."
 
 msgid "❌ You don't own that tag, you can't edit it."
-msgstr ""
+msgstr "❌ Ви не володієте цим тегом, ви не можете його редагувати."
 
 msgid "👌 Tag {tag.name} edited."
-msgstr ""
+msgstr "👌 Тег {tag.name} відредаговано."
 
 msgid "❌ This tag doesn't exist."
-msgstr ""
+msgstr "❌ Цей тег не існує."
 
 msgid "❌ You don't own that tag, you can't delete it."
-msgstr ""
+msgstr "❌ Ви не володієте цим тегом, ви не можете його видалити."
 
 msgid "👌 Tag {tag.name} deleted."
-msgstr ""
+msgstr "👌 Видалено тег {tag.name}."
 
 msgid "Murderer"
-msgstr ""
+msgstr "Вбивця"
 
 msgid "Kill another hunter."
 msgstr "Убий ще одного мисливця."
 
 msgid "Big spender"
-msgstr ""
+msgstr "Великий марнотрат"
 
 msgid "Spend more than 2000 experience."
 msgstr "Провести більше 2000 досвіду."
@@ -3780,19 +3857,19 @@ msgid "A hunter joined the chat"
 msgstr "До чату долучився мисливець"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "Грати більше тижня."
 
 msgid "We are starting to know each other"
 msgstr "Ми починаємо пізнавати один одного"
 
 msgid "Play for more than a month."
-msgstr ""
+msgstr "Грати більше місяця."
 
 msgid "Wanna be friends ?"
-msgstr ""
+msgstr "Хочеш дружити?"
 
 msgid "Play for more than a year."
-msgstr ""
+msgstr "Граємо вже більше року."
 
 msgid "I don't want your damn bullets!"
 msgstr "Мені не потрібні ваші кляті кулі!"
@@ -3801,13 +3878,13 @@ msgid "Leave a bullet you found in the bushes."
 msgstr "Знайдену кулю залиште в кущах."
 
 msgid "Mommy is crying"
-msgstr ""
+msgstr "Мама плаче"
 
 msgid "Kill a few baby ducks."
-msgstr ""
+msgstr "Вбити кілька каченят."
 
 msgid "MATHS 101"
-msgstr ""
+msgstr "МАТЕМАТИКА 101"
 
 msgid "Solve equations given by the Pr. Duck."
 msgstr "Розв'язати рівняння, задані Пр. Пригнись."
@@ -3819,37 +3896,37 @@ msgid "Eat some brains and come back to life."
 msgstr "Поїжте мізків і прийдіть до тями."
 
 msgid "Sentry gun"
-msgstr ""
+msgstr "Вартовий пістолет"
 
 msgid "Use more than 1000 bullets."
-msgstr ""
+msgstr "Використано понад 1000 набоїв."
 
 msgid "Homing kills (you)"
-msgstr ""
+msgstr "Самонаведення вбиває (вас)"
 
 msgid "Use the homing projectiles."
 msgstr "Використовуйте самонавідні снаряди."
 
 msgid "You monster"
-msgstr ""
+msgstr "Ти чудовисько!"
 
 msgid "Kill a MOAD that spawns a baby duck."
-msgstr ""
+msgstr "Вбити качку, яка висиджує каченят."
 
 msgid "Gun insurer"
-msgstr ""
+msgstr "Страхування зброї"
 
 msgid "Give at least 30 exp to an hunter that lost his gun."
-msgstr ""
+msgstr "Дайте мінімум 30 експ мисливцю, який загубив свою рушницю."
 
 msgid "Short memory"
-msgstr ""
+msgstr "Коротка пам'ять"
 
 msgid "Shoot at your own mechanical duck."
 msgstr "Стріляйте у власну механічну качку."
 
 msgid "An ounce of prevention is worth a pound of cure"
-msgstr ""
+msgstr "Унція профілактики варта фунта лікування"
 
 msgid "Sabotage the gun of someone that planned to shoot at you."
 msgstr "Вивести з ладу зброю того, хто планував у вас стріляти."
@@ -3975,13 +4052,13 @@ msgstr ""
 "Обшукуючи кущі навколо качки, ви знайшли... **інфрачервоний детектор**."
 
 msgid "White"
-msgstr ""
+msgstr "Білий"
 
 msgid "A useful coat when it rains."
-msgstr ""
+msgstr "Корисний плащ під час дощу."
 
 msgid "Orange"
-msgstr ""
+msgstr "Помаранчевий"
 
 msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
@@ -3991,19 +4068,19 @@ msgstr ""
 "бути підстреленим іншим мисливцем."
 
 msgid "Camo"
-msgstr ""
+msgstr "Камуфляж"
 
 msgid "Lower visibility: Less chance to frighten ducks."
-msgstr ""
+msgstr "Менша видимість: Менше шансів налякати качок."
 
 msgid "Blue"
-msgstr ""
+msgstr "Синій"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
 msgstr "Щаслива знахідка: Збільшить ваш шанс знайти предмети в кущах."
 
 msgid "Red"
-msgstr ""
+msgstr "Червоний"
 
 msgid ""
 "Hungry for blood: Increase your murder skills, reduce murder penalties."
@@ -4012,31 +4089,31 @@ msgstr ""
 "вбивство."
 
 msgid "Yellow"
-msgstr ""
+msgstr "Жовтий"
 
 msgid "Sun powers: Mirrors are less effective against you."
-msgstr ""
+msgstr "Сила сонця: Дзеркала менш ефективні проти вас."
 
 msgid "Dark green"
-msgstr ""
+msgstr "Темно-зелений"
 
 msgid "Farming skills: Clovers give you one more experience point."
 msgstr "Навички землеробства: Конюшини дають вам ще одне очко досвіду."
 
 msgid "Black"
-msgstr ""
+msgstr "Чорний"
 
 msgid "Secret service: Sabotages are cheaper."
-msgstr ""
+msgstr "Секретна служба: Диверсії обходяться дешевше."
 
 msgid "Light blue"
-msgstr ""
+msgstr "Світло-блакитний"
 
 msgid "Sea powers: You are immune to water buckets."
-msgstr ""
+msgstr "Морські сили: У вас є імунітет до відер з водою."
 
 msgid "Pink"
-msgstr ""
+msgstr "Рожевий"
 
 msgid "Power of love: You can't kill players with the same coat color."
 msgstr "Сила любові: Не можна вбивати гравців з однаковим кольором плаща."
@@ -4045,9 +4122,11 @@ msgid ""
 "This is not a valid color. You can choose between {colors}, or `random` for "
 "a random color."
 msgstr ""
+"Цей колір не є допустимим. Ви можете вибрати між {colors}, або `random` для "
+"випадкового кольору."
 
 msgid "normal"
-msgstr ""
+msgstr "нормальний"
 
 msgid "of which one is a normal duck"
 msgid_plural "of which {this_ducks_killed} are normal ducks"
@@ -4098,7 +4177,7 @@ msgstr ""
 "{hugger.mention}обняв качку. Так мило! [**Обійняв**: +{experience} exp]"
 
 msgid "<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!"
-msgstr ""
+msgstr "<:Wizzz:505828171397070848> Каченя-обнімашка! Таке миле!"
 
 msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
@@ -4108,7 +4187,7 @@ msgstr ""
 "ненавидить тебе, тому що ти вбив всю її родину. [**FAIL**: {experience} exp]"
 
 msgid "ghost"
-msgstr ""
+msgstr "привид"
 
 msgid "of which one is a ghost duck"
 msgid_plural "of which {this_ducks_killed} are ghost ducks"
@@ -4118,7 +4197,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "prof"
-msgstr ""
+msgstr "професор"
 
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
@@ -4138,13 +4217,13 @@ msgstr ""
 "`dh!bang <answer>`."
 
 msgid "{hurter.mention}, Just give me digits !"
-msgstr ""
+msgstr "{hurter.mention}Просто дай мені цифри!"
 
 msgid "{hurter.mention}, that's not the correct answer !"
 msgstr "{hurter.mention}, це не правильна відповідь!"
 
 msgid "cartographer"
-msgstr ""
+msgstr "картограф"
 
 msgid "of which one is a cartographer duck"
 msgid_plural "of which {this_ducks_killed} are cartographer ducks"
@@ -4168,13 +4247,13 @@ msgstr ""
 "`dh!bang <coordinates>`."
 
 msgid "{hurter.mention}, Give coordinates like so `B3`!"
-msgstr ""
+msgstr "{hurter.mention}, дайте координати ось так \"B3\"!"
 
 msgid "{hurter.mention}, that's not the correct answer!"
 msgstr "{hurter.mention}, це не правильна відповідь!"
 
 msgid "baby"
-msgstr ""
+msgstr "дитина"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
@@ -4194,7 +4273,7 @@ msgstr ""
 "+{experience} exp]"
 
 msgid "golden"
-msgstr ""
+msgstr "золотий"
 
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
@@ -4204,7 +4283,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "plastic"
-msgstr ""
+msgstr "пластик"
 
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
@@ -4214,7 +4293,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "kamikaze"
-msgstr ""
+msgstr "камікадзе"
 
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
@@ -4224,7 +4303,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "mechanical"
-msgstr ""
+msgstr "механічний"
 
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
@@ -4248,7 +4327,7 @@ msgstr ""
 "через {creator.mention}! [exp: {won_experience}]"
 
 msgid "super"
-msgstr ""
+msgstr "супер"
 
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
@@ -4258,17 +4337,17 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "moad"
-msgstr ""
+msgstr "МОАД"
 
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
-msgstr[0] ""
+msgstr[0] "з яких один є MOAD"
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
 msgid "armored"
-msgstr ""
+msgstr "броньований"
 
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
@@ -4292,7 +4371,7 @@ msgstr ""
 "[**Пошкодження** : -{damage}]"
 
 msgid "night"
-msgstr ""
+msgstr "ніч"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
@@ -4302,7 +4381,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "sleeping"
-msgstr ""
+msgstr "сплячий"
 
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
@@ -4312,7 +4391,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "KWAK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "KWAAK"
 msgstr "КРЯ! КРЯ!"
@@ -4360,22 +4439,22 @@ msgid "COUACK"
 msgstr ""
 
 msgid "*cries*"
-msgstr ""
+msgstr "*плаче*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "Привіт, світ"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Як ви сьогодні почуваєтеся?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Будь ласка, не вбивайте мене..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Я теж тебе люблю!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Не стріляйте в мене! Я несправжня качка!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
@@ -4410,7 +4489,7 @@ msgid "The duck right."
 msgstr "Качка праворуч."
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "СТІЙ! Це не те, що ви думаєте!"
 
 msgid "Killing me will cost you 1562 experience points."
 msgstr "Вбивство мене коштуватиме вам 1562 очок досвіду."
@@ -4419,27 +4498,29 @@ msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
+"У мене є таємний план, як вбити всіх мисливців, але я вже задихаюся і не "
+"думаю, що зможу пояснити тобі все раніше..."
 
 msgid "[INSERT DUCK NOISE HERE]"
-msgstr ""
+msgstr "[ВСТАВИТИ ЗВУК КАЧКИ]"
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
 msgstr "Що сталося після створення DuckHunt? ||Великий вибух."
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "Зараз сезон кроликів."
 
 msgid "Got a spare cape?"
-msgstr ""
+msgstr "У вас є запасний плащ?"
 
 msgid "Which side of a duck has more feathers? ||The outside||."
 msgstr "На якому боці качки більше пір'я? ||Зовні."
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Я краду гроші. Я качка-грабіжник."
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Я дуже особлива качка."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
@@ -4456,7 +4537,7 @@ msgstr ""
 "зброї"
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*Хлюп!"
 
 msgid "Hopefully you are all AFK..."
 msgstr "Сподіваємось, ви всі AFK..."
@@ -4467,7 +4548,7 @@ msgstr ""
 "запобігти даремним пострілам."
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Я просто роблю свою роботу..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
@@ -4477,7 +4558,7 @@ msgstr ""
 "вбивства качок до сих пір?"
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
-msgstr ""
+msgstr "ВАС пОрУЧили."
 
 msgid "The duck went away."
 msgstr "Качка пішла геть."
@@ -4531,97 +4612,97 @@ msgid "The duck has some important business to take care of"
 msgstr "Качка має важливі справи, про які треба подбати"
 
 msgid "A duck"
-msgstr ""
+msgstr "Качка"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "Містере Дак"
 
 msgid "RealDuck"
-msgstr ""
+msgstr "RealDuck"
 
 msgid "The ghost never appeared."
 msgstr "Привид так і не з'явився."
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Качка-невидимка"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Качка-привид"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Буууу Качка"
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "Пр. Дак"
 
 msgid "EnsDuck"
 msgstr ""
 
 msgid "**COIN**"
-msgstr ""
+msgstr "**МОНЕТА*"
 
 msgid "**Piou** ?"
-msgstr ""
+msgstr "**Піу?**"
 
 msgid "**Coin** ?"
-msgstr ""
+msgstr "*монета*"
 
 msgid "**Coin**!"
-msgstr ""
+msgstr "*монета*!"
 
 msgid "**COIIIIIINNNNNN**!"
-msgstr ""
+msgstr "**МООооНЕТААААААаа**!"
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "Качка Смол"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "Міні-качка"
 
 msgid "Ducky"
-msgstr ""
+msgstr "Дакі"
 
 msgid "Duckie"
-msgstr ""
+msgstr "Дакі"
 
 msgid "£!"
 msgstr ""
 
 msgid "Free money !"
-msgstr ""
+msgstr "Безкоштовні гроші!"
 
 msgid "It's free money"
-msgstr ""
+msgstr "Це безкоштовні гроші"
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "Золота качка"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "Золотий гусак"
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Блискуча качка"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Багата качка"
 
 msgid "£?"
 msgstr ""
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Гроші є?"
 
 msgid "It's paid money"
-msgstr ""
+msgstr "Це заплачені гроші"
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Пластикова качка"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Бідна Качка"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "Слизька качка"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr "**НЕ РУХАЙСЯ, БО ВСЕ ВИБУХНЕ!**"
@@ -4633,22 +4714,22 @@ msgid "The Kamikaze Duck"
 msgstr "Качка-камікадзе"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "Вибухова качка"
 
 msgid "Boom Duck"
-msgstr ""
+msgstr "БУУМ Качка"
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "Динамічна качка"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
 msgstr "Качка-камікадзе вибухнула, вбивши всіх качок на каналі."
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "Качка 2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "Качка Омега"
 
 msgid "BZZZZZAAAAK"
 msgstr "БЗЗЗЯЯЯК"
@@ -4660,58 +4741,58 @@ msgid "BZAACK"
 msgstr "БЦЦЯК"
 
 msgid "Big Duck"
-msgstr ""
+msgstr "Велика Качка"
 
 msgid "Strong Duck"
-msgstr ""
+msgstr "Сильна качка"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "Важка качка"
 
 msgid "**I am your mother...**"
 msgstr "**Я твоя мати..**"
 
 msgid "Ms. Duck"
-msgstr ""
+msgstr "Пані Дак"
 
 msgid "Mom"
-msgstr ""
+msgstr "Мама"
 
 msgid "Mommy"
-msgstr ""
+msgstr "Мама!"
 
 msgid "MOAD"
-msgstr ""
+msgstr "МОАД"
 
 msgid "Mooooom"
-msgstr ""
+msgstr "Муууум!"
 
 msgid "Dockolumbus"
-msgstr ""
+msgstr "Доколумб"
 
 msgid "Cartographer Duck"
 msgstr " Качка Картограф"
 
 msgid "*coin*"
-msgstr ""
+msgstr "*монета*"
 
 msgid "*Don't make a noise, it's nighttime*"
-msgstr ""
+msgstr "*Не шуміти, зараз ніч*"
 
 msgid "*Shhhhh*"
-msgstr ""
+msgstr "*Ш-ш-ш-ш!"
 
 msgid "ZzZzZz"
-msgstr ""
+msgstr "ZzZzZzZz"
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Все спокійно"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "Зараз нічого не відбувається."
 
 msgid "Ducks are migrating"
-msgstr ""
+msgstr "Качки мігрують"
 
 msgid "Prepare to see more ducks in the next hour."
 msgstr "Приготуйтеся побачити більше качок у найближчу годину."
@@ -4729,7 +4810,7 @@ msgstr ""
 "не пийте цю воду."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "Клас безпеки скасовано"
 
 msgid "The safety class was canceled, beware not to shoot other hunters!"
 msgstr ""
@@ -4737,7 +4818,7 @@ msgstr ""
 "інших мисливців!"
 
 msgid "Connection problem"
-msgstr ""
+msgstr "Проблема з підключенням"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
@@ -4747,7 +4828,7 @@ msgstr ""
 "буде менше, поки його не відремонтують."
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Новий флорист в місті"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
@@ -4757,7 +4838,7 @@ msgstr ""
 "конюшини. Ідіть і перевірте їх!"
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Мега-качки"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
 msgstr "Хтось роздув супер качку, а тепер вона стала ЩЕ БІЛЬШОЮ!!!"
@@ -4769,7 +4850,7 @@ msgid "Bullets are deflected by some strong wind."
 msgstr "Кулі відводить сильний вітер."
 
 msgid "A UN treaty bans damaging ammo"
-msgstr ""
+msgstr "Договір ООН забороняє боєприпаси, що завдають шкоди"
 
 msgid ""
 "AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
@@ -4779,22 +4860,23 @@ msgstr ""
 "вони стають рідкісними."
 
 msgid "Lootbox opened"
-msgstr ""
+msgstr "Відкрито скриньку зі здобиччю"
 
 msgid "VIP card"
-msgstr ""
+msgstr "VIP картка"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
+"Красива і блискуча картка, яка дозволяє встановити на сервері статус VIP."
 
 msgid "❌ {guild.name} is already VIP."
-msgstr ""
+msgstr "❌ {guild.name} вже VIP."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr ""
+msgstr "✨ {guild.name} тепер VIP! Дякую."
 
 msgid "A book"
-msgstr ""
+msgstr "Книга"
 
 msgid "Reading it will give you experience."
 msgstr "Прочитавши її, ви отримаєте досвід."
@@ -4805,57 +4887,59 @@ msgstr ""
 "✨ Ви багато чому навчилися, додавши до свого профілю {amount} балів досвіду."
 
 msgid "A book in a foreign language"
-msgstr ""
+msgstr "Книга іноземною мовою"
 
 msgid "Can you read it ?"
-msgstr ""
+msgstr "Можеш прочитати?"
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "Енциклопедія"
 
 msgid "Reading it will give you a lot of experience ?"
 msgstr "Читаючи її, ви отримаєте багато досвіду?"
 
 msgid "A bullet"
-msgstr ""
+msgstr "Куля"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement."
 msgstr ""
+"Це звичайна куля, але вона може допомогти вам отримати це особливе "
+"досягнення."
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr ""
+msgstr "о, це куля?"
 
 msgid "A good ol' egg"
-msgstr ""
+msgstr "Старе добре яйце"
 
 msgid "Crack it open !"
-msgstr ""
+msgstr "Відчиняй!"
 
 msgid "✨ Oh look, ducks! Ducks are everywhere!"
-msgstr ""
+msgstr "дивіться, качки! Качки всюди!"
 
 msgid "A free card for magazines"
-msgstr ""
+msgstr "Безкоштовна картка на журнали"
 
 msgid "Redeem it to refill your weapon."
 msgstr "Викупіть його, щоб поповнити свою зброю."
 
 msgid "✨ Yay! Free ammo!"
-msgstr ""
+msgstr "ура! Безкоштовні набої!"
 
 msgid "❌ Your ammo is already full!"
 msgstr "❌ Ваші патрони вже повні!"
 
 msgid "A welcome gift"
-msgstr ""
+msgstr "Приємний подарунок"
 
 msgid "Open it in your inventory"
 msgstr "Відкрийте його в своєму інвентарі"
 
 msgid "A clean box of foie gras"
-msgstr ""
+msgstr "Чиста коробка фуа-гра"
 
 msgid "The boss dropped that when he died"
 msgstr "Бос впустив це, коли помер"
@@ -4867,16 +4951,16 @@ msgid "Thanks for voting for DuckHunt"
 msgstr "Дякуємо, що проголосували за DuckHunt"
 
 msgid "Negative cheater ?"
-msgstr ""
+msgstr "Негативний чітер?"
 
 msgid "Duck Hugger ?"
-msgstr ""
+msgstr "Качиний Обіймач?"
 
 msgid "What are you doing ?"
-msgstr ""
+msgstr "Що ви робите?"
 
 msgid "public danger"
-msgstr ""
+msgstr "суспільна небезпека"
 
 msgid "tourist"
 msgstr "Турист"
@@ -4888,118 +4972,118 @@ msgid "trainee"
 msgstr "практикант"
 
 msgid "duck misser"
-msgstr ""
+msgstr "качиний мисливець"
 
 msgid "member of the Committee Against Ducks"
 msgstr "член Комітету проти качок"
 
 msgid "duck hater"
-msgstr ""
+msgstr "качконенависник"
 
 msgid "duck pest"
-msgstr ""
+msgstr "качиний шкідник"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "качкодзьоб"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "качкоощипач"
 
 msgid "hunter"
-msgstr ""
+msgstr "мисливець"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "токар качка навиворіт"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "качкодзьоб"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "качиний жуйок"
 
 msgid "duck eater"
-msgstr ""
+msgstr "качкодзьоб"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "розплющувач качок"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "розбирач качок"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "знищувач качок"
 
 msgid "duck killer"
-msgstr ""
+msgstr "качиний вбивця"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "обдирач качок"
 
 msgid "duck predator"
-msgstr ""
+msgstr "качиний хижак"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "качкодробарка"
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "декортикатор качок"
 
 msgid "duck fragger"
-msgstr ""
+msgstr "качиний фраггер"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "качиний штрейкбрехер"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "качкодробилка"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "качиний вимикач"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "качколомка"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "качкопроколювач"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "качкопотрошитель"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "качиний терор"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "качиний підривник"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "знищувач качок"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "качиний бластер"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "качиний подрібнювач"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "дезінтегратор качок"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "качиний розпилювач"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "знищувач качок"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "серійний качиний вбивця"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "качиний геноцид"
 
 msgid "old noob"
 msgstr "старий нуб"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "качиний тостер"
 
 msgid "unemployed due to extinction of the duck species"
 msgstr "безробітні через вимирання виду качок"
@@ -5017,13 +5101,13 @@ msgid "You leveled down!"
 msgstr "Ваш рівень знижено!"
 
 msgid "❌ You cannot run this command."
-msgstr ""
+msgstr "❌ Ви не можете запустити цю команду."
 
 msgid "❌ You are not allowed to click on this button"
-msgstr ""
+msgstr "❌ Ви не маєте права натискати на цю кнопку"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Підтвердити"
