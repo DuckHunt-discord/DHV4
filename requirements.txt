@@ -13,7 +13,7 @@ asyncpg==0.27.0
 python-rapidjson
 ciso8601
 #seam-carving
-Babel==2.10.3
+Babel==2.11.0
 #git+https://github.com/paris-ci/babel.git
 git+https://github.com/Rapptz/discord-ext-menus
 python-dateutil==2.8.2
