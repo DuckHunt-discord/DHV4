@@ -3083,6 +3083,8 @@ msgid ""
 "❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, I "
 "can't sell that to you. (`{ctx.prefix}event`)"
 msgstr ""
+"❌ Договір ООН забороняє використання бронебійних та осколково-фугасних "
+"боєприпасів, поки що я не можу вам їх продати. ({ctx.prefix}Подія)"
 
 msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
 msgstr "❌ упс, ваша зброя вже використовує патрони AP для {time_delta}!"
@@ -3296,7 +3298,7 @@ msgstr ""
 "[Куплено: -{ITEM_COST} exp, всього {db_hunter.experience} exp]"
 
 msgid "❌ That weapon is already sabotaged."
-msgstr ""
+msgstr "❌ ця зброя вже саботується."
 
 msgid ""
 "💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: "
@@ -4400,7 +4402,7 @@ msgid "KWAAAK"
 msgstr "КРЯяяяЯЯЯЯ К!"
 
 msgid "COUAK"
-msgstr ""
+msgstr "Поляніца"
 
 msgid "COUAAK"
 msgstr "Паляниця"
@@ -4409,7 +4411,7 @@ msgid "COUAAAK"
 msgstr "Кря ! ! !"
 
 msgid "QUAK"
-msgstr ""
+msgstr "пОлянітса"
 
 msgid "QUAAK"
 msgstr "Па-ля-ни-ця... кря"
@@ -4418,7 +4420,7 @@ msgid "QUAAAK"
 msgstr "Кря-Кря"
 
 msgid "QUACK"
-msgstr ""
+msgstr "КРЯ"
 
 msgid "QUAACK"
 msgstr "карр-карр...? ..КРЯ!"
@@ -4427,7 +4429,7 @@ msgid "QUAAACK"
 msgstr "КРЯЯЯЯК"
 
 msgid "COUAC"
-msgstr ""
+msgstr "КРЯК"
 
 msgid "COUAAC"
 msgstr "Кря. Кря- Кря-Кря "
@@ -4436,7 +4438,7 @@ msgid "COUAAAC"
 msgstr "КРЯКУС"
 
 msgid "COUACK"
-msgstr ""
+msgstr "КРРЯЯЯК"
 
 msgid "*cries*"
 msgstr "*плаче*"
@@ -4666,7 +4668,7 @@ msgid "Duckie"
 msgstr "Дакі"
 
 msgid "£!"
-msgstr ""
+msgstr "грн!"
 
 msgid "Free money !"
 msgstr "Безкоштовні гроші!"
@@ -4687,7 +4689,7 @@ msgid "Rich Duck"
 msgstr "Багата качка"
 
 msgid "£?"
-msgstr ""
+msgstr "грн?"
 
 msgid "Have any money ?"
 msgstr "Гроші є?"
