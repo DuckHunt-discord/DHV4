@@ -231,10 +231,10 @@ class Event2021(Cog):
 
         await ctx.reply(embed=embed)
 
-    @event.command(aliases=["hl", "hlm", "hmine", "hlandmines", "how_to", "guide"])
+    @event.command(aliases=["hl", "hlm", "how_to"])
     @commands.guild_only()
     @checks.landmines_commands_enabled()
-    async def landmine_how_to(self, ctx: MyContext):
+    async def guide(self, ctx: MyContext):
         """
         This command explains how to place a landmine
         """
