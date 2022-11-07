@@ -339,4 +339,4 @@ ALL_INVENTORY: typing.List[typing.Type[Item]] = LOOTBOXES + ITEMS
 ITEMS_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Item.get_shortcode(): _Item for _Item in ITEMS}
 LOOTBOXES_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Lootbox.get_shortcode(): _Lootbox for _Lootbox in LOOTBOXES}
 
-ALL_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {**ITEMS_SHORTCODE, **LOOTBOXES_SHORTCODE}
+ALL_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {**ITEMS_SHORTCODE, **LOOTBOXES_SHORTCODE, "book_foreign": ForeignBook}
