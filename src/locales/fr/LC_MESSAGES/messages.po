@@ -4581,7 +4581,7 @@ msgid "I love you too!"
 msgstr "Je t'aime moi aussi!"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr "Ne me tires pas dessus! Je suis un faux canard!"
+msgstr "Ne me tire pas dessus! Je suis un faux canard!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
