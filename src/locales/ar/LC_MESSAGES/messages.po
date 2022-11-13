@@ -2925,7 +2925,7 @@ msgid "{target.name} hugs counts."
 msgstr ""
 
 msgid "Players"
-msgstr "اللاعبين"
+msgstr "اللاعبون"
 
 msgid "Hugs when dead"
 msgstr ""
@@ -3061,7 +3061,7 @@ msgid "👌 Tag {tag.name} deleted."
 msgstr ""
 
 msgid "Murderer"
-msgstr ""
+msgstr "قاتل"
 
 msgid "Kill another hunter."
 msgstr ""
@@ -3100,7 +3100,7 @@ msgid "Mommy is crying"
 msgstr ""
 
 msgid "Kill a few baby ducks."
-msgstr ""
+msgstr "اقتل بعض صغار البط."
 
 msgid "MATHS 101"
 msgstr "الرياضيات 101"
@@ -3109,7 +3109,7 @@ msgid "Solve equations given by the Pr. Duck."
 msgstr ""
 
 msgid "BRAAAAAINS!"
-msgstr ""
+msgstr "أدمغة!!!"
 
 msgid "Eat some brains and come back to life."
 msgstr "قم بأكل بعض العقول وعد إلى الحياة"
@@ -3118,7 +3118,7 @@ msgid "Sentry gun"
 msgstr ""
 
 msgid "Use more than 1000 bullets."
-msgstr ""
+msgstr "استخدم أكثر من 1000 رصاصة."
 
 msgid "Homing kills (you)"
 msgstr ""
@@ -3127,7 +3127,7 @@ msgid "Use the homing projectiles."
 msgstr ""
 
 msgid "You monster"
-msgstr "وحشك"
+msgstr "أيها الوحش"
 
 msgid "Kill a MOAD that spawns a baby duck."
 msgstr ""
@@ -3142,7 +3142,7 @@ msgid "Short memory"
 msgstr "ذاكرة قصيرة"
 
 msgid "Shoot at your own mechanical duck."
-msgstr ""
+msgstr "قم بالإطلاق على بطك الميكانيكي."
 
 msgid "An ounce of prevention is worth a pound of cure"
 msgstr ""
@@ -3198,47 +3198,57 @@ msgstr ""
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
 msgstr ""
+"خلال بحثك في إحدى الشجيرات، وجدت... ** دبوس شعر تابع لإحدى أنواع البط "
+"المنقرض **."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
-msgstr ""
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **صورة لأحد أنواع البط**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
-msgstr ""
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **بعض الرصاص**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A bullet**. You didn't "
 "take it, you had already too many in your magazine anyway..."
 msgstr ""
+"خلال بحثك في إحدى الشجيرات، وجدت... **بعض الرصاص**. لكنك لم تأخذه، كونك تملك "
+"الكثير منه في حقيبتك ..."
 
 msgid "Searching the bushes around the duck, you found... **A magazine**."
-msgstr ""
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **مجلة**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A magazine**. You "
 "didn't take it, you had already too many in your backpack..."
 msgstr ""
+"خلال بحثك في إحدى الشجيرات، وجدت... **مجلة**.   لكنك لم تأخذها، كونك تملك "
+"الكثير منها في حقيبتك ..."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A box of explosive "
 "ammo**. 💥"
 msgstr ""
+"خلال بحثك في إحدى الشجيرات، وجدت... **علبة تحتوي على الكثير من الذخيرة "
+"المتفجرة** . 💥"
 
 msgid ""
 "Searching the bushes around the duck, you found... **An almost empty box of "
 "explosive ammo**."
 msgstr ""
+"خلال بحثك في إحدى الشجيرات، وجدت... **علبة فارغة تقريبًا تحتوي على بعض "
+"الذخيرة المتفجرة**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Tons of Duck Grease**."
-msgstr ""
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **أطنانا من شحوم البط**."
 
 msgid "Searching the bushes around the duck, you found... **A new silencer**."
-msgstr ""
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **كاتم صوت جديد**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
-msgstr ""
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **كاشفا للأشعة تحت الحمراء**."
 
 msgid "White"
 msgstr "أبيض"
@@ -3550,7 +3560,7 @@ msgid ""
 msgstr ""
 
 msgid "night"
-msgstr "الليل"
+msgstr "ليل"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
@@ -3784,7 +3794,7 @@ msgid "A duck"
 msgstr ""
 
 msgid "Mr. Duck"
-msgstr "السيد. بطة"
+msgstr "السيد بطة"
 
 msgid "RealDuck"
 msgstr ""
@@ -3964,16 +3974,18 @@ msgid "Ducks are migrating"
 msgstr ""
 
 msgid "Prepare to see more ducks in the next hour."
-msgstr ""
+msgstr "استعد لرؤية المزيد من البط في غضون الساعة القادمة."
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "منشطات في البحيرة"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"قامت شركة نفايات طبية بإلقاء المنشطات في البحيرة. لقد تحور البط، وسترى "
+"الكثير من البط الخارق. لكن كن حذرًا ولا تشرب ماء تلك البحيرة."
 
 msgid "Safety class canceled"
 msgstr ""
@@ -3982,29 +3994,33 @@ msgid "The safety class was canceled, beware not to shoot other hunters!"
 msgstr ""
 
 msgid "Connection problem"
-msgstr "مشكلة اتصال"
+msgstr "مشكلة في الإتصال"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
 "less of them until it's repaired."
 msgstr ""
+"لا يمكن للبط العثور على جهاز الكمبيوتر الخاص بك بسبب مشاكل في الاتصال، "
+"وسينخفض عددهم حتى يتم إصلاح تلك المشاكل."
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "بائع زهور جديد في المدينة"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"تم افتتاح متجر لبيع الزهور في المدينة، ويمكنك الآن العثور على أفضل أنواع "
+"البرسيم ذو الأربع أوراق. اذهب للتحقق منها!"
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "البط الضخم"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
-msgstr ""
+msgstr "قام شخص ما بتضخيم البط الخارق، والآن قد أصبحوا أكبر من قبل!!"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "طقس عاصف"
 
 msgid "Bullets are deflected by some strong wind."
 msgstr ""
@@ -4021,35 +4037,37 @@ msgid "Lootbox opened"
 msgstr ""
 
 msgid "VIP card"
-msgstr "بطاقة VIP"
+msgstr "بطاقة كبار الشخصيات"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
 msgstr ""
+"بطاقة جميلة ولامعة تسمح لك بتعيين السيرفر الخاص بك كسيرفر تابع لأحد كبار "
+"الشخصيات."
 
 msgid "❌ {guild.name} is already VIP."
-msgstr "❌ {guild.name} هو VIP بالفعل."
+msgstr "❌ {guild.name} تابع لأحد كبار الشخصيات بالفعل."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr "✨ {guild.name} اصبح الآن VIP! شكراََ."
+msgstr "✨ {guild.name} أمسى تابعا لأحد كبار الشخصيات! شكراََ."
 
 msgid "A book"
 msgstr "كتاب"
 
 msgid "Reading it will give you experience."
-msgstr "قراءته ستمنحك نقاط الخبرة"
+msgstr "قراءته ستمنحك بعض نقاط الخبرة"
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
-msgstr "✨ لقد تعلمت الكثير، مضيفا {amount} من النقاط الخبرة إلى ملفك الشخصي."
+msgstr "✨ لقد تعلمت الكثير، تم إضافة {amount} من نقاط الخبرة إلى ملفك الشخصي."
 
 msgid "A book in a foreign language"
 msgstr "كتاب بلغة أجنبية"
 
 msgid "Can you read it ?"
-msgstr "هل يمكنك قراته؟"
+msgstr "هل يمكنك قرأته؟"
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "موسوعة"
 
 msgid "Reading it will give you a lot of experience ?"
 msgstr "قراته ستمنحك الكثير من نقاط الخبرة؟"
@@ -4060,8 +4078,7 @@ msgstr "رصاصة"
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement."
-msgstr ""
-"هذه مجرد رصاصة عادية، لكنها قد تساعدك في الحصول على هذا الإنجاز المميز."
+msgstr "هذه مجرد رصاصة عادية، لكنها قد تساعدك في الحصول إنجاز المميز."
 
 msgid "✨ Oh, is this a bullet ?"
 msgstr "✨ اوه، هل هذه رصاصة؟"
@@ -4121,16 +4138,16 @@ msgid "tourist"
 msgstr "سائح"
 
 msgid "noob"
-msgstr "لاعب مبتدا"
+msgstr "لاعب مبتدأ"
 
 msgid "trainee"
-msgstr ""
+msgstr "متدرب"
 
 msgid "duck misser"
 msgstr ""
 
 msgid "member of the Committee Against Ducks"
-msgstr ""
+msgstr "عضو في لجنة مكافحة البط"
 
 msgid "duck hater"
 msgstr "كاره البط"
@@ -4157,7 +4174,7 @@ msgid "duck chewer"
 msgstr ""
 
 msgid "duck eater"
-msgstr "آكل البط"
+msgstr "أكل البط"
 
 msgid "duck flattener"
 msgstr ""
@@ -4172,16 +4189,16 @@ msgid "duck killer"
 msgstr "قاتل البط"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "سالخ البط"
 
 msgid "duck predator"
-msgstr ""
+msgstr "مفترس البط"
 
 msgid "duck chopper"
 msgstr ""
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "مقشر البط"
 
 msgid "duck fragger"
 msgstr ""
@@ -4190,13 +4207,13 @@ msgid "duck shatterer"
 msgstr ""
 
 msgid "duck smasher"
-msgstr ""
+msgstr "محطم البط"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "كاسر البط"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "هادم البط"
 
 msgid "duck impaler"
 msgstr ""
@@ -4205,13 +4222,13 @@ msgid "duck eviscerator"
 msgstr ""
 
 msgid "ducks terror"
-msgstr ""
+msgstr "مرهب البط"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "مفجر البط"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "مدمر البط"
 
 msgid "duck blaster"
 msgstr ""
@@ -4226,10 +4243,10 @@ msgid "duck atomizer"
 msgstr ""
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "مبيد البط"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "قاتل البط المتسلسل"
 
 msgid "duck genocider"
 msgstr ""
@@ -4238,10 +4255,10 @@ msgid "old noob"
 msgstr ""
 
 msgid "duck toaster"
-msgstr ""
+msgstr "محمص البط"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "عاطل عن العمل بسبب انقراض جميع أنواع البط"
 
 msgid "This is not a valid level. Choose between {levels}"
 msgstr ""
@@ -4256,7 +4273,7 @@ msgid "You leveled down!"
 msgstr "لقد انخفض مستواك!"
 
 msgid "❌ You cannot run this command."
-msgstr "❌ لا يمكنك تشغيل هذا الامر"
+msgstr "❌ لا يمكنك تشغيل هذا الأمر"
 
 msgid "❌ You are not allowed to click on this button"
 msgstr "❌ ليس مسموح لك بالضغط على هذا الزر"
