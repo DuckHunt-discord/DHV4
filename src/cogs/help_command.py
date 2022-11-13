@@ -3,7 +3,7 @@ from typing import Optional, Union
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import CommandError, Command, Group
+from discord.ext.commands import Command, CommandError, Group
 
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
@@ -16,7 +16,9 @@ class ButtonsHelp:
         super().__init__(*args, **kwargs)
 
     def get_command_signature(self, command):
-        return f'{self.context.clean_prefix}{command.qualified_name} {command.signature}'
+        return (
+            f"{self.context.clean_prefix}{command.qualified_name} {command.signature}"
+        )
 
     @property
     def invoked_with(self):
@@ -26,7 +28,7 @@ class ButtonsHelp:
             return "help"
 
     async def send(self, *args, **kwargs):
-        raise RuntimeError('ButtonsHelp subclass must provide a send method.')
+        raise RuntimeError("ButtonsHelp subclass must provide a send method.")
 
     async def send_bot_help(self, mapping):
         ctx = self.context
@@ -36,18 +38,28 @@ class ButtonsHelp:
 
         view = await BotHelpView(bot, ctx).initialize()
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
-                              title=_("DuckHunt help"),
-                              url=self.context.bot.config['website_url'] + "commands")
+        embed = discord.Embed(
+            colour=discord.Colour.blurple(),
+            title=_("DuckHunt help"),
+            url=self.context.bot.config["website_url"] + "commands",
+        )
 
-        embed.description = _("**Welcome to DuckHunt**\n\n"
-                              "This is a help command designed to let you find all the commands in the bot.\n"
-                              "However, it's *not* the best way to get started with it. I suggest reading the wiki instead, "
-                              "here's [a link](https://duckhunt.me/docs).\n"
-                              "If you have questions, you can DM the bot, or join the [support server](https://duckhunt.me/support).\n"
-                              "Thanks for playing.")
+        embed.description = _(
+            "**Welcome to DuckHunt**\n\n"
+            "This is a help command designed to let you find all the commands in the bot.\n"
+            "However, it's *not* the best way to get started with it. I suggest reading the wiki instead, "
+            "here's [a link](https://duckhunt.me/docs).\n"
+            "If you have questions, you can DM the bot, or join the [support server](https://duckhunt.me/support).\n"
+            "Thanks for playing."
+        )
 
-        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+        embed.set_footer(
+            text=_(
+                "Use {prefix}{help} [command] for more info on a command.",
+                prefix="dh!",
+                help=self.invoked_with,
+            )
+        )
 
         await self.send("<https://duckhunt.me/docs>", embed=embed, view=view)
 
@@ -59,9 +71,11 @@ class ButtonsHelp:
 
         view = await CogHelpView(bot, cog, ctx).initialize()
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
-                              title=_("{cog} help", cog=cog.qualified_name),
-                              url=self.context.bot.config['website_url'] + "commands")
+        embed = discord.Embed(
+            colour=discord.Colour.blurple(),
+            title=_("{cog} help", cog=cog.qualified_name),
+            url=self.context.bot.config["website_url"] + "commands",
+        )
 
         if cog.description:
             embed.description = _(cog.description)
@@ -69,15 +83,23 @@ class ButtonsHelp:
         filtered = await filter_commands(cog.get_commands(), context=ctx, sort=True)
 
         for command in filtered:
-            value = '...'
+            value = "..."
             if command.brief:
                 value = _(command.brief)
             elif command.help:
-                value = _(command.help).split('\n', 1)[0]
+                value = _(command.help).split("\n", 1)[0]
 
-            embed.add_field(name=self.get_command_signature(command), value=value, inline=False)
+            embed.add_field(
+                name=self.get_command_signature(command), value=value, inline=False
+            )
 
-        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+        embed.set_footer(
+            text=_(
+                "Use {prefix}{help} [command] for more info on a command.",
+                prefix="dh!",
+                help=self.invoked_with,
+            )
+        )
 
         await self.send("<https://duckhunt.me/docs>", embed=embed, view=view)
 
@@ -89,9 +111,12 @@ class ButtonsHelp:
 
         view = await CogHelpView(bot, group, ctx).initialize()
 
-        embed = discord.Embed(colour=discord.Colour.blurple(),
-                              title=_("{cog} help", cog=group.qualified_name),
-                              url=self.context.bot.config['website_url'] + f"commands/{group.qualified_name.replace(' ', '/')}")
+        embed = discord.Embed(
+            colour=discord.Colour.blurple(),
+            title=_("{cog} help", cog=group.qualified_name),
+            url=self.context.bot.config["website_url"]
+            + f"commands/{group.qualified_name.replace(' ', '/')}",
+        )
 
         if group.description:
             embed.description = _(group.description)
@@ -99,28 +124,48 @@ class ButtonsHelp:
         filtered = await filter_commands(group.commands, context=ctx, sort=True)
 
         for command in filtered:
-            value = '...'
+            value = "..."
             if command.brief:
                 value = _(command.brief)
             elif command.help:
-                value = _(command.help).split('\n', 1)[0]
+                value = _(command.help).split("\n", 1)[0]
 
-            embed.add_field(name=self.get_command_signature(command), value=value, inline=False)
+            embed.add_field(
+                name=self.get_command_signature(command), value=value, inline=False
+            )
 
-        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+        embed.set_footer(
+            text=_(
+                "Use {prefix}{help} [command] for more info on a command.",
+                prefix="dh!",
+                help=self.invoked_with,
+            )
+        )
 
         await self.send("<https://duckhunt.me/docs>", embed=embed, view=view)
 
     async def send_command_help(self, command):
         _ = await self.context.get_translate_function()
 
-        embed = discord.Embed(title=_("{cog} help", cog=command.qualified_name), colour=discord.Colour.blurple(), )
-        embed.url = self.context.bot.config['website_url'] + f"commands/{command.qualified_name.replace(' ', '/')}"
+        embed = discord.Embed(
+            title=_("{cog} help", cog=command.qualified_name),
+            colour=discord.Colour.blurple(),
+        )
+        embed.url = (
+            self.context.bot.config["website_url"]
+            + f"commands/{command.qualified_name.replace(' ', '/')}"
+        )
 
         if command.help:
             embed.description = _(command.help)
 
-        embed.set_footer(text=_('Use {prefix}{help} [command] for more info on a command.', prefix="dh!", help=self.invoked_with))
+        embed.set_footer(
+            text=_(
+                "Use {prefix}{help} [command] for more info on a command.",
+                prefix="dh!",
+                help=self.invoked_with,
+            )
+        )
 
         await self.send(embed=embed)
 
@@ -150,12 +195,17 @@ class ButtonsHelpInteraction(ButtonsHelp):
 
 async def filter_commands(commands, *, context=None, sort=False, key=None):
     if sort and key is None:
+
         def newkey(c):
             return c.name
+
     elif sort:
+
         def newkey(c):
             return key(c)
+
     else:
+
         def newkey(c):
             return c
 
@@ -211,7 +261,11 @@ class CogHelpButton(discord.ui.Button):
 
     def __init__(self, context: MyContext, cog: Cog):
         custom_id = f"bot_help_cog:{type(cog).__name__}"
-        super().__init__(style=getattr(discord.ButtonStyle, getattr(cog, 'help_color', 'grey')), label=cog.name, custom_id=custom_id)
+        super().__init__(
+            style=getattr(discord.ButtonStyle, getattr(cog, "help_color", "grey")),
+            label=cog.name,
+            custom_id=custom_id,
+        )
         self.cog = cog
         self.context = context
 
@@ -230,13 +284,19 @@ class BotHelpView(discord.ui.View):
         self.ctx = ctx
 
     async def initialize(self):
-        filtered = await filter_commands(self.bot.commands, context=self.ctx, sort=True, key=get_category)
+        filtered = await filter_commands(
+            self.bot.commands, context=self.ctx, sort=True, key=get_category
+        )
         commands_by_cog = list(itertools.groupby(filtered, key=get_cog))
-        commands_by_cog.sort(key=lambda kv: (getattr(kv[0], 'help_priority', 10), kv[0].name) if kv[0] else (100, kv[0]))
+        commands_by_cog.sort(
+            key=lambda kv: (getattr(kv[0], "help_priority", 10), kv[0].name)
+            if kv[0]
+            else (100, kv[0])
+        )
 
         for cog, commands in commands_by_cog:
             if cog is not None:
-                if not getattr(cog, 'hidden', False):
+                if not getattr(cog, "hidden", False):
                     self.add_item(CogHelpButton(self.ctx, cog))
             else:
                 # Don't show the help command in the help command, ffs
@@ -251,14 +311,20 @@ class GroupHelpButton(discord.ui.Button):
     """
 
     def __init__(self, context: MyContext, group: Group):
-        group_id = group.qualified_name.replace(' ', '_')
+        group_id = group.qualified_name.replace(" ", "_")
         custom_id = f"bot_help_group:{group_id}"
-        super().__init__(style=discord.ButtonStyle.green, label=f"{group.name} ({len(group.commands)} subcommands)", custom_id=custom_id)
+        super().__init__(
+            style=discord.ButtonStyle.green,
+            label=f"{group.name} ({len(group.commands)} subcommands)",
+            custom_id=custom_id,
+        )
         self.group = group
         self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await ButtonsHelpInteraction(self.context, interaction).send_group_help(self.group)
+        await ButtonsHelpInteraction(self.context, interaction).send_group_help(
+            self.group
+        )
 
 
 class CommandHelpButton(discord.ui.Button):
@@ -267,14 +333,18 @@ class CommandHelpButton(discord.ui.Button):
     """
 
     def __init__(self, context: MyContext, command: Command):
-        command_id = command.qualified_name.replace(' ', '_')
+        command_id = command.qualified_name.replace(" ", "_")
         custom_id = f"bot_help_command:{command_id}"
-        super().__init__(style=discord.ButtonStyle.green, label=command.name, custom_id=custom_id)
+        super().__init__(
+            style=discord.ButtonStyle.green, label=command.name, custom_id=custom_id
+        )
         self.command = command
         self.context = context
 
     async def callback(self, interaction: discord.Interaction):
-        await ButtonsHelpInteraction(self.context, interaction).send_command_help(self.command)
+        await ButtonsHelpInteraction(self.context, interaction).send_command_help(
+            self.command
+        )
 
 
 class CogHelpView(discord.ui.View):
@@ -282,7 +352,9 @@ class CogHelpView(discord.ui.View):
     Show buttons for all the commands and groups in a cog or a group.
     """
 
-    def __init__(self, bot: MyBot, cog: Union[Cog, Group], ctx: Optional[MyContext] = None):
+    def __init__(
+        self, bot: MyBot, cog: Union[Cog, Group], ctx: Optional[MyContext] = None
+    ):
         super().__init__(timeout=None)
         self.bot = bot
         self.cog = cog
@@ -292,6 +364,7 @@ class CogHelpView(discord.ui.View):
         if self.ctx:
             _ = await self.ctx.get_translate_function()
         else:
+
             def _(s):
                 return s
 
@@ -303,14 +376,21 @@ class CogHelpView(discord.ui.View):
 
         self.ctx.logger.debug(f"Displaying {len(commands)} subcommands")
 
-        filtered = await filter_commands(commands, context=self.ctx, sort=True, key=get_group_name)
+        filtered = await filter_commands(
+            commands, context=self.ctx, sort=True, key=get_group_name
+        )
 
         for command in filtered:
             items_shown += 1
             if items_shown >= 5 * 3:
-                self.add_item(discord.ui.Button(style=discord.ButtonStyle.blurple,
-                                                label=_("... More available online"),
-                                                url=self.bot.config['website_url'] + f"commands/{self.cog.qualified_name.replace(' ', '/')}"))
+                self.add_item(
+                    discord.ui.Button(
+                        style=discord.ButtonStyle.blurple,
+                        label=_("... More available online"),
+                        url=self.bot.config["website_url"]
+                        + f"commands/{self.cog.qualified_name.replace(' ', '/')}",
+                    )
+                )
                 break
             if isinstance(command, Group):
                 self.add_item(GroupHelpButton(self.ctx, command))
@@ -363,7 +443,8 @@ class HelpCog(Cog):
         return cog
 
 
-#setup = HelpCog.setup
+# setup = HelpCog.setup
+
 
 async def setup(*args, **kwargs):
     pass

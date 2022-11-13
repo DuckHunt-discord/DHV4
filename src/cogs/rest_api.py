@@ -1,13 +1,13 @@
 from collections import defaultdict
-from typing import Union, Optional
+from typing import Optional, Union
 
-from discord.ext.commands import Group
 import aiohttp_cors
 from aiohttp import web
-from aiohttp.web_exceptions import HTTPNotFound, HTTPForbidden
+from aiohttp.web_exceptions import HTTPForbidden, HTTPNotFound
+from discord.ext.commands import Group
 
 from utils.cog_class import Cog
-from utils.models import DiscordChannel, get_from_db, Player, AccessLevel
+from utils.models import AccessLevel, DiscordChannel, Player, get_from_db
 
 
 class RestAPI(Cog):
@@ -49,7 +49,7 @@ class RestAPI(Cog):
         self.bot.loop.create_task(self.site.stop())
 
     async def authenticate_request(self, request, channel=None):
-        api_key = request.headers.get('Authorization')
+        api_key = request.headers.get("Authorization")
         if api_key is None:
             raise HTTPForbidden(reason="No API key provided in Authorization header")
 
@@ -59,13 +59,17 @@ class RestAPI(Cog):
             return True
 
         if not channel:
-            raise HTTPForbidden(reason="This route requires a GLOBAL api key. Ask the bot owner.")
+            raise HTTPForbidden(
+                reason="This route requires a GLOBAL api key. Ask the bot owner."
+            )
 
         if channel:
             db_channel = await get_from_db(channel)
             channel_api_key = str(db_channel.api_key)
             if channel_api_key != api_key:
-                raise HTTPForbidden(reason="The API key provided isn't valid for the specified channel.")
+                raise HTTPForbidden(
+                    reason="The API key provided isn't valid for the specified channel."
+                )
             else:
                 return True
 
@@ -78,17 +82,24 @@ class RestAPI(Cog):
 
         await self.authenticate_request(request)
 
-        channels = await DiscordChannel.filter(enabled=True).prefetch_related("guild").all()
+        channels = (
+            await DiscordChannel.filter(enabled=True).prefetch_related("guild").all()
+        )
 
-        return web.json_response([{
-            "channel_name": channel.name,
-            "channel_discord_id": channel.discord_id,
-            "guild_discord_id": channel.guild.discord_id,
-            "guild_name": channel.guild.name,
-            "prefix": channel.guild.prefix,
-            "vip": channel.guild.vip,
-            "language": channel.guild.language,
-        } for channel in channels])
+        return web.json_response(
+            [
+                {
+                    "channel_name": channel.name,
+                    "channel_discord_id": channel.discord_id,
+                    "guild_discord_id": channel.guild.discord_id,
+                    "guild_name": channel.guild.name,
+                    "prefix": channel.guild.prefix,
+                    "vip": channel.guild.vip,
+                    "language": channel.guild.language,
+                }
+                for channel in channels
+            ]
+        )
 
     async def channel_info(self, request):
         """
@@ -96,7 +107,7 @@ class RestAPI(Cog):
 
         Get information about a specific channel ID
         """
-        channel = self.bot.get_channel(int(request.match_info['channel_id']))
+        channel = self.bot.get_channel(int(request.match_info["channel_id"]))
 
         if channel is None:
             raise HTTPNotFound(reason="Unknown channel")
@@ -105,23 +116,27 @@ class RestAPI(Cog):
             await self.authenticate_request(request, channel=channel)
         except HTTPForbidden:
             return web.json_response(
-                {'id': channel.id,
-                 'name': channel.name,
-                 'authentication': False,
-                 })
+                {
+                    "id": channel.id,
+                    "name": channel.name,
+                    "authentication": False,
+                }
+            )
 
         ducks_spawned = self.bot.ducks_spawned[channel]
         ducks = self.bot.enabled_channels[channel]
 
         return web.json_response(
-            {'id': channel.id,
-             'name': channel.name,
-             'ducks': [duck.serialize() for duck in ducks_spawned],
-             'ducks_left_today': ducks.ducks_left,
-             'ducks_left_day': ducks.day_ducks,
-             'ducks_left_night': ducks.night_ducks,
-             'authentication': True,
-             })
+            {
+                "id": channel.id,
+                "name": channel.name,
+                "ducks": [duck.serialize() for duck in ducks_spawned],
+                "ducks_left_today": ducks.ducks_left,
+                "ducks_left_day": ducks.day_ducks,
+                "ducks_left_night": ducks.night_ducks,
+                "authentication": True,
+            }
+        )
 
     async def channel_settings(self, request):
         """
@@ -129,7 +144,7 @@ class RestAPI(Cog):
 
         Get settings for a specific channel ID
         """
-        channel = self.bot.get_channel(int(request.match_info['channel_id']))
+        channel = self.bot.get_channel(int(request.match_info["channel_id"]))
 
         if channel is None:
             raise HTTPNotFound(reason="Unknown channel")
@@ -146,22 +161,32 @@ class RestAPI(Cog):
 
         Get players data for a specific channel ID, ordered by experience
         """
-        channel = self.bot.get_channel(int(request.match_info['channel_id']))
+        channel = self.bot.get_channel(int(request.match_info["channel_id"]))
 
         if not channel:
             raise HTTPNotFound(reason="Unknown channel")
 
-        players = await Player.all().filter(channel__discord_id=channel.id).order_by('-experience').prefetch_related(
-            "member__user")
+        players = (
+            await Player.all()
+            .filter(channel__discord_id=channel.id)
+            .order_by("-experience")
+            .prefetch_related("member__user")
+        )
 
         if not players:
             raise HTTPNotFound(reason="Unknown channel in database")
 
-        fields = ["experience", "best_times", "killed", "last_giveback", "shooting_stats"]
+        fields = [
+            "experience",
+            "best_times",
+            "killed",
+            "last_giveback",
+            "shooting_stats",
+        ]
 
-        return web.json_response([
-            player.serialize(serialize_fields=fields) for player in players
-        ])
+        return web.json_response(
+            [player.serialize(serialize_fields=fields) for player in players]
+        )
 
     async def player_info(self, request):
         """
@@ -169,15 +194,18 @@ class RestAPI(Cog):
 
         Get information for a specific player ID and channel ID
         """
-        channel = self.bot.get_channel(int(request.match_info['channel_id']))
+        channel = self.bot.get_channel(int(request.match_info["channel_id"]))
 
         # await self.authenticate_request(request, channel=channel)
 
-        player = await Player \
-            .filter(channel__discord_id=channel.id,
-                    member__user__discord_id=int(request.match_info['player_id'])) \
-            .first() \
+        player = (
+            await Player.filter(
+                channel__discord_id=channel.id,
+                member__user__discord_id=int(request.match_info["player_id"]),
+            )
+            .first()
             .prefetch_related("member__user")
+        )
 
         if not player:
             raise HTTPNotFound(reason="Unknown player/channel/user")
@@ -202,29 +230,31 @@ class RestAPI(Cog):
                 aliases = []
                 for alias in command.aliases:
                     try:
-                        alias.encode('ascii')
+                        alias.encode("ascii")
                     except UnicodeEncodeError:
                         continue
                     aliases.append(alias)
 
                 commands[command.name] = {
-                    'name': command.qualified_name,
-                    'short_doc': command.short_doc,
-                    'brief': command.brief,
-                    'help': command.help,
-                    'usage': command.usage,
-                    'aliases': aliases,
-                    'enabled': command.enabled,
-                    'description': command.description,
-                    'signature': command.signature,
-                    'invoke_with': f"{command.qualified_name} {command.signature}" if command.signature else command.qualified_name,
+                    "name": command.qualified_name,
+                    "short_doc": command.short_doc,
+                    "brief": command.brief,
+                    "help": command.help,
+                    "usage": command.usage,
+                    "aliases": aliases,
+                    "enabled": command.enabled,
+                    "description": command.description,
+                    "signature": command.signature,
+                    "invoke_with": f"{command.qualified_name} {command.signature}"
+                    if command.signature
+                    else command.qualified_name,
                 }
                 if isinstance(command, Group):
-                    commands[command.name]['subcommands'] = self.get_help_dict(command)
+                    commands[command.name]["subcommands"] = self.get_help_dict(command)
 
                 if access:
-                    commands[command.name]['access_value'] = access.value
-                    commands[command.name]['access_name'] = access.name
+                    commands[command.name]["access_value"] = access.value
+                    commands[command.name]["access_name"] = access.name
 
         return commands
 
@@ -253,7 +283,9 @@ class RestAPI(Cog):
 
         guilds_by_shard = defaultdict(list)
         for guild in sorted(self.bot.available_guilds, key=lambda g: -g.member_count):
-            guilds_by_shard[guild.shard_id].append({"id": guild.id, "name": guild.name, "members": guild.member_count})
+            guilds_by_shard[guild.shard_id].append(
+                {"id": guild.id, "name": guild.name, "members": guild.member_count}
+            )
 
         for shard, latency in latencies:
             shards_status.append(
@@ -261,7 +293,7 @@ class RestAPI(Cog):
                     "shard_id": shard,
                     "latency": round(latency, 2),
                     "ready": shard in self.bot.shards_ready,
-                    "guilds": guilds_by_shard[shard]
+                    "guilds": guilds_by_shard[shard],
                 }
             )
 
@@ -269,7 +301,7 @@ class RestAPI(Cog):
             {
                 "bot_latency": round(self.bot.latency, 2),
                 "shards_status": shards_status,
-                "unsharded_guilds": guilds_by_shard[None]
+                "unsharded_guilds": guilds_by_shard[None],
             }
         )
 
@@ -290,34 +322,50 @@ class RestAPI(Cog):
             {
                 "members_count": total_members,
                 "guilds_count": len(self.bot.guilds),
-                "channels_count": sum((len(g.channels) for g in self.bot.available_guilds)),
+                "channels_count": sum(
+                    (len(g.channels) for g in self.bot.available_guilds)
+                ),
                 "players_count": await Player.all().count(),
-                "alive_ducks_count": sum(len(v) for v in self.bot.ducks_spawned.values()),
+                "alive_ducks_count": sum(
+                    len(v) for v in self.bot.ducks_spawned.values()
+                ),
                 "uptime": int(self.bot.uptime.timestamp()),
                 "current_event_name": self.bot.current_event.name,
                 "current_event_value": self.bot.current_event.value,
-                "global_ready": self.bot.is_ready()
+                "global_ready": self.bot.is_ready(),
             }
         )
 
     async def run(self):
         # Don't wait for ready to avoid blocking the website
         # await self.bot.wait_until_ready()
-        listen_ip = self.config()['listen_ip']
-        listen_port = self.config()['listen_port']
-        route_prefix = self.config()['route_prefix']
+        listen_ip = self.config()["listen_ip"]
+        listen_port = self.config()["listen_port"]
+        route_prefix = self.config()["route_prefix"]
 
         botlist_cog = self.bot.get_cog("BotsListVoting")
 
         routes = [
-            ('GET', f'{route_prefix}/channels', self.channels_list),
-            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}', self.channel_info),
-            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/top', self.channel_top),
-            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/settings', self.channel_settings),
-            ('GET', f'{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}', self.player_info),
-            ('GET', f'{route_prefix}/help/commands', self.commands),
-            ('GET', f'{route_prefix}/status', self.status),
-            ('GET', f'{route_prefix}/stats', self.stats),
+            ("GET", f"{route_prefix}/channels", self.channels_list),
+            ("GET", f"{route_prefix}/channels/{{channel_id:\\d+}}", self.channel_info),
+            (
+                "GET",
+                f"{route_prefix}/channels/{{channel_id:\\d+}}/top",
+                self.channel_top,
+            ),
+            (
+                "GET",
+                f"{route_prefix}/channels/{{channel_id:\\d+}}/settings",
+                self.channel_settings,
+            ),
+            (
+                "GET",
+                f"{route_prefix}/channels/{{channel_id:\\d+}}/player/{{player_id:\\d+}}",
+                self.player_info,
+            ),
+            ("GET", f"{route_prefix}/help/commands", self.commands),
+            ("GET", f"{route_prefix}/status", self.status),
+            ("GET", f"{route_prefix}/stats", self.stats),
         ]
 
         if not botlist_cog:
@@ -330,19 +378,27 @@ class RestAPI(Cog):
         for route_method, route_path, route_coro in routes:
             resource = self.cors.add(self.app.router.add_resource(route_path))
             route = self.cors.add(
-                resource.add_route(route_method, route_coro), {
+                resource.add_route(route_method, route_coro),
+                {
                     "*": aiohttp_cors.ResourceOptions(
                         allow_credentials=True,
-                        allow_headers=("X-Requested-With", "Content-Type", "Authorization",),
+                        allow_headers=(
+                            "X-Requested-With",
+                            "Content-Type",
+                            "Authorization",
+                        ),
                         max_age=3600,
                     )
-                })
+                },
+            )
 
         await self.runner.setup()
         self.site = web.TCPSite(self.runner, listen_ip, listen_port)
         await self.site.start()
         # noinspection HttpUrlsUsage
-        self.bot.logger.info(f"DuckHunt JSON API listening on http://{listen_ip}:{listen_port}")
+        self.bot.logger.info(
+            f"DuckHunt JSON API listening on http://{listen_ip}:{listen_port}"
+        )
 
 
 setup = RestAPI.setup

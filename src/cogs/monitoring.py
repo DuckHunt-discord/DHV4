@@ -4,7 +4,7 @@ Bot monitoring.
 import asyncio
 import time
 from datetime import timedelta
-from typing import Union, List, Callable
+from typing import Callable, List, Union
 
 import discord
 from discord.ext import tasks
@@ -22,9 +22,13 @@ def _(message):
 def get_now():
     return int(time.time())
 
+
 DB_MEASURE_INTERVAL = timedelta(minutes=10)
 
-def filter_count_event_list(events: List[int], count_predicate: Callable, keep_predicate: Callable) -> int:
+
+def filter_count_event_list(
+    events: List[int], count_predicate: Callable, keep_predicate: Callable
+) -> int:
     """
     This function count the number of events matching a predicate and filters the events list inplace following another.
 
@@ -48,9 +52,12 @@ def get_predicate(delta: timedelta, now: int = None) -> Callable:
     now = now or get_now()
 
     if delta is not None:
+
         def time_predicate(timestamp):
             return timestamp > (now - delta.total_seconds())
+
     else:
+
         def time_predicate(timestamp):
             return True
 
@@ -60,7 +67,7 @@ def get_predicate(delta: timedelta, now: int = None) -> Callable:
 class Monitoring(Cog):
     display_name = _("Support team: monitoring")
     help_priority = 15
-    help_color = 'red'
+    help_color = "red"
 
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
@@ -84,7 +91,9 @@ class Monitoring(Cog):
         await self.bot.wait_until_ready()
         await asyncio.sleep(DB_MEASURE_INTERVAL.total_seconds())
 
-    async def get_statistics(self, over=DB_MEASURE_INTERVAL, delete_older_than=timedelta(hours=1)):
+    async def get_statistics(
+        self, over=DB_MEASURE_INTERVAL, delete_older_than=timedelta(hours=1)
+    ):
         now = get_now()
         count_predicate = get_predicate(over, now)
         keep_predicate = get_predicate(delete_older_than, now)
@@ -92,13 +101,24 @@ class Monitoring(Cog):
         stats = {
             # Event counts
             "measure_interval": over.total_seconds(),
-            "ws_send": filter_count_event_list(self.ws_send_timings, count_predicate, keep_predicate),
-            "ws_recv": filter_count_event_list(self.ws_recv_timings, count_predicate, keep_predicate),
-            "messages": filter_count_event_list(self.message_timings, count_predicate, keep_predicate),
-            "commands": filter_count_event_list(self.command_timings, count_predicate, keep_predicate),
-            "command_errors": filter_count_event_list(self.command_error_timings, count_predicate, keep_predicate),
-            "command_completions": filter_count_event_list(self.command_completion_timings, count_predicate, keep_predicate),
-
+            "ws_send": filter_count_event_list(
+                self.ws_send_timings, count_predicate, keep_predicate
+            ),
+            "ws_recv": filter_count_event_list(
+                self.ws_recv_timings, count_predicate, keep_predicate
+            ),
+            "messages": filter_count_event_list(
+                self.message_timings, count_predicate, keep_predicate
+            ),
+            "commands": filter_count_event_list(
+                self.command_timings, count_predicate, keep_predicate
+            ),
+            "command_errors": filter_count_event_list(
+                self.command_error_timings, count_predicate, keep_predicate
+            ),
+            "command_completions": filter_count_event_list(
+                self.command_completion_timings, count_predicate, keep_predicate
+            ),
             # Curent state
             "guilds": len(self.bot.guilds),
             "users": len(self.bot.users),
@@ -137,8 +157,6 @@ class Monitoring(Cog):
     @Cog.listener()
     async def on_command_completion(self, ctx: MyContext):
         self.command_completion_timings.append(get_now())
-
-
 
 
 setup = Monitoring.setup

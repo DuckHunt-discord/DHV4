@@ -1,15 +1,15 @@
 import asyncio
 import random
 import time
+from datetime import datetime, timedelta
 from time import perf_counter
-from datetime import timedelta, datetime
 
 import discord
-from discord.ext import commands, menus
-from discord.utils import format_dt
 from babel import Locale
 from babel.dates import format_timedelta
 from babel.lists import format_list
+from discord.ext import commands, menus
+from discord.utils import format_dt
 
 from utils import checks
 from utils.bot_class import MyBot
@@ -17,9 +17,8 @@ from utils.cog_class import Cog
 from utils.concurrency import dont_block
 from utils.ctx_class import MyContext
 from utils.inventory_items import FoieGras
-from utils.models import get_from_db, AccessLevel
+from utils.models import AccessLevel, get_from_db
 from utils.translations import TRANSLATORS, get_pct_complete
-
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -44,9 +43,11 @@ class TranslatorsMenusSource(menus.ListPageSource):
         embed = discord.Embed(title=_("🌐 The beloved DuckHunt translators"))
 
         embed.color = discord.Color.green()
-        embed.description = _("The bot itself is made by Eyesofcreeper, with contributions from people mentionned in "
-                              "`{ctx.prefix}credits`. **You want to help translate this bot ?** "
-                              "Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). Thanks!")
+        embed.description = _(
+            "The bot itself is made by Eyesofcreeper, with contributions from people mentionned in "
+            "`{ctx.prefix}credits`. **You want to help translate this bot ?** "
+            "Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). Thanks!"
+        )
 
         offset = menu.current_page * self.per_page
         for i, item in enumerate(entries, start=offset):
@@ -55,7 +56,9 @@ class TranslatorsMenusSource(menus.ListPageSource):
             # user_ids = data["user_ids"]
             users = data["users"]
 
-            parsed_translators = list(map(lambda user: f"{user.name}#{user.discriminator}", users))
+            parsed_translators = list(
+                map(lambda user: f"{user.name}#{user.discriminator}", users)
+            )
 
             try:
                 locale_data = Locale.parse(locale)
@@ -63,15 +66,19 @@ class TranslatorsMenusSource(menus.ListPageSource):
             except ValueError:
                 locale_display_name = locale
 
-            embed.add_field(name=f"{flag_code} {locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
-                            value=format_list(parsed_translators, locale=language_code),
-                            inline=False)
+            embed.add_field(
+                name=f"{flag_code} {locale_display_name}: `{locale}` - {get_pct_complete(locale)}%",
+                value=format_list(parsed_translators, locale=language_code),
+                inline=False,
+            )
 
         return embed
 
 
 async def show_translators_menu(ctx, translators):
-    pages = menus.MenuPages(source=TranslatorsMenusSource(ctx, translators), clear_reactions_after=True)
+    pages = menus.MenuPages(
+        source=TranslatorsMenusSource(ctx, translators), clear_reactions_after=True
+    )
     await pages.start(ctx)
 
 
@@ -93,9 +100,12 @@ class SimpleCommands(Cog):
         t_1 = perf_counter()
         await ctx.typing()  # tell Discord that the bot is "typing", which is a very simple request
         t_2 = perf_counter()
-        time_delta = round((t_2 - t_1) * 1000)  # calculate the time needed to trigger typing
-        await ctx.send(_("Pong. — Time taken: {miliseconds}ms",
-                         miliseconds=time_delta))  # send a message telling the user the calculated ping time
+        time_delta = round(
+            (t_2 - t_1) * 1000
+        )  # calculate the time needed to trigger typing
+        await ctx.send(
+            _("Pong. — Time taken: {miliseconds}ms", miliseconds=time_delta)
+        )  # send a message telling the user the calculated ping time
 
     @commands.command()
     async def wiki(self, ctx: MyContext):
@@ -114,8 +124,7 @@ class SimpleCommands(Cog):
         Get the URL to invite the bot
         """
 
-        await ctx.send(
-            f"<https://duckhunt.me/invite>")
+        await ctx.send(f"<https://duckhunt.me/invite>")
 
     @commands.command()
     async def support(self, ctx: MyContext):
@@ -132,18 +141,19 @@ class SimpleCommands(Cog):
         """
 
         _ = await ctx.get_translate_function()
-       
-        midnight = (
-            datetime.now() + timedelta(days=1)
-        ).replace(
+
+        midnight = (datetime.now() + timedelta(days=1)).replace(
             hour=0, minute=0, second=0, microsecond=0
         )
 
-        formatted_delta = format_dt(midnight, 'R')
+        formatted_delta = format_dt(midnight, "R")
 
-        await ctx.send(_("You'll get back your weapon and magazines {formatted_delta}",
-                         formatted_delta=formatted_delta,
-                         ))
+        await ctx.send(
+            _(
+                "You'll get back your weapon and magazines {formatted_delta}",
+                formatted_delta=formatted_delta,
+            )
+        )
 
     @commands.command()
     @checks.channel_enabled()
@@ -154,19 +164,26 @@ class SimpleCommands(Cog):
         _ = await ctx.get_translate_function()
         language_code = await ctx.get_language_code()
 
-        global_prefixes = self.bot.config['bot']['prefixes']
+        global_prefixes = self.bot.config["bot"]["prefixes"]
         local_prefix = (await get_from_db(ctx.guild)).prefix
 
         global_prefixes_list = format_list(global_prefixes, locale=language_code)
 
         if local_prefix:
-            await ctx.send(_(
-                "My prefix here is {local_prefix}. You can also call me with any of the global prefixes : {global_prefixes_list}",
-                local_prefix=local_prefix,
-                global_prefixes_list=global_prefixes_list))
+            await ctx.send(
+                _(
+                    "My prefix here is {local_prefix}. You can also call me with any of the global prefixes : {global_prefixes_list}",
+                    local_prefix=local_prefix,
+                    global_prefixes_list=global_prefixes_list,
+                )
+            )
         else:
-            await ctx.send(_("You can call me with any of the global prefixes : {global_prefixes_list}",
-                             global_prefixes_list=global_prefixes_list))
+            await ctx.send(
+                _(
+                    "You can call me with any of the global prefixes : {global_prefixes_list}",
+                    global_prefixes_list=global_prefixes_list,
+                )
+            )
 
     @commands.command(aliases=["helpers", "whomadethis"])
     async def credits(self, ctx: MyContext):
@@ -181,26 +198,66 @@ class SimpleCommands(Cog):
             embed = discord.Embed()
 
             embed.color = discord.Color.green()
-            embed.description = _("The bot itself is made by Eyesofcreeper, but these fine people down there help with "
-                                  "graphics, ideas, images, and more. Make sure to give them a wave if you see them.")
+            embed.description = _(
+                "The bot itself is made by Eyesofcreeper, but these fine people down there help with "
+                "graphics, ideas, images, and more. Make sure to give them a wave if you see them."
+            )
 
-            embed.add_field(name=_("Developer"), value=_("<@138751484517941259> (\"Eyesofcreeper\") made this bot."), inline=False)
-            embed.add_field(name=_("Designer"), value=_("<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."), inline=False)
-            embed.add_field(name=_("Designer"), value=_("<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit."), inline=False)
-            embed.add_field(name=_("Ideas"), value=_("Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"), inline=False)
-            embed.add_field(name=_("Translations"), value=_("The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."), inline=False)
+            embed.add_field(
+                name=_("Developer"),
+                value=_('<@138751484517941259> ("Eyesofcreeper") made this bot.'),
+                inline=False,
+            )
+            embed.add_field(
+                name=_("Designer"),
+                value=_(
+                    '<@465207298890006529> ("Calgeka") made a lot of the avatars Ducks used.'
+                ),
+                inline=False,
+            )
+            embed.add_field(
+                name=_("Designer"),
+                value=_(
+                    '<@376052158573051906> ("Globloxmen") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit.'
+                ),
+                inline=False,
+            )
+            embed.add_field(
+                name=_("Ideas"),
+                value=_(
+                    "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
+                ),
+                inline=False,
+            )
+            embed.add_field(
+                name=_("Translations"),
+                value=_(
+                    "The bot is translated in MANY languages! Translators are listed in `{ctx.prefix}translators`."
+                ),
+                inline=False,
+            )
 
             f = discord.File("assets/Robot_Ducc_Globloxmen.jpg")
             embed.set_image(url=f"attachment://Robot_Ducc_Globloxmen.jpg")
 
             await ctx.send(embed=embed, file=f)
         else:
-            await ctx.send(content="\n".join([_("**DuckHunt credits**"),
-                                              _("The bot itself is made by Eyesofcreeper, but a lot of people "
-                                   "helped with graphics, ideas, images, and more."),
-                                              _("To see more information about that bot, you'll need to give it the "
-                                                "`embed_links` permission. Contact your friendly neighbourhood server "
-                                                "admin.")]))
+            await ctx.send(
+                content="\n".join(
+                    [
+                        _("**DuckHunt credits**"),
+                        _(
+                            "The bot itself is made by Eyesofcreeper, but a lot of people "
+                            "helped with graphics, ideas, images, and more."
+                        ),
+                        _(
+                            "To see more information about that bot, you'll need to give it the "
+                            "`embed_links` permission. Contact your friendly neighbourhood server "
+                            "admin."
+                        ),
+                    ]
+                )
+            )
 
     @commands.command(aliases=["translate"])
     async def translators(self, ctx: MyContext):
@@ -211,13 +268,17 @@ class SimpleCommands(Cog):
 
         if not len(self.translators_cache):
             for locale, data in TRANSLATORS.items():
-                self.translators_cache[locale] = {'users': []}
-                self.translators_cache[locale]['flag_code'] = data['flag_code']
-                for translator_id in data['user_ids']:
+                self.translators_cache[locale] = {"users": []}
+                self.translators_cache[locale]["flag_code"] = data["flag_code"]
+                for translator_id in data["user_ids"]:
                     try:
-                        self.translators_cache[locale]['users'].append(await ctx.bot.fetch_user(translator_id))
+                        self.translators_cache[locale]["users"].append(
+                            await ctx.bot.fetch_user(translator_id)
+                        )
                     except discord.NotFound:
-                        ctx.logger.warning(f"Translator {translator_id} for language {locale} can't be found on discord.")
+                        ctx.logger.warning(
+                            f"Translator {translator_id} for language {locale} can't be found on discord."
+                        )
                         continue
 
         await show_translators_menu(ctx, self.translators_cache)
@@ -264,7 +325,9 @@ class SimpleCommands(Cog):
         """
         await ctx.reply("🦒")
 
-    @commands.command(hidden=True,)
+    @commands.command(
+        hidden=True,
+    )
     @checks.channel_enabled()
     @checks.is_in_server(195260081036591104)
     async def impossible(self, ctx: MyContext):
@@ -276,27 +339,37 @@ class SimpleCommands(Cog):
     @commands.command(hidden=True)
     @checks.needs_access_level(AccessLevel.BOT_MODERATOR)
     @dont_block
-    async def vote_boss_spawn(self, ctx: MyContext, yes_trigger: int = 5, no_trigger: int = 1, time_to_wait: int = 60):
+    async def vote_boss_spawn(
+        self,
+        ctx: MyContext,
+        yes_trigger: int = 5,
+        no_trigger: int = 1,
+        time_to_wait: int = 60,
+    ):
         """
         Vote for a boss to spawn for a minute.
         This is an unfair vote: while it needs people to vote quickly for a boss,
         if someone vote against, the boss won't spawn.
         """
-        ftd = format_timedelta(timedelta(seconds=time_to_wait), locale='en', threshold=1.1)
-        message = await ctx.send('**A vote to spawn a boss is in progress**\n'
-                                 f'React with 🦆 to spawn a boss (needs {yes_trigger} votes in {ftd}), or\n'
-                                 f'React with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, '
-                                 f'wins in the case of a tie)\n'
-                                 f'➡️ If **exactly** {no_trigger} no votes are casted, no-voters will receive 2 boxes '
-                                 f'of foie gras each.\n'
-                                 f'Yes, this is a social experiment, and it\'s starting **NOW**.')
+        ftd = format_timedelta(
+            timedelta(seconds=time_to_wait), locale="en", threshold=1.1
+        )
+        message = await ctx.send(
+            "**A vote to spawn a boss is in progress**\n"
+            f"React with 🦆 to spawn a boss (needs {yes_trigger} votes in {ftd}), or\n"
+            f"React with ❌ to prevent the boss spawn (needs {no_trigger} votes in {ftd}, "
+            f"wins in the case of a tie)\n"
+            f"➡️ If **exactly** {no_trigger} no votes are casted, no-voters will receive 2 boxes "
+            f"of foie gras each.\n"
+            f"Yes, this is a social experiment, and it's starting **NOW**."
+        )
 
         await message.add_reaction("🦆")
         await message.add_reaction("❌")
 
-        await asyncio.sleep(int((time_to_wait - 10)/2))
+        await asyncio.sleep(int((time_to_wait - 10) / 2))
         to_delete = await ctx.reply("⏰ Halfway there...")
-        await asyncio.sleep(int((time_to_wait - 10)/2))
+        await asyncio.sleep(int((time_to_wait - 10) / 2))
         await to_delete.delete()
         to_edit = await ctx.reply("⏰ 10 seconds left...")
         await asyncio.sleep(5)
@@ -325,7 +398,9 @@ class SimpleCommands(Cog):
         got_no -= 1
 
         if got_no == no_trigger:
-            await message.reply(f"Got exactly {got_no} no votes. Giving them 2 boxes of foie gras each..")
+            await message.reply(
+                f"Got exactly {got_no} no votes. Giving them 2 boxes of foie gras each.."
+            )
             async for user in no_react.users():
                 await FoieGras.give_to(user, uses=2)
             return
@@ -333,11 +408,13 @@ class SimpleCommands(Cog):
             await message.reply(f"Got {got_no} no votes. Not spawning a boss.")
             return
         elif got_yes < yes_trigger:
-            await message.reply(f"Didn't get enough yes votes ({got_yes} < {yes_trigger}). Not spawning a boss.")
+            await message.reply(
+                f"Didn't get enough yes votes ({got_yes} < {yes_trigger}). Not spawning a boss."
+            )
             return
         elif got_yes >= yes_trigger:
             await message.reply(f"🦆 Alright. I'm spawning a boss. Congratulations.")
-            boss_cog = self.bot.get_cog('DuckBoss')
+            boss_cog = self.bot.get_cog("DuckBoss")
             await boss_cog.spawn_boss()
 
     @commands.command(hidden=True)
@@ -395,13 +472,21 @@ class SimpleCommands(Cog):
 
         td = timedelta(seconds=seconds_left)
 
-        embed = discord.Embed(title=_("Current event: ") + _(self.bot.current_event.value[0]))
+        embed = discord.Embed(
+            title=_("Current event: ") + _(self.bot.current_event.value[0])
+        )
         embed.description = _(self.bot.current_event.value[1])
 
-        formatted_td = format_timedelta(td, threshold=10, granularity='minute', locale=language_code)
+        formatted_td = format_timedelta(
+            td, threshold=10, granularity="minute", locale=language_code
+        )
 
-        embed.set_footer(text=_("Events last for one hour from the beginning to the end of the hour. Ending in {formatted_td}",
-                                formatted_td=formatted_td))
+        embed.set_footer(
+            text=_(
+                "Events last for one hour from the beginning to the end of the hour. Ending in {formatted_td}",
+                formatted_td=formatted_td,
+            )
+        )
 
         embed.color = discord.Color.dark_theme()
 
@@ -416,10 +501,11 @@ class SimpleCommands(Cog):
 
         _ = await ctx.get_translate_function()
 
-        formatted_td = format_dt(datetime.now(), 'F')
+        formatted_td = format_dt(datetime.now(), "F")
 
-        await ctx.reply(_("The bot current time is: {formatted_td}",
-                          formatted_td=formatted_td))
+        await ctx.reply(
+            _("The bot current time is: {formatted_td}", formatted_td=formatted_td)
+        )
 
 
 setup = SimpleCommands.setup

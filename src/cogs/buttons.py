@@ -8,8 +8,13 @@ from utils.checks import needs_access_level
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.models import AccessLevel
-from utils.views import init_all_persistant_command_views, CommandView, nitro_prank, View, CommandButton
-
+from utils.views import (
+    CommandButton,
+    CommandView,
+    View,
+    init_all_persistant_command_views,
+    nitro_prank,
+)
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -28,12 +33,78 @@ class GamepadView(View):
         shop_mag_command = bot.get_command("shop magazine")
         shop_clover_command = bot.get_command("shop clover")
 
-        self.add_item(CommandButton(bot, bang_command, [], {'target': None}, custom_id="gamepad_bang", row=0, label=_('🔫 Bang'), style=discord.ButtonStyle.red))
-        self.add_item(CommandButton(bot, hug_command, [], {'target': None}, custom_id="gamepad_hug", row=0, label=_('🤗 Hug'), style=discord.ButtonStyle.green))
-        self.add_item(CommandButton(bot, reload_command, [], {}, custom_id="gamepad_reload", row=1, label=_('♻️ Reload'), style=discord.ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_mag_command, [], {}, custom_id="gamepad_magazine", row=2, label=_('Buy a magazine'), style=discord.ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_bul_command, [], {}, custom_id="gamepad_bullet", row=2, label=_('Buy a bullet'), style=discord.ButtonStyle.blurple))
-        self.add_item(CommandButton(bot, shop_clover_command, [], {}, custom_id="gamepad_clover", row=2, label=_('🍀 Buy a clover'), style=discord.ButtonStyle.blurple))
+        self.add_item(
+            CommandButton(
+                bot,
+                bang_command,
+                [],
+                {"target": None},
+                custom_id="gamepad_bang",
+                row=0,
+                label=_("🔫 Bang"),
+                style=discord.ButtonStyle.red,
+            )
+        )
+        self.add_item(
+            CommandButton(
+                bot,
+                hug_command,
+                [],
+                {"target": None},
+                custom_id="gamepad_hug",
+                row=0,
+                label=_("🤗 Hug"),
+                style=discord.ButtonStyle.green,
+            )
+        )
+        self.add_item(
+            CommandButton(
+                bot,
+                reload_command,
+                [],
+                {},
+                custom_id="gamepad_reload",
+                row=1,
+                label=_("♻️ Reload"),
+                style=discord.ButtonStyle.blurple,
+            )
+        )
+        self.add_item(
+            CommandButton(
+                bot,
+                shop_mag_command,
+                [],
+                {},
+                custom_id="gamepad_magazine",
+                row=2,
+                label=_("Buy a magazine"),
+                style=discord.ButtonStyle.blurple,
+            )
+        )
+        self.add_item(
+            CommandButton(
+                bot,
+                shop_bul_command,
+                [],
+                {},
+                custom_id="gamepad_bullet",
+                row=2,
+                label=_("Buy a bullet"),
+                style=discord.ButtonStyle.blurple,
+            )
+        )
+        self.add_item(
+            CommandButton(
+                bot,
+                shop_clover_command,
+                [],
+                {},
+                custom_id="gamepad_clover",
+                row=2,
+                label=_("🍀 Buy a clover"),
+                style=discord.ButtonStyle.blurple,
+            )
+        )
 
 
 class Buttons(Cog):
@@ -64,7 +135,12 @@ class Buttons(Cog):
         """
         Create a Command view for a given command.
         """
-        await CommandView(self.bot, command_to_be_ran=command_name, label=command_name, style=ButtonStyle.blurple).send(ctx)
+        await CommandView(
+            self.bot,
+            command_to_be_ran=command_name,
+            label=command_name,
+            style=ButtonStyle.blurple,
+        ).send(ctx)
 
     @commands.command(hidden=True)
     @needs_access_level(AccessLevel.BOT_OWNER)

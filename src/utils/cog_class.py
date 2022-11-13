@@ -6,7 +6,7 @@ from utils.bot_class import MyBot
 class Cog(commands.Cog):
     hidden = False
     help_priority = 10
-    help_color = 'gray'
+    help_color = "gray"
 
     display_name = None
 

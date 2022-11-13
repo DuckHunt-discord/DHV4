@@ -3,7 +3,6 @@ from pathlib import Path
 
 import discord
 
-
 IMAGE_EXTS = ["*.png", "*.jpg", "*.jpeg", "*.gif"]
 
 all_images = []
@@ -16,4 +15,3 @@ def get_random_image() -> discord.File:
     f = discord.File(str(image_path), filename=image_path.name)
 
     return f
-

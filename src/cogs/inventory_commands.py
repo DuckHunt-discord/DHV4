@@ -4,8 +4,13 @@ from discord.ext import commands
 from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.inventory_items import ALL_INVENTORY, ALL_SHORTCODE, InvalidUsesCount, NotInInventory
-from utils.models import get_from_db, DiscordUser, get_user_inventory
+from utils.inventory_items import (
+    ALL_INVENTORY,
+    ALL_SHORTCODE,
+    InvalidUsesCount,
+    NotInInventory,
+)
+from utils.models import DiscordUser, get_from_db, get_user_inventory
 
 
 def _(message):
@@ -18,7 +23,7 @@ class InventoryCommands(Cog):
 
     @commands.command(aliases=["open"])
     @checks.channel_enabled()
-    async def use(self, ctx: MyContext, item_shortcode: str, item_uses:int = 1):
+    async def use(self, ctx: MyContext, item_shortcode: str, item_uses: int = 1):
         """
         Alias for dh!inv use, so that you can just type dh!use instead.
         """
@@ -49,19 +54,31 @@ class InventoryCommands(Cog):
                     item_shortcode = _(item.shortcode)
                     item_desc = _(item.description)
                     item_uses = item.count_in_inventory()
-                    embed.add_field(name=f"**{item_uses}x {item_name}** ({item_shortcode})",
-                                    value=item_desc)
+                    embed.add_field(
+                        name=f"**{item_uses}x {item_name}** ({item_shortcode})",
+                        value=item_desc,
+                    )
 
             if empty:
                 embed.description = _("A lot of air and a starved mosquito.")
             else:
-                embed.set_footer(text=_("`{prefix}inv use shortcode` to use an item", prefix=ctx.prefix))
+                embed.set_footer(
+                    text=_(
+                        "`{prefix}inv use shortcode` to use an item", prefix=ctx.prefix
+                    )
+                )
 
             await ctx.send(embed=embed)
 
     @inventory.command(name="give")
     @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
-    async def inv_give(self, ctx: MyContext, target: discord.User, item_shortcode: str, item_uses: int = 1):
+    async def inv_give(
+        self,
+        ctx: MyContext,
+        target: discord.User,
+        item_shortcode: str,
+        item_uses: int = 1,
+    ):
         """
         Give something to some player.
         """
@@ -88,11 +105,15 @@ class InventoryCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
 
         if not db_channel.allow_global_items:
-            await ctx.send(_('❌ Items usage is disabled on this channel.'))
+            await ctx.send(_("❌ Items usage is disabled on this channel."))
             return
 
         if item_uses < 1:
-            await ctx.send(_('❌ The number of items to use must be a number greater or equal to 1.'))
+            await ctx.send(
+                _(
+                    "❌ The number of items to use must be a number greater or equal to 1."
+                )
+            )
             return
 
         # noinspection PyPep8Naming

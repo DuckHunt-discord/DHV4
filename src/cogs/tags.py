@@ -9,7 +9,15 @@ from discord.ext import commands, menus
 from utils.checks import BotIgnore
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import AccessLevel, Tag, get_tag, get_from_db, TagAlias, DiscordUser, DiscordMember
+from utils.models import (
+    AccessLevel,
+    DiscordMember,
+    DiscordUser,
+    Tag,
+    TagAlias,
+    get_from_db,
+    get_tag,
+)
 
 
 def _(message):
@@ -22,7 +30,7 @@ class TagName(commands.clean_content):
         lower = converted.lower().strip()
 
         if not lower:
-            raise commands.BadArgument('Missing tag name')
+            raise commands.BadArgument("Missing tag name")
 
         if " " in lower:
             raise commands.BadArgument("Tags names can't contain spaces")
@@ -43,7 +51,7 @@ class TagName(commands.clean_content):
             raise commands.BadArgument("Tags names can't contain `:`")
 
         if len(lower) > 90:
-            raise commands.BadArgument('Tag name is a maximum of 90 characters')
+            raise commands.BadArgument("Tag name is a maximum of 90 characters")
 
         return lower
 
@@ -59,7 +67,7 @@ class TagMenuSource(menus.ListPageSource):
     async def format_page(self, menu, entry):
         _ = await self.ctx.get_translate_function(user_language=True)
         e = discord.Embed()
-        e.title = self.tag.name.replace('_', ' ').title()
+        e.title = self.tag.name.replace("_", " ").title()
         e.url = f"https://duckhunt.me/tags/{self.tag.name}"
 
         if len(entry) == 0:
@@ -68,7 +76,11 @@ class TagMenuSource(menus.ListPageSource):
         # Embed the image directly
         lines = entry.splitlines()
         last_line = lines[-1]
-        if last_line.endswith(".jpg") or last_line.endswith(".png") or last_line.endswith(".gif"):
+        if (
+            last_line.endswith(".jpg")
+            or last_line.endswith(".png")
+            or last_line.endswith(".gif")
+        ):
             if last_line.startswith("https://") and " " not in last_line:
                 e.set_image(url=last_line)
                 entry = "\n".join(lines[:-1])
@@ -90,15 +102,22 @@ class MultiplayerMenuPage(menus.MenuPages):
         # self.ctx: MyContext
         if payload.message_id != self.message.id:
             return False
-        if payload.user_id not in {self.bot.owner_id, self._author_id, *[m.id for m in self.ctx.message.mentions],
-                                   *self.bot.owner_ids, *self.more_users}:
+        if payload.user_id not in {
+            self.bot.owner_id,
+            self._author_id,
+            *[m.id for m in self.ctx.message.mentions],
+            *self.bot.owner_ids,
+            *self.more_users,
+        }:
             return False
 
         return payload.emoji in self.buttons
 
 
 async def show_tag_embed(ctx: MyContext, tag: Tag):
-    pages = MultiplayerMenuPage(source=TagMenuSource(ctx, tag), clear_reactions_after=True)
+    pages = MultiplayerMenuPage(
+        source=TagMenuSource(ctx, tag), clear_reactions_after=True
+    )
     await pages.start(ctx)
 
 
@@ -113,30 +132,38 @@ class TagsListMenuSource(menus.ListPageSource):
         _ = await self.ctx.get_translate_function(user_language=True)
         e = discord.Embed()
         e.url = "https://duckhunt.me/tags"
-        e.description = _("This is the list of all the tags on this server. "
-                          "They are ordered by official tags and most used first.\n"
-                          "The list doesn't include tag aliases")
+        e.description = _(
+            "This is the list of all the tags on this server. "
+            "They are ordered by official tags and most used first.\n"
+            "The list doesn't include tag aliases"
+        )
 
         for tag in entries:
-            e.add_field(inline=False, name=tag.name, value=_("{u} uses, {r} revisions.",
-                                                             u=tag.uses,
-                                                             r=tag.revisions))
+            e.add_field(
+                inline=False,
+                name=tag.name,
+                value=_("{u} uses, {r} revisions.", u=tag.uses, r=tag.revisions),
+            )
 
         maximum = self.get_max_pages()
         if maximum > 1:
             current_page = menu.current_page + 1
             entries = len(self.entries)
-            text = _('Page {current_page}/{maximum} ({entries} tags)',
-                     current_page=current_page,
-                     maximum=maximum,
-                     entries=entries)
+            text = _(
+                "Page {current_page}/{maximum} ({entries} tags)",
+                current_page=current_page,
+                maximum=maximum,
+                entries=entries,
+            )
             e.set_footer(text=text)
 
         return e
 
 
 async def show_tagslist_embed(ctx: MyContext, tags: List[Tag]):
-    pages = menus.MenuPages(source=TagsListMenuSource(ctx, tags), clear_reactions_after=True)
+    pages = menus.MenuPages(
+        source=TagsListMenuSource(ctx, tags), clear_reactions_after=True
+    )
     await pages.start(ctx)
 
 
@@ -144,7 +171,7 @@ class Tags(Cog):
     display_name = _("Support: tags")
 
     async def cog_check(self, ctx: MyContext):
-        if ctx.guild and ctx.guild.id in self.config()['allowed_in_guilds']:
+        if ctx.guild and ctx.guild.id in self.config()["allowed_in_guilds"]:
             return True
         else:
             # Raise BotIgnore to fail silently.
@@ -212,10 +239,15 @@ class Tags(Cog):
         _ = await ctx.get_translate_function()
         alias_tag = await get_tag(alias_name, increment_uses=False)
         if alias_tag:
-            alias_name, tag_name = tag_name, alias_name  # Maybe there was a slight confusion on the arguments order.
+            alias_name, tag_name = (
+                tag_name,
+                alias_name,
+            )  # Maybe there was a slight confusion on the arguments order.
             alias_tag = await get_tag(alias_name, increment_uses=False)
             if alias_tag:
-                await ctx.reply(_("❌ Both tags already exists, what are you trying to do ?"))
+                await ctx.reply(
+                    _("❌ Both tags already exists, what are you trying to do ?")
+                )
                 return
 
         target_tag = await get_tag(tag_name, increment_uses=False)
@@ -229,7 +261,11 @@ class Tags(Cog):
         await tag_alias.save()
 
         await ctx.reply(
-            _("👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)", tag_alias=tag_alias))
+            _(
+                "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)",
+                tag_alias=tag_alias,
+            )
+        )
 
     @tags.command()
     async def edit(self, ctx: MyContext, tag_name: TagName, *, tag_content=""):
@@ -240,12 +276,17 @@ class Tags(Cog):
 
         tag = await get_tag(tag_name, increment_uses=False)
         if not tag:
-            await ctx.reply(_("❌ This tag doesn't exist yet. You might want to create it."))
+            await ctx.reply(
+                _("❌ This tag doesn't exist yet. You might want to create it.")
+            )
             return
 
         db_member: DiscordMember = await get_from_db(ctx.author)
         tag_owner: DiscordUser = await tag.owner
-        if tag_owner.discord_id != ctx.author.id and db_member.get_access_level() < AccessLevel.TRUSTED:
+        if (
+            tag_owner.discord_id != ctx.author.id
+            and db_member.get_access_level() < AccessLevel.TRUSTED
+        ):
             await ctx.reply(_("❌ You don't own that tag, you can't edit it."))
             return
 
@@ -278,7 +319,10 @@ class Tags(Cog):
 
         db_member: DiscordMember = await get_from_db(ctx.author)
         tag_owner: DiscordUser = await tag.owner
-        if tag_owner.discord_id != ctx.author.id and db_member.get_access_level() < AccessLevel.TRUSTED:
+        if (
+            tag_owner.discord_id != ctx.author.id
+            and db_member.get_access_level() < AccessLevel.TRUSTED
+        ):
             await ctx.reply(_("❌ You don't own that tag, you can't delete it."))
             return
 
@@ -292,7 +336,7 @@ class Tags(Cog):
         """
         _ = await ctx.get_translate_function()
 
-        tags = await Tag.all().order_by('-official', '-uses')
+        tags = await Tag.all().order_by("-official", "-uses")
 
         await show_tagslist_embed(ctx, tags)
 
@@ -306,7 +350,9 @@ class Tags(Cog):
         tag = await get_tag(tag_name)
 
         if not tag:
-            await ctx.reply(_("❌ This tag doesn't exist yet. You might want to create it."))
+            await ctx.reply(
+                _("❌ This tag doesn't exist yet. You might want to create it.")
+            )
             return
 
         escaped_content = discord.utils.escape_markdown(tag.content)

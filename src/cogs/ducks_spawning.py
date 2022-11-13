@@ -2,8 +2,8 @@ import asyncio
 import datetime
 import json
 import random
-from typing import Dict
 from time import time
+from typing import Dict
 
 import discord
 
@@ -11,8 +11,7 @@ from utils import ducks
 from utils.cog_class import Cog
 from utils.ducks import deserialize_duck
 from utils.events import Events
-from utils.models import get_enabled_channels, DiscordChannel, DucksLeft
-
+from utils.models import DiscordChannel, DucksLeft, get_enabled_channels
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -49,18 +48,26 @@ class DucksSpawning(Cog):
 
             delay = now - current_iteration
             if delay >= 30:
-                self.bot.logger.error(f"Ignoring iterations to compensate for delays ({delay} seconds)!")
+                self.bot.logger.error(
+                    f"Ignoring iterations to compensate for delays ({delay} seconds)!"
+                )
                 current_iteration = int(now)
             elif delay >= 5:
-                self.bot.logger.warning(f"Loop running with severe delays ({delay} seconds)!")
+                self.bot.logger.warning(
+                    f"Loop running with severe delays ({delay} seconds)!"
+                )
 
-            self.bot.logger.debug(f"Ducks spawning loop : [{int(current_iteration)}/{int(now)}]")
+            self.bot.logger.debug(
+                f"Ducks spawning loop : [{int(current_iteration)}/{int(now)}]"
+            )
 
             # Loop part
             try:
                 await self.spawn_ducks(current_iteration)
             except Exception as e:
-                self.bot.logger.exception("Ignoring exception inside loop and hoping for the best...")
+                self.bot.logger.exception(
+                    "Ignoring exception inside loop and hoping for the best..."
+                )
 
             # Loop the loop
             now = time()
@@ -77,33 +84,50 @@ class DucksSpawning(Cog):
             for channel, ducks_left_to_spawn in self.bot.enabled_channels.items():
                 maybe_spawn_type = await ducks_left_to_spawn.maybe_spawn_type(now)
                 if maybe_spawn_type is not None:
-                    if self.bot.current_event == Events.CONNECTION and random.randint(1, 10) == 10:
+                    if (
+                        self.bot.current_event == Events.CONNECTION
+                        and random.randint(1, 10) == 10
+                    ):
                         continue
 
                     asyncio.ensure_future(
-                        ducks.spawn_random_weighted_duck(self.bot, channel,
-                                                         ducks_left_to_spawn.db_channel,
-                                                         sun=maybe_spawn_type)
+                        ducks.spawn_random_weighted_duck(
+                            self.bot,
+                            channel,
+                            ducks_left_to_spawn.db_channel,
+                            sun=maybe_spawn_type,
+                        )
                     )
                     ducks_spawned += 1
 
-                    if self.bot.current_event == Events.MIGRATING and random.randint(1, 10) == 10:
+                    if (
+                        self.bot.current_event == Events.MIGRATING
+                        and random.randint(1, 10) == 10
+                    ):
                         asyncio.ensure_future(
-                            ducks.spawn_random_weighted_duck(self.bot, channel,
-                                                             ducks_left_to_spawn.db_channel,
-                                                             sun=maybe_spawn_type))
+                            ducks.spawn_random_weighted_duck(
+                                self.bot,
+                                channel,
+                                ducks_left_to_spawn.db_channel,
+                                sun=maybe_spawn_type,
+                            )
+                        )
                         ducks_spawned += 1
 
                 if ducks_spawned > 20:
-                    self.bot.logger.warning(f"Tried to make more than {ducks_spawned} ducks spawn at once, "
-                                            f"stopping there to protect rate limits...")
+                    self.bot.logger.warning(
+                        f"Tried to make more than {ducks_spawned} ducks spawn at once, "
+                        f"stopping there to protect rate limits..."
+                    )
                     break
 
             end_spawning = time()
 
-            if end_spawning-start_spawning > 0.7:
-                duration = round(end_spawning-start_spawning, 2)
-                self.bot.logger.error(f"Spawning {ducks_spawned} ducks took more than {duration} seconds...")
+            if end_spawning - start_spawning > 0.7:
+                duration = round(end_spawning - start_spawning, 2)
+                self.bot.logger.error(
+                    f"Spawning {ducks_spawned} ducks took more than {duration} seconds..."
+                )
 
         start_leaving = time()
         total_leaves = 0
@@ -116,15 +140,19 @@ class DucksSpawning(Cog):
                     total_leaves += 1
 
             if total_leaves > 25:
-                self.bot.logger.warning(f"Tried to make more than {total_leaves} ducks leave at once, "
-                                        f"stopping there to protect rate limits...")
+                self.bot.logger.warning(
+                    f"Tried to make more than {total_leaves} ducks leave at once, "
+                    f"stopping there to protect rate limits..."
+                )
                 break
 
         end_leaving = time()
 
-        if end_leaving-start_leaving > 0.7:
+        if end_leaving - start_leaving > 0.7:
             duration = round(end_leaving - start_leaving, 2)
-            self.bot.logger.error(f"Leaving {total_leaves} ducks took more than {duration} seconds...")
+            self.bot.logger.error(
+                f"Leaving {total_leaves} ducks took more than {duration} seconds..."
+            )
 
         CURRENT_PLANNED_DAY = now - (now % DAY)
         if CURRENT_PLANNED_DAY != self.last_planned_day:
@@ -182,7 +210,9 @@ class DucksSpawning(Cog):
 
         channels_to_disable = []
 
-        channels: Dict[int, discord.TextChannel] = {c.id: c for c in self.bot.get_all_channels()}
+        channels: Dict[int, discord.TextChannel] = {
+            c.id: c for c in self.bot.get_all_channels()
+        }
         i = 0
 
         for db_channel in db_channels:
@@ -191,17 +221,25 @@ class DucksSpawning(Cog):
 
             if i % 100 == 0:
                 await asyncio.sleep(0)
-                self.bot.logger.debug(f"Planifying ducks spawns on {i}/{len(db_channels)} channels")
+                self.bot.logger.debug(
+                    f"Planifying ducks spawns on {i}/{len(db_channels)} channels"
+                )
 
             if channel:
-                self.bot.enabled_channels[channel] = await DucksLeft(channel).compute_ducks_count(db_channel, now)
+                self.bot.enabled_channels[channel] = await DucksLeft(
+                    channel
+                ).compute_ducks_count(db_channel, now)
             else:
-                self.bot.logger.warning(f"Channel {db_channel.name} is unknown, marking for disable")
+                self.bot.logger.warning(
+                    f"Channel {db_channel.name} is unknown, marking for disable"
+                )
                 channels_to_disable.append(db_channel)
 
         if 0 < len(channels_to_disable) < 100:
-            self.bot.logger.warning(f"Disabling {len(channels_to_disable)} channels "
-                                    f"that are no longer available to the bot.")
+            self.bot.logger.warning(
+                f"Disabling {len(channels_to_disable)} channels "
+                f"that are no longer available to the bot."
+            )
             for db_channel in channels_to_disable:
                 # TODO : We can probably only do 1 big query here, but for that I'd have to learn Tortoise.
                 # To be honest, improvement would be limited since 100 queries max isn't that slow and there obviously
@@ -209,13 +247,22 @@ class DucksSpawning(Cog):
                 db_channel.enabled = False
                 await db_channel.save()
                 await asyncio.sleep(0)  # Just in case
-            self.bot.logger.warning(f"Disabled {len(channels_to_disable)} channels "
-                                    f"that are no longer available to the bot.")
+            self.bot.logger.warning(
+                f"Disabled {len(channels_to_disable)} channels "
+                f"that are no longer available to the bot."
+            )
         elif len(channels_to_disable) >= 100:
-            self.bot.logger.error(f"Too many unavailable channels ({len(channels_to_disable)}) "
-                                  f"to disable them. Is discord healthy ?")
-            self.bot.logger.error("Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info.")
-            self.bot.logger.error("Bad examples : " + ', '.join([str(c.discord_id) for c in channels_to_disable[:10]]))
+            self.bot.logger.error(
+                f"Too many unavailable channels ({len(channels_to_disable)}) "
+                f"to disable them. Is discord healthy ?"
+            )
+            self.bot.logger.error(
+                "Consider rebooting the bot once the outage is over. https://discordstatus.com/ for more info."
+            )
+            self.bot.logger.error(
+                "Bad examples : "
+                + ", ".join([str(c.discord_id) for c in channels_to_disable[:10]])
+            )
         else:
             self.bot.logger.debug(f"All the channels are available :)")
 
@@ -235,7 +282,9 @@ class DucksSpawning(Cog):
             with open("cache/ducks_spawned_cache.json", "r") as f:
                 serialized = json.load(f)
         except FileNotFoundError:
-            self.bot.logger.warning("No ducks_spawned_cache.json found. Normal on first run.")
+            self.bot.logger.warning(
+                "No ducks_spawned_cache.json found. Normal on first run."
+            )
             serialized = {}
 
         self.bot.logger.info(f"Loaded JSON file...")
@@ -265,11 +314,18 @@ class DucksSpawning(Cog):
 
         embed.colour = discord.Colour.dark_green()
         embed.title = f"Bot restarted"
-        embed.description = f"The bot restarted and is now ready to spawn ducks. Get your rifles out!"
-        embed.add_field(name="Statistics", value=f"{len(self.bot.guilds)} servers, "
-                                                 f"{len(self.bot.enabled_channels)} channels")
+        embed.description = (
+            f"The bot restarted and is now ready to spawn ducks. Get your rifles out!"
+        )
+        embed.add_field(
+            name="Statistics",
+            value=f"{len(self.bot.guilds)} servers, "
+            f"{len(self.bot.enabled_channels)} channels",
+        )
         embed.add_field(name="Help and support", value="https://duckhunt.me/support")
-        embed.set_footer(text="Ducks that were on the channel previously should have been restored, and can be killed.")
+        embed.set_footer(
+            text="Ducks that were on the channel previously should have been restored, and can be killed."
+        )
         await self.bot.log_to_channel(embed=embed)
 
         self.bot.logger.info(f"Restoring an event for the rest of the hour")
@@ -281,10 +337,14 @@ class DucksSpawning(Cog):
             event = Events[event_name]
             self.bot.current_event = event
         except FileNotFoundError:
-            self.bot.logger.warning("No event_cache.json found. Normal on first run. Rolling an event instead.")
+            self.bot.logger.warning(
+                "No event_cache.json found. Normal on first run. Rolling an event instead."
+            )
             await self.change_event()
         except KeyError:
-            self.bot.logger.exception("event_cache.json found, but couldn't read it. Rolling an event instead.")
+            self.bot.logger.exception(
+                "event_cache.json found, but couldn't read it. Rolling an event instead."
+            )
             await self.change_event()
 
         game = discord.Game(self.bot.current_event.value[0])
@@ -308,7 +368,9 @@ class DucksSpawning(Cog):
         return ducks
 
     async def recompute_channel(self, channel: discord.TextChannel):
-        self.bot.enabled_channels[channel] = await DucksLeft(channel).compute_ducks_count()
+        self.bot.enabled_channels[channel] = await DucksLeft(
+            channel
+        ).compute_ducks_count()
 
     async def change_event(self, force=False):
         if random.randint(1, 12) != 1 and not force:
@@ -317,7 +379,7 @@ class DucksSpawning(Cog):
         else:
             self.bot.logger.debug("It's time for an EVENT!")
             events = [event for event in Events if event != Events.CALM]
-            event_choosen:Events = random.choice(events)
+            event_choosen: Events = random.choice(events)
             self.bot.logger.info(f"New event : {event_choosen.name}")
 
             self.bot.current_event = event_choosen
@@ -339,9 +401,7 @@ class DucksSpawning(Cog):
         await self.bot.log_to_channel(embed=embed)
 
         with open("cache/event_cache.json", "w") as f:
-            json.dump({
-                "current_event": self.bot.current_event.name
-            }, f)
+            json.dump({"current_event": self.bot.current_event.name}, f)
 
 
 setup = DucksSpawning.setup

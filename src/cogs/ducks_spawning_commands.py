@@ -3,15 +3,30 @@ import datetime
 import random
 
 import discord
-from discord.ext import commands
 from babel.dates import format_timedelta
+from discord.ext import commands
 
 from utils import checks, models
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.ducks import Duck, SuperDuck, BabyDuck, PrDuck, GhostDuck, MotherOfAllDucks, ArmoredDuck, GoldenDuck, \
-    PlasticDuck, KamikazeDuck, spawn_random_weighted_duck, \
-    RANDOM_SPAWN_DUCKS_CLASSES, MechanicalDuck, NightDuck, SleepingDuck, CartographerDuck
+from utils.ducks import (
+    RANDOM_SPAWN_DUCKS_CLASSES,
+    ArmoredDuck,
+    BabyDuck,
+    CartographerDuck,
+    Duck,
+    GhostDuck,
+    GoldenDuck,
+    KamikazeDuck,
+    MechanicalDuck,
+    MotherOfAllDucks,
+    NightDuck,
+    PlasticDuck,
+    PrDuck,
+    SleepingDuck,
+    SuperDuck,
+    spawn_random_weighted_duck,
+)
 
 
 def _(message):
@@ -21,7 +36,7 @@ def _(message):
 class DucksSpawningCommands(Cog):
     display_name = _("Admin: Spawning")
     help_priority = 5
-    help_color = 'red'
+    help_color = "red"
 
     @commands.group(aliases=["spawn", "spawnduck"])
     @checks.channel_enabled()
@@ -178,35 +193,48 @@ class DucksSpawningCommands(Cog):
             ducks_night = ducks.night_ducks
 
             if not ducks_night:
-                message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to spawn today.",
-                             ducks_spawned_count=ducks_spawned_count,
-                             ducks_left=ducks_left), ]
+                message = [
+                    _(
+                        "{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to spawn today.",
+                        ducks_spawned_count=ducks_spawned_count,
+                        ducks_left=ducks_left,
+                    ),
+                ]
             else:
-                message = [_("{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to spawn during "
-                             "the day and {ducks_night} during the night.",
-                             ducks_spawned_count=ducks_spawned_count,
-                             ducks_day=ducks_day,
-                             ducks_night=ducks_night), ]
+                message = [
+                    _(
+                        "{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to spawn during "
+                        "the day and {ducks_night} during the night.",
+                        ducks_spawned_count=ducks_spawned_count,
+                        ducks_day=ducks_day,
+                        ducks_night=ducks_night,
+                    ),
+                ]
 
             if ducks_spawned:
                 message.append(_("Here's the list of ducks spawned :"))
-                message.append('```')
+                message.append("```")
 
                 for duck in ducks_spawned:
                     spawned_for = datetime.timedelta(seconds=-duck.spawned_for)
 
-                    time_delta = format_timedelta(spawned_for, locale=language_code, add_direction=True)
+                    time_delta = format_timedelta(
+                        spawned_for, locale=language_code, add_direction=True
+                    )
 
                     duck_lives = await duck.get_lives()
 
-                    message.append(_("{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}.",
-                                     duck=duck,
-                                     duck_lives=duck_lives,
-                                     time_delta=time_delta
-                                     ))
-                message.append('```')
+                    message.append(
+                        _(
+                            "{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}.",
+                            duck=duck,
+                            duck_lives=duck_lives,
+                            time_delta=time_delta,
+                        )
+                    )
+                message.append("```")
             try:
-                await ctx.author.send(content='\n'.join(message))
+                await ctx.author.send(content="\n".join(message))
             except discord.Forbidden:
                 await ctx.reply("I couldn't DM you... Are your DMs blocked ?")
 
@@ -221,7 +249,12 @@ class DucksSpawningCommands(Cog):
 
         del self.bot.ducks_spawned[ctx.channel]
 
-        await ctx.send(_("{ducks_spawned_count} ducks removed.", ducks_spawned_count=ducks_spawned_count))
+        await ctx.send(
+            _(
+                "{ducks_spawned_count} ducks removed.",
+                ducks_spawned_count=ducks_spawned_count,
+            )
+        )
 
 
 setup = DucksSpawningCommands.setup

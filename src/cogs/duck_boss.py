@@ -2,8 +2,8 @@ import random
 from typing import List
 
 import discord
-from discord.ext import tasks
 from babel.dates import format_timedelta
+from discord.ext import tasks
 from tortoise import timezone
 
 from utils.cog_class import Cog
@@ -23,7 +23,12 @@ class DuckBoss(Cog):
     def luck(self):
         if self.iterations_spawn:
             # If a duck spawned
-            return self.boss_every_n_minutes / self.iterations_no_spawn * self.iterations_spawn * 100
+            return (
+                self.boss_every_n_minutes
+                / self.iterations_no_spawn
+                * self.iterations_spawn
+                * 100
+            )
         else:
             # No boss spawned, is it "normal" ?
             # This is the probability that no ducks appeared for n iterations given that a duck has a chance to appear
@@ -32,17 +37,29 @@ class DuckBoss(Cog):
             # about it. Thanks Cyril.
             # He said the following:
             # "It is one minus the cumulative distribution function of a geometric random variable."
-            return (((self.boss_every_n_minutes - 1) / self.boss_every_n_minutes) ** self.iterations_no_spawn) * 100
+            return (
+                ((self.boss_every_n_minutes - 1) / self.boss_every_n_minutes)
+                ** self.iterations_no_spawn
+            ) * 100
 
     def cog_unload(self):
         self.background_loop.cancel()
 
     async def create_boss_embed(self, bangs=0, boss_message=None):
-        boss_life = self.config()['required_bangs']
+        boss_life = self.config()["required_bangs"]
 
         new_embed = discord.Embed(
-            title=random.choice(["A duck boss is here...", "A wild boss has appeared...", "A boss has spawned...", "KILL THE BOSS !",
-                                 "Who wants some foie gras ?", "There is a Duck Boss nearby...", "You cannot sleep when enemies are nearby."]),
+            title=random.choice(
+                [
+                    "A duck boss is here...",
+                    "A wild boss has appeared...",
+                    "A boss has spawned...",
+                    "KILL THE BOSS !",
+                    "Who wants some foie gras ?",
+                    "There is a Duck Boss nearby...",
+                    "You cannot sleep when enemies are nearby.",
+                ]
+            ),
             color=discord.Color.green(),
             description="React with 🔫 to kill it.",
         )
@@ -52,17 +69,25 @@ class DuckBoss(Cog):
             time_delta = timezone.now() - boss_message.created_at
             old_embed = boss_message.embeds[0]
             new_embed.set_image(url=old_embed.image.url)
-            new_embed.set_footer(text=f"The boss spawned {format_timedelta(time_delta, locale='en_US')} ago")
+            new_embed.set_footer(
+                text=f"The boss spawned {format_timedelta(time_delta, locale='en_US')} ago"
+            )
         else:
-            new_embed.set_image(url=random.choice(["https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png",
-                                                   "https://media.discordapp.net/attachments/795225915248214036/873971254888108092/boss_llama_Calgeka.png"]))
+            new_embed.set_image(
+                url=random.choice(
+                    [
+                        "https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png",
+                        "https://media.discordapp.net/attachments/795225915248214036/873971254888108092/boss_llama_Calgeka.png",
+                    ]
+                )
+            )
             new_embed.set_footer(text="The boss just spawned")
 
         return new_embed
 
     @tasks.loop(minutes=1)
     async def background_loop(self):
-        channel = self.bot.get_channel(self.config()['boss_channel_id'])
+        channel = self.bot.get_channel(self.config()["boss_channel_id"])
         latest_messages = [m async for m in channel.history(limit=1)]
 
         if not latest_messages:
@@ -84,18 +109,22 @@ class DuckBoss(Cog):
         if boss_message:
             reaction: discord.Reaction = boss_message.reactions[0]
             bangs = reaction.count
-            boss_life = self.config()['required_bangs']
+            boss_life = self.config()["required_bangs"]
 
             if bangs >= boss_life:
                 # Kill the boss
                 users = [u async for u in reaction.users()]
                 ids = [u.id for u in users]
-                discordusers: List[DiscordUser] = await DiscordUser.filter(discord_id__in=ids).only('boss_kills', 'discord_id').all()
+                discordusers: List[DiscordUser] = (
+                    await DiscordUser.filter(discord_id__in=ids)
+                    .only("boss_kills", "discord_id")
+                    .all()
+                )
 
                 for discorduser in discordusers:
                     discorduser.boss_kills += 1
                     await FoieGras.give_to(discorduser)
-                    await discorduser.save(update_fields=['boss_kills'])
+                    await discorduser.save(update_fields=["boss_kills"])
 
                 new_embed = discord.Embed(
                     title=random.choice(["The boss was defeated !"]),
@@ -104,18 +133,30 @@ class DuckBoss(Cog):
                 )
                 if "boss_llama_Calgeka.png" in str(boss_message.embeds[0].image.url):
                     # Special case the llama.
-                    new_embed.set_image(url="https://cdn.discordapp.com/attachments/795225915248214036/875072800866586654/deadboss_llama_Calgeka.png")
+                    new_embed.set_image(
+                        url="https://cdn.discordapp.com/attachments/795225915248214036/875072800866586654/deadboss_llama_Calgeka.png"
+                    )
                 else:
-                    new_embed.set_image(url=random.choice(["https://cdn.discordapp.com/attachments/795225915248214036/807309301181055056/deadboss_Calgeka.png",
-                                                           "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png"]))
+                    new_embed.set_image(
+                        url=random.choice(
+                            [
+                                "https://cdn.discordapp.com/attachments/795225915248214036/807309301181055056/deadboss_Calgeka.png",
+                                "https://cdn.discordapp.com/attachments/795225915248214036/807309304935219230/deadboss_alt1_Calgeka.png",
+                            ]
+                        )
+                    )
                 new_embed.add_field(name="Health", value=f"0/{boss_life}")
 
                 time_delta = timezone.now() - boss_message.created_at
-                new_embed.set_footer(text=f"The boss lived for {format_timedelta(time_delta, locale='en_US')}.")
+                new_embed.set_footer(
+                    text=f"The boss lived for {format_timedelta(time_delta, locale='en_US')}."
+                )
 
                 await boss_message.edit(embed=new_embed)
             else:
-                new_embed = await self.create_boss_embed(bangs=bangs, boss_message=boss_message)
+                new_embed = await self.create_boss_embed(
+                    bangs=bangs, boss_message=boss_message
+                )
 
                 await boss_message.edit(embed=new_embed)
 
@@ -128,23 +169,34 @@ class DuckBoss(Cog):
 
     async def spawn_boss(self):
         self.bot.logger.info("Spawning duck boss...")
-        channel = self.bot.get_channel(self.config()['boss_channel_id'])
+        channel = self.bot.get_channel(self.config()["boss_channel_id"])
 
-        boss_message = await channel.send(embed=await self.create_boss_embed(), )
+        boss_message = await channel.send(
+            embed=await self.create_boss_embed(),
+        )
         await boss_message.add_reaction("🔫")
         self.bot.logger.debug("Duck boss spawned, logging that to the channel logs...")
 
-        ping_role_id = self.config()['role_ping_id']
+        ping_role_id = self.config()["role_ping_id"]
 
         log_embed = discord.Embed(
             title="A duck boss has spawned.",
             color=discord.Color.dark_magenta(),
-            description=f"Go in the {channel.mention} and click the 🔫 reaction to get free inventory items."
+            description=f"Go in the {channel.mention} and click the 🔫 reaction to get free inventory items.",
         )
 
-        log_embed.add_field(name="Subscribe/Unsubscribe", value="To (un)subscribe from these alerts, go to the #roles•for•all channel.")
+        log_embed.add_field(
+            name="Subscribe/Unsubscribe",
+            value="To (un)subscribe from these alerts, go to the #roles•for•all channel.",
+        )
 
-        await self.bot.log_to_channel(content=f"<@&{ping_role_id}>", embed=log_embed, allowed_mentions=discord.AllowedMentions(roles=True, users=False, everyone=False))
+        await self.bot.log_to_channel(
+            content=f"<@&{ping_role_id}>",
+            embed=log_embed,
+            allowed_mentions=discord.AllowedMentions(
+                roles=True, users=False, everyone=False
+            ),
+        )
         self.bot.logger.info("Duck boss spawned, logging message sent!")
 
     @background_loop.before_loop

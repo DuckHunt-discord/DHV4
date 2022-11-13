@@ -1,18 +1,18 @@
-from typing import Optional, List
+from typing import List, Optional
 
+import babel.lists
 import discord
+from babel.dates import format_timedelta
 from discord import HTTPException, Thread
 from discord.ext import commands
-from discord.ext.commands import MaxConcurrency, BucketType
-import babel.lists
-from babel.dates import format_timedelta
+from discord.ext.commands import BucketType, MaxConcurrency
 from tortoise import timezone
 
-from utils import models, checks
+from utils import checks, models
 from utils.bot_class import MyBot
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, DiscordMember, AccessLevel
+from utils.models import AccessLevel, DiscordMember, get_from_db
 
 
 def _(message):
@@ -22,7 +22,7 @@ def _(message):
 class Event2021(Cog):
     display_name = _("Landmines")
     help_priority = 9
-    help_color = 'primary'
+    help_color = "primary"
 
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
@@ -41,9 +41,12 @@ class Event2021(Cog):
 
     @Cog.listener()
     async def on_message(self, message: discord.Message):
-        required_permissions = discord.Permissions(send_messages=True, read_messages=True,
-                                                   read_message_history=True, attach_files=True,
-                                                   )
+        required_permissions = discord.Permissions(
+            send_messages=True,
+            read_messages=True,
+            read_message_history=True,
+            attach_files=True,
+        )
 
         if not message.content:
             # Message has no text
@@ -52,7 +55,9 @@ class Event2021(Cog):
         if not message.guild:
             return
 
-        if not message.channel.permissions_for(message.guild.me).is_superset(required_permissions):
+        if not message.channel.permissions_for(message.guild.me).is_superset(
+            required_permissions
+        ):
             # No perms
             return
 
@@ -65,8 +70,12 @@ class Event2021(Cog):
 
         if not db_channel:
             ctx: MyContext = await self.bot.get_context(message, cls=MyContext)
-            ctx.logger.warning(f"Channel {channel} ({type(channel).__name__}) not found in database by get_from_db, weird..")
-            ctx.logger.warning(f"Channel {channel.id} not found in database by get_from_db, weird.")
+            ctx.logger.warning(
+                f"Channel {channel} ({type(channel).__name__}) not found in database by get_from_db, weird.."
+            )
+            ctx.logger.warning(
+                f"Channel {channel.id} not found in database by get_from_db, weird."
+            )
             return
 
         if not db_channel.landmines_enabled:
@@ -128,16 +137,26 @@ class Event2021(Cog):
                             "It exploded, taking away **{explosion_value} points** from your account.\n\n"
                             "<@{placed_by_member.user_id}> message:\n"
                             "{message_text}",
-                            landmine=landmine, placed_by_member=placed_by_member, td=td, explosion_value=explosion_value, message_text=message_text),
-                        delete_on_invoke_removed=False)
+                            landmine=landmine,
+                            placed_by_member=placed_by_member,
+                            td=td,
+                            explosion_value=explosion_value,
+                            message_text=message_text,
+                        ),
+                        delete_on_invoke_removed=False,
+                    )
                 else:
                     await ctx.reply(
                         _(
                             "💥 You stepped on a `{landmine.word}` landmine placed {td} ago by <@{placed_by_member.user_id}>. "
                             "It exploded, taking away **{explosion_value} points** from your account.\n\n",
-                            landmine=landmine, placed_by_member=placed_by_member, explosion_value=explosion_value, td=td,
+                            landmine=landmine,
+                            placed_by_member=placed_by_member,
+                            explosion_value=explosion_value,
+                            td=td,
                         ),
-                        delete_on_invoke_removed=False)
+                        delete_on_invoke_removed=False,
+                    )
 
             if landmine or added_points:
                 await db_target.save()
@@ -146,7 +165,15 @@ class Event2021(Cog):
 
     @commands.command()
     @checks.landmines_commands_enabled()
-    async def place(self, ctx: MyContext, guild: discord.Guild, value: Optional[int], word: str, *, message_text: str = ""):
+    async def place(
+        self,
+        ctx: MyContext,
+        guild: discord.Guild,
+        value: Optional[int],
+        word: str,
+        *,
+        message_text: str = "",
+    ):
         """
         Alias for dh!landmine landmine, so that you can just type dh!place instead.
         """
@@ -164,7 +191,9 @@ class Event2021(Cog):
         """
         await self.defuse_kit(ctx, words=words)
 
-    @commands.group(aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True)
+    @commands.group(
+        aliases=["landmines", "event2021", "lm"], name="landmine", case_insensitive=True
+    )
     @checks.landmines_commands_enabled()
     async def event(self, ctx: MyContext):
         """
@@ -191,43 +220,76 @@ class Event2021(Cog):
 
         embed = discord.Embed(
             title=_("{target.name} event statistics", target=target),
-            colour=discord.Color.green()
+            colour=discord.Color.green(),
         )
-        embed.description = _("The most important currency in the game are the points, which are used in the shop to buy "
-                              "stuff. The available points show how many ponts you have and how many you acquired in "
-                              "total.\n"
-                              "You can get points by sending (long) messages. Some shop items may help you get more. "
-                              "Be careful not to spam, server rules **still apply** during the event. "
-                              "At the end of the game, the player having the greater amount of points will win.")
+        embed.description = _(
+            "The most important currency in the game are the points, which are used in the shop to buy "
+            "stuff. The available points show how many ponts you have and how many you acquired in "
+            "total.\n"
+            "You can get points by sending (long) messages. Some shop items may help you get more. "
+            "Be careful not to spam, server rules **still apply** during the event. "
+            "At the end of the game, the player having the greater amount of points will win."
+        )
 
-        embed.add_field(name=_("Available"), value=_("{db_target.points_current} points", db_target=db_target),
-                        inline=False)
+        embed.add_field(
+            name=_("Available"),
+            value=_("{db_target.points_current} points", db_target=db_target),
+            inline=False,
+        )
 
-        embed.add_field(name=_("Messages sent"), value=_("{db_target.messages_sent} ({db_target.words_sent} words)", db_target=db_target),
-                        inline=False)
+        embed.add_field(
+            name=_("Messages sent"),
+            value=_(
+                "{db_target.messages_sent} ({db_target.words_sent} words)",
+                db_target=db_target,
+            ),
+            inline=False,
+        )
 
         if db_target.points_won:
-            embed.add_field(name=_("Points won by landmines"), value=_("{db_target.points_won} points", db_target=db_target),
-                            inline=True)
+            embed.add_field(
+                name=_("Points won by landmines"),
+                value=_("{db_target.points_won} points", db_target=db_target),
+                inline=True,
+            )
 
         if db_target.points_recovered:
-            embed.add_field(name=_("Points recovered by defusing landmines"), value=_("{db_target.points_recovered} points", db_target=db_target),
-                            inline=True)
+            embed.add_field(
+                name=_("Points recovered by defusing landmines"),
+                value=_("{db_target.points_recovered} points", db_target=db_target),
+                inline=True,
+            )
 
         if db_target.points_acquired:
-            embed.add_field(name=_("Points acquired by talking"), value=_("{db_target.points_acquired} points", db_target=db_target),
-                            inline=True)
+            embed.add_field(
+                name=_("Points acquired by talking"),
+                value=_("{db_target.points_acquired} points", db_target=db_target),
+                inline=True,
+            )
 
         if db_target.points_exploded:
-            embed.add_field(name=_("Points exploded by stepping on mines"), value=_("{db_target.points_exploded} points", db_target=db_target),
-                            inline=True)
+            embed.add_field(
+                name=_("Points exploded by stepping on mines"),
+                value=_("{db_target.points_exploded} points", db_target=db_target),
+                inline=True,
+            )
 
         if db_target.points_spent:
-            embed.add_field(name=_("Points spent in the shop"), value=_("{db_target.points_spent} points", db_target=db_target),
-                            inline=True)
+            embed.add_field(
+                name=_("Points spent in the shop"),
+                value=_("{db_target.points_spent} points", db_target=db_target),
+                inline=True,
+            )
 
-        embed.set_footer(text=_("For more information on how to place a mine, run the `dh!lm landmines` command."))
-        embed.set_author(name=str(target), icon_url=str(target.display_avatar.replace(format="jpg", size=256)))
+        embed.set_footer(
+            text=_(
+                "For more information on how to place a mine, run the `dh!lm landmines` command."
+            )
+        )
+        embed.set_author(
+            name=str(target),
+            icon_url=str(target.display_avatar.replace(format="jpg", size=256)),
+        )
 
         await ctx.reply(embed=embed)
 
@@ -239,14 +301,26 @@ class Event2021(Cog):
         This command explains how to place a landmine
         """
         _ = await ctx.get_translate_function(user_language=True)
-        await ctx.send(_("To place a landmine, send a DM to the bot with the following command: ```\n"
-                         "dh!landmine place {ctx.guild.id} your_mine_value your_mine_word a_message_to_send_when_the_mine_explodes\n"
-                         "```\n"
-                         "The value must be at least 50 points, and a word must be at least 3 characters long."))
+        await ctx.send(
+            _(
+                "To place a landmine, send a DM to the bot with the following command: ```\n"
+                "dh!landmine place {ctx.guild.id} your_mine_value your_mine_word a_message_to_send_when_the_mine_explodes\n"
+                "```\n"
+                "The value must be at least 50 points, and a word must be at least 3 characters long."
+            )
+        )
 
     @event.command(aliases=["l", "lm", "mine", "landmines", "place"])
     @checks.landmines_commands_enabled()
-    async def landmine(self, ctx: MyContext, guild: Optional[discord.Guild], value: int, word: str, *, message_text: str = ""):
+    async def landmine(
+        self,
+        ctx: MyContext,
+        guild: Optional[discord.Guild],
+        value: int,
+        word: str,
+        *,
+        message_text: str = "",
+    ):
         """
         [THIS COMMAND WORKS IN DMs]
         Buy a landmine that will trigger on a specific word.
@@ -265,8 +339,12 @@ class Event2021(Cog):
             member = ctx.author
         else:
             if guild is None:
-                await ctx.author.send(_("❌ On what server do you want to place this landmine ? You need to add the Guild ID at the start of your command. "
-                                        "See `dh!landmines landmine_how_to`"))
+                await ctx.author.send(
+                    _(
+                        "❌ On what server do you want to place this landmine ? You need to add the Guild ID at the start of your command. "
+                        "See `dh!landmines landmine_how_to`"
+                    )
+                )
                 return
             try:
                 member = await guild.fetch_member(ctx.author.id)
@@ -279,7 +357,11 @@ class Event2021(Cog):
             return
 
         if len(message_text) > 1500:
-            await ctx.author.send(_("❌ The message left on the landmine must be less than 1500 characters."))
+            await ctx.author.send(
+                _(
+                    "❌ The message left on the landmine must be less than 1500 characters."
+                )
+            )
             return
 
         word = models.get_valid_words(word)
@@ -301,9 +383,22 @@ class Event2021(Cog):
 
             if protect.message:
                 await ctx.author.send(
-                    _("❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it — {protect.message}.", value=value, user=protect_db_user, protect=protect))
+                    _(
+                        "❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it — {protect.message}.",
+                        value=value,
+                        user=protect_db_user,
+                        protect=protect,
+                    )
+                )
             else:
-                await ctx.author.send(_("❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it.", value=value, user=protect_db_user, protect=protect))
+                await ctx.author.send(
+                    _(
+                        "❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it.",
+                        value=value,
+                        user=protect_db_user,
+                        protect=protect,
+                    )
+                )
 
             return
 
@@ -312,7 +407,12 @@ class Event2021(Cog):
             db_data = await models.get_member_landminesdata(member)
 
             if db_data.points_current < value:
-                await ctx.author.send(_("❌ You don't have {value} points, you can't buy a landmine as powerful as this.", value=value))
+                await ctx.author.send(
+                    _(
+                        "❌ You don't have {value} points, you can't buy a landmine as powerful as this.",
+                        value=value,
+                    )
+                )
                 return
 
             landmine = models.LandminesPlaced(
@@ -326,7 +426,13 @@ class Event2021(Cog):
 
             await db_data.save()
             await landmine.save()
-            await ctx.author.send(_("💣️ You placed a landmine on `{word}` that can give you at most `{base_value}` points.", word=word, base_value=landmine.base_value()))
+            await ctx.author.send(
+                _(
+                    "💣️ You placed a landmine on `{word}` that can give you at most `{base_value}` points.",
+                    word=word,
+                    base_value=landmine.base_value(),
+                )
+            )
         finally:
             await self.concurrency.release(ctx.message)
 
@@ -363,13 +469,21 @@ class Event2021(Cog):
                 protect_db_user = await protect_db_member.user
 
                 await ctx.send(
-                    _("❌ This word is already protected by {user.name}#{user.discriminator}.", user=protect_db_user))
+                    _(
+                        "❌ This word is already protected by {user.name}#{user.discriminator}.",
+                        user=protect_db_user,
+                    )
+                )
                 return
 
             db_data = await models.get_member_landminesdata(ctx.author)
 
             if db_data.points_current < 500:
-                await ctx.reply(_("❌ You don't have 500 points, so you can't buy a shield to protect a word."))
+                await ctx.reply(
+                    _(
+                        "❌ You don't have 500 points, so you can't buy a shield to protect a word."
+                    )
+                )
                 return
             else:
                 db_data.points_current -= 500
@@ -378,12 +492,12 @@ class Event2021(Cog):
             db_data.shields_bought += 1
 
             await models.LandminesProtects.create(
-                protected_by=db_data,
-                word=word,
-                message=message_text
+                protected_by=db_data, word=word, message=message_text
             )
 
-            landmines: List[models.LandminesPlaced] = await models.get_landmine(ctx.guild, word, as_list=True)
+            landmines: List[models.LandminesPlaced] = await models.get_landmine(
+                ctx.guild, word, as_list=True
+            )
             ret = [_("You placed a shield on `{word}` for 500 points.", word=word)]
 
             now = timezone.now()
@@ -408,22 +522,32 @@ class Event2021(Cog):
 
                 td = format_timedelta(duration, locale=await ctx.get_language_code())
 
-                landmines_list.append(_("- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)",
-                                        value=money_recovered, placed_by_member=placed_by_member, td=td))
+                landmines_list.append(
+                    _(
+                        "- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)",
+                        value=money_recovered,
+                        placed_by_member=placed_by_member,
+                        td=td,
+                    )
+                )
 
                 await landmine.save()
 
             if len(landmines):
-                ret.append(ngettext(
-                    "You defused the following landmine for a value of {got_points} points.",
-                    "You defused {n} landmines placed on that word, for a total value of {got_points} points.",
-                    len(landmines),
-                    got_points=got_points,
-                ))
+                ret.append(
+                    ngettext(
+                        "You defused the following landmine for a value of {got_points} points.",
+                        "You defused {n} landmines placed on that word, for a total value of {got_points} points.",
+                        len(landmines),
+                        got_points=got_points,
+                    )
+                )
 
                 ret.extend(landmines_list)
             else:
-                ret.append(_("There were no active landmines on that word to be defused."))
+                ret.append(
+                    _("There were no active landmines on that word to be defused.")
+                )
 
             await db_data.save()
             await ctx.reply("\n".join(ret))
@@ -445,7 +569,9 @@ class Event2021(Cog):
         words_list = models.get_valid_words(words)
 
         if len(words_list) < 1:
-            await ctx.reply(_("❌ Please give (as much) valid words as you want to the defuse kit."))
+            await ctx.reply(
+                _("❌ Please give (as much) valid words as you want to the defuse kit.")
+            )
             return
 
         landmine = await models.get_landmine(ctx.guild, words)
@@ -455,7 +581,9 @@ class Event2021(Cog):
             db_data = await models.get_member_landminesdata(ctx.author)
 
             if db_data.points_current < 30:
-                await ctx.reply(_("❌ You don't have 30 points, so you can't buy a defuse kit."))
+                await ctx.reply(
+                    _("❌ You don't have 30 points, so you can't buy a defuse kit.")
+                )
                 return
 
             db_data.defuse_kits_bought += 1
@@ -481,31 +609,51 @@ class Event2021(Cog):
                 td = format_timedelta(duration, locale=await ctx.get_language_code())
 
                 if got_points > 0:
-                    await ctx.reply(_("💰️ You used the defuse kit on `{landmine.word}`, and defused "
-                                      "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
-                                      "You got {got_points} points, congratulations.",
-                                      landmine=landmine, got_points=got_points, placed_by_member=placed_by_member, td=td),
-                                    delete_on_invoke_removed=False)
+                    await ctx.reply(
+                        _(
+                            "💰️ You used the defuse kit on `{landmine.word}`, and defused "
+                            "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
+                            "You got {got_points} points, congratulations.",
+                            landmine=landmine,
+                            got_points=got_points,
+                            placed_by_member=placed_by_member,
+                            td=td,
+                        ),
+                        delete_on_invoke_removed=False,
+                    )
                 else:
-                    await ctx.reply(_("💸️ You used the defuse kit on `{landmine.word}`, and defused "
-                                      "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
-                                      "You've lost {-got_points} points, because the value of the landmine was lower "
-                                      "than the defuse kit price. Sorry!",
-                                      landmine=landmine, got_points=got_points, placed_by_member=placed_by_member, td=td),
-                                    delete_on_invoke_removed=False)
+                    await ctx.reply(
+                        _(
+                            "💸️ You used the defuse kit on `{landmine.word}`, and defused "
+                            "<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a `{landmine.value}` points value."
+                            "You've lost {-got_points} points, because the value of the landmine was lower "
+                            "than the defuse kit price. Sorry!",
+                            landmine=landmine,
+                            got_points=got_points,
+                            placed_by_member=placed_by_member,
+                            td=td,
+                        ),
+                        delete_on_invoke_removed=False,
+                    )
 
                 await landmine.save()
             else:
                 db_data.points_current -= 15
                 db_data.points_spent += 15
-                words = babel.lists.format_list(words_list, locale=await ctx.get_language_code())
-                await ctx.reply(_("♻️️ You didn't use the defuse kit, and sold it back to the shop. "
-                                  "You are sure that there isn't any mine on any of those words: \n"
-                                  "```\n"
-                                  "{words}\n"
-                                  "```",
-                                  words=words),
-                                delete_on_invoke_removed=False)
+                words = babel.lists.format_list(
+                    words_list, locale=await ctx.get_language_code()
+                )
+                await ctx.reply(
+                    _(
+                        "♻️️ You didn't use the defuse kit, and sold it back to the shop. "
+                        "You are sure that there isn't any mine on any of those words: \n"
+                        "```\n"
+                        "{words}\n"
+                        "```",
+                        words=words,
+                    ),
+                    delete_on_invoke_removed=False,
+                )
 
             await db_data.save()
         finally:
@@ -522,43 +670,86 @@ class Event2021(Cog):
 
         db_guild = await models.get_from_db(ctx.guild)
 
-        stats_embed = discord.Embed(colour=discord.Colour.dark_green(),
-                                    title=_("Landmines statistics"))
+        stats_embed = discord.Embed(
+            colour=discord.Colour.dark_green(), title=_("Landmines statistics")
+        )
 
         stats_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/"
 
-        players_count = await models.LandminesUserData.all().filter(member__guild=db_guild).count()
-        total_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).count()
-        current_mines_count = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).count()
-        biggest_mine = await models.LandminesPlaced.all().filter(placed_by__member__guild=db_guild).filter(stopped_at__isnull=True).order_by('-value').first()
-
-        negatives_count = await models.LandminesUserData \
-            .filter(points_current__lte=0) \
-            .filter(member__guild=db_guild) \
+        players_count = (
+            await models.LandminesUserData.all().filter(member__guild=db_guild).count()
+        )
+        total_mines_count = (
+            await models.LandminesPlaced.all()
+            .filter(placed_by__member__guild=db_guild)
             .count()
+        )
+        current_mines_count = (
+            await models.LandminesPlaced.all()
+            .filter(placed_by__member__guild=db_guild)
+            .filter(stopped_at__isnull=True)
+            .count()
+        )
+        biggest_mine = (
+            await models.LandminesPlaced.all()
+            .filter(placed_by__member__guild=db_guild)
+            .filter(stopped_at__isnull=True)
+            .order_by("-value")
+            .first()
+        )
+
+        negatives_count = (
+            await models.LandminesUserData.filter(points_current__lte=0)
+            .filter(member__guild=db_guild)
+            .count()
+        )
 
         stats_embed.add_field(name=_("Players tracked"), value=str(players_count))
-        stats_embed.add_field(name=_("Mines count"),
-                              value=_("{current_mines_count} mines placed, {total_mines_count} created", current_mines_count=current_mines_count, total_mines_count=total_mines_count))
+        stats_embed.add_field(
+            name=_("Mines count"),
+            value=_(
+                "{current_mines_count} mines placed, {total_mines_count} created",
+                current_mines_count=current_mines_count,
+                total_mines_count=total_mines_count,
+            ),
+        )
         if biggest_mine:
             top_placed = await biggest_mine.placed_by
             top_placed_member = await top_placed.member
 
-            stats_embed.add_field(name=_("Biggest active mine"),
-                                  value=_("Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>", biggest_mine=biggest_mine, letters=len(biggest_mine.word),
-                                          user=top_placed_member.user_id),
-                                  inline=False)
-        stats_embed.add_field(name=_("Players in the negative"), value=str(negatives_count))
+            stats_embed.add_field(
+                name=_("Biggest active mine"),
+                value=_(
+                    "Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>",
+                    biggest_mine=biggest_mine,
+                    letters=len(biggest_mine.word),
+                    user=top_placed_member.user_id,
+                ),
+                inline=False,
+            )
+        stats_embed.add_field(
+            name=_("Players in the negative"), value=str(negatives_count)
+        )
 
-        top_embed = discord.Embed(colour=discord.Colour.blurple(),
-                                  title=_("Event scoreboard"))
+        top_embed = discord.Embed(
+            colour=discord.Colour.blurple(), title=_("Event scoreboard")
+        )
         top_embed.url = f"https://duckhunt.me/data/guilds/{ctx.guild.id}/landmines/?discord_embeds=sucks"
 
-        top_players = await models.LandminesUserData.all().filter(member__guild=db_guild).order_by('-points_current').limit(10)
+        top_players = (
+            await models.LandminesUserData.all()
+            .filter(member__guild=db_guild)
+            .order_by("-points_current")
+            .limit(10)
+        )
 
         for i, top_player in enumerate(top_players):
             top_member = await top_player.member
-            top_embed.add_field(name=_("{points} points", points=top_player.points_current), value=f"<@{top_member.user_id}>", inline=i > 2)
+            top_embed.add_field(
+                name=_("{points} points", points=top_player.points_current),
+                value=f"<@{top_member.user_id}>",
+                inline=i > 2,
+            )
 
         await ctx.send(embeds=[stats_embed, top_embed])
 

@@ -7,16 +7,15 @@ import time
 import typing
 from enum import IntEnum, unique
 
+import babel.lists
 import discord
 from discord.ext import commands
 from tortoise import Tortoise, fields, timezone
 from tortoise.models import Model
-import babel.lists
 
 from utils.coats import Coats
 from utils.levels import get_level_info
 from utils.translations import translate
-
 
 DB_LOCKS = collections.defaultdict(asyncio.Lock)
 SECOND = 1
@@ -34,52 +33,59 @@ class DefaultDictJSONField(fields.JSONField):
         kwargs["default"] = make_default
         super().__init__(**kwargs)
 
-    def to_python_value(self, value: typing.Optional[typing.Union[str, dict, list]]) -> typing.Optional[
-        collections.defaultdict]:
+    def to_python_value(
+        self, value: typing.Optional[typing.Union[str, dict, list]]
+    ) -> typing.Optional[collections.defaultdict]:
         ret = super().to_python_value(value)
         return collections.defaultdict(self.default_factory, ret)
 
-    def to_db_value(self, value: typing.Optional[collections.defaultdict],
-                    instance: typing.Union[typing.Type[Model], Model]) -> typing.Optional[str]:
+    def to_db_value(
+        self,
+        value: typing.Optional[collections.defaultdict],
+        instance: typing.Union[typing.Type[Model], Model],
+    ) -> typing.Optional[str]:
         value = dict(value)
         return super().to_db_value(value, instance)
 
 
 class PercentageField(fields.SmallIntField):
     # TODO: Use constraints when they go out :)
-    def to_db_value(self, value: typing.Any, instance: typing.Union[typing.Type[Model], Model]):
+    def to_db_value(
+        self, value: typing.Any, instance: typing.Union[typing.Type[Model], Model]
+    ):
         value = min(100, max(0, int(value)))
         return super().to_db_value(value, instance)
 
 
 class SupportTicket(Model):
-    user: fields.ForeignKeyRelation["DiscordUser"] = \
-        fields.ForeignKeyField('models.DiscordUser',
-                               related_name="support_tickets",
-                               db_index=True)
+    user: fields.ForeignKeyRelation["DiscordUser"] = fields.ForeignKeyField(
+        "models.DiscordUser", related_name="support_tickets", db_index=True
+    )
 
     opened_at = fields.DatetimeField(auto_now_add=True)
 
     closed = fields.BooleanField(default=False)
     closed_at = fields.DatetimeField(null=True, blank=True)
 
-    closed_by: fields.ForeignKeyRelation["DiscordUser"] = \
-        fields.ForeignKeyField('models.DiscordUser',
-                               related_name="closed_tickets",
-                               on_delete=fields.SET_NULL,
-                               db_index=False,
-                               null=True)
+    closed_by: fields.ForeignKeyRelation["DiscordUser"] = fields.ForeignKeyField(
+        "models.DiscordUser",
+        related_name="closed_tickets",
+        on_delete=fields.SET_NULL,
+        db_index=False,
+        null=True,
+    )
 
     close_reason = fields.TextField(blank=True, default="")
 
-    last_tag_used: fields.ForeignKeyRelation["Tag"] = \
-        fields.ForeignKeyField('models.Tag',
-                               related_name='used_in_tickets',
-                               on_delete=fields.SET_NULL,
-                               db_index=False,
-                               null=True)
+    last_tag_used: fields.ForeignKeyRelation["Tag"] = fields.ForeignKeyField(
+        "models.Tag",
+        related_name="used_in_tickets",
+        on_delete=fields.SET_NULL,
+        db_index=False,
+        null=True,
+    )
 
-    def close(self, by_user: 'DiscordUser', reason: typing.Optional[str] = None):
+    def close(self, by_user: "DiscordUser", reason: typing.Optional[str] = None):
         if reason is None:
             reason = ""
 
@@ -157,14 +163,23 @@ class DucksLeft:
 
         # The min() here is protecting against having more than a duck every 5 seconds.
         if total_day_seconds:
-            self.day_ducks = int(min((day_seconds_left * day_ducks_count) / total_day_seconds, total_day_seconds / 5))
+            self.day_ducks = int(
+                min(
+                    (day_seconds_left * day_ducks_count) / total_day_seconds,
+                    total_day_seconds / 5,
+                )
+            )
         else:
             # Prevent ZeroDivisionError
             self.day_ducks = 0
 
         if total_night_seconds:
             self.night_ducks = int(
-                min((night_seconds_left * night_ducks_count) / total_night_seconds, total_night_seconds / 5))
+                min(
+                    (night_seconds_left * night_ducks_count) / total_night_seconds,
+                    total_night_seconds / 5,
+                )
+            )
         else:
             # Prevent ZeroDivisionError
             self.night_ducks = 0
@@ -203,9 +218,9 @@ class DiscordChannel(Model):
     discord_id = fields.BigIntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
 
-    guild: fields.ForeignKeyRelation[DiscordGuild] = \
-        fields.ForeignKeyField('models.DiscordGuild',
-                               related_name="channels")
+    guild: fields.ForeignKeyRelation[DiscordGuild] = fields.ForeignKeyField(
+        "models.DiscordGuild", related_name="channels"
+    )
 
     players: fields.ReverseRelation["Player"]
 
@@ -219,8 +234,12 @@ class DiscordChannel(Model):
     use_emojis = fields.BooleanField(default=True)
     enabled = fields.BooleanField(default=False)
 
-    landmines_commands_enabled = fields.BooleanField(default=False)  # Can members run landmine commands here
-    landmines_enabled = fields.BooleanField(default=False)  # Do messages sent here count in the game ?
+    landmines_commands_enabled = fields.BooleanField(
+        default=False
+    )  # Can members run landmine commands here
+    landmines_enabled = fields.BooleanField(
+        default=False
+    )  # Do messages sent here count in the game ?
 
     anti_trigger_wording = fields.BooleanField(default=False)
 
@@ -272,7 +291,7 @@ class DiscordChannel(Model):
     prestige_to_roles_ids_mapping = fields.JSONField(default=dict)
 
     def serialize(self, serialize_fields=None):
-        DONT_SERIALIZE = {'guild', 'members', 'playerss', 'webhook_urls', 'api_key'}
+        DONT_SERIALIZE = {"guild", "members", "playerss", "webhook_urls", "api_key"}
 
         ser = {}
 
@@ -328,8 +347,10 @@ class DiscordChannel(Model):
                 return self.night_end_at - self.night_start_at
             else:
                 # This shouldn't be happening
-                raise ArithmeticError(f"Error calculating simpler case in night_seconds_left, debugging follow\n"
-                                      f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}")
+                raise ArithmeticError(
+                    f"Error calculating simpler case in night_seconds_left, debugging follow\n"
+                    f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}"
+                )
         else:
             # Harder case: night starts in a day and end the next day
             # 21:00            > 06:00
@@ -346,8 +367,10 @@ class DiscordChannel(Model):
                 return DAY - now
             else:
                 # This shouldn't be happening
-                raise ArithmeticError(f"Error calculating harder case in night_seconds_left, debugging follow\n"
-                                      f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}")
+                raise ArithmeticError(
+                    f"Error calculating harder case in night_seconds_left, debugging follow\n"
+                    f"{now=}, {self.night_start_at=}, {self.night_end_at=}, {self=}"
+                )
 
     def day_status(self, now=None):
         if now is None:
@@ -412,17 +435,29 @@ class AccessLevel(IntEnum):
             try:
                 return cls(min(int(argument), 300))
             except ValueError:
-                raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
-                                             levels=babel.lists.format_list(list(AccessLevel.__members__),
-                                                                            locale=await ctx.get_language_code())))
+                raise commands.BadArgument(
+                    _(
+                        "This is not a valid level. Choose between {levels}",
+                        levels=babel.lists.format_list(
+                            list(AccessLevel.__members__),
+                            locale=await ctx.get_language_code(),
+                        ),
+                    )
+                )
         else:
-            if not argument.upper().startswith('BOT'):
+            if not argument.upper().startswith("BOT"):
                 try:
                     return getattr(cls, argument.upper())
                 except AttributeError:
-                    raise commands.BadArgument(_("This is not a valid level. Choose between {levels}",
-                                                 levels=babel.lists.format_list(list(AccessLevel.__members__),
-                                                                                locale=await ctx.get_language_code())))
+                    raise commands.BadArgument(
+                        _(
+                            "This is not a valid level. Choose between {levels}",
+                            levels=babel.lists.format_list(
+                                list(AccessLevel.__members__),
+                                locale=await ctx.get_language_code(),
+                            ),
+                        )
+                    )
             else:
                 raise commands.BadArgument(_("Can't set such a high level"))
 
@@ -430,24 +465,34 @@ class AccessLevel(IntEnum):
 def get_valid_words(message_content) -> typing.List[str]:
     allowed_chars = string.ascii_letters + string.digits + string.whitespace
 
-    cleaned_content = ''.join(filter(lambda character: character in allowed_chars, message_content))
+    cleaned_content = "".join(
+        filter(lambda character: character in allowed_chars, message_content)
+    )
 
     words = []
 
     for word in set(cleaned_content.lower().split()):
-        if 3 <= len(word) <= 40 and (len(word) > 25 or len(word) < 15 or not set(word).issubset(set(string.digits))):
+        if 3 <= len(word) <= 40 and (
+            len(word) > 25
+            or len(word) < 15
+            or not set(word).issubset(set(string.digits))
+        ):
             words.append(word)
 
     return words
 
 
 class LandminesUserData(Model):
-    landmines_bought: fields.ReverseRelation['LandminesPlaced']
-    landmines_stopped: fields.ReverseRelation['LandminesPlaced']
+    landmines_bought: fields.ReverseRelation["LandminesPlaced"]
+    landmines_stopped: fields.ReverseRelation["LandminesPlaced"]
 
     # This is waiting for a fix of https://github.com/tortoise/tortoise-orm/issues/822
-    member: fields.ForeignKeyRelation["DiscordMember"] = \
-        fields.OneToOneField('models.DiscordMember', related_name='landmines', on_delete=fields.CASCADE, db_index=True)
+    member: fields.ForeignKeyRelation["DiscordMember"] = fields.OneToOneField(
+        "models.DiscordMember",
+        related_name="landmines",
+        on_delete=fields.CASCADE,
+        db_index=True,
+    )
 
     # General statistics
     first_played = fields.DatetimeField(auto_now_add=True)
@@ -488,11 +533,15 @@ class LandminesUserData(Model):
         return f"@{self.member} landmines data"
 
     class Meta:
-        table = 'landmines_userdata'
+        table = "landmines_userdata"
 
 
 class LandminesPlaced(Model):
-    placed_by = fields.ForeignKeyField('models.LandminesUserData', related_name='landmines_bought', on_delete=fields.CASCADE)
+    placed_by = fields.ForeignKeyField(
+        "models.LandminesUserData",
+        related_name="landmines_bought",
+        on_delete=fields.CASCADE,
+    )
 
     placed = fields.DatetimeField(auto_now_add=True)
     word = fields.CharField(max_length=50)
@@ -504,8 +553,13 @@ class LandminesPlaced(Model):
     tripped = fields.BooleanField(default=False)
     disarmed = fields.BooleanField(default=False)
 
-    stopped_by = fields.ForeignKeyField('models.LandminesUserData', null=True, blank=True, on_delete=fields.SET_NULL,
-                                        related_name='landmines_stopped')
+    stopped_by = fields.ForeignKeyField(
+        "models.LandminesUserData",
+        null=True,
+        blank=True,
+        on_delete=fields.SET_NULL,
+        related_name="landmines_stopped",
+    )
     stopped_at = fields.DatetimeField(null=True)
 
     def base_value(self) -> int:
@@ -529,11 +583,15 @@ class LandminesPlaced(Model):
         return f"{self.placed_by.member_id} landmine on {self.word} for {self.value}"
 
     class Meta:
-        table = 'landmines_placed'
+        table = "landmines_placed"
 
 
 class LandminesProtects(Model):
-    protected_by = fields.ForeignKeyField('models.LandminesUserData', related_name='words_protected', on_delete=fields.CASCADE)
+    protected_by = fields.ForeignKeyField(
+        "models.LandminesUserData",
+        related_name="words_protected",
+        on_delete=fields.CASCADE,
+    )
     placed = fields.DatetimeField(auto_now_add=True)
     protect_count = fields.IntField(default=0)
     word = fields.CharField(max_length=50)
@@ -543,7 +601,7 @@ class LandminesProtects(Model):
         return f"{self.protected_by.member} protected word on {self.word}"
 
     class Meta:
-        table = 'landmines_protected'
+        table = "landmines_protected"
 
 
 async def get_word_protect_for(guild, word):
@@ -552,10 +610,11 @@ async def get_word_protect_for(guild, word):
     else:
         db_guild = guild
 
-    return await LandminesProtects \
-        .filter(word=word) \
-        .filter(protected_by__member__guild=db_guild) \
+    return (
+        await LandminesProtects.filter(word=word)
+        .filter(protected_by__member__guild=db_guild)
         .first()
+    )
 
 
 class UserInventory(Model):
@@ -595,7 +654,7 @@ class UserInventory(Model):
         return f"<Inventory user_id={self.user_id}>"
 
     class Meta:
-        table = 'inventories'
+        table = "inventories"
 
 
 class DiscordUser(Model):
@@ -622,12 +681,16 @@ class DiscordUser(Model):
     language = fields.CharField(6, default="en")
     first_use = fields.BooleanField(default=True)
 
-    access_level_override = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
+    access_level_override = fields.IntEnumField(
+        enum_type=AccessLevel, default=AccessLevel.DEFAULT
+    )
 
     boss_kills = fields.IntField(default=0)
 
     async def get_or_create_support_ticket(self) -> SupportTicket:
-        support_ticket: typing.Optional[SupportTicket] = await SupportTicket.filter(user=self, closed=False).first()
+        support_ticket: typing.Optional[SupportTicket] = await SupportTicket.filter(
+            user=self, closed=False
+        ).first()
 
         if not support_ticket:
             support_ticket = SupportTicket(user=self)
@@ -654,12 +717,12 @@ class Player(Model):
     id = fields.IntField(pk=True)
     first_seen = fields.DatetimeField(auto_now_add=True)
 
-    channel: fields.ForeignKeyRelation[DiscordChannel] = \
-        fields.ForeignKeyField('models.DiscordChannel',
-                               related_name="players")
-    member: fields.ForeignKeyRelation["DiscordMember"] = \
-        fields.ForeignKeyField('models.DiscordMember',
-                               related_name="players")
+    channel: fields.ForeignKeyRelation[DiscordChannel] = fields.ForeignKeyField(
+        "models.DiscordChannel", related_name="players"
+    )
+    member: fields.ForeignKeyRelation["DiscordMember"] = fields.ForeignKeyField(
+        "models.DiscordMember", related_name="players"
+    )
 
     prestige = fields.SmallIntField(default=0)
     prestige_last_daily = fields.DatetimeField(auto_now_add=True)
@@ -686,12 +749,14 @@ class Player(Model):
     # Weapon & Player status
     last_giveback = fields.DatetimeField(auto_now_add=True)
 
-    weapon_sabotaged_by: fields.ForeignKeyNullableRelation["Player"] = \
-        fields.ForeignKeyField('models.Player',
-                               related_name="sabotaged_weapons",
-                               null=True,
-                               on_delete=fields.SET_NULL
-                               )
+    weapon_sabotaged_by: fields.ForeignKeyNullableRelation[
+        "Player"
+    ] = fields.ForeignKeyField(
+        "models.Player",
+        related_name="sabotaged_weapons",
+        null=True,
+        on_delete=fields.SET_NULL,
+    )
 
     sabotaged_weapons: fields.ReverseRelation["Player"]
 
@@ -703,9 +768,20 @@ class Player(Model):
     resisted = DefaultDictJSONField()
     frightened = DefaultDictJSONField()
 
-    PRESTIGE_SAVED_FIELDS = {'id', 'first_seen', 'channel', 'channel_id', 'member', 'member_id', 'prestige',
-                             'prestige_last_daily', 'stored_achievements', 'sabotaged_weapons', 'experience',
-                             'givebacks'}
+    PRESTIGE_SAVED_FIELDS = {
+        "id",
+        "first_seen",
+        "channel",
+        "channel_id",
+        "member",
+        "member_id",
+        "prestige",
+        "prestige_last_daily",
+        "stored_achievements",
+        "sabotaged_weapons",
+        "experience",
+        "givebacks",
+    }
 
     async def do_prestige(self, bot, kept_exp):
         """
@@ -738,7 +814,12 @@ class Player(Model):
         await self.change_roles(bot)
 
     def serialize(self, serialize_fields=None):
-        DONT_SERIALIZE = {'weapon_sabotaged_by', 'sabotaged_weapons', 'channel', 'member'}
+        DONT_SERIALIZE = {
+            "weapon_sabotaged_by",
+            "sabotaged_weapons",
+            "channel",
+            "member",
+        }
         db_member: DiscordMember = self.member
         db_user: DiscordUser = db_member.user
 
@@ -770,9 +851,14 @@ class Player(Model):
 
     @property
     def real_reliability(self):
-        total_shots = self.shooting_stats["bullets_used"] + self.shooting_stats["shots_jamming_weapon"]
+        total_shots = (
+            self.shooting_stats["bullets_used"]
+            + self.shooting_stats["shots_jamming_weapon"]
+        )
         if total_shots:
-            return 100 - round(self.shooting_stats["shots_jamming_weapon"] / total_shots * 100, 2)
+            return 100 - round(
+                self.shooting_stats["shots_jamming_weapon"] / total_shots * 100, 2
+            )
         else:
             return 0
 
@@ -787,17 +873,17 @@ class Player(Model):
     @property
     def computed_achievements(self):
         return {
-            'murderer': self.shooting_stats.get('murders', 0) >= 1,
-            'big_spender': self.spent_experience >= 2000,
-            'first_week': self.givebacks >= 7,
-            'first_month': self.givebacks >= 30,
-            'first_year': self.givebacks >= 365,
-            'i_dont_want_bullets': self.found_items.get('left_bullet', 0) >= 1,
-            'baby_killer': self.killed.get('baby', 0) >= 5,
-            'maths': self.killed.get('prof', 0) >= 5,
-            'brains': self.shooting_stats.get('brains_eaten', 0) >= 1,
-            'sentry_gun': self.shooting_stats.get('bullets_used', 0) >= 1000,
-            'homing_killed': self.shooting_stats.get('homing_kills', 0) >= 1,
+            "murderer": self.shooting_stats.get("murders", 0) >= 1,
+            "big_spender": self.spent_experience >= 2000,
+            "first_week": self.givebacks >= 7,
+            "first_month": self.givebacks >= 30,
+            "first_year": self.givebacks >= 365,
+            "i_dont_want_bullets": self.found_items.get("left_bullet", 0) >= 1,
+            "baby_killer": self.killed.get("baby", 0) >= 5,
+            "maths": self.killed.get("prof", 0) >= 5,
+            "brains": self.shooting_stats.get("brains_eaten", 0) >= 1,
+            "sentry_gun": self.shooting_stats.get("bullets_used", 0) >= 1000,
+            "homing_killed": self.shooting_stats.get("homing_kills", 0) >= 1,
         }
 
     @property
@@ -808,16 +894,16 @@ class Player(Model):
         }
 
     async def get_bonus_experience(self, given_experience):
-        if self.is_powerup_active('clover'):
-            clover_exp = self.active_powerups['clover_exp']
+        if self.is_powerup_active("clover"):
+            clover_exp = self.active_powerups["clover_exp"]
             if self.get_current_coat_color() == Coats.DARK_GREEN:
                 clover_exp += 1
             return clover_exp
         return 0
 
     def get_current_coat_color(self) -> typing.Optional[Coats]:
-        if self.is_powerup_active('coat'):
-            color_name = self.active_powerups.get('coat_color', None)
+        if self.is_powerup_active("coat"):
+            color_name = self.active_powerups.get("coat_color", None)
             if color_name:
                 return Coats[color_name]
             else:
@@ -830,7 +916,7 @@ class Player(Model):
         li = get_level_info(self.experience).copy()
 
         if self.prestige >= 8:
-            li['bullets'] *= 2
+            li["bullets"] *= 2
 
         return li
 
@@ -841,7 +927,7 @@ class Player(Model):
             self.last_giveback = now
             self.givebacks += 1
             self.magazines = level_info["magazines"]
-            self.active_powerups['confiscated'] = 0
+            self.active_powerups["confiscated"] = 0
             await self.save()
 
     async def edit_experience_with_levelups(self, ctx, delta, bot=None):
@@ -849,7 +935,7 @@ class Player(Model):
         self.experience += delta
         new_level_info = self.level_info()
 
-        if old_level_info['level'] == new_level_info['level']:
+        if old_level_info["level"] == new_level_info["level"]:
             return
         else:
             # Send level up embed.
@@ -861,32 +947,50 @@ class Player(Model):
 
                 def _(message):
                     return translate(message, language_code)
+
             else:
                 _ = await ctx.get_translate_function()
                 bot = ctx.bot
 
             e = discord.Embed()
-            e.add_field(name=_("Experience"), value=f"{self.experience - delta} -> {self.experience}", inline=False)
-            e.add_field(name=_("Level"),
-                        value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}",
-                        inline=False)
+            e.add_field(
+                name=_("Experience"),
+                value=f"{self.experience - delta} -> {self.experience}",
+                inline=False,
+            )
+            e.add_field(
+                name=_("Level"),
+                value=f"({old_level_info['level']}) {_(old_level_info['name'])} -> ({new_level_info['level']}) {_(new_level_info['name'])}",
+                inline=False,
+            )
 
-            if old_level_info['accuracy'] != new_level_info['accuracy']:
-                e.add_field(name=_("Accuracy"), value=f"{old_level_info['accuracy']}% -> {new_level_info['accuracy']}%",
-                            inline=False)
+            if old_level_info["accuracy"] != new_level_info["accuracy"]:
+                e.add_field(
+                    name=_("Accuracy"),
+                    value=f"{old_level_info['accuracy']}% -> {new_level_info['accuracy']}%",
+                    inline=False,
+                )
 
-            if old_level_info['reliability'] != new_level_info['reliability']:
-                e.add_field(name=_("Reliability"),
-                            value=f"{old_level_info['reliability']}% -> {new_level_info['reliability']}%", inline=False)
+            if old_level_info["reliability"] != new_level_info["reliability"]:
+                e.add_field(
+                    name=_("Reliability"),
+                    value=f"{old_level_info['reliability']}% -> {new_level_info['reliability']}%",
+                    inline=False,
+                )
 
-            if old_level_info['bullets'] != new_level_info['bullets']:
-                e.add_field(name=_("Bullets"), value=f"{old_level_info['bullets']} -> {new_level_info['bullets']}")
+            if old_level_info["bullets"] != new_level_info["bullets"]:
+                e.add_field(
+                    name=_("Bullets"),
+                    value=f"{old_level_info['bullets']} -> {new_level_info['bullets']}",
+                )
 
-            if old_level_info['magazines'] != new_level_info['magazines']:
-                e.add_field(name=_("Magazines"),
-                            value=f"{old_level_info['magazines']} -> {new_level_info['magazines']}")
+            if old_level_info["magazines"] != new_level_info["magazines"]:
+                e.add_field(
+                    name=_("Magazines"),
+                    value=f"{old_level_info['magazines']} -> {new_level_info['magazines']}",
+                )
 
-            if old_level_info['level'] < new_level_info['level']:
+            if old_level_info["level"] < new_level_info["level"]:
                 # Level UP
                 e.title = _("You leveled up!")
                 e.color = discord.Colour.green()
@@ -900,7 +1004,7 @@ class Player(Model):
 
     async def change_roles(self, bot):
         new_level_info = self.level_info()
-        new_level = new_level_info['level']
+        new_level = new_level_info["level"]
 
         db_member: DiscordMember = await self.member
         db_channel: DiscordChannel = await self.channel
@@ -910,7 +1014,9 @@ class Player(Model):
 
         # Now is time to give roles.
         roles_mapping: typing.Dict[str, str] = db_channel.levels_to_roles_ids_mapping
-        prestige_mapping: typing.Dict[str, str] = db_channel.prestige_to_roles_ids_mapping
+        prestige_mapping: typing.Dict[
+            str, str
+        ] = db_channel.prestige_to_roles_ids_mapping
         #             (int-like) level nb, discord role ID
 
         if not len(roles_mapping) and not len(prestige_mapping):
@@ -920,8 +1026,11 @@ class Player(Model):
             member = await guild.fetch_member(db_user.discord_id)
         except discord.NotFound:
             # Member left.
-            bot.logger.info(f"Can't edit {db_user.discord_id} roles for level change: user NotFound.", guild=guild,
-                            channel=channel)
+            bot.logger.info(
+                f"Can't edit {db_user.discord_id} roles for level change: user NotFound.",
+                guild=guild,
+                channel=channel,
+            )
             return
 
         managed_ids = list(roles_mapping.values())
@@ -934,7 +1043,9 @@ class Player(Model):
 
         level_role = None
 
-        for level_id, role_id in sorted(roles_mapping.items(), key=lambda kv: -int(kv[0])):
+        for level_id, role_id in sorted(
+            roles_mapping.items(), key=lambda kv: -int(kv[0])
+        ):
             # Top level first
             if int(level_id) <= new_level:
                 level_role = guild.get_role(int(role_id))
@@ -943,7 +1054,9 @@ class Player(Model):
                     changed = True
                     break
 
-        for prestige_id, role_id in sorted(prestige_mapping.items(), key=lambda kv: -int(kv[0])):
+        for prestige_id, role_id in sorted(
+            prestige_mapping.items(), key=lambda kv: -int(kv[0])
+        ):
             if int(prestige_id) <= self.prestige:
                 role = guild.get_role(int(role_id))
                 if role:
@@ -954,18 +1067,31 @@ class Player(Model):
 
         if changed:
             try:
-                bot.logger.info(f"Editing {member.name} ({member.id}) roles for level change.", guild=guild,
-                                channel=channel)
+                bot.logger.info(
+                    f"Editing {member.name} ({member.id}) roles for level change.",
+                    guild=guild,
+                    channel=channel,
+                )
 
-                bot.logger.debug(f"Roles transition for {member.id}: {member_roles} -> {new_member_roles}", guild=guild, channel=channel)
+                bot.logger.debug(
+                    f"Roles transition for {member.id}: {member_roles} -> {new_member_roles}",
+                    guild=guild,
+                    channel=channel,
+                )
                 await member.edit(roles=new_member_roles, reason="Level change")
             except discord.Forbidden as e:
                 # Can't set the new roles.
-                bot.logger.warning(f"Can't set {member.id} roles on {guild.id}: Forbidden - {e}", guild=guild,
-                                   channel=channel)
+                bot.logger.warning(
+                    f"Can't set {member.id} roles on {guild.id}: Forbidden - {e}",
+                    guild=guild,
+                    channel=channel,
+                )
         else:
-            bot.logger.debug(f"Not editing {member.name} ({member.id}) roles for level change, no change.", guild=guild,
-                             channel=channel)
+            bot.logger.debug(
+                f"Not editing {member.name} ({member.id}) roles for level change, no change.",
+                guild=guild,
+                channel=channel,
+            )
 
     def is_powerup_active(self, powerup):
         if self.prestige >= 1 and powerup == "sunglasses":
@@ -976,8 +1102,16 @@ class Player(Model):
             return True
         elif powerup in ["coat_color", "clover_exp"]:
             return False
-        elif powerup in ["sight", "detector", "sand", "mirror", "homing_bullets", "dead", "confiscated",
-                         "jammed"]:
+        elif powerup in [
+            "sight",
+            "detector",
+            "sand",
+            "mirror",
+            "homing_bullets",
+            "dead",
+            "confiscated",
+            "jammed",
+        ]:
             return self.active_powerups[powerup] > 0
         else:
             now = time.time()
@@ -991,19 +1125,21 @@ class Player(Model):
 
 
 class DiscordMember(Model):
-    landmines: fields.ReverseRelation['LandminesUserData']
+    landmines: fields.ReverseRelation["LandminesUserData"]
 
     id = fields.IntField(pk=True)
-    guild: fields.ForeignKeyRelation[DiscordGuild] = \
-        fields.ForeignKeyField('models.DiscordGuild',
-                               related_name="members")
-    user: fields.ForeignKeyRelation[DiscordUser] = \
-        fields.ForeignKeyField('models.DiscordUser',
-                               related_name="members")
+    guild: fields.ForeignKeyRelation[DiscordGuild] = fields.ForeignKeyField(
+        "models.DiscordGuild", related_name="members"
+    )
+    user: fields.ForeignKeyRelation[DiscordUser] = fields.ForeignKeyField(
+        "models.DiscordUser", related_name="members"
+    )
 
     players: fields.ReverseRelation["Player"]
 
-    access_level = fields.IntEnumField(enum_type=AccessLevel, default=AccessLevel.DEFAULT)
+    access_level = fields.IntEnumField(
+        enum_type=AccessLevel, default=AccessLevel.DEFAULT
+    )
 
     def get_access_level(self):
         override = self.user.access_level_override
@@ -1023,108 +1159,128 @@ class BotList(Model):
     votes: fields.ReverseRelation["Vote"]
 
     # **Generic Data**
-    key = fields.CharField(help_text="The unique key to recognise the bot list",
-                           max_length=50,
-                           pk=True)
+    key = fields.CharField(
+        help_text="The unique key to recognise the bot list", max_length=50, pk=True
+    )
 
-    name = fields.CharField(help_text="Name of the bot list",
-                            max_length=128)
+    name = fields.CharField(help_text="Name of the bot list", max_length=128)
 
     bot_url = fields.TextField(help_text="URL for the main bot page")
 
-    notes = fields.TextField(help_text="Informations about this bot list",
-                             blank=True)
+    notes = fields.TextField(help_text="Informations about this bot list", blank=True)
 
-    auth = fields.TextField(help_text="Token used to authenticate requests to/from the bot")
+    auth = fields.TextField(
+        help_text="Token used to authenticate requests to/from the bot"
+    )
 
     # **Votes**
-    can_vote = fields.BooleanField(help_text="Can people vote (more than once) on that list ?",
-                                   default=True)
+    can_vote = fields.BooleanField(
+        help_text="Can people vote (more than once) on that list ?", default=True
+    )
 
     vote_url = fields.TextField(help_text="URL for an user to vote")
 
-    vote_every = fields.TimeDeltaField(help_text="How often can users vote ?",
-                                       null=True)
+    vote_every = fields.TimeDeltaField(
+        help_text="How often can users vote ?", null=True
+    )
 
-    check_vote_url = fields.TextField(help_text="URL the bot can use to check if an user voted recently")
+    check_vote_url = fields.TextField(
+        help_text="URL the bot can use to check if an user voted recently"
+    )
 
-    check_vote_key = fields.CharField(help_text="Key in the returned JSON to check for presence of vote",
-                                      default="voted",
-                                      max_length=128)
+    check_vote_key = fields.CharField(
+        help_text="Key in the returned JSON to check for presence of vote",
+        default="voted",
+        max_length=128,
+    )
 
     check_vote_negate = fields.BooleanField(
         help_text="Does the boolean says if the user has voted (True) or if they can vote (False) ?",
-        default=True)
+        default=True,
+    )
 
-    webhook_handler = fields.CharField(help_text="What is the function that'll receive the request from the vote hooks",
-                                       choices=(("generic", "generic"),
-                                                ("top.gg", "top.gg"),
-                                                ("None", "None")),
-                                       default="generic",
-                                       max_length=20)
+    webhook_handler = fields.CharField(
+        help_text="What is the function that'll receive the request from the vote hooks",
+        choices=(("generic", "generic"), ("top.gg", "top.gg"), ("None", "None")),
+        default="generic",
+        max_length=20,
+    )
 
     webhook_authorization_header = fields.CharField(
         help_text="Name of the header used to authenticate webhooks requests",
         default="Authorization",
-        max_length=20)
+        max_length=20,
+    )
 
-    webhook_user_id_json_field = fields.CharField(help_text="Key that gives the user ID in the provided JSON",
-                                                  default="id",
-                                                  max_length=20)
+    webhook_user_id_json_field = fields.CharField(
+        help_text="Key that gives the user ID in the provided JSON",
+        default="id",
+        max_length=20,
+    )
 
     webhook_auth = fields.TextField(
         help_text="Secret used for authentication of the webhooks messages if not the same the auth token",
-        blank=True)
+        blank=True,
+    )
 
     # **Statistics**
 
-    post_stats_method = fields.CharField(help_text="What HTTP method should be used to send the stats",
-                                         choices=(("POST", "POST"),
-                                                  ("PATCH", "PATCH"),
-                                                  ("None", "None")),
-                                         default="POST",
-                                         max_length=10)
+    post_stats_method = fields.CharField(
+        help_text="What HTTP method should be used to send the stats",
+        choices=(("POST", "POST"), ("PATCH", "PATCH"), ("None", "None")),
+        default="POST",
+        max_length=10,
+    )
 
     post_stats_url = fields.TextField(help_text="Endpoint that will receive statistics")
 
-    post_stats_server_count_key = fields.CharField(help_text="Name of the server count key in the statistics JSON",
-                                                   default="server_count",
-                                                   blank=True,
-                                                   max_length=128)
+    post_stats_server_count_key = fields.CharField(
+        help_text="Name of the server count key in the statistics JSON",
+        default="server_count",
+        blank=True,
+        max_length=128,
+    )
 
-    post_stats_shard_count_key = fields.CharField(help_text="Name of the shard count key in the statistics JSON",
-                                                  default="shard_count",
-                                                  blank=True,
-                                                  max_length=128)
+    post_stats_shard_count_key = fields.CharField(
+        help_text="Name of the shard count key in the statistics JSON",
+        default="shard_count",
+        blank=True,
+        max_length=128,
+    )
 
     # **Others**
 
-    bot_verified = fields.BooleanField(help_text="Whether the bot was verified by the bot list staff",
-                                       default=False)
+    bot_verified = fields.BooleanField(
+        help_text="Whether the bot was verified by the bot list staff", default=False
+    )
 
-    bot_certified = fields.BooleanField(help_text="Whether the bot was certified on that bot list",
-                                        default=False)
+    bot_certified = fields.BooleanField(
+        help_text="Whether the bot was certified on that bot list", default=False
+    )
 
-    embed_code = fields.TextField(help_text="Code to show this bot list embed. This HTML won't be escaped.",
-                                  blank=True)
+    embed_code = fields.TextField(
+        help_text="Code to show this bot list embed. This HTML won't be escaped.",
+        blank=True,
+    )
 
 
 class Vote(Model):
-    user: fields.ForeignKeyRelation[DiscordUser] = \
-        fields.ForeignKeyField('models.DiscordUser',
-                               related_name="votes")
+    user: fields.ForeignKeyRelation[DiscordUser] = fields.ForeignKeyField(
+        "models.DiscordUser", related_name="votes"
+    )
 
-    bot_list: fields.ForeignKeyRelation[BotList] = \
-        fields.ForeignKeyField('models.BotList', related_name="votes")
+    bot_list: fields.ForeignKeyRelation[BotList] = fields.ForeignKeyField(
+        "models.BotList", related_name="votes"
+    )
 
     at = fields.DatetimeField(auto_now_add=True)
     multiplicator = fields.IntField(default=1)
 
 
 class Tag(Model):
-    owner: fields.ForeignKeyRelation[DiscordUser] = \
-        fields.ForeignKeyField('models.DiscordUser',
-                               related_name='tags')
+    owner: fields.ForeignKeyRelation[DiscordUser] = fields.ForeignKeyField(
+        "models.DiscordUser", related_name="tags"
+    )
 
     aliases: fields.ReverseRelation["TagAlias"]
     used_in_tickets: fields.ReverseRelation["SupportTicket"]
@@ -1142,18 +1298,22 @@ class Tag(Model):
 
     @property
     def pages(self):
-        return [page.strip(" \n") for page in "\n".join(self.content.splitlines()).split('\n\n---')]
+        return [
+            page.strip(" \n")
+            for page in "\n".join(self.content.splitlines()).split("\n\n---")
+        ]
 
     def __str__(self):
         return f"{self.name}"
 
 
 class TagAlias(Model):
-    owner: fields.ForeignKeyRelation[DiscordUser] = \
-        fields.ForeignKeyField('models.DiscordUser',
-                               related_name='tags_aliases')
-    tag: fields.ForeignKeyRelation[Tag] = \
-        fields.ForeignKeyField('models.Tag', related_name='aliases')
+    owner: fields.ForeignKeyRelation[DiscordUser] = fields.ForeignKeyField(
+        "models.DiscordUser", related_name="tags_aliases"
+    )
+    tag: fields.ForeignKeyRelation[Tag] = fields.ForeignKeyField(
+        "models.Tag", related_name="aliases"
+    )
 
     uses = fields.IntField(default=0)
 
@@ -1166,7 +1326,9 @@ class TagAlias(Model):
 class BotState(Model):
     datetime = fields.DatetimeField(auto_now_add=True)
 
-    measure_interval = fields.IntField()  # The event stats are (usually) based on a 10 minutes interval
+    measure_interval = (
+        fields.IntField()
+    )  # The event stats are (usually) based on a 10 minutes interval
     ws_send = fields.IntField()
     ws_recv = fields.IntField()
     messages = fields.IntField()
@@ -1182,7 +1344,7 @@ class BotState(Model):
     ws_latency = fields.FloatField()  # miliseconds
 
     class Meta:
-        table = 'botstate'
+        table = "botstate"
 
 
 async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
@@ -1194,7 +1356,9 @@ async def get_tag(name, increment_uses=True) -> typing.Optional[Tag]:
         return tag
     else:
         # Search for an alias
-        alias: typing.Optional[TagAlias] = await TagAlias.filter(name=name).prefetch_related("tag").first()
+        alias: typing.Optional[TagAlias] = (
+            await TagAlias.filter(name=name).prefetch_related("tag").first()
+        )
         if alias:
             tag: Tag = alias.tag
             if increment_uses:
@@ -1214,18 +1378,25 @@ async def get_from_db(discord_object, as_user=False):
         if isinstance(discord_object, discord.Guild):
             db_obj = await DiscordGuild.filter(discord_id=discord_object.id).first()
             if not db_obj:
-                db_obj = DiscordGuild(discord_id=discord_object.id, name=discord_object.name)
+                db_obj = DiscordGuild(
+                    discord_id=discord_object.id, name=discord_object.name
+                )
                 await db_obj.save()
             if discord_object.name != db_obj.name:
                 db_obj.name = discord_object.name
                 await db_obj.save()
 
             return db_obj
-        elif isinstance(discord_object, discord.TextChannel) or isinstance(discord_object, discord.VoiceChannel):
+        elif isinstance(discord_object, discord.TextChannel) or isinstance(
+            discord_object, discord.VoiceChannel
+        ):
             db_obj = await DiscordChannel.filter(discord_id=discord_object.id).first()
             if not db_obj:
-                db_obj = DiscordChannel(discord_id=discord_object.id, name=discord_object.name,
-                                        guild=await get_from_db(discord_object.guild))
+                db_obj = DiscordChannel(
+                    discord_id=discord_object.id,
+                    name=discord_object.name,
+                    guild=await get_from_db(discord_object.guild),
+                )
                 await db_obj.save()
 
             if discord_object.name != db_obj.name:
@@ -1234,22 +1405,39 @@ async def get_from_db(discord_object, as_user=False):
 
             return db_obj
         elif isinstance(discord_object, discord.Member) and not as_user:
-            db_obj = await DiscordMember.filter(user__discord_id=discord_object.id,
-                                                guild__discord_id=discord_object.guild.id).first().prefetch_related(
-                "user", "guild")
+            db_obj = (
+                await DiscordMember.filter(
+                    user__discord_id=discord_object.id,
+                    guild__discord_id=discord_object.guild.id,
+                )
+                .first()
+                .prefetch_related("user", "guild")
+            )
             if not db_obj:
-                db_obj = DiscordMember(guild=await get_from_db(discord_object.guild),
-                                       user=await get_from_db(discord_object, as_user=True))
+                db_obj = DiscordMember(
+                    guild=await get_from_db(discord_object.guild),
+                    user=await get_from_db(discord_object, as_user=True),
+                )
                 await db_obj.save()
             return db_obj
-        elif isinstance(discord_object, discord.User) or isinstance(discord_object, discord.ClientUser) or (isinstance(discord_object, discord.Member) and as_user):
+        elif (
+            isinstance(discord_object, discord.User)
+            or isinstance(discord_object, discord.ClientUser)
+            or (isinstance(discord_object, discord.Member) and as_user)
+        ):
             db_obj = await DiscordUser.filter(discord_id=discord_object.id).first()
             if not db_obj:
-                db_obj = DiscordUser(discord_id=discord_object.id, name=discord_object.name,
-                                     discriminator=discord_object.discriminator)
+                db_obj = DiscordUser(
+                    discord_id=discord_object.id,
+                    name=discord_object.name,
+                    discriminator=discord_object.discriminator,
+                )
                 await db_obj.save()
 
-            if discord_object.name != db_obj.name or discord_object.discriminator != db_obj.discriminator:
+            if (
+                discord_object.name != db_obj.name
+                or discord_object.discriminator != db_obj.discriminator
+            ):
                 db_obj.name = discord_object.name
                 db_obj.discriminator = discord_object.discriminator
                 await db_obj.save()
@@ -1259,7 +1447,9 @@ async def get_from_db(discord_object, as_user=False):
             return await get_from_db(discord_object.parent)
         else:
             obj_type_name = type(discord_object).__name__
-            print(f"Unknown object type passed to get_from_db <type:{obj_type_name}>, <obj:{discord_object}>")
+            print(
+                f"Unknown object type passed to get_from_db <type:{obj_type_name}>, <obj:{discord_object}>"
+            )
 
 
 async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextChannel]):
@@ -1268,15 +1458,27 @@ async def get_random_player(channel: typing.Union[DiscordChannel, discord.TextCh
     else:
         db_channel = channel
 
-    return random.choice(await Player.filter(channel=db_channel).prefetch_related("member__user"))
+    return random.choice(
+        await Player.filter(channel=db_channel).prefetch_related("member__user")
+    )
 
 
-async def get_player(member: discord.Member, channel: discord.TextChannel, giveback=False):
+async def get_player(
+    member: discord.Member, channel: discord.TextChannel, giveback=False
+):
     async with DB_LOCKS[(member, channel)]:
-        db_obj = await Player.filter(member__user__discord_id=member.id,
-                                     channel__discord_id=channel.id).prefetch_related('member__user').first()
+        db_obj = (
+            await Player.filter(
+                member__user__discord_id=member.id, channel__discord_id=channel.id
+            )
+            .prefetch_related("member__user")
+            .first()
+        )
         if not db_obj:
-            db_obj = Player(channel=await get_from_db(channel), member=await get_from_db(member, as_user=False))
+            db_obj = Player(
+                channel=await get_from_db(channel),
+                member=await get_from_db(member, as_user=False),
+            )
             await db_obj.save()
         elif giveback:
             await db_obj.maybe_giveback()
@@ -1284,31 +1486,43 @@ async def get_player(member: discord.Member, channel: discord.TextChannel, giveb
         return db_obj
 
 
-async def get_user_inventory(user: typing.Union[DiscordUser, discord.User, discord.Member]) -> UserInventory:
+async def get_user_inventory(
+    user: typing.Union[DiscordUser, discord.User, discord.Member]
+) -> UserInventory:
     if not isinstance(user, DiscordUser):
         db_user = await get_from_db(user, as_user=True)
     else:
         db_user = user
 
     async with DB_LOCKS[(db_user,)]:
-        inventory, created = await UserInventory.get_or_create(user_id=db_user.discord_id)
+        inventory, created = await UserInventory.get_or_create(
+            user_id=db_user.discord_id
+        )
 
     return inventory
 
 
-async def get_member_landminesdata(member: typing.Union[DiscordMember, discord.Member]) -> LandminesUserData:
+async def get_member_landminesdata(
+    member: typing.Union[DiscordMember, discord.Member]
+) -> LandminesUserData:
     if not isinstance(member, DiscordMember):
         db_member = await get_from_db(member)
     else:
         db_member = member
 
     async with DB_LOCKS[(db_member,)]:
-        eventdata, created = await LandminesUserData.get_or_create(member_id=db_member.pk)
+        eventdata, created = await LandminesUserData.get_or_create(
+            member_id=db_member.pk
+        )
 
     return eventdata
 
 
-async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message_content: str, as_list:bool = False) -> typing.Union[typing.Optional[LandminesPlaced], typing.List[LandminesPlaced]]:
+async def get_landmine(
+    guild: typing.Union[DiscordGuild, discord.Guild],
+    message_content: str,
+    as_list: bool = False,
+) -> typing.Union[typing.Optional[LandminesPlaced], typing.List[LandminesPlaced]]:
     if not isinstance(guild, DiscordGuild):
         db_guild = await get_from_db(guild)
     else:
@@ -1316,12 +1530,12 @@ async def get_landmine(guild: typing.Union[DiscordGuild, discord.Guild], message
 
     words = get_valid_words(message_content)
     if words:
-        qs = LandminesPlaced \
-            .filter(tripped=False, disarmed=False) \
-            .order_by('placed') \
-            .filter(word__in=words) \
-            .filter(placed_by__member__guild=db_guild) \
-
+        qs = (
+            LandminesPlaced.filter(tripped=False, disarmed=False)
+            .order_by("placed")
+            .filter(word__in=words)
+            .filter(placed_by__member__guild=db_guild)
+        )
         if as_list:
             return await qs
         else:
@@ -1340,25 +1554,25 @@ async def get_enabled_channels():
 
 async def init_db_connection(config, create_dbs=False):
     tortoise_config = {
-        'connections': {
+        "connections": {
             # Dict format for connection
-            'default': {
-                'engine': 'tortoise.backends.asyncpg',
-                'credentials': {
-                    'host': config['host'],
-                    'port': config['port'],
-                    'user': config['user'],
-                    'password': config['password'],
-                    'database': config['database'],
-                }
+            "default": {
+                "engine": "tortoise.backends.asyncpg",
+                "credentials": {
+                    "host": config["host"],
+                    "port": config["port"],
+                    "user": config["user"],
+                    "password": config["password"],
+                    "database": config["database"],
+                },
             },
         },
-        'apps': {
-            'models': {
-                'models': ["utils.models", "aerich.models"],
-                'default_connection': 'default',
+        "apps": {
+            "models": {
+                "models": ["utils.models", "aerich.models"],
+                "default_connection": "default",
             }
-        }
+        },
     }
 
     await Tortoise.init(tortoise_config)

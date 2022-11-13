@@ -8,9 +8,8 @@ from PIL import Image
 
 from utils.config import load_config
 
-
-config = load_config()['random_ducks']
-random_ducks_assets = pathlib.Path(config['assets_path'])
+config = load_config()["random_ducks"]
+random_ducks_assets = pathlib.Path(config["assets_path"])
 
 assert random_ducks_assets.exists()
 
@@ -24,7 +23,9 @@ def get_random_file_from_directory(directory) -> pathlib.Path:
     return file_path
 
 
-def create_random_duck(artist, with_background=True) -> tuple[Image, list[tuple[str, str]]]:
+def create_random_duck(
+    artist, with_background=True
+) -> tuple[Image, list[tuple[str, str]]]:
     base_directory = random_ducks_assets / artist
     image_gen = None
     debug = []
@@ -66,5 +67,3 @@ async def get_random_duck_file(bot, artist="Calgeka", with_background=True):
     file = discord.File(filename="random_duck.png", fp=buffer)
 
     return file, debug
-
-

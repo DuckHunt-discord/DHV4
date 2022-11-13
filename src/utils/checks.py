@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 from utils.ctx_class import MyContext
-from utils.models import get_from_db, AccessLevel
+from utils.models import AccessLevel, get_from_db
 
 
 class NotInServer(commands.CheckFailure):
@@ -63,9 +63,13 @@ def needs_access_level(required_access):
             elif access >= AccessLevel.BANNED and required_access <= AccessLevel.ADMIN:
                 if ctx.author_permissions().administrator:
                     return True  # Override permissions for administrators
-                raise AccessTooLow(current_access=access, required_access=required_access)
+                raise AccessTooLow(
+                    current_access=access, required_access=required_access
+                )
             else:
-                raise AccessTooLow(current_access=access, required_access=required_access)
+                raise AccessTooLow(
+                    current_access=access, required_access=required_access
+                )
 
     predicate.access = required_access
 
@@ -97,4 +101,3 @@ def landmines_commands_enabled():
 
     # noinspection PyTypeChecker
     return commands.check(predictate)
-

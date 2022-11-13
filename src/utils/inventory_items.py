@@ -6,7 +6,13 @@ import discord
 
 from utils.ctx_class import MyContext
 from utils.ducks import spawn_random_weighted_duck
-from utils.models import UserInventory, DiscordUser, get_user_inventory, get_from_db, get_player
+from utils.models import (
+    DiscordUser,
+    UserInventory,
+    get_from_db,
+    get_player,
+    get_user_inventory,
+)
 
 
 class InvalidUsesCount(Exception):
@@ -22,6 +28,7 @@ def _(s):
 
 
 # Abstract base classes
+
 
 class Item(abc.ABC):
     name: str = ""
@@ -58,13 +65,21 @@ class Item(abc.ABC):
         """
         Adds (one use of) the item to an inventory. Doesn't save the given inventory.
         """
-        setattr(self.inventory, self.db_name + "_left", getattr(self.inventory, self.db_name + "_left") + self.uses)
+        setattr(
+            self.inventory,
+            self.db_name + "_left",
+            getattr(self.inventory, self.db_name + "_left") + self.uses,
+        )
 
     async def remove_from_inventory(self):
         """
         Removes (one use of) the item from an inventory. Doesn't save the given inventory.
         """
-        setattr(self.inventory, self.db_name + "_left", getattr(self.inventory, self.db_name + "_left") - self.uses)
+        setattr(
+            self.inventory,
+            self.db_name + "_left",
+            getattr(self.inventory, self.db_name + "_left") - self.uses,
+        )
 
     async def delete_from_inventory(self):
         """
@@ -73,8 +88,16 @@ class Item(abc.ABC):
         setattr(self.inventory, self.db_name + "_left", 0)
 
     @abc.abstractmethod
-    async def use_item(self, ctx: MyContext, *,
-                       db_user=None, db_guild=None, db_channel=None, db_member=None, db_player=None):
+    async def use_item(
+        self,
+        ctx: MyContext,
+        *,
+        db_user=None,
+        db_guild=None,
+        db_channel=None,
+        db_member=None,
+        db_player=None,
+    ):
         """
         Use the given item in a given context channel. Accept db_* to avoid duplicate queries,
         and to save the objects.
@@ -83,7 +106,11 @@ class Item(abc.ABC):
         await self.inventory.save()
 
     @classmethod
-    async def give_to(cls, user: typing.Union[UserInventory, DiscordUser, discord.User, discord.Member], **kwargs):
+    async def give_to(
+        cls,
+        user: typing.Union[UserInventory, DiscordUser, discord.User, discord.Member],
+        **kwargs,
+    ):
         """
         Convenience method to give the item to a user
         """
@@ -97,7 +124,15 @@ class Item(abc.ABC):
         await inventory.save()
 
     @classmethod
-    async def use_by(cls, ctx: MyContext, user: typing.Union[UserInventory, DiscordUser, discord.User, discord.Member] = None, uses: int = 1, **kwargs):
+    async def use_by(
+        cls,
+        ctx: MyContext,
+        user: typing.Union[
+            UserInventory, DiscordUser, discord.User, discord.Member
+        ] = None,
+        uses: int = 1,
+        **kwargs,
+    ):
         """
         Convenience method to make a user use the item
         """
@@ -123,7 +158,9 @@ class Lootbox(Item):
     async def get_items_to_give(self) -> typing.List[Item]:
         given = []
         for ItemCls, luck, uses in self.items_inside:
-            uses = sum([int(random.randint(0, 99) < luck) for i in range(uses * self.uses)])
+            uses = sum(
+                [int(random.randint(0, 99) < luck) for i in range(uses * self.uses)]
+            )
 
             if uses != 0:
                 given.append(ItemCls(self.inventory, uses=uses))
@@ -136,7 +173,7 @@ class Lootbox(Item):
         and to save the objects.
         """
         _ = await ctx.get_translate_function(user_language=True)
-        embed = discord.Embed(title=_('Lootbox opened'))
+        embed = discord.Embed(title=_("Lootbox opened"))
         description = []
 
         items = await self.get_items_to_give()
@@ -175,13 +212,13 @@ class VipCard(Item):
         db_guild = db_guild or await get_from_db(ctx.guild)
 
         if db_guild.vip:
-            await ctx.send(_('❌ {guild.name} is already VIP.', guild=ctx.guild))
+            await ctx.send(_("❌ {guild.name} is already VIP.", guild=ctx.guild))
             return False
 
         await super().use_item(ctx, db_guild=db_guild, **kwargs)
         db_guild.vip = True
         await db_guild.save()
-        await ctx.send(_('✨ {guild.name} is now VIP! Thanks.', guild=ctx.guild))
+        await ctx.send(_("✨ {guild.name} is now VIP! Thanks.", guild=ctx.guild))
 
 
 class Book(Item):
@@ -200,7 +237,12 @@ class Book(Item):
 
         await db_player.edit_experience_with_levelups(ctx, amount)
         await db_player.save()
-        await ctx.send(_('✨ You learned a lot, adding {amount} experience points to your profile.', amount=amount))
+        await ctx.send(
+            _(
+                "✨ You learned a lot, adding {amount} experience points to your profile.",
+                amount=amount,
+            )
+        )
 
 
 class ForeignBook(Book):
@@ -223,7 +265,9 @@ class Encyclopedia(Book):
 
 class Bullet(Item):
     name: str = _("A bullet")
-    description: str = _("This is just a normal bullet, but it might help you to get that special achievement.")
+    description: str = _(
+        "This is just a normal bullet, but it might help you to get that special achievement."
+    )
     _shortcode: str = "bullet"
 
     db_name: str = "item_one_bullet"
@@ -235,7 +279,7 @@ class Bullet(Item):
 
         db_player.bullets += self.uses
         await db_player.save()
-        await ctx.send(_('✨ Oh, is this a bullet ?'))
+        await ctx.send(_("✨ Oh, is this a bullet ?"))
 
 
 class Egg(Item):
@@ -253,9 +297,11 @@ class Egg(Item):
         await super().use_item(ctx, db_channel=db_channel, **kwargs)
 
         for i in range(self.uses * 2):
-            await spawn_random_weighted_duck(ctx.bot, ctx.channel, db_channel=db_channel)
+            await spawn_random_weighted_duck(
+                ctx.bot, ctx.channel, db_channel=db_channel
+            )
 
-        await ctx.send(_('✨ Oh look, ducks! Ducks are everywhere!'))
+        await ctx.send(_("✨ Oh look, ducks! Ducks are everywhere!"))
 
 
 class RefillMagazines(Item):
@@ -276,16 +322,16 @@ class RefillMagazines(Item):
         level_info = db_player.level_info()
 
         mags, bullets = db_player.magazines, db_player.bullets
-        new_mags, new_bullets = level_info['magazines'], level_info['bullets']
+        new_mags, new_bullets = level_info["magazines"], level_info["bullets"]
 
         if mags < new_mags or bullets < new_bullets:
             await super().use_item(ctx, db_player=db_player, **kwargs)
             db_player.magazines = max(mags, new_mags)
             db_player.bullets = max(bullets, new_bullets)
             await db_player.save()
-            await ctx.send(_('✨ Yay! Free ammo!'))
+            await ctx.send(_("✨ Yay! Free ammo!"))
         else:
-            await ctx.send(_('❌ Your ammo is already full!'))
+            await ctx.send(_("❌ Your ammo is already full!"))
 
 
 # Lootboxes
@@ -296,7 +342,7 @@ class WelcomePackage(Lootbox):
 
     db_name: str = "lootbox_welcome"
     items_inside = [
-        (Book,            100, 1),
+        (Book, 100, 1),
         (RefillMagazines, 100, 1),
     ]
 
@@ -308,11 +354,11 @@ class FoieGras(Lootbox):
 
     db_name: str = "lootbox_boss"
     items_inside = [
-        (Encyclopedia,      1, 1),
-        (Book,             20, 1),
-        (ForeignBook,      45, 1),
+        (Encyclopedia, 1, 1),
+        (Book, 20, 1),
+        (ForeignBook, 45, 1),
         (RefillMagazines, 100, 1),
-        (Egg,              10, 1),
+        (Egg, 10, 1),
     ]
 
 
@@ -324,19 +370,35 @@ class Voted(Lootbox):
     db_name: str = "lootbox_vote"
     items_inside = [
         (RefillMagazines, 3, 2),
-        (Encyclopedia,    1, 1),
-        (Book,            2, 1),
-        (ForeignBook,    10, 1),
-        (Bullet,        100, 1),
+        (Encyclopedia, 1, 1),
+        (Book, 2, 1),
+        (ForeignBook, 10, 1),
+        (Bullet, 100, 1),
     ]
 
 
-ITEMS: typing.List[typing.Type[Item]] = [VipCard, Book, ForeignBook, Encyclopedia, Bullet, Egg, RefillMagazines]
+ITEMS: typing.List[typing.Type[Item]] = [
+    VipCard,
+    Book,
+    ForeignBook,
+    Encyclopedia,
+    Bullet,
+    Egg,
+    RefillMagazines,
+]
 LOOTBOXES: typing.List[typing.Type[Item]] = [WelcomePackage, FoieGras, Voted]
 
 ALL_INVENTORY: typing.List[typing.Type[Item]] = LOOTBOXES + ITEMS
 
-ITEMS_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Item.get_shortcode(): _Item for _Item in ITEMS}
-LOOTBOXES_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {_Lootbox.get_shortcode(): _Lootbox for _Lootbox in LOOTBOXES}
+ITEMS_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {
+    _Item.get_shortcode(): _Item for _Item in ITEMS
+}
+LOOTBOXES_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {
+    _Lootbox.get_shortcode(): _Lootbox for _Lootbox in LOOTBOXES
+}
 
-ALL_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {**ITEMS_SHORTCODE, **LOOTBOXES_SHORTCODE, "book_foreign": ForeignBook}
+ALL_SHORTCODE: typing.Dict[str, typing.Type[Item]] = {
+    **ITEMS_SHORTCODE,
+    **LOOTBOXES_SHORTCODE,
+    "book_foreign": ForeignBook,
+}

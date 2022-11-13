@@ -2,22 +2,22 @@ import asyncio
 import datetime
 import random
 import time
-from enum import Enum
 import typing
+from enum import Enum
 from typing import Optional
 
 import discord
-from discord.utils import escape_markdown
 from babel.dates import format_timedelta
+from discord.utils import escape_markdown
 
 from utils import ducks_config
 from utils.bot_class import MyBot
 from utils.bushes import bushes_objects, bushes_weights
 from utils.coats import Coats
 from utils.events import Events
-from utils.interaction import get_webhook_if_possible, anti_bot_zero_width
-from utils.models import DiscordChannel, get_from_db, Player, get_player, SunState
-from utils.translations import translate, ntranslate
+from utils.interaction import anti_bot_zero_width, get_webhook_if_possible
+from utils.models import DiscordChannel, Player, SunState, get_from_db, get_player
+from utils.translations import ntranslate, translate
 
 SECOND = 1
 MINUTE = 60 * SECOND
@@ -33,7 +33,8 @@ class Duck:
     """
     The standard duck. Kill it with the pan command
     """
-    category = _('normal')
+
+    category = _("normal")
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
     use_bonus_exp = True
     leave_on_hug = False
@@ -43,8 +44,10 @@ class Duck:
         self.channel = channel
         self._db_channel: Optional[DiscordChannel] = None
 
-        self._webhook_parameters = {'avatar_url': random.choice(self.get_cosmetics()['avatar_urls']),
-                                    'username': random.choice(self.get_cosmetics()['usernames'])}
+        self._webhook_parameters = {
+            "avatar_url": random.choice(self.get_cosmetics()["avatar_urls"]),
+            "username": random.choice(self.get_cosmetics()["usernames"]),
+        }
 
         self.spawned_at: Optional[int] = None
         self.target_lock = asyncio.Lock()
@@ -57,20 +60,22 @@ class Duck:
         self._ntranslate_function = None
 
     def serialize(self):
-        return {'category': self.category,
-                'spawned_at': self.spawned_at,
-                'spawned_for': self.spawned_for,
-                'lives_left': self.lives_left,
-                'lives': self._lives,
-                'webhook_parameters': self._webhook_parameters}
+        return {
+            "category": self.category,
+            "spawned_at": self.spawned_at,
+            "spawned_for": self.spawned_for,
+            "lives_left": self.lives_left,
+            "lives": self._lives,
+            "webhook_parameters": self._webhook_parameters,
+        }
 
     @classmethod
     def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = cls(bot, channel)
-        d.spawned_at = time.time() - data['spawned_for']
-        d.lives_left = data['lives_left']
-        d._lives = data['lives']
-        d._webhook_parameters = data['webhook_parameters']
+        d.spawned_at = time.time() - data["spawned_for"]
+        d.lives_left = data["lives_left"]
+        d._lives = data["lives"]
+        d._webhook_parameters = data["webhook_parameters"]
 
         return d
 
@@ -122,7 +127,7 @@ class Duck:
     async def get_webhook_parameters(self) -> dict:
         _ = await self.get_translate_function()
         webhook = self._webhook_parameters
-        webhook['username'] = _(webhook['username'])
+        webhook["username"] = _(webhook["username"])
         return webhook
 
     async def get_exp_value(self) -> int:
@@ -162,7 +167,9 @@ class Duck:
 
     async def set_best_time(self):
         db_hunter = self.db_target_lock_by
-        db_hunter.best_times[self.category] = min(self.spawned_for, db_hunter.best_times[self.category])
+        db_hunter.best_times[self.category] = min(
+            self.spawned_for, db_hunter.best_times[self.category]
+        )
 
     # Locks #
 
@@ -182,7 +189,7 @@ class Duck:
     # Messages #
 
     async def get_trace(self) -> str:
-        traces = self.get_cosmetics()['traces']
+        traces = self.get_cosmetics()["traces"]
         trace = escape_markdown(random.choice(traces))
 
         return anti_bot_zero_width(trace)
@@ -193,24 +200,31 @@ class Duck:
         dtnow = datetime.datetime.now()
         if dtnow.day == 1 and dtnow.month == 4 and self.category == "normal":
             if not db_channel.use_emojis:
-                faces = ["><(((º>", "< )))) ><", ">--) ) ) )*>", "><((((>", "><(((('>", "くコ:彡"]
+                faces = [
+                    "><(((º>",
+                    "< )))) ><",
+                    ">--) ) ) )*>",
+                    "><((((>",
+                    "><(((('>",
+                    "くコ:彡",
+                ]
                 face = escape_markdown(random.choice(faces))
             else:
                 faces = ["🐟", "🐠", "🐡"]
                 face = random.choice(faces)
         else:
             if not db_channel.use_emojis:
-                faces = self.get_cosmetics()['faces']
+                faces = self.get_cosmetics()["faces"]
                 face = escape_markdown(random.choice(faces))
             else:
-                faces = self.get_cosmetics()['emojis']
+                faces = self.get_cosmetics()["emojis"]
                 face = random.choice(faces)
 
         return face
 
     async def get_shout(self) -> str:
         _ = await self.get_translate_function()
-        shouts = self.get_cosmetics()['shouts']
+        shouts = self.get_cosmetics()["shouts"]
 
         shout = _(random.choice(shouts))
         if "http" in shout:
@@ -220,7 +234,7 @@ class Duck:
 
     async def get_bye_trace(self) -> str:
         _ = await self.get_translate_function()
-        traces = self.get_cosmetics()['bye_traces']
+        traces = self.get_cosmetics()["bye_traces"]
 
         trace = _(random.choice(traces))
 
@@ -228,7 +242,7 @@ class Duck:
 
     async def get_bye_shout(self) -> str:
         _ = await self.get_translate_function()
-        shouts = self.get_cosmetics()['bye_shouts']
+        shouts = self.get_cosmetics()["bye_shouts"]
 
         shout = _(random.choice(shouts))
 
@@ -243,13 +257,16 @@ class Duck:
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a normal duck",
-                        "of which {this_ducks_killed} are normal ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a normal duck",
+            "of which {this_ducks_killed} are normal ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
-    async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int) -> str:
+    async def get_kill_message(
+        self, killer, db_killer: Player, won_experience: int, bonus_experience: int
+    ) -> str:
         _ = await self.get_translate_function()
         ngettext = await self.get_ntranslate_function()
         db_guild = await get_from_db(self.channel.guild)
@@ -258,9 +275,13 @@ class Duck:
 
         spawned_for = datetime.timedelta(seconds=self.spawned_for)
         if locale.startswith("ru"):
-            spawned_for_str = format_timedelta(spawned_for, locale=locale, format="short")
+            spawned_for_str = format_timedelta(
+                spawned_for, locale=locale, format="short"
+            )
         else:
-            spawned_for_str = format_timedelta(spawned_for, locale=locale, threshold=1.20)
+            spawned_for_str = format_timedelta(
+                spawned_for, locale=locale, threshold=1.20
+            )
 
         total_ducks_killed = sum(db_killer.killed.values())
         this_ducks_killed = db_killer.killed.get(self.category)
@@ -296,8 +317,10 @@ class Duck:
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
         _ = await self.get_translate_function()
 
-        return _("{hunter.mention} scared the duck away.",
-                 hunter=hunter, )
+        return _(
+            "{hunter.mention} scared the duck away.",
+            hunter=hunter,
+        )
 
     async def get_hurt_message(self, hurter, db_hurter, damage) -> str:
         _ = await self.get_translate_function()
@@ -314,23 +337,28 @@ class Duck:
                 total_lives=total_lives,
             )
         else:
-            return _("{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
-                     hurter=hurter,
-                     damage=damage)
+            return _(
+                "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -{damage}]",
+                hurter=hurter,
+                damage=damage,
+            )
 
     async def get_resists_message(self, hurter, db_hurter) -> str:
         _ = await self.get_translate_function()
 
-        return _("{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]",
-                 hurter=hurter, )
+        return _(
+            "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]",
+            hurter=hurter,
+        )
 
     async def get_hug_message(self, hugger, db_hugger, experience) -> str:
         _ = await self.get_translate_function()
         if experience > 0:
-            return _("{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]",
-                     hugger=hugger,
-                     experience=experience,
-                     )
+            return _(
+                "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]",
+                hugger=hugger,
+                experience=experience,
+            )
         else:
             if hugger.id == 296573428293697536:  # ⚜WistfulWizzz⚜#5928
                 return _("<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!")
@@ -362,14 +390,17 @@ class Duck:
                     return
                 except (discord.NotFound, ValueError) as e:
                     db_channel: DiscordChannel = await get_from_db(self.channel)
-                    self.bot.logger.warning(f"Removing webhook {webhook.url} on #{self.channel.name} on {self.channel.guild.id} from planification because {e}.")
+                    self.bot.logger.warning(
+                        f"Removing webhook {webhook.url} on #{self.channel.name} on {self.channel.guild.id} from planification because {e}."
+                    )
                     db_channel.webhook_urls.remove(webhook.url)
                     await db_channel.save()
                     try:
                         await self.channel.send(content, **kwargs)
                     except (discord.Forbidden, discord.NotFound):
                         self.bot.logger.warning(
-                            f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there {e}.")
+                            f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there {e}."
+                        )
                         try:
                             del self.bot.enabled_channels[self.channel]
                         except KeyError:
@@ -387,7 +418,8 @@ class Duck:
                 await self.channel.send(content, **kwargs)
             except (discord.Forbidden, discord.NotFound):
                 self.bot.logger.warning(
-                    f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there.")
+                    f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there."
+                )
                 try:
                     del self.bot.enabled_channels[self.channel]
                 except KeyError:
@@ -420,9 +452,9 @@ class Duck:
         if self.bot.current_event == Events.UN_TREATY:
             return 1
         db_hugger = self.db_target_lock_by
-        if db_hugger.is_powerup_active('explosive_ammo'):
+        if db_hugger.is_powerup_active("explosive_ammo"):
             return 3
-        elif db_hugger.is_powerup_active('ap_ammo'):
+        elif db_hugger.is_powerup_active("ap_ammo"):
             return 2
         else:
             return 1
@@ -434,7 +466,7 @@ class Duck:
         db_channel = await self.get_db_channel()
         db_hunter = self.db_target_lock_by
 
-        if not db_hunter.is_powerup_active('silencer'):
+        if not db_hunter.is_powerup_active("silencer"):
             frighten_chance = db_channel.duck_frighten_chance
             coat_color = db_hunter.get_current_coat_color()
             if coat_color == Coats.ORANGE:
@@ -454,7 +486,9 @@ class Duck:
         message = await self.get_spawn_message()
 
         if loud:
-            self.bot.logger.debug(f"Spawning {self}", guild=self.channel.guild, channel=self.channel)
+            self.bot.logger.debug(
+                f"Spawning {self}", guild=self.channel.guild, channel=self.channel
+            )
             self.spawned_at = time.time()
             await self.send(message)
 
@@ -484,7 +518,9 @@ class Duck:
         await self.increment_hugs()
         await self.release()
 
-        await db_hugger.edit_experience_with_levelups(ctx=self.channel, delta=experience, bot=self.bot)
+        await db_hugger.edit_experience_with_levelups(
+            ctx=self.channel, delta=experience, bot=self.bot
+        )
 
         await db_hugger.save()
 
@@ -492,7 +528,9 @@ class Duck:
         await self.send(await self.get_hug_message(hugger, db_hugger, experience))
 
     async def leave(self):
-        self.bot.logger.debug(f"Leaving {self}", guild=self.channel.guild, channel=self.channel)
+        self.bot.logger.debug(
+            f"Leaving {self}", guild=self.channel.guild, channel=self.channel
+        )
 
         await self.send(await self.get_left_message())
         self.despawn()
@@ -505,7 +543,9 @@ class Duck:
         else:
             return False
 
-    async def maybe_bushes_message(self, hunter, db_hunter) -> typing.Optional[typing.Callable]:
+    async def maybe_bushes_message(
+        self, hunter, db_hunter
+    ) -> typing.Optional[typing.Callable]:
         bush_chance = 13
         coat_color = db_hunter.get_current_coat_color()
 
@@ -522,14 +562,14 @@ class Duck:
         gave_item = await item_found.give(db_channel, db_hunter)
 
         if gave_item:
-            db_hunter.found_items['took_' + item_found.db] += 1
+            db_hunter.found_items["took_" + item_found.db] += 1
         else:
-            db_hunter.found_items['left_' + item_found.db] += 1
+            db_hunter.found_items["left_" + item_found.db] += 1
 
         _ = await self.get_translate_function()
         args = await item_found.send_args(_, gave_item)
 
-        args['content'] = f"{hunter.mention} > " + args.get('content', '')
+        args["content"] = f"{hunter.mention} > " + args.get("content", "")
 
         async def send_result():
             await self.send(**args)
@@ -565,14 +605,20 @@ class Duck:
         bonus_experience = 0
         if self.use_bonus_exp:
             bonus_experience = await db_killer.get_bonus_experience(won_experience)
-            db_killer.shooting_stats['bonus_experience_earned'] += bonus_experience
+            db_killer.shooting_stats["bonus_experience_earned"] += bonus_experience
             won_experience += bonus_experience
 
-        await db_killer.edit_experience_with_levelups(self.channel, won_experience, bot=self.bot)
+        await db_killer.edit_experience_with_levelups(
+            self.channel, won_experience, bot=self.bot
+        )
 
         bushes_coro = await self.maybe_bushes_message(killer, db_killer)
 
-        await self.send(await self.get_kill_message(killer, db_killer, won_experience, bonus_experience))
+        await self.send(
+            await self.get_kill_message(
+                killer, db_killer, won_experience, bonus_experience
+            )
+        )
         if bushes_coro is not None:
             await bushes_coro()
 
@@ -633,16 +679,18 @@ class GhostDuck(Duck):
     """
     A rare duck that does *not* say anything when it spawns.
     """
-    category = _('ghost')
+
+    category = _("ghost")
     fake = False  # Fake ducks only exists when they are alone on a channel. They are used for taunt messages, mostly.
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a ghost duck",
-                        "of which {this_ducks_killed} are ghost ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a ghost duck",
+            "of which {this_ducks_killed} are ghost ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def spawn(self, loud=True):
         total_lives = await self.get_lives()
@@ -658,7 +706,8 @@ class PrDuck(Duck):
     """
     Duck that will ask a simple math question to be killed
     """
-    category = _('prof')
+
+    category = _("prof")
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
@@ -668,22 +717,27 @@ class PrDuck(Duck):
         self.answer = r1 + r2
 
     def serialize(self):
-        return {**super().serialize(), 'operation': self.operation, 'answer': self.answer}
+        return {
+            **super().serialize(),
+            "operation": self.operation,
+            "answer": self.answer,
+        }
 
     @classmethod
     def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = super().deserialize(bot, channel, data)
-        d.operation = data['operation']
-        d.answer = data['answer']
+        d.operation = data["operation"]
+        d.answer = data["answer"]
         return d
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a professor duck",
-                        "of which {this_ducks_killed} are Pr. ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a professor duck",
+            "of which {this_ducks_killed} are Pr. ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def get_shout(self) -> str:
         _ = await self.get_translate_function()
@@ -698,20 +752,23 @@ class PrDuck(Duck):
             result = int(args[0])
         except IndexError:
             await self.send(
-                _("{hurter.mention}, I asked you a question ! What's {operation} ? Answer with `dh!bang <answer>`.",
-                  hurter=hurter,
-                  operation=self.operation))
+                _(
+                    "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with `dh!bang <answer>`.",
+                    hurter=hurter,
+                    operation=self.operation,
+                )
+            )
             await self.release()
             return False
         except ValueError:
-            await self.send(_("{hurter.mention}, Just give me digits !",
-                              hurter=hurter))
+            await self.send(_("{hurter.mention}, Just give me digits !", hurter=hurter))
             await self.release()
             return False
 
         if result != self.answer:
-            await self.send(_("{hurter.mention}, that's not the correct answer !",
-                              hurter=hurter))
+            await self.send(
+                _("{hurter.mention}, that's not the correct answer !", hurter=hurter)
+            )
             await self.release()
             return False
         else:
@@ -740,7 +797,16 @@ class MapTile(Enum):
     DUCK = "🦆"
 
 
-XCOORDS = ["🇦", "🇧", "🇨", "🇩", "🇪", "🇫", "🇬", "🇭", ]
+XCOORDS = [
+    "🇦",
+    "🇧",
+    "🇨",
+    "🇩",
+    "🇪",
+    "🇫",
+    "🇬",
+    "🇭",
+]
 
 YCOORDS = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"]
 
@@ -770,10 +836,10 @@ class Coordinates:
         self.x = max(x, 0)
         self.y = max(y, 0)
 
-    def ax(self, cnt: int) -> 'Coordinates':
+    def ax(self, cnt: int) -> "Coordinates":
         return Coordinates(self.x + cnt, self.y)
 
-    def ay(self, cnt: int) -> 'Coordinates':
+    def ay(self, cnt: int) -> "Coordinates":
         return Coordinates(self.x, self.y + cnt)
 
     def __str__(self):
@@ -793,7 +859,10 @@ class Map:
     duck_y = random.randrange(YMIN, YMAX)
 
     def __init__(self):
-        self.grid = [[MapTile.NOTHING for x in range(self.XMIN, self.XMAX)] for y in range(self.YMIN, self.YMAX)]
+        self.grid = [
+            [MapTile.NOTHING for x in range(self.XMIN, self.XMAX)]
+            for y in range(self.YMIN, self.YMAX)
+        ]
 
         center_mountain_range = self.get_random_nothing_coordinates()
         another_center = center_mountain_range.ay(1)
@@ -830,16 +899,41 @@ class Map:
         # Add duck
         self.set(self.duck_coords, MapTile.DUCK)
 
-        for tile in [MapTile.TREE1, MapTile.TREE1, MapTile.TREE1, MapTile.TREE1, MapTile.TREE2,
-                     MapTile.FLOWER, MapTile.FLOWER, MapTile.FLOWER,
-                     MapTile.ROCK, MapTile.BUSH, MapTile.BUSH,
-                     MapTile.CAMPING, MapTile.CAMPING, MapTile.CAMPING,
-                     MapTile.TOWN, MapTile.TOWN, MapTile.TOWN, MapTile.CITY]:
+        for tile in [
+            MapTile.TREE1,
+            MapTile.TREE1,
+            MapTile.TREE1,
+            MapTile.TREE1,
+            MapTile.TREE2,
+            MapTile.FLOWER,
+            MapTile.FLOWER,
+            MapTile.FLOWER,
+            MapTile.ROCK,
+            MapTile.BUSH,
+            MapTile.BUSH,
+            MapTile.CAMPING,
+            MapTile.CAMPING,
+            MapTile.CAMPING,
+            MapTile.TOWN,
+            MapTile.TOWN,
+            MapTile.TOWN,
+            MapTile.CITY,
+        ]:
             if random.random() < 0.3:
                 self.set(self.get_random_nothing_coordinates(), tile)
 
-        self.fill(self.get_random_nothing_coordinates(), MapTile.WATER, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.GRASS, MapTile.TREE2, MapTile.TREE3,
-                  MapTile.TREE3, MapTile.TREE3)
+        self.fill(
+            self.get_random_nothing_coordinates(),
+            MapTile.WATER,
+            MapTile.GRASS,
+            MapTile.GRASS,
+            MapTile.GRASS,
+            MapTile.GRASS,
+            MapTile.TREE2,
+            MapTile.TREE3,
+            MapTile.TREE3,
+            MapTile.TREE3,
+        )
 
     def get(self, coords: Coordinates):
         try:
@@ -857,7 +951,10 @@ class Map:
             return False
 
     def get_random_coordinates(self) -> Coordinates:
-        return Coordinates(random.randrange(self.XMIN, self.XMAX), random.randrange(self.YMIN, self.YMAX))
+        return Coordinates(
+            random.randrange(self.XMIN, self.XMAX),
+            random.randrange(self.YMIN, self.YMAX),
+        )
 
     def get_random_nothing_coordinates(self) -> Coordinates:
         nothing_blocks = []
@@ -869,7 +966,9 @@ class Map:
 
         return random.choice(nothing_blocks)
 
-    def add_square(self, coordinates: Coordinates, tile: MapTile, size: int = 1, safe=False):
+    def add_square(
+        self, coordinates: Coordinates, tile: MapTile, size: int = 1, safe=False
+    ):
         for y in range(coordinates.y - size, coordinates.y + size + 1):
             for x in range(coordinates.x - size, coordinates.x + size + 1):
                 self.set(Coordinates(x, y), tile, safe=safe)
@@ -883,10 +982,21 @@ class Map:
             self.fill(coordinates.ay(1), *tiles)
 
     def get_map_string(self):
-        string = '‮‭'.join(XCOORDS) + "🔢\n"
-        string += '\n'.join([''.join(
-            map(lambda e: "||" + anti_bot_zero_width(e.value) + "||" if e != MapTile.NOTHING else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||", row)) + YCOORDS[
-                                 i] for i, row in enumerate(self.grid)])
+        string = "‮‭".join(XCOORDS) + "🔢\n"
+        string += "\n".join(
+            [
+                "".join(
+                    map(
+                        lambda e: "||" + anti_bot_zero_width(e.value) + "||"
+                        if e != MapTile.NOTHING
+                        else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||",
+                        row,
+                    )
+                )
+                + YCOORDS[i]
+                for i, row in enumerate(self.grid)
+            ]
+        )
 
         return string
 
@@ -895,7 +1005,8 @@ class CartographerDuck(Duck):
     """
     Duck that will need to be found in the map
     """
-    category = _('cartographer')
+
+    category = _("cartographer")
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
@@ -903,29 +1014,36 @@ class CartographerDuck(Duck):
         self.duck_coords: Coordinates = self.map.duck_coords
 
     def serialize(self):
-        return {**super().serialize(), 'duck_coords': str(self.duck_coords)}
+        return {**super().serialize(), "duck_coords": str(self.duck_coords)}
 
     @classmethod
     def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = super().deserialize(bot, channel, data)
-        d.duck_coords = Coordinates.from_str(data['duck_coords'])
+        d.duck_coords = Coordinates.from_str(data["duck_coords"])
         return d
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a cartographer duck",
-                        "of which {this_ducks_killed} are cartographer ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a cartographer duck",
+            "of which {this_ducks_killed} are cartographer ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def get_spawn_message(self) -> str:
         _ = await self.get_translate_function()
 
         map_str = self.map.get_map_string()
 
-        return _("ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
-                 "the number to the bang command. Example: `dh!bang A1`.") + "\n\n" + map_str
+        return (
+            _(
+                "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
+                "the number to the bang command. Example: `dh!bang A1`."
+            )
+            + "\n\n"
+            + map_str
+        )
 
     async def shoot(self, args: list):
         _ = await self.get_translate_function()
@@ -935,20 +1053,28 @@ class CartographerDuck(Duck):
             given_coords = Coordinates.from_str(str(args[0]))
         except IndexError:
             await self.send(
-                _("{hurter.mention}, You need to find the duck in the map above! Answer with `dh!bang <coordinates>`.",
-                  hurter=hurter,
-                  ))
+                _(
+                    "{hurter.mention}, You need to find the duck in the map above! Answer with `dh!bang <coordinates>`.",
+                    hurter=hurter,
+                )
+            )
             await self.release()
             return False
         except ValueError as e:
-            await self.send(_("{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`",
-                              hurter=hurter, exc_message=str(e)))
+            await self.send(
+                _(
+                    "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`",
+                    hurter=hurter,
+                    exc_message=str(e),
+                )
+            )
             await self.release()
             return False
 
         if given_coords != self.duck_coords:
-            await self.send(_("{hurter.mention}, that's not the correct answer!",
-                              hurter=hurter))
+            await self.send(
+                _("{hurter.mention}, that's not the correct answer!", hurter=hurter)
+            )
             await self.release()
             return False
         else:
@@ -963,25 +1089,33 @@ class BabyDuck(Duck):
     """
     A baby duck. You shouldn't kill a baby duck. If you do, your exp will suffer.
     """
-    category = _('baby')
+
+    category = _("baby")
     leave_on_hug = True
     use_bonus_exp = False
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a baby duck",
-                        "of which {this_ducks_killed} are baby ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a baby duck",
+            "of which {this_ducks_killed} are baby ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
-    async def get_kill_message(self, killer, db_killer: Player, won_experience: int, bonus_experience: int):
+    async def get_kill_message(
+        self, killer, db_killer: Player, won_experience: int, bonus_experience: int
+    ):
         _ = await self.get_translate_function()
-        return _("{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]", killer=killer,
-                 won_experience=won_experience, bonus_experience=bonus_experience)
+        return _(
+            "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]",
+            killer=killer,
+            won_experience=won_experience,
+            bonus_experience=bonus_experience,
+        )
 
     async def get_exp_value(self):
-        return - await super().get_exp_value()
+        return -await super().get_exp_value()
 
     async def get_hug_experience(self):
         return 5
@@ -994,31 +1128,38 @@ class BabyDuck(Duck):
         locale = db_guild.language
 
         if locale.startswith("ru"):
-            spawned_for_str = format_timedelta(spawned_for, locale=locale, format="short")
+            spawned_for_str = format_timedelta(
+                spawned_for, locale=locale, format="short"
+            )
         else:
-            spawned_for_str = format_timedelta(spawned_for, locale=locale, threshold=1.20)
+            spawned_for_str = format_timedelta(
+                spawned_for, locale=locale, threshold=1.20
+            )
 
         _ = await self.get_translate_function()
-        return _("{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: +{experience} exp]",
-                 hugger=hugger,
-                 experience=experience,
-                 spawned_for_str=spawned_for_str,
-                 )
+        return _(
+            "{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: +{experience} exp]",
+            hugger=hugger,
+            experience=experience,
+            spawned_for_str=spawned_for_str,
+        )
 
 
 class GoldenDuck(Duck):
     """
     Duck worth twice the usual experience
     """
-    category = _('golden')
+
+    category = _("golden")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a golden duck",
-                        "of which {this_ducks_killed} are golden ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a golden duck",
+            "of which {this_ducks_killed} are golden ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def get_exp_value(self):
         return await super().get_exp_value() * 2
@@ -1028,15 +1169,17 @@ class PlasticDuck(Duck):
     """
     Worthless duck (half the exp)
     """
-    category = _('plastic')
+
+    category = _("plastic")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is made of plastic",
-                        "of which {this_ducks_killed} are made of plastic",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is made of plastic",
+            "of which {this_ducks_killed} are made of plastic",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def will_frighten(self):
         return False
@@ -1049,15 +1192,17 @@ class KamikazeDuck(Duck):
     """
     This duck kills every other duck on the channel when leaving
     """
-    category = _('kamikaze')
+
+    category = _("kamikaze")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a kamikaze duck",
-                        "of which {this_ducks_killed} are kamikaze ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a kamikaze duck",
+            "of which {this_ducks_killed} are kamikaze ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def leave(self):
         await self.send(await self.get_left_message())
@@ -1068,7 +1213,8 @@ class MechanicalDuck(Duck):
     """
     This duck is not really a duck...
     """
-    category = _('mechanical')
+
+    category = _("mechanical")
     fake = True
     use_bonus_exp = False
 
@@ -1078,12 +1224,12 @@ class MechanicalDuck(Duck):
         self.creator = creator
 
     def serialize(self):
-        return {**super().serialize(), 'creator': self.creator}
+        return {**super().serialize(), "creator": self.creator}
 
     @classmethod
     def deserialize(cls, bot: MyBot, channel: discord.TextChannel, data: dict):
         d = super().deserialize(bot, channel, data)
-        d.creator = data['creator']
+        d.creator = data["creator"]
         return d
 
     async def get_exp_value(self):
@@ -1091,13 +1237,16 @@ class MechanicalDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a mechanical duck",
-                        "of which {this_ducks_killed} are mechanical ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a mechanical duck",
+            "of which {this_ducks_killed} are mechanical ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
-    async def get_kill_message(self, killer, db_killer, won_experience, bonus_experience):
+    async def get_kill_message(
+        self, killer, db_killer, won_experience, bonus_experience
+    ):
         _ = await self.get_translate_function()
 
         creator = self.creator
@@ -1105,28 +1254,32 @@ class MechanicalDuck(Duck):
             return _(
                 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who made it? [exp: {won_experience}]",
                 killer=killer,
-                won_experience=won_experience)
+                won_experience=won_experience,
+            )
         else:
             return _(
                 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this is {creator.mention}'s fault! [exp: {won_experience}]",
                 killer=killer,
                 won_experience=won_experience,
-                creator=creator)
+                creator=creator,
+            )
 
     async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         if self.creator and killer.id == self.creator.id:
-            db_killer.stored_achievements['short_memory'] = True
+            db_killer.stored_achievements["short_memory"] = True
 
         await super().post_kill(killer, db_killer, won_experience, bonus_experience)
 
 
 # Super ducks #
 
+
 class SuperDuck(Duck):
     """
     A duck with many lives to spare.
     """
-    category = _('super')
+
+    category = _("super")
 
     def __init__(self, *args, lives: int = None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1136,11 +1289,12 @@ class SuperDuck(Duck):
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a super duck",
-                        "of which {this_ducks_killed} are super ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a super duck",
+            "of which {this_ducks_killed} are super ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def initial_set_lives(self):
         db_channel = await self.get_db_channel()
@@ -1150,22 +1304,26 @@ class SuperDuck(Duck):
 
         min_lives, max_lives = db_channel.super_ducks_min_life, max_life
 
-        self._lives = random.randint(min(min_lives, max_lives), max(min_lives, max_lives))
+        self._lives = random.randint(
+            min(min_lives, max_lives), max(min_lives, max_lives)
+        )
 
 
 class MotherOfAllDucks(SuperDuck):
     """
     This duck will spawn two more when she dies.
     """
-    category = _('moad')
+
+    category = _("moad")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a MOAD",
-                        "of which {this_ducks_killed} are MOADs",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a MOAD",
+            "of which {this_ducks_killed} are MOADs",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
         for i in range(2):
@@ -1173,10 +1331,10 @@ class MotherOfAllDucks(SuperDuck):
             # When you send two messages (one after the other but close enough),
             # they will be shown in the wrong order for *some*, but not all viewers of the channel.
             # To fix that we sleep a bit before spawning ducks
-            await asyncio.sleep(.5)
+            await asyncio.sleep(0.5)
             d = await spawn_random_weighted_duck(self.bot, self.channel)
             if d.category == "baby":
-                db_killer.stored_achievements['you_monster'] = True
+                db_killer.stored_achievements["you_monster"] = True
 
         await super().post_kill(killer, db_killer, won_experience, bonus_experience)
 
@@ -1185,15 +1343,17 @@ class ArmoredDuck(SuperDuck):
     """
     This duck will resist a damage of 1.
     """
-    category = _('armored')
+
+    category = _("armored")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is an armored duck",
-                        "of which {this_ducks_killed} are armored ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is an armored duck",
+            "of which {this_ducks_killed} are armored ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def get_damage(self):
         if self.bot.current_event == Events.UN_TREATY:
@@ -1220,75 +1380,117 @@ class ArmoredDuck(SuperDuck):
                 total_lives=total_lives,
             )
         else:
-            return _("{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -{damage}]",
-                     hurter=hurter,
-                     damage=damage)
+            return _(
+                "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -{damage}]",
+                hurter=hurter,
+                damage=damage,
+            )
 
 
 class NightDuck(Duck):
     """
     A normal duck that only spawns at night.
     """
-    category = _('night')
+
+    category = _("night")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a night duck",
-                        "of which {this_ducks_killed} are night ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a night duck",
+            "of which {this_ducks_killed} are night ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
 
 class SleepingDuck(Duck):
     """
     An un-miss-able duck that you can only shot at night
     """
-    category = _('sleeping')
+
+    category = _("sleeping")
 
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
-        return ngettext("of which one is a sleeping duck",
-                        "of which {this_ducks_killed} are sleeping ducks",
-                        this_ducks_killed,
-                        this_ducks_killed=this_ducks_killed,
-                        )
+        return ngettext(
+            "of which one is a sleeping duck",
+            "of which {this_ducks_killed} are sleeping ducks",
+            this_ducks_killed,
+            this_ducks_killed=this_ducks_killed,
+        )
 
     async def get_accuracy(self, base_accuracy) -> int:
         return 100
 
 
-RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES = [Duck, GhostDuck, PrDuck, BabyDuck, GoldenDuck, PlasticDuck, KamikazeDuck,
-                                      MechanicalDuck, SuperDuck, MotherOfAllDucks, ArmoredDuck, CartographerDuck]
-DUCKS_DAYTIME_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES}
+RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES = [
+    Duck,
+    GhostDuck,
+    PrDuck,
+    BabyDuck,
+    GoldenDuck,
+    PlasticDuck,
+    KamikazeDuck,
+    MechanicalDuck,
+    SuperDuck,
+    MotherOfAllDucks,
+    ArmoredDuck,
+    CartographerDuck,
+]
+DUCKS_DAYTIME_CATEGORIES_TO_CLASSES = {
+    dc.category: dc for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES
+}
 DUCKS_DAYTIME_CATEGORIES = [dc.category for dc in RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES]
 
 RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES = [NightDuck, SleepingDuck]
-DUCKS_NIGHTTIME_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES}
-DUCKS_NIGHTTIME_CATEGORIES = [dc.category for dc in RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES]
+DUCKS_NIGHTTIME_CATEGORIES_TO_CLASSES = {
+    dc.category: dc for dc in RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
+}
+DUCKS_NIGHTTIME_CATEGORIES = [
+    dc.category for dc in RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
+]
 
-RANDOM_SPAWN_DUCKS_CLASSES = RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES + RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
+RANDOM_SPAWN_DUCKS_CLASSES = (
+    RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES + RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
+)
 DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLASSES}
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
-async def spawn_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
+async def spawn_random_weighted_duck(
+    bot: MyBot,
+    channel: discord.TextChannel,
+    db_channel: DiscordChannel = None,
+    sun: SunState = None,
+):
     duck = await get_random_weighted_duck(bot, channel, db_channel, sun)
     await duck.spawn()
     return duck
 
 
-async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_channel: DiscordChannel = None, sun: SunState = None):
+async def get_random_weighted_duck(
+    bot: MyBot,
+    channel: discord.TextChannel,
+    db_channel: DiscordChannel = None,
+    sun: SunState = None,
+):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
 
     db_channel = db_channel or await get_from_db(channel)
 
     if sun == SunState.DAY:
-        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks", 0) for category in DUCKS_DAYTIME_CATEGORIES]
+        weights = [
+            getattr(db_channel, f"spawn_weight_{category}_ducks", 0)
+            for category in DUCKS_DAYTIME_CATEGORIES
+        ]
         ducks = RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES
     else:
-        weights = [getattr(db_channel, f"spawn_weight_{category}_ducks", 0) for category in DUCKS_NIGHTTIME_CATEGORIES]
+        weights = [
+            getattr(db_channel, f"spawn_weight_{category}_ducks", 0)
+            for category in DUCKS_NIGHTTIME_CATEGORIES
+        ]
         ducks = RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
 
     if bot.current_event == Events.STEROIDS and SuperDuck in ducks:
@@ -1303,7 +1505,7 @@ async def get_random_weighted_duck(bot: MyBot, channel: discord.TextChannel, db_
 
 
 def deserialize_duck(bot: MyBot, channel: discord.TextChannel, data: dict):
-    return DUCKS_CATEGORIES_TO_CLASSES[data['category']].deserialize(bot, channel, data)
+    return DUCKS_CATEGORIES_TO_CLASSES[data["category"]].deserialize(bot, channel, data)
 
 
 async def compute_sun_state(channel, seconds_spent_today=None):

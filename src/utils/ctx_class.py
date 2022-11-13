@@ -3,14 +3,20 @@ import io
 import typing
 
 import discord
-from discord import Message, Interaction
+from discord import Interaction, Message
 from discord.ext import commands
 from discord.utils import MISSING
 
-from utils.models import get_from_db
-from utils.translations import translate, ntranslate, get_translate_function, get_ntranslate_function
 from utils.interaction import delete_messages_if_message_removed
 from utils.logger import LoggerConstant
+from utils.models import get_from_db
+from utils.translations import (
+    get_ntranslate_function,
+    get_translate_function,
+    ntranslate,
+    translate,
+)
+
 if typing.TYPE_CHECKING:
     from utils.bot_class import MyBot
 
@@ -22,11 +28,13 @@ class InvalidArgument(Exception):
 class MyContext(commands.Context):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.bot: 'MyBot'
+        self.bot: "MyBot"
         self.interaction: typing.Optional[Interaction] = None  # Injected later.
         self._prefix: typing.Optional[str] = None
 
-        self.logger = LoggerConstant(self.bot.logger, self.guild, self.channel, self.author)
+        self.logger = LoggerConstant(
+            self.bot.logger, self.guild, self.channel, self.author
+        )
 
     @property
     def prefix(self):
@@ -46,49 +54,69 @@ class MyContext(commands.Context):
     async def reply(self, *args, **kwargs) -> discord.Message:
         return await self.send(*args, **kwargs, reply=True)
 
-    async def send(self,
-                   content=None, *,
-                   delete_on_invoke_removed=True,
-                   file=None,
-                   files=None,
-                   reply=False,
-                   force_public=False,
-                   allowed_mentions=None,
-                   **kwargs) -> Message:
+    async def send(
+        self,
+        content=None,
+        *,
+        delete_on_invoke_removed=True,
+        file=None,
+        files=None,
+        reply=False,
+        force_public=False,
+        allowed_mentions=None,
+        **kwargs,
+    ) -> Message:
         if allowed_mentions is None:
             allowed_mentions = discord.AllowedMentions()
         # Case for a too-big message
         if content and len(content) > 1990:
-            self.logger.warning("Message content is too big to be sent, putting in a text file for sending.")
+            self.logger.warning(
+                "Message content is too big to be sent, putting in a text file for sending."
+            )
 
-            message_file = discord.File(io.BytesIO(content.encode()), filename="message.txt")
+            message_file = discord.File(
+                io.BytesIO(content.encode()), filename="message.txt"
+            )
             content = None
 
             if file is not None and files is not None:
-                raise InvalidArgument('Cannot pass both file and files parameter to send()')
+                raise InvalidArgument(
+                    "Cannot pass both file and files parameter to send()"
+                )
             elif file is not None:
                 files = [message_file, file]
                 file = None
             elif files is not None:
                 if len(files) == 10:
-                    raise InvalidArgument('Content is too big, and too many files were provided')
+                    raise InvalidArgument(
+                        "Content is too big, and too many files were provided"
+                    )
                 else:
                     files = [message_file] + files
             else:
                 file = message_file
 
-        send_as_ephemeral = not force_public and self.is_next_send_ephemeral() and not files and not file
+        send_as_ephemeral = (
+            not force_public
+            and self.is_next_send_ephemeral()
+            and not files
+            and not file
+        )
 
         if send_as_ephemeral:
-            message = await self.interaction.response.send_message(content,
-                                                                   embed=kwargs.get('embed', MISSING),
-                                                                   embeds=kwargs.get('embeds', MISSING),
-                                                                   view=kwargs.get('view', MISSING),
-                                                                   tts=kwargs.get('tts', False),
-                                                                   ephemeral=True)
+            message = await self.interaction.response.send_message(
+                content,
+                embed=kwargs.get("embed", MISSING),
+                embeds=kwargs.get("embeds", MISSING),
+                view=kwargs.get("view", MISSING),
+                tts=kwargs.get("tts", False),
+                ephemeral=True,
+            )
         elif reply:
             db_user = await get_from_db(self.author, as_user=True)
-            allowed_mentions = discord.AllowedMentions(replied_user=db_user.ping_friendly).merge(allowed_mentions)
+            allowed_mentions = discord.AllowedMentions(
+                replied_user=db_user.ping_friendly
+            ).merge(allowed_mentions)
 
             if self.interaction:
                 # We can't respond to the interaction, but it's a button click,
@@ -108,32 +136,55 @@ class MyContext(commands.Context):
                     content = mention
 
                 # Then send the message normally.
-                message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions,
-                                             **kwargs)
+                message = await super().send(
+                    content,
+                    file=file,
+                    files=files,
+                    allowed_mentions=allowed_mentions,
+                    **kwargs,
+                )
             else:
                 try:
                     # Send a normal reply
-                    message = await super().reply(content, file=file, files=files, allowed_mentions=allowed_mentions,
-                                                  **kwargs)
+                    message = await super().reply(
+                        content,
+                        file=file,
+                        files=files,
+                        allowed_mentions=allowed_mentions,
+                        **kwargs,
+                    )
                 except discord.errors.HTTPException:
                     # Can't reply, probably that the message we are replying to was deleted.
                     # Just send the message instead.
                     # TODO: Maybe add the replied user just like above.
                     #       Not sure if the use-case makes sense here.
-                    message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions,
-                                                 **kwargs)
+                    message = await super().send(
+                        content,
+                        file=file,
+                        files=files,
+                        allowed_mentions=allowed_mentions,
+                        **kwargs,
+                    )
         else:
-            message = await super().send(content, file=file, files=files, allowed_mentions=allowed_mentions, **kwargs)
+            message = await super().send(
+                content,
+                file=file,
+                files=files,
+                allowed_mentions=allowed_mentions,
+                **kwargs,
+            )
 
         # Message deletion if source is deleted
         # Except if the message was only shown to the user.
         if delete_on_invoke_removed and not send_as_ephemeral:
-            asyncio.ensure_future(delete_messages_if_message_removed(self.bot, self.message, message))
+            asyncio.ensure_future(
+                delete_messages_if_message_removed(self.bot, self.message, message)
+            )
 
         return message
 
     def ducks(self):
-        self.bot: 'MyBot'
+        self.bot: "MyBot"
         return self.bot.ducks_spawned[self.channel]
 
     async def target_next_duck(self):
@@ -167,7 +218,7 @@ class MyContext(commands.Context):
         if language == "zh-Hans":
             return "zh"  # Babel don't know about Simplified Chinese
         else:
-            language = language.replace('-', '_')
+            language = language.replace("-", "_")
 
         return language
 
@@ -182,12 +233,14 @@ class MyContext(commands.Context):
     async def get_translate_function(self, user_language=False):
         language_code = await self.get_language_code(user_language=user_language)
 
-        return get_translate_function(self, language_code, additional_kwargs={'ctx': self})
+        return get_translate_function(
+            self, language_code, additional_kwargs={"ctx": self}
+        )
 
     async def get_ntranslate_function(self, user_language=False):
         language_code = await self.get_language_code(user_language=user_language)
 
-        return get_ntranslate_function(self, language_code, {'ctx': self})
+        return get_ntranslate_function(self, language_code, {"ctx": self})
 
     async def is_channel_enabled(self):
         db_channel = await get_from_db(self.channel)
