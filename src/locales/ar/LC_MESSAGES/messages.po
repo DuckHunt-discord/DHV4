@@ -240,7 +240,7 @@ msgid "Give something to some player."
 msgstr "إعطاء شيء للاعب."
 
 msgid "Use one of the items in your inventory."
-msgstr "استخدم أحد العناصر الموجودة في المخزون الخاص بك."
+msgstr "استخدم أحد العناصر الموجودة في حقيبتك."
 
 msgid ""
 "Alias for dh!landmine landmine, so that you can just type dh!place instead."
@@ -1055,7 +1055,7 @@ msgid "Voting"
 msgstr "التصويت"
 
 msgid "Please wait while I check where you can vote..."
-msgstr ""
+msgstr "يرجى الإنتظار حتى أتحقق من المكان الذي يمكنك التصويت فيه..."
 
 msgid "You can vote !"
 msgstr "يمكنك التصويت!"
@@ -1075,40 +1075,43 @@ msgid "Oh no! No bot list is currently available for you to vote."
 msgstr ""
 
 msgid "There is nowhere for you to vote at the time !"
-msgstr ""
+msgstr "لا يوجد مكان يمكنك التصويت فيه حاليا!"
 
 msgid ""
 "Thanks for supporting the bot. It makes a difference! \n"
 "Unfortunately, you voted everywhere you could for now, but you can check "
 "back in a few hours."
 msgstr ""
+"شكرا لدعم البوت. مثل هذا التصويت الصغير قد يحدث فرقا كبيرا! \n"
+"لسوء الحظ، قمت بالتصويت في كل الأماكن المتاحة حاليا، ولكن لا تقلق يمكنك "
+"التحقق مرة أخرى في غضون الساعات القليلة القادمة."
 
 msgid "Click me to vote"
-msgstr ""
+msgstr "اضغط علي لتتمكن من التصويت"
 
 msgid "You can vote on {bl_name}"
-msgstr ""
+msgstr "يمكنك التصويت على {bl_name}"
 
 msgid "You might be able to vote on {bl_name}"
-msgstr ""
+msgstr "قد تتمكن من التصويت على {bl_name}"
 
 msgid "🔫 Bang"
 msgstr ""
 
 msgid "🤗 Hug"
-msgstr ""
+msgstr "🤗 عناق"
 
 msgid "♻️ Reload"
 msgstr ""
 
 msgid "Buy a magazine"
-msgstr ""
+msgstr "اشتري بعض الذخيرة"
 
 msgid "Buy a bullet"
-msgstr ""
+msgstr "اشتري بعض الرصاص"
 
 msgid "🍀 Buy a clover"
-msgstr ""
+msgstr "🍀 اشتري برسيما"
 
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr ""
@@ -1296,10 +1299,10 @@ msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself
 msgstr ""
 
 msgid "tree"
-msgstr ""
+msgstr "شجرة"
 
 msgid "❌ I have no idea what you want to hug..."
-msgstr "❌ ليس لدي فكرة عن ما تريد ان تعانق..."
+msgstr "❌ ليست لدي فكرة عن ماهية الكيان الذي تريد معانقته..."
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 لقد عانقت الشجرة... شكرا!"
@@ -1308,7 +1311,8 @@ msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
 "happy that you love it."
 msgstr ""
-"{you_mention} عانق {target_mention}. مطور البوت سعيد حقاً انكم تحبون بعضكم."
+"{you_mention} قام بمعانقة {target_mention}. مطور البوت سعيد حقاً انكم تحبون "
+"بعضكم."
 
 msgid ""
 "{you_mention} hugged {target_mention}. They hate you even more for hugging "
@@ -1319,21 +1323,23 @@ msgid ""
 "{you_mention}, you just hugged yourself. You feel a little lonely, don't "
 "you?"
 msgstr ""
+"{you_mention}، لقد عانقت نفسك للتو. هل يمكن أن يكون السبب هو شعورك بالوحدة؟"
 
 msgid "{you_mention} hugged {target_mention}. They feel loved."
-msgstr "{you_mention} عانق {target_mention}. انهم يشعرون بانهم محبوبون."
+msgstr ""
+"{you_mention} قام بمعانقة {target_mention}. انهم يشعرون بانهم محبوبون."
 
 msgid "You hugged a tree, Wizzz?!"
 msgstr "لقد عانقت شجرة، Wizzz؟!"
 
 msgid "What are you trying to hug, exactly? A tree?"
-msgstr ""
+msgstr "ما الذي تريد معانقته بالضبط؟ شجرة؟"
 
 msgid "You are already alive and well."
-msgstr ""
+msgstr "أنت بالفعل على قيد الحياة وبصحة جيدة."
 
 msgid "You eat {brains} 🧠 and regain consciousness."
-msgstr ""
+msgstr "قمت بأكل {brains} 🧠 واستعدت وعيك."
 
 msgid "Admin: Spawning"
 msgstr ""
@@ -1527,6 +1533,7 @@ msgstr ""
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
+"استخدم {prefix} {help} [الأمر الذي أردت استخدامه] لمزيد من المعلومات حوله."
 
 msgid "{cog} help"
 msgstr ""
@@ -1535,10 +1542,10 @@ msgid "... More available online"
 msgstr ""
 
 msgid "Inventory"
-msgstr ""
+msgstr "حقيبة"
 
 msgid "Your inventory"
-msgstr ""
+msgstr "حقيبتك"
 
 msgid "A lot of air and a starved mosquito."
 msgstr ""
@@ -1550,7 +1557,7 @@ msgid "❌ Unknown item."
 msgstr "❌ عنصر غير معروف."
 
 msgid "👌 Item has been given to {target.name}."
-msgstr ""
+msgstr "👌 تم إعطاء العنصر إلى {target.name}."
 
 msgid "❌ Items usage is disabled on this channel."
 msgstr ""
@@ -1921,7 +1928,7 @@ msgid ""
 msgstr ""
 
 msgid "Support server"
-msgstr "خادم الدعم"
+msgstr "سيرفر الدعم"
 
 msgid ""
 "For all your questions, there is a support server. Click [here](https://"
@@ -2062,7 +2069,7 @@ msgid "This server language is set to `{language}` [{language_name}]."
 msgstr ""
 
 msgid "There is no specific language set for this guild."
-msgstr "لا توجد لغة محددة محددة لهذا الخادم."
+msgstr "لا توجد لغة محددة محددة لهذا السيرفر."
 
 msgid "Webhooks are used in this channel."
 msgstr ""
@@ -2496,6 +2503,8 @@ msgid ""
 "❌ You already use a silencer. It's still good for {time_delta}, come back "
 "then."
 msgstr ""
+"❌ أنت تستخدم كاتم الصوت بالفعل. لا يزال صالحا لـ {time_delta}، فكر بتغييره "
+"وقتها."
 
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
@@ -2690,27 +2699,36 @@ msgid ""
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
+"البوت بشكل عام تمت  صناعته من طرف Eyesofcreeper، لكن هؤلاء الأشخاص الرائعون "
+"قاموا بمساعدته في عدة مجالات، من أبرزها الرسومات والأفكار والصور والمزيد... "
+"تأكد من تحيتهم إذا ما رأيتهم."
 
 msgid "Developer"
-msgstr "المطور"
+msgstr "مطور"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
-msgstr "<@138751484517941259> (\"Eyesofcreeper\") صنع هذا البوت."
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") قام بصنع هذا البوت."
 
 msgid "Designer"
-msgstr "المصمم"
+msgstr "مصمم"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
 msgstr ""
+"< @465207298890006529 >( «Calgeka») قام بصنع الكثير من الصور الرمزية التي "
+"استخدمها البط."
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
+"< @376052158573051906 >( «Globloxmen») صنع الكثير من البط الذي يمكنك العثور "
+"عليه في جميع أنحاء اللعبة. \n"
+"\n"
+"ما رأيك بالإنضمام الى مجتمع /r/dailyducks على الريديت؟"
 
 msgid "Ideas"
-msgstr "الافكار"
+msgstr "أفكار"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
@@ -2724,8 +2742,9 @@ msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
 msgstr ""
-"البوت مترجم لكثير من اللغات!\n"
-"قائمة المترجمين في `{ctx.prefix}translators`."
+"لقد تمت ترجمة البوت إلى عدة لغات!\n"
+" \n"
+"يمكنك التحقق من قائمة المترجمين عن طريق `{ctx.prefix}translators`."
 
 msgid "**DuckHunt credits**"
 msgstr ""
@@ -2734,6 +2753,8 @@ msgid ""
 "The bot itself is made by Eyesofcreeper, but a lot of people helped with "
 "graphics, ideas, images, and more."
 msgstr ""
+"البوت بشكل عام تمت  صناعته من طرف Eyesofcreeper، ولكن هناك العديد ممن قاموا "
+"بمساعدته في عدة مجالات، من أبرزها الرسومات والأفكار والصور والمزيد..."
 
 msgid ""
 "To see more information about that bot, you'll need to give it the "
@@ -2741,7 +2762,7 @@ msgid ""
 msgstr ""
 
 msgid "You don't have to go right now"
-msgstr ""
+msgstr "ليس عليك الذهاب الآن"
 
 msgid "Hi, fellow cow lover"
 msgstr ""
@@ -2755,25 +2776,25 @@ msgid ""
 msgstr ""
 
 msgid "{exp} experience"
-msgstr ""
+msgstr "{exp} نقاط الخبرة"
 
 msgid "Statistics"
-msgstr ""
+msgstr "إحصائيات"
 
 msgid "{target.name} statistics (click me!)."
-msgstr ""
+msgstr "إحصائيات {target.name} (اضغطني!)."
 
 msgid "Bullets"
-msgstr ""
+msgstr "رصاص"
 
 msgid "Magazines"
 msgstr ""
 
 msgid "Experience"
-msgstr ""
+msgstr "نقاط الخبرة"
 
 msgid "Level"
-msgstr ""
+msgstr "مستوى"
 
 msgid "Accuracy"
 msgstr ""
@@ -2791,7 +2812,7 @@ msgid "{target.name} shooting stats."
 msgstr ""
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
@@ -2799,31 +2820,31 @@ msgid ""
 msgstr ""
 
 msgid "🚰"
-msgstr ""
+msgstr "🚰"
 
 msgid "{shots} shots attempted when wet."
 msgstr ""
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
 msgstr ""
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
 msgstr ""
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
 msgstr ""
@@ -2832,31 +2853,31 @@ msgid "{shots} shots jamming {target.mention} weapon."
 msgstr ""
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
 msgstr ""
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
 msgstr ""
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr ""
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
 msgstr ""
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
 msgstr ""
@@ -2883,10 +2904,10 @@ msgid "Normal ducks"
 msgstr "البط العادي"
 
 msgid "Ghost ducks"
-msgstr "البط الأشباح"
+msgstr "البط الشبح"
 
 msgid "Professor ducks"
-msgstr "البط الأستاذ"
+msgstr "بروفيسور بط"
 
 msgid "Baby ducks"
 msgstr "البط الصغير"
@@ -2901,7 +2922,7 @@ msgid "Kamikaze ducks"
 msgstr ""
 
 msgid "Mechanical ducks"
-msgstr ""
+msgstr "البط الميكانيكي"
 
 msgid "Super ducks"
 msgstr "البط الخارق"
@@ -2940,7 +2961,7 @@ msgid "{target.name} scared ducks."
 msgstr ""
 
 msgid "{target.name} achievements."
-msgstr ""
+msgstr "إنجازات {target.name}."
 
 msgid "❌ You cant send experience to yourself."
 msgstr ""
@@ -3064,7 +3085,7 @@ msgid "Murderer"
 msgstr "قاتل"
 
 msgid "Kill another hunter."
-msgstr ""
+msgstr "اقتل صيادًا آخر."
 
 msgid "Big spender"
 msgstr ""
@@ -3073,25 +3094,25 @@ msgid "Spend more than 2000 experience."
 msgstr ""
 
 msgid "A hunter joined the chat"
-msgstr ""
+msgstr "صياد قد انضم للمحادثة"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "العب لأكثر من أسبوع"
 
 msgid "We are starting to know each other"
 msgstr ""
 
 msgid "Play for more than a month."
-msgstr ""
+msgstr "العب لأكثر من شهر."
 
 msgid "Wanna be friends ?"
 msgstr "هل تريد أن نصبح أصدقاء؟"
 
 msgid "Play for more than a year."
-msgstr "العب لأكثر من عام"
+msgstr "العب لأكثر من عام."
 
 msgid "I don't want your damn bullets!"
-msgstr ""
+msgstr "لا أريد رصاصك اللعينة!"
 
 msgid "Leave a bullet you found in the bushes."
 msgstr ""
@@ -3106,7 +3127,7 @@ msgid "MATHS 101"
 msgstr "الرياضيات 101"
 
 msgid "Solve equations given by the Pr. Duck."
-msgstr ""
+msgstr "قم بحل إحدى معادلات بروفيسور بط."
 
 msgid "BRAAAAAINS!"
 msgstr "أدمغة!!!"
@@ -3198,8 +3219,8 @@ msgstr ""
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
 msgstr ""
-"خلال بحثك في إحدى الشجيرات، وجدت... ** دبوس شعر تابع لإحدى أنواع البط "
-"المنقرض **."
+"خلال بحثك في إحدى الشجيرات، وجدت... ** دبوس شعر من إحدى أنواع البط المنقرض "
+"**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
@@ -3216,14 +3237,14 @@ msgstr ""
 "الكثير منه في حقيبتك ..."
 
 msgid "Searching the bushes around the duck, you found... **A magazine**."
-msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **مجلة**."
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **بعض الذخيرة**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A magazine**. You "
 "didn't take it, you had already too many in your backpack..."
 msgstr ""
-"خلال بحثك في إحدى الشجيرات، وجدت... **مجلة**.   لكنك لم تأخذها، كونك تملك "
-"الكثير منها في حقيبتك ..."
+"خلال بحثك في إحدى الشجيرات، وجدت... **بعض الذخيرة**.   لكنك لم تأخذها، كونك "
+"تملك الكثير منها في حقيبتك ..."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A box of explosive "
@@ -3290,7 +3311,7 @@ msgid "Sun powers: Mirrors are less effective against you."
 msgstr ""
 
 msgid "Dark green"
-msgstr ""
+msgstr "أخضر غامق"
 
 msgid "Farming skills: Clovers give you one more experience point."
 msgstr ""
