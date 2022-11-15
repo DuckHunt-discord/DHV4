@@ -2503,8 +2503,8 @@ msgid ""
 "❌ You already use a silencer. It's still good for {time_delta}, come back "
 "then."
 msgstr ""
-"❌ أنت تستخدم كاتم الصوت بالفعل. لا يزال صالحا لـ {time_delta}، فكر بتغييره "
-"وقتها."
+"❌ أنت تستخدم كاتم الصوت بالفعل. حيث أنه لا يزال صالحا لـ {time_delta}، فكر "
+"بتغييره وقتها."
 
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
@@ -2788,7 +2788,7 @@ msgid "Bullets"
 msgstr "رصاص"
 
 msgid "Magazines"
-msgstr ""
+msgstr "ذخائر"
 
 msgid "Experience"
 msgstr "نقاط الخبرة"
@@ -2907,10 +2907,10 @@ msgid "Ghost ducks"
 msgstr "البط الشبح"
 
 msgid "Professor ducks"
-msgstr "بروفيسور بط"
+msgstr "الأستاذ بط"
 
 msgid "Baby ducks"
-msgstr "البط الصغير"
+msgstr "البط الرضيع"
 
 msgid "Golden ducks"
 msgstr "البط الذهبي"
@@ -2964,7 +2964,7 @@ msgid "{target.name} achievements."
 msgstr "إنجازات {target.name}."
 
 msgid "❌ You cant send experience to yourself."
-msgstr ""
+msgstr "❌ لا يمكنك إرسال نقاط الخبرة لنفسك."
 
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
 msgstr ""
@@ -4174,7 +4174,7 @@ msgid "duck hater"
 msgstr "كاره البط"
 
 msgid "duck pest"
-msgstr ""
+msgstr "آفة البط"
 
 msgid "duck hassler"
 msgstr ""
