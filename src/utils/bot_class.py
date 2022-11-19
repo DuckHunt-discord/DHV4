@@ -229,7 +229,7 @@ class MyBot(AutoShardedBot):
 
 
 async def get_prefix(bot: MyBot, message: discord.Message):
-    forced_prefixes = bot.config["bot"]["prefixes"]
+    forced_prefixes = bot.config["bot"]["prefixes"] + [p + " " for p in bot.config["bot"]["prefixes"]]
 
     if not message.guild:
         # Need no prefix when in DMs
