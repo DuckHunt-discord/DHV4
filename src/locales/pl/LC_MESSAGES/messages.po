@@ -31,12 +31,14 @@ msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
 msgstr ""
+"Zaproś innych na serwer BETA, aby umożliwić im przedwczesne testowanie "
+"funkcji bota przed oficjalnym wydaniem."
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "Strzelaj do kaczki, która pojawiła się jako pierwsza na kanale."
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "Przeładuj broń"
 
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
