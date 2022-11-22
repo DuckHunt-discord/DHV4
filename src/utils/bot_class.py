@@ -14,7 +14,7 @@ from utils import config
 from utils.ctx_class import MyContext
 from utils.events import Events
 from utils.logger import FakeLogger
-from utils.models import AccessLevel, DucksLeft, get_from_db, init_db_connection
+from utils.models import AccessLevel, DucksLeft, get_from_db, init_db_connection, DiscordUser
 
 if typing.TYPE_CHECKING:
     # Prevent circular imports
@@ -224,8 +224,24 @@ class MyBot(AutoShardedBot):
         cogs_count = len(self.cogs)
         messages.append(f"{cogs_count} cogs are loaded")
         messages.append("-----------")
+
+        banned_ids = [int(bid) for bid in await DiscordUser.filter(access_level_override=0).values_list('discord_id', flat=True)]
+        for guild in self.guilds:
+            if guild.owner_id in banned_ids:
+                await guild.leave()
+                self.logger.info(f"[🍑🕳] Left guild {guild.name} ({guild.id}) because the owner is banned.")
+
         for message in messages:
             self.logger.info(message)
+
+    async def on_guild_join(self, guild):
+        self.logger.info(f"Joined guild {guild.name} ({guild.id})")
+        is_banned = await DiscordUser.filter(access_level_override=0).filter(discord_id=guild.owner_id).exists()
+        if is_banned:
+            await guild.leave()
+            self.logger.info(f"[🍑🕳] Automatically left guild I was invited in {guild.name} ({guild.id}) because the owner is banned.")
+        else:
+            self.logger.info(f"Joined guild {guild.name} ({guild.id})")
 
 
 async def get_prefix(bot: MyBot, message: discord.Message):
