@@ -41,7 +41,7 @@ msgid "Reload your gun."
 msgstr "Przeładuj broń"
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr ""
+msgstr "Przytul kaczkę, która pojawiła się najpierw na kanale!"
 
 msgid "Revive yourself by eating brains"
 msgstr ""
@@ -211,10 +211,10 @@ msgid "This command group contains all commands related to \"Landmines\" game."
 msgstr ""
 
 msgid "View your event statistics."
-msgstr ""
+msgstr "Zobacz swoje statystyki"
 
 msgid "This command explains how to place a landmine"
-msgstr ""
+msgstr "Ta komenda wyjaśnia jak postawić minę"
 
 msgid ""
 "[THIS COMMAND WORKS IN DMs]\n"
@@ -3997,7 +3997,7 @@ msgid "duck misser"
 msgstr ""
 
 msgid "member of the Committee Against Ducks"
-msgstr ""
+msgstr "Członek Komitetu ds. przeciwdziałania kaczkom"
 
 msgid "duck hater"
 msgstr ""
@@ -4117,16 +4117,16 @@ msgid "Can't set such a high level"
 msgstr ""
 
 msgid "You leveled up!"
-msgstr ""
+msgstr "Wbiłeś wyższy poziom!"
 
 msgid "You leveled down!"
 msgstr ""
 
 msgid "❌ You cannot run this command."
-msgstr ""
+msgstr "❌Nie możesz użyć tej komendy."
 
 msgid "❌ You are not allowed to click on this button"
-msgstr ""
+msgstr "❌Nie masz permisji, aby używać przycisku"
 
 msgid "Cancel"
 msgstr ""
