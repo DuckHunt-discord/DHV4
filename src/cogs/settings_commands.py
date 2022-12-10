@@ -1434,7 +1434,7 @@ class SettingsCommands(Cog):
         db_channel = await get_from_db(ctx.channel)
         _ = await ctx.get_translate_function()
 
-        if level_id is not None and role is not None:
+        if level_id is not None:
             level = get_level_info_from_id(level_id)
 
             if not level:
@@ -1470,8 +1470,13 @@ class SettingsCommands(Cog):
                 )
                 return
 
-            db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
-            await ctx.reply(_("👍️ Role added to the auto_roles list."))
+            if role:
+                db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
+                await ctx.reply(_("👍️ Role added to the auto_roles list."))
+            else:
+                old_role = db_channel.levels_to_roles_ids_mapping[str(level_id)]
+                del db_channel.levels_to_roles_ids_mapping[str(level_id)]
+                await ctx.reply(_(f"👍️ Role ID {old_role} removed from the auto_roles list."))
 
         # Sorted by lowest role first.
         current_mapping = sorted(
@@ -1489,7 +1494,7 @@ class SettingsCommands(Cog):
                     del db_channel.levels_to_roles_ids_mapping[str(level_id)]
                     message.append(f"Level {level_id} - {_(level['name']).title()} - {_('Deleted role 🗑️ ID: {role_id}', role_id=role_id)}")
                 else:
-                    message.append(_(level["name"]).title() + " - " + role.mention)
+                    message.append(f"{_(level['name']).title()} - {role.mention}")
 
             message = "\n".join(message)
         else:
