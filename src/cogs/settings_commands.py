@@ -1487,14 +1487,7 @@ class SettingsCommands(Cog):
                 role = guild.get_role(role_id)
                 if not role:
                     del db_channel.levels_to_roles_ids_mapping[str(level_id)]
-                    message.append(
-                        "Level "
-                        + level_id
-                        + " - "
-                        + _(level["name"]).title()
-                        + " - "
-                        + _("Deleted role 🗑️ ID: {role_id}", role_id=role_id)
-                    )
+                    message.append(f"Level {level_id} - {_(level['name']).title()} - {_('Deleted role 🗑️ ID: {role_id}', role_id=role_id)}")
                 else:
                     message.append(_(level["name"]).title() + " - " + role.mention)
 
