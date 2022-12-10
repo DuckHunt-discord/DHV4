@@ -1474,9 +1474,12 @@ class SettingsCommands(Cog):
                 db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
                 await ctx.reply(_("👍️ Role added to the auto_roles list."))
             else:
-                old_role = db_channel.levels_to_roles_ids_mapping[str(level_id)]
-                del db_channel.levels_to_roles_ids_mapping[str(level_id)]
-                await ctx.reply(_(f"👍️ Role ID {old_role} removed from the auto_roles list."))
+                old_role = db_channel.levels_to_roles_ids_mapping.get(str(level_id))
+                if old_role:
+                    del db_channel.levels_to_roles_ids_mapping[str(level_id)]
+                    await ctx.reply(_(f"👍️ Role ID {old_role} removed from the auto_roles list."))
+                else:
+                    await ctx.reply(_("❌️ No role was set for this level."))
 
         # Sorted by lowest role first.
         current_mapping = sorted(
