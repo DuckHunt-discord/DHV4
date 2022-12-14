@@ -1459,18 +1459,18 @@ class SettingsCommands(Cog):
                 )
                 return
 
-            my_top_role = me.top_role
-            if role >= my_top_role:
-                await ctx.reply(
-                    _(
-                        "❌ I can't assign this role. Move my top role (currently {top_role}) "
-                        "above the roles you want to be able to assign.",
-                        top_role=my_top_role.mention,
-                    )
-                )
-                return
-
             if role:
+                my_top_role = me.top_role
+                if role >= my_top_role:
+                    await ctx.reply(
+                        _(
+                            "❌ I can't assign this role. Move my top role (currently {top_role}) "
+                            "above the roles you want to be able to assign.",
+                            top_role=my_top_role.mention,
+                        )
+                    )
+                    return
+
                 db_channel.levels_to_roles_ids_mapping[str(level_id)] = str(role.id)
                 await ctx.reply(_("👍️ Role added to the auto_roles list."))
             else:
