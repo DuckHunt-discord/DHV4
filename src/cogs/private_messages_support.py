@@ -955,7 +955,7 @@ class PrivateMessagesSupport(Cog):
                 ctx, db_user, user, language_code, suggested_locale
             )
         )
-        await ctx.message.add_reaction("<a:typing:597589448607399949>")
+        await ctx.message.add_reaction("<a:typing:1067431760331284551>")
 
     async def language_change_interaction(
         self, ctx, db_user, user, language_code, suggested_locale
