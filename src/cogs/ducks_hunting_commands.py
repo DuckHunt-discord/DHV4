@@ -755,6 +755,7 @@ class DucksHuntingCommands(Cog):
                     target_mention=target_mention,
                 ),
             )
+            return
         elif target:
             db_channel: DiscordChannel = await get_from_db(ctx.channel)
             mentions_in_channel = db_channel.mentions_when_killed
