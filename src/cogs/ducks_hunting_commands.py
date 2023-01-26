@@ -245,6 +245,10 @@ class DucksHuntingCommands(Cog):
             db_hunter.shooting_stats["shots_jamming_weapon"] += 1
             db_hunter.active_powerups["jammed"] = 1
             await db_hunter.save()
+            msg = _("💥 Your weapon jammed. Reload it and consider buying grease next time.")
+
+            if db_hunter.is_powerup_active("grease"):
+                msg = _("💥 Your weapon jammed. Reload it and ponder how unlucky you are.")
             await CommandView(
                 self.bot,
                 command_to_be_ran="reload",
@@ -252,9 +256,7 @@ class DucksHuntingCommands(Cog):
                 style=ButtonStyle.blurple,
             ).send(
                 ctx,
-                content=_(
-                    "💥 Your weapon jammed. Reload it and consider buying grease next time."
-                ),
+                content=msg,
                 reference=ctx.message,
             )
             return False
