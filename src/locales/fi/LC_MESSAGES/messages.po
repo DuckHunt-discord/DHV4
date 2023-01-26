@@ -142,6 +142,11 @@ msgid "Congratulate an user giving them a trophy."
 msgstr "Onnittele käyttäjää antamalla hänelle palkinto."
 
 msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -1049,11 +1054,8 @@ msgstr "Se on mahdotonta."
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someones vote against, the boss won't spawn."
+"if someone vote against, the boss won't spawn."
 msgstr ""
-"Äänestä, että pomo spawnaa hetkeksi.\n"
-"Tämä on epäreilu äänestys: sillä se tarvitsee ihmisiä äänestämään nopeasti "
-"pomon puolesta, jos joku äänestää vastaan, pomo ei spawnaa."
 
 msgid "Who doesn't need cows ?"
 msgstr "Kuka ei tarvitse lehmiä?"
@@ -1370,6 +1372,9 @@ msgstr ""
 "💥 Aseesi jumiutui. Lataa se uudelleen ja harkitse rasvan ostamista ensi "
 "kerralla."
 
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
@@ -1566,6 +1571,10 @@ msgstr "❌ Minulla ei ole aavistustakaan, mitä haluat halata..."
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Halasit puuta... Kiitos!"
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -2730,11 +2739,14 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr "👍️ Rooli lisätty auto_roles luetteloon."
 
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
+msgstr ""
+
+msgid "❌️ No role was set for this level."
+msgstr ""
+
 msgid "Current roles mapping:"
 msgstr "Nykyisten roolien kartoitus:"
-
-msgid "Deleted role 🗑️ ID: {role_id}"
-msgstr "Poistettu rooli 🗑️ ID: {role_id}"
 
 msgid "No level mapping is currently defined on this channel."
 msgstr "Tälle kanavalle ei ole tällä hetkellä määritelty tasokartoitusta."
@@ -2754,6 +2766,9 @@ msgstr "Nykyisten arvovaltaisten roolien kartoitus:"
 
 msgid "Level {i}"
 msgstr "Taso {i}"
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr "Poistettu rooli 🗑️ ID: {role_id}"
 
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
@@ -3073,8 +3088,8 @@ msgid ""
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-msgid "The beloved DuckHunt translators"
-msgstr "Rakkaat DuckHunt-kääntäjät"
+msgid "🌐 The beloved DuckHunt translators"
+msgstr ""
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -3093,12 +3108,8 @@ msgstr "Sekalaiset"
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr "Pong. — Aikaa kului: {miliseconds}ms"
 
-msgid ""
-"You'll get back your weapon and magazines {formatted_delta} "
-"({formatted_precise_delta})"
+msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
-"Saat takaisin aseesi ja lippaat {formatted_delta} "
-"({formatted_precise_delta}).."
 
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
@@ -3189,6 +3200,9 @@ msgid ""
 "in {formatted_td}"
 msgstr ""
 "Tapahtumat kestävät tunnin alusta loppuun. Päättymiseen {formatted_td}"
+
+msgid "The bot current time is: {formatted_td}"
+msgstr ""
 
 msgid "{exp} experience"
 msgstr "{exp} kokemus"
@@ -3646,15 +3660,19 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr ""
+
+msgid ""
 "Searching the bushes around the duck, you found... **An USB-C charger**."
 msgstr ""
 
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
-msgstr ""
-
-msgid ""
-"Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
@@ -3857,7 +3875,7 @@ msgid ""
 "`dh!bang <coordinates>`."
 msgstr ""
 
-msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer!"

@@ -147,6 +147,11 @@ msgid "Congratulate an user giving them a trophy."
 msgstr "أهنئ مستخدمًا بأعطاهم كأس."
 
 msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -899,7 +904,7 @@ msgstr "انه مستحيل."
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someones vote against, the boss won't spawn."
+"if someone vote against, the boss won't spawn."
 msgstr ""
 
 msgid "Who doesn't need cows ?"
@@ -1169,6 +1174,9 @@ msgstr ""
 msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
 
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
@@ -1306,6 +1314,10 @@ msgstr "❌ ليست لدي فكرة عن ماهية الكيان الذي تر�
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 لقد عانقت الشجرة... شكرا!"
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -2344,11 +2356,14 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr ""
 
-msgid "Current roles mapping:"
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
 msgstr ""
 
-msgid "Deleted role 🗑️ ID: {role_id}"
-msgstr "دور محذوف 🗑️ ID:{role_id}"
+msgid "❌️ No role was set for this level."
+msgstr ""
+
+msgid "Current roles mapping:"
+msgstr ""
 
 msgid "No level mapping is currently defined on this channel."
 msgstr ""
@@ -2366,6 +2381,9 @@ msgstr ""
 
 msgid "Level {i}"
 msgstr "المستوى {i}"
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr "دور محذوف 🗑️ ID:{role_id}"
 
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
@@ -2668,7 +2686,7 @@ msgid ""
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-msgid "The beloved DuckHunt translators"
+msgid "🌐 The beloved DuckHunt translators"
 msgstr ""
 
 msgid ""
@@ -2684,9 +2702,7 @@ msgstr ""
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr ""
 
-msgid ""
-"You'll get back your weapon and magazines {formatted_delta} "
-"({formatted_precise_delta})"
+msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
 
 msgid ""
@@ -2773,6 +2789,9 @@ msgstr ""
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
+msgstr ""
+
+msgid "The bot current time is: {formatted_td}"
 msgstr ""
 
 msgid "{exp} experience"
@@ -3213,6 +3232,14 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **صورة لأحد أنواع البط**."
+
+msgid ""
 "Searching the bushes around the duck, you found... **An USB-C charger**."
 msgstr ""
 
@@ -3221,10 +3248,6 @@ msgid ""
 msgstr ""
 "خلال بحثك في إحدى الشجيرات، وجدت... ** دبوس شعر من إحدى أنواع البط المنقرض "
 "**."
-
-msgid ""
-"Searching the bushes around the duck, you found... **A picture of a duck**."
-msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **صورة لأحد أنواع البط**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
 msgstr "خلال بحثك في إحدى الشجيرات، وجدت... **بعض الرصاص**."
@@ -3450,7 +3473,7 @@ msgid ""
 "`dh!bang <coordinates>`."
 msgstr ""
 
-msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer!"

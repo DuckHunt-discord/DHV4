@@ -154,6 +154,11 @@ msgid "Congratulate an user giving them a trophy."
 msgstr ""
 
 msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -1024,7 +1029,7 @@ msgstr ""
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someones vote against, the boss won't spawn."
+"if someone vote against, the boss won't spawn."
 msgstr ""
 
 msgid "Who doesn't need cows ?"
@@ -1343,6 +1348,9 @@ msgstr ""
 "💥 Je wapen is vastgelopen. Laad het opnieuw en overweeg de volgende keer "
 "glijmiddel te kopen."
 
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
@@ -1516,6 +1524,10 @@ msgstr "❌ Ik heb geen idee wat je wilt knuffelen..."
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Je knuffelde de boom... Bedankt!"
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -2683,10 +2695,13 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr ""
 
-msgid "Current roles mapping:"
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
 msgstr ""
 
-msgid "Deleted role 🗑️ ID: {role_id}"
+msgid "❌️ No role was set for this level."
+msgstr ""
+
+msgid "Current roles mapping:"
 msgstr ""
 
 msgid "No level mapping is currently defined on this channel."
@@ -2704,6 +2719,9 @@ msgid "Current prestige roles mapping:"
 msgstr ""
 
 msgid "Level {i}"
+msgstr ""
+
+msgid "Deleted role 🗑️ ID: {role_id}"
 msgstr ""
 
 msgid "No prestige level mapping is currently defined on this channel."
@@ -3081,8 +3099,8 @@ msgid ""
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-msgid "The beloved DuckHunt translators"
-msgstr "De geliefde DuckHunt vertalers"
+msgid "🌐 The beloved DuckHunt translators"
+msgstr ""
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -3101,12 +3119,8 @@ msgstr ""
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr "Pong. — Tijd genomen: {miliseconds}ms"
 
-msgid ""
-"You'll get back your weapon and magazines {formatted_delta} "
-"({formatted_precise_delta})"
+msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
-"Je krijgt je wapen en magazijnen terug {formatted_delta} "
-"({formatted_precise_delta})"
 
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
@@ -3194,6 +3208,9 @@ msgid ""
 msgstr ""
 "Gebeurtenissen duren een uur, van het begin tot het einde van het uur. "
 "Eindigend in {formatted_td}"
+
+msgid "The bot current time is: {formatted_td}"
+msgstr ""
 
 msgid "{exp} experience"
 msgstr "{exp} ervaring"
@@ -3653,6 +3670,16 @@ msgstr ""
 "Als je de struiken rond de eend doorzoekt, vind je... **Veel struiken**."
 
 msgid ""
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr ""
+"Als je de struiken rond de eend doorzoekt, vind je... **Een foto van een "
+"eend**."
+
+msgid ""
 "Searching the bushes around the duck, you found... **An USB-C charger**."
 msgstr ""
 
@@ -3661,12 +3688,6 @@ msgid ""
 msgstr ""
 "Als je de struiken rond de eend doorzoekt, vind je... **Een zeldzame "
 "eendenspeld**."
-
-msgid ""
-"Searching the bushes around the duck, you found... **A picture of a duck**."
-msgstr ""
-"Als je de struiken rond de eend doorzoekt, vind je... **Een foto van een "
-"eend**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
 msgstr "Als je de struiken rond de eend doorzoekt, vind je... **Een kogel**."
@@ -3901,7 +3922,7 @@ msgid ""
 "`dh!bang <coordinates>`."
 msgstr ""
 
-msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer!"

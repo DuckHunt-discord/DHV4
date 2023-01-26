@@ -148,6 +148,11 @@ msgid "Congratulate an user giving them a trophy."
 msgstr "Congratulate a user giving them a trophy."
 
 msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -1112,12 +1117,8 @@ msgstr "Itu mustahil."
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someones vote against, the boss won't spawn."
+"if someone vote against, the boss won't spawn."
 msgstr ""
-"Memilih bos untuk muncul selama satu menit.\n"
-"Ini adalah suara yang tidak adil: sementara itu membutuhkan orang untuk "
-"memilih cepat untuk bos,\n"
-"Jika seseorang memilih melawan, bos tidak akan muncul."
 
 msgid "Who doesn't need cows ?"
 msgstr "Siapa yang tidak butuh sapi?"
@@ -1473,6 +1474,9 @@ msgstr ""
 "💥 Senjatamu macet. Muat ulang dan pertimbangkan untuk membeli grease/minyak "
 "suatu waktu."
 
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
@@ -1670,6 +1674,10 @@ msgstr "❌ Aku tidak tahu apa yang ingin kamu ingin peluk..."
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Kau memeluk pohon... Terima kasih!"
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -2883,11 +2891,14 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr "👍️ Role ditambahkan ke daftar auto_roles."
 
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
+msgstr ""
+
+msgid "❌️ No role was set for this level."
+msgstr ""
+
 msgid "Current roles mapping:"
 msgstr "Pemetaan role saat ini:"
-
-msgid "Deleted role 🗑️ ID: {role_id}"
-msgstr "Role dihapus 🗑️ ID: {role_id}"
 
 msgid "No level mapping is currently defined on this channel."
 msgstr "Saat ini tidak ada pemetaan level yang didefinisikan di channel ini."
@@ -2907,6 +2918,9 @@ msgstr ""
 
 msgid "Level {i}"
 msgstr ""
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr "Role dihapus 🗑️ ID: {role_id}"
 
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
@@ -3209,7 +3223,7 @@ msgid ""
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
 
-msgid "The beloved DuckHunt translators"
+msgid "🌐 The beloved DuckHunt translators"
 msgstr ""
 
 msgid ""
@@ -3225,9 +3239,7 @@ msgstr ""
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr ""
 
-msgid ""
-"You'll get back your weapon and magazines {formatted_delta} "
-"({formatted_precise_delta})"
+msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
 
 msgid ""
@@ -3300,6 +3312,9 @@ msgstr ""
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
+msgstr ""
+
+msgid "The bot current time is: {formatted_td}"
 msgstr ""
 
 msgid "{exp} experience"
@@ -3740,15 +3755,19 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr ""
+
+msgid ""
 "Searching the bushes around the duck, you found... **An USB-C charger**."
 msgstr ""
 
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
-msgstr ""
-
-msgid ""
-"Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
@@ -3947,7 +3966,7 @@ msgid ""
 "`dh!bang <coordinates>`."
 msgstr ""
 
-msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer!"

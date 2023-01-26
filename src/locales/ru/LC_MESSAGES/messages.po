@@ -154,6 +154,11 @@ msgid "Congratulate an user giving them a trophy."
 msgstr "Награждение пользователя трофеем."
 
 msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -1046,7 +1051,7 @@ msgstr ""
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someones vote against, the boss won't spawn."
+"if someone vote against, the boss won't spawn."
 msgstr ""
 
 msgid "Who doesn't need cows ?"
@@ -1397,6 +1402,9 @@ msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
 "💥 Ваше оружие заклинило. Перезарядите его и подумайте о покупке смазки."
 
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
@@ -1571,6 +1579,10 @@ msgstr "❌ И кого это мы хотим обнять?.."
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Вы обняли дерево... Что ж, спасибо!"
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -2757,10 +2769,13 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr ""
 
-msgid "Current roles mapping:"
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
 msgstr ""
 
-msgid "Deleted role 🗑️ ID: {role_id}"
+msgid "❌️ No role was set for this level."
+msgstr ""
+
+msgid "Current roles mapping:"
 msgstr ""
 
 msgid "No level mapping is currently defined on this channel."
@@ -2779,6 +2794,9 @@ msgstr "Текущее отображение уровней престижа:"
 
 msgid "Level {i}"
 msgstr "Уровень {i}"
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr ""
 
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
@@ -3179,8 +3197,8 @@ msgstr ""
 "по заказу Общества по защите прав животных. Спешите опробовать! [Покупка: -"
 "{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
 
-msgid "The beloved DuckHunt translators"
-msgstr "Замечательные локализаторы DuckHunt"
+msgid "🌐 The beloved DuckHunt translators"
+msgstr ""
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -3198,12 +3216,8 @@ msgstr ""
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr "Понг. — Время отклика: {miliseconds} мс"
 
-msgid ""
-"You'll get back your weapon and magazines {formatted_delta} "
-"({formatted_precise_delta})"
+msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
-"Вы получите своё оружие и обоймы {formatted_delta} "
-"({formatted_precise_delta})"
 
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
@@ -3293,6 +3307,9 @@ msgid ""
 msgstr ""
 "События длятся один полный час, с начала и до конца каждого часа. Текущее "
 "событие закончится {formatted_td}."
+
+msgid "The bot current time is: {formatted_td}"
+msgstr ""
 
 msgid "{exp} experience"
 msgstr "{exp} ед. опыта"
@@ -3774,6 +3791,16 @@ msgid ""
 msgstr "Пошарив в кустах возле убитой утки, вы нашли... **заросли камыша**."
 
 msgid ""
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **забавную картинку с "
+"уткой**."
+
+msgid ""
 "Searching the bushes around the duck, you found... **An USB-C charger**."
 msgstr ""
 
@@ -3782,12 +3809,6 @@ msgid ""
 msgstr ""
 "Пошарив в кустах возле убитой утки, вы нашли... **редкий значок с "
 "изображением утки**."
-
-msgid ""
-"Searching the bushes around the duck, you found... **A picture of a duck**."
-msgstr ""
-"Пошарив в кустах возле убитой утки, вы нашли... **забавную картинку с "
-"уткой**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
 msgstr "Пошарив в кустах возле убитой утки, вы нашли... **патрон**."
@@ -4030,7 +4051,7 @@ msgid ""
 "`dh!bang <coordinates>`."
 msgstr ""
 
-msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer!"

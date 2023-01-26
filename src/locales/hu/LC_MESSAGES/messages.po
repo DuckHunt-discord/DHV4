@@ -135,6 +135,11 @@ msgid "Congratulate an user giving them a trophy."
 msgstr ""
 
 msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+
+msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
 "and height,\n"
 "loosing as few details as we can.\n"
@@ -1046,12 +1051,8 @@ msgstr "Lehetetlen."
 msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someones vote against, the boss won't spawn."
+"if someone vote against, the boss won't spawn."
 msgstr ""
-"Szavazás egy főgonosz leidéződésére egy percig.\n"
-"Ez a szavazás nem fer: bár gyorsan kell szavazni az embereknek a főgonosz "
-"leidéződéséhez,\n"
-"ha bárki ellenszavaz, a főgonosz nem lesz megidézve."
 
 msgid "Who doesn't need cows ?"
 msgstr "Kinek nincs szüksége tehenekre?"
@@ -1350,6 +1351,9 @@ msgstr ""
 "💥 Beragadt a fegyvered. Töltsd újra és fontold meg az olajozás "
 "megvásárlását legközelebb."
 
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
 "your weapon and shoot with your eyes closed..."
@@ -1530,6 +1534,10 @@ msgstr "❌ Nincs ötletem arra, hogy mit akarsz megölelni..."
 
 msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Megölelted a fát... Köszi!"
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
 
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -2608,10 +2616,13 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr ""
 
-msgid "Current roles mapping:"
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
 msgstr ""
 
-msgid "Deleted role 🗑️ ID: {role_id}"
+msgid "❌️ No role was set for this level."
+msgstr ""
+
+msgid "Current roles mapping:"
 msgstr ""
 
 msgid "No level mapping is currently defined on this channel."
@@ -2629,6 +2640,9 @@ msgid "Current prestige roles mapping:"
 msgstr ""
 
 msgid "Level {i}"
+msgstr ""
+
+msgid "Deleted role 🗑️ ID: {role_id}"
 msgstr ""
 
 msgid "No prestige level mapping is currently defined on this channel."
@@ -2934,8 +2948,8 @@ msgstr ""
 "ki hamarosan! [Megvásárolva: -{ITEM_COST} tp, összesen {db_hunter."
 "experience} tp]"
 
-msgid "The beloved DuckHunt translators"
-msgstr "A szeretett DuckHunt fordítók"
+msgid "🌐 The beloved DuckHunt translators"
+msgstr ""
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -2950,9 +2964,7 @@ msgstr ""
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr "Pong. — Felhasznált idő: {miliseconds} ms"
 
-msgid ""
-"You'll get back your weapon and magazines {formatted_delta} "
-"({formatted_precise_delta})"
+msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
 
 msgid ""
@@ -3027,6 +3039,9 @@ msgstr "Jelenlegi esemény:"
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
+msgstr ""
+
+msgid "The bot current time is: {formatted_td}"
 msgstr ""
 
 msgid "{exp} experience"
@@ -3483,12 +3498,7 @@ msgstr ""
 "A kacsa melletti bokrok átkutatása után találtál... **Rengeteg bokrot**."
 
 msgid ""
-"Searching the bushes around the duck, you found... **An USB-C charger**."
-msgstr ""
-"A kacsa melletti bokrok átkutatása után találtál... **Egy USB-C töltőt**."
-
-msgid ""
-"Searching the bushes around the duck, you found... **A rare duck pin**."
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
 msgstr ""
 
 msgid ""
@@ -3496,6 +3506,15 @@ msgid ""
 msgstr ""
 "A kacsa melletti bokrok átkutatása után találtál... **Egy képet egy "
 "kacsáról**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **An USB-C charger**."
+msgstr ""
+"A kacsa melletti bokrok átkutatása után találtál... **Egy USB-C töltőt**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A rare duck pin**."
+msgstr ""
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
 msgstr "A kacsa melletti bokrok átkutatása után találtál... **Egy golyót**."
@@ -3730,7 +3749,7 @@ msgid ""
 "`dh!bang <coordinates>`."
 msgstr ""
 
-msgid "{hurter.mention}, Give coordinates like so `B3`!"
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
 msgid "{hurter.mention}, that's not the correct answer!"
