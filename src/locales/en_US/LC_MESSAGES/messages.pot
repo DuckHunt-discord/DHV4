@@ -51,7 +51,7 @@ msgstr ""
 msgid "Hug the duck that appeared first on the channel."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:841
+#: ../cogs/ducks_hunting_commands.py:839
 msgid "Revive yourself by eating brains"
 msgstr ""
 
@@ -1500,44 +1500,44 @@ msgid ""
 "{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:784
+#: ../cogs/ducks_hunting_commands.py:782
 #, python-brace-format
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
 "happy that you love it."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:800
+#: ../cogs/ducks_hunting_commands.py:798
 #, python-brace-format
 msgid ""
 "{you_mention} hugged {target_mention}. They hate you even more for hugging "
 "them. Don't know why tho... Try shooting them in the face."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:810
+#: ../cogs/ducks_hunting_commands.py:808
 #, python-brace-format
 msgid ""
 "{you_mention}, you just hugged yourself. You feel a little lonely, don't you?"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:818
+#: ../cogs/ducks_hunting_commands.py:816
 #, python-brace-format
 msgid "{you_mention} hugged {target_mention}. They feel loved."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:832
+#: ../cogs/ducks_hunting_commands.py:830
 msgid "You hugged a tree, Wizzz?!"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:834
+#: ../cogs/ducks_hunting_commands.py:832
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:853
+#: ../cogs/ducks_hunting_commands.py:851
 msgid "You are already alive and well."
 msgstr ""
 
-#: ../cogs/ducks_hunting_commands.py:866
+#: ../cogs/ducks_hunting_commands.py:864
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consciousness."
 msgstr ""
