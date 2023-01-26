@@ -703,7 +703,7 @@ class DucksHuntingCommands(Cog):
     @commands.command()
     @checks.channel_enabled()
     async def hug(
-        self, ctx: MyContext, target: Optional[Union[discord.Member, str]], *args
+        self, ctx: MyContext, target: Optional[Union[discord.Member, discord.Role, str]], *args
     ):
         """
         Hug the duck that appeared first on the channel.
@@ -740,6 +740,22 @@ class DucksHuntingCommands(Cog):
                 db_hunter.hugged["trees"] += 1
                 await db_hunter.save()
                 return
+        elif isinstance(target, discord.Role):
+            db_hunter.hugged["roles"] += 1
+            await db_hunter.save()
+
+            you_mention = ctx.author.mention
+            target_mention = target.mention
+
+            await ctx.reply(
+                _(
+                    "{you_mention} hugged the whole {target_mention} gang. "
+                    "IT'S A GROUP HUG!!! 💯",
+                    you_mention=you_mention,
+                    target_mention=target_mention,
+                ),
+            )
+
 
         elif target:
             db_channel: DiscordChannel = await get_from_db(ctx.channel)
