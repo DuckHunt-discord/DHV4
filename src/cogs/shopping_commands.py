@@ -890,7 +890,7 @@ class ShoppingCommands(Cog):
 
         asyncio.ensure_future(spawn())
 
-        await ctx.reply(
+        await ctx.author.send(
             _(
                 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
                 db_hunter=db_hunter,
