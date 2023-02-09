@@ -1962,7 +1962,7 @@ msgid ""
 "`{landmine.value}` points value.You've lost {-got_points} points, because "
 "the value of the landmine was lower than the defuse kit price. Sorry!"
 msgstr ""
-"💸️ Użyłeś/aś zestawu do rozbrajania miny `{landmine.word}, podłożoną przez "
+"💸️ Użyłeś/aś zestawu do rozbrajania miny `{landmine.word}`, podłożoną przez "
 "<@{placed_by_member.user_id}> {td} temu, która miała wartość `{landmine."
 "value}`. Utraciłeś/aś {go{-got_points}, ponieważ wartość miny była niższa "
 "niż cena zestawu do rozbrajania. Sorki!"
@@ -3655,9 +3655,11 @@ msgstr ""
 
 msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
+"{hurter.mention}, poproszę o koordynaty w formie litera + cyfra, np. `B3!`! "
+"{exc_message}`"
 
 msgid "{hurter.mention}, that's not the correct answer!"
-msgstr ""
+msgstr "{hurter.mention} Ups! To nie jest poprawna odpowiedź!"
 
 msgid "baby"
 msgstr ""
@@ -3788,67 +3790,67 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "KWAK"
-msgstr ""
+msgstr "KWA"
 
 msgid "KWAAK"
-msgstr ""
+msgstr "KWAA"
 
 msgid "KWAAAK"
-msgstr ""
+msgstr "KWAAA"
 
 msgid "COUAK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "COUAAK"
-msgstr ""
+msgstr "KWAAAK"
 
 msgid "COUAAAK"
-msgstr ""
+msgstr "KWAAAK"
 
 msgid "QUAK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "QUAAK"
-msgstr ""
+msgstr "KWAAK"
 
 msgid "QUAAAK"
-msgstr ""
+msgstr "KWAAAK"
 
 msgid "QUACK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "QUAACK"
-msgstr ""
+msgstr "KWAAAAK"
 
 msgid "QUAAACK"
-msgstr ""
+msgstr "KWAAAAAK"
 
 msgid "COUAC"
-msgstr ""
+msgstr "KWAK"
 
 msgid "COUAAC"
-msgstr ""
+msgstr "KWAAK"
 
 msgid "COUAAAC"
-msgstr ""
+msgstr "KWAAAK"
 
 msgid "COUACK"
-msgstr ""
+msgstr "KWAK"
 
 msgid "*cries*"
-msgstr ""
+msgstr "*płacze*"
 
 msgid "Hello world"
-msgstr ""
+msgstr "Witaj świecie!"
 
 msgid "How are you today?"
-msgstr ""
+msgstr "Jak się dzisiaj macie?"
 
 msgid "Please don't kill me..."
-msgstr ""
+msgstr "Proszę... nie zabijaj mnie..."
 
 msgid "I love you too!"
-msgstr ""
+msgstr "Też Ciebie kocham, misiek! :*"
 
 msgid "Don't shoot me! I'm a fake duck!"
 msgstr ""
@@ -4157,7 +4159,7 @@ msgid "Cartographer Duck"
 msgstr ""
 
 msgid "*coin*"
-msgstr ""
+msgstr "*pieniądz nie śmierdzi*"
 
 msgid "*Don't make a noise, it's nighttime*"
 msgstr "*Zachowuj się cicho, jest cisza nocna*"
@@ -4169,35 +4171,39 @@ msgid "ZzZzZz"
 msgstr "ZzZzZz"
 
 msgid "Everything is calm"
-msgstr ""
+msgstr "Co piszczy w trawie?"
 
 msgid "Nothing is happening right now."
-msgstr ""
+msgstr "Na razie nic się nie dzieje 🤫"
 
 msgid "Ducks are migrating"
-msgstr "Kaczki migrują"
+msgstr "Migracja kaczek"
 
 msgid "Prepare to see more ducks in the next hour."
 msgstr ""
-"Przygotuj się na pojawienie więcej kaczek w ciągu najbliższej godziny ."
+"Przygotuj się na pojawienie więcej kaczek w ciągu najbliższej godziny."
 
 msgid "Steroids in the lake"
-msgstr ""
+msgstr "Sterydy w jeziorze"
 
 msgid ""
 "A medical waste company dumped steroids in the lake. Ducks have mutated, and "
 "you'll see a lot more super ducks. But, be careful, and don't drink that "
 "water."
 msgstr ""
+"Pewnego dnia firma zajmująca się odpadami medycznymi wrzuciła sterydy do "
+"jeziora. Kaczki uległy mutacji i zobaczysz o wiele więcej superkaczek. Ale "
+"hej... co Ty..?! NIE PIJ TEJ WODY."
 
 msgid "Safety class canceled"
-msgstr ""
+msgstr "Klasa bezpieczeństwa anulowanal"
 
 msgid "The safety class was canceled, beware not to shoot other hunters!"
 msgstr ""
+"Klasa bezpieczeństwa została odwołana, uważaj, aby nie strzelać do innych!"
 
 msgid "Connection problem"
-msgstr "Wystąpił problem z połączeniem"
+msgstr "ERROR : Problem z połączeniem"
 
 msgid ""
 "Ducks cant find your computer due to connection problems, and there will be "
@@ -4207,24 +4213,26 @@ msgstr ""
 "i będzie ich mniej dopóki problem nie zostanie naprawiony."
 
 msgid "A new florist in town"
-msgstr ""
+msgstr "Nowa kwiaciarnia w mieście"
 
 msgid ""
 "A florist opened in town, and you can now find better 4-leaf-clovers. Go "
 "check them out!"
 msgstr ""
+"W mieście otwarto kwiaciarnię i teraz można znaleźć lepsze 4-listne "
+"koniczyny. Bierz co dają! "
 
 msgid "Mega-ducks"
-msgstr ""
+msgstr "Mega-kaczki"
 
 msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
-msgstr ""
+msgstr "Ktoś napompował kompresorem super kaczkę i teraz są JESZCZE WIĘKSZE!!"
 
 msgid "Windy weather"
-msgstr ""
+msgstr "Wietrzna pogoda"
 
 msgid "Bullets are deflected by some strong wind."
-msgstr ""
+msgstr "Kule są odbijane przez silny wiatr."
 
 msgid "A UN treaty bans damaging ammo"
 msgstr ""
@@ -4235,54 +4243,57 @@ msgid ""
 msgstr ""
 
 msgid "Lootbox opened"
-msgstr ""
+msgstr "Otworzono skrzynkę"
 
 msgid "VIP card"
-msgstr ""
+msgstr "Karta VIP"
 
 msgid "A nice and shiny card that allow you to set a server as VIP."
-msgstr ""
+msgstr "Ładna i błyszcząca karta, która pozwala ulepszyć serwer do VIP'a."
 
 msgid "❌ {guild.name} is already VIP."
-msgstr "❌ {guild.name} jest już VIPEM."
+msgstr "❌Serwer {guild.name} jest już ulepszony do funkcji VIPA."
 
 msgid "✨ {guild.name} is now VIP! Thanks."
-msgstr "✨{guild.name} jest teraz VIPEM! Z całego serca dziękujemy."
+msgstr ""
+"✨Serwer {guild.name} dołączył do grona VIP'ów! Z całego serca dziękujemy."
 
 msgid "A book"
-msgstr ""
+msgstr "Książka"
 
 msgid "Reading it will give you experience."
-msgstr ""
+msgstr "Przeczytaj ją całą, a być może zgarniesz nieco doświadczenia."
 
 msgid ""
 "✨ You learned a lot, adding {amount} experience points to your profile."
 msgstr ""
-"✨ Wow, dużo się dzisiaj nauczyłeś! Do Twojego konta dodano {amount} punktów "
-"doświadczenia."
+"✨ Wow, dużo się dzisiaj nauczyłeś/aś! Do Twojego konta dodano {amount} "
+"punktów doświadczenia."
 
 msgid "A book in a foreign language"
-msgstr "Książka w obcym języku"
+msgstr "Książka w języku"
 
 msgid "Can you read it ?"
-msgstr ""
+msgstr "Czy Ty w ogóle potrafisz ją przeczytać?"
 
 msgid "An encyclopedia"
-msgstr ""
+msgstr "Encyklopedia"
 
 msgid "Reading it will give you a lot of experience ?"
-msgstr ""
+msgstr "Przeczytaj ją całą, a może zyskasz nieco doświadczenia."
 
 msgid "A bullet"
-msgstr ""
+msgstr "Pocisk"
 
 msgid ""
 "This is just a normal bullet, but it might help you to get that special "
 "achievement."
 msgstr ""
+"To tylko zwykły pocisk, ale może ci pomóc w zdobyciu tego specjalnego "
+"osiągnięcia."
 
 msgid "✨ Oh, is this a bullet ?"
-msgstr ""
+msgstr "✨ Ooo, czy to pocisk?"
 
 msgid "A good ol' egg"
 msgstr ""
@@ -4324,142 +4335,143 @@ msgid "Thanks for voting for DuckHunt"
 msgstr ""
 
 msgid "Negative cheater ?"
-msgstr ""
+msgstr "Pierdobyk"
 
 msgid "Duck Hugger ?"
-msgstr ""
+msgstr "Miłośnik kaczek"
 
 msgid "What are you doing ?"
 msgstr "Co robisz?"
 
 msgid "public danger"
-msgstr "publiczne zagrożenie"
+msgstr "Publiczne Zagrożenie"
 
 msgid "tourist"
-msgstr ""
+msgstr "Turysta"
 
 msgid "noob"
-msgstr ""
+msgstr "Świeżak"
 
 msgid "trainee"
 msgstr ""
+"Praktykant\n"
 
 msgid "duck misser"
-msgstr ""
+msgstr "Pan(i) Kaczka"
 
 msgid "member of the Committee Against Ducks"
 msgstr "Członek Komitetu ds. przeciwdziałania kaczkom"
 
 msgid "duck hater"
-msgstr ""
+msgstr "Kaczowstręt"
 
 msgid "duck pest"
-msgstr ""
+msgstr "Kaczoplaga"
 
 msgid "duck hassler"
-msgstr ""
+msgstr "Łapacz Kaczek"
 
 msgid "duck plucker"
-msgstr ""
+msgstr "Kaczopierd"
 
 msgid "hunter"
-msgstr ""
+msgstr "Łowca"
 
 msgid "duck inside out turner"
-msgstr ""
+msgstr "Kaczka na obiad!"
 
 msgid "duck clobber"
-msgstr ""
+msgstr "Kaczomłot"
 
 msgid "duck chewer"
-msgstr ""
+msgstr "Degustator Kaczek"
 
 msgid "duck eater"
-msgstr ""
+msgstr "Stary Wyjadacz Kaczek"
 
 msgid "duck flattener"
-msgstr ""
+msgstr "Kaczomaniak"
 
 msgid "duck disassembler"
-msgstr ""
+msgstr "Kaczogniew"
 
 msgid "duck demolisher"
-msgstr ""
+msgstr "Kaczodemolka"
 
 msgid "duck killer"
-msgstr ""
+msgstr "Kaczozabójca"
 
 msgid "duck skinner"
-msgstr ""
+msgstr "Kaczoinkwizytor"
 
 msgid "duck predator"
-msgstr ""
+msgstr "Kaczorowy Predator"
 
 msgid "duck chopper"
-msgstr ""
+msgstr "Kaczotasak"
 
 msgid "duck decorticator"
-msgstr ""
+msgstr "Kaczozguba"
 
 msgid "duck fragger"
-msgstr ""
+msgstr "Zabójca Kaczek"
 
 msgid "duck shatterer"
-msgstr ""
+msgstr "Kaczorzeź"
 
 msgid "duck smasher"
-msgstr ""
+msgstr "Kaczo-Maczo"
 
 msgid "duck breaker"
-msgstr ""
+msgstr "Kaczoklizm"
 
 msgid "duck wrecker"
-msgstr ""
+msgstr "Kaczobokser"
 
 msgid "duck impaler"
-msgstr ""
+msgstr "Kaczoholokaust"
 
 msgid "duck eviscerator"
-msgstr ""
+msgstr "Kaczopogromca"
 
 msgid "ducks terror"
-msgstr ""
+msgstr "Kaczokalipsa"
 
 msgid "duck exploder"
-msgstr ""
+msgstr "Kaczobomba"
 
 msgid "duck destructor"
-msgstr ""
+msgstr "Kaczodestruktor"
 
 msgid "duck blaster"
-msgstr ""
+msgstr "Kaczobłysk"
 
 msgid "duck pulverizer"
-msgstr ""
+msgstr "Kaczobłyskawica"
 
 msgid "duck disintegrator"
-msgstr ""
+msgstr "Kaczorozpad"
 
 msgid "duck atomizer"
-msgstr ""
+msgstr "Kaczounicestwienie"
 
 msgid "duck annihilator"
-msgstr ""
+msgstr "Kaczohilacja"
 
 msgid "serial duck killer"
-msgstr ""
+msgstr "Seryjny kwakobójca"
 
 msgid "duck genocider"
-msgstr ""
+msgstr "Kaczobójstwo"
 
 msgid "old noob"
-msgstr ""
+msgstr "Stary Wyjadacz Kaczek"
 
 msgid "duck toaster"
-msgstr ""
+msgstr "Kaczokalipsa"
 
 msgid "unemployed due to extinction of the duck species"
-msgstr ""
+msgstr "Bezrobotny z powodu wyginięcia gatunku kaczki"
 
 msgid "This is not a valid level. Choose between {levels}"
 msgstr "To nie jest prawidłowy poziom. Wybierz pomiędzy {levels}"
@@ -4468,10 +4480,10 @@ msgid "Can't set such a high level"
 msgstr "Nie można ustawić tak wysokiego poziomu"
 
 msgid "You leveled up!"
-msgstr "Wbiłeś wyższy poziom!"
+msgstr "Wskoczyłeś/aś na wyższy poziom! ^^"
 
 msgid "You leveled down!"
-msgstr ""
+msgstr "Opuściłeś/aś się na niższy poziom!"
 
 msgid "❌ You cannot run this command."
 msgstr "❌Nie możesz użyć tej komendy."
