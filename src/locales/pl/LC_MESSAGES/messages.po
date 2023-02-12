@@ -43,7 +43,7 @@ msgid "Reload your gun."
 msgstr "Przeładuj broń."
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr "Przytul kaczkę, która pojawiła się najpierw na kanale!"
+msgstr "Przytul kaczkę, która pojawiła się najpierw na kanale."
 
 msgid "Revive yourself by eating brains"
 msgstr "Ożywiaj się, jedząc mózgi O_o"
@@ -3885,140 +3885,148 @@ msgid "The duck right."
 msgstr ""
 
 msgid "STOP! It's not what you think!"
-msgstr ""
+msgstr "STOP! T"
 
 msgid "Killing me will cost you 1562 experience points."
-msgstr ""
+msgstr "Zabicie mnie będzie kosztować 1562 punkty doświadczenia."
 
 msgid ""
 "I have a secret plan to kill all hunters but I'm already short on breath I "
 "don't think I'll be able to explain it all to you before..."
 msgstr ""
+"Mam sekretny plan zabicia wszystkich łowców, ale już brakuje mi tchu. Nie "
+"sądzę, że będę w stanie Wam to wszystko wyjaśnić, zanim..."
 
 msgid "[INSERT DUCK NOISE HERE]"
 msgstr ""
 
 msgid "What happened after DuckHunt was created? ||The big bang||."
-msgstr ""
+msgstr "Co się stało po stworzeniu DuckHunt?  ||Wielki wybuch||."
 
 msgid "It's rabbit season."
-msgstr ""
+msgstr "To sezon polowań na króliki."
 
 msgid "Got a spare cape?"
 msgstr ""
 
 msgid "Which side of a duck has more feathers? ||The outside||."
-msgstr ""
+msgstr "Po jakiej stronie kaczki jest więcej piór?  ||Zewnętrznej||."
 
 msgid "I steal money. I'm a robber ducky."
-msgstr ""
+msgstr "Kradnę hajsy. Jestem kaczką rozbójniczką. TA-DA!"
 
 msgid "I'm a very special duck."
-msgstr ""
+msgstr "Jestem bardzo, bardzo, BARDZO wyjątkową kaczką."
 
 msgid "**DuckHunt ProTip®**: use clovers to get more experience."
 msgstr ""
+"**Duck Hunt Pro Tip®**: używaj czterolistnych koniczynek, aby zdobyć więcej "
+"doświadczenia."
 
 msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
 msgstr ""
+"**Duck Hunt ProTip®**: używaj celowników, aby poprawić celność na niższych "
+"poziomach."
 
 msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
-msgstr ""
+msgstr "**Duck Hunt ProTip®**: użyj smaru, aby zapobiec zacięciom broni"
 
 msgid "*Slurp*"
 msgstr ""
 
 msgid "Hopefully you are all AFK..."
-msgstr ""
+msgstr "Na szczęście wszyscy jesteście AFK..."
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
 
 msgid "I'm just doing my job..."
-msgstr ""
+msgstr "Po prostu wykonuję swoją pracę..."
 
 msgid ""
 "Hey there, DuckHunt quality insurance duck here. How would you rate your "
 "experience killing ducks so far ?"
 msgstr ""
+"Witaj! Tu kontrola jakości Duck Hunt. Jak oceniasz swoje dotychczasowe "
+"doświadczenie w zabijaniu kaczek?"
 
 msgid "YoU hAvE bEeN cOrRuPtEd."
 msgstr ""
 
 msgid "The duck went away."
-msgstr ""
+msgstr "Kaczka odfrunęła"
 
 msgid "The duck went to another world."
-msgstr ""
+msgstr "Kaczka odleciała do innego świata."
 
 msgid "The duck didn't have time for this."
-msgstr ""
+msgstr "Kaczka nie miała na to czasu."
 
 msgid "The duck dissipated in space and time."
-msgstr ""
+msgstr "Kaczka rozproszyła się w czasie i przestrzeni."
 
 msgid "The duck left out of boredom."
-msgstr ""
+msgstr "Kaczka wyszła z nudów."
 
 msgid "The duck doesn't want to be sniped."
-msgstr ""
+msgstr "Kaczka nie chce być zestrzelona."
 
 msgid "The duck walked up to the lemonade stand."
-msgstr ""
+msgstr "Kaczka podeszła do stoiska z lemoniadą."
 
 msgid "The duck flew over a disproportionately small gap."
-msgstr ""
+msgstr "Kaczka przeleciała nad nieproporcjonalnie małą szczeliną."
 
 msgid "The duck chickened out."
-msgstr ""
+msgstr "Kaczka zawinęła stąd swój kuper"
 
 msgid "The duck went to the parallel universe"
-msgstr ""
+msgstr "Kaczka udała się do bajkowej krainy"
 
 msgid "The duck went to a parallel universe"
-msgstr ""
+msgstr "Kaczka udała się do bajkowej krainy"
 
 msgid "The duck went into the duckiverse"
-msgstr ""
+msgstr "Kaczka odleciała do Kaczolandii"
 
 msgid "The duck teleported away from here"
-msgstr ""
+msgstr "Kaczka teleportowała do innego wymiaru"
 
 msgid "The duck went to look for a friend"
-msgstr ""
+msgstr "Kaczka pofrunęła szukać kaczora"
 
 msgid "The duck went to a better place"
-msgstr ""
+msgstr "Kaczka pofrunęła do nieba"
 
 msgid "The duck went to a better party"
-msgstr ""
+msgstr "Kaczka poszła na lepszą imprezę"
 
 msgid "The duck has some important business to take care of"
-msgstr ""
+msgstr "Kaczka ma ważną sprawę do załatwienia"
 
 msgid "A duck"
-msgstr ""
+msgstr "Po prostu Kaczka"
 
 msgid "Mr. Duck"
-msgstr ""
+msgstr "Pan Kaczor"
 
 msgid "RealDuck"
-msgstr ""
+msgstr "Prawdziwa Kaczka"
 
 msgid "The ghost never appeared."
 msgstr ""
 
 msgid "Invisible Duck"
-msgstr ""
+msgstr "Niewidzialna Kaczka"
 
 msgid "Ghost Duck"
-msgstr ""
+msgstr "Kaczka Duch"
 
 msgid "Boooo Duck"
-msgstr ""
+msgstr "Kaczka Boooo"
 
 msgid "Pr. Duck"
-msgstr ""
+msgstr "Profesor Kwaczor"
 
 msgid "EnsDuck"
 msgstr ""
@@ -4060,31 +4068,31 @@ msgid "It's free money"
 msgstr ""
 
 msgid "Golden Duck"
-msgstr ""
+msgstr "Złota Kaczka"
 
 msgid "Golden Goose"
 msgstr ""
 
 msgid "Shiny Duck"
-msgstr ""
+msgstr "Lśniąca Kaczka"
 
 msgid "Rich Duck"
-msgstr ""
+msgstr "Kaczka Bogaczka"
 
 msgid "£?"
-msgstr ""
+msgstr "ZŁ?"
 
 msgid "Have any money ?"
-msgstr ""
+msgstr "Rzuć no pan 2 złoty na chleb"
 
 msgid "It's paid money"
 msgstr ""
 
 msgid "Plastic Duck"
-msgstr ""
+msgstr "Plastikowa kaczka"
 
 msgid "Poor Duck"
-msgstr ""
+msgstr "Kaczka Żebrak"
 
 msgid "Slimey Duck"
 msgstr ""
@@ -4093,70 +4101,72 @@ msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr "**NIE RUSZAĆ SIĘ BO WSZYSTKO WYBUCHNIE!**"
 
 msgid "Gonna kill y'all !"
-msgstr ""
+msgstr "ZamoooRRRRRduję Was !"
 
 msgid "The Kamikaze Duck"
 msgstr "Kaczka Kamikaze"
 
 msgid "Explosive Duck"
-msgstr ""
+msgstr "Kaczka Eksplodująca"
 
 msgid "Boom Duck"
-msgstr ""
+msgstr "Kaczka Boom-Boom"
 
 msgid "Dynamite Duck"
-msgstr ""
+msgstr "Kaczka Dynamit"
 
 msgid "The kamikaze duck exploded, killing every duck on the channel."
 msgstr ""
+"Kaczka kamikaze rozerwała się na strzępy, a eksplodując, zabiła wszystkie "
+"kaczki na kanale. "
 
 msgid "Duck 2000"
-msgstr ""
+msgstr "Kaczka 2000"
 
 msgid "Omega Duck"
-msgstr ""
+msgstr "Kaczka Omega"
 
 msgid "BZZZZZAAAAK"
-msgstr ""
+msgstr "BZZZZZAAAAK"
 
 msgid "BZAAAACK"
-msgstr ""
+msgstr "BZAAAAK"
 
 msgid "BZAACK"
-msgstr ""
+msgstr "BZAAAK"
 
 msgid "Big Duck"
-msgstr ""
+msgstr "Duża Kaczka"
 
 msgid "Strong Duck"
-msgstr ""
+msgstr "Silna Kaczka"
 
 msgid "Heavy Duck"
-msgstr ""
+msgstr "Kaczka wielkich gabarytów"
 
 msgid "**I am your mother...**"
 msgstr "**To ja, twoja matka...**"
 
 msgid "Ms. Duck"
-msgstr ""
+msgstr "Pani Kaczka"
 
 msgid "Mom"
-msgstr ""
+msgstr "Mama"
 
 msgid "Mommy"
 msgstr "Mamuśka"
 
 msgid "MOAD"
-msgstr ""
+msgstr "MOAD"
 
 msgid "Mooooom"
-msgstr ""
+msgstr "Maaaaaama"
 
 msgid "Dockolumbus"
-msgstr ""
+msgstr "Kaczobyk"
 
 msgid "Cartographer Duck"
-msgstr ""
+msgstr "Kaczka Kartografka"
 
 msgid "*coin*"
 msgstr "*pieniądz nie śmierdzi*"
@@ -4320,7 +4330,7 @@ msgid "A welcome gift"
 msgstr "Prezencik powitalny!"
 
 msgid "Open it in your inventory"
-msgstr ""
+msgstr "Otwórz to w swoim ekwipunku"
 
 msgid "A clean box of foie gras"
 msgstr ""
@@ -4332,7 +4342,7 @@ msgid "A little something for helping the bot"
 msgstr ""
 
 msgid "Thanks for voting for DuckHunt"
-msgstr ""
+msgstr "Najserdeczniejsze wyrazy podziękowania za głos dla DuckHunt"
 
 msgid "Negative cheater ?"
 msgstr "Pierdobyk"
