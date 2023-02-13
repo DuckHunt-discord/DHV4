@@ -96,7 +96,7 @@ msgid "Spawns a sleeping duck."
 msgstr "Spawnuje śpiącą kaczkę."
 
 msgid "Spawns a cartographer duck."
-msgstr "Spawnuje kaczkę-kartografkę."
+msgstr "Spawnuje kaczkę kartografkę."
 
 msgid "Show ducks currently on the channel"
 msgstr "Pokazuje wszystkie dostępne kaczki na kanale."
@@ -3454,96 +3454,116 @@ msgid ""
 msgstr ""
 
 msgid "Searching the bushes around the duck, you found... **A magazine**."
-msgstr ""
+msgstr "Przeszukując krzaki wokół gniazda kaczki, znalazłeś... **magazynek**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A magazine**. You "
 "didn't take it, you had already too many in your backpack..."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś... **magazynek**.  Nie "
+"wziąłeś/aś go, miałeś/aś ich już za dużo w plecaku..."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A box of explosive "
 "ammo**. 💥"
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Skrzynkę "
+"wybuchowej amunicji**.  💥"
 
 msgid ""
 "Searching the bushes around the duck, you found... **An almost empty box of "
 "explosive ammo**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Prawie puste "
+"pudełko amunicji wybuchowej**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Tons of Duck Grease**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **tony kaczego "
+"tłuszczu**."
 
 msgid "Searching the bushes around the duck, you found... **A new silencer**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Nowy tłumik**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Detektor "
+"podczerwieni**."
 
 msgid "White"
-msgstr ""
+msgstr "biały"
 
 msgid "A useful coat when it rains."
-msgstr ""
+msgstr "Przydatny płaszcz podczas ulewy"
 
 msgid "Orange"
-msgstr ""
+msgstr "pomarańczowy"
 
 msgid ""
 "Better visibility: Increase your chance to frighten ducks, and reduce your "
 "chance to get shot by another hunter."
 msgstr ""
+"Lepsza widoczność: Zwiększ swoją szansę na spłoszenie kaczek i zmniejsz "
+"szansę na trafienie przez innego myśliwego."
 
 msgid "Camo"
-msgstr ""
+msgstr "moro"
 
 msgid "Lower visibility: Less chance to frighten ducks."
-msgstr ""
+msgstr "Mniejsza widoczność: Mniejsza szansa na przestraszenie kaczek."
 
 msgid "Blue"
-msgstr ""
+msgstr "niebieski"
 
 msgid "Lucky find: Increase your chance to find items in bushes."
 msgstr ""
+"Szczęśliwe znalezisko: Zwiększ swoją szansę na znalezienie przedmiotów w "
+"krzakach."
 
 msgid "Red"
-msgstr ""
+msgstr "czerwony"
 
 msgid ""
 "Hungry for blood: Increase your murder skills, reduce murder penalties."
 msgstr ""
+"Żądny krwi: Zwiększ swoje umiejętności morderstwa, zmniejsz kary za "
+"morderstwo."
 
 msgid "Yellow"
-msgstr ""
+msgstr "żółty"
 
 msgid "Sun powers: Mirrors are less effective against you."
-msgstr ""
+msgstr "Moc Słońca: Lustra są mniej skuteczne przeciwko tobie."
 
 msgid "Dark green"
-msgstr ""
+msgstr "ciemno zielony"
 
 msgid "Farming skills: Clovers give you one more experience point."
 msgstr ""
+"Umiejętności rolnicze: Koniczyny dają ci jeszcze jeden punkt doświadczenia."
 
 msgid "Black"
-msgstr ""
+msgstr "czarny"
 
 msgid "Secret service: Sabotages are cheaper."
 msgstr ""
 
 msgid "Light blue"
-msgstr ""
+msgstr "jasny niebieski"
 
 msgid "Sea powers: You are immune to water buckets."
 msgstr ""
 
 msgid "Pink"
-msgstr ""
+msgstr "różowy"
 
 msgid "Power of love: You can't kill players with the same coat color."
 msgstr ""
+"Potęga miłości: Nie możesz zabijać graczy, którzy mają taki sam kolor "
+"płaszcza."
 
 msgid ""
 "This is not a valid color. You can choose between {colors}, or `random` for "
@@ -3652,6 +3672,8 @@ msgid ""
 "{hurter.mention}, You need to find the duck in the map above! Answer with "
 "`dh!bang <coordinates>`."
 msgstr ""
+"{hurter.mention}, musisz znaleźć kaczkę na mapie powyżej! Odpowiedz komendą "
+"`dh!bang <coordinates>`."
 
 msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
@@ -3662,7 +3684,7 @@ msgid "{hurter.mention}, that's not the correct answer!"
 msgstr "{hurter.mention} Ups! To nie jest poprawna odpowiedź!"
 
 msgid "baby"
-msgstr ""
+msgstr "kaczątko"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
@@ -3678,6 +3700,8 @@ msgid ""
 "{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
 "+{experience} exp]"
 msgstr ""
+"{hugger.mention} przytulił/a kaczkę w ciągu {spawned_for_str}. Jak słodko! "
+"[**Przytulas**: + {experience} PD]"
 
 msgid "golden"
 msgstr ""
@@ -3799,43 +3823,43 @@ msgid "KWAAAK"
 msgstr "KWAAA"
 
 msgid "COUAK"
-msgstr "KWAK"
+msgstr "KWA"
 
 msgid "COUAAK"
-msgstr "KWAAAK"
+msgstr "KWAAA"
 
 msgid "COUAAAK"
-msgstr "KWAAAK"
+msgstr "KWAAA"
 
 msgid "QUAK"
 msgstr "KWAK"
 
 msgid "QUAAK"
-msgstr "KWAAK"
+msgstr "KWAA"
 
 msgid "QUAAAK"
-msgstr "KWAAAK"
+msgstr "KWAAA"
 
 msgid "QUACK"
-msgstr "KWAK"
+msgstr "KWA"
 
 msgid "QUAACK"
-msgstr "KWAAAAK"
+msgstr "KWAA"
 
 msgid "QUAAACK"
-msgstr "KWAAAAAK"
+msgstr "KWAAAAA"
 
 msgid "COUAC"
-msgstr "KWAK"
+msgstr "KWA"
 
 msgid "COUAAC"
-msgstr "KWAAK"
+msgstr "KWAA"
 
 msgid "COUAAAC"
-msgstr "KWAAAK"
+msgstr "KWAAA"
 
 msgid "COUACK"
-msgstr "KWAK"
+msgstr "KWA"
 
 msgid "*cries*"
 msgstr "*płacze*"
@@ -3853,30 +3877,35 @@ msgid "I love you too!"
 msgstr "Też Ciebie kocham, misiek! :*"
 
 msgid "Don't shoot me! I'm a fake duck!"
-msgstr ""
+msgstr "Nie strzelaj do mnie! Jestem fałszywą kaczką!"
 
 msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
 msgstr ""
+"**Ciekawostka**: Niektóre kaczki mogą przelecieć nawet 332 mile w ciągu "
+"jednego dnia! (520 km)"
 
 msgid "**Duck fact**: The feathers on a ducks back are waterproof."
-msgstr ""
+msgstr "**Ciekawostka**: Pióra na grzbiecie kaczek są wodoodporne."
 
 msgid "**Duck fact**: Ducks have three eyelids!"
-msgstr ""
+msgstr "**Ciekawostka**: Kaczki mają trzy powieki!"
 
 msgid ""
 "**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
 "years. Not the ducks on this game tho..."
 msgstr ""
+"**Ciekawostka**: W zależności od gatunku kaczka może żyć od 2 do 12 lat. "
+"Podejrzewam, że badacze tego faktu nie mieli nigdy okazji zagrać w DuckHunt.."
+"."
 
 msgid "I am invisible, don't bother killing me"
-msgstr ""
+msgstr "Jestem niewidzialna, nie zawracaj sobie głowy zabijaniem mnie"
 
 msgid "Who is the little ████ here that killed my friend ?"
-msgstr ""
+msgstr "Kim jest ten mały ████, który zabił mojego przyjaciela?"
 
 msgid "You can't aim for good..."
-msgstr ""
+msgstr "Nie możesz strzelić w takie piękne stworzenie jak ja..."
 
 msgid "The duck left."
 msgstr ""
@@ -3885,7 +3914,7 @@ msgid "The duck right."
 msgstr ""
 
 msgid "STOP! It's not what you think!"
-msgstr "STOP! T"
+msgstr "ZACZEKAJ! To nie tak, jak myślisz!"
 
 msgid "Killing me will cost you 1562 experience points."
 msgstr "Zabicie mnie będzie kosztować 1562 punkty doświadczenia."
@@ -3939,6 +3968,8 @@ msgstr "Na szczęście wszyscy jesteście AFK..."
 
 msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
 msgstr ""
+"**DuckHunt ProTip®**: używaj detektorów podczerwieni, aby zapobiegać "
+"bezużytecznym strzałom."
 
 msgid "I'm just doing my job..."
 msgstr "Po prostu wykonuję swoją pracę..."
@@ -4014,7 +4045,7 @@ msgid "RealDuck"
 msgstr "Prawdziwa Kaczka"
 
 msgid "The ghost never appeared."
-msgstr ""
+msgstr "Duch nigdy się nie pojawił."
 
 msgid "Invisible Duck"
 msgstr "Niewidzialna Kaczka"
@@ -4047,25 +4078,25 @@ msgid "**COIIIIIINNNNNN**!"
 msgstr ""
 
 msgid "Smol Duck"
-msgstr ""
+msgstr "Mała Kaczka"
 
 msgid "Mini Duck"
-msgstr ""
+msgstr "Mini Kaczka"
 
 msgid "Ducky"
-msgstr ""
+msgstr "Kaczątko"
 
 msgid "Duckie"
-msgstr ""
+msgstr "Kaczusia"
 
 msgid "£!"
 msgstr ""
 
 msgid "Free money !"
-msgstr ""
+msgstr "Darmowa kasa ! "
 
 msgid "It's free money"
-msgstr ""
+msgstr "Czas darmowej kasy"
 
 msgid "Golden Duck"
 msgstr "Złota Kaczka"
@@ -4415,7 +4446,7 @@ msgid "duck skinner"
 msgstr "Kaczoinkwizytor"
 
 msgid "duck predator"
-msgstr "Kaczorowy Predator"
+msgstr "Kaczopredator"
 
 msgid "duck chopper"
 msgstr "Kaczotasak"
