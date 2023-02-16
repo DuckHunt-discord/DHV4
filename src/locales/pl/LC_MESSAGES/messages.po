@@ -3961,7 +3961,7 @@ msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
 msgstr "**Duck Hunt ProTip®**: użyj smaru, aby zapobiec zacięciom broni"
 
 msgid "*Slurp*"
-msgstr ""
+msgstr "*Siorb*"
 
 msgid "Hopefully you are all AFK..."
 msgstr "Na szczęście wszyscy jesteście AFK..."
@@ -4524,7 +4524,7 @@ msgid "You leveled up!"
 msgstr "Wskoczyłeś/aś na wyższy poziom! ^^"
 
 msgid "You leveled down!"
-msgstr "Opuściłeś/aś się na niższy poziom!"
+msgstr "Zeskoczyłeś/aś na niższy poziom!"
 
 msgid "❌ You cannot run this command."
 msgstr "❌Nie możesz użyć tej komendy."
