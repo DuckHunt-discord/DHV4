@@ -3794,7 +3794,7 @@ msgid ""
 msgstr ""
 
 msgid "night"
-msgstr ""
+msgstr "noc"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
@@ -4060,7 +4060,7 @@ msgid "Pr. Duck"
 msgstr "Profesor Kwaczor"
 
 msgid "EnsDuck"
-msgstr ""
+msgstr "Kaczka Geniusz"
 
 msgid "**COIN**"
 msgstr ""
@@ -4114,7 +4114,7 @@ msgid "£?"
 msgstr "ZŁ?"
 
 msgid "Have any money ?"
-msgstr "Rzuć no pan 2 złoty na chleb"
+msgstr "Rzuć 2 złoty na chleb "
 
 msgid "It's paid money"
 msgstr ""
@@ -4233,11 +4233,11 @@ msgid ""
 "water."
 msgstr ""
 "Pewnego dnia firma zajmująca się odpadami medycznymi wrzuciła sterydy do "
-"jeziora. Kaczki uległy mutacji i zobaczysz o wiele więcej superkaczek. Ale "
-"hej... co Ty..?! NIE PIJ TEJ WODY."
+"jeziora. Kaczki uległy mutacji i zobaczysz o wiele więcej superkaczek. "
+"Chwila... co Ty ROBISZ?! NIE PIJ TEJ WODY."
 
 msgid "Safety class canceled"
-msgstr "Klasa bezpieczeństwa anulowanal"
+msgstr "Klasa bezpieczeństwa anulowana"
 
 msgid "The safety class was canceled, beware not to shoot other hunters!"
 msgstr ""
@@ -4312,10 +4312,10 @@ msgstr ""
 "punktów doświadczenia."
 
 msgid "A book in a foreign language"
-msgstr "Książka w języku"
+msgstr "Książka w języku obcym"
 
 msgid "Can you read it ?"
-msgstr "Czy Ty w ogóle potrafisz ją przeczytać?"
+msgstr "Potrafisz ją przeczytać?"
 
 msgid "An encyclopedia"
 msgstr "Encyklopedia"
@@ -4521,7 +4521,7 @@ msgid "Can't set such a high level"
 msgstr "Nie można ustawić tak wysokiego poziomu"
 
 msgid "You leveled up!"
-msgstr "Wskoczyłeś/aś na wyższy poziom! ^^"
+msgstr "Wskoczyłeś/aś na wyższy poziom!"
 
 msgid "You leveled down!"
 msgstr "Zeskoczyłeś/aś na niższy poziom!"
