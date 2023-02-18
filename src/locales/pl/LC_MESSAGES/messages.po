@@ -1452,28 +1452,29 @@ msgid ""
 "happy that you love it."
 msgstr ""
 "{you_mention} przytulił(a) {target_mention}. Deweloper bota przesyła dla Was "
-"gratulacje i życzy Wam miłosnych uniesień!"
+"gratulacje i życzy wielu miłosnych uniesień!"
 
 msgid ""
 "{you_mention} hugged {target_mention}. They hate you even more for hugging "
 "them. Don't know why tho... Try shooting them in the face."
 msgstr ""
-"{you_mention} przytulił(a) {target_mention}. Znienawidził(a) Cię jeszcze "
-"bardziej. W nagrodę spróbuj strzelić mu(jej) w twarz."
+"{you_mention} przytulił(a) {target_mention}. Znienawidził(a) Cię za to "
+"jeszcze bardziej. Nie wiadomo czemu... W nagrodę zezwalamy strzelić mu(jej) "
+"w twarz."
 
 msgid ""
 "{you_mention}, you just hugged yourself. You feel a little lonely, don't "
 "you?"
 msgstr ""
 "{you_mention}, po prostu przytuliłeś(aś)... SIEBIE! Czujesz się trochę "
-"samotny, prawda... kotku?"
+"samotny, prawda...?"
 
 msgid "{you_mention} hugged {target_mention}. They feel loved."
 msgstr ""
-"{you_mention} przytulił(a) {target_mention}. I żyli długo i szczęśliwie..."
+"{you_mention} przytulił(a) {target_mention} i żyli długo i szczęśliwie."
 
 msgid "You hugged a tree, Wizzz?!"
-msgstr "Przytuliłeś drzewko. CO?!"
+msgstr "Przytuliłeś drzewko. WHAT?!"
 
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr "Kogo albo co próbujesz koniecznie przytulić? Drzewko?"
@@ -1734,13 +1735,14 @@ msgstr ""
 
 msgid "Use {prefix}{help} [command] for more info on a command."
 msgstr ""
+"Użyj {prefix}{help} [komenda] aby uzyskać informację o danej komendzie."
 
 msgid "{cog} help"
 msgstr ""
 "Pomoc {cog}\n"
 
 msgid "... More available online"
-msgstr ""
+msgstr "... więcej dostępne online"
 
 msgid "Inventory"
 msgstr "Ekwipunek"
@@ -1749,10 +1751,10 @@ msgid "Your inventory"
 msgstr "Twój ekwipunek"
 
 msgid "A lot of air and a starved mosquito."
-msgstr ""
+msgstr "Dużo powietrza i zagłodzony komar."
 
 msgid "`{prefix}inv use shortcode` to use an item"
-msgstr ""
+msgstr "Użyj przedmiotu, wpisując `{prefix}inv use shortcode`"
 
 msgid "❌ Unknown item."
 msgstr "❌ Nieznany przedmiot."
@@ -1792,7 +1794,7 @@ msgid ""
 msgstr ""
 
 msgid "They can't play the game :("
-msgstr ""
+msgstr "Oni nie mogą grać w grę :("
 
 msgid "{target.name} event statistics"
 msgstr "Statystyki wydarzenia {target.name}"
@@ -1806,48 +1808,55 @@ msgid ""
 "event. At the end of the game, the player having the greater amount of "
 "points will win."
 msgstr ""
+"Najważniejszą walutą w grze są punkty, które możesz kupić w sklepie do "
+"zakupu różnych rzeczy. Dostępne punkty pokazują ile masz punktów i ile ich "
+"zdobyłeś/aś. \n"
+"Możesz zdobywać punkty pisząc (długie) wiadomości. Niektóre przedmioty w "
+"sklepie mogą pomóc Ci w ich zdobyciu. Nie spam na serwerze, regulamin jest "
+"**nadal aktualny** podczas eventów. Na końcu gry, gracz mający największą "
+"ilość punktów wygrywa."
 
 msgid "Available"
-msgstr ""
+msgstr "Dostępne"
 
 msgid "{db_target.points_current} points"
-msgstr ""
+msgstr "{db_target.points_current} punktów"
 
 msgid "Messages sent"
-msgstr "Wiadomości wysłane"
+msgstr "Wysłane wiadomości"
 
 msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
 msgstr ""
 
 msgid "Points won by landmines"
-msgstr ""
+msgstr "Punkty zdobyte przez miny"
 
 msgid "{db_target.points_won} points"
-msgstr ""
+msgstr "{db_target.points_won} punktów"
 
 msgid "Points recovered by defusing landmines"
-msgstr ""
+msgstr "Punkty odzyskane przez rozbrojenie min"
 
 msgid "{db_target.points_recovered} points"
-msgstr ""
+msgstr "{db_target.points_recovered} punktów"
 
 msgid "Points acquired by talking"
-msgstr ""
+msgstr "Zdobyte punkty za pisanie"
 
 msgid "{db_target.points_acquired} points"
-msgstr ""
+msgstr "{db_target.points_acquired} punktów"
 
 msgid "Points exploded by stepping on mines"
 msgstr ""
 
 msgid "{db_target.points_exploded} points"
-msgstr ""
+msgstr "{db_target.points_exploded} punktów"
 
 msgid "Points spent in the shop"
-msgstr ""
+msgstr "Punkty wydane w sklepie"
 
 msgid "{db_target.points_spent} points"
-msgstr ""
+msgstr "{db_target.points_spent} punktów"
 
 msgid ""
 "For more information on how to place a mine, run the `dh!lm landmines` "
@@ -1886,7 +1895,7 @@ msgid "❌ A landmine must have a value higher than 50."
 msgstr "❌ Mina musi mieć wartość większą niż 50."
 
 msgid "❌ The message left on the landmine must be less than 1500 characters."
-msgstr "❌ Wiadomość pozostawiona na minie musi mieć mniej niż 1500 znaków."
+msgstr "❌ Wiadomość pozostawiona wraz z miną musi mieć mniej niż 1500 znaków."
 
 msgid "❌ The word must only contain letters."
 msgstr "❌ Słowo musi zawierać tylko litery."
@@ -2047,10 +2056,10 @@ msgid ""
 msgstr ""
 
 msgid "✨ Current prestige level ✨️"
-msgstr ""
+msgstr "✨ Obecny poziom prestiżu ✨️"
 
 msgid "You have reached level {level}"
-msgstr ""
+msgstr "Osiągnąłeś/ełaś poziom {level}"
 
 msgid ""
 "**Remember**, using prestige means losing your statistics and most of your "
@@ -2058,49 +2067,52 @@ msgid ""
 msgstr ""
 
 msgid "Level 1"
-msgstr ""
+msgstr "Poziom 1"
 
 msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
 msgstr ""
+"**Niezniszczalne okulary przeciwsłoneczne**: Nigdy nie będziesz musiał/a "
+"kupować więcej okularów przeciwsłonecznych."
 
 msgid "Level 2"
-msgstr ""
+msgstr "Poziom 2"
 
 msgid "**Coat colour**: Choose the colour of your coat"
-msgstr ""
+msgstr "**Kolor płaszcza**: Wybierz kolor swojego płaszcza"
 
 msgid "Level 3"
-msgstr ""
+msgstr "Poziom 3"
 
 msgid "**Daily command**: Get more experience every day"
-msgstr ""
+msgstr "**Dzienna komenda**: codziennie zdobywaj więcej doświadczenia"
 
 msgid "Level 4"
-msgstr ""
+msgstr "Poziom 4"
 
 msgid "**Icelandic water**: Wet others for longer"
 msgstr ""
 
 msgid "Level 5"
-msgstr ""
+msgstr "Poziom 5"
 
 msgid "**Untearable coat**: Buy it for life"
 msgstr ""
 
 msgid "Level 6"
-msgstr ""
+msgstr "Poziom 6"
 
 msgid "**Military grade silencer**: Better silencers that last twice as long"
 msgstr ""
+"**Tłumik klasy wojskowej**: Lepsze tłumiki, które wytrzymują dwa razy dłużej"
 
 msgid "Level 7"
-msgstr ""
+msgstr "Poziom 7"
 
 msgid "**Permanent licence to kill**: Secret DuckHunt service"
-msgstr ""
+msgstr "**Permanentna licencja na zabijanie: Tajniak DuckHunt"
 
 msgid "Level 8"
-msgstr ""
+msgstr "Poziom 8"
 
 msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
 msgstr ""
@@ -2109,7 +2121,7 @@ msgid "Level 9"
 msgstr "Poziom 9"
 
 msgid "**???**: Suggestions are welcome"
-msgstr ""
+msgstr "**???**: Sugestie są mile widziane"
 
 msgid ""
 "❌ You haven't unlocked prestige yet. See `{ctx.prefix}prestige info` to "
@@ -2640,7 +2652,7 @@ msgid "Your language is set to `{language}` [{language_name}]."
 msgstr ""
 
 msgid "Shop"
-msgstr ""
+msgstr "Sklep"
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
 msgstr ""
@@ -2709,43 +2721,64 @@ msgid ""
 "💸 You added some grease to your weapon to reduce jamming for a day. [Bought:"
 " -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Porządnie wysmarowałeś/aś swoją broń, aby zmniejszyć zacinanie się na "
+"jeden dzień.  [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter.experience} "
+"PD] "
 
 msgid ""
 "❌ You added a new sight to your weapon recently. You don't need a new one "
 "for your next {uses} shots."
 msgstr ""
+"❌  Niedawno zamontowałeś/aś nowy celownik na swojej broni. Nie potrzebujesz "
+"nowego dla kolejnych {uses} strzałów."
 
 msgid ""
 "💸 You added a sight to your weapon to improve your accuracy for the next "
 "few shots. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Dodałeś celownik do swojej broni, aby poprawić celność na kilka "
+"następnych strzałów. [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter."
+"experience} PD]"
 
 msgid ""
 "❌ You already have that infrared detector on your weapon. It is still good "
 "for {times} missed shots."
 msgstr ""
+"❌ Już zamontowałeś/aś ten detektor podczerwieni na swojej broni. Nadal jest "
+"dobry na {times} chybionych strzałów."
 
 msgid ""
 "💸 You added an infrared detector to your weapon. If you can't see ducks, "
 "you can't shoot them. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
+"💸 Zamontowałeś/aś na swojej broni detektor podczerwieni.  Jeśli nie widzisz "
+"kaczek, nie możesz do nich strzelać. [Wydatek: -{ITEM_COST} PD, łącznie masz "
+"{db_hunter.experience} PD]"
 
 msgid ""
 "❌ You already use a silencer. It's still good for {time_delta}, come back "
 "then."
 msgstr ""
+"❌ Używasz już tłumika. Nadal jest dobry przez {time_delta}, wróć kiedy się "
+"skończy."
 
 msgid ""
 "💸 You added a military-grade silencer to your weapon. You seem to know the "
 "game well. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Zamontowałeś/aś na swojej broni tłumik klasy wojskowej.  Wygląda na to, "
+"że znasz się na rzeczy. [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter."
+"experience} PD]"
 
 msgid ""
 "💸 You added a silencer to your weapon. Ducks are still afraid of the noise, "
 "but you don't make any. [Bought: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 msgstr ""
+"💸 Zamontowałeś/aś tłumik na swojej broni.  Kaczki nadal boją się hałasu, "
+"ale ty go nie robisz. [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter."
+"experience} PD]"
 
 msgid ""
 "❌ You tried to throw your old clover to buy a new one at the new florist. "
@@ -2761,6 +2794,8 @@ msgstr ""
 msgid ""
 "❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
 msgstr ""
+"❌ Używasz już 4-listnej koniczynki. Spróbuj ponownie szczęścia za "
+"{time_delta}!"
 
 msgid ""
 "🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
@@ -2815,36 +2850,52 @@ msgid ""
 "💸 You threw water on {target.mention}... But they have a raincoat on. [Fail:"
 " -{ITEM_COST} exp]"
 msgstr ""
+"💸 Wylałeś/aś wielkie wiadro wody prosto w {target.mention} Ale miał/a na "
+"sobie płaszcz przeciwdeszczowy. [Porażka: -{ITEM_COST} PD]"
 
 msgid ""
 "💸 You threw some icelandic water on {target.mention}... They can't hunt for "
 "**three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
 "exp]"
 msgstr ""
+"💸 Wylałeś/aś nieco islandzkiej wody prosto w {target.mention}... Nie może "
+"polować przez **trzy** godziny! [Wydatek: -{ITEM_COST} PD] łącznie masz "
+"{db_hunter.experience} PD]"
 
 msgid ""
 "💸 You threw water on {target.mention}... They can't hunt for an hour! "
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Wylałeś/aś ogromny kubeł wody prosto w{target.mention}… Nie może polować "
+"przez następną godzinę! [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter."
+"experience} PD]"
 
 msgid "❌ That weapon is already sabotaged."
-msgstr ""
+msgstr "❌ Ta broń jest już skonfiskowana."
 
 msgid ""
 "💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: "
 "-{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"Skonfiskowałeś/aś broń {target.mention} On/a jeszcze o tym... nie wie! "
+"[Wydatek: -{ITEM_COST}PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid ""
 "I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
 "name} weapon... They don't know... yet! [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"Nie mogę wysyłać do Ciebie prywatnych wiadomości... Czy twoje privy są "
+"zablokowane ?\n"
+"W każdym razie... skonfiskowałeś/aś broń {target.name} On/a jeszcze o tym... "
+"nie wie! [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid ""
 "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Podłożyłeś/aś wabik na kanale, zaraz przylecą kaczki! [Wydatek: -"
+"{ITEM_COST} PD] łącznie masz {db_hunter.experience} PD]"
 
 msgid ""
 "💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
@@ -2858,7 +2909,7 @@ msgid ""
 msgstr ""
 
 msgid "❌ I'm afraid you cannot choose your coat color yet."
-msgstr ""
+msgstr "❌ Obawiam się, że nie możesz jeszcze wybrać koloru swojego płaszcza. "
 
 msgid ""
 "💸 You bought a new, **{color}** coat. \n"
@@ -2871,35 +2922,51 @@ msgid ""
 "\n"
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Kupiłeś/aś nowy, **{color}** płaszcz.\n"
+"Na metce jest napisane:\n"
+"> {hint}\n"
+"> Wyprodukowano w fabryce KPKPK, która produkuje również pociski "
+"naprowadzające\n"
+"\n"
+"[Wydatek: -{ITEM_COST} PD] łącznie masz {db_hunter.experience} PD]"
 
 msgid "❌ You already use a kill license."
-msgstr ""
+msgstr "❌ Korzystasz już z licencji zabijania."
 
 msgid ""
 "💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Kupiłeś/aś licencję na zabijanie. Przypadkowe zabójstwa są niedozwolone. "
+"[Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid "❌ You already have an automatic reloader."
-msgstr ""
+msgstr "❌ Używasz już automatycznego ładowania."
 
 msgid ""
 "💸 You bought an auto reloader for your weapon. It'll reload automatically "
 "every time it's necessary for a day. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"💸 Kupiłeś/aś automatyczne przeładowanie do swojej broni. Ładuje się "
+"automatycznie za każdym razem, gdy jest to konieczne przez jeden dzień. "
+"[Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid "❌ You already have homing bullets."
-msgstr ""
+msgstr "❌ Posiadasz już naprowadzające pociski."
 
 msgid ""
 "💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee "
 "Against the Comitee Against Ducks) in China. Try them soon! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Używasz teraz nowiutkich pocisków samonaprowadzających wyprodukowanych "
+"przez KPKPK (Komitet Przeciwko Komitetowi Przeciw Kaczkom) w Chinach. "
+"Wypróbuj je kiedyś! [Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter."
+"experience} PD]"
 
 msgid "🌐 The beloved DuckHunt translators"
-msgstr ""
+msgstr "🌐 Ukochani tłumacze DuckHunt"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
@@ -2907,73 +2974,95 @@ msgid ""
 "?** Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). "
 "Thanks!"
 msgstr ""
+"Sam bot jest nieustannie tworzony przez Eyesofcreeper z pomocą ludzi "
+"wymienionych w `{ctx.prefix}credits`. **Chciałbyś/ałabyś pomóc przetłumaczyć "
+"tego bota? ** Skontaktuj się z Eyesofcreeper#001 na Serwerze Support (`{ctx."
+"prefix}invite`). Dzięki!"
 
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Różne różności"
 
 msgid "Pong. — Time taken: {miliseconds}ms"
-msgstr ""
+msgstr "Pong. — Czas reakcji: {miliseconds}ms"
 
 msgid "You'll get back your weapon and magazines {formatted_delta}"
-msgstr ""
+msgstr "Odzyskasz swoją broń i magazynki za {formatted_delta}"
 
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
 "global prefixes : {global_prefixes_list}"
 msgstr ""
+"Mój prefix tutaj to {local_prefix}. Możesz również zwracać się do mnie "
+"używając globalnych prefixów : {global_prefixes_list}"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, but these fine people down there "
 "help with graphics, ideas, images, and more. Make sure to give them a wave "
 "if you see them."
 msgstr ""
+"Sam bot jest nieustannie tworzony przez Eyesofcreeper, ale ci wspaniali "
+"ludzie wymienieni poniżej pomagają w grafice, pomysłach, obrazach i nie "
+"tylko. Pamiętaj, aby uśmiechnąć się do nich, jeśli ich zobaczysz. "
 
 msgid "Developer"
-msgstr ""
+msgstr "Deweloper"
 
 msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
 msgstr ""
+"<@138751484517941259> (\"Eyesofcreeper\") jest  oficjalnym deweloperem tego "
+"bota."
 
 msgid "Designer"
-msgstr ""
+msgstr "Projektant"
 
 msgid ""
 "<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
-msgstr ""
+msgstr "<@465207298890006529> (\"Calgeka\") zaprojektował wiele awatarów Kaczek"
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
 "over the game. Join the /r/dailyducks subreddit."
 msgstr ""
+"<@376052158573051906> (\"Globloxmen\") wykonał wiele kaczek, które możesz "
+"spotkać podczas gry. Dołącz do subreddit /r/dailyducks."
 
 msgid "Ideas"
-msgstr ""
+msgstr "Pomysły"
 
 msgid ""
 "Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
 "Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 msgstr ""
+"Bot oparty na autorskim pomyśle MenzAgitat (na IRC, #boulets EpiKnet). "
+"Strona internetowa: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
 
 msgid "Translations"
-msgstr ""
+msgstr "Tłumaczenia"
 
 msgid ""
 "The bot is translated in MANY languages! Translators are listed in `{ctx."
 "prefix}translators`."
 msgstr ""
+"Bot jest przetłumaczony na WIELE języków!\n"
+"Wszyscy tłumacze wymienieni są pod komendą `{ctx.prefix}translators`."
 
 msgid "**DuckHunt credits**"
-msgstr ""
+msgstr "**Podziękowania DuckHunt**"
 
 msgid ""
 "The bot itself is made by Eyesofcreeper, but a lot of people helped with "
 "graphics, ideas, images, and more."
 msgstr ""
+"Sam bot jest tworzony przez Eyesofcreeper, ale jednocześnie wiele osób "
+"pomagało przy grafice, pomysłach, obrazach i nie tylko."
 
 msgid ""
 "To see more information about that bot, you'll need to give it the "
 "`embed_links` permission. Contact your friendly neighbourhood server admin."
 msgstr ""
+"Aby zobaczyć więcej informacji o tym bocie konieczne będzie nadanie mu "
+"permisji `embed_links`.\n"
+"Skontaktuj się z Adminem zaprzyjaźnionego serwera."
 
 msgid "You don't have to go right now"
 msgstr ""
@@ -2982,39 +3071,41 @@ msgid "Hi, fellow cow lover"
 msgstr ""
 
 msgid "Current event: "
-msgstr ""
+msgstr "Obecne wydarzenie:"
 
 msgid ""
 "Events last for one hour from the beginning to the end of the hour. Ending "
 "in {formatted_td}"
 msgstr ""
+"Wydarzenia trwają 60 minut od początku do końca każdej pełnej godziny. "
+"Obecne wydarzenie kończy się: {formatted_td}"
 
 msgid "The bot current time is: {formatted_td}"
-msgstr ""
+msgstr "Obecny czas bota to: {formatted_td}"
 
 msgid "{exp} experience"
-msgstr ""
+msgstr "Doświadczenie {exp}"
 
 msgid "Statistics"
-msgstr ""
+msgstr "Statystyki"
 
 msgid "{target.name} statistics (click me!)."
-msgstr ""
+msgstr "Statystyki {target.name} (kliknij mnie!)."
 
 msgid "Bullets"
-msgstr ""
+msgstr "Pociski"
 
 msgid "Magazines"
-msgstr ""
+msgstr "Magazynki"
 
 msgid "Experience"
-msgstr ""
+msgstr "Doświadczenie"
 
 msgid "Level"
-msgstr ""
+msgstr "Poziom"
 
 msgid "Accuracy"
-msgstr ""
+msgstr "Trafność"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
@@ -3023,10 +3114,10 @@ msgid "Reliability"
 msgstr ""
 
 msgid "Level {level}"
-msgstr ""
+msgstr "Poziom {level}"
 
 msgid "{target.name} shooting stats."
-msgstr ""
+msgstr "Statystki strzałów {target.name}"
 
 msgid "🧠"
 msgstr ""
@@ -3040,10 +3131,10 @@ msgid "🚰"
 msgstr ""
 
 msgid "{shots} shots attempted when wet."
-msgstr ""
+msgstr "{shots} prób strzałów kiedy był/a mokry"
 
 msgid "⛔️"
-msgstr ""
+msgstr "⛔️"
 
 msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
@@ -3052,73 +3143,73 @@ msgid "💥"
 msgstr ""
 
 msgid "{shots} shots attempted with a sabotaged gun."
-msgstr ""
+msgstr "{shots} prób strzałów z sabotowanej broni"
 
 msgid "☁"
-msgstr ""
+msgstr "☁"
 
 msgid "{shots} shots attempted with a jammed weapon."
-msgstr ""
+msgstr "{shots} prób strzałów używając zaciętej broni"
 
 msgid "🦉"
-msgstr ""
+msgstr "🦉"
 
 msgid "{shots} shots attempted without bullets."
-msgstr ""
+msgstr "{shots} prób strzałów bez pocisków"
 
 msgid "{shots} shots jamming {target.mention} weapon."
-msgstr ""
+msgstr "{shots} strzałów używając zaciętej broni{target.mention}"
 
 msgid "🔫"
-msgstr ""
+msgstr "🔫"
 
 msgid "{bullets} bullets used in a duck killing madness."
-msgstr ""
+msgstr "{bullets} użytych pocisków w furii zabijania kaczek."
 
 msgid "🎯"
-msgstr ""
+msgstr "🎯"
 
 msgid "{shots} shots missing a target."
-msgstr ""
+msgstr "{shots} strzałów chybiając w cel"
 
 msgid "☠️"
-msgstr ""
+msgstr "☠️"
 
 msgid "{shots} shots killing someone ({murders} were murders)."
 msgstr ""
 
 msgid "🧟"
-msgstr ""
+msgstr "🧟"
 
 msgid "{target.mention} was killed {times} times."
-msgstr ""
+msgstr "{target.mention} został/a zabity/a {times} razy."
 
 msgid "🏆️"
 msgstr ""
 
 msgid "{shots} shots using homing bullets."
-msgstr ""
+msgstr "{shots} strzałów używając naprowadzających pocisków"
 
 msgid "🦆"
 msgstr ""
 
 msgid "{shots} shots going towards ducks."
-msgstr ""
+msgstr "{shots} strzałów prosto w kaczy dziobek"
 
 msgid "🕵"
 msgstr ""
 
 msgid "{shots} shots stopped by the infrared detector."
-msgstr ""
+msgstr "{shots} strzałów zatrzymanych przez detektor podczerwieni."
 
 msgid "❓"
-msgstr ""
+msgstr "❓"
 
 msgid "{shots} shots without any duck in sight."
-msgstr ""
+msgstr "{shots} strzałów bez kaczki w zasięgu wzroku."
 
 msgid "Normal ducks"
-msgstr ""
+msgstr "Normalne kaczki"
 
 msgid "Ghost ducks"
 msgstr ""
@@ -3127,22 +3218,22 @@ msgid "Professor ducks"
 msgstr ""
 
 msgid "Baby ducks"
-msgstr ""
+msgstr "Kaczątka"
 
 msgid "Golden ducks"
-msgstr ""
+msgstr "Złote Kaczki"
 
 msgid "Plastic ducks"
-msgstr ""
+msgstr "Plastikowe Kaczki"
 
 msgid "Kamikaze ducks"
-msgstr ""
+msgstr "Kaczki Kamikaze"
 
 msgid "Mechanical ducks"
 msgstr ""
 
 msgid "Super ducks"
-msgstr ""
+msgstr "Super kaczki"
 
 msgid "Mother of all ducks"
 msgstr ""
@@ -3151,19 +3242,19 @@ msgid "Armored ducks"
 msgstr ""
 
 msgid "{target.name} best times."
-msgstr ""
+msgstr "Rekordowe czasy {target.name}."
 
 msgid "Never killed any"
-msgstr ""
+msgstr "Nigdy nie zabiłeś/aś żadnej"
 
 msgid "{target.name} kill counts."
-msgstr ""
+msgstr "Ilość zabójstw {target.name}."
 
 msgid "{target.name} hugs counts."
-msgstr ""
+msgstr "Ilość przytulasów  {target.name}."
 
 msgid "Players"
-msgstr ""
+msgstr "Gracze"
 
 msgid "Hugs when dead"
 msgstr ""
@@ -3175,22 +3266,22 @@ msgid "{target.name} resisted counts."
 msgstr ""
 
 msgid "{target.name} scared ducks."
-msgstr ""
+msgstr "Przestraszone kaczki {target.name}."
 
 msgid "{target.name} achievements."
-msgstr ""
+msgstr "Osiągnięcia {target.name}."
 
 msgid "❌ You cant send experience to yourself."
-msgstr ""
+msgstr "❌ Chwilunia, nie możesz przesłać punktów doświadczenia samemu sobie. "
 
 msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
-msgstr ""
+msgstr "❌ Nie jestem pewien, czy {target.mention} może grać w DuckHunt."
 
 msgid "❌ You need to send more experience than this."
 msgstr ""
 
 msgid "❌ You don't have enough experience 🤣."
-msgstr ""
+msgstr "❌ Nie masz tak dużo punktów doświadczenia 🤣."
 
 msgid ""
 "🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
@@ -3200,6 +3291,7 @@ msgstr ""
 
 msgid "💰️ You gave {amount} experience to {reciver.mention}. "
 msgstr ""
+"💰️ Podarowałeś/aś {amount} punktów doświadczenia dla {reciver.mention}."
 
 msgid "Top Scores on #{channel}"
 msgstr ""
@@ -3223,6 +3315,8 @@ msgid ""
 "❌ I can't find a channel with that ID. Please check the given ID, or contact "
 "support : <https://duckhunt.me/support>."
 msgstr ""
+"❌ Nie mogę znaleźć kanału o tym ID.  Sprawdź podany identyfikator lub "
+"skontaktuj się z pomocą techniczną: <https://duckhunt.me/support>."
 
 msgid ""
 "Scores and hunters data were removed from the game, but the game wasn't "
@@ -3234,7 +3328,7 @@ msgid "Support team: misc"
 msgstr ""
 
 msgid "Most used commands"
-msgstr ""
+msgstr "Najczęściej używane komendy"
 
 msgid "{n} uses"
 msgstr ""
@@ -3250,30 +3344,33 @@ msgid ""
 "official tags and most used first.\n"
 "The list doesn't include tag aliases"
 msgstr ""
+"To jest lista wszystkich tagów na tym serwerze.  Są one uporządkowane według "
+"oryginalnych tagów, a pierwsze wyniki listy to komendy najczęściej używane. "
+"Lista nie zawiera aliasów tagów."
 
 msgid "{u} uses, {r} revisions."
 msgstr ""
 
 msgid "Page {current_page}/{maximum} ({entries} tags)"
-msgstr ""
+msgstr "Strona {current_page}/{maximum} ({entries} tagi)"
 
 msgid "Support: tags"
-msgstr ""
+msgstr "Pomoc: tagi"
 
 msgid "❌ You didn't specify what you want your tag to say."
-msgstr ""
+msgstr "❌ Nie określiłeś/aś , co ma zawierać Twój tag."
 
 msgid "❌ This tag already exists."
-msgstr ""
+msgstr "❌ Taki tag już istnieje."
 
 msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
-msgstr ""
+msgstr "👌 Tag stworzony: {tag.name} (`{tag.pk}`)"
 
 msgid "❌ Both tags already exists, what are you trying to do ?"
-msgstr ""
+msgstr "❌ Oba tagi już istnieją, co dokładnie próbujesz zrobić ?"
 
 msgid "❌ None of your tags exist."
-msgstr ""
+msgstr "❌ Żaden z twój tagów nie istnieje. A szkoda."
 
 msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
@@ -3281,82 +3378,82 @@ msgid ""
 msgstr ""
 
 msgid "❌ This tag doesn't exist yet. You might want to create it."
-msgstr ""
+msgstr "❌ Taki tag jeszcze nie istnieje, może chcesz go stworzyć...?"
 
 msgid "❌ You don't own that tag, you can't edit it."
-msgstr ""
+msgstr "❌ Nie jesteś właścicielem tego tagu, nie możesz go edytować."
 
 msgid "👌 Tag {tag.name} edited."
-msgstr ""
+msgstr "👌 Tag {tag.name} zaktualizowany."
 
 msgid "❌ This tag doesn't exist."
-msgstr ""
+msgstr "❌ Taki tag nie istnieje"
 
 msgid "❌ You don't own that tag, you can't delete it."
-msgstr ""
+msgstr "❌ Nie jesteś właścicielem tego tagu, nie możesz go usunąć."
 
 msgid "👌 Tag {tag.name} deleted."
-msgstr ""
+msgstr "👌 Tag {tag.name} został usunięty"
 
 msgid "Murderer"
-msgstr ""
+msgstr "Morderca"
 
 msgid "Kill another hunter."
-msgstr ""
+msgstr "Zabij innego łowcę"
 
 msgid "Big spender"
-msgstr ""
+msgstr "Wielki rozrzutnik"
 
 msgid "Spend more than 2000 experience."
-msgstr ""
+msgstr "Wydaj więcej niż 20000 punktów doświadczenia"
 
 msgid "A hunter joined the chat"
-msgstr ""
+msgstr "Łowca dołączył do czatu"
 
 msgid "Play for more than a week."
-msgstr ""
+msgstr "Graj przez okres dłuższy niż tydzień."
 
 msgid "We are starting to know each other"
-msgstr ""
+msgstr "Powolutku zaczynamy się poznawać"
 
 msgid "Play for more than a month."
-msgstr ""
+msgstr "Graj przez okres dłuższy niż miesiąc."
 
 msgid "Wanna be friends ?"
-msgstr ""
+msgstr "Zostaniemy przyjaciółmi?"
 
 msgid "Play for more than a year."
-msgstr ""
+msgstr "Graj przez okres dłuższy niż rok."
 
 msgid "I don't want your damn bullets!"
-msgstr ""
+msgstr "Nie chcę twoich cholernych pocisków!"
 
 msgid "Leave a bullet you found in the bushes."
-msgstr ""
+msgstr "Zostaw pocisk, który znalazłeś/aś w krzakach."
 
 msgid "Mommy is crying"
-msgstr ""
+msgstr "Mamusia płacze"
 
 msgid "Kill a few baby ducks."
-msgstr ""
+msgstr "Zabij kilka kaczątek"
 
 msgid "MATHS 101"
-msgstr ""
+msgstr "MATMA NA 101"
 
 msgid "Solve equations given by the Pr. Duck."
-msgstr ""
+msgstr "Rozwal równania podane przez Profesora Kwaczora."
 
 msgid "BRAAAAAINS!"
-msgstr ""
+msgstr "MÓÓÓÓÓZGI!"
 
 msgid "Eat some brains and come back to life."
-msgstr ""
+msgstr "Zjedz trochę mózgów aby się odrodzić."
 
 msgid "Sentry gun"
 msgstr ""
 
 msgid "Use more than 1000 bullets."
-msgstr ""
+msgstr "Użyj więcej niż 1000 pocisków."
 
 msgid "Homing kills (you)"
 msgstr ""
@@ -3365,34 +3462,34 @@ msgid "Use the homing projectiles."
 msgstr ""
 
 msgid "You monster"
-msgstr ""
+msgstr "Ty potworze"
 
 msgid "Kill a MOAD that spawns a baby duck."
-msgstr ""
+msgstr "Zabij MOAD, która spawnuje kaczątka."
 
 msgid "Gun insurer"
-msgstr ""
+msgstr "Ubezpieczyciel broni"
 
 msgid "Give at least 30 exp to an hunter that lost his gun."
-msgstr ""
+msgstr "Daj co najmniej 30 punktów doświadczenia łowcy, który zgubił broń."
 
 msgid "Short memory"
-msgstr ""
+msgstr "Pamięć krótkotrwała"
 
 msgid "Shoot at your own mechanical duck."
-msgstr ""
+msgstr "Strzelaj do własnej mechanicznej kaczki"
 
 msgid "An ounce of prevention is worth a pound of cure"
 msgstr ""
 
 msgid "Sabotage the gun of someone that planned to shoot at you."
-msgstr ""
+msgstr "Sabotuj broń kogoś, kto planował do ciebie strzelić."
 
 msgid "https://duckhunt.me/support"
-msgstr ""
+msgstr "https://duckhunt.me/support"
 
 msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
-msgstr ""
+msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
 
 msgid ""
 "Hello! The following message (written by the owner of DuckHunt) will give "
@@ -3411,47 +3508,76 @@ msgid ""
 "We also monitor the bot DMs, so if you have further questions, just answer "
 "this message!"
 msgstr ""
+"Cześć! Ta wiadomość (napisana przez samego Właściciela DuckHunt) wprowadzi "
+"Ciebie nieco w świat DuckHunt oraz przekaże Ci linki do wikipedii gry.\n"
+"Chciałbym Ci podziękować, że korzystasz z mojego bota. Jeśli narodziłyby się "
+"pytania odnośnie kwestii, których nie poruszyłem, serdecznie zapraszam do "
+"zadawania wszelkich pytań na kanałach pomocy tutaj <{support_server_link}>.\n"
+"\n"
+"Kiedy na kanale pojawi się kaczka, strzelaj w nią komendą `dh!bang`.\n"
+"Możesz przeładować amunicję używając `dh!reload`. Z kolei nowe magazynki "
+"kupisz ze sklepu ( `dh!shop magazine` lub `dh!shop 2`)\n"
+"Twoje wyniki i rankingi kanałów są dostępne online (użyj komendy `dh!me` po "
+"chwili grania) oraz na Discord.if. Jeśli chcesz dowiedzieć się więcej o "
+"grze, zapraszam na wiki! <{wiki_link}>.\n"
+"Monitorujemy również wiadomości prywatne bota, więc jeśli masz dodatkowe "
+"pytania, po prostu odpowiedz na tę wiadomość!"
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś **stare śmieci w "
+"stanie rozkładu**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **Some trash lying "
 "around**. You didn't take it, you had already too many..."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **stare śmieci w "
+"stanie rozkładu**. Nie wziąłeś/aś ich, masz ich już pełno."
 
 msgid "Searching the bushes around the duck, you found... **Nothing**."
-msgstr ""
+msgstr "Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Nic**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A lot of bushes**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... dużo krzaków**"
 
 msgid ""
 "Searching the bushes around the duck, you found... **A duck ton of bushes**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **kaczotonę innych "
+"krzaków**"
 
 msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Zdjęcie kaczki**."
+""
 
 msgid ""
 "Searching the bushes around the duck, you found... **An USB-C charger**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Ładowarkę typu "
+"USB-C**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A rare duck pin**."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **rzadką przypinkę "
+"w kształcie kaczki**."
 
 msgid "Searching the bushes around the duck, you found... **A bullet**."
-msgstr ""
+msgstr "Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **pocisk**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **A bullet**. You didn't "
 "take it, you had already too many in your magazine anyway..."
 msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **pocisk**. Nie "
+"zabrałeś/aś go, bo Twój magazynek był w pełni naładowany."
 
 msgid "Searching the bushes around the duck, you found... **A magazine**."
 msgstr "Przeszukując krzaki wokół gniazda kaczki, znalazłeś... **magazynek**."
@@ -3485,19 +3611,19 @@ msgstr ""
 
 msgid "Searching the bushes around the duck, you found... **A new silencer**."
 msgstr ""
-"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Nowy tłumik**."
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **nowy tłumik**."
 
 msgid ""
 "Searching the bushes around the duck, you found... **An infrared detector**."
 msgstr ""
-"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **Detektor "
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **detektor "
 "podczerwieni**."
 
 msgid "White"
 msgstr "biały"
 
 msgid "A useful coat when it rains."
-msgstr "Przydatny płaszcz podczas ulewy"
+msgstr "Przydatny płaszcz podczas ulewy."
 
 msgid "Orange"
 msgstr "pomarańczowy"
@@ -3543,19 +3669,20 @@ msgstr "ciemno zielony"
 
 msgid "Farming skills: Clovers give you one more experience point."
 msgstr ""
-"Umiejętności rolnicze: Koniczyny dają ci jeszcze jeden punkt doświadczenia."
+"Umiejętności botaniczne: Koniczyny dają ci jeszcze jeden punkt doświadczenia."
+""
 
 msgid "Black"
 msgstr "czarny"
 
 msgid "Secret service: Sabotages are cheaper."
-msgstr ""
+msgstr "Tajne służby: Sabotaż jest tańszy."
 
 msgid "Light blue"
 msgstr "jasny niebieski"
 
 msgid "Sea powers: You are immune to water buckets."
-msgstr ""
+msgstr "Fale z głębin: Jesteś odporny/a na wiadra z wodą."
 
 msgid "Pink"
 msgstr "różowy"
@@ -3569,6 +3696,8 @@ msgid ""
 "This is not a valid color. You can choose between {colors}, or `random` for "
 "a random color."
 msgstr ""
+"To nie jest prawidłowy kolor. Możesz wybrać pomiędzy {colors}, lub napisać "
+"`random` aby uzyskać losowy kolor "
 
 msgid "normal"
 msgstr ""
@@ -3585,31 +3714,43 @@ msgid ""
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
 "{bonus_experience} **clover**]"
 msgstr ""
+"{killer.mention} zabił/a kaczkę, która pojawiła się {spawned_for_str} temu, "
+"łaczna liczba zabójstw: {total_ducks_killed} ({ncategory_killed}) [**Kaczka "
+"zabita**: {normal_exp} PD + {bonus_experience} **koniczynka**]"
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
 msgstr ""
+"{killer.mention} zabił/a kaczkę, która pojawiła się {spawned_for_str} temu, "
+"łączna liczba zabójstw: {total_ducks_killed} ({ncategory_killed}) [**Kaczka "
+"zabita**: {normal_exp} PD]"
 
 msgid "{hunter.mention} scared the duck away."
-msgstr ""
+msgstr "{hunter.mention} spłoszył kaczkę."
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
+"{hurter.mention} zranił/a kaczkę [**wykryto SUPER KACZKĘ**: {lives_left}/"
+"{total_lives}][**Obrażenia: -{damage}]"
 
 msgid ""
 "{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
+"{hurter.mention} zranił/a kaczkę [**wykryto SUPER KACZKĘ**][**Obrażenia** : -"
+"{damage}]"
 
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
-msgstr ""
+msgstr "{hurter.mention}, kaczka stawiła Ci opór [wykryto **SUPER KACZKĘ**]"
 
 msgid ""
 "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
+"{hugger.mention} przytulił/a kaczkę. Jak słodko! [**Przytulas**: + "
+"{experience} PD]"
 
 msgid "<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!"
 msgstr ""
@@ -3618,6 +3759,9 @@ msgid ""
 "{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
 "hates you, because you killed all his family. [**FAIL**: {experience} exp]"
 msgstr ""
+"{hugger.mention} próbował/a przytulić kaczkę. Jak słodko! Niestety, kaczka "
+"Ciebie nienawidzi bo wymordowałeś/aś całą jej rodzinkę. [**PORAŻKA**: "
+"{experience} PD]"
 
 msgid "ghost"
 msgstr ""
@@ -3640,18 +3784,20 @@ msgstr[2] ""
 msgstr[3] ""
 
 msgid "Huh, quick question, what's {operation} ?"
-msgstr ""
+msgstr "Szybkie pytanko, ile to {operation} ?"
 
 msgid ""
 "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
 "`dh!bang <answer>`."
 msgstr ""
+"{hurter.mention}, zadałem Ci pytanie ! Ile to {operation} ? Odpowiedz "
+"używając `dh!bang <answer>`."
 
 msgid "{hurter.mention}, Just give me digits !"
-msgstr ""
+msgstr "{hurter.mention}, po prostu daj mi cyfry !"
 
 msgid "{hurter.mention}, that's not the correct answer !"
-msgstr ""
+msgstr "{hurter.mention}, to nie jest poprawna odpowiedź !"
 
 msgid "cartographer"
 msgstr ""
@@ -3667,6 +3813,8 @@ msgid ""
 "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
 "letter and the number to the bang command. Example: `dh!bang A1`."
 msgstr ""
+"ℹ️ **Kaczka Kartografka**: znajdź kaczkę na powyższej mapie, dodając literę "
+"i cyfrę do polecenia bang. Przykład: `dh!bang A1`."
 
 msgid ""
 "{hurter.mention}, You need to find the duck in the map above! Answer with "
@@ -3688,13 +3836,13 @@ msgstr "kaczątko"
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
-msgstr[0] ""
+msgstr[0] "która jest kaczątkiem"
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
-msgstr ""
+msgstr "{killer.mention} zabił/a kaczątko [**Kaczątko**: {won_experience} PD]"
 
 msgid ""
 "{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
@@ -3787,21 +3935,25 @@ msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
+"{hurter.mention} zranił/a kaczkę [**wykryto UZBROJONĄ KACZKĘ**:{lives_left}/"
+"{total_lives}][**Obrażenia :  -{damage}]"
 
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
+"{hurter.mention} zranił/a kaczkę [**wykryto UZBROJONĄ KACZKĘ**][**Obrażenia :"
+" -{damage}]"
 
 msgid "night"
 msgstr "noc"
 
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
-msgstr[0] ""
+msgstr[0] "z których jedna jest nocną kaczką"
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
+msgstr[3] "z czego {this_ducks_killed} to kaczki nocne"
 
 msgid "sleeping"
 msgstr ""
@@ -4057,10 +4209,10 @@ msgid "Boooo Duck"
 msgstr "Kaczka Boooo"
 
 msgid "Pr. Duck"
-msgstr "Profesor Kwaczor"
+msgstr "Profesor Kwacz"
 
 msgid "EnsDuck"
-msgstr "Kaczka Geniusz"
+msgstr "McKwacz"
 
 msgid "**COIN**"
 msgstr ""
@@ -4102,7 +4254,7 @@ msgid "Golden Duck"
 msgstr "Złota Kaczka"
 
 msgid "Golden Goose"
-msgstr ""
+msgstr "Złota Gęś"
 
 msgid "Shiny Duck"
 msgstr "Lśniąca Kaczka"
@@ -4126,7 +4278,7 @@ msgid "Poor Duck"
 msgstr "Kaczka Żebrak"
 
 msgid "Slimey Duck"
-msgstr ""
+msgstr "Zamulona Kaczka"
 
 msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
 msgstr "**NIE RUSZAĆ SIĘ BO WSZYSTKO WYBUCHNIE!**"
@@ -4138,7 +4290,7 @@ msgid "The Kamikaze Duck"
 msgstr "Kaczka Kamikaze"
 
 msgid "Explosive Duck"
-msgstr "Kaczka Eksplodująca"
+msgstr "Eksplodująca Kaczka"
 
 msgid "Boom Duck"
 msgstr "Kaczka Boom-Boom"
