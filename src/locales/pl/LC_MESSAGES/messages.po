@@ -2315,10 +2315,10 @@ msgid "Webhooks are used in this channel."
 msgstr ""
 
 msgid "Webhooks are not used in this channel."
-msgstr ""
+msgstr "Webhooki nie są używane na tym kanale"
 
 msgid "Global items can be used in this channel."
-msgstr ""
+msgstr "Globalne przedmioty mogą być używane na tym kanale"
 
 msgid "Global items can't be used in this channel."
 msgstr ""
@@ -2535,6 +2535,8 @@ msgid ""
 "On {channel.mention}, it's currently daytime, and night will fall "
 "{time_left_sun_td}. Night will last for {duration_of_night_td}."
 msgstr ""
+"Na kanale {channel.mention} jest aktualnie dzień, a noc zapadnie "
+"{time_left_sun_td}. Noc potrwa {duration_of_night_td}."
 
 msgid ""
 "On {channel.mention}, it's currently nighttime, and the sun will rise "
@@ -2586,7 +2588,7 @@ msgid "👍️ Role ID {old_role} removed from the auto_roles list."
 msgstr ""
 
 msgid "❌️ No role was set for this level."
-msgstr ""
+msgstr "❌️ Żadna rola nie została ustawiona dla tego poziomu."
 
 msgid "Current roles mapping:"
 msgstr ""
@@ -2606,22 +2608,22 @@ msgid "Current prestige roles mapping:"
 msgstr ""
 
 msgid "Level {i}"
-msgstr ""
+msgstr "{i} Poziom"
 
 msgid "Deleted role 🗑️ ID: {role_id}"
-msgstr ""
+msgstr "Rola usunięta  🗑️ ID: {role_id}"
 
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
 
 msgid "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
-msgstr ""
+msgstr "{level} - {user.name}#{user.discriminator} [`{user.id}`]"
 
 msgid "No members have any specific rights in the server."
-msgstr ""
+msgstr "Żaden członek nie ma żadnych określonych przywilejów na serwerze."
 
 msgid "❌ {target.mention}, you cannot ban yourself !"
-msgstr ""
+msgstr "❌ {target.mention}, nie możesz zbanować samego siebie ! "
 
 msgid "{target.mention} now has a access of {level.name}."
 msgstr ""
@@ -2638,59 +2640,74 @@ msgstr ""
 
 msgid "Members can run landmines commands in {channel.mention}."
 msgstr ""
+"Członkowie mogą uruchamiać komendy dotyczące min na kanale {channel.mention}."
+""
 
 msgid "Members can't run landmines commands in {channel.mention}"
 msgstr ""
+"Członkowie nie mogą uruchamiać komend dotyczących min na kanale {channel."
+"mention}."
 
 msgid "You'll now be pinged in replies from the bot."
-msgstr ""
+msgstr "Będziesz pingowany w odpowiedziach od bota."
 
 msgid "You wont be pinged anymore in replies from the bot."
-msgstr ""
+msgstr "Nie będziesz już pingowany w odpowiedziach od bota."
 
 msgid "Your language is set to `{language}` [{language_name}]."
-msgstr ""
+msgstr "Twój język jest zmieniony na `{language}` [{language_name}]. "
 
 msgid "Shop"
 msgstr "Sklep"
 
 msgid "❌ Whoops, you have too many bullets in your weapon already."
-msgstr ""
+msgstr "❌ Ups, masz już za dużo pocisków w swojej broni."
 
 msgid ""
 "💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"💸 Dodałeś/aś pocisk do swojej broni. [Wydatek: - {ITEM_COST} PD, łącznie "
+"masz {db_hunter.experience} PD]"
 
 msgid ""
 "💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
 msgstr ""
+"💡 Może zechcesz kupić magazynek następnym razem? Wyjdzie ci to taniej 😁"
 
 msgid ""
 "❌ Whoops, you have too many magazines in your backpack already... Try "
 "reloading!"
 msgstr ""
+"❌ Ups, masz już za dużo magazynów w plecaku... Spróbuj przeładować broń!"
 
 msgid ""
 "💸 You added a magazine in your weapon. Time to reload! [Bought: -"
 "{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Dodałeś/aś magazynek do swojej broni. Czas na przeładowanie! [Wydatek: -"
+"{ITEM_COST} PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid ""
 "💸 You added a magazine in your weapon. [Bought: -{ITEM_COST} exp, total "
 "{db_hunter.experience} exp]"
 msgstr ""
+"💸 Dodałeś/aś magazynek do swojej broni. [Wydatek: -{ITEM_COST} PD, łącznie "
+"masz {db_hunter.experience} PD]"
 
 msgid ""
 "❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, I "
 "can't sell that to you. (`{ctx.prefix}event`)"
 msgstr ""
+"❌ Traktat ONZ zakazuje na razie używania amunicji przeciwpancernej i "
+"wybuchowej, nie mogę ci tego sprzedać teraz. (`{ctx.prefix}event`)"
 
 msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
-msgstr ""
+msgstr "❌ Twoja broń używa już amunicję przepiwpancerną na {time_delta}!"
 
 msgid "❌ Your gun is using some even better explosive ammo for {time_delta}!"
 msgstr ""
+"❌ Twoja broń używa już jeszcze lepszą amunicję wybuchową na {time_delta}!"
 
 msgid ""
 "💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -"
@@ -2698,24 +2715,29 @@ msgid ""
 msgstr ""
 
 msgid "❌ Your gun is already using explosive ammo for {time_delta}!"
-msgstr ""
+msgstr "❌ Twoja broń używa już amunicji wybuchowej na{time_delta}!"
 
 msgid ""
 "💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Kupiłeś/aś amunicję **WYBUCHOWĄ**.  Trzykrotne obrażenia, będzie krwawo! "
+"[Wydatek: -{ITEM_COST} PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid "❌ Your gun isn't confiscated, why would you need a new one ?"
-msgstr ""
+msgstr "❌ Twoja broń nie została skonfiskowana, po co ci nowa?"
 
 msgid ""
 "💸 You bribed the police and bought back your weapon. The fun continues. "
 "[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
 msgstr ""
+"💸 Przekupiłeś/aś policję i odkupiłeś broń.  Zabawa trwa. [Wydatek: - "
+"{ITEM_COST} PD, łącznie masz {db_hunter.experience} PD]"
 
 msgid ""
 "❌ Your gun is already perfectly greased, you don't need any more of that."
 msgstr ""
+"❌ Twoja broń jest już idealnie nasmarowana, nie potrzebujesz teraz smaru."
 
 msgid ""
 "💸 You added some grease to your weapon to reduce jamming for a day. [Bought:"
@@ -2785,11 +2807,17 @@ msgid ""
 "Unfortunately, there is a cop around and you don't have enough exp to pay a "
 "littering fine of {fine} exp."
 msgstr ""
+"❌ Próbowałeś/aś wyrzucić starą koniczynkę, aby kupić nową w nowej kwiaciarni."
+" Niestety, bacznym okiem przyglądał się na Ciebie gliniarz i nie miałeś/aś "
+"wystarczającej ilości doświadczenia, aby zapłacić karę za zaśmiecanie w "
+"wysokości {fine} PD."
 
 msgid ""
 "🍀 You throw your old clover to buy a new one at the new florist. "
 "Unfortunately, a cop catches you and fines you {fine} exp for littering."
 msgstr ""
+"🍀 Wyrzuciłeś/aś swoją starą koniczynkę, aby kupić nową w nowej kwiaciarni. "
+"Niestety, złapał cię gliniarz i ukarał grzywną {fine} PD za zaśmiecanie."
 
 msgid ""
 "❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
@@ -3065,7 +3093,7 @@ msgstr ""
 "Skontaktuj się z Adminem zaprzyjaźnionego serwera."
 
 msgid "You don't have to go right now"
-msgstr ""
+msgstr "Nie musisz już iść"
 
 msgid "Hi, fellow cow lover"
 msgstr ""
@@ -3105,7 +3133,7 @@ msgid "Level"
 msgstr "Poziom"
 
 msgid "Accuracy"
-msgstr "Trafność"
+msgstr "Dokładność"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr ""
@@ -3114,18 +3142,20 @@ msgid "Reliability"
 msgstr ""
 
 msgid "Level {level}"
-msgstr "Poziom {level}"
+msgstr "{level} Poziom"
 
 msgid "{target.name} shooting stats."
 msgstr "Statystki strzałów {target.name}"
 
 msgid "🧠"
-msgstr ""
+msgstr "🧠"
 
 msgid ""
 "{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
 "life {revives} times eating a total of {brains_eaten} brains"
 msgstr ""
+"{shots_when_dead} prób strzałów podczas ŚMIERCI, {target.mention} wrócił/a "
+"do żywych {revives} razy, jedząc {brains_eaten} mózgów."
 
 msgid "🚰"
 msgstr ""
@@ -3140,10 +3170,10 @@ msgid "{shots} shots attempted when {target.mention} gun was confiscated."
 msgstr ""
 
 msgid "💥"
-msgstr ""
+msgstr "💥"
 
 msgid "{shots} shots attempted with a sabotaged gun."
-msgstr "{shots} prób strzałów z sabotowanej broni"
+msgstr "{shots} prób strzałów ze skonfiskowanej broni"
 
 msgid "☁"
 msgstr "☁"
@@ -3185,19 +3215,19 @@ msgid "{target.mention} was killed {times} times."
 msgstr "{target.mention} został/a zabity/a {times} razy."
 
 msgid "🏆️"
-msgstr ""
+msgstr "🏆️"
 
 msgid "{shots} shots using homing bullets."
 msgstr "{shots} strzałów używając naprowadzających pocisków"
 
 msgid "🦆"
-msgstr ""
+msgstr "🦆"
 
 msgid "{shots} shots going towards ducks."
-msgstr "{shots} strzałów prosto w kaczy dziobek"
+msgstr "{shots} strzałów prosto w kaczą główkę"
 
 msgid "🕵"
-msgstr ""
+msgstr "🕵"
 
 msgid "{shots} shots stopped by the infrared detector."
 msgstr "{shots} strzałów zatrzymanych przez detektor podczerwieni."
@@ -3278,7 +3308,7 @@ msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
 msgstr "❌ Nie jestem pewien, czy {target.mention} może grać w DuckHunt."
 
 msgid "❌ You need to send more experience than this."
-msgstr ""
+msgstr "❌ Wiesz co... musisz wysłać troszkę więcej doświadczenia."
 
 msgid "❌ You don't have enough experience 🤣."
 msgstr "❌ Nie masz tak dużo punktów doświadczenia 🤣."
@@ -3337,7 +3367,7 @@ msgid "Top users"
 msgstr ""
 
 msgid "{n} commands used"
-msgstr ""
+msgstr "{n} użytych komend"
 
 msgid ""
 "This is the list of all the tags on this server. They are ordered by "
@@ -3376,6 +3406,8 @@ msgid ""
 "👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
 "pk}`)"
 msgstr ""
+"👌 Alias stworzony: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
+"pk}`)"
 
 msgid "❌ This tag doesn't exist yet. You might want to create it."
 msgstr "❌ Taki tag jeszcze nie istnieje, może chcesz go stworzyć...?"
