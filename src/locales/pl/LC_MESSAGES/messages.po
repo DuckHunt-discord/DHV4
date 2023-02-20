@@ -2131,7 +2131,7 @@ msgstr ""
 "prestiżu` aby dowiedzieć się więcej."
 
 msgid "Prestige {old_prestige} -> {new_prestige}"
-msgstr ""
+msgstr "Prestiż {old_prestige} -> {new_prestige}"
 
 msgid "You used prestige after reaching {pct}% of the required threshold."
 msgstr ""
@@ -2140,12 +2140,14 @@ msgid "✨ New run"
 msgstr ""
 
 msgid "You'll restart the game with {kept_exp} experience."
-msgstr ""
+msgstr "Zrestartowałeś/aś grę z {kept_exp} punktami doświadczenia"
 
 msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
 msgstr ""
+"❌ Twój poziom prestiżu nie jest jeszcze dostatecznie wysoki. Zobacz `{ctx."
+"prefix}prestige info`, aby dowiedzieć się więcej."
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr ""
@@ -2321,12 +2323,14 @@ msgid "Global items can be used in this channel."
 msgstr "Globalne przedmioty mogą być używane na tym kanale"
 
 msgid "Global items can't be used in this channel."
-msgstr ""
+msgstr "Globalne przedmioty nie mogą być używane na tym kanale"
 
 msgid ""
 "Webhooks are not used in this channel. Please enable them first. You can use "
 "`{command}` to do it."
 msgstr ""
+"Webhooki nie są używane na tym kanale. Proszę, włącz je. Możesz użyć "
+"`{command}` aby to zrobić."
 
 msgid ""
 "Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
@@ -2342,6 +2346,8 @@ msgstr[3] ""
 msgid ""
 "I couldn't create a webhook. Double-check my permissions and try again."
 msgstr ""
+"Nie udało mi się utworzyć webhooka.  Sprawdź dokładnie moje uprawnienia i "
+"spróbuj ponownie."
 
 msgid "That channel uses emojis to spawn ducks."
 msgstr ""
@@ -2352,10 +2358,10 @@ msgid ""
 msgstr ""
 
 msgid "Ducks will spawn on {channel.mention}"
-msgstr ""
+msgstr "Kaczki pojawią się na kanale {channel.mention}"
 
 msgid "Ducks won't spawn on {channel.mention}"
-msgstr ""
+msgstr "Kaczki nie pojawią się na kanale {channel.mention}"
 
 msgid ""
 "On {channel.mention}, players will pay {tax}% of tax to the bot when they "
