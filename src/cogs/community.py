@@ -3,6 +3,7 @@ import re
 
 import discord
 from discord.ext import commands
+from pathlib import Path
 from tortoise import timezone
 
 from utils import checks, models
@@ -29,6 +30,14 @@ async def wait_cd(monitored_player, ctx, name, dt):
             monitored_player=monitored_player,
         )
     )
+
+
+saysounds_folder = Path("assets/Sounds")
+
+saysounds_files = {
+    file.name.split(".")[0]: file
+    for file in saysounds_folder.glob("*.ogg")
+}
 
 
 class Community(Cog):
@@ -77,8 +86,8 @@ class Community(Cog):
             return
 
         if (
-            payload.user_id
-            not in self.config()["moderators_that_can_delete_with_reactions"]
+                payload.user_id
+                not in self.config()["moderators_that_can_delete_with_reactions"]
         ):
             return
 
@@ -129,8 +138,8 @@ class Community(Cog):
                     )
 
                     if (
-                        not permissions.read_message_history
-                        or not permissions.read_messages
+                            not permissions.read_message_history
+                            or not permissions.read_messages
                     ):
                         # The user can't read messages
                         db_member = db_member or await get_from_db(
@@ -149,6 +158,11 @@ class Community(Cog):
 
                     embed = await make_message_embed(match_message)
                     await ctx.send(embed=embed)
+
+            maybe_sound = saysounds_files.get(message.content.lower())
+
+            if maybe_sound:
+                await message.channel.send(file=discord.File(maybe_sound))
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = timezone.now()
