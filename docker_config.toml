@@ -71,7 +71,7 @@ support_server_id = 195260081036591104
 status_channel_id = 795389911163338775
 
 [cogs.Community]
-servers = [195260081036591104]
+servers = [195260081036591104, 1031204872902676520]
 rpg_role_name = "Ping me for RPG bot events"
 moderators_that_can_delete_with_reactions = [251996890369884161]
 
