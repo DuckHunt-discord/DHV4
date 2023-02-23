@@ -36,7 +36,7 @@ saysounds_folder = Path("assets/Sounds")
 
 saysounds_files = {
     file.name.split(".")[0]: file
-    for file in saysounds_folder.glob("*.ogg")
+    for file in saysounds_folder.glob("*.mp3")
 }
 
 saysounds_names = tuple(sorted(saysounds_files.keys(), key=lambda x: -len(x)))
