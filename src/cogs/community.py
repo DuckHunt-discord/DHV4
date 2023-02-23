@@ -171,7 +171,8 @@ class Community(Cog):
             maybe_sound = find_string(saysounds_names, message.content.lower().replace("'", ""))
 
             if maybe_sound:
-                await message.channel.send(file=discord.File(maybe_sound))
+                ctx.logger.info(f"Playing sound {maybe_sound} ({message.content})")
+                await message.channel.send(file=discord.File(saysounds_files[maybe_sound]))
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = timezone.now()
