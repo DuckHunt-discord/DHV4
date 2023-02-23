@@ -39,6 +39,15 @@ saysounds_files = {
     for file in saysounds_folder.glob("*.ogg")
 }
 
+saysounds_names = tuple(sorted(saysounds_files.keys(), key=lambda x: -len(x)))
+
+
+def find_string(prefixes, string):
+    for prefix in prefixes:
+        if prefix in string:
+            return prefix
+    return None
+
 
 class Community(Cog):
     def __init__(self, bot: MyBot, *args, **kwargs):
@@ -159,7 +168,7 @@ class Community(Cog):
                     embed = await make_message_embed(match_message)
                     await ctx.send(embed=embed)
 
-            maybe_sound = saysounds_files.get(message.content.lower())
+            maybe_sound = find_string(saysounds_names, message.content.lower().replace("'", ""))
 
             if maybe_sound:
                 await message.channel.send(file=discord.File(maybe_sound))
