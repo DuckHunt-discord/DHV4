@@ -44,8 +44,12 @@ saysounds_names = tuple(sorted(saysounds_files.keys(), key=lambda x: -len(x)))
 
 def find_string(prefixes, string):
     for prefix in prefixes:
-        if prefix in string:
-            return prefix
+        if " " in prefix:
+            if prefix in string:
+                return prefix
+        else:
+            if string == prefix:
+                return prefix
     return None
 
 
