@@ -3,7 +3,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2023-01-26 08:50+0100\n"
+"POT-Creation-Date: 2023-02-23 13:15+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,7 +33,7 @@ msgstr "Create a Command view for a given command."
 msgid "Create a GamePadView to allow playing the game with buttons."
 msgstr "Create a GamePadView to allow playing the game with buttons."
 
-#: ../cogs/community.py:49
+#: ../cogs/community.py:67
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
@@ -53,7 +53,7 @@ msgstr "Reload your gun."
 msgid "Hug the duck that appeared first on the channel."
 msgstr "Hug the duck that appeared first on the channel."
 
-#: ../cogs/ducks_hunting_commands.py:839
+#: ../cogs/ducks_hunting_commands.py:840
 msgid "Revive yourself by eating brains"
 msgstr "Revive yourself by eating brains"
 
@@ -1614,17 +1614,17 @@ msgstr "Buy a bullet"
 msgid "🍀 Buy a clover"
 msgstr "🍀 Buy a clover"
 
-#: ../cogs/community.py:27
+#: ../cogs/community.py:28
 #, python-brace-format
 msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 msgstr "{monitored_player.mention}, RPG cooldown: **{name}** expired."
 
-#: ../cogs/community.py:65
+#: ../cogs/community.py:83
 #, python-brace-format
 msgid "Here's the invite you requested {invite}"
 msgstr "Here's the invite you requested {invite}"
 
-#: ../cogs/community.py:230
+#: ../cogs/community.py:253
 #, python-brace-format
 msgid ""
 "{rpg_role.mention}, you might want to click the reaction above/do what the "
@@ -1953,7 +1953,7 @@ msgid ""
 msgstr ""
 "{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
 
-#: ../cogs/ducks_hunting_commands.py:782
+#: ../cogs/ducks_hunting_commands.py:783
 #, python-brace-format
 msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
@@ -1962,7 +1962,7 @@ msgstr ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
 "happy that you love it."
 
-#: ../cogs/ducks_hunting_commands.py:798
+#: ../cogs/ducks_hunting_commands.py:799
 #, python-brace-format
 msgid ""
 "{you_mention} hugged {target_mention}. They hate you even more for hugging "
@@ -1971,7 +1971,7 @@ msgstr ""
 "{you_mention} hugged {target_mention}. They hate you even more for hugging "
 "them. Don't know why tho... Try shooting them in the face."
 
-#: ../cogs/ducks_hunting_commands.py:808
+#: ../cogs/ducks_hunting_commands.py:809
 #, python-brace-format
 msgid ""
 "{you_mention}, you just hugged yourself. You feel a little lonely, don't "
@@ -1980,24 +1980,24 @@ msgstr ""
 "{you_mention}, you just hugged yourself. You feel a little lonely, don't "
 "you?"
 
-#: ../cogs/ducks_hunting_commands.py:816
+#: ../cogs/ducks_hunting_commands.py:817
 #, python-brace-format
 msgid "{you_mention} hugged {target_mention}. They feel loved."
 msgstr "{you_mention} hugged {target_mention}. They feel loved."
 
-#: ../cogs/ducks_hunting_commands.py:830
+#: ../cogs/ducks_hunting_commands.py:831
 msgid "You hugged a tree, Wizzz?!"
 msgstr "You hugged a tree, Wizzz?!"
 
-#: ../cogs/ducks_hunting_commands.py:832
+#: ../cogs/ducks_hunting_commands.py:833
 msgid "What are you trying to hug, exactly? A tree?"
 msgstr "What are you trying to hug, exactly? A tree?"
 
-#: ../cogs/ducks_hunting_commands.py:851
+#: ../cogs/ducks_hunting_commands.py:852
 msgid "You are already alive and well."
 msgstr "You are already alive and well."
 
-#: ../cogs/ducks_hunting_commands.py:864
+#: ../cogs/ducks_hunting_commands.py:865
 #, python-brace-format
 msgid "You eat {brains} 🧠 and regain consciousness."
 msgstr "You eat {brains} 🧠 and regain consciousness."

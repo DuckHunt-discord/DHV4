@@ -37,7 +37,7 @@ msgstr ""
 
 msgid "Shoot at the duck that appeared first on the channel."
 msgstr ""
-"Strzel do kaczki, która pojawiła się jako pierwsza na kanale.\n"
+"Strzelaj do kaczki, która pojawiła się jako pierwsza na kanale.\n"
 
 msgid "Reload your gun."
 msgstr "Przeładuj broń."
@@ -3429,7 +3429,7 @@ msgid "Level"
 msgstr "Poziom"
 
 msgid "Accuracy"
-msgstr "Precyzja"
+msgstr "Szybkość reakcji"
 
 msgid "{level_reliability} % (Real: {real_reliability} %)"
 msgstr "{level_reliability} % (Rzeczywisty: {real_reliability} %)"
