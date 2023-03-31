@@ -792,7 +792,7 @@ class MapTile(Enum):
     CITY = "🏘️"
     TOWN = "🏡"
     CAMPING = "🏕️"
-    MOUNTAIN_NORMAL = "⛰"
+    MOUNTAIN_NORMAL = "🏔"
     MOUNTAIN_SNOW = "🗻"
     DUCK = "🦆"
 
