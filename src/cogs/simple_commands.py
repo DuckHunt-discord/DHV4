@@ -361,21 +361,27 @@ class SimpleCommands(Cog):
             f"wins in the case of a tie)\n"
             f"➡️ If **exactly** {no_trigger} no votes are casted, no-voters will receive 2 boxes "
             f"of foie gras each.\n"
-            f"Yes, this is a social experiment, and it's starting **NOW**."
+            f"Good luck."
         )
 
         await message.add_reaction("🦆")
         await message.add_reaction("❌")
 
-        await asyncio.sleep(int((time_to_wait - 10) / 2))
-        to_delete = await ctx.reply("⏰ Halfway there...")
-        await asyncio.sleep(int((time_to_wait - 10) / 2))
-        await to_delete.delete()
-        to_edit = await ctx.reply("⏰ 10 seconds left...")
-        await asyncio.sleep(5)
-        await to_edit.edit(content="⏰ 5 seconds left...")
-        await asyncio.sleep(5)
-        await to_edit.edit(content="⏰ And done...")
+        if time_to_wait >= 30:
+            await asyncio.sleep(int((time_to_wait - 10) / 2))
+            to_delete = await ctx.reply("⏰ Halfway there...")
+            await asyncio.sleep(int((time_to_wait - 10) / 2))
+            await to_delete.delete()
+
+        if time_to_wait >= 10:
+            to_edit = await ctx.reply("⏰ 10 seconds left...")
+            await asyncio.sleep(5)
+            await to_edit.edit(content="⏰ 5 seconds left...")
+            await asyncio.sleep(5)
+            await to_edit.edit(content="⏰ And done...")
+        else:
+            await ctx.reply("⏰ Click fast...")
+            await asyncio.sleep(time_to_wait)
 
         try:
             message = await ctx.channel.fetch_message(message.id)
@@ -401,8 +407,11 @@ class SimpleCommands(Cog):
             await message.reply(
                 f"Got exactly {got_no} no votes. Giving them 2 boxes of foie gras each.."
             )
-            async for user in no_react.users():
+            users = [user async for user in no_react.users()]
+            for user in users:
                 await FoieGras.give_to(user, uses=2)
+
+            await message.reply("Here's your foie gras, " + ", ".join([user.mention for user in users]) + ".")
             return
         elif got_no > no_trigger:
             await message.reply(f"Got {got_no} no votes. Not spawning a boss.")
