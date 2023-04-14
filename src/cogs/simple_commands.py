@@ -404,7 +404,7 @@ class SimpleCommands(Cog):
         got_no -= 1
 
         if got_no == no_trigger:
-            users = [user async for user in no_react.users()]
+            users = [user async for user in no_react.users() if not user.bot]
             for user in users:
                 ctx.logger.info(f"Giving {user} 2 boxes of foie gras")
                 await FoieGras.give_to(user, uses=2)
