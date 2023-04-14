@@ -404,14 +404,15 @@ class SimpleCommands(Cog):
         got_no -= 1
 
         if got_no == no_trigger:
-            await message.reply(
-                f"Got exactly {got_no} no votes. Giving them 2 boxes of foie gras each.."
-            )
             users = [user async for user in no_react.users()]
             for user in users:
+                ctx.logger.info(f"Giving {user} 2 boxes of foie gras")
                 await FoieGras.give_to(user, uses=2)
 
-            await message.reply("Here's your foie gras, " + ", ".join([user.mention for user in users]) + ".")
+            await message.reply(
+                f"Got exactly {got_no} no votes. Giving them 2 boxes of foie gras each..."
+                f"Here's your foie gras, " + ", ".join([user.mention for user in users]) + "."
+            )
             return
         elif got_no > no_trigger:
             await message.reply(f"Got {got_no} no votes. Not spawning a boss.")
