@@ -218,6 +218,13 @@ class SimpleCommands(Cog):
             embed.add_field(
                 name=_("Designer"),
                 value=_(
+                    '<@807752234669703210> ("YaOldBuddy") made a some of the avatars Ducks use.'
+                ),
+                inline=False,
+            )
+            embed.add_field(
+                name=_("Designer"),
+                value=_(
                     '<@376052158573051906> ("Globloxmen") made a lot of ducks you can find all over the game. Join the /r/dailyducks subreddit.'
                 ),
                 inline=False,
