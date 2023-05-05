@@ -218,7 +218,14 @@ class SimpleCommands(Cog):
             embed.add_field(
                 name=_("Designer"),
                 value=_(
-                    '<@807752234669703210> ("YaOldBuddy") made a some of the avatars Ducks use.'
+                    '<@807752234669703210> ("YaOldBuddy") made some of the avatars Ducks use.'
+                ),
+                inline=False,
+            )
+            embed.add_field(
+                name=_("Designer"),
+                value=_(
+                    '<@355143752248983552> ("ZeBadMedic") also made some of the Ducks avatars.'
                 ),
                 inline=False,
             )

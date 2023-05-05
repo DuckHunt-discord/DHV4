@@ -11,6 +11,7 @@ DUCKS_IMAGES = {
     "normal_alt1": "https://cdn.discordapp.com/attachments/795225915248214036/804671834624229396/normal_duck_Calgeka_Azadelia.png",
     "normal_alt2": "https://cdn.discordapp.com/attachments/795225915248214036/804671836998074428/normal_duck_Calgeka_Nausicaa.png",
     "normal_alt3": "https://cdn.discordapp.com/attachments/795225915248214036/1103724038800539698/normal_duck_Buddy.png",
+    "normal_daftpunk": "https://cdn.discordapp.com/attachments/795225915248214036/1104024537768665139/duckpunk_ZeBadMedic.png",
     "super": "https://cdn.discordapp.com/attachments/795225915248214036/795259598247297044/super_duck_calgeka.png",
     "super_alt1": "https://cdn.discordapp.com/attachments/795225915248214036/804671999502581770/super_duck_Calgeka_Alunden.png",
     "prof": "https://cdn.discordapp.com/attachments/795225915248214036/795259596091949116/prof_duck_calgeka.png",
@@ -346,6 +347,7 @@ normal = {
         DUCKS_IMAGES["normal_alt1"],
         DUCKS_IMAGES["normal_alt2"],
         DUCKS_IMAGES["normal_alt3"],
+        DUCKS_IMAGES["normal_daft_punk"],
     ],
 }
 
