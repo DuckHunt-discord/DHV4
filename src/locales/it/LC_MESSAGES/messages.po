@@ -834,12 +834,13 @@ msgstr ""
 msgid ""
 "Set for how many seconds a duck will stay on the channel before leaving"
 msgstr ""
+"Imposta per quanti secondi una papera rimarrà nel canale prima di andarsene"
 
 msgid "Set the minimum lives of a super duck"
-msgstr ""
+msgstr "Imposta vite minime di una super papera"
 
 msgid "Set the maximum lives of a super duck"
-msgstr ""
+msgstr "Imposta vite massime di una super papera"
 
 msgid "Avoid references to triggering actions/words."
 msgstr ""
