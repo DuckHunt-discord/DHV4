@@ -2956,7 +2956,7 @@ msgstr ""
 #: ../cogs/private_messages_support.py:564
 msgid "Support tickets are automatically deleted after 24 hours of inactivity"
 msgstr ""
-"Support tickets are automatically deleted after 24 hours of inactivity."
+"Support tickets are automatically deleted after 24 hours of inactivity"
 
 #: ../cogs/private_messages_support.py:610
 msgid "Attachments persistence"
