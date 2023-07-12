@@ -864,7 +864,7 @@ msgid "Returns the wiki URL"
 msgstr ""
 
 msgid "Get the URL to invite the bot"
-msgstr "احصل على URL لدعوة البوت"
+msgstr "احصل على رابط لدعوة البوت"
 
 msgid "Get a discord invite to the support server."
 msgstr "احصل على دعوة لخادم الدعم."
@@ -875,13 +875,13 @@ msgid ""
 msgstr ""
 
 msgid "Get the bot prefixes"
-msgstr ""
+msgstr "احصل على بادئات البوت"
 
 msgid "Thanks to those fine people who (helped) make the bot"
 msgstr ""
 
 msgid "Thanks to those fine people who (helped) translate the bot"
-msgstr ""
+msgstr "شكراً لهؤلاء الناس الرائعين الذين (ساعدوا) ترجموا البوت"
 
 msgid "For when you misspell the pan command."
 msgstr ""
@@ -908,7 +908,7 @@ msgid ""
 msgstr ""
 
 msgid "Who doesn't need cows ?"
-msgstr "من لا يحتاج ابقار؟"
+msgstr "من لا يحتاج أبقار؟"
 
 msgid "When you don't have eyes"
 msgstr "عندما لا يكون لديك عيون"
@@ -1066,7 +1066,7 @@ msgid "You can vote !"
 msgstr "يمكنك التصويت!"
 
 msgid "Thanks for supporting the bot by voting !"
-msgstr ""
+msgstr "شكراً لدعمك البوت بالتصويت!"
 
 msgid "You might be able to vote !"
 msgstr ""
@@ -1432,7 +1432,7 @@ msgid "This command can only be used in a private message."
 msgstr "هذا الامر يمكن تشغيله في رسالة خاصة فقط."
 
 msgid "This command cannot be used in a private message."
-msgstr ""
+msgstr "هذا الأمر لا يمكن استخدامه في رسالة خاصة."
 
 msgid ""
 "Multiple errors were encountered when running your command: {exception."
@@ -1440,7 +1440,7 @@ msgid ""
 msgstr ""
 
 msgid "You need to be the owner of the bot to run that."
-msgstr ""
+msgstr "يجب أن تكون مالك البوت لتشغيل هذا."
 
 msgid "You need to be in a NSFW channel to run that."
 msgstr ""
