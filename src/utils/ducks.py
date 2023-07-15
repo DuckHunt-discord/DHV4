@@ -1094,6 +1094,22 @@ class BabyDuck(Duck):
     leave_on_hug = True
     use_bonus_exp = False
 
+    async def shoot(self, args) -> Optional[bool]:
+        _ = await self.get_translate_function()
+        hurter = self.target_lock_by
+
+        if hurter.id == 936771140515414037:
+            await self.send(
+                _(
+                    "[{hurter.mention}] I'm sorry Hal, I'm afraid I can't do that <https://youtu.be/ARJ8cAGm6JE?t=58>.",
+                    hurter=hurter,
+                )
+            )
+            await self.release()
+            return False
+
+        return await super().shoot(args)
+
     async def get_ncategory_killed(self, this_ducks_killed):
         ngettext = await self.get_ntranslate_function()
         return ngettext(
