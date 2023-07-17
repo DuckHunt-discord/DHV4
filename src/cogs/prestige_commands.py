@@ -188,8 +188,19 @@ class PrestigeCommands(Cog):
     async def daily(self, ctx: MyContext):
         """Get some more experience..."""
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
-
         _ = await ctx.get_translate_function()
+
+        now = datetime.datetime.now()
+
+        remove_levels = False
+
+        if now <= datetime.datetime(2023, 6, 27):
+            db_hunter.prestige += 6
+            remove_levels = True
+
+            await ctx.reply(_("As a kind of compensation for the rollback that happened, your prestige level for this command has been artificially set to {level}. "
+                            "For more info, check announcements on the support server. This will last until 2023-06-27. Thanks for playing DuckHunt.", level=db_hunter.prestige + 6))
+
         if db_hunter.prestige < 3:
             await ctx.send(
                 _(
@@ -199,7 +210,6 @@ class PrestigeCommands(Cog):
             )
             return False
 
-        now = datetime.datetime.now()
         if db_hunter.prestige_last_daily.date() == now.date():
             await ctx.send(
                 _("❌ You already claimed your dailies today. Try again tomorrow.")
@@ -215,6 +225,9 @@ class PrestigeCommands(Cog):
         await db_hunter.edit_experience_with_levelups(ctx, added_experience)
         db_hunter.prestige_last_daily = now
         db_hunter.prestige_dailies += 1
+
+        if remove_levels:
+            db_hunter.prestige -= 6
 
         await db_hunter.save()
 
