@@ -194,7 +194,7 @@ class PrestigeCommands(Cog):
 
         remove_levels = False
 
-        if now <= datetime.datetime(2023, 6, 27):
+        if now <= datetime.datetime(2023, 7, 27):
             db_hunter.prestige += 6
             remove_levels = True
 
