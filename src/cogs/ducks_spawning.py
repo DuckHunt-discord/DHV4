@@ -372,14 +372,17 @@ class DucksSpawning(Cog):
             channel
         ).compute_ducks_count()
 
-    async def change_event(self, force=False):
-        if random.randint(1, 12) != 1 and not force:
+    async def change_event(self, force_choice=None, force=False):
+        if random.randint(1, 12) != 1 and not force and not force_choice:
             self.bot.logger.info("No new event this time!")
             self.bot.current_event = Events.CALM
         else:
             self.bot.logger.debug("It's time for an EVENT!")
-            events = [event for event in Events if event != Events.CALM]
-            event_choosen: Events = random.choice(events)
+            if not force_choice:
+                events = [event for event in Events if event != Events.CALM]
+                event_choosen: Events = random.choice(events)
+            else:
+                event_choosen = force_choice
             self.bot.logger.info(f"New event : {event_choosen.name}")
 
             self.bot.current_event = event_choosen

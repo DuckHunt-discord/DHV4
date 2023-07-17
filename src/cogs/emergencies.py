@@ -12,6 +12,7 @@ from utils import checks
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 from utils.ducks import Map
+from utils.events import Events
 from utils.models import AccessLevel, get_from_db
 
 
@@ -121,13 +122,21 @@ class Emergencies(Cog):
     @manage_bot.command(
         aliases=["event", "reroll_event", "change_event", "regen_event"]
     )
-    async def update_event(self, ctx: MyContext, force=True):
+    async def update_event(self, ctx: MyContext, event_name=None, force=True):
         """
         Force the current event to change, and reroll a new one.
         """
         ducks_spawning_cog = self.bot.get_cog("DucksSpawning")
 
-        await ducks_spawning_cog.change_event(force=force)
+        if event_name:
+            try:
+                event = Events[event_name]
+            except KeyError:
+                raise commands.BadArgument(f"Event `{event_name}` not found. (Available events: {', '.join(Events.__members__)})")
+            else:
+                await ducks_spawning_cog.change_event(event_name=Events[event_name], force=force)
+        else:
+            await ducks_spawning_cog.change_event(force=force)
 
         await ctx.reply(f"New event rolled.")
 
