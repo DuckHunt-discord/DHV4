@@ -134,7 +134,7 @@ class Emergencies(Cog):
             except KeyError:
                 raise commands.BadArgument(f"Event `{event_name}` not found. (Available events: {', '.join(Events.__members__)})")
             else:
-                await ducks_spawning_cog.change_event(event_name=Events[event_name], force=force)
+                await ducks_spawning_cog.change_event(force_choice=Events[event_name], force=force)
         else:
             await ducks_spawning_cog.change_event(force=force)
 
