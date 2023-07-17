@@ -199,7 +199,7 @@ class PrestigeCommands(Cog):
             remove_levels = True
 
             await ctx.reply(_("As a kind of compensation for the rollback that happened, your prestige level for this command has been artificially set to {level}. "
-                            "For more info, check announcements on the support server. This will last until 2023-06-27. Thanks for playing DuckHunt.", level=db_hunter.prestige))
+                            "For more info, check announcements on the support server. This will last until 2023-07-27. Thanks for playing DuckHunt.", level=db_hunter.prestige))
 
         if db_hunter.prestige < 3:
             await ctx.send(
