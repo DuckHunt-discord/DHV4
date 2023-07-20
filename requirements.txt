@@ -8,7 +8,7 @@ pytz==2022.7.1
 discord.py==2.3.1
 #git+https://github.com/iDevision/enhanced-discord.py.git#2.0
 tortoise-orm[accel]==0.19.3
-aerich==0.7.1
+aerich==0.7.2
 asyncpg==0.28.0
 python-rapidjson==1.10
 ciso8601==2.3.0
