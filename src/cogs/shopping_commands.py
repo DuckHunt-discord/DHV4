@@ -878,7 +878,7 @@ class ShoppingCommands(Cog):
 
         # We don't want to send a level down message here.
         # https://github.com/DuckHunt-discord/DHV4/issues/129
-        db_hunter.experience -= -ITEM_COST
+        db_hunter.experience -= ITEM_COST
 
         db_hunter.bought_items["decoy"] += 1
 
