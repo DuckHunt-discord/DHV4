@@ -419,6 +419,14 @@ class BotsListVoting(Cog):
                     self.bot.logger.warning(
                         f"Push stats to {bot_list.name}: resp [TIMEOUT]"
                     )
+                except aiohttp.ClientConnectorError as e:
+                    self.bot.logger.warning(
+                        f"Push stats to {bot_list.name}: resp [CONNECTION ERROR] {e}"
+                    )
+                except Exception as e:
+                    self.bot.logger.error(
+                        f"Push stats to {bot_list.name}: resp [ERROR/UNHANDLED] {e}"
+                    )
                 else:
                     text = (await resp.text())[:100]
                     status = resp.status
