@@ -506,33 +506,27 @@ class PrivateMessagesSupport(Cog):
         #     info_embed.add_field(name="Shared server", value=f"1: {guild.name} <{guild.id}>", inline=True)
 
         if ticket_count > 1:
-            last_ticket = (
-                await SupportTicket.filter(user=db_user, closed=True)
-                .order_by("-opened_at")
-                .select_related("closed_by", "last_tag_used")
-                .first()
-            )
+            async for ticket in SupportTicket.filter(user=db_user, closed=True).order_by("-opened_at").select_related("closed_by", "last_tag_used").limit(5):
+                ftd = format_timedelta(
+                    ticket.closed_at - timezone.now(),
+                    granularity="minute",
+                    add_direction=True,
+                    format="short",
+                    locale="en",
+                )
+                if ticket.closed_by:
+                    value = f"Closed {ftd} by {ticket.closed_by.name}."
+                else:
+                    value = f"Closed {ftd} by the bot."
 
-            ftd = format_timedelta(
-                last_ticket.closed_at - timezone.now(),
-                granularity="minute",
-                add_direction=True,
-                format="short",
-                locale="en",
-            )
-            if last_ticket.closed_by:
-                value = f"Closed {ftd} by {last_ticket.closed_by.name}."
-            else:
-                value = f"Closed {ftd} by the bot."
+                if ticket.close_reason:
+                    value += f"\n{ticket.close_reason}"
 
-            if last_ticket.close_reason:
-                value += f"\n{last_ticket.close_reason}"
+                if ticket.last_tag_used_id:
+                    tag: Tag = ticket.last_tag_used
+                    value += f"\nLast tag sent: {tag.name}"
 
-            if last_ticket.last_tag_used_id:
-                tag: Tag = last_ticket.last_tag_used
-                value += f"\nLast tag sent: {tag.name}"
-
-            info_embed.add_field(name="Previous ticket", value=value, inline=False)
+                info_embed.add_field(name=f"Ticket n°{ticket.pk}", value=value, inline=False)
 
         for player_data in players_data:
             if player_data.channel.enabled:
