@@ -354,7 +354,7 @@ class PrivateMessagesSupport(Cog):
         )
         if not channel:
             self.bot.logger.info(
-                f"[SUPPORT] creating a DM channel for {user.name}#{user.discriminator}."
+                f"[SUPPORT] creating a DM channel for {user}."
             )
 
             now_str = format_datetime(datetime.datetime.now(), locale="en")
@@ -368,23 +368,23 @@ class PrivateMessagesSupport(Cog):
             )
 
             self.bot.logger.debug(
-                f"[SUPPORT] creating a webhook for {user.name}#{user.discriminator}."
+                f"[SUPPORT] creating a webhook for {user}."
             )
 
             webhook = await channel.create_webhook(
-                name=f"{user.name}#{user.discriminator}",
+                name=f"{user}",
                 avatar=await user.display_avatar.replace(format="png", size=512).read(),
                 reason="Received a DM.",
             )
             self.webhook_cache[channel] = webhook
             self.bot.logger.debug(
-                f"[SUPPORT] channel created for {user.name}#{user.discriminator}."
+                f"[SUPPORT] channel created for {user}."
             )
             await self.handle_ticket_opening(channel, user)
         else:
             if self.webhook_cache.get(channel, None) is None:
                 self.bot.logger.debug(
-                    f"[SUPPORT] recorvering {user.name}#{user.discriminator} channel webhook."
+                    f"[SUPPORT] recorvering {user} channel webhook."
                 )
 
                 webhook = (await channel.webhooks())[0]
@@ -400,7 +400,7 @@ class PrivateMessagesSupport(Cog):
         **send_kwargs,
     ):
         self.bot.logger.info(
-            f"[SUPPORT] Sending mirror message to {user.name}#{user.discriminator}"
+            f"[SUPPORT] Sending mirror message to {user}"
         )
 
         db_user = db_user or await get_from_db(user, as_user=True)
@@ -428,7 +428,7 @@ class PrivateMessagesSupport(Cog):
         await ticket.save()
 
         await channel.send(
-            content=f"Opening a DM channel with {user.name}#{user.discriminator} ({user.mention}).\n"
+            content=f"Opening a DM channel with {user} ({user.mention}).\n"
             f"Every message in here will get sent back to them if it's not a bot message, "
             f"DuckHunt command, and if it doesn't start with the > character.\n"
             f"You can use many commands in the DM channels, detailed in "
@@ -463,7 +463,7 @@ class PrivateMessagesSupport(Cog):
         )
 
         info_embed.set_author(
-            name=f"{user.name}#{user.discriminator}",
+            name=f"{user}",
             icon_url=str(user.display_avatar.url),
         )
         info_embed.set_footer(text="Private statistics")
@@ -579,7 +579,7 @@ class PrivateMessagesSupport(Cog):
         language = db_user.language
 
         self.bot.logger.info(
-            f"[SUPPORT] answering {user.name}#{user.discriminator} with a message from {message.author.name}#{message.author.discriminator}"
+            f"[SUPPORT] answering {user} with a message from {message.author}"
         )
 
         _ = get_translate_function(self.bot, language)
@@ -588,7 +588,7 @@ class PrivateMessagesSupport(Cog):
             color=discord.Color.blurple(), title="Support response"
         )
         support_embed.set_author(
-            name=f"{message.author.name}#{message.author.discriminator}",
+            name=f"{message.author}",
             icon_url=str(message.author.display_avatar.url),
         )
         support_embed.description = message.content
@@ -658,7 +658,7 @@ class PrivateMessagesSupport(Cog):
 
     async def handle_dm_message(self, message: discord.Message):
         self.bot.logger.info(
-            f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator}"
+            f"[SUPPORT] received a message from {message.author}"
         )
         await self.bot.wait_until_ready()
 
@@ -666,7 +666,7 @@ class PrivateMessagesSupport(Cog):
         forwarding_webhook = self.webhook_cache[forwarding_channel]
 
         self.bot.logger.debug(
-            f"[SUPPORT] got {message.author.name}#{message.author.discriminator} channel and webhook."
+            f"[SUPPORT] got {message.author} channel and webhook."
         )
 
         attachments = message.attachments
@@ -674,7 +674,7 @@ class PrivateMessagesSupport(Cog):
         embeds = message.embeds
 
         self.bot.logger.debug(
-            f"[SUPPORT] {message.author.name}#{message.author.discriminator} message prepared."
+            f"[SUPPORT] {message.author} message prepared."
         )
 
         send_kwargs = {
@@ -692,7 +692,7 @@ class PrivateMessagesSupport(Cog):
             await forwarding_webhook.send(**send_kwargs)
 
         self.bot.logger.debug(
-            f"[SUPPORT] {message.author.name}#{message.author.discriminator} message forwarded."
+            f"[SUPPORT] {message.author} message forwarded."
         )
 
     async def clear_caches(self, channel: discord.TextChannel):
@@ -739,7 +739,7 @@ class PrivateMessagesSupport(Cog):
             if message.author.id in self.blocked_ids:
                 # Blocked
                 self.bot.logger.debug(
-                    f"[SUPPORT] received a message from {message.author.name}#{message.author.discriminator} -> Ignored because of blacklist"
+                    f"[SUPPORT] received a message from {message.author} -> Ignored because of blacklist"
                 )
                 return
             else:
@@ -811,7 +811,7 @@ class PrivateMessagesSupport(Cog):
         await self.clear_caches(ctx.channel)
 
         await ctx.channel.delete(
-            reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM."
+            reason=f"{ctx.author} ({ctx.author.id}) closed the DM."
         )
 
     @private_support.command(aliases=["not_support", "huh"])
@@ -839,7 +839,7 @@ class PrivateMessagesSupport(Cog):
             await self.clear_caches(ctx.channel)
 
             await ctx.channel.delete(
-                reason=f"{ctx.author.name}#{ctx.author.discriminator} ({ctx.author.id}) closed the DM."
+                reason=f"{ctx.author} ({ctx.author.id}) closed the DM."
             )
 
     @private_support.command()
@@ -935,7 +935,7 @@ class PrivateMessagesSupport(Cog):
         )
 
         embed.set_author(
-            name=f"{ctx.author.name}#{ctx.author.discriminator}",
+            name=f"{ctx.author}",
             icon_url=str(ctx.author.display_avatar.url),
         )
 

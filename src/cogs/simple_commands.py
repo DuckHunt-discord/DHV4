@@ -57,7 +57,7 @@ class TranslatorsMenusSource(menus.ListPageSource):
             users = data["users"]
 
             parsed_translators = list(
-                map(lambda user: f"{user.name}#{user.discriminator}", users)
+                map(str, users)
             )
 
             try:

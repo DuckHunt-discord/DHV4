@@ -33,7 +33,7 @@ class TopScoresSource(menus.ListPageSource):
         for i, item in enumerate(entries, start=offset):
             item: Player
             e.add_field(
-                name=f"**{i + 1}** - {item.member.user.name}#{item.member.user.discriminator}",
+                name=f"**{i + 1}** - {item.member.user}",
                 value=_("{exp} experience", exp=item.experience),
                 inline=False,
             )
@@ -663,7 +663,7 @@ class StatisticsCommands(Cog):
 
         await ctx.send(
             _(
-                "{target.name}#{target.discriminator} data was deleted from this channel.",
+                "{target} data was deleted from this channel.",
                 target=target,
             )
         )

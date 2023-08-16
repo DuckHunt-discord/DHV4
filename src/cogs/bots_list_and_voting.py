@@ -179,14 +179,14 @@ class BotsListVoting(Cog):
 
         if not is_test:
             self.bot.logger.info(
-                f"{multiplicator} vote(s) recorded for {user.name}#{user.discriminator} on {bot_list.name}."
+                f"{multiplicator} vote(s) recorded for {user} on {bot_list.name}."
             )
             await vote.save()
             await Voted.give_to(db_user)
             await db_user.save()
         else:
             self.bot.logger.warning(
-                f"{multiplicator} test vote(s) received for {user.name}#{user.discriminator}. Not saved."
+                f"{multiplicator} test vote(s) received for {user}. Not saved."
             )
 
         try:

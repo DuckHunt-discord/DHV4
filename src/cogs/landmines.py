@@ -384,7 +384,7 @@ class Event2021(Cog):
             if protect.message:
                 await ctx.author.send(
                     _(
-                        "❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it — {protect.message}.",
+                        "❌ This word is currently protected by {user}, you can't place a mine on it — {protect.message}.",
                         value=value,
                         user=protect_db_user,
                         protect=protect,
@@ -393,7 +393,7 @@ class Event2021(Cog):
             else:
                 await ctx.author.send(
                     _(
-                        "❌ This word is currently protected by {user.name}#{user.discriminator}, you can't place a mine on it.",
+                        "❌ This word is currently protected by {user}, you can't place a mine on it.",
                         value=value,
                         user=protect_db_user,
                         protect=protect,
@@ -470,7 +470,7 @@ class Event2021(Cog):
 
                 await ctx.send(
                     _(
-                        "❌ This word is already protected by {user.name}#{user.discriminator}.",
+                        "❌ This word is already protected by {user}.",
                         user=protect_db_user,
                     )
                 )

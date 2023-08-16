@@ -159,7 +159,7 @@ class DucksHuntingCommands(Cog):
             await ctx.reply(
                 _(
                     "💥 Your weapon was sabotaged and exploded in your face. You can thank "
-                    "{sabotager.name}#{sabotager.discriminator} for this bad joke.",
+                    "{sabotager} for this bad joke.",
                     sabotager=user,
                 ),
                 force_public=True,

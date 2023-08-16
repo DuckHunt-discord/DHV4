@@ -1637,7 +1637,7 @@ class SettingsCommands(Cog):
                 user = await self.bot.fetch_user(db_member.user.discord_id)
                 message.append(
                     _(
-                        "{level} - {user.name}#{user.discriminator} [`{user.id}`]",
+                        "{level} - {user} [`{user.id}`]",
                         level=db_member.access_level.name,
                         user=user,
                     )

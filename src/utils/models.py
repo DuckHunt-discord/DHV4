@@ -707,7 +707,10 @@ class DiscordUser(Model):
         return self.access_level_override
 
     def __str__(self):
-        return self.name
+        if self.discriminator not in [None, "0", 0, "0000"]:
+            return f"{self.name}#{self.discriminator}"
+        else:
+            return self.name
 
     def __repr__(self):
         return f"<User name={self.name}#{self.discriminator}>"

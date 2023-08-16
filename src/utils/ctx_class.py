@@ -127,7 +127,7 @@ class MyContext(commands.Context):
                 if db_user.ping_friendly:
                     mention = self.author.mention
                 else:
-                    mention = f"{self.author.name}#{self.author.discriminator}"
+                    mention = f"{self.author}"
 
                 # Patch the content to add a mention.
                 if content:

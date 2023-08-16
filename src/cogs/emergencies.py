@@ -158,7 +158,7 @@ class Emergencies(Cog):
 
             await db_user.save()
 
-        await ctx.reply(f"User {user.name}#{user.discriminator} (`{user.id}`) updated.")
+        await ctx.reply(f"User {user} (`{user.id}`) updated.")
 
     @manage_bot.command()
     async def update_owners(self, ctx: MyContext):

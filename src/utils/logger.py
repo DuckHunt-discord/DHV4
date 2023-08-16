@@ -192,7 +192,7 @@ class FakeLogger:
         member: typing.Optional[discord.Member] = None,
     ):
         if guild and channel and member:
-            return f"{guild.id} - #{channel.name[:15]} :: <{member.name}#{member.discriminator}> "
+            return f"{guild.id} - #{channel.name[:15]} :: <{member}> "
 
         elif guild and channel and not member:
             return f"{guild.id} - #{channel.name[:15]} :: "
@@ -201,7 +201,7 @@ class FakeLogger:
             return f"{guild.id} = {guild.name[:15]} :: "
 
         elif not guild and not channel and member:
-            return f"<{member.name}#{member.discriminator}> "
+            return f"<{member}> "
 
         else:
             return ""
