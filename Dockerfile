@@ -1,4 +1,4 @@
-FROM python:3.11.4
+FROM python:3.11.5
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
