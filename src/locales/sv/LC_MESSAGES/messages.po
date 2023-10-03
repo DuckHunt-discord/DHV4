@@ -10,48 +10,49 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "Creates votes handlers for specific bots lists"
-msgstr ""
+msgstr "Skapar röstnings hanterare för specifika bot listor"
 
 msgid "Handle users votes for fateslist"
-msgstr ""
+msgstr "Hanterar användares röster för Fateslist"
 
 msgid "Handle users votes for top.gg"
-msgstr ""
+msgstr "Hanterar användares röster för Top.gg"
 
 msgid "Sends the link you can use to vote for DuckHunt on bot lists"
-msgstr ""
+msgstr "Skickar länken du kan använda för att rösta på DuckHunt på bot listor"
 
 msgid "Create a Command view for a given command."
-msgstr ""
+msgstr "Skapar en Kommando vy för angivet kommando ."
 
 msgid "Create a GamePadView to allow playing the game with buttons."
-msgstr ""
+msgstr "Skapar en GamePadView som tillåter att spela spelet med med knappar."
 
 msgid ""
 "Invite someone to the beta server, letting them try the bot before the "
 "others"
 msgstr ""
+"Bjud in någon till beta servern, låter dem prova boten innan de andra "
 
 msgid "Shoot at the duck that appeared first on the channel."
-msgstr ""
+msgstr "Skjut på ankan som först dök upp i kanalen."
 
 msgid "Reload your gun."
-msgstr ""
+msgstr "Ladda om din pistol"
 
 msgid "Hug the duck that appeared first on the channel."
-msgstr ""
+msgstr "Krama ankan som först dök upp i kanalen"
 
 msgid "Revive yourself by eating brains"
-msgstr ""
+msgstr "Återuppliva dig själv genom att äta hjärnor"
 
 msgid "Spawns a random duck"
-msgstr ""
+msgstr "Skapar en slumpmässig anka"
 
 msgid "Spawns many ducks, of which (at least) one is a mechanical one"
-msgstr ""
+msgstr "Skapar massor med ankor, därav (minst) en är en mekanisk anka "
 
 msgid "Spawns a normal duck"
-msgstr ""
+msgstr "Skapar en normal anka"
 
 msgid "Spawns a super duck"
 msgstr ""
