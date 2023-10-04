@@ -55,46 +55,48 @@ msgid "Spawns a normal duck"
 msgstr "Skapar en normal anka"
 
 msgid "Spawns a super duck"
-msgstr ""
+msgstr "Spawnar en SUPER ANKA"
 
 msgid "Spawns a baby duck"
-msgstr ""
+msgstr "Spawnar en bebis anka"
 
 msgid "Spawns a professor Duck."
-msgstr ""
+msgstr "Spawnar en nörd professor anka"
 
 msgid "Spawns a ghost duck. There will be no spawn message, obviously."
 msgstr ""
+"Spawnar en spök anka. Där kommer inte vara ett spawn meddelande, såklart."
 
 msgid "Spawns a MOAD."
-msgstr ""
+msgstr "Spawnar en MOAD"
 
 msgid "Spawns an armored duck, that will resist most 1 dmg hits."
 msgstr ""
+"Skapar en bepansrad anka, som kommer att motstå de flesta 1 dmg-träffar."
 
 msgid "Spawns a golden duck."
-msgstr ""
+msgstr "Skapar en gyllene anka."
 
 msgid "Spawns a plastic duck."
-msgstr ""
+msgstr "Skapar en plastanka."
 
 msgid "Spawns a kamikaze duck."
-msgstr ""
+msgstr "Skapar en kamikaze anka."
 
 msgid "Spawns a night duck."
-msgstr ""
+msgstr "Skapar en nattanka."
 
 msgid "Spawns a sleeping duck."
-msgstr ""
+msgstr "Skapar en sovande anka."
 
 msgid "Spawns a cartographer duck."
-msgstr ""
+msgstr "Skapar en kartritaranka."
 
 msgid "Show ducks currently on the channel"
-msgstr ""
+msgstr "Visa ankor för närvarande på kanalen"
 
 msgid "Removes all ducks from the channel"
-msgstr ""
+msgstr "Tar bort alla ankor från kanalen"
 
 msgid ""
 "Manage the bot current state by starting and stopping ducks spawning, "
@@ -104,12 +106,20 @@ msgid ""
 "These commands do not use the translation system, and will always show in "
 "english"
 msgstr ""
+"Hantera botens nuvarande tillstånd genom att starta och stoppa ankarnas "
+"spawning, lämnande och planera ankarnas lek för dagen. \n"
+"\n"
+"Dessa kommandon använder inte översättningssystemet och kommer alltid att "
+"visas på engelska"
 
 msgid ""
 "Reset ducks planning, setting the ducks left to spawn counts to a value "
 "proportional to the time left spawning\n"
 "ducks today. This is executed everyday at midnight."
 msgstr ""
+"Återställ planeringen av ankor genom att ställa in antalet ankor som "
+"återstår att leka till ett värde som är proportionellt mot den tid som "
+"återstår för att leka ankor idag. Detta utförs varje dag vid midnatt."
 
 msgid ""
 "Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
@@ -118,17 +128,23 @@ msgid ""
 "\n"
 "Duck will still be able to leave, even if this lock is set."
 msgstr ""
+"Stoppa ankor från att leka omedelbart, överallt. Ankor tas inte bort från "
+"planeringen, så när stoppet är över kommer ankor att leka snabbare än "
+"vanligt. Ankor kommer fortfarande att kunna lämna, även om detta lås är "
+"inställt."
 
 msgid ""
 "Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
 "usual if a planification isn't done."
 msgstr ""
+"Tillåt ankor att leka igen, överallt. Ankor kommer att leka snabbare än "
+"vanligt om en planering inte görs."
 
 msgid "Force a boss to spawn"
-msgstr ""
+msgstr "Tvinga en boss att spawna"
 
 msgid "Force the current event to change, and reroll a new one."
-msgstr ""
+msgstr "Tvinga den aktuella händelsen att förändras och skapa en ny."
 
 msgid "Congratulate an user giving them a trophy."
 msgstr ""
