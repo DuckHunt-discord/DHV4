@@ -1,7 +1,7 @@
 #jishaku==2.3.2
 git+https://github.com/Gorialis/jishaku.git
 toml==0.10.2
-uvloop==0.18.0
+uvloop==0.19.0
 parsedatetime==2.6
 pytz==2023.3.post1
 #discord.py[voice]>=1.7.2
