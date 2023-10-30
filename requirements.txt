@@ -11,7 +11,7 @@ tortoise-orm[accel]==0.20.0
 aerich==0.7.2
 asyncpg==0.28.0
 python-rapidjson==1.13
-ciso8601==2.3.0
+ciso8601==2.3.1
 #seam-carving
 Babel==2.13.1
 #git+https://github.com/paris-ci/babel.git
