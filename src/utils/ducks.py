@@ -723,7 +723,7 @@ class PrDuck(Duck):
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
-        op = random.choices(["+", "*", "/", "-"], weights=[100, 10, 5, 50])
+        op = random.choices(["+", "*", "/", "-"], weights=[100, 10, 5, 50])[0]
 
         if op == "+":
             r1 = random.randint(PRADD_MIN, PRADD_MAX)
