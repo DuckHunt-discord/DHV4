@@ -704,6 +704,9 @@ class GhostDuck(Duck):
             this_ducks_killed=this_ducks_killed,
         )
 
+    async def get_exp_value(self):
+        return round(await super().get_exp_value() * 1.5)
+
     async def spawn(self, loud=True):
         total_lives = await self.get_lives()
 
