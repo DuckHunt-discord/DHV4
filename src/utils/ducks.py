@@ -807,7 +807,7 @@ class PrDuck(Duck):
             return True
 
     async def get_exp_value(self):
-        return round(await super().get_exp_value() * 1.2)
+        return round(await super().get_exp_value() * 1.3)
 
 
 class MapTile(Enum):
