@@ -24,6 +24,18 @@ MINUTE = 60 * SECOND
 HOUR = 60 * MINUTE
 DAY = 24 * HOUR
 
+PRADD_MIN = 0
+PRADD_MAX = 122
+
+PRMUL_MIN = 0
+PRMUL_MAX = 13
+
+PRDIV_MIN = 1
+PRDIV_MAX = 15
+
+PRSUB_MIN = 0
+PRSUB_MAX = 222
+
 
 def _(s):
     return s
@@ -711,10 +723,26 @@ class PrDuck(Duck):
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
-        r1 = random.randint(0, 100)
-        r2 = random.randint(0, 100)
-        self.operation = f"{r1} + {r2}"
-        self.answer = r1 + r2
+        op = random.choices(["+", "*", "/", "-"], weights=[100, 10, 5, 50])
+
+        if op == "+":
+            r1 = random.randint(PRADD_MIN, PRADD_MAX)
+            r2 = random.randint(PRADD_MIN, PRADD_MAX)
+            self.answer = r1 + r2
+        elif op == "*":
+            r1 = random.randint(PRMUL_MIN, PRMUL_MAX)
+            r2 = random.randint(PRMUL_MIN, PRMUL_MAX)
+            self.answer = r1 * r2
+        elif op == "/":
+            r2 = random.randint(PRDIV_MIN, PRDIV_MAX)
+            r1 = random.randint(PRDIV_MIN, PRDIV_MAX) * r2  # Trick it so that you can always divide properly and makes it very easy too
+            self.answer = int(r1 / r2)
+        else:
+            r1 = random.randint(PRSUB_MIN, PRSUB_MAX)
+            r2 = random.randint(PRSUB_MIN, PRSUB_MAX)
+            self.answer = r1 - r2
+
+        self.operation = f"{r1} {op} {r2}"
 
     def serialize(self):
         return {
