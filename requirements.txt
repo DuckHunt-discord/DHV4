@@ -17,7 +17,7 @@ Babel==2.13.1
 #git+https://github.com/paris-ci/babel.git
 git+https://github.com/Rapptz/discord-ext-menus
 python-dateutil==2.8.2
-aiohttp[speedups]==3.9.0
+aiohttp[speedups]==3.9.1
 aiohttp_cors==0.7.0
 polib==1.2.0
 tqdm==4.66.1
