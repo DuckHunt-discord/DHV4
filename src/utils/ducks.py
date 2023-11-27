@@ -833,8 +833,7 @@ class PrDuck(Duck):
                         operation=self.operation
                     )
                 )
-
-            if self.anger_level <= 1:
+            elif self.anger_level <= 1:
                 await self.send(
                     _(
                         "{hurter.mention}, seriously? That's not the right answer! I wouldn't say {operation} is that hard to calculate... Come on!",
@@ -842,7 +841,6 @@ class PrDuck(Duck):
                         operation=self.operation
                     )
                 )
-
             elif self.anger_level <= 2:
                 await self.send(
                     _(
