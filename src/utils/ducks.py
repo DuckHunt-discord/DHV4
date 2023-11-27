@@ -28,10 +28,10 @@ PRADD_MIN = 0
 PRADD_MAX = 122
 
 PRMUL_MIN = 0
-PRMUL_MAX = 13
+PRMUL_MAX = 27
 
 PRDIV_MIN = 1
-PRDIV_MAX = 15
+PRDIV_MAX = 25
 
 PRSUB_MIN = 0
 PRSUB_MAX = 222
@@ -705,7 +705,7 @@ class GhostDuck(Duck):
         )
 
     async def get_exp_value(self):
-        return round(await super().get_exp_value() * 1.5)
+        return round(await super().get_exp_value() * 1.4)
 
     async def spawn(self, loud=True):
         total_lives = await self.get_lives()
@@ -726,7 +726,7 @@ class PrDuck(Duck):
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
-        op = random.choices(["+", "*", "/", "-"], weights=[100, 10, 5, 50])[0]
+        op = random.choices(["+", "*", "/", "-"], weights=[100, 15, 25, 20])[0]
 
         if op == "+":
             r1 = random.randint(PRADD_MIN, PRADD_MAX)
@@ -743,6 +743,11 @@ class PrDuck(Duck):
         else:
             r1 = random.randint(PRSUB_MIN, PRSUB_MAX)
             r2 = random.randint(PRSUB_MIN, PRSUB_MAX)
+
+            if r1 < r2:
+                # Lower the chance of negative results
+                r1 = random.randint(PRSUB_MIN + r1, PRSUB_MAX + (PRSUB_MAX//3))
+
             self.answer = r1 - r2
 
         self.operation = f"{r1} {op} {r2}"
@@ -792,7 +797,7 @@ class PrDuck(Duck):
             await self.release()
             return False
         except ValueError:
-            await self.send(_("{hurter.mention}, Just give me digits !", hurter=hurter))
+            await self.send(_("{hurter.mention}, Just give me digits ! What's {operation}?", hurter=hurter, operation=self.operation))
             await self.release()
             return False
 
@@ -1113,7 +1118,7 @@ class CartographerDuck(Duck):
             return True
 
     async def get_exp_value(self):
-        return round(await super().get_exp_value() * 1.3)
+        return round(await super().get_exp_value() * 1.2)
 
 
 class BabyDuck(Duck):
