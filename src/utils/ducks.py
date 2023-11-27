@@ -803,7 +803,7 @@ class PrDuck(Duck):
 
         if result != self.answer:
             await self.send(
-                _("{hurter.mention}, that's not the correct answer !", hurter=hurter)
+                _("{hurter.mention}, that's not the correct answer ! I wouldn't say {operation} is that hard to calculate... Come on!", hurter=hurter, operation=self.operation)
             )
             await self.release()
             return False
