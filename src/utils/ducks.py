@@ -277,7 +277,7 @@ class Duck:
         )
 
     async def get_kill_message(
-        self, killer, db_killer: Player, won_experience: int, bonus_experience: int
+            self, killer, db_killer: Player, won_experience: int, bonus_experience: int
     ) -> str:
         _ = await self.get_translate_function()
         ngettext = await self.get_ntranslate_function()
@@ -556,7 +556,7 @@ class Duck:
             return False
 
     async def maybe_bushes_message(
-        self, hunter, db_hunter
+            self, hunter, db_hunter
     ) -> typing.Optional[typing.Callable]:
         bush_chance = 13
         coat_color = db_hunter.get_current_coat_color()
@@ -726,6 +726,7 @@ class PrDuck(Duck):
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel):
         super().__init__(bot, channel)
+        self.anger_level = 0
         op = random.choices(["+", "*", "/", "-"], weights=[100, 15, 25, 20])[0]
 
         if op == "+":
@@ -746,7 +747,7 @@ class PrDuck(Duck):
 
             if r1 < r2:
                 # Lower the chance of negative results
-                r1 = random.randint(PRSUB_MIN + r1, PRSUB_MAX + (PRSUB_MAX//3))
+                r1 = random.randint(PRSUB_MIN + r1, PRSUB_MAX + (PRSUB_MAX // 3))
 
             self.answer = r1 - r2
 
@@ -757,6 +758,7 @@ class PrDuck(Duck):
             **super().serialize(),
             "operation": self.operation,
             "answer": self.answer,
+            "anger": self.anger_level,
         }
 
     @classmethod
@@ -764,6 +766,7 @@ class PrDuck(Duck):
         d = super().deserialize(bot, channel, data)
         d.operation = data["operation"]
         d.answer = data["answer"]
+        d.anger_level = data.get("anger", 0)
         return d
 
     async def get_ncategory_killed(self, this_ducks_killed):
@@ -778,7 +781,7 @@ class PrDuck(Duck):
     async def get_shout(self) -> str:
         _ = await self.get_translate_function()
 
-        return _("Huh, quick question, what's {operation} ?", operation=self.operation)
+        return _("Hey, genius! What's {operation}?", operation=self.operation)
 
     async def shoot(self, args: list):
         _ = await self.get_translate_function()
@@ -787,13 +790,31 @@ class PrDuck(Duck):
         try:
             result = int(args[0])
         except IndexError:
-            await self.send(
-                _(
-                    "{hurter.mention}, I asked you a question ! What's {operation} ? Answer with `dh!bang <answer>`.",
-                    hurter=hurter,
-                    operation=self.operation,
+            if self.anger_level <= 1:
+                await self.send(
+                    _(
+                        "Come on, {hurter.mention}! "
+                        "I asked you a question! "
+                        "What's {operation}? "
+                        "Answer with `dh!bang <answer>`.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
                 )
-            )
+            else:
+                await self.send(
+                    _(
+                        "Come on, {hurter.mention}! "
+                        "I bet even a calculator could outsmart you. "
+                        "What's {operation}? "
+                        "Impress me with your brilliance, if you have any left. "
+                        "(`dh!bang <answer>`)",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+
+            self.anger_level += 1
             await self.release()
             return False
         except ValueError:
@@ -802,14 +823,229 @@ class PrDuck(Duck):
             return False
 
         if result != self.answer:
-            await self.send(
-                _("{hurter.mention}, that's not the correct answer ! I wouldn't say {operation} is that hard to calculate... Come on!", hurter=hurter, operation=self.operation)
-            )
+            if result == 42:
+                await self.send(
+                    _(
+                        "{hurter.mention}, I didn't know I was asking for the meaning of life. "
+                        "It's just {operation}. "
+                        "Can you handle that, or is it too mind-boggling for you?",
+                        hurter=hurter,
+                        operation=self.operation
+                    )
+                )
+
+            if self.anger_level <= 1:
+                await self.send(
+                    _(
+                        "{hurter.mention}, seriously? That's not the right answer! I wouldn't say {operation} is that hard to calculate... Come on!",
+                        hurter=hurter,
+                        operation=self.operation
+                    )
+                )
+
+            elif self.anger_level <= 2:
+                await self.send(
+                    _(
+                        "{hurter.mention}, That's not the right answer! "
+                        "What's {operation}? "
+                        "Answer with `dh!bang <answer>`.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 3:
+                await self.send(
+                    _(
+                        "{hurter.mention}, are you allergic to numbers? "
+                        "Because that's not the answer. "
+                        "I thought even you could handle basic math. "
+                        "Apparently, I overestimated you. Again.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 4:
+                await self.send(
+                    _(
+                        "{hurter.mention}, I'm starting to think you're not even trying. "
+                        "What's {operation}? "
+                        "Answer with `dh!bang <answer>`.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 5:
+                await self.send(
+                    _(
+                        "Alright, {hurter.mention}, let's break it down. "
+                        "Math: not a foreign language. "
+                        "I'm starting to think you'd struggle with counting your own fingers. "
+                        "What's {operation}?",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 6:
+                await self.send(
+                    _(
+                        "{hurter.mention}, darling, if ignorance were a currency, you'd be a millionaire by now. "
+                        "What's {operation}? "
+                        "Or is that too rich for your intellectual wallet?",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 7:
+                await self.send(
+                    _(
+                        "I'm starting to think you're doing this on purpose. "
+                        "What's {operation}? "
+                        "Answer with `dh!bang <answer>`.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 8:
+                await self.send(
+                    _(
+                        "{hurter.mention}, I see you're trying the 'random number generator' approach to math. "
+                        "Newsflash: it's not working. "
+                        "What's {operation}?",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 9:
+                await self.send(
+                    _(
+                        "{hurter.mention}, if I had a penny for every wrong answer you've given, I'd be able to buy a tutor for you. "
+                        "What's {operation}? "
+                        "And please, for the love of math, be right this time.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 10:
+                await self.send(
+                    _(
+                        "{hurter.mention}, I've seen toddlers with a better grasp of math than you. "
+                        "Seriously, it's {operation}, not rocket science. "
+                        "Although, given your track record, you may want to learn from them.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 11:
+                await self.send(
+                    _(
+                        "{hurter.mention}, is your calculator on vacation? "
+                        "Because your answers are definitely taking a holiday from correctness. "
+                        "What's {operation}? "
+                        "Take your time; I've got all day to witness this spectacle.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 12:
+                await self.send(
+                    _(
+                        "Ah, {hurter.mention}, your mathematical prowess is truly a spectacle. "
+                        "I asked for {operation}, not a tragic comedy. "
+                        "Can you manage to get it right, or should I prepare for disappointment?",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 13:
+                await self.send(
+                    _(
+                        "{hurter.mention}, I bet if solving this equation was a life skill, you'd be in dire straits right now. "
+                        "What's {operation}? "
+                        "And no, consulting a psychic won't help you here.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 14:
+                await self.send(
+                    _(
+                        "{hurter.mention}, did you mistake this for a guessing game? "
+                        "It's not 'Who Wants to Be a Millionaire: Math Edition.' "
+                        "What's {operation}? "
+                        "And remember, there are no lifelines for the academically challenged.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 15:
+                await self.send(
+                    _(
+                        "{hurter.mention}, your math proficiency is like a rare species – extinct. "
+                        "What's {operation}? "
+                        "Or is that too much to ask from the endangered species called your intellect?",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            elif self.anger_level <= 16:
+                await self.send(
+                    _(
+                        "{hurter.mention}, I'm beginning to think your understanding of numbers is purely theoretical. "
+                        "What's {operation}? "
+                        "And no, this isn't hard like a quantum mechanics problem; it's just basic math.",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+            else:
+                self.operation = "1 + 1"
+                self.answer = 2
+                await self.send(
+                    _(
+                        "{hurter.mention}, for fuck sake, just kill me already! "
+                        "Let's do something a bit easier for you..."
+                        "What's {operation}? ",
+                        hurter=hurter,
+                        operation=self.operation,
+                    )
+                )
+
+            self.anger_level += 1
+
             await self.release()
             return False
         else:
             await super().shoot(args)
             return True
+
+    async def get_hug_message(self, hugger, db_hugger, experience) -> str:
+        _ = await self.get_translate_function()
+        if experience > 0:
+            return _(
+                "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]",
+                hugger=hugger,
+                experience=experience,
+            )
+        else:
+            self.anger_level += 1
+
+            if self.anger_level <= 2:
+                return _(
+                    "{hugger.mention} attempted a hug. "
+                    "Cute, but the duck despises you for wiping out its family, and for failing HARD at math. "
+                    "[**FAIL**: {experience} exp]",
+                    hugger=hugger,
+                    experience=experience,
+                )
+            else:
+                return _(
+                    "{hugger.mention} attempted a hug. "
+                    "Adorable, but your affection won't fix the fact that you're failing miserably at math, {hugger.mention}. "
+                    "[**FAIL**: {experience} exp]",
+                    hugger=hugger,
+                    experience=experience,
+                )
+
 
     async def get_exp_value(self):
         return round(await super().get_exp_value() * 1.3)
@@ -1003,7 +1239,7 @@ class Map:
         return random.choice(nothing_blocks)
 
     def add_square(
-        self, coordinates: Coordinates, tile: MapTile, size: int = 1, safe=False
+            self, coordinates: Coordinates, tile: MapTile, size: int = 1, safe=False
     ):
         for y in range(coordinates.y - size, coordinates.y + size + 1):
             for x in range(coordinates.x - size, coordinates.x + size + 1):
@@ -1073,12 +1309,12 @@ class CartographerDuck(Duck):
         map_str = self.map.get_map_string()
 
         return (
-            _(
-                "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
-                "the number to the bang command. Example: `dh!bang A1`."
-            )
-            + "\n\n"
-            + map_str
+                _(
+                    "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the letter and "
+                    "the number to the bang command. Example: `dh!bang A1`."
+                )
+                + "\n\n"
+                + map_str
         )
 
     async def shoot(self, args: list):
@@ -1156,7 +1392,7 @@ class BabyDuck(Duck):
         )
 
     async def get_kill_message(
-        self, killer, db_killer: Player, won_experience: int, bonus_experience: int
+            self, killer, db_killer: Player, won_experience: int, bonus_experience: int
     ):
         _ = await self.get_translate_function()
         return _(
@@ -1297,7 +1533,7 @@ class MechanicalDuck(Duck):
         )
 
     async def get_kill_message(
-        self, killer, db_killer, won_experience, bonus_experience
+            self, killer, db_killer, won_experience, bonus_experience
     ):
         _ = await self.get_translate_function()
 
@@ -1504,17 +1740,17 @@ DUCKS_NIGHTTIME_CATEGORIES = [
 ]
 
 RANDOM_SPAWN_DUCKS_CLASSES = (
-    RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES + RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
+        RANDOM_DAYTIME_SPAWN_DUCKS_CLASSES + RANDOM_NIGHTTIME_SPAWN_DUCKS_CLASSES
 )
 DUCKS_CATEGORIES_TO_CLASSES = {dc.category: dc for dc in RANDOM_SPAWN_DUCKS_CLASSES}
 DUCKS_CATEGORIES = [dc.category for dc in RANDOM_SPAWN_DUCKS_CLASSES]
 
 
 async def spawn_random_weighted_duck(
-    bot: MyBot,
-    channel: discord.TextChannel,
-    db_channel: DiscordChannel = None,
-    sun: SunState = None,
+        bot: MyBot,
+        channel: discord.TextChannel,
+        db_channel: DiscordChannel = None,
+        sun: SunState = None,
 ):
     duck = await get_random_weighted_duck(bot, channel, db_channel, sun)
     await duck.spawn()
@@ -1522,10 +1758,10 @@ async def spawn_random_weighted_duck(
 
 
 async def get_random_weighted_duck(
-    bot: MyBot,
-    channel: discord.TextChannel,
-    db_channel: DiscordChannel = None,
-    sun: SunState = None,
+        bot: MyBot,
+        channel: discord.TextChannel,
+        db_channel: DiscordChannel = None,
+        sun: SunState = None,
 ):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)

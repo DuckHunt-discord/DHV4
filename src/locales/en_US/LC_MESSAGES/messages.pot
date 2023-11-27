@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2023-11-27 23:34+0100\n"
+"POT-Creation-Date: 2023-11-28 00:16+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4303,7 +4303,7 @@ msgstr ""
 msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
 msgstr ""
 
-#: ../utils/ducks.py:370
+#: ../utils/ducks.py:370 ../utils/ducks.py:1025
 #, python-brace-format
 msgid "{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
 msgstr ""
@@ -4334,222 +4334,375 @@ msgstr[1] ""
 msgid "prof"
 msgstr ""
 
-#: ../utils/ducks.py:772
+#: ../utils/ducks.py:775
 #, python-brace-format
 msgid "of which one is a professor duck"
 msgid_plural "of which {this_ducks_killed} are Pr. ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:781
+#: ../utils/ducks.py:784
 #, python-brace-format
-msgid "Huh, quick question, what's {operation} ?"
+msgid "Hey, genius! What's {operation}?"
 msgstr ""
 
-#: ../utils/ducks.py:792
+#: ../utils/ducks.py:796
 #, python-brace-format
 msgid ""
-"{hurter.mention}, I asked you a question ! What's {operation} ? Answer with "
-"`dh!bang <answer>`."
+"Come on, {hurter.mention}! I asked you a question! What's {operation}? "
+"Answer with `dh!bang <answer>`."
 msgstr ""
 
-#: ../utils/ducks.py:800
+#: ../utils/ducks.py:807
+#, python-brace-format
+msgid ""
+"Come on, {hurter.mention}! I bet even a calculator could outsmart you. "
+"What's {operation}? Impress me with your brilliance, if you have any left. "
+"(`dh!bang <answer>`)"
+msgstr ""
+
+#: ../utils/ducks.py:821
 #, python-brace-format
 msgid "{hurter.mention}, Just give me digits ! What's {operation}?"
 msgstr ""
 
-#: ../utils/ducks.py:806
+#: ../utils/ducks.py:829
 #, python-brace-format
 msgid ""
-"{hurter.mention}, that's not the correct answer ! I wouldn't say {operation} "
-"is that hard to calculate... Come on!"
+"{hurter.mention}, I didn't know I was asking for the meaning of life. It's "
+"just {operation}. Can you handle that, or is it too mind-boggling for you?"
 msgstr ""
 
-#: ../utils/ducks.py:1045
+#: ../utils/ducks.py:840
+#, python-brace-format
+msgid ""
+"{hurter.mention}, seriously? That's not the right answer! I wouldn't say "
+"{operation} is that hard to calculate... Come on!"
+msgstr ""
+
+#: ../utils/ducks.py:849
+#, python-brace-format
+msgid ""
+"{hurter.mention}, That's not the right answer! What's {operation}? Answer "
+"with `dh!bang <answer>`."
+msgstr ""
+
+#: ../utils/ducks.py:859
+#, python-brace-format
+msgid ""
+"{hurter.mention}, are you allergic to numbers? Because that's not the "
+"answer. I thought even you could handle basic math. Apparently, I "
+"overestimated you. Again."
+msgstr ""
+
+#: ../utils/ducks.py:870
+#, python-brace-format
+msgid ""
+"{hurter.mention}, I'm starting to think you're not even trying. What's "
+"{operation}? Answer with `dh!bang <answer>`."
+msgstr ""
+
+#: ../utils/ducks.py:880
+#, python-brace-format
+msgid ""
+"Alright, {hurter.mention}, let's break it down. Math: not a foreign "
+"language. I'm starting to think you'd struggle with counting your own "
+"fingers. What's {operation}?"
+msgstr ""
+
+#: ../utils/ducks.py:891
+#, python-brace-format
+msgid ""
+"{hurter.mention}, darling, if ignorance were a currency, you'd be a "
+"millionaire by now. What's {operation}? Or is that too rich for your "
+"intellectual wallet?"
+msgstr ""
+
+#: ../utils/ducks.py:901
+#, python-brace-format
+msgid ""
+"I'm starting to think you're doing this on purpose. What's {operation}? "
+"Answer with `dh!bang <answer>`."
+msgstr ""
+
+#: ../utils/ducks.py:911
+#, python-brace-format
+msgid ""
+"{hurter.mention}, I see you're trying the 'random number generator' approach "
+"to math. Newsflash: it's not working. What's {operation}?"
+msgstr ""
+
+#: ../utils/ducks.py:921
+#, python-brace-format
+msgid ""
+"{hurter.mention}, if I had a penny for every wrong answer you've given, I'd "
+"be able to buy a tutor for you. What's {operation}? And please, for the love "
+"of math, be right this time."
+msgstr ""
+
+#: ../utils/ducks.py:931
+#, python-brace-format
+msgid ""
+"{hurter.mention}, I've seen toddlers with a better grasp of math than you. "
+"Seriously, it's {operation}, not rocket science. Although, given your track "
+"record, you may want to learn from them."
+msgstr ""
+
+#: ../utils/ducks.py:941
+#, python-brace-format
+msgid ""
+"{hurter.mention}, is your calculator on vacation? Because your answers are "
+"definitely taking a holiday from correctness. What's {operation}? Take your "
+"time; I've got all day to witness this spectacle."
+msgstr ""
+
+#: ../utils/ducks.py:952
+#, python-brace-format
+msgid ""
+"Ah, {hurter.mention}, your mathematical prowess is truly a spectacle. I "
+"asked for {operation}, not a tragic comedy. Can you manage to get it right, "
+"or should I prepare for disappointment?"
+msgstr ""
+
+#: ../utils/ducks.py:962
+#, python-brace-format
+msgid ""
+"{hurter.mention}, I bet if solving this equation was a life skill, you'd be "
+"in dire straits right now. What's {operation}? And no, consulting a psychic "
+"won't help you here."
+msgstr ""
+
+#: ../utils/ducks.py:972
+#, python-brace-format
+msgid ""
+"{hurter.mention}, did you mistake this for a guessing game? It's not 'Who "
+"Wants to Be a Millionaire: Math Edition.' What's {operation}? And remember, "
+"there are no lifelines for the academically challenged."
+msgstr ""
+
+#: ../utils/ducks.py:983
+#, python-brace-format
+msgid ""
+"{hurter.mention}, your math proficiency is like a rare species – extinct. "
+"What's {operation}? Or is that too much to ask from the endangered species "
+"called your intellect?"
+msgstr ""
+
+#: ../utils/ducks.py:993
+#, python-brace-format
+msgid ""
+"{hurter.mention}, I'm beginning to think your understanding of numbers is "
+"purely theoretical. What's {operation}? And no, this isn't hard like a "
+"quantum mechanics problem; it's just basic math."
+msgstr ""
+
+#: ../utils/ducks.py:1005
+#, python-brace-format
+msgid ""
+"{hurter.mention}, for fuck sake, just kill me already! Let's do something a "
+"bit easier for you...What's {operation}? "
+msgstr ""
+
+#: ../utils/ducks.py:1034
+#, python-brace-format
+msgid ""
+"{hugger.mention} attempted a hug. Cute, but the duck despises you for wiping "
+"out its family, and for failing HARD at math. [**FAIL**: {experience} exp]"
+msgstr ""
+
+#: ../utils/ducks.py:1042
+#, python-brace-format
+msgid ""
+"{hugger.mention} attempted a hug. Adorable, but your affection won't fix the "
+"fact that you're failing miserably at math, {hugger.mention}. [**FAIL**: "
+"{experience} exp]"
+msgstr ""
+
+#: ../utils/ducks.py:1281
 msgid "cartographer"
 msgstr ""
 
-#: ../utils/ducks.py:1064
+#: ../utils/ducks.py:1300
 #, python-brace-format
 msgid "of which one is a cartographer duck"
 msgid_plural "of which {this_ducks_killed} are cartographer ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1077
+#: ../utils/ducks.py:1313
 msgid ""
 "ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
 "letter and the number to the bang command. Example: `dh!bang A1`."
 msgstr ""
 
-#: ../utils/ducks.py:1093
+#: ../utils/ducks.py:1329
 #, python-brace-format
 msgid ""
 "{hurter.mention}, You need to find the duck in the map above! Answer with "
 "`dh!bang <coordinates>`."
 msgstr ""
 
-#: ../utils/ducks.py:1102
+#: ../utils/ducks.py:1338
 #, python-brace-format
 msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
 msgstr ""
 
-#: ../utils/ducks.py:1112
+#: ../utils/ducks.py:1348
 #, python-brace-format
 msgid "{hurter.mention}, that's not the correct answer!"
 msgstr ""
 
-#: ../utils/ducks.py:1129
+#: ../utils/ducks.py:1365
 msgid "baby"
 msgstr ""
 
-#: ../utils/ducks.py:1140
+#: ../utils/ducks.py:1376
 #, python-brace-format
 msgid ""
 "[{hurter.mention}] I'm sorry Hal, I'm afraid I can't do that <https://youtu."
 "be/ARJ8cAGm6JE?t=58>."
 msgstr ""
 
-#: ../utils/ducks.py:1152
+#: ../utils/ducks.py:1388
 #, python-brace-format
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1163
+#: ../utils/ducks.py:1399
 #, python-brace-format
 msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:1193
+#: ../utils/ducks.py:1429
 #, python-brace-format
 msgid ""
 "{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
 "+{experience} exp]"
 msgstr ""
 
-#: ../utils/ducks.py:1205
+#: ../utils/ducks.py:1441
 msgid "golden"
 msgstr ""
 
-#: ../utils/ducks.py:1210
+#: ../utils/ducks.py:1446
 #, python-brace-format
 msgid "of which one is a golden duck"
 msgid_plural "of which {this_ducks_killed} are golden ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1225
+#: ../utils/ducks.py:1461
 msgid "plastic"
 msgstr ""
 
-#: ../utils/ducks.py:1230
+#: ../utils/ducks.py:1466
 #, python-brace-format
 msgid "of which one is made of plastic"
 msgid_plural "of which {this_ducks_killed} are made of plastic"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1248
+#: ../utils/ducks.py:1484
 msgid "kamikaze"
 msgstr ""
 
-#: ../utils/ducks.py:1253
+#: ../utils/ducks.py:1489
 #, python-brace-format
 msgid "of which one is a kamikaze duck"
 msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1269
+#: ../utils/ducks.py:1505
 msgid "mechanical"
 msgstr ""
 
-#: ../utils/ducks.py:1293
+#: ../utils/ducks.py:1529
 #, python-brace-format
 msgid "of which one is a mechanical duck"
 msgid_plural "of which {this_ducks_killed} are mechanical ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1307
+#: ../utils/ducks.py:1543
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
 "made it? [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:1313
+#: ../utils/ducks.py:1549
 #, python-brace-format
 msgid ""
 "Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
 "is {creator.mention}'s fault! [exp: {won_experience}]"
 msgstr ""
 
-#: ../utils/ducks.py:1334
+#: ../utils/ducks.py:1570
 msgid "super"
 msgstr ""
 
-#: ../utils/ducks.py:1345
+#: ../utils/ducks.py:1581
 #, python-brace-format
 msgid "of which one is a super duck"
 msgid_plural "of which {this_ducks_killed} are super ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1369
+#: ../utils/ducks.py:1605
 msgid "moad"
 msgstr ""
 
-#: ../utils/ducks.py:1374
+#: ../utils/ducks.py:1610
 #, python-brace-format
 msgid "of which one is a MOAD"
 msgid_plural "of which {this_ducks_killed} are MOADs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1399
+#: ../utils/ducks.py:1635
 msgid "armored"
 msgstr ""
 
-#: ../utils/ducks.py:1404
+#: ../utils/ducks.py:1640
 #, python-brace-format
 msgid "of which one is an armored duck"
 msgid_plural "of which {this_ducks_killed} are armored ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1428
+#: ../utils/ducks.py:1664
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
 "{total_lives}][**Damage** : -{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:1436
+#: ../utils/ducks.py:1672
 #, python-brace-format
 msgid ""
 "{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
 "{damage}]"
 msgstr ""
 
-#: ../utils/ducks.py:1447
+#: ../utils/ducks.py:1683
 msgid "night"
 msgstr ""
 
-#: ../utils/ducks.py:1452
+#: ../utils/ducks.py:1688
 #, python-brace-format
 msgid "of which one is a night duck"
 msgid_plural "of which {this_ducks_killed} are night ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../utils/ducks.py:1464
+#: ../utils/ducks.py:1700
 msgid "sleeping"
 msgstr ""
 
-#: ../utils/ducks.py:1469
+#: ../utils/ducks.py:1705
 #, python-brace-format
 msgid "of which one is a sleeping duck"
 msgid_plural "of which {this_ducks_killed} are sleeping ducks"
