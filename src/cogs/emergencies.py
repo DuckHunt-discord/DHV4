@@ -227,5 +227,14 @@ class Emergencies(Cog):
 
         await ctx.send(embed=e)
 
+    @manage_bot.command()
+    async def locks(self, ctx):
+        ret = []
+        for chid, sema in ctx.bot.concurrency._mapping.items():
+            channel = ctx.bot.get_channel(chid)
+            ret.append(f"{channel.guild.id} ({channel.guild.name}) - {channel.id} ({channel.name} <#{channel.id}>) - {sema}")
+
+        await ctx.send("\n".join(ret))
+
 
 setup = Emergencies.setup
