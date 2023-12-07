@@ -1,5 +1,6 @@
 import datetime
 import statistics
+from math import log
 
 import discord
 from discord.ext import commands
@@ -192,8 +193,6 @@ class PrestigeCommands(Cog):
 
         now = datetime.datetime.now()
 
-        remove_levels = False
-
         if db_hunter.prestige < 3:
             await ctx.send(
                 _(
@@ -209,7 +208,7 @@ class PrestigeCommands(Cog):
             )
             return False
 
-        max_experience = 20 * db_hunter.prestige
+        max_experience = int(3 * log(db_hunter.prestige ** 20))
         distrib = statistics.NormalDist(max_experience / 2, max_experience / 6)
         added_experience = int(distrib.samples(1)[0])
 
@@ -218,9 +217,6 @@ class PrestigeCommands(Cog):
         await db_hunter.edit_experience_with_levelups(ctx, added_experience)
         db_hunter.prestige_last_daily = now
         db_hunter.prestige_dailies += 1
-
-        if remove_levels:
-            db_hunter.prestige -= 6
 
         await db_hunter.save()
 
