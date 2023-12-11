@@ -175,7 +175,12 @@ class DucksSpawning(Cog):
             await self.change_event()
 
     def cog_unload(self):
-        self.background_loop.cancel()
+        self.bot.logger.warning(f"Unloading DucksSpawning cog...")
+
+        try:
+            self.background_loop.cancel()
+        except:
+            self.bot.logger.exception(f"Couldn't cancel the background loop...")
 
         self.bot.logger.info(f"Saving ducks to cache...")
 

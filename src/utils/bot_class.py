@@ -94,6 +94,10 @@ class MyBot(AutoShardedBot):
                     )
                 )
 
+    async def close(self) -> None:
+        await super().close()
+        await self._client_session.close()
+
     def get_logging_channel(self):
         if not self._duckhunt_public_log:
             config = self.config["duckhunt_public_log"]

@@ -2,8 +2,8 @@
 
 python /duckhunt/generate_config_from_env.py /duckhunt/docker_config.toml /duckhunt/src/config.toml
 
-echo "Waiting a few seconds before starting"
-sleep 10
+echo "Waiting a few seconds before starting..."
+sleep 5
 echo "Starting..."
 
 exec python /duckhunt/src/main.py
