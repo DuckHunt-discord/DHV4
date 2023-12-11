@@ -433,9 +433,9 @@ class Duck:
             try:
                 await self.channel.send(content, **kwargs)
             except (discord.Forbidden, discord.NotFound):
-                self.bot.logger.warning(
-                    f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there."
-                )
+                # self.bot.logger.warning(
+                #     f"Removing #{self.channel.name} on {self.channel.guild.id} from planification because I'm not allowed to send messages there."
+                # )
                 try:
                     del self.bot.enabled_channels[self.channel]
                 except KeyError:
