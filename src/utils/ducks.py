@@ -487,6 +487,8 @@ class Duck:
         else:
             if random.randint(0, 99) < self.prestige_experience_chance:
                 return db_killer.prestige
+            else:
+                return 0
 
     async def will_frighten(self):
         db_channel = await self.get_db_channel()
