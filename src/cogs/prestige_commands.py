@@ -208,7 +208,18 @@ class PrestigeCommands(Cog):
             )
             return False
 
-        max_experience = int(3 * log(db_hunter.prestige ** 20)) * (1 + db_hunter.prestige // 100)
+        if db_hunter.prestige < 10:
+            exp_modifier = 1
+        elif db_hunter.prestige < 20:
+            exp_modifier = 2
+        elif db_hunter.prestige < 50:
+            exp_modifier = 3
+        elif db_hunter.prestige < 100:
+            exp_modifier = 4
+        else:
+            exp_modifier = 4 + db_hunter.prestige // 100
+
+        max_experience = int(3 * log(db_hunter.prestige ** 20)) * exp_modifier
         distrib = statistics.NormalDist(max_experience / 2, max_experience / 6)
         added_experience = int(distrib.samples(1)[0])
 
