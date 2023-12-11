@@ -161,7 +161,7 @@ class DucksSpawning(Cog):
             embed = discord.Embed()
 
             embed.colour = discord.Colour.green()
-            embed.title = f"It's freetime !"
+            embed.title = f"It's freetime!"
             embed.description = f"Your magazines have been refilled, and confiscated weapons have just been released"
             dtnow = datetime.datetime.fromtimestamp(now)
             if dtnow.day == 1 and dtnow.month == 4:
