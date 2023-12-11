@@ -103,7 +103,7 @@ class PrestigeCommands(Cog):
         )
         e.add_field(
             name=_("Level 3"),
-            value=_("**Daily command**: Get more experience every day"),
+            value=_("**More experience**: Chance to get more experience equal to your prestige level for every natural spawn killed"),
         )
         e.add_field(
             name=_("Level 4"), value=_("**Icelandic water**: Wet others for longer")
@@ -207,6 +207,16 @@ class PrestigeCommands(Cog):
                 _("❌ You already claimed your dailies today. Try again tomorrow.")
             )
             return False
+
+        if now.date() > datetime.date(year=2023, month=12, day=31):
+            await ctx.send(
+                _("❌ The daily command was disabled. You can now get bonus experience for every duck killed.")
+            )
+            return False
+        else:
+            await ctx.send(
+                _("❌ The daily command will be disabled in 2024. You can now get bonus experience when killing ducks.")
+            )
 
         if db_hunter.prestige < 10:
             exp_modifier = 1

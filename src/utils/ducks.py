@@ -51,9 +51,13 @@ class Duck:
     use_bonus_exp = True
     leave_on_hug = False
 
-    def __init__(self, bot: MyBot, channel: discord.TextChannel):
+    prestige_experience_chance = 30
+
+    def __init__(self, bot: MyBot, channel: discord.TextChannel, decoy=False):
         self.bot = bot
         self.channel = channel
+        self.decoy = decoy
+
         self._db_channel: Optional[DiscordChannel] = None
 
         self._webhook_parameters = {
@@ -79,6 +83,7 @@ class Duck:
             "lives_left": self.lives_left,
             "lives": self._lives,
             "webhook_parameters": self._webhook_parameters,
+            "decoy": self.decoy
         }
 
     @classmethod
@@ -88,6 +93,7 @@ class Duck:
         d.lives_left = data["lives_left"]
         d._lives = data["lives"]
         d._webhook_parameters = data["webhook_parameters"]
+        d.decoy = data["decoy"]
 
         return d
 
@@ -277,7 +283,7 @@ class Duck:
         )
 
     async def get_kill_message(
-            self, killer, db_killer: Player, won_experience: int, bonus_experience: int
+            self, killer, db_killer: Player, won_experience: int, bonus_experience: int, prestige_experience: int
     ) -> str:
         _ = await self.get_translate_function()
         ngettext = await self.get_ntranslate_function()
@@ -298,33 +304,31 @@ class Duck:
         total_ducks_killed = sum(db_killer.killed.values())
         this_ducks_killed = db_killer.killed.get(self.category)
 
-        if bonus_experience:
-            normal_exp = won_experience - bonus_experience
+        normal_exp = won_experience - bonus_experience - prestige_experience
+        splits = [_("**Killed**: {normal_exp} exp", normal_exp=normal_exp)]
 
-            return _(
-                "{killer.mention} killed the duck in {spawned_for_str}, "
-                "for a total of {total_ducks_killed} "
-                "({ncategory_killed}) "
-                "[**Killed**: {normal_exp} exp + {bonus_experience} **clover**]",
-                killer=killer,
-                normal_exp=normal_exp,
-                bonus_experience=bonus_experience,
-                spawned_for_str=spawned_for_str,
-                total_ducks_killed=total_ducks_killed,
-                ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
-            )
-        else:
-            return _(
-                "{killer.mention} killed the duck in {spawned_for_str}, "
-                "for a total of {total_ducks_killed} "
-                "({ncategory_killed}) "
-                "[**Killed**: {normal_exp} exp]",
-                killer=killer,
-                normal_exp=won_experience,
-                spawned_for_str=spawned_for_str,
-                total_ducks_killed=total_ducks_killed,
-                ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
-            )
+        if bonus_experience:
+            if self.decoy and False:
+                splits.append(_("**2-leaf Clover**: {bonus_experience} exp", bonus_experience=bonus_experience))
+            else:
+                splits.append(_("**4-leaf Clover**: {bonus_experience} exp", bonus_experience=bonus_experience))
+
+        if prestige_experience:
+            splits.append(_("**Prestige**: {prestige_experience} exp", prestige_experience=prestige_experience))
+
+        splits_formatted = " + ".join(splits)
+
+        return _(
+            "{killer.mention} killed the duck in {spawned_for_str}, "
+            "for a total of {total_ducks_killed} "
+            "({ncategory_killed}) "
+            "[{splits_formatted}]",
+            killer=killer,
+            splits_formatted=splits_formatted,
+            spawned_for_str=spawned_for_str,
+            total_ducks_killed=total_ducks_killed,
+            ncategory_killed=await self.get_ncategory_killed(this_ducks_killed),
+        )
 
     async def get_frighten_message(self, hunter, db_hunter: Player) -> str:
         _ = await self.get_translate_function()
@@ -474,6 +478,15 @@ class Duck:
     async def get_hug_experience(self):
         return -2
 
+    async def get_prestige_experience(self):
+        db_hunter = self.db_target_lock_by
+
+        if db_hunter.prestige < 3:
+            return 0
+        else:
+            if random.randint(0, 99) < self.prestige_experience_chance:
+                return db_hunter.prestige
+
     async def will_frighten(self):
         db_channel = await self.get_db_channel()
         db_hunter = self.db_target_lock_by
@@ -615,10 +628,16 @@ class Duck:
         won_experience = await self.get_exp_value()
 
         bonus_experience = 0
+        prestige_experience = 0
         if self.use_bonus_exp:
             bonus_experience = await db_killer.get_bonus_experience(won_experience)
             db_killer.shooting_stats["bonus_experience_earned"] += bonus_experience
             won_experience += bonus_experience
+
+            prestige_experience = await self.get_prestige_experience()
+            if prestige_experience:
+                won_experience += prestige_experience
+                db_killer.shooting_stats["prestige_experience_earned"] += prestige_experience
 
         await db_killer.edit_experience_with_levelups(
             self.channel, won_experience, bot=self.bot
@@ -628,13 +647,13 @@ class Duck:
 
         await self.send(
             await self.get_kill_message(
-                killer, db_killer, won_experience, bonus_experience
+                killer, db_killer, won_experience, bonus_experience, prestige_experience
             )
         )
         if bushes_coro is not None:
             await bushes_coro()
 
-        await self.post_kill(killer, db_killer, won_experience, bonus_experience)
+        await self.post_kill(killer, db_killer, won_experience, bonus_experience, prestige_experience)
 
     async def hurt(self, damage: int, args):
         hurter = self.target_lock_by
@@ -665,7 +684,7 @@ class Duck:
         self.lives_left = self.lives_left - lives
         return await self.is_killed()
 
-    async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
+    async def post_kill(self, killer, db_killer, won_experience, bonus_experience, prestige_experience):
         """
         Just in case you want to do something after a duck died.
         """
@@ -724,8 +743,8 @@ class PrDuck(Duck):
 
     category = _("prof")
 
-    def __init__(self, bot: MyBot, channel: discord.TextChannel):
-        super().__init__(bot, channel)
+    def __init__(self, bot: MyBot, channel: discord.TextChannel, *args, **kwargs):
+        super().__init__(bot, channel, *args, **kwargs)
         self.anger_level = 0
         op = random.choices(["+", "*", "/", "-"], weights=[100, 15, 25, 20])[0]
 
@@ -1044,7 +1063,6 @@ class PrDuck(Duck):
                     experience=experience,
                 )
 
-
     async def get_exp_value(self):
         return round(await super().get_exp_value() * 1.3)
 
@@ -1278,8 +1296,8 @@ class CartographerDuck(Duck):
 
     category = _("cartographer")
 
-    def __init__(self, bot: MyBot, channel: discord.TextChannel):
-        super().__init__(bot, channel)
+    def __init__(self, bot: MyBot, channel: discord.TextChannel, *args, **kwargs):
+        super().__init__(bot, channel, *args, **kwargs)
         self.map: Map = Map()
         self.duck_coords: Coordinates = self.map.duck_coords
 
@@ -1390,7 +1408,7 @@ class BabyDuck(Duck):
         )
 
     async def get_kill_message(
-            self, killer, db_killer: Player, won_experience: int, bonus_experience: int
+            self, killer, db_killer: Player, won_experience: int, bonus_experience: int, prestige_experience: int,
     ):
         _ = await self.get_translate_function()
         return _(
@@ -1436,6 +1454,8 @@ class GoldenDuck(Duck):
     Duck worth twice the usual experience
     """
 
+    prestige_experience_chance = 100
+
     category = _("golden")
 
     async def get_ncategory_killed(self, this_ducks_killed):
@@ -1456,6 +1476,7 @@ class PlasticDuck(Duck):
     Worthless duck (half the exp)
     """
 
+    prestige_experience_chance = 0
     category = _("plastic")
 
     async def get_ncategory_killed(self, this_ducks_killed):
@@ -1531,7 +1552,7 @@ class MechanicalDuck(Duck):
         )
 
     async def get_kill_message(
-            self, killer, db_killer, won_experience, bonus_experience
+            self, killer, db_killer, won_experience, bonus_experience, prestige_experience
     ):
         _ = await self.get_translate_function()
 
@@ -1550,11 +1571,11 @@ class MechanicalDuck(Duck):
                 creator=creator,
             )
 
-    async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
+    async def post_kill(self, killer, db_killer, won_experience, bonus_experience, prestige_experience):
         if self.creator and killer.id == self.creator.id:
             db_killer.stored_achievements["short_memory"] = True
 
-        await super().post_kill(killer, db_killer, won_experience, bonus_experience)
+        await super().post_kill(killer, db_killer, won_experience, bonus_experience, prestige_experience)
 
 
 # Super ducks #
@@ -1611,7 +1632,7 @@ class MotherOfAllDucks(SuperDuck):
             this_ducks_killed=this_ducks_killed,
         )
 
-    async def post_kill(self, killer, db_killer, won_experience, bonus_experience):
+    async def post_kill(self, killer, db_killer, won_experience, bonus_experience, prestige_experience):
         for i in range(2):
             # Discord sucks
             # When you send two messages (one after the other but close enough),
@@ -1622,7 +1643,7 @@ class MotherOfAllDucks(SuperDuck):
             if d.category == "baby":
                 db_killer.stored_achievements["you_monster"] = True
 
-        await super().post_kill(killer, db_killer, won_experience, bonus_experience)
+        await super().post_kill(killer, db_killer, won_experience, bonus_experience, prestige_experience)
 
 
 class ArmoredDuck(SuperDuck):
@@ -1749,8 +1770,9 @@ async def spawn_random_weighted_duck(
         channel: discord.TextChannel,
         db_channel: DiscordChannel = None,
         sun: SunState = None,
+        decoy: bool = False,
 ):
-    duck = await get_random_weighted_duck(bot, channel, db_channel, sun)
+    duck = await get_random_weighted_duck(bot, channel, db_channel, sun, decoy)
     await duck.spawn()
     return duck
 
@@ -1760,6 +1782,7 @@ async def get_random_weighted_duck(
         channel: discord.TextChannel,
         db_channel: DiscordChannel = None,
         sun: SunState = None,
+        decoy: bool = False,
 ):
     if sun is None:
         sun, duration_of_night, time_left_sun = await compute_sun_state(channel)
@@ -1783,11 +1806,11 @@ async def get_random_weighted_duck(
         weights[ducks.index(SuperDuck)] *= 2
 
     if sum(weights) <= 0:  # Channel config is fucked anyways
-        return Duck(bot, channel)
+        return Duck(bot, channel, decoy=decoy)
 
     DuckClass: typing.Type[Duck] = random.choices(ducks, weights)[0]
 
-    return DuckClass(bot, channel)
+    return DuckClass(bot, channel, decoy=decoy)
 
 
 def deserialize_duck(bot: MyBot, channel: discord.TextChannel, data: dict):
