@@ -1,5 +1,7 @@
 import collections
+import signal
 import typing
+from contextlib import suppress
 from typing import Optional
 
 import aiohttp
@@ -92,6 +94,12 @@ class MyBot(AutoShardedBot):
                     "> Failed to load extension {}\n{}: {}".format(
                         cog_name, type(e).__name__, e
                     )
+                )
+        with suppress(NotImplementedError):
+            for signame in {'SIGINT', 'SIGTERM'}:
+                self.loop.add_signal_handler(
+                    getattr(signal, signame),
+                    self.close
                 )
 
     async def close(self) -> None:
