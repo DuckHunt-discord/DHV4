@@ -235,13 +235,13 @@ class MyBot(AutoShardedBot):
             self.logger.info(message)
 
     async def on_guild_join(self, guild):
-        self.logger.info(f"Joined guild {guild.name} ({guild.id})")
+        self.logger.info(f"Joined guild {guild.name} ({guild.id}), checking for bans...")
         is_banned = await DiscordUser.filter(access_level_override=0).filter(discord_id=guild.owner_id).exists()
         if is_banned:
             await guild.leave()
             self.logger.info(f"[🍑🕳] Automatically left guild I was invited in {guild.name} ({guild.id}) because the owner is banned.")
         else:
-            self.logger.info(f"Joined guild {guild.name} ({guild.id})")
+            self.logger.info(f"Joined guild {guild.name} ({guild.id}), no bans :)")
 
 
 async def get_prefix(bot: MyBot, message: discord.Message):
