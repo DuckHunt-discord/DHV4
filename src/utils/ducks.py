@@ -1642,7 +1642,7 @@ class MotherOfAllDucks(SuperDuck):
             # they will be shown in the wrong order for *some*, but not all viewers of the channel.
             # To fix that we sleep a bit before spawning ducks
             await asyncio.sleep(0.5)
-            d = await spawn_random_weighted_duck(self.bot, self.channel)
+            d = await spawn_random_weighted_duck(self.bot, self.channel, decoy=self.decoy)
             if d.category == "baby":
                 db_killer.stored_achievements["you_monster"] = True
 
