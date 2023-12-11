@@ -21,7 +21,7 @@ DAY = 24 * HOUR
 
 class DucksSpawning(Cog):
     hidden = True
-    DISCORD_BUG_THRESHOLD = 100000
+    DISCORD_BUG_THRESHOLD = 250
 
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
