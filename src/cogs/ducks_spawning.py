@@ -219,7 +219,7 @@ class DucksSpawning(Cog):
             i += 1
             channel = channels.get(db_channel.discord_id)
 
-            if i % 100 == 0:
+            if i % 500 == 0:
                 await asyncio.sleep(0)
                 self.bot.logger.debug(
                     f"Planifying ducks spawns on {i}/{len(db_channels)} channels"
@@ -230,12 +230,12 @@ class DucksSpawning(Cog):
                     channel
                 ).compute_ducks_count(db_channel, now)
             else:
-                self.bot.logger.warning(
-                    f"Channel {db_channel.name} is unknown, marking for disable"
-                )
+                # self.bot.logger.warning(
+                #    f"Channel {db_channel.name} is unknown, marking for disable"
+                # )
                 channels_to_disable.append(db_channel)
 
-        if 0 < len(channels_to_disable) < 100:
+        if 0 < len(channels_to_disable) < 100000:
             self.bot.logger.warning(
                 f"Disabling {len(channels_to_disable)} channels "
                 f"that are no longer available to the bot."
@@ -244,6 +244,10 @@ class DucksSpawning(Cog):
                 # TODO : We can probably only do 1 big query here, but for that I'd have to learn Tortoise.
                 # To be honest, improvement would be limited since 100 queries max isn't that slow and there obviously
                 # aren't that many channels that get disabled during a reboot...
+                if db_channel.discord_id == 853566725621809172:
+                    # Skip dank memer channel, they lock the server every so often
+                    continue
+
                 db_channel.enabled = False
                 await db_channel.save()
                 await asyncio.sleep(0)  # Just in case
