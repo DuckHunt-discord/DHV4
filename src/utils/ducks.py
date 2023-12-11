@@ -478,14 +478,12 @@ class Duck:
     async def get_hug_experience(self):
         return -2
 
-    async def get_prestige_experience(self):
-        db_hunter = self.db_target_lock_by
-
-        if db_hunter.prestige < 3:
+    async def get_prestige_experience(self, db_killer):
+        if db_killer.prestige < 3:
             return 0
         else:
             if random.randint(0, 99) < self.prestige_experience_chance:
-                return db_hunter.prestige
+                return db_killer.prestige
 
     async def will_frighten(self):
         db_channel = await self.get_db_channel()
@@ -634,7 +632,7 @@ class Duck:
             db_killer.shooting_stats["bonus_experience_earned"] += bonus_experience
             won_experience += bonus_experience
 
-            prestige_experience = await self.get_prestige_experience()
+            prestige_experience = await self.get_prestige_experience(db_killer)
             if prestige_experience:
                 won_experience += prestige_experience
                 db_killer.shooting_stats["prestige_experience_earned"] += prestige_experience
