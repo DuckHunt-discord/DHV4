@@ -163,7 +163,7 @@ class MyBot(AutoShardedBot):
             _ = await ctx.get_translate_function(user_language=True)
 
             ctx.logger.info(
-                f"It's the first time that {ctx.author} is intreracting with us. Sending welcome DM."
+                f"It's the first time that {ctx.author} is interacting with us. Sending welcome DM."
             )
             try:
                 await ctx.author.send(
