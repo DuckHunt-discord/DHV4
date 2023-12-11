@@ -479,6 +479,9 @@ class Duck:
         return -2
 
     async def get_prestige_experience(self, db_killer):
+        if self.decoy:
+            return 0
+
         if db_killer.prestige < 3:
             return 0
         else:
