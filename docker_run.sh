@@ -5,6 +5,7 @@ python /duckhunt/generate_config_from_env.py /duckhunt/docker_config.toml /duckh
 echo "Setting current branch..."
 git pull origin master || true
 
+echo "Changes?"
 git status
 
 echo "Waiting a few seconds before starting..."
