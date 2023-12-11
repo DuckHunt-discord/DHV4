@@ -2006,7 +2006,9 @@ msgstr ""
 msgid "Level 3"
 msgstr ""
 
-msgid "**Daily command**: Get more experience every day"
+msgid ""
+"**More experience**: Chance to get more experience equal to your prestige "
+"level for every natural spawn killed"
 msgstr ""
 
 msgid "Level 4"
@@ -2063,18 +2065,21 @@ msgid "You'll restart the game with {kept_exp} experience."
 msgstr ""
 
 msgid ""
-"As a kind of compensation for the rollback that happened, your prestige "
-"level for this command has been artificially set to {level}. For more info, "
-"check announcements on the support server. This will last until 2023-07-27. "
-"Thanks for playing DuckHunt."
-msgstr ""
-
-msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
 msgstr ""
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
+msgstr ""
+
+msgid ""
+"❌ The daily command was disabled. You can now get bonus experience for every "
+"duck killed."
+msgstr ""
+
+msgid ""
+"❌ The daily command will be disabled in 2024. You can now get bonus "
+"experience when killing ducks."
 msgstr ""
 
 msgid ""
@@ -3502,15 +3507,21 @@ msgid_plural "of which {this_ducks_killed} are normal ducks"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
-"{bonus_experience} **clover**]"
+msgid "**Killed**: {normal_exp} exp"
+msgstr ""
+
+msgid "**2-leaf Clover**: {bonus_experience} exp"
+msgstr ""
+
+msgid "**4-leaf Clover**: {bonus_experience} exp"
+msgstr ""
+
+msgid "**Prestige**: {prestige_experience} exp"
 msgstr ""
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
+"{total_ducks_killed} ({ncategory_killed}) [{splits_formatted}]"
 msgstr ""
 
 msgid "{hunter.mention} scared the duck away."

@@ -2362,8 +2362,10 @@ msgstr "**Колір пальто*: Оберіть колір вашого па�
 msgid "Level 3"
 msgstr "Рівень 3"
 
-msgid "**Daily command**: Get more experience every day"
-msgstr "**Щодня команда**: Отримуйте більше досвіду щодня"
+msgid ""
+"**More experience**: Chance to get more experience equal to your prestige "
+"level for every natural spawn killed"
+msgstr ""
 
 msgid "Level 4"
 msgstr "Рівень 4"
@@ -2423,13 +2425,6 @@ msgid "You'll restart the game with {kept_exp} experience."
 msgstr "Ви почнете гру заново, отримавши {kept_exp} досвіду."
 
 msgid ""
-"As a kind of compensation for the rollback that happened, your prestige "
-"level for this command has been artificially set to {level}. For more info, "
-"check announcements on the support server. This will last until 2023-07-27. "
-"Thanks for playing DuckHunt."
-msgstr ""
-
-msgid ""
 "❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
 "info` to learn more."
 msgstr ""
@@ -2438,6 +2433,16 @@ msgstr ""
 
 msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr "ви вже забрали свої щоденники сьогодні. Спробуйте завтра."
+
+msgid ""
+"❌ The daily command was disabled. You can now get bonus experience for every "
+"duck killed."
+msgstr ""
+
+msgid ""
+"❌ The daily command will be disabled in 2024. You can now get bonus "
+"experience when killing ducks."
+msgstr ""
 
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
@@ -4160,21 +4165,22 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-msgid ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp + "
-"{bonus_experience} **clover**]"
+msgid "**Killed**: {normal_exp} exp"
 msgstr ""
-"{killer.mention} вбив качку за {spawned_for_str}, всього "
-"{total_ducks_killed} ({ncategory_killed}) [**Вбито**: {normal_exp} досвіду + "
-"{bonus_experience} **конюшинка**]"
+
+msgid "**2-leaf Clover**: {bonus_experience} exp"
+msgstr ""
+
+msgid "**4-leaf Clover**: {bonus_experience} exp"
+msgstr ""
+
+msgid "**Prestige**: {prestige_experience} exp"
+msgstr ""
 
 msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} ({ncategory_killed}) [**Killed**: {normal_exp} exp]"
+"{total_ducks_killed} ({ncategory_killed}) [{splits_formatted}]"
 msgstr ""
-"{killer.mention} вбив качку за {spawned_for_str}, всього "
-"{total_ducks_killed} ({ncategory_killed}) [**Вбито**: {normal_exp} досвіду]"
 
 msgid "{hunter.mention} scared the duck away."
 msgstr "{hunter.mention} налякана качка летить геть."
