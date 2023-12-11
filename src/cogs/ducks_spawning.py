@@ -21,6 +21,7 @@ DAY = 24 * HOUR
 
 class DucksSpawning(Cog):
     hidden = True
+    DISCORD_BUG_THRESHOLD = 100000
 
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
@@ -235,7 +236,7 @@ class DucksSpawning(Cog):
                 # )
                 channels_to_disable.append(db_channel)
 
-        if 0 < len(channels_to_disable) < 100000:
+        if 0 < len(channels_to_disable) < self.DISCORD_BUG_THRESHOLD:
             self.bot.logger.warning(
                 f"Disabling {len(channels_to_disable)} channels "
                 f"that are no longer available to the bot."
@@ -255,7 +256,7 @@ class DucksSpawning(Cog):
                 f"Disabled {len(channels_to_disable)} channels "
                 f"that are no longer available to the bot."
             )
-        elif len(channels_to_disable) >= 100:
+        elif len(channels_to_disable) >= self.DISCORD_BUG_THRESHOLD:
             self.bot.logger.error(
                 f"Too many unavailable channels ({len(channels_to_disable)}) "
                 f"to disable them. Is discord healthy ?"
