@@ -97,6 +97,7 @@ class MyBot(AutoShardedBot):
                         cog_name, type(e).__name__, e
                     )
                 )
+
         with suppress(NotImplementedError):
             for signame in {'SIGINT', 'SIGTERM'}:
                 self.loop.add_signal_handler(
