@@ -500,9 +500,14 @@ class ShoppingCommands(Cog):
 
         max_experience = db_channel.clover_max_experience
         if self.bot.current_event == Events.FLORIST:
-            max_experience *= 2
+            new_max_experience = max_experience * 2
+            clover_exp = random.randint(db_channel.clover_min_experience, new_max_experience)
 
-        clover_exp = random.randint(db_channel.clover_min_experience, max_experience)
+            if clover_exp > max_experience:
+                clover_exp = random.randint(db_channel.clover_min_experience, new_max_experience)
+        else:
+            clover_exp = random.randint(db_channel.clover_min_experience, max_experience)
+
         await db_hunter.edit_experience_with_levelups(ctx, -ITEM_COST)
         db_hunter.active_powerups["clover"] = int(time.time()) + DAY
         db_hunter.active_powerups["clover_exp"] = clover_exp
@@ -510,7 +515,7 @@ class ShoppingCommands(Cog):
         db_hunter.bought_items["clover"] += 1
 
         await db_hunter.save()
-        await ctx.reply(
+        m = await ctx.reply(
             _(
                 "🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get {clover_exp} more experience points."
                 " [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
@@ -519,6 +524,9 @@ class ShoppingCommands(Cog):
                 clover_exp=clover_exp,
             )
         )
+
+        if clover_exp == max_experience:
+            await m.add_reaction("✨")
 
     @shop.command(aliases=["11", "glasses", "👓️", "🕶️", "😎"])
     async def sunglasses(self, ctx: MyContext):
