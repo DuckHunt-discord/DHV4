@@ -1,4 +1,6 @@
+import asyncio
 import collections
+import functools
 import signal
 import typing
 from contextlib import suppress
@@ -99,12 +101,19 @@ class MyBot(AutoShardedBot):
             for signame in {'SIGINT', 'SIGTERM'}:
                 self.loop.add_signal_handler(
                     getattr(signal, signame),
-                    self.close
+                    functools.partial(self.notsosync_close, signame)
                 )
 
+    def notsosync_close(self, signame):
+        self.logger.warning(f"Received signal {signame}, closing bot...")
+        asyncio.create_task(self.close())
+        self.logger.warning(f"Bot closing request sent...")
+
     async def close(self) -> None:
+        self.logger.warning("Bot closing request received...")
         await super().close()
         await self._client_session.close()
+        self.logger.warning("Bot closed. Bye.")
 
     def get_logging_channel(self):
         if not self._duckhunt_public_log:
