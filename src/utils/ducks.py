@@ -51,7 +51,7 @@ class Duck:
     use_bonus_exp = True
     leave_on_hug = False
 
-    prestige_experience_chance = 30
+    prestige_experience_chance = 15
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel, decoy=False):
         self.bot = bot
