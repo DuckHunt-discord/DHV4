@@ -896,7 +896,7 @@ class ShoppingCommands(Cog):
 
         async def spawn():
             await asyncio.sleep(delay)
-            await ducks.spawn_random_weighted_duck(self.bot, ctx.channel)
+            await ducks.spawn_random_weighted_duck(self.bot, ctx.channel, decoy=True)
 
         asyncio.ensure_future(spawn())
 

@@ -298,7 +298,7 @@ class Egg(Item):
 
         for i in range(self.uses * 2):
             await spawn_random_weighted_duck(
-                ctx.bot, ctx.channel, db_channel=db_channel
+                ctx.bot, ctx.channel, db_channel=db_channel, decoy=True,
             )
 
         await ctx.send(_("✨ Oh look, ducks! Ducks are everywhere!"))
