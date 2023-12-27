@@ -503,7 +503,7 @@ class Duck:
                 ducks_killed_today_dict = db_killer.ducks_killed_today.copy()
                 for ducktype in RANDOM_SPAWN_DUCKS_CLASSES:
                     if ducktype.prestige_experience_chance is not None:
-                        ducks_killed_today_dict.pop(ducktype.category, default=None)
+                        ducks_killed_today_dict.pop(ducktype.category, None)
 
                 ducks_killed_today = sum(ducks_killed_today_dict.values())
 
