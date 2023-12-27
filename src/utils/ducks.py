@@ -1419,6 +1419,8 @@ class BabyDuck(Duck):
     leave_on_hug = True
     use_bonus_exp = False
 
+    prestige_experience_chance = 0
+
     async def shoot(self, args) -> Optional[bool]:
         _ = await self.get_translate_function()
         hurter = self.target_lock_by
@@ -1561,6 +1563,8 @@ class MechanicalDuck(Duck):
     category = _("mechanical")
     fake = True
     use_bonus_exp = False
+
+    prestige_experience_chance = 0
 
     def __init__(self, *args, creator: Optional[discord.Member] = None, **kwargs):
         super().__init__(*args, **kwargs)
