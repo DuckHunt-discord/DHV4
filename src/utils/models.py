@@ -727,6 +727,9 @@ class Player(Model):
         "models.DiscordMember", related_name="players"
     )
 
+    ducks_killed_today = DefaultDictJSONField(default_factory=int)
+    ducks_killed_today_last_reset = fields.DatetimeField(auto_now_add=True)
+
     prestige = fields.SmallIntField(default=0)
     prestige_last_daily = fields.DatetimeField(auto_now_add=True)
     prestige_dailies = fields.IntField(default=0)

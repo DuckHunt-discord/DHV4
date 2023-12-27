@@ -51,7 +51,7 @@ class Duck:
     use_bonus_exp = True
     leave_on_hug = False
 
-    prestige_experience_chance = 15
+    prestige_experience_chance = None
 
     def __init__(self, bot: MyBot, channel: discord.TextChannel, decoy=False):
         self.bot = bot
@@ -170,6 +170,14 @@ class Duck:
     async def increment_kills(self):
         db_killer = self.db_target_lock_by
         db_killer.killed[self.category] += 1
+
+        now = datetime.datetime.now()
+        now_date = now.date()
+        if db_killer.ducks_killed_today_last_reset.date() > now_date:
+            db_killer.ducks_killed_today_last_reset = now
+            db_killer.ducks_killed_today = {}
+
+        db_killer.ducks_killed_today[self.category] += 1
 
     async def increment_hugs(self):
         db_hugger = self.db_target_lock_by
@@ -478,17 +486,43 @@ class Duck:
     async def get_hug_experience(self):
         return -2
 
-    async def get_prestige_experience(self, db_killer):
+    async def get_prestige_experience(self, db_killer) -> int:
         if self.decoy:
             return 0
 
         if db_killer.prestige < 3:
             return 0
         else:
-            if random.randint(0, 99) < self.prestige_experience_chance:
-                return db_killer.prestige
+            if self.prestige_experience_chance is not None:
+                if random.randint(0, 99) < self.prestige_experience_chance:
+                    return db_killer.prestige
+                else:
+                    return 0
             else:
-                return 0
+                # Count the amount of kills today
+                ducks_killed_today_dict = db_killer.ducks_killed_today.copy()
+                for ducktype in RANDOM_SPAWN_DUCKS_CLASSES:
+                    if ducktype.prestige_experience_chance is not None:
+                        ducks_killed_today_dict.pop(ducktype.category, default=None)
+
+                ducks_killed_today = sum(ducks_killed_today_dict.values())
+
+                if ducks_killed_today <= 5:
+                    return db_killer.prestige  # 100% chance of getting prestige bonus
+                elif ducks_killed_today <= 10:
+                    if random.randint(0, 99) < 50:
+                        return db_killer.prestige  # 50% chance
+                elif ducks_killed_today <= 50:
+                    if random.randint(0, 99) < 10:
+                        return db_killer.prestige  # 10% chance
+                elif ducks_killed_today <= 100:
+                    if random.randint(0, 99) < 7:
+                        return db_killer.prestige  # 7% chance
+                else:
+                    if random.randint(0, 99) < 2:
+                        return db_killer.prestige  # 2% chance
+
+        return 0
 
     async def will_frighten(self):
         db_channel = await self.get_db_channel()
