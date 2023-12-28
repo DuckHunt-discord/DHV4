@@ -3,6 +3,7 @@ import datetime
 import random
 import time
 import typing
+from collections import defaultdict
 from enum import Enum
 from typing import Optional
 
@@ -175,7 +176,7 @@ class Duck:
         now_date = now.date()
         if db_killer.ducks_killed_today_last_reset.date() < now_date:
             db_killer.ducks_killed_today_last_reset = now
-            db_killer.ducks_killed_today = {}
+            db_killer.ducks_killed_today = defaultdict(int)
 
         db_killer.ducks_killed_today[self.category] += 1
 
