@@ -173,7 +173,7 @@ class Duck:
 
         now = datetime.datetime.now()
         now_date = now.date()
-        if db_killer.ducks_killed_today_last_reset.date() > now_date:
+        if db_killer.ducks_killed_today_last_reset.date() < now_date:
             db_killer.ducks_killed_today_last_reset = now
             db_killer.ducks_killed_today = {}
 
