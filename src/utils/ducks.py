@@ -178,6 +178,9 @@ class Duck:
             db_killer.ducks_killed_today_last_reset = now
             db_killer.ducks_killed_today = defaultdict(int)
 
+        if self.decoy:
+            db_killer.ducks_killed_today["decoy"] += 1
+
         db_killer.ducks_killed_today[self.category] += 1
 
     async def increment_hugs(self):
@@ -502,11 +505,12 @@ class Duck:
             else:
                 # Count the amount of kills today
                 ducks_killed_today_dict = db_killer.ducks_killed_today.copy()
+                decoys_killed_today = ducks_killed_today_dict.pop("decoy", 0)
                 for ducktype in RANDOM_SPAWN_DUCKS_CLASSES:
                     if ducktype.prestige_experience_chance is not None:
                         ducks_killed_today_dict.pop(ducktype.category, None)
 
-                ducks_killed_today = sum(ducks_killed_today_dict.values())
+                ducks_killed_today = sum(ducks_killed_today_dict.values()) - (decoys_killed_today * 2)
 
                 if ducks_killed_today <= 5:
                     return db_killer.prestige  # 100% chance of getting prestige bonus
