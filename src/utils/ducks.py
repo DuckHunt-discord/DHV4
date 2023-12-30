@@ -510,7 +510,7 @@ class Duck:
                     if ducktype.prestige_experience_chance is not None:
                         ducks_killed_today_dict.pop(ducktype.category, None)
 
-                ducks_killed_today = sum(ducks_killed_today_dict.values()) - (decoys_killed_today * 2)
+                ducks_killed_today = sum(ducks_killed_today_dict.values()) - decoys_killed_today
 
                 if ducks_killed_today <= 5:
                     return db_killer.prestige  # 100% chance of getting prestige bonus
