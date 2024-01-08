@@ -520,12 +520,13 @@ class SettingsCommands(Cog):
         """
         db_guild = await get_from_db(ctx.guild)
 
-        # FIXME: This seems wrong
-        if language_code == "zh-Hans":
-            locale_data = Locale.parse("zh")
-        elif language_code:
+        
+        if language_code:
             try:
-                locale_data = Locale.parse(language_code)
+                if language_code == "zh-Hans":
+                    locale_data = Locale.parse("zh")
+                else:
+                    locale_data = Locale.parse(language_code)
             except (UnknownLocaleError, ValueError):
                 _ = await ctx.get_translate_function()
                 # Send it twice, in english and the original language.
