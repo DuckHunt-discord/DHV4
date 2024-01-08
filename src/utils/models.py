@@ -108,7 +108,7 @@ class DiscordGuild(Model):
 
     vip = fields.BooleanField(default=False)
 
-    language = fields.CharField(6, default="en")
+    language = fields.CharField(8, default="en")
 
     class Meta:
         table = "guilds"
