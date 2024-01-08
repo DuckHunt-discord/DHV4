@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Optional
 
 import babel.lists
@@ -27,6 +28,7 @@ class Event2021(Cog):
     def __init__(self, bot: MyBot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.concurrency = MaxConcurrency(number=1, per=BucketType.member, wait=True)
+        self.last_messages = {}
 
     async def user_can_play(self, user: discord.Member):
         if user.bot:
@@ -93,6 +95,7 @@ class Event2021(Cog):
 
         try:
             await self.concurrency.acquire(message)
+            self.last_messages[(message.guild.id, message.author.id)] = datetime.now()
 
             db_target = await models.get_member_landminesdata(message.author)
 
@@ -411,6 +414,15 @@ class Event2021(Cog):
                     _(
                         "❌ You don't have {value} points, you can't buy a landmine as powerful as this.",
                         value=value,
+                    )
+                )
+                return
+
+            last_message = self.last_messages.get((guild.id, ctx.author.id), None)
+            if not last_message or (datetime.now() - last_message).total_seconds() < 600:
+                await ctx.author.send(
+                    _(
+                        "❌ You can't place a landmine without chatting on the server first. Please enter a discussion and place landmines then."
                     )
                 )
                 return
