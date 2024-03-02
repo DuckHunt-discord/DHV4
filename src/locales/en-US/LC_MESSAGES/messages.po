@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"Content-Type: text/plain; charset=UTF-8"
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: ../cogs/bots_list_and_voting.py:75
 msgid "Creates votes handlers for specific bots lists"
