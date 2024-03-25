@@ -8,3 +8,5077 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Creates votes handlers for specific bots lists"
+msgstr "Crée des gestionnaires de votes pour des listes de bots spécifiques."
+
+msgid "Handle users votes for fateslist"
+msgstr "Gère les votes des utilisateurs pour fateslist."
+
+msgid "Handle users votes for top.gg"
+msgstr "Gère les votes des utilisateurs pour top.gg."
+
+msgid "Sends the link you can use to vote for DuckHunt on bot lists"
+msgstr "Envoie un lien pour voter pour DuckHunt sur les listes de bots."
+
+msgid "Create a Command view for a given command."
+msgstr "Créez une vue pour une commande donnée."
+
+msgid "Create a GamePadView to allow playing the game with buttons."
+msgstr ""
+"Créez une vue Gamepad pour permettre de jouer au jeu avec des boutons."
+
+msgid ""
+"Invite someone to the beta server, letting them try the bot before the "
+"others"
+msgstr ""
+"Invite quelqu'un sur le serveur beta, ce qui le laissera essayer le bot "
+"avant les autres."
+
+msgid "Shoot at the duck that appeared first on the channel."
+msgstr "Tire sur le plus vieux canard apparu dans le salon."
+
+msgid "Reload your gun."
+msgstr "Recharge ton arme."
+
+msgid "Hug the duck that appeared first on the channel."
+msgstr "Fait un câlin au plus ancien bébé canard dans le salon."
+
+msgid "Revive yourself by eating brains"
+msgstr "Ressuscite-toi en mangeant un cerveau."
+
+msgid "Spawns a random duck"
+msgstr "Fais apparaître un canard prit au hasard."
+
+msgid "Spawns many ducks, of which (at least) one is a mechanical one"
+msgstr ""
+"Fais apparaître plusieurs canards, dont (au moins) un est un canard "
+"mécanique."
+
+msgid "Spawns a normal duck"
+msgstr "Fais apparaître un canard normal."
+
+msgid "Spawns a super duck"
+msgstr "Fais apparaître un super-canard."
+
+msgid "Spawns a baby duck"
+msgstr "Fais apparaître un bébé canard."
+
+msgid "Spawns a professor Duck."
+msgstr "Fais apparaître un Professeur Canard."
+
+msgid "Spawns a ghost duck. There will be no spawn message, obviously."
+msgstr ""
+"Fais apparaître un canard fantôme. Il n'y aura pas de message d'arrivée, "
+"évidemment."
+
+msgid "Spawns a MOAD."
+msgstr "Fais apparaître une MDTLC."
+
+msgid "Spawns an armored duck, that will resist most 1 dmg hits."
+msgstr ""
+"Fais apparaître un canard en armure, qui résistera à la plupart des tirs "
+"faisant un de dégât."
+
+msgid "Spawns a golden duck."
+msgstr "Fais apparaître un canard doré."
+
+msgid "Spawns a plastic duck."
+msgstr "Fais apparaître un canard en plastique."
+
+msgid "Spawns a kamikaze duck."
+msgstr "Fais apparaître un canard kamikaze."
+
+msgid "Spawns a night duck."
+msgstr "Fait apparaitre un canard de nuit."
+
+msgid "Spawns a sleeping duck."
+msgstr "Fait apparaitre un canard endormi."
+
+msgid "Show ducks currently on the channel"
+msgstr "Montre les canards actuellement présents sur le salon."
+
+msgid "Removes all ducks from the channel"
+msgstr "Retire tous les canards du salon."
+
+msgid ""
+"Manage the bot current state by starting and stopping ducks spawning, "
+"leaving, and planning ducks spawn for the\n"
+"day.\n"
+"\n"
+"These commands do not use the translation system, and will always show in "
+"english"
+msgstr ""
+"Gérez le bot en commençant et en arrêtant l'arrivée, le départ et la "
+"planification des canards pour la journée.\n"
+"\n"
+"\n"
+"Ces commandes n'utilisent pas le système de traduction, et s'afficheront "
+"toujours en anglais."
+
+msgid ""
+"Reset ducks planning, setting the ducks left to spawn counts to a value "
+"proportional to the time left spawning\n"
+"ducks today. This is executed everyday at midnight."
+msgstr ""
+"Rétablissez la planification des canards, en fixant le nombre de canards "
+"restant à apparaitre à une valeur proportionnelle au temps restant de la "
+"journée. Ceci est exécuté tous les jours à minuit."
+
+msgid ""
+"Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
+"from the planification,\n"
+"so once the stop is over, ducks will spawn more quickly than usual.\n"
+"\n"
+"Duck will still be able to leave, even if this lock is set."
+msgstr ""
+"Empêchez les canards d'apparaître immédiatement, partout. Les canards ne "
+"sont pas retirés de la planification,\n"
+"ainsi, une fois l'arrêt terminé, les canards apparaissent plus vite que "
+"d'habitude.\n"
+"\n"
+"Les canards pourront toujours partir, même si cette commande est exécutée."
+
+msgid ""
+"Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
+"usual if a planification isn't done."
+msgstr ""
+"Permettez aux canards d'apparaître à nouveau, partout. Les canards "
+"apparaissent plus vite que d'habitude si une planification n'est pas faite."
+
+msgid "Force a boss to spawn"
+msgstr "Forcez l'apparition d'un boss."
+
+msgid "Force the current event to change, and reroll a new one."
+msgstr "Forcez l'événement actuel à changer, et en relancer un nouveau."
+
+msgid "Congratulate an user giving them a trophy."
+msgstr "Félicitez un utilisateur en lui remettant un trophée."
+
+msgid ""
+"Content-aware carving of an image/avatar, resizing it to reduce the width "
+"and height,\n"
+"loosing as few details as we can.\n"
+"\n"
+"With seam carving algorithm, the image could be intelligently resized while "
+"keeping the important contents\n"
+"undistorted. The carving process could be further guided, so that an object "
+"could be removed from the image\n"
+"without apparent artifacts.\n"
+"\n"
+"This function only handle normal resizing, without masks.\n"
+"\n"
+"The command arguments work as follow :\n"
+"- The first argument is optional and can be a mention/user ID of someone to "
+"use their avatar.\n"
+"  If it's not supplied, the bot will look for an attached image.\n"
+"- The next two arguments are the width and the height percentages to keep. "
+"They must both be > 0, but can also\n"
+"  go higher than 100 if you want to upscale the image\n"
+"\n"
+"- The image format argument can be any of\n"
+"  • jpeg, for a still image\n"
+"  • gif, for an animated resizing. Limited quality\n"
+"  • png for an APNG (Animated PNG - discord doesn't support them well and "
+"will only show the first frame,\n"
+"    open in browser)\n"
+"  • webp for an animated WebP, a new-ish format that discord doesn't support "
+"at all. Try opening those in your\n"
+"    browser"
+msgstr ""
+"Redimensionnement d'une image/avatar en fonction du contenu, en la réduisant "
+"pour réduire la largeur et la hauteur,\n"
+"en perdant le moins de détails possible.\n"
+"\n"
+"Avec cet algorithme de découpage, l'image peut être redimensionnée "
+"intelligemment tout en conservant les contenus importants \n"
+"sans distorsion et sans trop la déformer. Le processus de découpage peut "
+"être guidé de manière à ce qu'un objet puisse être retiré de l'image \n"
+"sans artefacts apparents.\n"
+" \n"
+"Cette fonction ne gère que le redimensionnement normal, sans masques.\n"
+"\n"
+"Les arguments de la commande fonctionnent comme suit :\n"
+"- Le premier argument est facultatif et peut être une mention/un ID "
+"d'utilisateur de quelqu'un pour utiliser son avatar.\n"
+"  S'il n'est pas fourni, le bot utilisera une image en pièce jointe.\n"
+"- Les deux arguments suivants sont les pourcentages de largeur et de hauteur "
+"à conserver. Ils doivent tous deux être > 0,\n"
+"mais peuvent également être supérieurs à 100 si vous voulez augmenter la "
+"taille de l'image\n"
+"\n"
+"- L'argument du format de l'image peut être l'un des suivants\n"
+"  • jpeg, pour une image fixe\n"
+"  • gif, pour un redimensionnement animé. Qualité limitée\n"
+"  • png pour un APNG (Animated PNG - discord ne les supporte pas bien et ne "
+"montrera que la première image,\n"
+"    à ouvrir dans un navigateur web)\n"
+"  • webp pour un WebP animé, un nouveau format que discord ne supporte pas "
+"du tout. Essayez de les ouvrir dans votre\n"
+"    navigateur"
+
+msgid "Buttons to direct user to a cog help."
+msgstr "Boutons pour diriger l'utilisateur dans l'aide d'un Cog."
+
+msgid "Show buttons for all the cogs in a bot."
+msgstr "Affiche des boutons pour tous les cogs d'un bot."
+
+msgid "Buttons to direct user to a group help"
+msgstr "Boutons pour diriger l'utilisateur sur l'aide d'un groupe."
+
+msgid "Buttons to direct user to a command help"
+msgstr "Boutons pour diriger l'utilisateur sur l'aide d'une commande."
+
+msgid "Show buttons for all the commands and groups in a cog or a group."
+msgstr ""
+"Affiche des boutons pour toutes les commandes et groupes dans un cog ou un "
+"groupe."
+
+msgid "Alias for dh!inv use, so that you can just type dh!use instead."
+msgstr ""
+"Alias pour l'utilisation de `dh!inv`, pour pouvoir simplement taper `dh!use` "
+"à la place."
+
+msgid ""
+"Show your inventory content.\n"
+"\n"
+"The inventory is global. It means that all items you can store in it can be "
+"used on (almost) every server.\n"
+"Server administrators can disable inventory usage on specific channels."
+msgstr ""
+"Montre le contenu de l'inventaire. \n"
+"\n"
+"L'inventaire est global. Cela signifie que tous les items sont utilisables "
+"dans (presque) tous les serveurs. \n"
+"Les administrateurs d'un serveur peuvent désactiver l'inventaire dans "
+"certains salons spécifiques."
+
+msgid "Give something to some player."
+msgstr "Donne quelque chose à un autre joueur."
+
+msgid "Use one of the items in your inventory."
+msgstr "Utilise l'un des items de ton inventaire"
+
+msgid ""
+"Alias for dh!landmine landmine, so that you can just type dh!place instead."
+msgstr ""
+"Alias pour la commande dh!landmine landmine, de sorte à simplifier la "
+"commande dh!place "
+
+msgid ""
+"Alias for dh!landmine defuse_kit, so that you can just type dh!defuse "
+"instead."
+msgstr ""
+"Alias pour la commande dh!defuse_kit landmine, de sorte à simplifier la "
+"commande defuse_kit"
+
+msgid "This command group contains all commands related to \"Landmines\" game."
+msgstr ""
+"Ce groupe de commandes contient toutes les commandes liées au jeu des "
+"\"Landmines\"."
+
+msgid "View your event statistics."
+msgstr "Affiche vos statistiques de l'event."
+
+msgid "This command explains how to place a landmine"
+msgstr "Cette commande explique comment placer une mine."
+
+msgid ""
+"[THIS COMMAND WORKS IN DMs]\n"
+"Buy a landmine that will trigger on a specific word.\n"
+"\n"
+"A landmine has a value, at least greater than 2, that will be used to "
+"determine it's price and the damage done\n"
+"to the person that steps on it.\n"
+"The word must be at least 2 characters long, and must only contain letters. "
+"The steps are case-insensitive.\n"
+"The longer it is, the higher the power. An exploding landmine gives you the "
+"point damage, and half it's value\n"
+"back."
+msgstr ""
+"[CETTE COMMANDE MARCHE EN MESSAGE PRIVÉ]\n"
+"Achète une mine qui se lève sur un mot en particulier.\n"
+"\n"
+"Une mine a une valeur, au moins plus grande que 2, qui sera utilisée pour "
+"déterminer son prix et les dégâts transmis \n"
+"a la personne qui marchera dessus.\n"
+"Le mot doit être d'au moins 2 caractères de long, et ne contenir que des "
+"lettres. \n"
+"Les étapes sont insensibles a la casse.\n"
+"Le plus long le mot, plus l'explosion sera puissante. Quand une mine "
+"explose, elle vous donne la moitié de sa valeur et les dégâts infligés a "
+"l'autre joueur."
+
+msgid ""
+"Buy a shield that will be placed on a given word. A shield will defuse all "
+"landmines placed on that word,\n"
+"and will prevent further landmines from being placed on it.\n"
+"\n"
+"A shield is a very powerful item, that'll cost 500 points for any given word."
+"\n"
+"You can however add a message that will be sent when trying to place a mine."
+msgstr ""
+"Achète un bouclier qui sera placé sur un mot donné. Un bouclier désamorcera "
+"toutes les mines placées sur ce mot et empêchera d'autres mines d'être "
+"placées dessus.\n"
+"\n"
+"Un bouclier est un objet très puissant, qui coûtera 500 points pour un mot "
+"donné. Vous pouvez cependant ajouter un message qui sera envoyé en essayant "
+"de placer une mine."
+
+msgid ""
+"Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
+"the landmine value, minus the price\n"
+"of the defuse kit (30 points). If you don't use it, you'll just have to pay "
+"a restocking fee of 15 points.\n"
+"\n"
+"You need at least 30 points to use one."
+msgstr ""
+"Achète un kit de désamorçage. En l'utilisant sur une phrase, vous "
+"récupérerez la valeur d'une mine présente sur la phrase, moins le prix du "
+"kit en lui même (30 points). Si le kit n'est pas utilisé, vous devrez juste "
+"payer des frais de restockage de 15 points.\n"
+"\n"
+"Vous avez besoin de 30 points pour acheter le kit."
+
+msgid "Show statistics about landmines on this server."
+msgstr "Afficher les statistiques sur les mines de ce serveur."
+
+msgid ""
+"This function count the number of events matching a predicate and filters "
+"the events list inplace following another.\n"
+"\n"
+"It returns the count of matching events."
+msgstr ""
+"Cette fonction compte le nombre d'événements correspondant à un prédicat et "
+"filtre la liste des événements à la suite d'un autre.\n"
+"\n"
+"Elle retourne le nombre d'événements correspondants."
+
+msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
+msgstr ""
+"Commandes de prestige. Réinitialise tes scores contre des bonus exclusifs."
+
+msgid "More info about prestige"
+msgstr "Plus d'infos au sujet du prestige."
+
+msgid ""
+"Execute the prestige process. Almost all of your hunting data **WILL** be "
+"deleted."
+msgstr ""
+"Exécute le processus de prestige. Presque toutes vos données de chasse "
+"seront **SUPPRIMÉES**"
+
+msgid "Get some more experience..."
+msgstr "Donne plus d'expérience..."
+
+msgid ""
+"Check for age of the last message sent in the channel.\n"
+"If it's too old, consider the channel inactive and close the ticket."
+msgstr ""
+"Vérifie l'âge du dernier message envoyé dans le canal.\n"
+"S'il est trop vieux, on considère le canal comme inactif et ferme le ticket."
+
+msgid ""
+"The DuckHunt bot DMs are monitored. All of these commands are used to "
+"control the created channels, and to\n"
+"interact with remote users."
+msgstr ""
+"Les DM de DuckHunt sont surveillés. Toutes ces commandes sont utilisées pour "
+"contrôler les canaux créés, et pour interagir avec les utilisateurs distants."
+""
+
+msgid ""
+"Close the opened DM channel. Will send a message telling the user that the "
+"DM was closed."
+msgstr ""
+"Fermez le canal \"DM\" actuellement ouvert. Envoie un message indiquant à "
+"l'utilisateur que le canal DM a été fermé."
+
+msgid ""
+"Close the opened DM channel. Will not send a message, since it wasn't a "
+"support request."
+msgstr ""
+"Ferme le canal \"DM\" actuellement ouvert. N'envoie pas de message indiquant "
+"à l'utilisateur que le canal DM a été fermé."
+
+msgid "Block the user from opening further DMs channels."
+msgstr ""
+"Bloquez l'utilisateur, lui interdisant ainsi d'ouvrer de nouveaux canaux "
+"\"DM\""
+
+msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
+msgstr ""
+"Envoyez un tag à l'utilisateur, comme si vous utilisiez la commande dh!tag "
+"dans ses DM."
+
+msgid ""
+"Suggest a new language to the user. This will show them a prompt asking them "
+"if they want to switch to this new\n"
+"language."
+msgstr ""
+"Suggère un nouveau langage a l'utilisateur. Cela va leur afficher une invite "
+"pour changer de \n"
+"langue."
+
+msgid ""
+"Shows a random duck image, courtesy of Globloxmen assets.\n"
+"This is mostly used to debug the random duck functions,\n"
+"and uses the same pipeline as for the random duck avatars.\n"
+"\n"
+"You can specify if you want a background or not for your random duck, and it "
+"defaults to yes."
+msgstr ""
+"Montre une image de canard au hasard, générée avec les dessins de Globloxmen."
+"\n"
+"Cette image est principalement utilisée pour déboguer les fonctions de "
+"canard aléatoire,\n"
+"et utilise le même pipeline que pour les avatars de canards aléatoires.\n"
+"\n"
+"Vous pouvez spécifier si vous voulez un arrière-plan ou non pour votre "
+"canard aléatoire, et la valeur par défaut est oui."
+
+msgid ""
+"If someone wants to do a dashboard or something to control DuckHunt, there "
+"are a few api routes already. They all return JSON or HTTP404/403/500.\n"
+"\n"
+"**Routes**:\n"
+"\n"
+"`/api/channels`  [Global Authentication required] -> Returns some "
+"information about all channels enabled on the bot.\n"
+"`/api/channels/{channel_id}`  [Authentication required] -> Returns "
+"information about the channel, like the ducks currently spawned.\n"
+"`/api/channels/{channel_id}/settings`  [Authentication required] -> Returns "
+"channel settings\n"
+"`/api/channels/{channel_id}/top` [No authentication required] -> Returns the "
+"top scores (all players on the channel and some info about players)\n"
+"`/api/channels/{channel_id}/player/{player_id}` [No authentication required] "
+"-> Returns *all* the data for a specific user\n"
+"\n"
+"**Authentication**:\n"
+"\n"
+"If you have one, pass the API key on the Authorization HTTP header.\n"
+"\n"
+"Two types of keys exist :\n"
+"\n"
+"- Channel specific keys, available with `settings api_key`. They only work "
+"for a specific channel data.\n"
+"- Global keys, that allow UNLIMITED access to every channel data. They are "
+"available on request with me.\n"
+"\n"
+"Api keys (local or global) are uuid4, and look like this : `d84af260-c806-"
+"4066-8387-1d5144b7fa72`"
+msgstr ""
+"Si quelqu'un veut réaliser un tableau de bord ou quelque chose pour "
+"contrôler DuckHunt, il y a quelques routes API déjà implémentées. Elles "
+"retournent toutes un JSON ou HTTP404/403/500. \n"
+"\n"
+"**Routes**:\n"
+"\n"
+"`/api/channels`  [Global Authentication required] -> Returns some "
+"information about all channels enabled on the bot.\n"
+"`/api/channels/{channel_id}`  [Authentication required] -> Returns "
+"information about the channel, like the ducks currently spawned.\n"
+"`/api/channels/{channel_id}/settings`  [Authentication required] -> Returns "
+"channel settings\n"
+"`/api/channels/{channel_id}/top` [No authentication required] -> Returns the "
+"top scores (all players on the channel and some info about players)\n"
+"`/api/channels/{channel_id}/player/{player_id}` [No authentication required] "
+"-> Returns *all* the data for a specific user\n"
+"\n"
+"**Authentication**:\n"
+"\n"
+"If you have one, pass the API key on the Authorization HTTP header.\n"
+"\n"
+"Two types of keys exist :\n"
+"\n"
+"- Channel specific keys, available with `settings api_key`. They only work "
+"for a specific channel data.\n"
+"- Global keys, that allow UNLIMITED access to every channel data. They are "
+"available on request with me.\n"
+"\n"
+"Api keys (local or global) are uuid4, and look like this : `d84af260-c806-"
+"4066-8387-1d5144b7fa72`"
+
+msgid ""
+"/channels/\n"
+"\n"
+"Get all channels enabled on the bot"
+msgstr ""
+"/channels/\n"
+"\n"
+"Retourne tous les salons activés sur le bot."
+
+msgid ""
+"/channels/<channel_id>\n"
+"\n"
+"Get information about a specific channel ID"
+msgstr ""
+"/channels/<channel_id>\n"
+"\n"
+"Retourne des informations d'un salon spécifique via son ID."
+
+msgid ""
+"/help/commands\n"
+"\n"
+"Get list of commands"
+msgstr ""
+"/help/commands\n"
+"\n"
+"Retourne la liste des commandes"
+
+msgid ""
+"/status\n"
+"\n"
+"Check the status of every shard the bot is hosting."
+msgstr ""
+"/status\n"
+"\n"
+"Vérifie le statut de tous les shards que le bot héberge."
+
+msgid ""
+"/stats\n"
+"\n"
+"Get some global statistics about the bot."
+msgstr ""
+"/stats\n"
+"\n"
+"Retourne des statistiques globales sur le bot."
+
+msgid "Commands to view and edit settings"
+msgstr "Commandes pour voir et éditer des paramètres."
+
+msgid "Set your server settings to specific, designed modes"
+msgstr "Réglez les paramètres de votre serveur sur des modeles prédéfinis."
+
+msgid "Restore default settings for DuckHunt V4."
+msgstr "Réinitialise DuckHunt aux réglages par défaut."
+
+msgid "Restore similar settings to DuckHunt V3, if that's your thing."
+msgstr ""
+"Restaure des paramètres similaires à DuckHunt V3, si c'est ce que vous aimez."
+""
+
+msgid "Set the bot for a more casual experience."
+msgstr "Paramètre le bot pour une utilisation plus détendue."
+
+msgid ""
+"Set the bot for a more hardcore experience : less experience and more "
+"difficult ducks.\n"
+"\n"
+"For experienced hunters only."
+msgstr ""
+"Paramètre le bot pour une expérience plus hardcore : moins d'expérience et "
+"des canards plus difficiles.\n"
+"\n"
+"Pour les chasseurs expérimentés seulement."
+
+msgid ""
+"Haunted house gamemode.\n"
+"\n"
+"There will be almost only ghost ducks.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu \"maison hantée\".\n"
+"\n"
+"Il n'y aura presque plus que des canards fantômes.\n"
+"\n"
+"Tous les autres paramètres sont réinitialisés à leurs valeurs par défaut."
+
+msgid ""
+"Robots fest gamemode.\n"
+"\n"
+"A lot of wild mechanical ducks will spawn in the channel.\n"
+"This actually just set spawn_weight_mechanical_ducks to 100.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu \"Festin robotique\".\n"
+"\n"
+"De nombreux canards mécaniques sauvages vont apparaitre dans le salon.\n"
+"Ce mode de jeu ne fait que mettre a 100 le poids des canards mécaniques.\n"
+"\n"
+"Tous les autres paramètres sont réinitialisés à leurs valeurs par défaut."
+
+msgid ""
+"Hydra gamemode.\n"
+"\n"
+"A lot of MOADs will spawn in the channel, and they'll make MOADs spawn too.\n"
+"This actually just set spawn_weight_moad_ducks to 100.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu \"Hydre\".\n"
+"\n"
+"Beaucoup de MDTLC vont apparaitre dans le salon, et elles auront de grandes "
+"chances d'en faire apparaitre d'autres.\n"
+"En fait, cela ne fait que fixer à 300 le poids des MDTLC.\n"
+"\n"
+"Tous les autres paramètres sont réinitialisés à leurs valeurs par défaut."
+
+msgid ""
+"Nuclear Radiation gamemode.\n"
+"\n"
+"Watch out as the radiation seems to cause ducks to be stronger!\n"
+"This means there are more, and stronger, super ducks. Get a rocket launcher "
+"or something QUICK!!!\n"
+"The radiation makes clovers be able to give negative experience too !\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu \"Retombées Nucléaires\".\n"
+"\n"
+"Attention, les radiations semblent rendre les canards plus forts !\n"
+"Cela signifie qu'il y a plus de super canards, et qu'ils sont plus forts. "
+"Prenez un lance-roquettes ou quelque chose RAPIDEMENT !!!\n"
+"Les radiations affectent aussi les trèfles qui peuvent donner une expérience "
+"négative !\n"
+"\n"
+"Tous les autres paramètres sont réinitialisés à leurs valeurs par défaut."
+
+msgid ""
+"Australia (reverse) gamemode.\n"
+"\n"
+"Babies must be killed but not the others !\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu \"Australie (Inversé)\"\n"
+"\n"
+"Il faut tuer les bébés canards, mais ne pas toucher aux autres.\n"
+"\n"
+"Tous les autres paramètres sont réinitialisés à leurs valeurs par défaut."
+
+msgid ""
+"Very Big Ducks gamemode.\n"
+"\n"
+"Super ducks have tons of life !\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu \"Très gros canards\"\n"
+"\n"
+"Les super canards ont des tonnes de vies.\n"
+"\n"
+"Tous les autres paramètres sont réinitialisés à leurs valeurs par défaut."
+
+msgid ""
+"Math lessons gamemode.\n"
+"\n"
+"Most of the ducks are Pr. Ducks.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Mode de jeu des leçons de maths.\n"
+"\n"
+"La plupart des canards sont des Pr. Canards.\n"
+"\n"
+"Les autres réglages sont remis à leur valeurs par défaut.\n"
+"\n"
+
+msgid ""
+"Change/view the server prefix.\n"
+"\n"
+"Note that some prefixes are global and can't be edited."
+msgstr ""
+"Changez/affichez le préfixe du serveur. \n"
+"\n"
+"Attention, certains préfixes sont globaux et ne peuvent pas être modifiés."
+
+msgid ""
+"Change/view the server language.\n"
+"\n"
+"Specify the server language as a 2/5 letters code. For example, if you live "
+"in France, you'd use fr or fr_FR.\n"
+"In Québec, you could use fr_CA."
+msgstr ""
+"Changez/visualisez la langue du serveur.\n"
+"\n"
+"Indiquez la langue du serveur sous la forme d'un code de 2 à 5 lettres. Par "
+"exemple, si vous vivez en France, vous utiliserez fr ou fr_FR.\n"
+"Au Québec, vous pourriez utiliser fr_CA.        "
+
+msgid ""
+"Specify whether the bot should use webhooks to communicate in this channel.\n"
+"\n"
+"Webhooks allow for custom avatars and usernames. However, there is a Discord "
+"limit of 10 webhooks per channel."
+msgstr ""
+"Précisez si le bot doit utiliser des webhooks pour communiquer sur ce salon.\n"
+"\n"
+"Les webhooks permettent de personnaliser les avatars et les noms "
+"d'utilisateur. Attention, il y a une limite de 10 webhooks par salon, "
+"imposée par Discord...        "
+
+msgid ""
+"This controls if hunters can use special items they earned somewhere else on "
+"this channel...\n"
+"\n"
+"For example, this will allow/deny use of the \"box of foie gras\" dropped by "
+"the boss on the Official Support\n"
+"Server."
+msgstr ""
+"Cela permet de contrôler si les chasseurs peuvent utiliser les objets "
+"spéciaux qu'ils ont gagnés ailleurs que dans ce salon...\n"
+"\n"
+"Par exemple, cela autorisera ou interdira l'utilisation de la \"boîte de "
+"foie gras\" lâchée par le boss sur le serveur de support officiel.\n"
+" "
+
+msgid ""
+"Add a new webhook to the channel, to get better rate limits handling. "
+"Remember the 10 webhooks/channel limit."
+msgstr ""
+"Ajoutez un nouveau webhook au salon, pour une meilleure gestion des limites "
+"de messages. N'oubliez pas la limite de 10 webhooks/salon.        "
+
+msgid "Allow ducks to use emojis when they spawn."
+msgstr ""
+"Permettre aux canards d'utiliser des emojis lorsqu'ils apparaissent.        "
+
+msgid "Allow ducks to spawn."
+msgstr "Permettre aux canards d'apparaître."
+
+msgid ""
+"Change the tax taken from users when they *send* some experience to another "
+"player."
+msgstr ""
+"Modifier la taxe prélevée aux joueurs lorsqu'ils *envoient* (send) de "
+"l'expérience à un autre joueur.        "
+
+msgid ""
+"Control if users might be pinged when they get killed. It's recommanded to "
+"set this to False on big servers."
+msgstr ""
+"Décider si les utilisateurs peuvent être mentionnés lorsqu'ils se font tuer. "
+"Il est recommandé de mettre cette option sur Faux (False) pour les gros "
+"serveurs."
+
+msgid ""
+"When hurting super ducks and the like, show how many lives the ducks have "
+"left."
+msgstr ""
+"Lorsque vous tuez des super canards et autres, afficher combien de vies il "
+"leur reste.        "
+
+msgid ""
+"Set how likely it is that a hunter will kill someone when missing a shot."
+msgstr ""
+"Définissez la probabilité qu'un chasseur tue quelqu'un lorsqu'il manque un "
+"tir."
+
+msgid ""
+"Set how likely it is that a hunter will frighten a duck when shooting.\n"
+"Remember, the silencer sets this to 0% for a hunter."
+msgstr ""
+"Définissez la probabilité qu'un chasseur effraie un canard au moment du tir.\n"
+"N'oubliez pas que le silencieux règle cette probabilité à 0% pour un "
+"chasseur."
+
+msgid ""
+"Set the minimum experience a clover will give. Might be negative for funsies "
+":)"
+msgstr ""
+"Fixez l'expérience minimale que donnera un trèfle. Peut être négatif.     "
+
+msgid ""
+"Set the maximum experience a clover will give. Might be negative for funsies "
+":)"
+msgstr "Fixez l'expérience maximale que donnera un trèfle. Peut être négatif."
+
+msgid "Set the normal amount of experience a duck will give when killed."
+msgstr ""
+"Fixez le niveau d'expérience normal qu'un canard donnera lorsqu'il sera tué."
+
+msgid ""
+"Set the additional amount of experience given for every life of a super duck."
+""
+msgstr ""
+"Fixez la quantité supplémentaire d'expérience donnée pour chaque vie d'un "
+"super canard."
+
+msgid "Set the amount of ducks that will spawn every day"
+msgstr "Fixez la quantité de canards qui vont apparaître chaque jour."
+
+msgid ""
+"Set a duck probability to spawn to a certain weight. The higher the weight, "
+"the more probability for it to spawn."
+msgstr ""
+"Fixer la probabilité d'apparition d'un canard à un certain poids. Plus le "
+"poids est élevé, plus la probabilité qu'il apparaisse est grande."
+
+msgid ""
+"Set for how many seconds a duck will stay on the channel before leaving"
+msgstr ""
+"Fixer le nombre de secondes pendant lesquelles un canard restera sur le "
+"salon avant de partir."
+
+msgid "Set the minimum lives of a super duck"
+msgstr "Fixer le nombre de vies minimum d'un super canard."
+
+msgid "Set the maximum lives of a super duck"
+msgstr "Fixer le nombre de vies maximum d'un super canard."
+
+msgid "Avoid references to triggering actions/words."
+msgstr ""
+"Évite les références à des actions/mots qui peuvent choquer des personnes. "
+
+msgid ""
+"Set the night time. Only some exclusive ducks spawn during the night.\n"
+"\n"
+"Times are specified in UTC. The bot does *not* honor daylight savings time "
+"(DST). You might need to edit this\n"
+"setting twice a year if you care about DST"
+msgstr ""
+"Réglez l'heure a laquelle la nuit tombe et se finit. Seuls certains canards "
+"exclusifs apparaissent pendant la nuit.\n"
+"\n"
+"Les heures sont spécifiées en UTC. Le bot ne respecte *pas* l'heure d'été "
+"(DST). Vous pourriez avoir besoin de modifier ce paramètre deux fois par an "
+"si vous vous souciez du DST."
+
+msgid ""
+"Enable/disable the DuckHunt API for this channel. Will give you an API key, "
+"keep that private."
+msgstr ""
+"Activez/désactivez l'API de DuckHunt pour ce salon . Vous donnera une clé "
+"d'API, qui restera privée."
+
+msgid ""
+"Enable or disable the channel disabled message that tells you that you've "
+"ran a command in a channel that isn't enabled."
+msgstr ""
+"Activez ou désactivez le message de canal désactivé qui vous indique que "
+"vous avez exécuté une commande dans un canal qui n'est pas activé."
+
+msgid ""
+"Commands to edit auto roles. Auto roles are roles that are given "
+"automatically to members once they reach a\n"
+"certain DH level.\n"
+"\n"
+"To work properly, roles must all be BELOW DuckHunt top role in the server "
+"hierarchy."
+msgstr ""
+"Commandes pour éditer les rôles automatiques. Ils sont données "
+"automatiquement aux membres une fois que ceux-ci atteignent un certain "
+"niveau sur DuckHunt.\n"
+"\n"
+"Pour marcher correctement, tous les rôles doivent être en dessous du plus "
+"haut rôle de DuckHunt dans la hiérarchie."
+
+msgid ""
+"Commands to edit auto prestige roles. Auto prestige roles are roles that are "
+"given automatically to members once\n"
+"they reach a certain prestige level.\n"
+"\n"
+"To work properly, roles must all be BELOW DuckHunt top role in the server "
+"hierarchy."
+msgstr ""
+"Commandes pour éditer les rôles automatiques. Ils sont données "
+"automatiquement aux membres une fois que ceux-ci atteignent un certain "
+"niveau de prestige sur DuckHunt.\n"
+"\n"
+"Pour marcher correctement, tous les rôles doivent être en dessous du plus "
+"haut rôle de DuckHunt dans la hiérarchie. "
+
+msgid ""
+"Commands to edit permissions.\n"
+"\n"
+"BANNED = 0\n"
+"DEFAULT = 50\n"
+"TRUSTED = 100\n"
+"MODERATOR = 200\n"
+"ADMIN = 300\n"
+"BOT_MODERATOR = 500\n"
+"BOT_OWNER = 600"
+msgstr ""
+"Commandes pour éditer les permissions.\n"
+"\n"
+"BANNED = 0\n"
+"DEFAULT = 50\n"
+"TRUSTED = 100\n"
+"MODERATOR = 200\n"
+"ADMIN = 300\n"
+"BOT_MODERATOR = 500\n"
+"BOT_OWNER = 600"
+
+msgid "View the current permissions"
+msgstr "Voir les permissions actuelles."
+
+msgid "Edit the current permissions for a specific user"
+msgstr "Modifier les permissions actuelles pour un utilisateur spécifique."
+
+msgid ""
+"Allow the landmines game to take place here.\n"
+"\n"
+"This means that messages sent here will award points, and mines can be "
+"stpped on here."
+msgstr ""
+"Autorisez le jeu landmines à se dérouler ici. \n"
+"\n"
+"Cela signifie que les messages envoyés ici vous rapporteront des points et "
+"que les mines peuvent être posées ici."
+
+msgid ""
+"Allow landmines commands to be ran in this channel.\n"
+"\n"
+"This is useful to limit defuses, stats and more to a selected channel."
+msgstr ""
+"Autoriser l'exécution des commandes de landmines dans ce canal. \n"
+"\n"
+"Ceci est utile pour limiter les désamorçages, les statistiques et plus "
+"encore à un canal sélectionné."
+
+msgid "Set your preference on whether replies from the bot should ping you"
+msgstr "Indiquez si vous préférez que les réponses du bot vous mentionnent."
+
+msgid ""
+"Change/view your own language.\n"
+"\n"
+"Specify your language as a 2/5 letters code. For example, if you live in "
+"France, you'd use fr or fr_FR.\n"
+"In Québec, you could use fr_CA.\n"
+"\n"
+"Some messages will use your preferred language, usually when the bot "
+"communicates with you in DM."
+msgstr ""
+"Changez/visualisez votre propre langue.\n"
+"\n"
+"Précisez votre langue sous forme de code de 2 ou 5 lettres. Par exemple, si "
+"vous vivez en France, vous utiliserez fr ou fr_FR.\n"
+"Au Québec, vous pourriez utiliser fr_CA.\n"
+"\n"
+"Certains messages utiliseront votre langue préférée, généralement lorsque le "
+"bot communique avec vous en privé.        "
+
+msgid "Buy items here"
+msgstr "Achète des objets ici."
+
+msgid "Adds a bullet to your current magazine. [7 exp]"
+msgstr "Ajoute une balle dans ton chargeur actuel. [7 exp]"
+
+msgid "Adds a magazine in your backpack. [13 exp]"
+msgstr "Ajoute un chargeur dans ton sac à dos. [13 exp]"
+
+msgid ""
+"Buy AP ammo to double the damage you do to super ducks. [15 exp/24 hrs]"
+msgstr ""
+"Achète des munitions AP (Pénétrant les Armures) pour doubler les dégâts que "
+"tu fais aux super canards pendant 24 heures. [15 exp/24 h]"
+
+msgid ""
+"Buy Explosive ammo to TRIPLE the damage you do to super ducks. [25 exp/24 "
+"hrs]"
+msgstr ""
+"Achète des munitions explosives pour TRIPLEZ les dégâts que tu fais aux "
+"super canards. [25 exp/24 h]"
+
+msgid "Buy back your weapon from the police if it was confiscated. [30 exp]"
+msgstr "Rachète ton arme à la police si elle a été confisquée. [30 exp]"
+
+msgid "Add some grease in your weapon to prevent jamming. [8 exp/24 hrs]"
+msgstr ""
+"Ajoute de la graisse dans ton arme pour l'empêcher de s'enrayer. [8 exp/24 "
+"h]"
+
+msgid "Add a sight to your weapon to improve accuracy. [6 exp/12 shots]"
+msgstr ""
+"Ajoute un viseur à ton arme pour améliorer la précision. [6 exp/12 coups]"
+
+msgid ""
+"Add an infrared detector to your weapon. Save bullets and shots. [15 exp/6 "
+"shots]"
+msgstr ""
+"Ajoute un détecteur infrarouge à ton arme. Économise des balles et coup de "
+"feu. [15 exp/24 h]"
+
+msgid ""
+"Add a silencer to your weapon to prevent scaring ducks. [5 exp/24* hrs]"
+msgstr ""
+"Ajoute un silencieux à ton arme pour éviter d'effrayer les canards. [5 exp/"
+"24 h]"
+
+msgid ""
+"Buy a 4-Leaf clover to get more exp for every duck you kill :). [13 exp/24 "
+"hrs]\n"
+"\n"
+"You can always buy a new clover during the florist event, but the price will "
+"be doubled if you had a clover already."
+msgstr ""
+"Achète un trèfle à 4 feuilles pour recevoir plus d'exp pour chaque canard "
+"que tu tues :). [13 exp/24 hrs]\n"
+"\n"
+"Tu peux acheter en permanence un nouveau trèfle pendant l'évènement du "
+"fleuriste, mais le prix sera doublé si tu as déjà un trèfle."
+
+msgid "Protects from mirror-induced glare. [5 exp/24 hrs]"
+msgstr "Te protège des éblouissements provoqués par les miroirs. [5 exp/24 h]"
+
+msgid "A new set of clothes. Useful if you are wet. [7 exp]"
+msgstr "Une nouvelle tenue vestimentaire. Utile si tu es mouillé. [7 exp]"
+
+msgid "Clean your gun, removing sabotage and sand. [7 exp]"
+msgstr ""
+"Nettoie ton arme, en enlevant le sable et contrant le sabotage. [7 exp]"
+
+msgid "Dazzle another hunter using the power of sunlight. [7 exp]"
+msgstr ""
+"Éblouis un autre chasseur en utilisant la grande puissance de la lumière du "
+"soleil. [7 exp]"
+
+msgid ""
+"Throw sand into another player weapon.\n"
+"This will increase their jamming chances for their next shot. [7 exp]"
+msgstr ""
+"Jette du sable dans l'arme d'un autre joueur.\n"
+"Cela augmentera les chances d'enrayer son arme lors de son prochain tir. [7 "
+"exp]"
+
+msgid ""
+"Throw a bucket of water on the hunter of your choice,\n"
+"forcing them to wait 1h for their clothes to dry before hunting again. [10 "
+"exp/1* hrs]"
+msgstr ""
+"Jette un seau d'eau sur le chasseur de ton choix,\n"
+"l'obligeant à attendre 1h pour que son vêtement sèche avant de pouvoir "
+"recommencer à chasser. [10 exp/1* h]"
+
+msgid ""
+"Sabotage the weapon of another player.\n"
+"Their gun will jam and explode in their face the next time they press the "
+"trigger. [14* exp]"
+msgstr ""
+"Sabote l'arme d'un autre joueur.\n"
+"Son arme se bloquera et lui explosera au visage la prochaine fois qu'il "
+"appuiera sur la gâchette. [14* exp]"
+
+msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
+msgstr ""
+"Place un leurre pour faire apparaître un canard dans les 10 minutes qui "
+"suivent. [8 exp]"
+
+msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
+msgstr "Fais apparaître un faux canard dans exactement 90 secondes. [15 exp]"
+
+msgid ""
+"Protect yourself from water. If you are already wet, it also can be used as "
+"a change. [15 exp/24 hrs]"
+msgstr ""
+"Protège-toi de l'eau. Si tu es déjà mouillé, cela peut aussi être utilisé "
+"comme habits de rechange. [15 exp/24 h]"
+
+msgid ""
+"Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
+msgstr ""
+"Évite les sanctions si tu tues accidentellement un autre chasseur. [15 exp/"
+"24 h]"
+
+msgid ""
+"Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
+msgstr ""
+"Recharge automatiquement ton arme chaque fois que c'est nécessaire. [35 exp/"
+"24 h]"
+
+msgid ""
+"Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
+msgstr ""
+"Ne rate plus jamais un seul tir avec les balles autodirigées. [150 exp/Durée "
+"limitée]"
+
+msgid ""
+"Check that the bot is online, give the latency between the bot and Discord "
+"servers."
+msgstr ""
+"Vérifie que le bot est en ligne, et donne la latence entre le bot et les "
+"serveurs de Discord."
+
+msgid "Returns the wiki URL"
+msgstr "Obtiens l'URL du wiki."
+
+msgid "Get the URL to invite the bot"
+msgstr "Obtiens l'URL pour inviter le bot."
+
+msgid "Get a discord invite to the support server."
+msgstr "Obtiens une invitation vers le serveur de support."
+
+msgid ""
+"Get the time when you'll get free magazines and your weapon back from the "
+"police"
+msgstr ""
+"Obtiens le temps qu'il reste avant de récupérer gratuitement tes chargeurs "
+"et ton arme auprès de la police."
+
+msgid "Get the bot prefixes"
+msgstr "Obtiens les préfixes actuels du bot."
+
+msgid "Thanks to those fine people who (helped) make the bot"
+msgstr "Merci à ces personnes qui ont aidé à faire le bot !"
+
+msgid "Thanks to those fine people who (helped) translate the bot"
+msgstr "Merci à ces personnes qui ont aidé à traduire le bot !"
+
+msgid "For when you misspell the pan command."
+msgstr "Pour quand tu écris mal la commande pan."
+
+msgid "For when you misspell the reload command."
+msgstr "Pour quand tu écris mal la commande reload."
+
+msgid "I only get one eye"
+msgstr "Je n'ai qu'un seul œil"
+
+msgid "Who doesn't need eyes"
+msgstr "Qui n'a pas besoin d'yeux"
+
+msgid "I hav long nek"
+msgstr "J'ai un long cou"
+
+msgid "It's impossible."
+msgstr "C'est impossible."
+
+msgid "Who doesn't need cows ?"
+msgstr "Qui n'a pas besoin de vaches ?"
+
+msgid "When you don't have eyes"
+msgstr "Pour quand tu n'as pas d'yeux"
+
+msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr "Je pense que ça dit juste ¯\\_(ツ)_/¯"
+
+msgid "When you need some good laughs"
+msgstr "Pour quand tu as besoin de te marrer"
+
+msgid ""
+"See the current global event.\n"
+"\n"
+"Events are rolled by the bot at the start of each hour, and last for one "
+"full hour.\n"
+"Many events exist, and you will want to take advantage of seeing them, as "
+"they can bring you luck, money or even\n"
+"better : EXPERIENCE !"
+msgstr ""
+"Voir l'événement global actuel.\n"
+"\n"
+"Les événements sont choisis par le bot au début de chaque heure et durent "
+"une heure entière.\n"
+"Il existe de nombreux événements, qui peuvent t'apporter beaucoup : de la "
+"chance, de l'argent ou même mieux, de l'EXPÉRIENCE !"
+
+msgid "This returns the current bot time."
+msgstr "Renvoie l'heure actuelle du bot."
+
+msgid "Get some quickstats about yourself (or someone else)."
+msgstr ""
+"Obtiens des statistiques rapides sur toi-même (ou sur quelqu'un d'autre)."
+
+msgid "Get shooting stats (for you or someone else)."
+msgstr ""
+"Obtiens des statistiques sur tes tirs (pour toi ou quelqu'un d'autre)."
+
+msgid "Get best times to kill of ducks (for you or someone else)."
+msgstr ""
+"Obtiens les meilleurs temps pour tuer des canards (pour toi ou quelqu'un "
+"d'autre)."
+
+msgid "Get number of each type of duck killed (for you or someone else)."
+msgstr ""
+"Obtiens le nombre de chaque type de canard tué (pour toi ou quelqu'un "
+"d'autre)."
+
+msgid "Get number of each type of duck hugged (for you or someone else)."
+msgstr ""
+"Obtiens le numéro de chaque type de canard câliné (pour toi ou quelqu'un "
+"d'autre)."
+
+msgid "Get number of each type of duck hurt (for you or someone else)."
+msgstr ""
+"Obtiens le nombre de chaque type de canard blessé (par toi ou quelqu'un "
+"d'autre)."
+
+msgid ""
+"Get number of each type of duck that resisted a shot (for you or someone "
+"else)."
+msgstr ""
+"Obtiens le nombre de chaque type de canard qui a résisté à un tir (par toi "
+"ou quelqu'un d'autre)."
+
+msgid ""
+"Get number of each type of duck that fled following a shot (for you or "
+"someone else)."
+msgstr ""
+"Obtiens le nombre de chaque type de canard qui s'est enfui après un tir (par "
+"toi ou quelqu'un d'autre)."
+
+msgid "Show your/someone else achievements in the channel"
+msgstr "Montre tes succès ou ceux de quelqu'un d'autre dans le salon."
+
+msgid "Send some of your experience to another player."
+msgstr "Envois une partie de ton expérience à un autre joueur."
+
+msgid "Give some experience to another player. This is a cheat."
+msgstr "Donnes de l'expérience à un autre joueur. C'est de la triche."
+
+msgid "Who's the best ?"
+msgstr "Qui est le meilleur ?"
+
+msgid ""
+"Delete scores for a specific user from the channel. The target can be an ID "
+"or a mention.\n"
+"\n"
+"Use an ID if the user you want to remove has since left the server.\n"
+"Data will not be recoverable, and there is no confirmation dialog. Type with "
+"caution.\n"
+"\n"
+"If you need a backup of the user data, you can use the DuckHunt API to "
+"download the scores and statistics."
+msgstr ""
+"Supprimer les scores d'un utilisateur spécifique du salon. La cible peut "
+"être un identifiant ou une mention.\n"
+"\n"
+"Utilisez un identifiant si l'utilisateur que vous voulez supprimer a depuis "
+"quitté le serveur.\n"
+"Les données ne seront pas récupérables et il n'y a pas de boîte de dialogue "
+"de confirmation. Tapez avec précaution.\n"
+"\n"
+"Si vous avez besoin d'une sauvegarde des données de l'utilisateur, vous "
+"pouvez utiliser l'API de DuckHunt pour télécharger les scores et les "
+"statistiques."
+
+msgid ""
+"Delete scores for all users on this channel or on the specified channel ID.\n"
+"\n"
+"Data will not be recoverable, and there is no confirmation dialog. Type with "
+"caution.\n"
+"This command will execute on the *current channel* if no ID is provided.\n"
+"If you pass an ID, the bot will check whether the channel still exist. If it "
+"does, it'll refuse to delete to\n"
+"prevent mistakes. You'll have to run the command in the correct channel. If "
+"it doesn't, but the channel was in\n"
+"the same guild/server, scores will be deleted.\n"
+"\n"
+"If you need a backup of the channel data, you can use the DuckHunt API to "
+"download the scores and statistics for\n"
+"everyone who ever played.\n"
+"\n"
+"Note that the channel itself wont be deleted, only the scores are."
+msgstr ""
+"Supprime les scores de tous les utilisateurs sur ce canal ou sur l'ID de "
+"canal spécifié.\n"
+"\n"
+"Les données ne seront pas récupérables, et il n'y a pas de dialogue de "
+"confirmation. A utiliser avec précaution.\n"
+"Cette commande sera exécutée sur le *canal actuel* si aucun ID n'est fourni.\n"
+"Si vous passez un ID, le bot va vérifier si le canal existe toujours. Si "
+"c'est le cas, il refusera de le supprimer pour éviter les erreurs. Vous "
+"devrez exécuter la commande dans le bon canal. Si ce n'est pas le cas, mais "
+"que le canal était dans la même guilde/serveur les scores seront supprimés.\n"
+"\n"
+"Si vous avez besoin d'une sauvegarde des données du canal, vous pouvez "
+"utiliser l'API de DuckHunt pour télécharger les scores et les statistiques "
+"de tous les joueurs qui ont joué. \n"
+"\n"
+"Notez que le canal lui-même ne sera pas supprimé, seuls les scores le seront."
+""
+
+msgid "Check the status of every shard the bot is hosting."
+msgstr "Vérifiez l'état de chaque shard que le bot héberge."
+
+msgid ""
+"Shows a paginator with the most used commands on the bot. This is the poor "
+"version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+"Affiche un paginateur avec les commandes les plus utilisées sur le bot. "
+"C'est la version un peu simpliste pour analyser l'utilisation du bot.\n"
+"Les compteurs sont remis à zéro à chaque redémarrage du bot."
+
+msgid ""
+"Shows a paginator with the users that have used the bot the most. This is "
+"again the poor version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+"Affiche un paginateur avec les utilisateurs ayant utilisé le plus le bot. "
+"C'est la version un peu simpliste pour analyser l'utilisation du bot. \n"
+"Les compteurs sont remis à zéro à chaque redémarrage du bot."
+
+msgid ""
+"Show a given tag based on the name.\n"
+"\n"
+"The command accept tags names or aliases, and will display then in a nice "
+"paginator, directly in discord.\n"
+"You can click the link in the title to read the tag online if you prefer.\n"
+"\n"
+"You can add mentions at the end of your message to allow others to control "
+"the tag pagination too."
+msgstr ""
+"Affiche un tag en fonction de son nom.\n"
+"\n"
+"Cette commande accepte des noms de tags ou des alias, et affichera un joli "
+"paginateur, directement dans Discord.\n"
+"Tu peux cliquer sur le titre pour lire le tag en ligne, si tu préfères.\n"
+"\n"
+"Tu peux ajouter des mentions a la fin de ton message pour autoriser ces "
+"utilisateurs a utiliser la pagination."
+
+msgid "Commands to interact with tags : creations, editions, deletions, ..."
+msgstr ""
+"Commandes pour interagir avec les tags : création, éditions, suppressions, .."
+"."
+
+msgid ""
+"Create a new tag. The tag name must not be an existing tag or tag alias."
+msgstr ""
+"Crée un nouveau tag. Le nom ne doit ni exister en tant qu'alias ou en tant "
+"que tag propre."
+
+msgid ""
+"Alias an existing tag to a new name.\n"
+"This is useful to give the same tag multiple names, and be able to edit them "
+"in sync."
+msgstr ""
+"Alias un tag existant à un nouveau nom.\n"
+"Ceci est utile pour donner plusieurs noms à un même tag et pouvoir les "
+"éditer de manière synchronisée."
+
+msgid "Edit an existing tag, changing the text."
+msgstr "Édite un tag existant, en changeant son texte."
+
+msgid "Delete an existing tag."
+msgstr "Supprime un tag."
+
+msgid "List all the existing tags."
+msgstr "Liste de tous les tags existants."
+
+msgid ""
+"View the raw version of the tag, with markdown escaped. This is useful to "
+"use as a base for editing a tag."
+msgstr ""
+"Affichez la version brute d'un tag, avec le markdown échappé. Cette version "
+"est utile pour servir de base à l'édition d'un tag."
+
+msgid "Voting"
+msgstr "Votes"
+
+msgid "Please wait while I check where you can vote..."
+msgstr "Veuillez patienter pendant que je vérifie si vous pouvez voter..."
+
+msgid "You can vote !"
+msgstr "Vous pouvez voter !"
+
+msgid "Thanks for supporting the bot by voting !"
+msgstr "Merci de soutenir le bot en votant !"
+
+msgid "You might be able to vote !"
+msgstr "Vous pourrez peut-être voter !"
+
+msgid ""
+"Thanks for supporting the bot by voting as much as you can. It makes a "
+"difference !"
+msgstr ""
+"Merci de soutenir le bot en votant autant que vous le pouvez. Cela fait une "
+"vraie différence !"
+
+msgid "Oh no! No bot list is currently available for you to vote."
+msgstr ""
+"Oh non ! Aucune liste de bot n'est actuellement disponible pour que vous "
+"puissiez voter..."
+
+msgid "There is nowhere for you to vote at the time !"
+msgstr "Vous ne pouvez voter nulle part pour l'instant !"
+
+msgid ""
+"Thanks for supporting the bot. It makes a difference! \n"
+"Unfortunately, you voted everywhere you could for now, but you can check "
+"back in a few hours."
+msgstr ""
+"Merci de soutenir le bot. Cela fait une différence ! \n"
+"Malheureusement, vous avez voté partout où vous pouviez pour l'instant, mais "
+"vous pourrez revenir dans quelques heures."
+
+msgid "Click me to vote"
+msgstr "Cliquez ici pour voter"
+
+msgid "You can vote on {bl_name}"
+msgstr "Vous pouvez voter sur {bl_name}"
+
+msgid "You might be able to vote on {bl_name}"
+msgstr "Vous pouvez peut-être voter sur {bl_name}"
+
+msgid "🔫 Bang"
+msgstr "🔫 Tirer"
+
+msgid "🤗 Hug"
+msgstr "🤗 Câliner"
+
+msgid "♻️ Reload"
+msgstr "♻️ Recharger"
+
+msgid "Buy a magazine"
+msgstr "Acheter un chargeur"
+
+msgid "Buy a bullet"
+msgstr "Acheter une balle"
+
+msgid "🍀 Buy a clover"
+msgstr "🍀 Acheter un trèfle"
+
+msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
+msgstr "{monitored_player.mention}, RPG cooldown: **{name}** expiré."
+
+msgid "Here's the invite you requested {invite}"
+msgstr "Voici l'invitation que vous avez demandée : {invite}"
+
+msgid ""
+"{rpg_role.mention}, you might want to click the reaction above/do what the "
+"bot says."
+msgstr ""
+"{rpg_role.mention}, cliquez sur la réaction au dessus ou faites ce que le "
+"bot demande."
+
+msgid "Hunting"
+msgstr "Chasse"
+
+msgid ""
+"The bot is still starting up, please wait a minute and retry. Ducks haven't "
+"been lost."
+msgstr ""
+"Le bot est encore en train de démarrer, veuillez attendre une minute et "
+"réessayez. Les canards n'ont pas été perdus."
+
+msgid ""
+"☠️ It's a little cold in there... Maybe because **you are DEAD**! Have you "
+"tried eating BRAINS? `{ctx.prefix}revive`..."
+msgstr ""
+"☠️ Il fait un peu froid là-dedans... Peut-être parce que **vous êtes MORT** "
+"! Avez-vous essayé de manger des cerveaux ? `{ctx.prefix}revive`..."
+
+msgid ""
+"🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) "
+"or something, or buy new ones (`{ctx.prefix}shop clothes`)"
+msgstr ""
+"🚰 Désolé... Tes vêtements sont mouillés, sèche-les (Encore "
+"**{time_delta}**) ou achète-en de nouveaux (`{ctx.prefix}shop clothes`)"
+
+msgid ""
+"⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx."
+"prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
+msgstr ""
+"⛔️ Désolé... Ton arme a été confisquée. Attends la fin de la procédure "
+"(`{ctx.prefix}freetime`), ou achète-en une nouvelle dans le magasin (`{ctx."
+"prefix}shop weapon`)"
+
+msgid ""
+"☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"
+msgstr ""
+"☁️ Ton arme est enrayée. Recharge-la pour la nettoyer ! (`{ctx."
+"prefix}reload`)"
+
+msgid ""
+"🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: "
+"0/{max_magazines} [**Autoreload failed**]"
+msgstr ""
+"🦉 Sac à dos vide ! Achète des chargeurs| **Balles** : 0/{max_bullets} | "
+"Chargeurs: 0/{max_magazines} [**Échec du rechargement automatique**]"
+
+msgid ""
+"🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | "
+"Magazines: {current_magazines}/{max_magazines}"
+msgstr ""
+"🦉 Chargeur vide ! Recharge ou achète des balles ! | **Balles** : 0/"
+"{max_bullets} | Chargeurs : {current_magazines}/{max_magazines}"
+
+msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
+msgstr ""
+"💥 Ton arme s'est enrayée. Recharge-la et pense à acheter de la graisse pour "
+"la prochaine fois."
+
+msgid ""
+"✨ You take the new homing bullets outside of their packaging, place them in "
+"your weapon and shoot with your eyes closed..."
+msgstr ""
+"✨ Tu sors les nouvelles balles à tête chercheuse de leur emballage, tu les "
+"places dans ton arme et tires les yeux fermés..."
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. Your licence to kill saved your "
+"experience. [**MISSED**: -2 exp]"
+msgstr ""
+"... Et la balle a volé droit dans votre visage, vous tuant sur le coup. Vous "
+"devez adresser vos réclamations au CCCCC. Votre permis de tuer a sauvé votre "
+"expérience. [**LOUPÉ** : -2 exp]"
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. At least, you had a ~~kill~~ "
+"suicide licence. [**MISSED**: -2 exp]"
+msgstr ""
+"... Et la balle vole directement dans ton visage, te tuant instantanément. "
+"Tu devrais envoyer tes plaintes au CCCCC (Comité Contre le Comité Contre les "
+"Canards). Au moins, tu avais un permis de ~~tuer~~ suicide. [**RATÉ** : -2 "
+"exp]"
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. [**WEAPON "
+"CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
+msgstr ""
+"... Et la balle a volé directement dans ton visage, te tuant instantanément. "
+"Tu devrais envoyer tes plaintes au CCCCC (Comité Contre le Comité Contre les "
+"Canards).. [**ARME CONFISQUEE**] [**RATÉ** : -2 exp] [**MEURTRE** : -15 exp]"
+
+msgid ""
+"🔫 You missed the duck... And *almost* shot {player_name} in the head, "
+"missing them by a few hairs. Their orange coat saved them. [**MISSED**: -2 "
+"exp]"
+msgstr ""
+"🔫 Tu as raté le canard... Et *quasiment* tiré sur {player_name}, le loupant "
+"d'un cheveu. Son manteau orange l'a sauvé. [**RATÉ** : -2 exp]"
+
+msgid ""
+"🔫 You took your weapon out, aimed it towards {player_name} head, but they "
+"had a pink coat just like yours. Using the power of love, you missed them on "
+"purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]"
+msgstr ""
+"🔫 Tu as sorti ton arme, visé la tête de {player_name} mais il avait un "
+"manteau rose comme le tiens. Par le pouvoir de l'amour, tu tires a côté, "
+"touchant l'arbre de l'amour 🌳 à la place. [**RATÉ** : -2 exp]"
+
+msgid ""
+"🔫 You missed the duck... And you saw your bullet go towards {player_name} "
+"head, but they had a pink coat just like yours. Just like in the movies, by "
+"using the power of love, you made the bullet hit the love tree 🌳 instead. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+"🔫 Tu as raté le canard... Et vu ta balle se diriger vers la tête de "
+"{player_name}, mais il avait un manteau rose comme le tiens. Comme dans les "
+"films, par le pouvoir de l'amour, tu as fait en sorte que la balle touche "
+"l'arbre de l'amour 🌳 à la place. [**RATÉ** : -2 exp]"
+
+msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr "🔫 Vous êtes mort. [**ARME CONFISQUÉE**][**MEURTRE** : -15 exp]"
+
+msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr "🔫 Tu t'es suicidé. [**ARME CONFISQUÉE**] [**MEURTRE** : -15 exp]"
+
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, "
+"and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Tu sors ton arme, tu la pointes directement sur la tête de {player_name} "
+"et tu appuies sur la détente. [**ARME CONFISQUÉE**] [**MEURTRE** : -15 exp]"
+
+msgid "🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Vous êtes mort. [**MANTEAU ROUGE** : Arme conservée][**MEURTRE** : -15 "
+"exp]"
+
+msgid ""
+"🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Tu t'es suicidé. [**MANTEAU ROUGE**: Arme conservée] [**MEURTRE** : -15 "
+"exp]"
+
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, "
+"and pulled the trigger. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Tu sors ton arme, tu la pointes directement sur la tête de {player_name} "
+"et tu appuies sur la détente. [**MANTEAU ROUGE**: Arme conservée] "
+"[**MEURTRE** : -15 exp]"
+
+msgid ""
+"🔫 You missed the duck... And shot yourself in the head. You died. You are "
+"legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]"
+msgstr ""
+"🔫 Tu as raté le canard... Et tu t'es tiré une balle dans la tête. Tu es "
+"mort. Tu es légalement autorisé à ~~tuer~~ te suicider. [**RATÉ** : -2 exp]"
+
+msgid ""
+"🔫 You missed the duck... And shot {player_name} in the head, killing them "
+"on the spot. You are legally allowed to kill people. [**MISSED**: -2 exp]"
+msgstr ""
+"🔫 Tu as manqué le canard... Et tiré sur {player_name} dans la tête, le "
+"tuant sur le coup. Vous êtes légalement autorisé à tuer des gens. [**RATÉ** :"
+" -2 exp]"
+
+msgid ""
+"🔫 You missed the duck... And shot yourself in the head, dying instantly. "
+"[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Tu as raté le canard... Et tu t'es tiré une balle dans la tête. Tiens ton "
+"arme à l'endroit la prochaine fois. [**ARME CONFISQUÉE**] [**RATÉ** : -2 "
+"exp] [**ACCIDENT DE CHASSE** : -15 exp]"
+
+msgid ""
+"🔫 You missed the duck... And shot {player_name} in the head, killing them "
+"on the spot. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 "
+"exp]"
+msgstr ""
+"🔫 Tu as manqué le canard... Et tiré sur {player_name} dans la tête, le "
+"tuant sur le coup. [**ARME CONFISQUÉE**] [**RATÉ** : -2 exp] [**MEURTRE** : -"
+"15 exp]"
+
+msgid ""
+"🌲 What did you try to aim at ? I guess you shot that tree, over here. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+"🌲 Mais qu'est-ce que tu vises ? Je crois que tu as tiré sur cet arbre, là "
+"bas. [**RATÉ** : -2 exp]"
+
+msgid ""
+"🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector "
+"stopped the shot."
+msgstr ""
+"🕵️ Houla ! Calme-toi, il n'y a pas de canard ici. Ton détecteur infrarouge "
+"a arrêté le tir."
+
+msgid ""
+"❓️ What are you trying to kill exactly ? There are no ducks here. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+"❓️ Qu'essayes-tu de tuer exactement ? Il n'y a pas de canards ici. [**RATÉ** "
+": -2 exp]"
+
+msgid ""
+"Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
+"(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
+"weapon`)"
+msgstr ""
+"Euh... Tu n'as pas d'arme, elle a été confisquée. Attends le rechargement "
+"(`{ctx.prefix}freetime`), ou rachète-la dans le magasin (`{ctx.prefix}shop "
+"weapon`)"
+
+msgid "☀️️ You unjam your weapon !"
+msgstr "☀️️ Tu débloques ton arme !"
+
+msgid ""
+"🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
+"Magazines: {current_magazines}/{max_magazines} "
+msgstr ""
+"🦉 Tu as rechargé ton arme. | Balles : {current_bullets}/{max_bullets} | "
+"Chargeurs : {current_magazines}/{max_magazines} "
+
+msgid ""
+"🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/"
+"{max_bullets} | Magazines: {current_magazines}/{max_magazines} "
+msgstr ""
+"🦉 Tu n'as pas besoin de recharger ton arme | **Balles** : {current_bullets}/"
+"{max_bullets} | Chargeurs : {current_magazines}/{max_magazines} "
+
+msgid ""
+"🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: "
+"{current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/"
+"{max_magazines} "
+msgstr ""
+"🦉 Tu n'as pas de chargeurs. `{ctx.prefix}shop magazine` | Balles : "
+"{current_bullets}/{max_bullets} | **Chargeurs** : {current_magazines}/"
+"{max_magazines} "
+
+msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself"
+msgstr ""
+"☠️ Tu es un peu trop mort pour faire un câlin, essaye de te `{ctx."
+"prefix}revive` !"
+
+msgid "tree"
+msgstr "arbre"
+
+msgid "❌ I have no idea what you want to hug..."
+msgstr "❌ Je n'ai aucune idée de ce que tu veux câliner..."
+
+msgid "🌳 You hugged the tree... Thanks!"
+msgstr "🌳 Tu as câliné un arbre... Il te remercie !"
+
+msgid ""
+"{you_mention} hugged {target_mention}. The developer of the bot is really "
+"happy that you love it."
+msgstr ""
+"{you_mention} a pris {target_mention} dans ses bras. Le développeur du bot "
+"est vraiment heureux que vous l'aimiez."
+
+msgid ""
+"{you_mention} hugged {target_mention}. They hate you even more for hugging "
+"them. Don't know why tho... Try shooting them in the face."
+msgstr ""
+"{you_mention} a pris {target_mention} dans ses bras. Ils vous détestent "
+"encore plus à cause de ça. Je ne sais pas pourquoi... Essayez de lui tirer "
+"une balle dans la tête."
+
+msgid "{you_mention} hugged {target_mention}. They feel loved."
+msgstr ""
+"{you_mention} a pris {target_mention} dans ses bras. Comme c'est beau ❤️."
+
+msgid "You hugged a tree, Wizzz?!"
+msgstr "Tu as câliné un arbre, Wizzz?!"
+
+msgid "What are you trying to hug, exactly? A tree?"
+msgstr "Qu'essayes-tu de câliner, exactement ? Un arbre ?"
+
+msgid "You are already alive and well."
+msgstr "Tu es déjà vivant..."
+
+msgid "You eat {brains} 🧠 and regain consciousness."
+msgstr "Vous mangez {brains} 🧠 et reprenez conscience."
+
+msgid "Admin: Spawning"
+msgstr "Admin : Apparition"
+
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
+"spawn today."
+msgstr ""
+"{ducks_spawned_count} canards sont déjà arrivés dans le salon, il reste "
+"{ducks_left} canards dans la journée."
+
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to "
+"spawn during the day and {ducks_night} during the night."
+msgstr ""
+"{ducks_spawned_count} canards sont déjà dans le salon, il reste {ducks_day} "
+"canards a faire apparaitre \"de jour\" et {ducks_night} canards \"de nuit\"."
+
+msgid "Here's the list of ducks spawned :"
+msgstr "Voici la liste des canards qui sont apparus :"
+
+msgid ""
+"{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}."
+""
+msgstr ""
+"{duck.category} ({duck.lives_left} vies sur {duck_lives}), apparu "
+"{time_delta}."
+
+msgid "{ducks_spawned_count} ducks removed."
+msgstr "{ducks_spawned_count} canards supprimés."
+
+msgid "Support team: emergencies"
+msgstr "Support : urgences"
+
+msgid ""
+"There was an error converting one of your arguments with {exception."
+"converter}. The correct syntax would be `{command_invoke_help}`. The "
+"converter returned the following error: {original}"
+msgstr ""
+"Une erreur s'est produite lors de la conversion de l'un de vos arguments "
+"avec {exception.converter}. La syntaxe correcte pour cette commande est "
+"`{command_invoke_help}`. Le convertisseur a renvoyé l'erreur suivante: "
+"{original}"
+
+msgid ""
+"This command is missing an argument. The correct syntax would be "
+"`{command_invoke_help}`."
+msgstr ""
+"Il manque un argument à cette commande. La syntaxe correcte pour cette "
+"commande est `{command_invoke_help}`."
+
+msgid ""
+"Too many quotes were provided in your message: don't forget to escape your "
+"quotes like this `\\{exception.quote}`. The correct syntax for the command "
+"is `{command_invoke_help}`."
+msgstr ""
+"Trop de guillemets ont été fournis dans votre message. Pensez à échapper vos "
+"guillemets en les tapant comme ceci : `\\{exception.quote}`. La syntaxe "
+"correcte pour cette commande est `{command_invoke_help}`."
+
+msgid ""
+"A space was expected after a closing quote, but I found {exception.char}. "
+"Please check that you are using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Un espace était attendu après un guillemet fermant, mais j'ai trouvé "
+"{exception.char}. Veuillez vérifier que vous utilisez la syntaxe correcte: "
+"`{command_invoke_help}`."
+
+msgid ""
+"A closing quote was expected, but wasn't found. Don't forget to close your "
+"quotes with `{exception.close_quote}` at the end of your argument. Please "
+"check that you are using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Un guillemet était attendu, mais n'a pas été trouvé. N'oubliez pas de fermer "
+"vos guillemets avec `{exception.close_quote}` à la fin de vos arguments. "
+"Veuillez vérifier que vous utilisez la syntaxe correcte: "
+"`{command_invoke_help}`."
+
+msgid ""
+"Too many arguments were passed in this command. Please check that you are "
+"using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Trop d'arguments ont été passés dans cette commande. Veuillez vérifier que "
+"vous utilisez la syntaxe correcte: `{command_invoke_help}`."
+
+msgid ""
+"The way you are invoking this command is confusing me. The correct syntax "
+"would be `{command_invoke_help}`."
+msgstr ""
+"La façon dont vous invoquez cette commande me déroute. La syntaxe correcte "
+"est `{command_invoke_help}`."
+
+msgid ""
+"An argument passed was incorrect. `{exception}`. Please check that you are "
+"using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Un argument passé était incorrect. `{exception}`. La syntaxe correcte pour "
+"cette commande est `{command_invoke_help}`."
+
+msgid ""
+"{exception} Please check that you are using the correct syntax: "
+"`{command_invoke_help}`."
+msgstr ""
+"{exception} Veuillez vérifier que vous utilisez la syntaxe correcte: "
+"`{command_invoke_help}`."
+
+msgid "This command can only be used in a private message."
+msgstr ""
+"Cette commande ne peut être utilisée que dans une conversation privée."
+
+msgid "This command cannot be used in a private message."
+msgstr ""
+"Cette commande ne peut pas être utilisée dans une conversation privée."
+
+msgid ""
+"Multiple errors were encountered when running your command: {exception."
+"errors}"
+msgstr ""
+"Plusieurs erreurs ont été rencontrées lors de l'exécution de votre commande: "
+"{exception.errors}"
+
+msgid "You need to be the owner of the bot to run that."
+msgstr "Vous devez être le propriétaire du bot pour exécuter cette commande."
+
+msgid "You need to be in a NSFW channel to run that."
+msgstr "Vous devez être dans un salon NSFW pour exécuter cette commande."
+
+msgid ""
+"You need to be in the {correct_guild.name} server (`{exception."
+"must_be_in_guild_id}`)."
+msgstr ""
+"Vous devez être sur le serveur {correct_guild.name} (`{exception."
+"must_be_in_guild_id}`)."
+
+msgid "You need to be in a server with ID {exception.must_be_in_guild_id}."
+msgstr ""
+"Vous devez être sur un serveur avec l'ID {exception.must_be_in_guild_id}."
+
+msgid ""
+"You need to be in the {correct_channel.name} channel (`{exception."
+"must_be_in_channel_id}`)."
+msgstr ""
+"Vous devez être sur le canal {correct_channel.name} (`{exception."
+"must_be_in_channel_id}`)."
+
+msgid "You need to be in a channel with ID {exception.must_be_in_channel_id}."
+msgstr ""
+"Vous devez être dans un canal avec l'ID {exception.must_be_in_channel_id}."
+
+msgid ""
+"You don't have enough experience to enjoy this item. You'd need at least "
+"{exception.needed} exp, but you only have {exception.having}."
+msgstr ""
+"Tu n'as pas assez d'expérience pour acheter cet objet. Tu aurais besoin d'au "
+"moins {exception.needed} exp, mais tu n'as que {exception.having} exp."
+
+msgid ""
+"Your access level is too low : you have an access level of {exception."
+"current_access.name}, and you need at least {exception.required_access.name}."
+""
+msgstr ""
+"Votre niveau d'accès est trop faible : vous avez un niveau d'accès de "
+"{exception.current_access.name}, et vous avez besoin d'au moins {exception."
+"required_access.name}."
+
+msgid ""
+"The game isn't running on this channel. Admins can disable this message by "
+"running `dh!settings channel_disabled_message False`, or can enable the "
+"channel with `dh!settings enabled True`."
+msgstr ""
+"Le jeu n'est pas actif sur ce canal. Les administrateurs peuvent désactiver "
+"ce message avec `dh!settings channel_disabled_message False`, ou démarrer le "
+"jeu avec `dh!settings enabled True`."
+
+msgid ""
+"Landmines commands cannot be ran on this channel. Admins can disable this "
+"message by running `dh!settings channel_disabled_message False`, or can "
+"enable the channel with `dh!settings landmines_commands_enabled True`."
+msgstr ""
+"Les commandes de mines ne peuvent pas être exécutées sur ce canal. Les "
+"administrateurs peuvent désactiver ce message en tapant `dh!settings "
+"channel_disabled_message False`, ou peuvent activer le canal avec "
+"`dh!settings landmines_commands_enabled True`."
+
+msgid "Check error running this command: {err_data}"
+msgstr "Vérifiez l'erreur en exécutant cette commande : {err_data}"
+
+msgid "The provided command was not found."
+msgstr "Cette commande est introuvable."
+
+msgid "That command has been disabled."
+msgstr "Cette commande a été désactivée."
+
+msgid ""
+"There was an error running the specified command. Contact the bot admins."
+msgstr ""
+"Une erreur s'est produite lors de l'exécution de cette commande. Contactez "
+"les administrateurs du bot."
+
+msgid "This command is overused. Please try again {some_time}."
+msgstr ""
+"Cette commande est sur-utilisée. Veuillez essayer de nouveau {some_time}."
+
+msgid ""
+"This should not have happened. A command raised an error that does not comes "
+"from CommandError. Please inform the owner."
+msgstr ""
+"Cela n'aurait pas dû se produire. Une commande a provoqué une erreur qui ne "
+"provient pas de CommandError, et n'est pas gérée par notre gestionnaire "
+"d'erreurs. Veuillez en informer le propriétaire du bot."
+
+msgid ""
+"You are above the limits of DuckHunt database. Try to reduce your "
+"expectations. Database message: `{exception}`"
+msgstr ""
+"Vous dépassez les limites de la base de données de DuckHunt. Calmez-vous. "
+"Message de la base de données : `{exception}`"
+
+msgid ""
+"Missing permissions, please check I can embed links here. `{exception}`"
+msgstr ""
+"Permissions manquantes, veuillez vérifier que je puisse intégrer des liens "
+"ici (`embed_links`) `{exception}`"
+
+msgid "Missing permissions, please check I can add reactions here."
+msgstr ""
+"Il me manque des permissions, vérifiez que je puisse ajouter des réactions "
+"ici. "
+
+msgid ""
+"This should not have happened. A command raised an error that does not come "
+"from CommandError, and isn't handled by our error handler. Please inform the "
+"owner."
+msgstr ""
+"Cela n'aurait pas dû se produire. Une commande a provoqué une erreur qui ne "
+"provient pas de CommandError, et n'est pas gérée par notre gestionnaire "
+"d'erreurs. Veuillez en informer le propriétaire du bot."
+
+msgid "DuckHunt help"
+msgstr "Aide de DuckHunt"
+
+msgid ""
+"**Welcome to DuckHunt**\n"
+"\n"
+"This is a help command designed to let you find all the commands in the bot.\n"
+"However, it's *not* the best way to get started with it. I suggest reading "
+"the wiki instead, here's [a link](https://duckhunt.me/docs).\n"
+"If you have questions, you can DM the bot, or join the [support "
+"server](https://duckhunt.me/support).\n"
+"Thanks for playing."
+msgstr ""
+"**Bienvenue dans DuckHunt**\n"
+"\n"
+"Ceci est une commande d'aide conçue pour vous permettre de trouver toutes "
+"les commandes dans le bot. Cependant, ce n'est *pas* la meilleure façon de "
+"commencer. Je suggère plutôt à la place de lire le wiki, [disponible "
+"ici](https://duckhunt.me/docs). \n"
+"Si vous avez des questions, vous pouvez envoyer un DM au bot ou rejoindre le "
+"[serveur de support](https://duckhunt.me/support). \n"
+"Merci de jouer avec nous :)"
+
+msgid "Use {prefix}{help} [command] for more info on a command."
+msgstr ""
+"Utilisez le {prefix}{help} [commande] pour plus d'informations sur une "
+"commande."
+
+msgid "{cog} help"
+msgstr "Aide pour {cog}"
+
+msgid "... More available online"
+msgstr "... Voir plus sur internet"
+
+msgid "Inventory"
+msgstr "Inventaire"
+
+msgid "Your inventory"
+msgstr "Ton inventaire"
+
+msgid "A lot of air and a starved mosquito."
+msgstr "Beaucoup d'air et un moustique affamé."
+
+msgid "`{prefix}inv use shortcode` to use an item"
+msgstr "`{prefix}inv use codecourt` pour utiliser un objet"
+
+msgid "❌ Unknown item."
+msgstr "❌ Objet inconnu."
+
+msgid "👌 Item has been given to {target.name}."
+msgstr "👌 L'objet a été donné à {target.name}."
+
+msgid "❌ Items usage is disabled on this channel."
+msgstr "❌ L'utilisation des objets est désactivée sur ce salon."
+
+msgid "❌ The number of items to use must be a number greater or equal to 1."
+msgstr ""
+"❌ Le nombre d'objets à utiliser doit être un nombre supérieur ou égal à 1."
+
+msgid "❌ You can't use this item that many times."
+msgstr "❌ Vous ne pouvez pas utiliser cet objet autant de fois."
+
+msgid "❌ You don't have that item."
+msgstr "❌ Vous n'avez pas cet objet."
+
+msgid "Landmines"
+msgstr "Mines"
+
+msgid ""
+"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
+"<@{placed_by_member.user_id}>. It exploded, taking away **{explosion_value} "
+"points** from your account.\n"
+"\n"
+"<@{placed_by_member.user_id}> message:\n"
+"{message_text}"
+msgstr ""
+"💥 Vous avez marché sur une mine : `{landmine.word}` placée il y a {td} par "
+"<@{placed_by_member.user_id}>. Elle a explosé, enlevant **{explosion_value} "
+"points** de votre compte.\n"
+"\n"
+"Message de <@{placed_by_member.user_id}>:\n"
+"{message_text}"
+
+msgid ""
+"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
+"<@{placed_by_member.user_id}>. It exploded, taking away **{explosion_value} "
+"points** from your account.\n"
+"\n"
+msgstr ""
+"💥Vous avez marché sur une mine :`{landmine.word}` placée il y a {td} par "
+"<@{placed_by_member.user_id}>. Elle a explosé, enlevant **{explosion_value} "
+"points** de votre compte."
+
+msgid "They can't play the game :("
+msgstr "Il ne peut pas jouer à ce jeu :("
+
+msgid "{target.name} event statistics"
+msgstr "Statistiques de l'event pour {target.name}"
+
+msgid ""
+"The most important currency in the game are the points, which are used in "
+"the shop to buy stuff. The available points show how many ponts you have and "
+"how many you acquired in total.\n"
+"You can get points by sending (long) messages. Some shop items may help you "
+"get more. Be careful not to spam, server rules **still apply** during the "
+"event. At the end of the game, the player having the greater amount of "
+"points will win."
+msgstr ""
+"La monnaie la plus importante du jeu est les points, qui sont utilisés dans "
+"la boutique pour acheter des objets. Les points disponibles montrent combien "
+"de points vous avez et combien vous avez acquis au total. \n"
+"Vous pouvez obtenir des points en envoyant des messages (longs). Certains "
+"articles de la boutique peuvent vous aider à en obtenir plus. Attention à ne "
+"pas spammer, les règles du serveur **s'appliquent** pendant l'event. A la "
+"fin du jeu, le joueur ayant le plus grand nombre de points gagnera."
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "{db_target.points_current} points"
+msgstr "{db_target.points_current} points"
+
+msgid "Messages sent"
+msgstr "Messages envoyés"
+
+msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
+msgstr "{db_target.messages_sent} ({db_target.words_sent} mots)"
+
+msgid "Points won by landmines"
+msgstr "Points gagnés grâce aux mines"
+
+msgid "{db_target.points_won} points"
+msgstr "{db_target.points_won} points"
+
+msgid "Points recovered by defusing landmines"
+msgstr "Points récupérés en désamorçant des mines"
+
+msgid "{db_target.points_recovered} points"
+msgstr "{db_target.points_recovered} points"
+
+msgid "Points acquired by talking"
+msgstr "Points acquis en parlant"
+
+msgid "{db_target.points_acquired} points"
+msgstr "{db_target.points_acquired} points"
+
+msgid "Points exploded by stepping on mines"
+msgstr "Points explosés en marchant sur les mines"
+
+msgid "{db_target.points_exploded} points"
+msgstr "{db_target.points_exploded} points"
+
+msgid "Points spent in the shop"
+msgstr "Points dépensés dans la boutique"
+
+msgid "{db_target.points_spent} points"
+msgstr "{db_target.points_spent} points"
+
+msgid ""
+"For more information on how to place a mine, run the `dh!lm landmines` "
+"command."
+msgstr ""
+"Pour plus d'informations sur la façon de placer une mine, exécutez la "
+"commande `dh!lm landmines`."
+
+msgid ""
+"To place a landmine, send a DM to the bot with the following command: ```\n"
+"dh!landmine place {ctx.guild.id} your_mine_value your_mine_word "
+"a_message_to_send_when_the_mine_explodes\n"
+"```\n"
+"The value must be at least 50 points, and a word must be at least 3 "
+"characters long."
+msgstr ""
+"Pour placer une mine, envoyez un DM au bot avec la commande suivante : ```\n"
+"dh!landmine place {ctx.guild.id} valeur_de_votre_mine  votre_mot_de_mine "
+"un_message_à_envoyer_quand_la_mine_explose\n"
+"```\n"
+"La valeur doit être d'au moins 50 points, et un mot doit avoir au moins 3 "
+"caractères."
+
+msgid ""
+"❌ On what server do you want to place this landmine ? You need to add the "
+"Guild ID at the start of your command. See `dh!landmines landmine_how_to`"
+msgstr ""
+"❌ Sur quel serveur voulez-vous placer cette mine ? Vous devez ajouter l'ID "
+"de votre serveur (guild) au début de votre commande. Voir `dh!landmines "
+"landmine_how_to`"
+
+msgid "❌ You aren't in that guild."
+msgstr "❌ Vous n'êtes pas dans ce serveur."
+
+msgid "❌ A landmine must have a value higher than 50."
+msgstr "❌ Une mine doit avoir une valeur supérieure à 50."
+
+msgid "❌ The message left on the landmine must be less than 1500 characters."
+msgstr "❌ Le message laissé sur la mine doit faire moins de 1500 caractères."
+
+msgid "❌ The word must only contain letters."
+msgstr "❌ Le mot ne doit contenir que des lettres."
+
+msgid ""
+"❌ You don't have {value} points, you can't buy a landmine as powerful as "
+"this."
+msgstr ""
+"❌ Vous n'avez pas {value} points, vous ne pouvez pas acheter une mine aussi "
+"puissante que celle-ci."
+
+msgid ""
+"💣️ You placed a landmine on `{word}` that can give you at most "
+"`{base_value}` points."
+msgstr ""
+"💣️ Vous avez placé une mine sur `{word}` qui peut vous donner au plus "
+"`{base_value}` points."
+
+msgid "❌ Please give one valid words to protect."
+msgstr "❌ Veuillez donner un (seul) mot valide à protéger."
+
+msgid ""
+"❌ You don't have 500 points, so you can't buy a shield to protect a word."
+msgstr ""
+"❌ Vous n'avez pas 500 points, vous ne pouvez donc pas acheter de bouclier "
+"pour protéger ce mot."
+
+msgid "You placed a shield on `{word}` for 500 points."
+msgstr "Vous avez placé un bouclier sur `{word}` pour 500 points."
+
+msgid ""
+"- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
+msgstr ""
+"- mine placée par <@{placed_by_member.user_id}> pour {value} points (placée "
+"il y a {td} )"
+
+msgid "You defused the following landmine for a value of {got_points} points."
+msgid_plural ""
+"You defused {n} landmines placed on that word, for a total value of "
+"{got_points} points."
+msgstr[0] ""
+"Vous avez désamorcé cette mine d'une valeur de {got_points} points."
+msgstr[1] ""
+"Vous avez désamorcé {n} mines placées sur ce mot, pour une valeur totale de "
+"{got_points} points."
+
+msgid "There were no active landmines on that word to be defused."
+msgstr "Il n'y avait pas de mines actives sur ce mot."
+
+msgid "❌ Please give (as much) valid words as you want to the defuse kit."
+msgstr ""
+"❌ Veuillez donner autant de mots valides que vous le souhaitez au kit de "
+"désamorçage."
+
+msgid "❌ You don't have 30 points, so you can't buy a defuse kit."
+msgstr ""
+"❌ Vous n'avez pas 30 points, vous ne pouvez donc pas acheter de kit de "
+"désamorçage."
+
+msgid ""
+"💰️ You used the defuse kit on `{landmine.word}`, and defused "
+"<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
+"`{landmine.value}` points value.You got {got_points} points, congratulations."
+""
+msgstr ""
+"💰️ Vous avez utilisé le kit de désamorçage sur `{landmine.word}`, et "
+"désamorcé une mine placée par <@{placed_by_member.user_id}> il y a {td}, qui "
+"avait une valeur de `{landmine.value}` points. Vous avez obtenu {got_points} "
+"points, félicitations."
+
+msgid ""
+"💸️ You used the defuse kit on `{landmine.word}`, and defused "
+"<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
+"`{landmine.value}` points value.You've lost {-got_points} points, because "
+"the value of the landmine was lower than the defuse kit price. Sorry!"
+msgstr ""
+"💰️ Vous avez utilisé le kit de désamorçage sur `{landmine.word}`, et "
+"désamorcé une mine placée par <@{placed_by_member.user_id}> il y a {td}, qui "
+"avait une valeur de `{landmine.value}` points. Vous avez perdu {-got_points} "
+"points, parceque la valeur de la mine tait plus basse que celle du kit de "
+"désamorçage. Désolé :("
+
+msgid ""
+"♻️️ You didn't use the defuse kit, and sold it back to the shop. You are "
+"sure that there isn't any mine on any of those words: \n"
+"```\n"
+"{words}\n"
+"```"
+msgstr ""
+"♻️️ Vous n'avez pas utilisé le kit de désamorçage et l'avez revendu au "
+"magasin. Vous êtes sûr qu'il n'y a aucune mine sur ces mots :\n"
+"```\n"
+"{words}\n"
+"```"
+
+msgid "Landmines statistics"
+msgstr "Statistiques sur les mines"
+
+msgid "Players tracked"
+msgstr "Joueurs suivis"
+
+msgid "Mines count"
+msgstr "Nombre de mines"
+
+msgid "{current_mines_count} mines placed, {total_mines_count} created"
+msgstr "{current_mines_count} mines placées, sur {total_mines_count} crées"
+
+msgid "Biggest active mine"
+msgstr "Plus grande mine active"
+
+msgid ""
+"Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
+msgstr ""
+"Valeur de `{biggest_mine.value} ({letters} lettres)`, placée par <@{user}>"
+
+msgid "Players in the negative"
+msgstr "Joueurs dans le négatif"
+
+msgid "Event scoreboard"
+msgstr "Scores de l'event"
+
+msgid "{points} points"
+msgstr "{points} points"
+
+msgid "Support team: monitoring"
+msgstr "Support : Suivi technique"
+
+msgid "Prestige"
+msgstr "Prestige"
+
+msgid "Prestige Information"
+msgstr "Informations sur le prestige"
+
+msgid ""
+"Prestige is a way for you to restart the DuckHunt adventure, resetting your "
+"account (experience, statistics, ...)\n"
+"In exchange for the reset, you'll get new items to help you progress faster.\n"
+"\n"
+msgstr ""
+"Le Prestige est un moyen pour toi de relancer ton aventure DuckHunt, en "
+"réinitialisant ton compte (expérience, statistiques, ...)\n"
+"En échange de la réinitialisation, tu recevras de nouveaux objets pour "
+"t'aider à progresser plus rapidement.\n"
+"\n"
+
+msgid ""
+"Prestige will be unlocked when you reach the maximum level. You are at "
+"{pct}% there (you need {missing_exp} more experience)."
+msgstr ""
+"Le prestige sera débloqué lorsque tu auras atteint le niveau maximum. Tu y "
+"es à {pct}% (Tu as besoin de {missing_exp} expérience en plus)."
+
+msgid ""
+"Prestige is available for you now ! Go ahead and use `{ctx.prefix}prestige "
+"confirm`. By using it now, you'll keep {kept_exp} exp."
+msgstr ""
+"Le prestige est à ta disposition dès maintenant ! Vas-y, utilise `{ctx."
+"prefix}prestige confirm`. En l'utilisant maintenant, tu garderas {kept_exp} "
+"exp."
+
+msgid "Prestige daily bonus"
+msgstr "Bonus quotidien Prestige"
+
+msgid ""
+"You can get around {experience} experience every day by using the daily "
+"command."
+msgstr "Vous pouvez obtenir environ {experience} d’expérience quotidienne"
+
+msgid "✨ Current prestige level ✨️"
+msgstr "✨ Niveau de prestige actuel ✨️"
+
+msgid "You have reached level {level}"
+msgstr "Tu as atteint le niveau {level}"
+
+msgid ""
+"**Remember**, using prestige means losing your statistics and most of your "
+"experience. However, you'll get the following items to help you"
+msgstr ""
+"**Souviens-toi**, utiliser le Prestige signifie perdre tes statistiques et "
+"la plus grande partie de ton expérience. Cependant, tu obtiendra les "
+"éléments suivants pour t'aider"
+
+msgid "Level 1"
+msgstr "Niveau 1"
+
+msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
+msgstr ""
+"**Lunettes de soleil incassables** : N'achète plus jamais de lunettes de "
+"soleil"
+
+msgid "Level 2"
+msgstr "Niveau 2"
+
+msgid "**Coat colour**: Choose the colour of your coat"
+msgstr "**Couleur du manteau** : Choisis la couleur de ton manteau"
+
+msgid "Level 3"
+msgstr "Niveau 3"
+
+msgid "Level 4"
+msgstr "Niveau 4"
+
+msgid "**Icelandic water**: Wet others for longer"
+msgstr "**Eau islandaise** : Mouille les autres plus longtemps"
+
+msgid "Level 5"
+msgstr "Niveau 5"
+
+msgid "**Untearable coat**: Buy it for life"
+msgstr "**Manteau indéchirable** : Achete-le pour la vie"
+
+msgid "Level 6"
+msgstr "Niveau 6"
+
+msgid "**Military grade silencer**: Better silencers that last twice as long"
+msgstr ""
+"**Silencieux de qualité militaire** : De meilleurs silencieux qui durent "
+"deux fois plus longtemps"
+
+msgid "Level 7"
+msgstr "Niveau 7"
+
+msgid "**Permanent licence to kill**: Secret DuckHunt service"
+msgstr "**Permis de tuer permanent** : Service secret de DuckHunt"
+
+msgid "Level 8"
+msgstr "Niveau 8"
+
+msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
+msgstr ""
+"**Plus gros chargeurs** : Charge deux fois plus de balles dans ton arme"
+
+msgid "Level 9"
+msgstr "Niveau 9"
+
+msgid "**???**: Suggestions are welcome"
+msgstr "**???** : Les suggestions sont les bienvenues"
+
+msgid ""
+"❌ You haven't unlocked prestige yet. See `{ctx.prefix}prestige info` to "
+"learn more."
+msgstr ""
+"❌ Tu n'as pas encore débloqué le prestige. Tape `{ctx.prefix}prestige info` "
+"pour en savoir plus."
+
+msgid "Prestige {old_prestige} -> {new_prestige}"
+msgstr "Prestige {old_prestige} -> {new_prestige}"
+
+msgid "You used prestige after reaching {pct}% of the required threshold."
+msgstr "Tu as utilisé le prestige après avoir atteint {pct}% du seuil requis."
+
+msgid "✨ New run"
+msgstr "✨ Nouveau commencement."
+
+msgid "You'll restart the game with {kept_exp} experience."
+msgstr "Tu recommenceras le jeu avec {kept_exp} expérience."
+
+msgid ""
+"❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
+"info` to learn more."
+msgstr ""
+"❌ Ton niveau de prestige n'est pas encore assez élevé. Regarde `{ctx."
+"prefix}prestige info` pour en savoir plus."
+
+msgid "❌ You already claimed your dailies today. Try again tomorrow."
+msgstr ""
+"❌ Tu as déjà réclamé tes récompenses quotidiennes aujourd'hui. Essaye de "
+"nouveau demain."
+
+msgid ""
+"💰️ You took {exp} experience out of the prestige bank. Come back soon!"
+msgstr ""
+"💰️ Tu as pris {exp} exp dans la banque de prestige. Reviens bientôt !"
+
+msgid "Support team: private messages"
+msgstr "Support : messages privés"
+
+msgid "DM Timed Out"
+msgstr "Message privé expiré"
+
+msgid ""
+"Tickets expire after 24 hours of inactivity.\n"
+"Got a question? Ask it here or in [the support server](https://duckhunt.me/"
+"support).\n"
+"Thank you for using the DuckHunt ticket system!"
+msgstr ""
+"Les tickets expirent après 24 heures d'inactivité.\n"
+"Vous avez une question ? Posez-la ici ou sur [le serveur de support](https://"
+"duckhunt.me/support). \n"
+"Merci d'utiliser le système de tickets de DuckHunt !"
+
+msgid "Support server"
+msgstr "Serveur de support"
+
+msgid ""
+"For all your questions, there is a support server. Click [here](https://"
+"duckhunt.me/support) to join."
+msgstr ""
+"Pour toutes vos questions, rejoignez le serveur de support. Cliquez "
+"[ici](https://duckhunt.me/support) pour le rejoindre."
+
+msgid ""
+"DMing any message to the bot will open a ticket.\n"
+"You have a question? [Ask it](https://dontasktoask.com) to our human "
+"volunteers.\n"
+"You opened the ticket by mistake? Type `close` (*once, no prefix needed*) "
+"and we, human volunteers will close it."
+msgstr ""
+"Envoyer un message au bot ouvrira un ticket de support.\n"
+"Vous avez une question ? [Posez-la](https://dontasktoask.com) à nos "
+"volontaires humains. Vous avez ouvert le ticket par erreur ? Tapez `close` "
+"(*une seule fois, pas de préfixe nécessaire*) et nous, volontaires humains, "
+"le fermerons."
+
+msgid "Support tickets are automatically deleted after 24 hours of inactivity"
+msgstr ""
+
+msgid "Attachments persistence"
+msgstr "Conservation des pièces jointes"
+
+msgid ""
+"Images and other attached data to the message will get deleted once your "
+"ticket is closed. Make sure to save them beforehand if you wish."
+msgstr ""
+"Les images et autres données jointes au message seront supprimées une fois "
+"que votre ticket fermé. Veillez à les sauvegarder avant si vous le souhaitez."
+""
+
+msgid "This is not how you invite DuckHunt."
+msgstr "Ce n'est pas comme ça que vous pouvez inviter DuckHunt."
+
+msgid ""
+"To invite DuckHunt, you need :\n"
+"- To be a server Administrator.\n"
+"- To click on the [following link](https://duckhunt.me/invite)\n"
+"More info on [this guide](https://duckhunt.me/docs/bot-administration/admin-"
+"quickstart). If you need more help, you can ask here and we'll get back to "
+"you."
+msgstr ""
+"Pour inviter DuckHunt, vous devez :\n"
+"- Être un Administrateur du serveur\n"
+"- Cliquer sur le [lien suivant](https://duckhunt.me/invite)\n"
+"Plus d'infos sur [ce guide](https://duckhunt.me/docs/bot-administration/"
+"admin-quickstart).\n"
+"Si vous avez besoin d'aide, vous pouvez demander ici et nous vous répondrons."
+""
+
+msgid "This is an automatic message."
+msgstr "Il s'agit d'un message automatique."
+
+msgid "DM Closed"
+msgstr "Message privé fermé"
+
+msgid ""
+"Your support ticket was closed and the history deleted. Thanks for using "
+"DuckHunt DM support. Keep in mind, sending another message here will open a "
+"new ticket!\n"
+"In the meantime, here's a nice duck picture for you to look at !"
+msgstr ""
+"Votre ticket de support a été fermé et l'historique supprimé. Merci d'avoir "
+"utilisé le support DuckHunt par message privé. Si vous avez besoin d'autre "
+"chose, n'hésitez pas à ouvrir un nouveau ticket en envoyant de nouveau un "
+"message ici.\n"
+"En attendant, voici une belle photo de canard !"
+
+msgid "❌ Can't send a message to this user: {e}."
+msgstr "❌ Impossible d'envoyer un message à cet utilisateur : {e}."
+
+msgid "❌ There is no tag with that name."
+msgstr "❌ Il n'y a pas de tag avec ce nom."
+
+msgid "Language change offer"
+msgstr "Suggestion de changement de langue."
+
+msgid ""
+"DuckHunt support suggests you change your personal language from "
+"{current_language} to {suggested_language}. This will translate all the "
+"messages you get in private message from DuckHunt to {suggested_language}."
+msgstr ""
+"Le support DuckHunt vous suggère de changer votre langue personnelle de "
+"{current_language} au {suggested_language}. Cela permettra de traduire tous "
+"les messages que vous recevez en message privé de la part de DuckHunt en "
+"{suggested_language}."
+
+msgid ""
+"Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
+"my_lang language_code] command in a game channel to edit later."
+msgstr ""
+"Appuyez sur ✅ pour accepter la modification, ou ne faites rien pour la "
+"refuser. Utilisez la commande [dh!settings my_lang language_code] dans un "
+"channel de jeu pour changer votre langue ultérieurement."
+
+msgid "Your language preference wasn't changed."
+msgstr "Votre préférence linguistique n'a pas été modifiée."
+
+msgid "Your preferred language is now {new_language}."
+msgstr "Votre langue préférée est maintenant le {new_language}."
+
+msgid "Images"
+msgstr "Images"
+
+msgid "That artist is not known. Choose either Calgeka or Globloxmen."
+msgstr "Artiste inconnu. Choisis entre Calgeka et Globloxmen."
+
+msgid "Admin: Settings"
+msgstr "Administrateur: Paramètres"
+
+msgid "You can view the channel settings here: "
+msgstr "Tu peux voir les réglages du salon ici : "
+
+msgid "Defaults settings have been restored."
+msgstr "Les réglages par défaut ont été restaurés."
+
+msgid "DHV3-Like settings have been applied to this channel."
+msgstr "Les paramètres de type DHV3 ont été appliqués sur ce salon."
+
+msgid "Casual mode settings have been applied to this channel."
+msgstr "Les paramètres normaux ont été appliqués à ce salon."
+
+msgid "Hardcore mode settings have been applied to this channel."
+msgstr "Les réglages \"hardcore\" ont été définis sur ce channel"
+
+msgid "👻 Haunted House settings have been applied to this channel."
+msgstr ""
+"👻 Les paramètres de jeu \"maison hantée\" ont été appliqués à ce salon."
+
+msgid "🤖 Robot fest settings have been applied to this channel."
+msgstr ""
+"🤖 Les paramètres de jeu \"festin robotique\" ont été appliqués à ce salon."
+
+msgid "🐙 Hydra settings have been applied to this channel."
+msgstr "🐙 Les paramètres de jeu \"hydre\" ont été appliqués à ce salon."
+
+msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
+msgstr ""
+"☢ Les paramètres de jeu \"radiation nucléaires\" ont été appliqués à ce "
+"salon 🍀."
+
+msgid "🦘 Australia settings have been applied to this channel."
+msgstr "🦘 Les paramètres de jeu \"Australie\" ont été appliqués à ce salon."
+
+msgid "There will be very big ducks on this channel."
+msgstr ""
+"Les paramètres de jeu \"Très Gros Canards\" ont été appliqués à ce salon."
+
+msgid "Your math test will start soon."
+msgstr "Votre interrogation de maths va bientôt commencer"
+
+msgid "The server prefix is set to `{prefix}`."
+msgstr "Le préfixe du serveur est défini à `{prefix}`."
+
+msgid "There is no specific prefix set for this guild."
+msgstr "Il n'y a pas de préfixe spécifique dans ce serveur."
+
+msgid ""
+"You can call me with any of the global prefixes : {global_prefixes_list}"
+msgstr ""
+"Vous pouvez m'appeler avec n'importe lequel des préfixes globaux : "
+"{global_prefixes_list}"
+
+msgid ""
+"❌ Unknown locale. If you wish to go back to the default, english language, "
+"use `{ctx.prefix}{ctx.command.qualified_name} en`"
+msgstr ""
+"❌  Langue/locale inconnue. Pour revenir en langue anglaise, tapez `{ctx."
+"prefix}{ctx.command.qualified_name} en`"
+
+msgid "This server language is set to `{language}` [{language_name}]."
+msgstr "La langue du serveur est définie sur `{language}` [{language_name}]."
+
+msgid "There is no specific language set for this guild."
+msgstr "Il n’y a pas de langue spécifique définie sur le serveur."
+
+msgid "Webhooks are used in this channel."
+msgstr "Les webhooks sont utilisés dans ce salon."
+
+msgid "Webhooks are not used in this channel."
+msgstr "Les webhooks ne sont pas utilisés dans ce salon."
+
+msgid "Global items can be used in this channel."
+msgstr "Les objets globaux peuvent être utilisés dans ce salon."
+
+msgid "Global items can't be used in this channel."
+msgstr "Les objets globaux ne peuvent pas être utilisés dans ce salon."
+
+msgid ""
+"Webhooks are not used in this channel. Please enable them first. You can use "
+"`{command}` to do it."
+msgstr ""
+"Les webhooks ne sont pas activés dans ce salon. Vous pouvez utiliser "
+"`{command}` pour le faire."
+
+msgid ""
+"Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
+"ducks."
+msgid_plural ""
+"Your webhook was created. The bot now uses {webhooks_count} webhooks to "
+"spawn ducks."
+msgstr[0] ""
+"Votre webhook a été créé. Ce bot utilise maintenant {webhooks_count} webhook "
+"pour faire apparaître des canards."
+msgstr[1] ""
+"Votre webhook a été créé. Ce bot utilise maintenant {webhooks_count} "
+"webhooks pour faire apparaître des canards."
+
+msgid ""
+"I couldn't create a webhook. Double-check my permissions and try again."
+msgstr ""
+"Je n'ai pas réussi à créer un webhook. Vérifiez mes autorisations et "
+"réessayez."
+
+msgid "That channel uses emojis to spawn ducks."
+msgstr "Ce salon utilise des émojis pour faire apparaître les canards."
+
+msgid ""
+"That channel uses pure-text ducks. How does it feels to live in the IRC "
+"world ?"
+msgstr ""
+"Ce salon utilise des canards en texte brut. Ça fait quoi de vivre dans le "
+"monde d'IRC ?"
+
+msgid "Ducks will spawn on {channel.mention}"
+msgstr "Les canards vont maintenant apparaître sur {channel.mention}"
+
+msgid "Ducks won't spawn on {channel.mention}"
+msgstr "Les canards n'apparaitront pas sur {channel.mention}"
+
+msgid ""
+"On {channel.mention}, players will pay {tax}% of tax to the bot when they "
+"share some experience."
+msgstr ""
+"Sur {channel.mention}, les joueurs paieront {tax}% de taxe au bot lorsqu'ils "
+"donnent de l'expérience."
+
+msgid ""
+"Players won't have to pay any tax when sending experience to others in "
+"{channel.mention}"
+msgstr ""
+"Les joueurs n'auront pas à payer de taxe lorsqu'ils enverront leur "
+"expérience aux autres joueurs dans {channel.mention}"
+
+msgid "On {channel.mention}, players will be mentionned when they get killed."
+msgstr ""
+"Sur {channel.mention}, les joueurs sont mentionnés lorsqu'ils se font tuer."
+
+msgid "Players won't get mentions when they get killed in {channel.mention}"
+msgstr ""
+"Les joueurs ne seront pas mentionnés lorsqu'ils se feront tuer dans {channel."
+"mention}"
+
+msgid "On {channel.mention}, players will see the lives count of super ducks."
+msgstr ""
+"Sur {channel.mention}, les joueurs verront le nombre de vies restantes des "
+"super canards."
+
+msgid "Players won't see lives of super ducks on {channel.mention}"
+msgstr ""
+"Les joueurs ne verront pas la vie restante des super canards sur {channel."
+"mention}"
+
+msgid ""
+"On {channel.mention}, players will kill people {pct}% of the time when "
+"missing a shot."
+msgstr ""
+"Sur {channel.mention}, les joueurs en tueront d'autres {pct}% du temps "
+"lorsqu'ils manquent un tir."
+
+msgid ""
+"Players won't kill people randomly when missing shots on {channel.mention}. "
+"They can still kill people voluntarily."
+msgstr ""
+"Les joueurs ne tueront plus les gens au hasard lorsqu'ils manquent des tirs "
+"sur {channel.mention}. Ils peuvent toujours tuer des gens volontairement."
+
+msgid ""
+"On {channel.mention}, players will frighten ducks {pct}% of the time when "
+"shooting."
+msgstr ""
+"Sur {channel.mention}, les joueurs effraieront les canards {pct}% du temps "
+"en tirant."
+
+msgid ""
+"Players won't frighten ducks, making the silencer useless on {channel."
+"mention}."
+msgstr ""
+"Les joueurs n'effraieront pas les canards, ce qui rend les silencieux "
+"inutiles sur {channel.mention}."
+
+msgid ""
+"⚠️ In some cases, users may get NEGATIVE experience when killing ducks with "
+"that low of a experience."
+msgstr ""
+"⚠️ Dans certains cas, les utilisateurs peuvent obtenir de l'expérience "
+"NÉGATIVE en tuant des canards avec une expérience aussi faible."
+
+msgid ""
+"❌️ You need to provide a lower value than the one set in "
+"`clover_max_experience` !"
+msgstr ""
+"❌️ Vous devez fournir une valeur inférieure à celle définie dans "
+"`clover_max_experience` !"
+
+msgid ""
+"On {channel.mention}, when a hunter buys a clover, the minimum experience "
+"given per duck kill will be of {value}."
+msgstr ""
+"Sur {channel.mention}, lorsqu'un chasseur achète un trèfle à quatre "
+"feuilles, l'expérience minimale donnée par canard tué sera de {value}."
+
+msgid ""
+"❌️ You need to provide a higher value than the one set in "
+"`clover_min_experience` !"
+msgstr ""
+"❌️ Vous devez fournir une valeur plus élevée que celle définie dans "
+"`clover_min_experience` !"
+
+msgid ""
+"On {channel.mention}, when a hunter buy a clover, the maximum experience "
+"given per duck kill will be of {value}."
+msgstr ""
+"Sur {channel.mention}, lorsqu'un chasseur achète un trèfle, l'expérience "
+"maximale donnée par canard tué sera de {value}."
+
+msgid ""
+"⚠️ Giving negative experience when hunter kills ducks might be a bad idea."
+msgstr ""
+"⚠️ Donner de l'expérience négative lorsque le chasseur tue des canards "
+"pourrait être une mauvaise idée."
+
+msgid ""
+"On {channel.mention}, when a hunter kills a duck, the experience given will "
+"be of {value}."
+msgstr ""
+"Sur {channel.mention}, lorsqu'un chasseur achète un trèfle, l'expérience "
+"maximale donnée par canard tué sera de {value}."
+
+msgid ""
+"On {channel.mention}, when a hunter kills a super-duck, the experience given "
+"for every life the duck has will be of {value}."
+msgstr ""
+"Sur {channel.mention}, lorsqu'un chasseur tue un super-canard, l'expérience "
+"donnée pour chaque vie que le canard a sera de {value}."
+
+msgid "❌️ To disable a channel, use `{prefix}settings enabled False`."
+msgstr ""
+"❌️ Pour désactiver un salon, utilisez `{prefix}settings enabled False`."
+
+msgid ""
+"⚠️️ You should not set that higher than {maximum_value}, however, you have "
+"the required permissions to proceed. The number of ducks per day is limited "
+"to ensure resources are used fairly.\n"
+"Please click `Confirm` to proceed as requested, with {value} ducks per day "
+"on the channel."
+msgstr ""
+"⚠️️ Vous ne devriez pas définir une valeur supérieure à {maximum_value}, "
+"cependant, vous disposez des autorisations requises pour continuer. Le "
+"nombre de canards par jour est limité pour garantir une utilisation "
+"équitable des ressources.\n"
+"Veuillez cliquer sur « Confirmer » pour procéder comme demandé, avec {value} "
+"canards par jour sur le canal."
+
+msgid "🛑 Operation cancelled."
+msgstr "🛑 Opération annulée."
+
+msgid ""
+"⚠️️ You should not set that higher than {maximum_value}, however, this is a "
+"VIP server so I'll allow much higher limits than usual. The number of ducks "
+"per day is limited to ensure resources are used fairly.\n"
+" I'm proceeding anyway as requested, with {value} ducks per day on the "
+"channel."
+msgstr ""
+"⚠️️ Vous ne devez pas dépasser le nombre de {maximum_value}, mais comme il "
+"s'agit d'un serveur VIP, j'autoriserai des limites beaucoup plus élevées que "
+"d'habitude. Le nombre de canards par jour est limité pour garantir une "
+"utilisation équitable des ressources.\n"
+" Je procède de toute façon comme demandé, avec {value} canards par jour sur "
+"le canal."
+
+msgid ""
+"⚠️️ You cannot set that higher than {maximum_value}. The number of ducks per "
+"day is limited to ensure resources are used fairly. If you donated towards "
+"the bot, contact Eyesofcreeper#0001 to lift the limit. If not, consider "
+"donating to support me : {donor_url}."
+msgstr ""
+"⚠️️ Vous ne pouvez pas fixer cette valeur à un niveau supérieur à "
+"{maximum_value}. Le nombre de canards par jour est limité afin de garantir "
+"une utilisation équitable des ressources. Si vous avez aidé ce bot, "
+"contactez Eyesofcreeper#0001 pour lever la limite. Sinon, n'hésitez pas à "
+"donner de l'argent pour me soutenir : {donor_url}."
+
+msgid "On {channel.mention}, {value} ducks will spawn every day."
+msgstr "Sur {channel.mention}, {value} canards apparaîtront chaque jour."
+
+msgid ""
+"❌ I don't know what type of duck you are talking about. Choose one in "
+"{allowed_ducks_types}."
+msgstr ""
+"❌ Je ne sais pas de quel type de canard vous parlez. Choisissez-en un dans "
+"{allowed_ducks_types}."
+
+msgid "❌ You cannot set a negative weight."
+msgstr "❌ Vous ne pouvez pas définir un poids négatif."
+
+msgid "🦆 Weight for the {duck_type} is set to {value} in {channel.mention}."
+msgstr ""
+"🦆 Le poids du canard {duck_type} est défini à {value} dans {channel."
+"mention}."
+
+msgid "❌️ Ducks need to settle for a while in the pond before leaving."
+msgstr ""
+"❌️ Les canards ont besoin de se poser un moment dans l'étang avant de partir."
+""
+
+msgid "❌️ Ducks will get bored long before that."
+msgstr "❌️ Les canards s'ennuieront bien avant cela."
+
+msgid "On {channel.mention}, ducks will stay for {value} seconds."
+msgstr ""
+"Sur {channel.mention}, les canards resteront pendant {value} secondes."
+
+msgid "❌️ Super ducks will live !"
+msgstr "❌️ Les super canards vivront !"
+
+msgid ""
+"❌️ You need to provide a lower value than the one set in "
+"`super_ducks_max_life` !"
+msgstr ""
+"❌️ Vous devez fournir une valeur inférieure à celle fixée dans "
+"`super_ducks_max_life` !"
+
+msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
+msgstr ""
+"Sur {channel.mention}, les super canards auront un minimum de {value} de vie."
+""
+
+msgid ""
+"❌️ You need to provide a higher value than the one set in "
+"`super_ducks_min_life` !"
+msgstr ""
+"❌️ Vous devez fournir une valeur plus élevée que celle définie dans "
+"`super_ducks_min_life` !"
+
+msgid "On {channel.mention}, super ducks will get a maximum of {value} lives."
+msgstr ""
+"Sur {channel.mention}, les super canards auront un maximum de {value} vies."
+
+msgid "On {channel.mention}, anti-trigger wording is enabled."
+msgstr "Sur {channel.mention}, la formulation anti-trigger est activée."
+
+msgid "On {channel.mention}, anti-trigger wording is disabled."
+msgstr "Sur {channel.mention}, la formulation anti-trigger est désactivée."
+
+msgid ""
+"❌ I'm sorry, I couldn't understand the time you entered for night_start. I'm "
+"looking for something following this format: `{time_format}` (ex: "
+"`{time_example}`)"
+msgstr ""
+"❌ Je suis désolé, je n'ai pas pu comprendre l'heure donnée pour night_start. "
+"Je cherche quelque chose qui suit ce format : `{time_format}` (ex : "
+"`{time_example}`)"
+
+msgid ""
+"❌ I'm sorry, I couldn't understand the time you entered for night_end. I'm "
+"looking for something following this format: `{time_format}` (ex: "
+"`{time_example}`)"
+msgstr ""
+"❌ Je suis désolé, je n'ai pas pu comprendre l'heure donnée pour night_stop. "
+"Je cherche quelque chose qui suit ce format : `{time_format}` (ex : "
+"`{time_example}`)"
+
+msgid ""
+"On {channel.mention}, it's currently daytime. The day will last forever."
+msgstr ""
+"Sur {channel.mention}, il fait actuellement jour. La journée sera éternelle."
+
+msgid ""
+"On {channel.mention}, it's currently daytime, and night will fall "
+"{time_left_sun_td}. Night will last for {duration_of_night_td}."
+msgstr ""
+"Sur {channel.mention}, il fait actuellement jour et la nuit tombera "
+"{time_left_sun_td}. La nuit durera {duration_of_night_td}."
+
+msgid ""
+"On {channel.mention}, it's currently nighttime, and the sun will rise "
+"{time_left_sun_td}. A full night will last for {duration_of_night_td}."
+msgstr ""
+"Sur {channel.mention}, il fait actuellement nuit et le jour se lèvera "
+"{time_left_sun_td}. Une nuit entière dure {duration_of_night_td}."
+
+msgid "👌️ Api disabled here, key deleted."
+msgstr "👌️ API désactivée ici, clé supprimée."
+
+msgid "👌️ Api is now ENABLED. Your API key will be DM'ed to you."
+msgstr ""
+"👌️ L'API est maintenant ACTIVE. Votre clé API vous sera transmise en "
+"message privé."
+
+msgid "{channel.mention} API key is `{api_key}`"
+msgstr "{channel.mention} la clé API est `{api_key}`"
+
+msgid ""
+"The API is disabled on {channel.mention}. Enable it with `{ctx.prefix}set "
+"api_key True`"
+msgstr ""
+"L'API est désactivée sur {channel.mention}. Activez-la avec`{ctx.prefix}set "
+"api_key True`"
+
+msgid "I couldn't DM you... Are your DMs blocked ?"
+msgstr "Je n'ai pas pu vous envoyer de MP... Sont-ils bloqués ?"
+
+msgid "Channel disabled messages are enabled."
+msgstr "Les messages \"canal désactivé\" sont activés."
+
+msgid "Channel disabled messages are disabled. The bot will stay silent."
+msgstr ""
+"Les messages \"canal désactivé\" sont désactivés. Le bot va rester "
+"silencieux."
+
+msgid ""
+"❌ Unknown level number. Please check the table here: <https://duckhunt.me/"
+"docs/players-guide/levels-and-experience>"
+msgstr ""
+"❌ Numéro de niveau inconnu. Veuillez consulter le tableau ici : <https://"
+"duckhunt.me/docs/players-guide/levels-and-experience>"
+
+msgid ""
+"❌ I can't assign roles. Please make sure I have the `MANAGE_ROLES` "
+"permission."
+msgstr ""
+"❌ Je ne peux pas attribuer de rôles. Veuillez vous assurer que j'ai la "
+"permission `MANAGE_ROLES`."
+
+msgid ""
+"❌ I can't assign this role. Move my top role (currently {top_role}) above "
+"the roles you want to be able to assign."
+msgstr ""
+"❌ Je ne peux pas attribuer ce rôle. Déplacez mon rôle principal "
+"(actuellement {top_role}) au-dessus des rôles que vous souhaitez pouvoir "
+"attribuer."
+
+msgid "👍️ Role added to the auto_roles list."
+msgstr "👍️ Rôle ajouté à la liste des rôles automatiques."
+
+msgid "Current roles mapping:"
+msgstr "Liste des rôles automatiques actuels :"
+
+msgid "No level mapping is currently defined on this channel."
+msgstr "Aucun rôle de niveau n'est actuellement défini sur ce channel."
+
+msgid ""
+"❌ A prestige number must be a positive integer. Please check the table here: "
+"<https://duckhunt.me/docs/players-guide/levels-and-experience>"
+msgstr ""
+"❌ Un numéro de prestige doit être un entier positif. Veuillez consulter le "
+"tableau ici : <https://duckhunt.me/docs/players-guide/levels-and-experience>"
+
+msgid "👍️ Role added to the auto_prestige_roles list."
+msgstr "👍️ Rôle ajouté à la liste des rôles prestige automatiques."
+
+msgid "Current prestige roles mapping:"
+msgstr "Liste des rôles prestige automatiques actuels :"
+
+msgid "Level {i}"
+msgstr "Niveau {i}"
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr "Rôle supprimé 🗑️ ID : {role_id}"
+
+msgid "No prestige level mapping is currently defined on this channel."
+msgstr ""
+"Aucun rôle de niveau de prestige n'est actuellement défini sur ce canal."
+
+msgid "No members have any specific rights in the server."
+msgstr "Aucun membre n'a de droits spécifiques sur le serveur."
+
+msgid "❌ {target.mention}, you cannot ban yourself !"
+msgstr "❌ {target.mention}, vous ne pouvez pas vous bannir !"
+
+msgid "{target.mention} now has a access of {level.name}."
+msgstr "{target.mention} a maintenant un accès équivalent à {level.name}."
+
+msgid ""
+"The landmines game is enabled in {channel.mention}, users can trip on "
+"landmines and earn points here."
+msgstr ""
+"Le jeu des mines est activé dans {channel.mention}, les utilisateurs peuvent "
+"exploser sur des mines et gagner des points ici."
+
+msgid ""
+"The landmines game is disabled in {channel.mention}, users can't trip on "
+"landmines and earn points here."
+msgstr ""
+"Le jeu des mines est désactivé dans {channel.mention}, les utilisateurs ne "
+"peuvent pas faire exploser de mines ou gagner des points ici."
+
+msgid "Members can run landmines commands in {channel.mention}."
+msgstr ""
+"Les membres peuvent exécuter les commandes de mines dans {channel.mention}"
+
+msgid "Members can't run landmines commands in {channel.mention}"
+msgstr ""
+"Les membres ne peuvent pas exécuter de commandes de mines dans {channel."
+"mention}"
+
+msgid "You'll now be pinged in replies from the bot."
+msgstr "Tu seras maintenant mentionné par les réponses du bot."
+
+msgid "You wont be pinged anymore in replies from the bot."
+msgstr "Tu ne seras plus mentionné par les réponses du bot."
+
+msgid "Your language is set to `{language}` [{language_name}]."
+msgstr "Ta langue est définie sur `{language}` [{language_name}]."
+
+msgid "Shop"
+msgstr "Boutique"
+
+msgid "❌ Whoops, you have too many bullets in your weapon already."
+msgstr "❌ Oups, tu as déjà trop de balles dans ton arme."
+
+msgid ""
+"💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as ajouté une balle dans ton arme. [Acheté : -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+
+msgid ""
+"💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
+msgstr ""
+"💡 La prochaine fois tu pourras acheter un chargeur, ce sera moins cher pour "
+"toi 😁"
+
+msgid ""
+"❌ Whoops, you have too many magazines in your backpack already... Try "
+"reloading!"
+msgstr ""
+"❌ Oups, tu as déjà trop de chargeurs dans ton sac à dos... Essaye de "
+"recharger !"
+
+msgid ""
+"💸 You added a magazine in your weapon. Time to reload! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un chargeur dans ton arme. Il est temps de recharger ! "
+"[Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You added a magazine in your weapon. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un chargeur dans ton arme. [Acheté : -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+
+msgid ""
+"❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, I "
+"can't sell that to you. (`{ctx.prefix}event`)"
+msgstr ""
+"❌ Un traité des Nations Unies interdit l'utilisation de munitions AP et "
+"explosives pour l'instant, je ne peux pas te les vendre. (`{ctx."
+"prefix}event`)"
+
+msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
+msgstr ""
+"❌ Oups, ton arme utilise déjà des munitions AP pour encore {time_delta} !"
+
+msgid "❌ Your gun is using some even better explosive ammo for {time_delta}!"
+msgstr ""
+"❌ Ton arme utilise des munitions explosives encore meilleures pour encore "
+"{time_delta} !"
+
+msgid ""
+"💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as acheté des munitions AP. Deux fois plus de dégâts, pour deux fois "
+"plus de fun ! [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid "❌ Your gun is already using explosive ammo for {time_delta}!"
+msgstr ""
+"❌ Ton arme utilise déjà des munitions explosives pour encore {time_delta} !"
+
+msgid ""
+"💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as acheté des munitions EXPLOSIVES. Triple les dégâts, ça va être "
+"sanglant ! [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid "❌ Your gun isn't confiscated, why would you need a new one ?"
+msgstr ""
+"❌ Ton arme n'est pas confisquée, pourquoi en aurais-tu besoin d'une nouvelle "
+"?"
+
+msgid ""
+"💸 You bribed the police and bought back your weapon. The fun continues. "
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as soudoyé la police et racheté ton arme. La chasse continue. [Acheté :"
+" -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"❌ Your gun is already perfectly greased, you don't need any more of that."
+msgstr ""
+"❌ Ton arme est parfaitement bien graissée, tu n'as pas besoin de plus de "
+"graisse"
+
+msgid ""
+"💸 You added some grease to your weapon to reduce jamming for a day. [Bought:"
+" -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un peu de graisse à ton arme pour réduire les risques "
+"qu'elle s'enraye pendant 24 heures. [Acheté : -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+
+msgid ""
+"❌ You added a new sight to your weapon recently. You don't need a new one "
+"for your next {uses} shots."
+msgstr ""
+"❌ Tu as déjà ajouté un viseur à ton arme récemment. Tu peux encore tirer "
+"{uses} fois avant de devoir en racheter un."
+
+msgid ""
+"💸 You added a sight to your weapon to improve your accuracy for the next "
+"few shots. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un viseur à ton arme pour améliorer la précision de tes "
+"prochains tirs. [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+
+msgid ""
+"❌ You already have that infrared detector on your weapon. It is still good "
+"for {times} missed shots."
+msgstr ""
+"❌ Tu as déjà un détecteur infrarouge sur ton arme. Il est encore bon pour "
+"{times} tirs."
+
+msgid ""
+"💸 You added an infrared detector to your weapon. If you can't see ducks, "
+"you can't shoot them. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un détecteur infrarouge sur ton arme. [Acheté : -{ITEM_COST} "
+"exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"❌ You already use a silencer. It's still good for {time_delta}, come back "
+"then."
+msgstr ""
+"❌ Tu es déjà équipé d'un silencieux. Il fonctionnera encore pendant "
+"{time_delta}, reviens a ce moment là."
+
+msgid ""
+"💸 You added a military-grade silencer to your weapon. You seem to know the "
+"game well. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un silencieux militaire sur ton arme. [Acheté : -{ITEM_COST} "
+"exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You added a silencer to your weapon. Ducks are still afraid of the noise, "
+"but you don't make any. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+msgstr ""
+"💸 Tu as ajouté un silencieux sur ton arme. Les canards sont toujours "
+"effrayés par le bruit mais tu n'en fait plus [Acheté : -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
+
+msgid ""
+"❌ You tried to throw your old clover to buy a new one at the new florist. "
+"Unfortunately, there is a cop around and you don't have enough exp to pay a "
+"littering fine of {fine} exp."
+msgstr ""
+"❌ Tu as essayé de jeter ton vieux trèfle pour en acheter un autre chez le "
+"nouveau fleuriste. Malheureusement, il y a un flic au bout de la rue et tu "
+"n'as pas assez d'argent pour payer une amende de {fine} exp."
+
+msgid ""
+"🍀 You throw your old clover to buy a new one at the new florist. "
+"Unfortunately, a cop catches you and fines you {fine} exp for littering."
+msgstr ""
+"🍀 Tu jettes ton vieux trèfle pour en acheter un nouveau chez le nouveau "
+"fleuriste. Malheureusement, un flic t'attrape et te donne une amende de "
+"{fine} exp pour avoir jeté des déchets au sol."
+
+msgid ""
+"❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
+msgstr ""
+"❌ Tu utilises déjà un trèfle à 4 feuilles. Retente ta chance dans "
+"{time_delta} !"
+
+msgid ""
+"🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
+"{clover_exp} more experience points. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"🍀 Tu as acheté un trèfle à quatre feuilles. Chaque fois que tu tueras un "
+"canard, tu obtiendras {clover_exp} exp en plus. [Acheté : -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
+
+msgid ""
+"😎 You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
+msgstr ""
+"😎 Tu as de nouveau acheté des lunettes de soleil... Quel gâchis. [Acheté : -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"😎 You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+msgstr ""
+"😎 Tu as acheté des lunettes de soleil. C'est brillant ! [Acheté : -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You bought some new clothes. You look very good. Maybe the ducks will "
+"like your outfit. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+msgstr ""
+"💸 Tu as acheté de nouveaux vêtements. Tu as un très beau look. Peut-être "
+"que les canards vont aimer ta tenue. [Acheté: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+
+msgid ""
+"💸 You've just cleaned your weapon. Could've just shot once, but heh "
+"¯\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu viens de nettoyer ton arme. Tu aurais pu juste tirer une fois, mais "
+"bon ¯\\\\_(ツ)_/¯. [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+
+msgid "❌ Don't play with fire, kid! Go somewhere else."
+msgstr "❌ Ne joue pas avec le feu, gamin! Va ailleurs."
+
+msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
+msgstr ""
+"❌ Je ne pense pas que {target.mention} puisses jouer à DuckHunt pour le "
+"moment..."
+
+msgid ""
+"💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
+"your mirror. That was kinda stupid, since they have sunglasses 😎. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu rediriges la lumière du soleil ☀️ sur les yeux 👀 de {target.mention} "
+"avec ton miroir. C'était un peu stupide, vu qu'il a des lunettes de soleil "
+"😎. [Acheté: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
+"your mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu rediriges la lumière du soleil ☀️ sur les yeux 👀 de {target.mention} "
+"avec ton miroir. [Acheté: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+
+msgid ""
+"💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu jettes du sable sur l'arme de {target.mention}... Pas cool! [Acheté : -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You threw water on {target.mention}... But they have a raincoat on. [Fail:"
+" -{ITEM_COST} exp]"
+msgstr ""
+"💸 Tu jettes de l'eau sur {target.mention}... Mais il a un imperméable ! "
+"[Échec: -{ITEM_COST} exp]"
+
+msgid ""
+"💸 You threw some icelandic water on {target.mention}... They can't hunt for "
+"**three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+msgstr ""
+"💸 Tu jettes de l'eau islandaise sur {target.mention}... Il ne peut plus "
+"chasser pendant **trois** heures ! [Achat : -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+
+msgid ""
+"💸 You threw water on {target.mention}... They can't hunt for an hour! "
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu jettes de l'eau sur {target.mention}... Il ne peut plus chasser pour "
+"une heure ! [Achat : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid "❌ That weapon is already sabotaged."
+msgstr "❌ Son arme est déjà sabotée."
+
+msgid ""
+"💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: "
+"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as saboté l'arme de {target.mention}... Il ne le sait pas... encore! "
+"[Acheté: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
+"name} weapon... They don't know... yet! [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"Je ne pouvais pas t'envoyer un message privé... Sont-ils bloqués ? De toute "
+"façon, tu as saboté l'arme de {target.name}... Il ne le sait pas... encore ! "
+" [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as placé un leurre dans le salon, les canards vont bientôt arriver !  "
+"[Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as lancé un canard mécanique sur {channel.mention}, il va apparaitre "
+"dans 90 secondes.  [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp].\n"
+"**I couldn't DM you this message**"
+msgstr ""
+"💸 Tu as initialisé un canard mécanique dans {channel.mention}, il va "
+"apparaître dans 90 secondes. [Acheté: -{ITEM_COST} exp].\n"
+"**Je n'ai pas pu vous MP ce message**"
+
+msgid "❌ I'm afraid you cannot choose your coat color yet."
+msgstr ""
+"❌ J'ai bien peur que tu ne puissies pas encore choisir la couleur de ton "
+"manteau."
+
+msgid ""
+"💸 You bought a new, **{color}** coat. \n"
+"You don't look very good, but you are very much protected from water.\n"
+"\n"
+"The tag on the coat says the following :\n"
+"> 100% Polyester, machine washable\n"
+"> {hint}\n"
+"> Made in a CACAD factory also producing homing bullets\n"
+"\n"
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as acheté un nouveau manteau **{color}**.\n"
+"Tu n'as pas un super look, mais tu es très bien protégé de l'eau.\n"
+"\n"
+"L'étiquette du manteau est la suivante :\n"
+"> 100% Polyester, lavable en machine\n"
+"> {hint}\n"
+"> Fait par une usine du CACAC qui produit aussi des balles autoguidées\n"
+"\n"
+"[Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid "❌ You already use a kill license."
+msgstr "❌ Tu utilises déjà un permis de tuer."
+
+msgid ""
+"💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Vous avez acheté un permis de tuer. Les meurtres accidentels vous sont "
+"désormais autorisées. [Acheté : - {ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+
+msgid "❌ You already have an automatic reloader."
+msgstr "❌ Tu disposes déjà d'un rechargeur automatique."
+
+msgid ""
+"💸 You bought an auto reloader for your weapon. It'll reload automatically "
+"every time it's necessary for a day. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu as acheté un rechargeur automatique pour votre arme. Il rechargera "
+"automatiquement ton arme chaque fois que c'est nécessaire pendant une "
+"journée. [Acheté : -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+
+msgid "❌ You already have homing bullets."
+msgstr "❌ Tu as déjà des balles à tête chercheuse."
+
+msgid ""
+"💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee "
+"Against the Comitee Against Ducks) in China. Try them soon! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Tu utilise maintenant les toutes nouvelles balles a tête chercheuse "
+"fabriquées par le CCCCC (Comité Contre le Comité Contre les Canards) en "
+"Chine. Essaye-les !  [Acheté : -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+
+msgid ""
+"The bot itself is made by Eyesofcreeper, with contributions from people "
+"mentionned in `{ctx.prefix}credits`. **You want to help translate this bot "
+"?** Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). "
+"Thanks!"
+msgstr ""
+"Le bot lui-même est réalisé par Eyesofcreeper, avec les contributions des "
+"personnes mentionnées dans `{ctx.prefix}credits`. **Vous voulez aider à la "
+"traduction de ce bot ?** Contactez Eyesofcreeper#0001 sur le serveur de "
+"support (`{ctx.prefix}invite`). Merci !"
+
+msgid "Miscellaneous"
+msgstr "Divers"
+
+msgid "Pong. — Time taken: {miliseconds}ms"
+msgstr "Pong. - Réponse en : {miliseconds}ms"
+
+msgid ""
+"My prefix here is {local_prefix}. You can also call me with any of the "
+"global prefixes : {global_prefixes_list}"
+msgstr ""
+"Mon préfixe ici est {local_prefix}. Vous pouvez également m'appeler avec "
+"l'un des préfixes globaux : {global_prefixes_list}"
+
+msgid ""
+"The bot itself is made by Eyesofcreeper, but these fine people down there "
+"help with graphics, ideas, images, and more. Make sure to give them a wave "
+"if you see them."
+msgstr ""
+"Le bot lui-même est codé par Eyesofcreeper, mais ces personnes géniales ont "
+"aidé avec les graphiques, les idées, les images, et plus encore. Saluez-les "
+"si vous les voyez !"
+
+msgid "Developer"
+msgstr "Développeur"
+
+msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") a fait ce bot."
+
+msgid "Designer"
+msgstr "Designer"
+
+msgid ""
+"<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
+msgstr ""
+"<@465207298890006529> (\"Calgeka\") a réalisée plusieurs des avatars "
+"utilisés par les différents canards."
+
+msgid ""
+"<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
+"over the game. Join the /r/dailyducks subreddit."
+msgstr ""
+"<@376052158573051906> (\"Globloxmen\") a fait beaucoup de canards que vous "
+"pouvez trouver partout dans le jeu. Rejoignez le subreddit /r/dailyducks."
+
+msgid "Ideas"
+msgstr "Idées"
+
+msgid ""
+"Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
+"Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
+msgstr ""
+"Bot basé sur une idée originale de MenzAgitat (sur IRC, #boulets EpiKnet). "
+"Site web : https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
+
+msgid "Translations"
+msgstr "Traductions"
+
+msgid ""
+"The bot is translated in MANY languages! Translators are listed in `{ctx."
+"prefix}translators`."
+msgstr ""
+"Le bot est traduit dans de NOMBREUSES langues ! Les traducteurs sont listés "
+"dans `{ctx.prefix}translators`."
+
+msgid "**DuckHunt credits**"
+msgstr "**Créateurs de DuckHunt**"
+
+msgid ""
+"The bot itself is made by Eyesofcreeper, but a lot of people helped with "
+"graphics, ideas, images, and more."
+msgstr ""
+"Le bot lui-même est codé par Eyesofcreeper, mais ces personnes géniales ont "
+"aidé avec les dessins, les idées, les images, et plus encore. "
+
+msgid ""
+"To see more information about that bot, you'll need to give it the "
+"`embed_links` permission. Contact your friendly neighbourhood server admin."
+msgstr ""
+"Pour obtenir plus d'informations a propos du bot, il va falloir lui donner "
+"la permission `embed_links` (Intégrer des liens). Contacte donc ton "
+"administrateur de serveur pour obtenir de l'aide."
+
+msgid "You don't have to go right now"
+msgstr "T'as pas envie d'aller aux toilettes pour l'instant."
+
+msgid "Hi, fellow cow lover"
+msgstr "Bonjour, ami des vaches"
+
+msgid "Current event: "
+msgstr "Événement actuel : "
+
+msgid ""
+"Events last for one hour from the beginning to the end of the hour. Ending "
+"in {formatted_td}"
+msgstr ""
+"Les événements durent une heure du début à la fin de l'heure. Se termine "
+"dans {formatted_td}"
+
+msgid "{exp} experience"
+msgstr "{exp} expérience"
+
+msgid "Statistics"
+msgstr "Statistiques"
+
+msgid "{target.name} statistics (click me!)."
+msgstr "Statistiques de {target.name} (clique moi!)."
+
+msgid "Bullets"
+msgstr "Balles"
+
+msgid "Magazines"
+msgstr "Chargeurs"
+
+msgid "Experience"
+msgstr "Expérience"
+
+msgid "Level"
+msgstr "Niveau"
+
+msgid "Accuracy"
+msgstr "Précision"
+
+msgid "{level_reliability} % (Real: {real_reliability} %)"
+msgstr "{level_reliability} % (Réel: {real_reliability} %)"
+
+msgid "Reliability"
+msgstr "Fiabilité"
+
+msgid "Level {level}"
+msgstr "Niveau {level}"
+
+msgid "{target.name} shooting stats."
+msgstr "Statistiques de tir de {target.name}."
+
+msgid "🧠"
+msgstr "🧠"
+
+msgid ""
+"{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
+"life {revives} times eating a total of {brains_eaten} brains"
+msgstr ""
+"{shots_when_dead} tirs tentés lorsque tu étais mort. {target.mention} est "
+"retourné à la vie {revives} fois en mangeant un total de {brains_eaten} "
+"cerveaux."
+
+msgid "🚰"
+msgstr "🚰"
+
+msgid "{shots} shots attempted when wet."
+msgstr "{shots} tentatives de tir lorsque tu étais mouillé."
+
+msgid "⛔️"
+msgstr "⛔️"
+
+msgid "{shots} shots attempted when {target.mention} gun was confiscated."
+msgstr ""
+"{shots} tirs tentés lorsque l'arme de {target.mention} était confisquée."
+
+msgid "💥"
+msgstr "💥"
+
+msgid "{shots} shots attempted with a sabotaged gun."
+msgstr "{shots} tirs ont été tentés avec une arme sabotée."
+
+msgid "☁"
+msgstr "☁"
+
+msgid "{shots} shots attempted with a jammed weapon."
+msgstr "{shots} coups de feu tentés avec une arme enrayée."
+
+msgid "🦉"
+msgstr "🦉"
+
+msgid "{shots} shots attempted without bullets."
+msgstr "{shots} tirs essayé sans balles."
+
+msgid "{shots} shots jamming {target.mention} weapon."
+msgstr "{shots} coups de feu enrayant l'arme de {target.mention}."
+
+msgid "🔫"
+msgstr "🔫"
+
+msgid "{bullets} bullets used in a duck killing madness."
+msgstr "{bullets} balles utilisées dans une tuerie de canards."
+
+msgid "🎯"
+msgstr "🎯"
+
+msgid "{shots} shots missing a target."
+msgstr "{shots} Tirs manquant une cible"
+
+msgid "☠️"
+msgstr "☠️"
+
+msgid "{shots} shots killing someone ({murders} were murders)."
+msgstr "{shots} coups de feu tuant quelqu'un ({murders} étaient des tueurs)."
+
+msgid "🧟"
+msgstr "🧟"
+
+msgid "{target.mention} was killed {times} times."
+msgstr "{target.mention} a été tué {times} fois."
+
+msgid "🏆️"
+msgstr "🏆️"
+
+msgid "{shots} shots using homing bullets."
+msgstr "{shots} tirs avec des balles à têtes chercheuses."
+
+msgid "🦆"
+msgstr "🦆"
+
+msgid "{shots} shots going towards ducks."
+msgstr "{shots} tirs allant sur les canards."
+
+msgid "🕵"
+msgstr "🕵"
+
+msgid "{shots} shots stopped by the infrared detector."
+msgstr "{shots} tirs arrêtés par le détecteur infrarouge."
+
+msgid "❓"
+msgstr "❓"
+
+msgid "{shots} shots without any duck in sight."
+msgstr "{shots} tirs sans aucun canard en vue."
+
+msgid "Normal ducks"
+msgstr "Canards normaux"
+
+msgid "Ghost ducks"
+msgstr "Canards fantômes"
+
+msgid "Professor ducks"
+msgstr "Canards professeurs"
+
+msgid "Baby ducks"
+msgstr "Bébé canards"
+
+msgid "Golden ducks"
+msgstr "Canards dorés"
+
+msgid "Plastic ducks"
+msgstr "Canards en plastique"
+
+msgid "Kamikaze ducks"
+msgstr "Canards kamikaze"
+
+msgid "Mechanical ducks"
+msgstr "Canards mécaniques"
+
+msgid "Super ducks"
+msgstr "Super canards"
+
+msgid "Mother of all ducks"
+msgstr "Mère de tout les canards"
+
+msgid "Armored ducks"
+msgstr "Canards en armure"
+
+msgid "{target.name} best times."
+msgstr "Meilleurs temps de {target.name}."
+
+msgid "Never killed any"
+msgstr "Jamais tué"
+
+msgid "{target.name} kill counts."
+msgstr "Meurtres de {target.name}"
+
+msgid "{target.name} hugs counts."
+msgstr "Nombre de câlins de {target.name}."
+
+msgid "Players"
+msgstr "Joueurs"
+
+msgid "Hugs when dead"
+msgstr "Câlins en étant mort"
+
+msgid "{target.name} hurt counts."
+msgstr "Nombre de dégâts fait par {target.name}."
+
+msgid "{target.name} resisted counts."
+msgstr "Nombre de fois où un canard a résisté a un tir de {target.name}."
+
+msgid "{target.name} scared ducks."
+msgstr "Nombre de canards effrayés par {target.name}."
+
+msgid "{target.name} achievements."
+msgstr "Succès de {target.name}"
+
+msgid "❌ You cant send experience to yourself."
+msgstr "❌ Tu ne peux pas t'envoyer de l'expérience à toi-même."
+
+msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
+msgstr "❌ Je ne suis pas sûr que {target.mention} puisse jouer à DuckHunt."
+
+msgid "❌ You need to send more experience than this."
+msgstr "❌ Tu dois envoyer plus d'expérience que ca."
+
+msgid "❌ You don't have enough experience 🤣."
+msgstr "❌ Tu n'as pas assez d'expérience 🤣."
+
+msgid ""
+"🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
+"tax_on_user_send}% was applied to this transaction (taking {tax} exp out of "
+"the total sent)."
+msgstr ""
+"🏦 Tu as envoyé {recived} expérience à {reciver.mention}. Une taxe de "
+"{db_channel.tax_on_user_send}% a été appliquée à cette transaction (en "
+"prenant {tax} exp sur le total envoyé)."
+
+msgid "💰️ You gave {amount} experience to {reciver.mention}. "
+msgstr "💰️ Tu as donné {amount} d'expérience à {reciver.mention} "
+
+msgid "Top Scores on #{channel}"
+msgstr "Meilleurs scores sur #{channel}"
+
+msgid ""
+"❌ The channel {channel.mention} still exists on the server. Please run the "
+"command from there."
+msgstr ""
+"❌ Le canal {channel.mention} existe toujours sur le serveur. Veuillez "
+"exécuter la commande sur celui-ci."
+
+msgid ""
+"❌ The channel used to exist but on a different server. I can't confirm you "
+"have the correct rights on that server. Please use this command in the right "
+"server, or contact support : <https://duckhunt.me/support>."
+msgstr ""
+"❌ Le canal existait mais sur un serveur différent. Je ne peux pas confirmer "
+"que vous avez les bons droits sur ce serveur. Veuillez utiliser cette "
+"commande dans le bon serveur, ou contactez le support : https://duckhunt.me/"
+"support"
+
+msgid ""
+"❌ I can't find a channel with that ID. Please check the given ID, or contact "
+"support : <https://duckhunt.me/support>."
+msgstr ""
+"❌ Je ne trouve pas de chaîne avec cet ID. Veuillez vérifier l'ID donnée, ou "
+"contacter le support : https://duckhunt.me/support"
+
+msgid ""
+"Scores and hunters data were removed from the game, but the game wasn't "
+"stopped... You can use `{ctx.prefix}settings enabled False` to stop the game."
+""
+msgstr ""
+"Les scores et les données des chasseurs ont été supprimées, mais le jeu n'a "
+"pas été arrêté... Vous pouvez utiliser `{ctx.prefix}settings enabled False` "
+"si vous souhaitez mettre un terme au jeu."
+
+msgid "Support team: misc"
+msgstr "Support : divers"
+
+msgid "Most used commands"
+msgstr "Commandes les plus utilisées"
+
+msgid "{n} uses"
+msgstr "{n} utilisations"
+
+msgid "Top users"
+msgstr "Principaux utilisateurs"
+
+msgid "{n} commands used"
+msgstr "{n} commandes utilisées"
+
+msgid ""
+"This is the list of all the tags on this server. They are ordered by "
+"official tags and most used first.\n"
+"The list doesn't include tag aliases"
+msgstr ""
+"Voici la liste de tous les tags sur ce serveur. Ils sont classés par tags "
+"officiels et les plus utilisés en premier.\n"
+"La liste n'inclut pas les alias."
+
+msgid "{u} uses, {r} revisions."
+msgstr "{u} utilisations, {r} révisions."
+
+msgid "Page {current_page}/{maximum} ({entries} tags)"
+msgstr "Page {current_page}/{maximum} ({entries} tags)"
+
+msgid "Support: tags"
+msgstr "Support : tags"
+
+msgid "❌ You didn't specify what you want your tag to say."
+msgstr "❌ Vous n'avez pas spécifié ce que vous voulez que votre tag dise."
+
+msgid "❌ This tag already exists."
+msgstr "❌ Ce tag existe déjà."
+
+msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
+msgstr "👌 Tag créé : {tag.name} (`{tag.pk}`)"
+
+msgid "❌ Both tags already exists, what are you trying to do ?"
+msgstr "❌ Les deux tags existent déjà, que cherchez-vous à faire ?"
+
+msgid "❌ None of your tags exist."
+msgstr "❌ Aucune de vos deux tags n'existe."
+
+msgid ""
+"👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
+"pk}`)"
+msgstr ""
+"👌 Alias créé : {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias.pk}`)"
+
+msgid "❌ This tag doesn't exist yet. You might want to create it."
+msgstr "❌ Ce tag n'existe pas encore. Peut-être est il temps de le créer ?"
+
+msgid "❌ You don't own that tag, you can't edit it."
+msgstr "❌ Vous ne possédez pas ce tag, vous ne pouvez donc pas le modifier."
+
+msgid "👌 Tag {tag.name} edited."
+msgstr "👌 Tag {tag.name} modifié."
+
+msgid "❌ This tag doesn't exist."
+msgstr "❌ Ce tag n'existe pas."
+
+msgid "❌ You don't own that tag, you can't delete it."
+msgstr "❌ Vous ne possédez pas ce tag, vous ne pouvez donc pas le supprimer."
+
+msgid "👌 Tag {tag.name} deleted."
+msgstr "👌 Tag {tag.name} supprimé."
+
+msgid "Murderer"
+msgstr "Meurtrier"
+
+msgid "Kill another hunter."
+msgstr "Tue un autre joueur."
+
+msgid "Big spender"
+msgstr "Grand dépensier"
+
+msgid "Spend more than 2000 experience."
+msgstr "Dépense plus de 2000 expérience."
+
+msgid "A hunter joined the chat"
+msgstr "Un chasseur a rejoint le chat"
+
+msgid "Play for more than a week."
+msgstr "Joue depuis plus d'une semaine"
+
+msgid "We are starting to know each other"
+msgstr "On se connais ?"
+
+msgid "Play for more than a month."
+msgstr "Joue pendant plus d'un mois."
+
+msgid "Wanna be friends ?"
+msgstr "Tu veux être mon pote ?"
+
+msgid "Play for more than a year."
+msgstr "Joue pendant plus d'un an."
+
+msgid "I don't want your damn bullets!"
+msgstr "Je ne veux pas de tes fichues balles !"
+
+msgid "Leave a bullet you found in the bushes."
+msgstr "Laisse une balle que vous avez trouvée dans les buissons."
+
+msgid "Mommy is crying"
+msgstr "Maman pleure"
+
+msgid "Kill a few baby ducks."
+msgstr "Tue quelques bébé canards."
+
+msgid "MATHS 101"
+msgstr "MATHS 101"
+
+msgid "Solve equations given by the Pr. Duck."
+msgstr "Résoudre les équations données par le Pr. Duck."
+
+msgid "BRAAAAAINS!"
+msgstr "CERVEAAAAAUX!"
+
+msgid "Eat some brains and come back to life."
+msgstr "Mange quelques cerveaux et reviens à la vie."
+
+msgid "Sentry gun"
+msgstr "Mitrailleuse automatique"
+
+msgid "Use more than 1000 bullets."
+msgstr "Utilise plus de 1000 balles."
+
+msgid "Homing kills (you)"
+msgstr "Les dirigeables (vous) tuent"
+
+msgid "Use the homing projectiles."
+msgstr "Utilise les balles autodirigées"
+
+msgid "You monster"
+msgstr "Sale monstre"
+
+msgid "Kill a MOAD that spawns a baby duck."
+msgstr ""
+"Tuez une MDTLC (maman de tout les canards) qui donne naissance à un bébé "
+"canard."
+
+msgid "Gun insurer"
+msgstr "Courtier en assurances d'armes"
+
+msgid "Give at least 30 exp to an hunter that lost his gun."
+msgstr "Donne au moins 30 exp à un chasseur qui a perdu son arme."
+
+msgid "Short memory"
+msgstr "Mémoire courte"
+
+msgid "Shoot at your own mechanical duck."
+msgstr "Tire sur ton propre canard mécanique."
+
+msgid "An ounce of prevention is worth a pound of cure"
+msgstr "Un homme averti en vaut deux"
+
+msgid "Sabotage the gun of someone that planned to shoot at you."
+msgstr "Sabote l'arme de quelqu'un qui avait prévu de te tirer dessus."
+
+msgid "https://duckhunt.me/support"
+msgstr "https://duckhunt.me/support"
+
+msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
+msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
+
+msgid ""
+"Hello! The following message (written by the owner of DuckHunt) will give "
+"you a brief introduction to the bot, and also provide you with links to the "
+"DuckHunt wiki.\n"
+"First of all, thank you for using my bot! If you have any unanswered "
+"questions after reading this message and the wiki, you are more than welcome "
+"to ask for help in the support channels at <{support_server_link}>.\n"
+"\n"
+"When a duck spawns you shoot at it by using the `dh!bang` command.\n"
+"You can reload your ammunition with `dh!reload` and buy new magazines with "
+"`dh!shop magazine` or `dh!shop 2`.\n"
+"Your scores and channel leaderboards are available online (click the title "
+"in `dh!me` after playing for a while), and on Discord.If you want to learn "
+"more about the game, use the wiki! <{wiki_link}>\n"
+"We also monitor the bot DMs, so if you have further questions, just answer "
+"this message!"
+msgstr ""
+"Bonjour! Le message ci-dessous (écrit par le propriétaire de DuckHunt) va "
+"vous donner une brève introduction sur le bot, ainsi que vous fournir des "
+"liens vers le wiki.\n"
+"Premièrement, merci d'utiliser mon bot ! Si vous avez encore des questions "
+"après avoir lu ce message et le wiki, vous êtes plus que bienvenu(e) à nous "
+"rejoindre dans les salons d'aide ici : <{support_server_link}>.\n"
+"\n"
+"Quand un canard apparaît, tirez-lui dessus avec la commande `dh!pan`. Tu "
+"peux recharger ta munition avec `dh!reload` et acheter d'autres chargeurs "
+"avec `dh!shop magazine` ou `dh!shop 2`.\n"
+"Tes scores et le tableau de classement du canal sont disponibles en ligne "
+"(click le titre sur `dh!me` après avoir joué un peu), et sur Dscord. Si tu "
+"veux en apprendre plus sur le jeu, tu peux utiliser le wiki ! <{wiki_link}>\n"
+"Nous surveillons également les MP du bot, donc si tu as des questions, "
+"réponds juste à ce message !"
+
+msgid ""
+"Searching the bushes around the duck, you found... **Some trash lying "
+"around**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Des déchets "
+"qui trainent**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **Some trash lying "
+"around**. You didn't take it, you had already too many..."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé...**Des déchets qui "
+"trainent**. Tu ne les as pas pris, tu en avais déjà trop..."
+
+msgid "Searching the bushes around the duck, you found... **Nothing**."
+msgstr "En fouillant les buissons autour du canard, tu as trouvé... **Rien**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A lot of bushes**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Des buissons**."
+""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **La photo d'un "
+"canard**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **An USB-C charger**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Un chargeur "
+"(USB-C)**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A rare duck pin**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Une épingle en "
+"forme de canard, très rare**."
+
+msgid "Searching the bushes around the duck, you found... **A bullet**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Une balle**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A bullet**. You didn't "
+"take it, you had already too many in your magazine anyway..."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Une balle**. "
+"Tu ne l'as pas prise, tu en avais déjà trop dans ton chargeur..."
+
+msgid "Searching the bushes around the duck, you found... **A magazine**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Un chargeur**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A magazine**. You "
+"didn't take it, you had already too many in your backpack..."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Un chargeur**. "
+"Tu ne l'as pas pris, tu en avais déjà trop dans ton sac à dos..."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A box of explosive "
+"ammo**. 💥"
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Une boîte de "
+"munitions explosives**. 💥"
+
+msgid ""
+"Searching the bushes around the duck, you found... **An almost empty box of "
+"explosive ammo**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Une boîte "
+"presque vide de munitions explosives**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **Tons of Duck Grease**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Des tonnes de "
+"graisse de canard**."
+
+msgid "Searching the bushes around the duck, you found... **A new silencer**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Un nouveau "
+"silencieux**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **An infrared detector**."
+msgstr ""
+"En fouillant les buissons autour du canard, tu as trouvé... **Un détecteur "
+"infrarouge**."
+
+msgid "White"
+msgstr "Blanc"
+
+msgid "A useful coat when it rains."
+msgstr "Un manteau utile quand il pleut."
+
+msgid "Orange"
+msgstr "Orange"
+
+msgid ""
+"Better visibility: Increase your chance to frighten ducks, and reduce your "
+"chance to get shot by another hunter."
+msgstr ""
+"Plus visible : Augmente vos chances d'effrayer les canards, et réduit les "
+"chances de vous faire tirer dessus par un autre chasseur."
+
+msgid "Camo"
+msgstr "Camouflage"
+
+msgid "Lower visibility: Less chance to frighten ducks."
+msgstr "Moins visible : Moins de chances d'effrayer les canards."
+
+msgid "Blue"
+msgstr "Bleu"
+
+msgid "Lucky find: Increase your chance to find items in bushes."
+msgstr ""
+"Bonne trouvaille : Augmente vos chances de trouver des objets dans les "
+"buissons."
+
+msgid "Red"
+msgstr "Rouge"
+
+msgid ""
+"Hungry for blood: Increase your murder skills, reduce murder penalties."
+msgstr ""
+"Avide de sang : Augmente vos compétences en matière de meurtre, réduis les "
+"sanctions pour meurtre."
+
+msgid "Yellow"
+msgstr "Jaune"
+
+msgid "Sun powers: Mirrors are less effective against you."
+msgstr "Pouvoir du soleil : Les miroirs sont moins efficaces contre vous."
+
+msgid "Dark green"
+msgstr "Vert foncé"
+
+msgid "Farming skills: Clovers give you one more experience point."
+msgstr ""
+"Compétences agricoles : Les trèfles vous donnent un point d'expérience en "
+"plus."
+
+msgid "Black"
+msgstr "Noir"
+
+msgid "Secret service: Sabotages are cheaper."
+msgstr "Services secrets : Les sabotages coûtent moins chers."
+
+msgid "Light blue"
+msgstr "Bleu clair"
+
+msgid "Sea powers: You are immune to water buckets."
+msgstr "Puissance de la mer : Vous êtes immunisé contre les seaux d'eau."
+
+msgid "Pink"
+msgstr "Rose"
+
+msgid "Power of love: You can't kill players with the same coat color."
+msgstr ""
+"Le pouvoir de l'amour : Impossible tuer d'autres joueurs avec la même "
+"couleur de manteau."
+
+msgid ""
+"This is not a valid color. You can choose between {colors}, or `random` for "
+"a random color."
+msgstr ""
+"Ce n'est pas une couleur valable. Choisissez entre {colors}, ou `random` "
+"pour une couleur aléatoire."
+
+msgid "normal"
+msgstr "normal"
+
+msgid "of which one is a normal duck"
+msgid_plural "of which {this_ducks_killed} are normal ducks"
+msgstr[0] "dont un est un canard normal"
+msgstr[1] "dont {this_ducks_killed} sont des canards normaux"
+
+msgid "{hunter.mention} scared the duck away."
+msgstr "{hunter.mention} a fait fuir le canard."
+
+msgid ""
+"{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+"{hurter.mention} a fait des dégâts au canard [**SUPER CANARD détecté** : "
+"{lives_left}/{total_lives}] [**Dégâts** : -{damage}]"
+
+msgid ""
+"{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
+"{damage}]"
+msgstr ""
+"{hurter.mention} a fait des dégâts au canard [**SUPER CANARD détecté**] "
+"[**Dégâts** : - {damage}]"
+
+msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
+msgstr "{hurter.mention}, le canard a RESISTE. [**CANARD EN ARMURE détecté**]"
+
+msgid ""
+"{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
+msgstr ""
+"{hugger.mention} a câliné le canard. Trop mignon ! [**Câlin** : "
+"+{experience} exp]"
+
+msgid "<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!"
+msgstr "<:Wizzz:505828171397070848> Wizzz charmant canard! Trop mignon !"
+
+msgid ""
+"{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
+"hates you, because you killed all his family. [**FAIL**: {experience} exp]"
+msgstr ""
+"{hugger.mention} a essayé de serrer le canard dans ses bras. Trop mignon ! "
+"Malheureusement, le canard te déteste, parce que tu as tué toute sa famille. "
+"[**ECHEC** : {experience} exp]"
+
+msgid "ghost"
+msgstr "Fantôme"
+
+msgid "of which one is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] "dont un canard fantôme"
+msgstr[1] "dont {this_ducks_killed} canards fantômes"
+
+msgid "prof"
+msgstr "Professeur"
+
+msgid "of which one is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] "dont un Professeur canard"
+msgstr[1] "dont {this_ducks_killed} Pr. Canards"
+
+msgid "baby"
+msgstr "bébé"
+
+msgid "of which one is a baby duck"
+msgid_plural "of which {this_ducks_killed} are baby ducks"
+msgstr[0] "dont un bébé canard"
+msgstr[1] "dont {this_ducks_killed} bébés canards"
+
+msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
+msgstr ""
+"{killer.mention} a tué le bébé canard [**Bébé** : {won_experience} exp]"
+
+msgid ""
+"{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
+"+{experience} exp]"
+msgstr ""
+"{hugger.mention} a câliné le canard en {spawned_for_str}. Trop mignon ! "
+"[**Câlin** : +{experience} exp]"
+
+msgid "golden"
+msgstr "doré"
+
+msgid "of which one is a golden duck"
+msgid_plural "of which {this_ducks_killed} are golden ducks"
+msgstr[0] "dont un canard doré"
+msgstr[1] "dont {this_ducks_killed} canards dorés"
+
+msgid "plastic"
+msgstr "plastique"
+
+msgid "of which one is made of plastic"
+msgid_plural "of which {this_ducks_killed} are made of plastic"
+msgstr[0] "dont un fait de plastique"
+msgstr[1] "dont {this_ducks_killed} qui sont faits de plastique"
+
+msgid "kamikaze"
+msgstr "kamikaze"
+
+msgid "of which one is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] "dont un canard kamikaze"
+msgstr[1] "dont {this_ducks_killed} canards kamikazes"
+
+msgid "mechanical"
+msgstr "mecaniques"
+
+msgid "of which one is a mechanical duck"
+msgid_plural "of which {this_ducks_killed} are mechanical ducks"
+msgstr[0] "dont un canard mécanique"
+msgstr[1] "dont {this_ducks_killed} canards mécaniques"
+
+msgid ""
+"Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
+"made it? [exp: {won_experience}]"
+msgstr ""
+"Eh ben, {killer.mention}, t'es vraiment nul ! Tu as tué un canard mécanique "
+"! Je me demande qui l'a fait apparaitre ? [exp : {won_experience}]"
+
+msgid ""
+"Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
+"is {creator.mention}'s fault! [exp: {won_experience}]"
+msgstr ""
+"Eh ben, {killer.mention}, t'es vraiment nul ! Tu as tué un canard mécanique "
+"! C'est la faute de {creator.mention} ! [exp : {won_experience}]"
+
+msgid "super"
+msgstr "super"
+
+msgid "of which one is a super duck"
+msgid_plural "of which {this_ducks_killed} are super ducks"
+msgstr[0] "dont un super canard"
+msgstr[1] "dont {this_ducks_killed} super canards"
+
+msgid "moad"
+msgstr "mdtlc"
+
+msgid "of which one is a MOAD"
+msgid_plural "of which {this_ducks_killed} are MOADs"
+msgstr[0] "dont une MDTLC"
+msgstr[1] "dont {this_ducks_killed} MDTLC"
+
+msgid "armored"
+msgstr "en armure"
+
+msgid "of which one is an armored duck"
+msgid_plural "of which {this_ducks_killed} are armored ducks"
+msgstr[0] "dont un canard blindé"
+msgstr[1] "dont {this_ducks_killed} canards en armure"
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+"{hurter.mention} attaque le canard [**CANARD EN ARMURE détecté** : "
+"{lives_left}/{total_lives}] [**Dégats** : -{damage}]"
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
+"{damage}]"
+msgstr ""
+"{hurter.mention} attaque le canard [**CANARD EN ARMURE detecté**] "
+"[**Dégats** : - {damage}]"
+
+msgid "night"
+msgstr "de nuit"
+
+msgid "of which one is a night duck"
+msgid_plural "of which {this_ducks_killed} are night ducks"
+msgstr[0] "dont un canard de nuit"
+msgstr[1] "dont {this_ducks_killed} canards de nuit"
+
+msgid "sleeping"
+msgstr "endormi"
+
+msgid "of which one is a sleeping duck"
+msgid_plural "of which {this_ducks_killed} are sleeping ducks"
+msgstr[0] "dont un canard endormi"
+msgstr[1] "dont {this_ducks_killed} canards endormis"
+
+msgid "KWAK"
+msgstr "KWAK"
+
+msgid "KWAAK"
+msgstr "KWAAK"
+
+msgid "KWAAAK"
+msgstr "KWAAAK"
+
+msgid "COUAK"
+msgstr "COUAK"
+
+msgid "COUAAK"
+msgstr "COUAAK"
+
+msgid "COUAAAK"
+msgstr "COUAAAK"
+
+msgid "QUAK"
+msgstr "QUAK"
+
+msgid "QUAAK"
+msgstr "QUAAK"
+
+msgid "QUAAAK"
+msgstr "QUAAAK"
+
+msgid "QUACK"
+msgstr "QUACK"
+
+msgid "QUAACK"
+msgstr "QUAACK"
+
+msgid "QUAAACK"
+msgstr "QUAAACK"
+
+msgid "COUAC"
+msgstr "COUAC"
+
+msgid "COUAAC"
+msgstr "COUAAC"
+
+msgid "COUAAAC"
+msgstr "COUAAAC"
+
+msgid "COUACK"
+msgstr "COUACK"
+
+msgid "*cries*"
+msgstr "*pleure*"
+
+msgid "Hello world"
+msgstr "Bien le bonjour !"
+
+msgid "How are you today?"
+msgstr "Comment vas-tu aujourd'hui ?"
+
+msgid "Please don't kill me..."
+msgstr "S'il-te-plaît ne me tues pas..."
+
+msgid "I love you too!"
+msgstr "Je t'aime moi aussi!"
+
+msgid "Don't shoot me! I'm a fake duck!"
+msgstr "Ne me tire pas dessus! Je suis un faux canard!"
+
+msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
+msgstr ""
+"**Fait de canard** : Certains canards peuvent voler jusqu'à 534 kilomètres "
+"en une seule journée !"
+
+msgid "**Duck fact**: The feathers on a ducks back are waterproof."
+msgstr "**Fait de canard** : Les plumes du dos d'un canard sont imperméables."
+
+msgid "**Duck fact**: Ducks have three eyelids!"
+msgstr "**Fait de canard** : Les canards ont trois paupières !"
+
+msgid ""
+"**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
+"years. Not the ducks on this game tho..."
+msgstr ""
+"**Fait de canard** : Selon l'espèce, un canard peut vivre entre 2 et 12 ans. "
+"Pas les canards de ce jeu par contre..."
+
+msgid "I am invisible, don't bother killing me"
+msgstr "Je suis invisible, ne t'embêtes pas à essayer de me tuer"
+
+msgid "Who is the little ████ here that killed my friend ?"
+msgstr "Qui est le petit ████ ici qui a tué mon ami ?"
+
+msgid "You can't aim for good..."
+msgstr "Je suis sûr que tu ne peux pas viser..."
+
+msgid "The duck left."
+msgstr "Le canard s'en va."
+
+msgid "The duck right."
+msgstr "Le canard part là-bas."
+
+msgid "STOP! It's not what you think!"
+msgstr "STOP! Ce n'est pas ce que tu penses!"
+
+msgid "Killing me will cost you 1562 experience points."
+msgstr "Me tuer te coutera 1562 points d'expérience."
+
+msgid ""
+"I have a secret plan to kill all hunters but I'm already short on breath I "
+"don't think I'll be able to explain it all to you before..."
+msgstr ""
+"J'ai un plan secret pour tuer tous les chasseurs mais je suis déjà à bout de "
+"souffle. Je ne pense pas pouvoir tout vous expliquer avant..."
+
+msgid "[INSERT DUCK NOISE HERE]"
+msgstr "[INSÉRER BRUIT DE CANARD ICI]"
+
+msgid "What happened after DuckHunt was created? ||The big bang||."
+msgstr "Que s'est-il passé après que Duckhunt ait été créé? ||Le big bang||"
+
+msgid "It's rabbit season."
+msgstr "C'est la saison des lapins."
+
+msgid "Got a spare cape?"
+msgstr "Vous avez une cape en rab?"
+
+msgid "Which side of a duck has more feathers? ||The outside||."
+msgstr "Quel côté d'un canard a le plus de plumes ? ||L'extérieur||."
+
+msgid "I steal money. I'm a robber ducky."
+msgstr "Je vais piquer toute ton expérience."
+
+msgid "I'm a very special duck."
+msgstr "Je suis un canard très spécial."
+
+msgid "**DuckHunt ProTip®**: use clovers to get more experience."
+msgstr ""
+"**DuckHunt ProTip®** : utilise un trèfle pour gagner plus d'expérience."
+
+msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
+msgstr ""
+"**DuckHunt ProTip®** : utilise un viseur pour améliorer la précision de tes "
+"tirs."
+
+msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
+msgstr ""
+"**DuckHunt ProTip®** : utilise de la graisse pour éviter que ton arme "
+"s'enraye."
+
+msgid "*Slurp*"
+msgstr "*Slurp*"
+
+msgid "Hopefully you are all AFK..."
+msgstr "J'espère que vous êtes tous AFK..."
+
+msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
+msgstr ""
+"**DuckHunt ProTip®** : utilise un détecteur infrarouge pour éviter des tirs "
+"inutiles."
+
+msgid "I'm just doing my job..."
+msgstr "Je ne fais que mon boulot..."
+
+msgid ""
+"Hey there, DuckHunt quality insurance duck here. How would you rate your "
+"experience killing ducks so far ?"
+msgstr ""
+"Salut, ici le canard de l'assurance qualité DuckHunt. Comment évaluez-vous "
+"votre expérience de la chasse aux canards jusqu'à présent ?"
+
+msgid "YoU hAvE bEeN cOrRuPtEd."
+msgstr "VoUs aVeZ éTé cOrRrOMmPu."
+
+msgid "The duck went away."
+msgstr "Le canard est parti."
+
+msgid "The duck went to another world."
+msgstr "Le canard est parti dans un autre monde."
+
+msgid "The duck didn't have time for this."
+msgstr "Le canard n'avait pas le temps pour ça."
+
+msgid "The duck dissipated in space and time."
+msgstr "Le canard s'est dissipé dans l'espace-temps."
+
+msgid "The duck left out of boredom."
+msgstr "Le canard est parti par ennui."
+
+msgid "The duck doesn't want to be sniped."
+msgstr "Le canard ne veut pas être snipé."
+
+msgid "The duck walked up to the lemonade stand."
+msgstr "Le canard a marché jusqu'au stand de limonade."
+
+msgid "The duck flew over a disproportionately small gap."
+msgstr "Le canard s'est envolé vers un trou disproportionnément petit."
+
+msgid "The duck chickened out."
+msgstr "Le canard a pris peur."
+
+msgid "The duck went to the parallel universe"
+msgstr "Le canard est allé dans l'univers parallèle"
+
+msgid "The duck went to a parallel universe"
+msgstr "Le canard est parti dans un univers parallèle."
+
+msgid "The duck went into the duckiverse"
+msgstr "Le canard est parti dans le canarnivers."
+
+msgid "The duck teleported away from here"
+msgstr "Le canard s'est téléporté loin d'ici"
+
+msgid "The duck went to look for a friend"
+msgstr "Le canard est parti à la recherche d'un ami"
+
+msgid "The duck went to a better place"
+msgstr "Le canard est allé dans un meilleur endroit"
+
+msgid "The duck went to a better party"
+msgstr "Le canard est allé à une meilleure fête"
+
+msgid "The duck has some important business to take care of"
+msgstr "Le canard a des affaires importantes à régler"
+
+msgid "A duck"
+msgstr "Un canard"
+
+msgid "Mr. Duck"
+msgstr "Mr. Canard"
+
+msgid "RealDuck"
+msgstr "VraiCanard"
+
+msgid "The ghost never appeared."
+msgstr "Le fantôme n'est jamais apparu."
+
+msgid "Invisible Duck"
+msgstr "Canard invisible"
+
+msgid "Ghost Duck"
+msgstr "Canard fantôme"
+
+msgid "Boooo Duck"
+msgstr "Canard Bouh"
+
+msgid "Pr. Duck"
+msgstr "Canard prof."
+
+msgid "EnsDuck"
+msgstr "Pr. Canard"
+
+msgid "**COIN**"
+msgstr "**COIN**"
+
+msgid "**Piou** ?"
+msgstr "**Piou** ?"
+
+msgid "**Coin** ?"
+msgstr "**Coin** ?"
+
+msgid "**Coin**!"
+msgstr "**Coin**!"
+
+msgid "**COIIIIIINNNNNN**!"
+msgstr "**COIIIIIINNNNNN**!"
+
+msgid "Smol Duck"
+msgstr "P'tit canard"
+
+msgid "Mini Duck"
+msgstr "Mini canard"
+
+msgid "Ducky"
+msgstr "Canardou"
+
+msgid "Duckie"
+msgstr "Canardounet"
+
+msgid "£!"
+msgstr "£!"
+
+msgid "Free money !"
+msgstr "De l'argent gratuit !"
+
+msgid "It's free money"
+msgstr "C'est de l'argent gratuit"
+
+msgid "Golden Duck"
+msgstr "Canard doré"
+
+msgid "Golden Goose"
+msgstr "Oie dorée"
+
+msgid "Shiny Duck"
+msgstr "Canard brillant"
+
+msgid "Rich Duck"
+msgstr "Canard riche"
+
+msgid "£?"
+msgstr "£?"
+
+msgid "Have any money ?"
+msgstr "Vous avez de l'argent ?"
+
+msgid "It's paid money"
+msgstr "C'est de l'argent payant"
+
+msgid "Plastic Duck"
+msgstr "Canard en plastique"
+
+msgid "Poor Duck"
+msgstr "Canard pauvre"
+
+msgid "Slimey Duck"
+msgstr "Canard maigre"
+
+msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
+msgstr "**QUE PERSONNE NE BOUGE OU TOUT EXPLOSERA !**"
+
+msgid "Gonna kill y'all !"
+msgstr "Je vais tous vous tuer !"
+
+msgid "The Kamikaze Duck"
+msgstr "Le canard kamikaze"
+
+msgid "Explosive Duck"
+msgstr "Canard explosif"
+
+msgid "Boom Duck"
+msgstr "Canard boom"
+
+msgid "Dynamite Duck"
+msgstr "Canardynamite"
+
+msgid "The kamikaze duck exploded, killing every duck on the channel."
+msgstr ""
+"Le canard kamikaze a explosé, tuant tous les canards présents sur le salon."
+
+msgid "Duck 2000"
+msgstr "Canard 2000"
+
+msgid "Omega Duck"
+msgstr "Omega-nard"
+
+msgid "BZZZZZAAAAK"
+msgstr "BZZZZZAAAAK"
+
+msgid "BZAAAACK"
+msgstr "BZAAAACK"
+
+msgid "BZAACK"
+msgstr "BZAACK"
+
+msgid "Big Duck"
+msgstr "Gros canard"
+
+msgid "Strong Duck"
+msgstr "Canard fort"
+
+msgid "Heavy Duck"
+msgstr "Canard lourd"
+
+msgid "**I am your mother...**"
+msgstr "**Je suis ta mère...**"
+
+msgid "Ms. Duck"
+msgstr "Mme. Canard"
+
+msgid "Mom"
+msgstr "Maman"
+
+msgid "Mommy"
+msgstr "Mamounette"
+
+msgid "MOAD"
+msgstr "MDTLC"
+
+msgid "Mooooom"
+msgstr "Môman"
+
+msgid "*coin*"
+msgstr "*coin*"
+
+msgid "*Don't make a noise, it's nighttime*"
+msgstr "*Ne fait pas de bruit, c'est la nuit*"
+
+msgid "*Shhhhh*"
+msgstr "*Chuuuut*"
+
+msgid "ZzZzZz"
+msgstr "ZzZzZz"
+
+msgid "Everything is calm"
+msgstr "Tout est calme"
+
+msgid "Nothing is happening right now."
+msgstr "Rien ne se passe pour le moment."
+
+msgid "Ducks are migrating"
+msgstr "Les canards migrent"
+
+msgid "Prepare to see more ducks in the next hour."
+msgstr "Préparez-vous à voir plus de canards dans l'heure à venir."
+
+msgid "Steroids in the lake"
+msgstr "Stéroïdes dans le lac"
+
+msgid ""
+"A medical waste company dumped steroids in the lake. Ducks have mutated, and "
+"you'll see a lot more super ducks. But, be careful, and don't drink that "
+"water."
+msgstr ""
+"Une compagnie pharmaceutique a relâché des stéroïdes dans le lac. Les "
+"canards ont mutés et tu verra beaucoup plus de super canards. Mais fait "
+"attention, et évite de boire de cette eau."
+
+msgid "Safety class canceled"
+msgstr "Annulation du cours de maniement d'armes"
+
+msgid "The safety class was canceled, beware not to shoot other hunters!"
+msgstr ""
+"Le cours sur le maniement d'armes a été annulé, faites attention à ne pas "
+"tirez sur d'autres chasseurs !"
+
+msgid "Connection problem"
+msgstr "Problèmes de connexion"
+
+msgid ""
+"Ducks cant find your computer due to connection problems, and there will be "
+"less of them until it's repaired."
+msgstr ""
+"Les canards n'arrivent pas à trouver votre ordinateur à cause de problèmes "
+"de connexion, il y en aura donc moins jusqu'à ce que ce soit réparé."
+
+msgid "A new florist in town"
+msgstr "Un nouveau fleuriste en ville"
+
+msgid ""
+"A florist opened in town, and you can now find better 4-leaf-clovers. Go "
+"check them out!"
+msgstr ""
+"Un fleuriste a ouvert ses portes en ville, tu as de bien meilleures chances "
+"d'obtenir de meilleurs trèfles à quatre feuilles. Essaye donc !"
+
+msgid "Mega-ducks"
+msgstr "Méga-canards"
+
+msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
+msgstr ""
+"Quelqu'un a gonflé un super canard et maintenant ils sont ENCORE PLUS GROS "
+"!!"
+
+msgid "Windy weather"
+msgstr "Vent d'hiver"
+
+msgid "Bullets are deflected by some strong wind."
+msgstr "Les balles sont déviées par un vent puissant."
+
+msgid "A UN treaty bans damaging ammo"
+msgstr ""
+"Un traité des Nations Unies banni l'utilisation de munitions perforantes et "
+"explosives"
+
+msgid ""
+"AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
+"they are getting rare."
+msgstr ""
+"Les munitions AP et explosives sont désactivées. Les super canards valent "
+"plus d'expérience, puisqu'ils sont plus rares."
+
+msgid "Lootbox opened"
+msgstr "Lootbox ouverte"
+
+msgid "VIP card"
+msgstr "Carte de fidélité"
+
+msgid "A nice and shiny card that allow you to set a server as VIP."
+msgstr "Une jolie carte brillante qui permet de définir un serveur comme VIP."
+
+msgid "❌ {guild.name} is already VIP."
+msgstr "❌ {guild.name} est déjà VIP."
+
+msgid "✨ {guild.name} is now VIP! Thanks."
+msgstr "✨ {guild.name} est maintenant VIP ! Merci."
+
+msgid "A book"
+msgstr "Un livre"
+
+msgid "Reading it will give you experience."
+msgstr "Le lire vous donnera de l'expérience."
+
+msgid ""
+"✨ You learned a lot, adding {amount} experience points to your profile."
+msgstr ""
+"✨ Tu as beaucoup appris, en ajoutant {amount} points d'expérience à ton "
+"profil."
+
+msgid "A book in a foreign language"
+msgstr "Un livre dans une langue étrangère"
+
+msgid "Can you read it ?"
+msgstr "Pouvez-vous le lire ?"
+
+msgid "An encyclopedia"
+msgstr "Une encyclopédie"
+
+msgid "Reading it will give you a lot of experience ?"
+msgstr "Le lire vous apportera beaucoup d'expérience ?"
+
+msgid "A bullet"
+msgstr "Une balle"
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement."
+msgstr ""
+"C'est juste une balle normale, mais cela pourrait vous aider à obtenir un "
+"bel achievement."
+
+msgid "✨ Oh, is this a bullet ?"
+msgstr "✨ Oh, c'est une balle ?"
+
+msgid "A good ol' egg"
+msgstr "Un bon vieil œuf"
+
+msgid "Crack it open !"
+msgstr "Ouvre-le donc !"
+
+msgid "✨ Oh look, ducks! Ducks are everywhere!"
+msgstr "✨ Oh regarde, des canards ! Ils sont partout !"
+
+msgid "A free card for magazines"
+msgstr "Une carte cadeau pour des chargeurs gratuits"
+
+msgid "Redeem it to refill your weapon."
+msgstr "Utilise-la pour recharger ton arme."
+
+msgid "✨ Yay! Free ammo!"
+msgstr "✨ Trop bien ! Des munitions gratuites !"
+
+msgid "❌ Your ammo is already full!"
+msgstr "❌ Votre chargeur est déjà plein !"
+
+msgid "A welcome gift"
+msgstr "Un cadeau de bienvenue"
+
+msgid "Open it in your inventory"
+msgstr "Ouvre le dans ton inventaire"
+
+msgid "A clean box of foie gras"
+msgstr "Une boîte de foie gras bien propre"
+
+msgid "The boss dropped that when he died"
+msgstr "Le boss a laissé tomber ça quand il est mort"
+
+msgid "A little something for helping the bot"
+msgstr "Un petit quelque chose pour aider le bot."
+
+msgid "Thanks for voting for DuckHunt"
+msgstr "Merci d'avoir voté pour DuckHunt !"
+
+msgid "Negative cheater ?"
+msgstr "Tricheur inversé ?"
+
+msgid "Duck Hugger ?"
+msgstr "Câlineur de canards ?"
+
+msgid "What are you doing ?"
+msgstr "Mais tu fais quoi ?"
+
+msgid "public danger"
+msgstr "danger public"
+
+msgid "tourist"
+msgstr "touriste"
+
+msgid "noob"
+msgstr "noob"
+
+msgid "trainee"
+msgstr "stagiaire"
+
+msgid "duck misser"
+msgstr "rateur de canards"
+
+msgid "member of the Committee Against Ducks"
+msgstr "membre du Comité Contre les Canards"
+
+msgid "duck hater"
+msgstr "détesteur de canards"
+
+msgid "duck pest"
+msgstr "emmerdeur de canards"
+
+msgid "duck hassler"
+msgstr "harceleur de canards"
+
+msgid "duck plucker"
+msgstr "déplumeur de canards"
+
+msgid "hunter"
+msgstr "chasseur"
+
+msgid "duck inside out turner"
+msgstr "retourneur de canards"
+
+msgid "duck clobber"
+msgstr "assommeur de canards"
+
+msgid "duck chewer"
+msgstr "mâchouilleur de canards"
+
+msgid "duck eater"
+msgstr "mangeur de canards"
+
+msgid "duck flattener"
+msgstr "aplatisseur de canards"
+
+msgid "duck disassembler"
+msgstr "démonteur de canards"
+
+msgid "duck demolisher"
+msgstr "démolisseur de canards"
+
+msgid "duck killer"
+msgstr "tueur de canards"
+
+msgid "duck skinner"
+msgstr "écorcheur de canards"
+
+msgid "duck predator"
+msgstr "prédateur"
+
+msgid "duck chopper"
+msgstr "découpeur de canards"
+
+msgid "duck decorticator"
+msgstr "décortiqueur de canards"
+
+msgid "duck fragger"
+msgstr "exploseur de canards"
+
+msgid "duck shatterer"
+msgstr "éclateur de canards"
+
+msgid "duck smasher"
+msgstr "défonceur de canards"
+
+msgid "duck breaker"
+msgstr "bousilleur de canards"
+
+msgid "duck wrecker"
+msgstr "poutreur de canards"
+
+msgid "duck impaler"
+msgstr "empaleur de canards"
+
+msgid "duck eviscerator"
+msgstr "éventreur de canards"
+
+msgid "ducks terror"
+msgstr "terreur des canards"
+
+msgid "duck exploder"
+msgstr "exploseur de canards"
+
+msgid "duck destructor"
+msgstr "destructeur de canards"
+
+msgid "duck blaster"
+msgstr "démolécularisateur de canards"
+
+msgid "duck pulverizer"
+msgstr "pulvérisateur de canards"
+
+msgid "duck disintegrator"
+msgstr "désintégrateur de canards"
+
+msgid "duck atomizer"
+msgstr "atomiseur de canards"
+
+msgid "duck annihilator"
+msgstr "annihilateur de canards"
+
+msgid "serial duck killer"
+msgstr "serial duck killer"
+
+msgid "duck genocider"
+msgstr "génocideur de canards"
+
+msgid "old noob"
+msgstr "vieux noob"
+
+msgid "duck toaster"
+msgstr "toasteur de canards"
+
+msgid "unemployed due to extinction of the duck species"
+msgstr "chômeur pour cause d'extinction de l'espèce des canards"
+
+msgid "This is not a valid level. Choose between {levels}"
+msgstr "Ce n'est pas un niveau valable. Choisissez entre {levels}"
+
+msgid "Can't set such a high level"
+msgstr "Impossible de régler un niveau aussi élevé"
+
+msgid "You leveled up!"
+msgstr "Tu as monté de niveau!"
+
+msgid "You leveled down!"
+msgstr "Tu as baissé de niveau!"
+
+msgid "❌ You cannot run this command."
+msgstr "❌ Vous ne pouvez pas exécuter cette commande."
+
+msgid "❌ You are not allowed to click on this button"
+msgstr "❌ Vous n'êtes pas autorisé à cliquer sur ce bouton"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Confirm"
+msgstr "Confirmer"
