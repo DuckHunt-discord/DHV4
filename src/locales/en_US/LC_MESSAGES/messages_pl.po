@@ -8,3 +8,322 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
+
+msgid "Spawns a cartographer duck."
+msgstr "Spawnuje kaczkę kartografkę."
+
+msgid ""
+"Update the @Have DuckHunt role members, according to\n"
+"the owners of every guild where DuckHunt is enabled."
+msgstr ""
+"Zaktualizuj członków roli @Have DuckHunt, zgodnie z właścicielami każdego "
+"serwera, w którym DuckHunt jest włączony."
+
+msgid ""
+"/channels/<channel_id>/settings\n"
+"\n"
+"Get settings for a specific channel ID"
+msgstr ""
+"/channels/<channel_id>/settings\n"
+"Uzyskaj informacje o ustawieniach określonego ID kanału."
+
+msgid ""
+"/channels/<channel_id>/top\n"
+"\n"
+"Get players data for a specific channel ID, ordered by experience"
+msgstr ""
+"/channels/<channel_id>>/top\n"
+"Uzyskaj dane graczy dla określonego ID kanału, uporządkowane wg punktów "
+"doświadczenia"
+
+msgid ""
+"/channels/<channel_id>/player/<player_id>\n"
+"\n"
+"Get information for a specific player ID and channel ID"
+msgstr ""
+"/channels/<channel_id>/player/<player_id>\n"
+"\n"
+"Uzyskaj informacje o ID danego użytkownika i ID kanału"
+
+msgid ""
+"Vote for a boss to spawn for a minute.\n"
+"This is an unfair vote: while it needs people to vote quickly for a boss,\n"
+"if someone vote against, the boss won't spawn."
+msgstr ""
+"Zagłosuj na bossa, który pojawi się za minutę\n"
+"To jest niesprawiedliwe głosowanie: podczas normalnego głosowania "
+"potrzebujesz ludzi do szybkiego głosowania na bossa, jeśli ktoś wtedy "
+"zagłosuje przeciw, boss się nie pojawi."
+
+msgid ""
+"💥 Your weapon was sabotaged and exploded in your face. You can thank "
+"{sabotager} for this bad joke."
+msgstr ""
+
+msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
+msgstr ""
+"💥 Twoja broń się zacięła. Załaduj ją ponownie i dodaj sobie trochę otuchy."
+
+msgid ""
+"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
+msgstr ""
+"{you_mention} przytulił/a cały gang {target_mention}. KOCHAMY GRUPOWE "
+"PRZYTULASY!!!  💯"
+
+msgid ""
+"{you_mention}, you just hugged yourself. You feel a little lonely, don't "
+"you?"
+msgstr ""
+"{you_mention}, po prostu przytuliłeś/aś... SIEBIE! Czujesz się trochę "
+"samotny, prawda...?"
+
+msgid ""
+"❌ This word is currently protected by {user}, you can't place a mine on it — "
+"{protect.message}."
+msgstr ""
+
+msgid ""
+"❌ This word is currently protected by {user}, you can't place a mine on it."
+msgstr ""
+
+msgid "❌ This word is already protected by {user}."
+msgstr ""
+
+msgid ""
+"**More experience**: Chance to get more experience equal to your prestige "
+"level for every natural spawn killed"
+msgstr ""
+
+msgid ""
+"❌ The daily command was disabled. You can now get bonus experience for every "
+"duck killed."
+msgstr ""
+
+msgid ""
+"❌ The daily command will be disabled in 2024. You can now get bonus "
+"experience when killing ducks."
+msgstr ""
+
+msgid "👍️ Role ID {old_role} removed from the auto_roles list."
+msgstr "👍 Rola {old_role} usunięta z listy auto_prestige_roles."
+
+msgid "❌️ No role was set for this level."
+msgstr "❌️ Żadna rola nie została ustawiona dla tego poziomu."
+
+msgid "{level} - {user} [`{user.id}`]"
+msgstr ""
+
+msgid "🌐 The beloved DuckHunt translators"
+msgstr "🌐 Ukochani tłumacze DuckHunt"
+
+msgid "You'll get back your weapon and magazines {formatted_delta}"
+msgstr "Odzyskasz swoją broń i magazynki za {formatted_delta}"
+
+msgid ""
+"<@807752234669703210> (\"YaOldBuddy\") made some of the avatars Ducks use."
+msgstr ""
+
+msgid ""
+"<@355143752248983552> (\"ZeBadMedic\") also made some of the Ducks avatars."
+msgstr ""
+
+msgid "The bot current time is: {formatted_td}"
+msgstr "Obecny czas bota to: {formatted_td}"
+
+msgid "{target} data was deleted from this channel."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A duck ton of bushes**."
+msgstr ""
+"Przeszukując krzaki wokół gniazda kaczki, znalazłeś/aś... **kaczotonę innych "
+"krzaków**"
+
+msgid "**Killed**: {normal_exp} exp"
+msgstr ""
+
+msgid "**2-leaf Clover**: {bonus_experience} exp"
+msgstr ""
+
+msgid "**4-leaf Clover**: {bonus_experience} exp"
+msgstr ""
+
+msgid "**Prestige**: {prestige_experience} exp"
+msgstr ""
+
+msgid ""
+"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
+"{total_ducks_killed} ({ncategory_killed}) [{splits_formatted}]"
+msgstr ""
+
+msgid "Hey, genius! What's {operation}?"
+msgstr ""
+
+msgid ""
+"Come on, {hurter.mention}! I asked you a question! What's {operation}? "
+"Answer with `dh!bang <answer>`."
+msgstr ""
+
+msgid ""
+"Come on, {hurter.mention}! I bet even a calculator could outsmart you. "
+"What's {operation}? Impress me with your brilliance, if you have any left. "
+"(`dh!bang <answer>`)"
+msgstr ""
+
+msgid "{hurter.mention}, Just give me digits ! What's {operation}?"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, I didn't know I was asking for the meaning of life. It's "
+"just {operation}. Can you handle that, or is it too mind-boggling for you?"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, seriously? That's not the right answer! I wouldn't say "
+"{operation} is that hard to calculate... Come on!"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, That's not the right answer! What's {operation}? Answer "
+"with `dh!bang <answer>`."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, are you allergic to numbers? Because that's not the answer."
+" I thought even you could handle basic math. Apparently, I overestimated you."
+" Again."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, I'm starting to think you're not even trying. What's "
+"{operation}? Answer with `dh!bang <answer>`."
+msgstr ""
+
+msgid ""
+"Alright, {hurter.mention}, let's break it down. Math: not a foreign language."
+" I'm starting to think you'd struggle with counting your own fingers. What's "
+"{operation}?"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, darling, if ignorance were a currency, you'd be a "
+"millionaire by now. What's {operation}? Or is that too rich for your "
+"intellectual wallet?"
+msgstr ""
+
+msgid ""
+"I'm starting to think you're doing this on purpose. What's {operation}? "
+"Answer with `dh!bang <answer>`."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, I see you're trying the 'random number generator' approach "
+"to math. Newsflash: it's not working. What's {operation}?"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, if I had a penny for every wrong answer you've given, I'd "
+"be able to buy a tutor for you. What's {operation}? And please, for the love "
+"of math, be right this time."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, I've seen toddlers with a better grasp of math than you. "
+"Seriously, it's {operation}, not rocket science. Although, given your track "
+"record, you may want to learn from them."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, is your calculator on vacation? Because your answers are "
+"definitely taking a holiday from correctness. What's {operation}? Take your "
+"time; I've got all day to witness this spectacle."
+msgstr ""
+
+msgid ""
+"Ah, {hurter.mention}, your mathematical prowess is truly a spectacle. I "
+"asked for {operation}, not a tragic comedy. Can you manage to get it right, "
+"or should I prepare for disappointment?"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, I bet if solving this equation was a life skill, you'd be "
+"in dire straits right now. What's {operation}? And no, consulting a psychic "
+"won't help you here."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, did you mistake this for a guessing game? It's not 'Who "
+"Wants to Be a Millionaire: Math Edition.' What's {operation}? And remember, "
+"there are no lifelines for the academically challenged."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, your math proficiency is like a rare species – extinct. "
+"What's {operation}? Or is that too much to ask from the endangered species "
+"called your intellect?"
+msgstr ""
+
+msgid ""
+"{hurter.mention}, I'm beginning to think your understanding of numbers is "
+"purely theoretical. What's {operation}? And no, this isn't hard like a "
+"quantum mechanics problem; it's just basic math."
+msgstr ""
+
+msgid ""
+"{hurter.mention}, for fuck sake, just kill me already! Let's do something a "
+"bit easier for you...What's {operation}? "
+msgstr ""
+
+msgid ""
+"{hugger.mention} attempted a hug. Cute, but the duck despises you for wiping "
+"out its family, and for failing HARD at math. [**FAIL**: {experience} exp]"
+msgstr ""
+
+msgid ""
+"{hugger.mention} attempted a hug. Adorable, but your affection won't fix the "
+"fact that you're failing miserably at math, {hugger.mention}. [**FAIL**: "
+"{experience} exp]"
+msgstr ""
+
+msgid "cartographer"
+msgstr "Kartografka"
+
+msgid "of which one is a cartographer duck"
+msgid_plural "of which {this_ducks_killed} are cartographer ducks"
+msgstr[0] "z których jedna to Kaczka Kartografka"
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "z których {this_ducks_killed} kaczek to Kaczki Kartografki"
+
+msgid ""
+"ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
+"letter and the number to the bang command. Example: `dh!bang A1`."
+msgstr ""
+"ℹ️ **Kaczka Kartografka**: znajdź kaczkę na powyższej mapie, dodając literę "
+"i cyfrę do polecenia bang. Przykład: `dh!bang A1`."
+
+msgid ""
+"{hurter.mention}, You need to find the duck in the map above! Answer with "
+"`dh!bang <coordinates>`."
+msgstr ""
+"{hurter.mention}, musisz znaleźć kaczkę na mapie powyżej! Odpowiedz komendą "
+"`dh!bang <coordinates>`."
+
+msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
+msgstr ""
+"{hurter.mention}, poproszę o koordynaty w formie litera + cyfra, np. `B3!`! "
+"{exc_message}`"
+
+msgid "{hurter.mention}, that's not the correct answer!"
+msgstr "{hurter.mention} Ups! To nie jest poprawna odpowiedź!"
+
+msgid ""
+"[{hurter.mention}] I'm sorry Hal, I'm afraid I can't do that <https://youtu."
+"be/ARJ8cAGm6JE?t=58>."
+msgstr ""
+
+msgid "Dockolumbus"
+msgstr "Kaczobyk"
+
+msgid "Cartographer Duck"
+msgstr "Kaczka Kartografka"
