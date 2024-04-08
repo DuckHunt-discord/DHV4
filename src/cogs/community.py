@@ -1,4 +1,5 @@
 import asyncio
+import random
 import re
 
 import discord
@@ -177,6 +178,26 @@ class Community(Cog):
             if maybe_sound:
                 ctx.logger.info(f"Playing sound {maybe_sound} ({message.content})")
                 await ctx.reply(file=discord.File(saysounds_files[maybe_sound]))
+
+        if message.channel == 1020670134072901713:
+            # Counter
+            await self.counter(message)
+
+    async def counter(self, message):
+        if message.author.bot:
+            return
+
+        if not message.content.isdigit():
+            return
+
+        current_count = int(message.content)
+        if current_count % 100 == 0:
+            await message.add_reaction("🎉")
+
+        if random.randint(1, 35) == 1:
+            next_count = current_count + 1
+            await message.send(str(next_count))
+
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = timezone.now()
