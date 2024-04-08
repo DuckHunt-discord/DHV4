@@ -183,7 +183,7 @@ class Community(Cog):
             # Counter
             await self.counter(message)
 
-        if "cookie" in message.content:
+        if "cookie" in message.content.lower():
             await message.add_reaction("🍪")
 
         if not message.author.bot and not message.content.startswith("!") and not message.content.startswith("dh"):
