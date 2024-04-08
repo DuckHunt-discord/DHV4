@@ -217,7 +217,7 @@ class Community(Cog):
                 await message.add_reaction("🇷")
                 await message.add_reaction("🇴")
                 await message.add_reaction("🇺")
-                await message.add_reaction("🇹")
+                await message.add_reaction("<:letter_T:501145536821461003>")
                 await message.add_reaction("🐟")
             elif roundome == 8:
                 # ayy lmao
