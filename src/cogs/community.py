@@ -179,7 +179,7 @@ class Community(Cog):
                 ctx.logger.info(f"Playing sound {maybe_sound} ({message.content})")
                 await ctx.reply(file=discord.File(saysounds_files[maybe_sound]))
 
-        if message.channel == 1020670134072901713:
+        if message.channel.id == 1020670134072901713:
             # Counter
             await self.counter(message)
 
@@ -258,7 +258,7 @@ class Community(Cog):
         if current_count % 100 == 0:
             await message.add_reaction("🎉")
 
-        if random.randint(1, 35) == 1:
+        if random.randint(1, 15) == 1:
             next_count = current_count + 1
             await message.send(str(next_count))
 
