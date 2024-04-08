@@ -250,11 +250,11 @@ class Community(Cog):
     async def counter(self, message):
         if message.author.bot:
             return
-
-        if not message.content.isdigit():
+        try:
+            current_count = int(message.content)
+        except ValueError:
             return
 
-        current_count = int(message.content)
         if current_count % 100 == 0:
             await message.add_reaction("🎉")
 
