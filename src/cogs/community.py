@@ -183,6 +183,35 @@ class Community(Cog):
             # Counter
             await self.counter(message)
 
+        if "cookie" in message.content:
+            await message.add_reaction("🍪")
+
+        if not message.author.bot and not message.content.startswith("!") and not message.content.startswith("dh"):
+            roundome = random.randint(1, 3600)
+
+            if roundome == 1:
+                # TRUE as a reaction
+                await message.add_reaction("🇹")
+                await message.add_reaction("🇷")
+                await message.add_reaction("🇺")
+                await message.add_reaction("🇪")
+            elif roundome == 2:
+                # FALSE as a reaction
+                await message.add_reaction("🇫")
+                await message.add_reaction("🇦")
+                await message.add_reaction("🇱")
+                await message.add_reaction("🇸")
+                await message.add_reaction("🇪")
+            elif roundome == 3:
+                await message.add_reaction("😂")
+                await message.add_reaction("🤣")
+            elif roundome == 4:
+                await message.add_reaction("🦆")
+            elif roundome == 5:
+                await message.add_reaction("❤️")
+            elif roundome == 6:
+                await message.add_reaction("💖")
+
     async def counter(self, message):
         if message.author.bot:
             return
