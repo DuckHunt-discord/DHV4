@@ -211,6 +211,22 @@ class Community(Cog):
                 await message.add_reaction("❤️")
             elif roundome == 6:
                 await message.add_reaction("💖")
+            elif roundome == 7:
+                # TROUT as a reaction
+                await message.add_reaction("🇹")
+                await message.add_reaction("🇷")
+                await message.add_reaction("🇴")
+                await message.add_reaction("🇺")
+                await message.add_reaction("🇹")
+                await message.add_reaction("🐟")
+            elif roundome == 8:
+                # ayy lmao
+                await message.add_reaction("👽")
+            elif roundome == 9:
+                await message.add_reaction("💯")
+            elif roundome == 10:
+                await message.add_reaction("👀")
+
 
     async def counter(self, message):
         if message.author.bot:
