@@ -258,9 +258,9 @@ class Community(Cog):
         if current_count % 100 == 0:
             await message.add_reaction("🎉")
 
-        if random.randint(1, 10) == 5:
+        if random.randint(1, 20) == 5:
             next_count = current_count + 1
-            await message.send(str(next_count))
+            await message.channel.send(str(next_count))
 
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
