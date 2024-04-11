@@ -1,10 +1,10 @@
 import asyncio
 import random
 import re
+from pathlib import Path
 
 import discord
 from discord.ext import commands
-from pathlib import Path
 from tortoise import timezone
 
 from utils import checks, models
@@ -261,7 +261,6 @@ class Community(Cog):
         if random.randint(1, 20) == 5:
             next_count = current_count + 1
             await message.channel.send(str(next_count))
-
 
     async def parse_embed_cooldowns(self, embed: discord.Embed):
         now = timezone.now()
