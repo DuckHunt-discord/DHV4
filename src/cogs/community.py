@@ -258,7 +258,7 @@ class Community(Cog):
         if current_count % 100 == 0:
             await message.add_reaction("🎉")
 
-        if True or random.randint(1, 20) == 5:
+        if random.randint(1, 20) == 5:
             next_count = current_count + 1
             await message.channel.send(str(next_count))
 
