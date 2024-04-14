@@ -419,7 +419,7 @@ class Event2021(Cog):
                 return
 
             last_message = self.last_messages.get((guild.id, ctx.author.id), None)
-            if not last_message or (datetime.now() - last_message).total_seconds() < 600:
+            if not last_message or (datetime.now() - last_message).total_seconds() > 600:
                 await ctx.author.send(
                     _(
                         "❌ You can't place a landmine without chatting on the server first. Please enter a discussion and place landmines then."
