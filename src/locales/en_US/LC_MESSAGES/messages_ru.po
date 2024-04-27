@@ -9,13 +9,444 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
+msgid "Creates votes handlers for specific bots lists"
+msgstr "Создаёт обработчики голосов для определённых бот-листов"
+
+msgid "Handle users votes for fateslist"
+msgstr "Обработка голосов пользователей на fateslist"
+
+msgid "Handle users votes for top.gg"
+msgstr "Обработка голосов пользователей на top.gg"
+
+msgid "Sends the link you can use to vote for DuckHunt on bot lists"
+msgstr "Отображение ссылки на голосование за DuckHunt в бот-листах"
+
+msgid "Create a Command view for a given command."
+msgstr ""
+
+msgid "Create a GamePadView to allow playing the game with buttons."
+msgstr ""
+
+msgid ""
+"Invite someone to the beta server, letting them try the bot before the "
+"others"
+msgstr ""
+"Приглашение пользователя на beta-сервер, где можно проверить "
+"работоспособность бота раньше других."
+
+msgid "Shoot at the duck that appeared first on the channel."
+msgstr "Выстрел по утке, которая появилась на канале первой."
+
+msgid "Reload your gun."
+msgstr "Перезарядка оружия."
+
+msgid "Hug the duck that appeared first on the channel."
+msgstr "Объятие утки, которая появилась на канале первой."
+
+msgid "Revive yourself by eating brains"
+msgstr "Оживление посредством поедания мозга."
+
+msgid "Spawns a random duck"
+msgstr "Создаёт случайную утку."
+
+msgid "Spawns many ducks, of which (at least) one is a mechanical one"
+msgstr "Создаёт множество уток, включая одну или несколько механических."
+
+msgid "Spawns a normal duck"
+msgstr "Создаёт обычную утку."
+
+msgid "Spawns a super duck"
+msgstr "Создаёт супер-утку."
+
+msgid "Spawns a baby duck"
+msgstr "Создаёт утёнка."
+
+msgid "Spawns a professor Duck."
+msgstr "Создаёт профессора Уткина"
+
+msgid "Spawns a ghost duck. There will be no spawn message, obviously."
+msgstr ""
+"Создаёт утку-привидение. Сообщения о её появлении, понятное дело, не будет."
+
+msgid "Spawns a MOAD."
+msgstr "Создаёт \"мать всех уток\"."
+
+msgid "Spawns an armored duck, that will resist most 1 dmg hits."
+msgstr ""
+"Создаёт бронированную утку, которая выдержит большинство выстрелов с 1 ед. "
+"урона."
+
+msgid "Spawns a golden duck."
+msgstr "Создаёт золотую утку."
+
+msgid "Spawns a plastic duck."
+msgstr "Создаёт пластмассовую утку."
+
+msgid "Spawns a kamikaze duck."
+msgstr "Создаёт утку-камикадзе."
+
+msgid "Spawns a night duck."
+msgstr "Создаёт ночную утку."
+
+msgid "Spawns a sleeping duck."
+msgstr "Создаёт спящую утку."
+
 msgid "Spawns a cartographer duck."
 msgstr ""
+
+msgid "Show ducks currently on the channel"
+msgstr "Показывает уток, которые в настоящее время присутствуют на канале."
+
+msgid "Removes all ducks from the channel"
+msgstr "Удаляет всех уток с канала."
+
+msgid ""
+"Manage the bot current state by starting and stopping ducks spawning, "
+"leaving, and planning ducks spawn for the\n"
+"day.\n"
+"\n"
+"These commands do not use the translation system, and will always show in "
+"english"
+msgstr ""
+"Управление текущим состоянием бота: запуск и остановка появления и "
+"исчезновения уток, а также планирование их появления в течение дня.\n"
+"\n"
+"\n"
+"Эти команды не используют систему локализации и всегда будут отображаться на "
+"английском языке."
+
+msgid ""
+"Reset ducks planning, setting the ducks left to spawn counts to a value "
+"proportional to the time left spawning\n"
+"ducks today. This is executed everyday at midnight."
+msgstr ""
+"Сброс планирования появления уток, когда количество оставшихся уток "
+"корректируется пропорционально оставшемуся времени.\n"
+"Это происходит каждый день в полночь."
+
+msgid ""
+"Stop ducks from spawning immediately, everywhere. Ducks don't get removed "
+"from the planification,\n"
+"so once the stop is over, ducks will spawn more quickly than usual.\n"
+"\n"
+"Duck will still be able to leave, even if this lock is set."
+msgstr ""
+"Немедленное прекращение появления уток (везде). Плановое количество уток "
+"остаётся без изменений.\n"
+"Как только пауза закончится, утки начнут появляться быстрее обычного.\n"
+"\n"
+"Утки продолжат покидать канал даже во время паузы."
+
+msgid ""
+"Allow ducks spawning again, everywhere. Ducks will spawn more quickly than "
+"usual if a planification isn't done."
+msgstr ""
+"Возобновление появления уток (везде). Если не было выполнено выравнивание, "
+"утки начнут появляться быстрее обычного."
+
+msgid "Force a boss to spawn"
+msgstr "Принудительное появление босса."
+
+msgid "Force the current event to change, and reroll a new one."
+msgstr "Принудительная смена текущего события и начало нового."
+
+msgid "Congratulate an user giving them a trophy."
+msgstr "Награждение пользователя трофеем."
 
 msgid ""
 "Update the @Have DuckHunt role members, according to\n"
 "the owners of every guild where DuckHunt is enabled."
 msgstr ""
+
+msgid ""
+"Content-aware carving of an image/avatar, resizing it to reduce the width "
+"and height,\n"
+"loosing as few details as we can.\n"
+"\n"
+"With seam carving algorithm, the image could be intelligently resized while "
+"keeping the important contents\n"
+"undistorted. The carving process could be further guided, so that an object "
+"could be removed from the image\n"
+"without apparent artifacts.\n"
+"\n"
+"This function only handle normal resizing, without masks.\n"
+"\n"
+"The command arguments work as follow :\n"
+"- The first argument is optional and can be a mention/user ID of someone to "
+"use their avatar.\n"
+"  If it's not supplied, the bot will look for an attached image.\n"
+"- The next two arguments are the width and the height percentages to keep. "
+"They must both be > 0, but can also\n"
+"  go higher than 100 if you want to upscale the image\n"
+"\n"
+"- The image format argument can be any of\n"
+"  • jpeg, for a still image\n"
+"  • gif, for an animated resizing. Limited quality\n"
+"  • png for an APNG (Animated PNG - discord doesn't support them well and "
+"will only show the first frame,\n"
+"    open in browser)\n"
+"  • webp for an animated WebP, a new-ish format that discord doesn't support "
+"at all. Try opening those in your\n"
+"    browser"
+msgstr ""
+
+msgid "Buttons to direct user to a cog help."
+msgstr ""
+
+msgid "Show buttons for all the cogs in a bot."
+msgstr ""
+
+msgid "Buttons to direct user to a group help"
+msgstr ""
+
+msgid "Buttons to direct user to a command help"
+msgstr ""
+
+msgid "Show buttons for all the commands and groups in a cog or a group."
+msgstr ""
+
+msgid "Alias for dh!inv use, so that you can just type dh!use instead."
+msgstr ""
+"Альтернативный вариант команды dh!inv use. Можно просто ввести dh!use."
+
+msgid ""
+"Show your inventory content.\n"
+"\n"
+"The inventory is global. It means that all items you can store in it can be "
+"used on (almost) every server.\n"
+"Server administrators can disable inventory usage on specific channels."
+msgstr ""
+"Показывает содержимое вашего инвентаря.\n"
+"\n"
+"Инвентарь носит глобальный характер. Это означает, что его содержимое может "
+"быть использовано на (почти) любом сервере.\n"
+"Администраторы серверов могут отключить использование инвентаря на "
+"определённых каналах."
+
+msgid "Give something to some player."
+msgstr "Передача чего-либо другому игроку."
+
+msgid "Use one of the items in your inventory."
+msgstr "Использование одного из предметов в вашем инвентаре."
+
+msgid ""
+"Alias for dh!landmine landmine, so that you can just type dh!place instead."
+msgstr ""
+
+msgid ""
+"Alias for dh!landmine defuse_kit, so that you can just type dh!defuse "
+"instead."
+msgstr ""
+
+msgid "This command group contains all commands related to \"Landmines\" game."
+msgstr ""
+
+msgid "View your event statistics."
+msgstr ""
+
+msgid "This command explains how to place a landmine"
+msgstr ""
+
+msgid ""
+"[THIS COMMAND WORKS IN DMs]\n"
+"Buy a landmine that will trigger on a specific word.\n"
+"\n"
+"A landmine has a value, at least greater than 2, that will be used to "
+"determine it's price and the damage done\n"
+"to the person that steps on it.\n"
+"The word must be at least 2 characters long, and must only contain letters. "
+"The steps are case-insensitive.\n"
+"The longer it is, the higher the power. An exploding landmine gives you the "
+"point damage, and half it's value\n"
+"back."
+msgstr ""
+
+msgid ""
+"Buy a shield that will be placed on a given word. A shield will defuse all "
+"landmines placed on that word,\n"
+"and will prevent further landmines from being placed on it.\n"
+"\n"
+"A shield is a very powerful item, that'll cost 500 points for any given word."
+"\n"
+"You can however add a message that will be sent when trying to place a mine."
+msgstr ""
+
+msgid ""
+"Buy a defuse kit. You can use it on a sentence. If it's used, you collect "
+"the landmine value, minus the price\n"
+"of the defuse kit (30 points). If you don't use it, you'll just have to pay "
+"a restocking fee of 15 points.\n"
+"\n"
+"You need at least 30 points to use one."
+msgstr ""
+
+msgid "Show statistics about landmines on this server."
+msgstr ""
+
+msgid ""
+"This function count the number of events matching a predicate and filters "
+"the events list inplace following another.\n"
+"\n"
+"It returns the count of matching events."
+msgstr ""
+
+msgid "Prestige related commands. Reset your adventure for exclusive bonuses."
+msgstr ""
+"Команды, связанные с престижем. Перезагрузите своё приключение и получите "
+"эксклюзивные бонусы."
+
+msgid "More info about prestige"
+msgstr "Дополнительная информация о престиже."
+
+msgid ""
+"Execute the prestige process. Almost all of your hunting data **WILL** be "
+"deleted."
+msgstr ""
+"Запуск выполнения процесса \"престиж\". Почти все данные, связанные с "
+"охотой, **БУДУТ** утрачены."
+
+msgid "Get some more experience..."
+msgstr "Получить ещё немного опыта..."
+
+msgid ""
+"Check for age of the last message sent in the channel.\n"
+"If it's too old, consider the channel inactive and close the ticket."
+msgstr ""
+"Отображение срока давности последнего отправленного сообщения на канала.\n"
+"Если сообщение покрылось плесенью, можно считать канал заброшенным, а запрос "
+"- удалить."
+
+msgid ""
+"The DuckHunt bot DMs are monitored. All of these commands are used to "
+"control the created channels, and to\n"
+"interact with remote users."
+msgstr ""
+"ЛС бота DuckHunt отслеживаются.\n"
+"Все эти команды используются для управления созданными каналами и "
+"взаимодействия с пользователями."
+
+msgid ""
+"Close the opened DM channel. Will send a message telling the user that the "
+"DM was closed."
+msgstr ""
+"Закрытие ЛС. Отправляет пользователю уведомление о том, что окно с ЛС было "
+"закрыто."
+
+msgid ""
+"Close the opened DM channel. Will not send a message, since it wasn't a "
+"support request."
+msgstr ""
+"Закрытие ЛС. Не отправляет пользователю уведомление, поскольку ЛС не "
+"содаржало обращение в службу поддержки."
+
+msgid "Block the user from opening further DMs channels."
+msgstr "Блокировка возможности отправки ЛС."
+
+msgid "Send a tag to the user, as if you used the dh!tag command in his DMs."
+msgstr ""
+"Отправка метки пользователю, как будто в ЛС была выполнена команда dh!tag."
+
+msgid ""
+"Suggest a new language to the user. This will show them a prompt asking them "
+"if they want to switch to this new\n"
+"language."
+msgstr ""
+"Доступные языки. Предложение смены языка.\n"
+
+msgid ""
+"Shows a random duck image, courtesy of Globloxmen assets.\n"
+"This is mostly used to debug the random duck functions,\n"
+"and uses the same pipeline as for the random duck avatars.\n"
+"\n"
+"You can specify if you want a background or not for your random duck, and it "
+"defaults to yes."
+msgstr ""
+"Выводит забавное изображение утки из коллекции, любезно предоставленной "
+"Globloxmen.\n"
+"В основном используется для отладки различных функций.\n"
+"Тот же принцип работы, что и в случае с аватарами уток.\n"
+"\n"
+"Значение по умолчанию для фона изображений - \"да\"."
+
+msgid ""
+"If someone wants to do a dashboard or something to control DuckHunt, there "
+"are a few api routes already. They all return JSON or HTTP404/403/500.\n"
+"\n"
+"**Routes**:\n"
+"\n"
+"`/api/channels`  [Global Authentication required] -> Returns some "
+"information about all channels enabled on the bot.\n"
+"`/api/channels/{channel_id}`  [Authentication required] -> Returns "
+"information about the channel, like the ducks currently spawned.\n"
+"`/api/channels/{channel_id}/settings`  [Authentication required] -> Returns "
+"channel settings\n"
+"`/api/channels/{channel_id}/top` [No authentication required] -> Returns the "
+"top scores (all players on the channel and some info about players)\n"
+"`/api/channels/{channel_id}/player/{player_id}` [No authentication required] "
+"-> Returns *all* the data for a specific user\n"
+"\n"
+"**Authentication**:\n"
+"\n"
+"If you have one, pass the API key on the Authorization HTTP header.\n"
+"\n"
+"Two types of keys exist :\n"
+"\n"
+"- Channel specific keys, available with `settings api_key`. They only work "
+"for a specific channel data.\n"
+"- Global keys, that allow UNLIMITED access to every channel data. They are "
+"available on request with me.\n"
+"\n"
+"Api keys (local or global) are uuid4, and look like this : `d84af260-c806-"
+"4066-8387-1d5144b7fa72`"
+msgstr ""
+"Если вы хотите создать панель или какой-либо другой инструмент управления "
+"DuckHunt, есть несколько готовых маршрутов API. Все они возвращают JSON или "
+"HTTP404 / 403/500.\n"
+"\n"
+"**Маршруты**:\n"
+"\n"
+"`/api/channels` [Требуется глобальная аутентификация] -> Выводит некоторую "
+"информацию обо всех каналах, включенных в боте.\n"
+"`/api/channels/{channel_id}` [Требуется аутентификация] -> Выводит "
+"информацию о канале, например, о присутствующих на данный момент утках.\n"
+"`/api/channels/{channel_id}/settings` [Требуется аутентификация] -> Выводит "
+"настройки канала.\n"
+"`/api/channels/{channel_id}/top` [аутентификация не требуется] -> Выводит "
+"информацию об очках (все игроки на канале и некоторую информацию о них.\n"
+"`/api/channels/{channel_id}/player/{player_id}` [Проверка подлинности не "
+"требуется] -> Выводит *все* данные для определённого пользователя.\n"
+"\n"
+"**Аутентификация**:\n"
+"\n"
+"Если она используется, добавьте ключ API в HTTP-заголовок авторизации.\n"
+"\n"
+"Существуют два типа ключей:\n"
+"\n"
+"- Специальные ключи для отдельных каналов, доступные через `settings "
+"api_key`. Они используются при работе с определёнными данными канала.\n"
+"- Глобальные ключи, дающие НЕОГРАНИЧЕННЫЙ доступ ко всем данным канала. "
+"Получить их можно, отправив запрос мне.\n"
+"\n"
+"Ключи API (локальные или глобальные) используют uuid4 и выглядят следующим "
+"образом: `d84af260-c806-4066-8387-1d5144b7fa72`"
+
+msgid ""
+"/channels/\n"
+"\n"
+"Get all channels enabled on the bot"
+msgstr ""
+"/channels/\n"
+"\n"
+"Выводит список всех каналов, включённые в боте"
+
+msgid ""
+"/channels/<channel_id>\n"
+"\n"
+"Get information about a specific channel ID"
+msgstr ""
+"/channels/<channel_id>\n"
+"\n"
+"Выводит информацию об ID определённого канала"
 
 msgid ""
 "/channels/<channel_id>/settings\n"
@@ -36,26 +467,1532 @@ msgid ""
 msgstr ""
 
 msgid ""
+"/help/commands\n"
+"\n"
+"Get list of commands"
+msgstr ""
+"/help/commands\n"
+"\n"
+"Выводит список команд"
+
+msgid ""
+"/status\n"
+"\n"
+"Check the status of every shard the bot is hosting."
+msgstr ""
+"/status\n"
+"\n"
+"Проверяет статус каждого шарда в боте"
+
+msgid ""
+"/stats\n"
+"\n"
+"Get some global statistics about the bot."
+msgstr ""
+"/stats\n"
+"\n"
+"Выводит глобальную статистику о боте"
+
+msgid "Commands to view and edit settings"
+msgstr "Команды для просмотра и редактирования статистики"
+
+msgid "Set your server settings to specific, designed modes"
+msgstr ""
+"Производит настройку вашего сервера под определённые специальные режимы"
+
+msgid "Restore default settings for DuckHunt V4."
+msgstr "Восстановить настройки по умолчанию для DuckHunt V4."
+
+msgid "Restore similar settings to DuckHunt V3, if that's your thing."
+msgstr "Если нужно, восстановите аналогичные настройки для DuckHunt V3."
+
+msgid "Set the bot for a more casual experience."
+msgstr "Настройте бот для обычного режима."
+
+msgid ""
+"Set the bot for a more hardcore experience : less experience and more "
+"difficult ducks.\n"
+"\n"
+"For experienced hunters only."
+msgstr ""
+"Настройте бот для более сложного режима: меньше единиц опыта и утки с "
+"повышенным уровнем выживаемости.\n"
+"\n"
+"Только для опытных охотников."
+
+msgid ""
+"Haunted house gamemode.\n"
+"\n"
+"There will be almost only ghost ducks.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Режим игры \"Дом с привидениями\".\n"
+"\n"
+"Почти все утки будут привидениями.\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
+
+msgid ""
+"Robots fest gamemode.\n"
+"\n"
+"A lot of wild mechanical ducks will spawn in the channel.\n"
+"This actually just set spawn_weight_mechanical_ducks to 100.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Режим игры \"Фестиваль роботов\".\n"
+"\n"
+"На канале будет множество механических уток.\n"
+"По сути, это когда значение параметра spawn_weight_mechanical_ducks равно "
+"100.\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
+
+msgid ""
+"Hydra gamemode.\n"
+"\n"
+"A lot of MOADs will spawn in the channel, and they'll make MOADs spawn too.\n"
+"This actually just set spawn_weight_moad_ducks to 100.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Режим игры \"Гидра\".\n"
+"\n"
+"На канале будет множество уток класса мать всех уток, которые будут плодить "
+"новых уток-мамаш.\n"
+"По сути, это когда значение параметра spawn_weight_moad_ducks равно 100.\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
+
+msgid ""
+"Nuclear Radiation gamemode.\n"
+"\n"
+"Watch out as the radiation seems to cause ducks to be stronger!\n"
+"This means there are more, and stronger, super ducks. Get a rocket launcher "
+"or something QUICK!!!\n"
+"The radiation makes clovers be able to give negative experience too !\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Режим игры \"Радиация\".\n"
+"\n"
+"Осторожно! Похоже, радиация как-то влияет на уток.\n"
+"Супер-уток стало больше. А ещё они намного сильнее. Скорее обзаведитесь "
+"стволом помощнее!\n"
+"Кстати, теперь клевер может давать и отрицательный бонус!\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
+
+msgid ""
+"Australia (reverse) gamemode.\n"
+"\n"
+"Babies must be killed but not the others !\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Режим игры \"Австралия\" (реверсивный).\n"
+"\n"
+"Нужно стрелять в утят, а остальным уткам дарить обнимашки!\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
+
+msgid ""
+"Very Big Ducks gamemode.\n"
+"\n"
+"Super ducks have tons of life !\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+"Режим игры \"Очень большие утки\".\n"
+"\n"
+"У супер-уток куча жизней!\n"
+"\n"
+"Все остальные настройки сбрасываются до значений по умолчанию."
+
+msgid ""
+"Math lessons gamemode.\n"
+"\n"
+"Most of the ducks are Pr. Ducks.\n"
+"\n"
+"All the other settings are reset to their default values."
+msgstr ""
+
+msgid ""
+"Change/view the server prefix.\n"
+"\n"
+"Note that some prefixes are global and can't be edited."
+msgstr ""
+"Изменение/просмотр префикс сервера.\n"
+"\n"
+"Обратите внимание, что некоторые префиксы являются глобальными и не могут "
+"быть изменены."
+
+msgid ""
+"Change/view the server language.\n"
+"\n"
+"Specify the server language as a 2/5 letters code. For example, if you live "
+"in France, you'd use fr or fr_FR.\n"
+"In Québec, you could use fr_CA."
+msgstr ""
+"Изменение/просмотр языка сервера.\n"
+"\n"
+"Укажите язык сервера, используя 2/5-буквенный код. Например, если вы живёте "
+"во Франции, используйте fr или fr_FR.\n"
+"Для Квебека можно использовать fr_CA."
+
+msgid ""
+"Specify whether the bot should use webhooks to communicate in this channel.\n"
+"\n"
+"Webhooks allow for custom avatars and usernames. However, there is a Discord "
+"limit of 10 webhooks per channel."
+msgstr ""
+"Укажите, должен ли бот использовать веб-перехватчики (webhooks) для связи на "
+"этом канале.\n"
+"\n"
+"Веб-перехватчики позволяют настраивать аватары и имена пользователей. Однако "
+"существует ограничение Discord в 10 веб-перехватчиков на канал."
+
+msgid ""
+"This controls if hunters can use special items they earned somewhere else on "
+"this channel...\n"
+"\n"
+"For example, this will allow/deny use of the \"box of foie gras\" dropped by "
+"the boss on the Official Support\n"
+"Server."
+msgstr ""
+"Управление возможностью использования охотниками особых предметов, которые "
+"были заработаны где-то ещё...\n"
+"\n"
+"К примеру, это разрешит/запретит использование \"коробки фуа-гра\", "
+"сброшенной боссом на официальном сервере поддержки.\n"
+
+msgid ""
+"Add a new webhook to the channel, to get better rate limits handling. "
+"Remember the 10 webhooks/channel limit."
+msgstr ""
+"Добавление нового веб-перехватчика для канала, чтобы улучшить обработку "
+"ограничений скорости. Помните об ограничении в 10 веб-перехватчиков на канал."
+""
+
+msgid "Allow ducks to use emojis when they spawn."
+msgstr "Разрешает уткам использовать смайлики при появлении."
+
+msgid "Allow ducks to spawn."
+msgstr "Разрешает уткам появляться."
+
+msgid ""
+"Change the tax taken from users when they *send* some experience to another "
+"player."
+msgstr ""
+"Изменяет ставку налога, взимаемого с пользователей при *отправлении* единиц "
+"опыта другому игроку."
+
+msgid ""
+"Control if users might be pinged when they get killed. It's recommanded to "
+"set this to False on big servers."
+msgstr ""
+"Настройка возможности пинга пользователей, когда они убиты. Рекомендуется "
+"использовать значение \"False\" для крупных серверов."
+
+msgid ""
+"When hurting super ducks and the like, show how many lives the ducks have "
+"left."
+msgstr ""
+"Настройка отображения оставшихся жизней при ранении супер-утки и ей подобных."
+""
+
+msgid ""
+"Set how likely it is that a hunter will kill someone when missing a shot."
+msgstr ""
+"Настройка вероятности убийства другого игрока, если охотник промахнулся."
+
+msgid ""
+"Set how likely it is that a hunter will frighten a duck when shooting.\n"
+"Remember, the silencer sets this to 0% for a hunter."
+msgstr ""
+"Настройка вероятности напугать утку при выстреле.\n"
+"Помните, что при использовании охотником глушителя данное значение равно 0%."
+
+msgid ""
+"Set the minimum experience a clover will give. Might be negative for funsies "
+":)"
+msgstr ""
+"Настройка минимального количества очков опыта, которые даёт клевер. Данное "
+"значение может быть и отрицательным. :)"
+
+msgid ""
+"Set the maximum experience a clover will give. Might be negative for funsies "
+":)"
+msgstr ""
+"Настройка максимального количества очков опыта, которые даёт клевер. Данное "
+"значение может быть и отрицательным. :)"
+
+msgid "Set the normal amount of experience a duck will give when killed."
+msgstr "Настройка количества очков опыта за убийство утки."
+
+msgid ""
+"Set the additional amount of experience given for every life of a super duck."
+""
+msgstr ""
+"Настройка дополнительного количества очков опыта за каждую жизнь супер-утки."
+
+msgid "Set the amount of ducks that will spawn every day"
+msgstr "Настройка количества уток, которые будут появляться каждый день."
+
+msgid ""
+"Set a duck probability to spawn to a certain weight. The higher the weight, "
+"the more probability for it to spawn."
+msgstr ""
+"Настройка вероятности появления определённого типа уток. Чем больше "
+"значение, тем выше вероятность."
+
+msgid ""
+"Set for how many seconds a duck will stay on the channel before leaving"
+msgstr ""
+"Настройка времени в секундах, в течение которого утка будет оставаться на "
+"канале."
+
+msgid "Set the minimum lives of a super duck"
+msgstr "Настройка минимального количества жизней супер-утки."
+
+msgid "Set the maximum lives of a super duck"
+msgstr "Настройка максимального количества жизней супер-утки."
+
+msgid "Avoid references to triggering actions/words."
+msgstr ""
+
+msgid ""
+"Set the night time. Only some exclusive ducks spawn during the night.\n"
+"\n"
+"Times are specified in UTC. The bot does *not* honor daylight savings time "
+"(DST). You might need to edit this\n"
+"setting twice a year if you care about DST"
+msgstr ""
+"Настройка ночного времени. В ночное время появляются лишь некоторые "
+"эксклюзивные утки.\n"
+"\n"
+"Время указывается в UTC. Бот *не* учитывает переход на летнее время (DST).\n"
+"Для использованися DST понадобится редактирование данного параметра два раза "
+"в год."
+
+msgid ""
+"Enable/disable the DuckHunt API for this channel. Will give you an API key, "
+"keep that private."
+msgstr ""
+"Включение/отключение DuckHunt API для данного канала. Генерирует ключ API, "
+"который необходимо держать в секрете."
+
+msgid ""
+"Enable or disable the channel disabled message that tells you that you've "
+"ran a command in a channel that isn't enabled."
+msgstr ""
+"Включение/отключение сообщения о выполнении команды на канале, где бот "
+"неактивен."
+
+msgid ""
+"Commands to edit auto roles. Auto roles are roles that are given "
+"automatically to members once they reach a\n"
+"certain DH level.\n"
+"\n"
+"To work properly, roles must all be BELOW DuckHunt top role in the server "
+"hierarchy."
+msgstr ""
+
+msgid ""
+"Commands to edit auto prestige roles. Auto prestige roles are roles that are "
+"given automatically to members once\n"
+"they reach a certain prestige level.\n"
+"\n"
+"To work properly, roles must all be BELOW DuckHunt top role in the server "
+"hierarchy."
+msgstr ""
+
+msgid ""
+"Commands to edit permissions.\n"
+"\n"
+"BANNED = 0\n"
+"DEFAULT = 50\n"
+"TRUSTED = 100\n"
+"MODERATOR = 200\n"
+"ADMIN = 300\n"
+"BOT_MODERATOR = 500\n"
+"BOT_OWNER = 600"
+msgstr ""
+"Команды для редактирования разрешений.\n"
+"\n"
+"BANNED = 0 (бан)\n"
+"DEFAULT = 50 (по умолчанию)\n"
+"TRUSTED = 100 (доверенные)\n"
+"MODERATOR = 200 (модератор)\n"
+"ADMIN = 300 (администратор)\n"
+"BOT_MODERATOR = 500 (модератор бота)\n"
+"BOT_OWNER = 600 (владелец бота)"
+
+msgid "View the current permissions"
+msgstr "Просмотр текущих разрешений"
+
+msgid "Edit the current permissions for a specific user"
+msgstr "Редактирование текущих разрешений для конкретного пользователя"
+
+msgid ""
+"Allow the landmines game to take place here.\n"
+"\n"
+"This means that messages sent here will award points, and mines can be "
+"stpped on here."
+msgstr ""
+
+msgid ""
+"Allow landmines commands to be ran in this channel.\n"
+"\n"
+"This is useful to limit defuses, stats and more to a selected channel."
+msgstr ""
+
+msgid "Set your preference on whether replies from the bot should ping you"
+msgstr "Настройка возможности пинга со стороны бота при ответах"
+
+msgid ""
+"Change/view your own language.\n"
+"\n"
+"Specify your language as a 2/5 letters code. For example, if you live in "
+"France, you'd use fr or fr_FR.\n"
+"In Québec, you could use fr_CA.\n"
+"\n"
+"Some messages will use your preferred language, usually when the bot "
+"communicates with you in DM."
+msgstr ""
+"Изменение/просмотр индивидуальной настройки языка.\n"
+"\n"
+"Укажите язык, используя 2/5-буквенный код. Например, если вы живёте во "
+"Франции, используйте fr или fr_FR.\n"
+"Для Квебека можно использовать fr_CA.\n"
+"\n"
+"Некоторые сообщения будут приходить на указанном вами языке. Обычно это "
+"происходит в ЛС."
+
+msgid "Buy items here"
+msgstr "Покупка предметов"
+
+msgid "Adds a bullet to your current magazine. [7 exp]"
+msgstr "Добавляет патрон в текущую обойму. [7 ед. опыта]"
+
+msgid "Adds a magazine in your backpack. [13 exp]"
+msgstr "Добавляет обойму в ваш рюкзак. [13 ед. опыта]"
+
+msgid ""
+"Buy AP ammo to double the damage you do to super ducks. [15 exp/24 hrs]"
+msgstr ""
+"Покупка бронебойных патронов для нанесения двойного урона при охоте на супер-"
+"уток [15 ед. опыта/24 ч]"
+
+msgid ""
+"Buy Explosive ammo to TRIPLE the damage you do to super ducks. [25 exp/24 "
+"hrs]"
+msgstr ""
+"Покупка разрывных патронов для нанесения ТРОЙНОГО урона при охоте на супер-"
+"уток [25 ед. опыта/24 ч]"
+
+msgid "Buy back your weapon from the police if it was confiscated. [30 exp]"
+msgstr "Выкуп оружия у полиции, если оно было конфисковано. [30 ед. опыта]"
+
+msgid "Add some grease in your weapon to prevent jamming. [8 exp/24 hrs]"
+msgstr ""
+"Добавление смазки для предотвращения заклинивания оружия [8 ед. опыта/24 ч]"
+
+msgid "Add a sight to your weapon to improve accuracy. [6 exp/12 shots]"
+msgstr ""
+"Добавление оптики для повышения точности стрельбы [6 ед. опыта/12 выстрелов]"
+
+msgid ""
+"Add an infrared detector to your weapon. Save bullets and shots. [15 exp/6 "
+"shots]"
+msgstr ""
+"Добавление инфракрасного детектора. Предотвращает случайные выстрелы и "
+"позволяет экономить патроны. [15 ед. опыта/6 выстрелов]"
+
+msgid ""
+"Add a silencer to your weapon to prevent scaring ducks. [5 exp/24* hrs]"
+msgstr ""
+"Добавление глушителя, который помогает не пугать уток. [5 ед. опыта/24* ч]"
+
+msgid ""
+"Buy a 4-Leaf clover to get more exp for every duck you kill :). [13 exp/24 "
+"hrs]\n"
+"\n"
+"You can always buy a new clover during the florist event, but the price will "
+"be doubled if you had a clover already."
+msgstr ""
+"Покупка четырёхлистного клевера для получения дополнительных единиц опыта за "
+"каждую убитую утку. :) [13 ед. опыта/24 ч]\n"
+"\n"
+"Вы всегда можете купить новый клевер во время флористического события, но он "
+"обойдётся в два раза дороже, если у вас уже есть один."
+
+msgid "Protects from mirror-induced glare. [5 exp/24 hrs]"
+msgstr "Защита от ослепляющего эффекта зеркальца. [5 ед. опыта/24 ч]"
+
+msgid "A new set of clothes. Useful if you are wet. [7 exp]"
+msgstr "Новый комплект одежды. Поможет, если вы вдруг промокли. [7 ед. опыта]"
+
+msgid "Clean your gun, removing sabotage and sand. [7 exp]"
+msgstr "Очистка оружия от песка после попытки саботажа. [7 ед. опыта]"
+
+msgid "Dazzle another hunter using the power of sunlight. [7 exp]"
+msgstr ""
+"Ослепление другого охотника при помощи солнечного света. [7 ед. опыта]"
+
+msgid ""
+"Throw sand into another player weapon.\n"
+"This will increase their jamming chances for their next shot. [7 exp]"
+msgstr ""
+"Порция отборного песка для оружия соперника.\n"
+"Увеличивает вероятность заклинивания для следующего выстрела. [7 ед. опыта]"
+
+msgid ""
+"Throw a bucket of water on the hunter of your choice,\n"
+"forcing them to wait 1h for their clothes to dry before hunting again. [10 "
+"exp/1* hrs]"
+msgstr ""
+"Ведро воды, которой можно окатить выбранного вами соперника.\n"
+"После водной процедуры ему придётся сушить одежду в течение 1 ч, после чего "
+"он сможет продолжить охоту. [10 ед. опыта/1* ч]"
+
+msgid ""
+"Sabotage the weapon of another player.\n"
+"Their gun will jam and explode in their face the next time they press the "
+"trigger. [14* exp]"
+msgstr ""
+"Саботаж оружия другого игрока.\n"
+"При нажатии на спусковой крючок оружие заклинит и нормально так бабахнет ему "
+"прямо в лицо. [14* ед. опыта]"
+
+msgid "Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]"
+msgstr ""
+"Приманка, которая привлечёт утку в течение следующих 10 минут. [8 ед. опыта]"
+
+msgid "Spawn a fake duck in exactly 90 seconds. [15 exp]"
+msgstr ""
+"Контрафактная утка, которая появится ровно через 90 секунд. [15 опыта]"
+
+msgid ""
+"Protect yourself from water. If you are already wet, it also can be used as "
+"a change. [15 exp/24 hrs]"
+msgstr ""
+"Водоотталкивающая защита. Если вы уже промокли, можно переодеться. [15 ед. "
+"опыта/24 ч]"
+
+msgid ""
+"Avoid penalties if you accidentally kill another hunter. [15 exp/24 hrs]"
+msgstr ""
+"Защита от штрафных санкций, если вы вдруг подстрелите другого охотника. [15 "
+"ед. опыта/24 ч]"
+
+msgid ""
+"Automatically reloads your weapon every time it's necessary. [35 exp/24 hrs]"
+msgstr ""
+"Автоматическая перезарядка оружия всякий раз, когда это нужно. [35 ед. опыта/"
+"24 ч]"
+
+msgid ""
+"Never miss a shot again with Homing Projectiles. [150 exp/Limited Duration]"
+msgstr ""
+"Вы больше никогда не промахнётесь благодаря самонаводящимся боеприпасам. "
+"[150 ед. опыта/ограниченное время действия]"
+
+msgid ""
+"Check that the bot is online, give the latency between the bot and Discord "
+"servers."
+msgstr ""
+"Проверка онлайн-статуса бота. Отображает время задержки между ботом и "
+"серверами Discord."
+
+msgid "Returns the wiki URL"
+msgstr "Ссылка на Вики."
+
+msgid "Get the URL to invite the bot"
+msgstr "Ссылка для приглашения бота."
+
+msgid "Get a discord invite to the support server."
+msgstr "Ссылка-приглашение на сервер поддержки в Discord."
+
+msgid ""
+"Get the time when you'll get free magazines and your weapon back from the "
+"police"
+msgstr ""
+"Отображает время получения бесплатных обойм и возврата оружия полицией."
+
+msgid "Get the bot prefixes"
+msgstr "Префиксы бота."
+
+msgid "Thanks to those fine people who (helped) make the bot"
+msgstr "Спасибо замечательным людям, которые помогли создать этот бот."
+
+msgid "Thanks to those fine people who (helped) translate the bot"
+msgstr "Спасибо замечательным людям, которые помогли с локализацией бота."
+
+msgid "For when you misspell the pan command."
+msgstr "При неправильном вводе команды для произведения выстрела."
+
+msgid "For when you misspell the reload command."
+msgstr "При неправильном вводе команды для перезарядки оружия."
+
+msgid "I only get one eye"
+msgstr "У меня всего один глаз"
+
+msgid "Who doesn't need eyes"
+msgstr "Кому не нужны глаза"
+
+msgid "I hav long nek"
+msgstr ""
+
+msgid "It's impossible."
+msgstr ""
+
+msgid ""
 "Vote for a boss to spawn for a minute.\n"
 "This is an unfair vote: while it needs people to vote quickly for a boss,\n"
 "if someone vote against, the boss won't spawn."
 msgstr ""
+
+msgid "Who doesn't need cows ?"
+msgstr "Кто ж не любит бурёнок?"
+
+msgid "When you don't have eyes"
+msgstr "Когда вы ничего не видите"
+
+msgid "I guess that just says ¯\\_(ツ)_/¯"
+msgstr "Просто выводит ¯\\_(ツ)_/¯"
+
+msgid "When you need some good laughs"
+msgstr "Когда хочется посмеяться"
+
+msgid ""
+"See the current global event.\n"
+"\n"
+"Events are rolled by the bot at the start of each hour, and last for one "
+"full hour.\n"
+"Many events exist, and you will want to take advantage of seeing them, as "
+"they can bring you luck, money or even\n"
+"better : EXPERIENCE !"
+msgstr ""
+"Текущее глобальное событие.\n"
+"\n"
+"Бот запускает события в начале каждого часа. Они длятся один полный час.\n"
+"Существует множество типов событий. Они интересны тем, что могут принести "
+"вам удачу, счастье или даже\n"
+"кое-что получше - ОПЫТ!"
+
+msgid "This returns the current bot time."
+msgstr "Вывод текущего времени бота."
+
+msgid "Get some quickstats about yourself (or someone else)."
+msgstr "Краткая статистика (собственная или по другому охотнику)."
+
+msgid "Get shooting stats (for you or someone else)."
+msgstr "Статистика стрельбы (собственная или по другому охотнику)."
+
+msgid "Get best times to kill of ducks (for you or someone else)."
+msgstr "Лучшее время поражения утки (собственное или другого охотника)."
+
+msgid "Get number of each type of duck killed (for you or someone else)."
+msgstr ""
+"Информация о количестве убитых уток каждого вида (по вашему или какому-либо "
+"другому профилю)."
+
+msgid "Get number of each type of duck hugged (for you or someone else)."
+msgstr ""
+"Информация о количестве уток каждого вида, которые получили порцию объятий "
+"(по вашему или какому-либо другому профилю)."
+
+msgid "Get number of each type of duck hurt (for you or someone else)."
+msgstr ""
+"Информация о количестве раненых уток каждого вида (по вашему или какому-либо "
+"другому профилю)."
+
+msgid ""
+"Get number of each type of duck that resisted a shot (for you or someone "
+"else)."
+msgstr ""
+"Информация о количестве уток каждого вида, которые отчаянно сопротивлялись "
+"выстрелу (по вашему или какому-либо другому профилю)."
+
+msgid ""
+"Get number of each type of duck that fled following a shot (for you or "
+"someone else)."
+msgstr ""
+"Информация о количестве уток каждого вида, которые ретировались после "
+"выстрела (по вашему или какому-либо другому профилю)."
+
+msgid "Show your/someone else achievements in the channel"
+msgstr "Отображение ваших или чьих-либо ещё достижений на канале."
+
+msgid "Send some of your experience to another player."
+msgstr "Отправка определённого количества ваших единиц опыта другому игроку."
+
+msgid "Give some experience to another player. This is a cheat."
+msgstr ""
+"Отправка определённого количества единиц опыта другому игроку. Это чит."
+
+msgid "Who's the best ?"
+msgstr "Кто круче всех?"
+
+msgid ""
+"Delete scores for a specific user from the channel. The target can be an ID "
+"or a mention.\n"
+"\n"
+"Use an ID if the user you want to remove has since left the server.\n"
+"Data will not be recoverable, and there is no confirmation dialog. Type with "
+"caution.\n"
+"\n"
+"If you need a backup of the user data, you can use the DuckHunt API to "
+"download the scores and statistics."
+msgstr ""
+"Удаление с канала результатов определённого пользователя. Можно использовать "
+"ID или упоминание.\n"
+"\n"
+"Используйте ID, если пользователь, которого вы хотите удалить, уже покинул "
+"сервер.\n"
+"Данные не подлежат восстановлению; диалоговое окно подтверждения отсутствует."
+" Действуйте с осторожностью. \n"
+"\n"
+"Если вам нужна резервная копия пользовательских данных, вы можете "
+"использовать DuckHunt API для загрузки результатов и статистики."
+
+msgid ""
+"Delete scores for all users on this channel or on the specified channel ID.\n"
+"\n"
+"Data will not be recoverable, and there is no confirmation dialog. Type with "
+"caution.\n"
+"This command will execute on the *current channel* if no ID is provided.\n"
+"If you pass an ID, the bot will check whether the channel still exist. If it "
+"does, it'll refuse to delete to\n"
+"prevent mistakes. You'll have to run the command in the correct channel. If "
+"it doesn't, but the channel was in\n"
+"the same guild/server, scores will be deleted.\n"
+"\n"
+"If you need a backup of the channel data, you can use the DuckHunt API to "
+"download the scores and statistics for\n"
+"everyone who ever played.\n"
+"\n"
+"Note that the channel itself wont be deleted, only the scores are."
+msgstr ""
+"Удаление результатов всех пользователей канала или для отдельного ID.\n"
+"\n"
+"Данные не подлежат восстановлению; диалоговое окно подтверждения отсутствует."
+"\n"
+"Действуйте с осторожностью.\n"
+"Эта команда будет выполнена для *текущего канала*, если не был введён "
+"идентификатор. Если был введён ID, бот проверит, существует ли канал до сих "
+"пор. Если он существует, во избежание ошибок удаления не будет.\n"
+"Будет необходимо ввести команду на соответствующем канале.\n"
+"\n"
+"Если вам нужна резервная копия данных канала, вы можете использовать "
+"DuckHunt API для загрузки результатов и статистики для всех, кто когда-либо "
+"играл.\n"
+"\n"
+"Сам канал удалён не будет.\n"
+"\n"
+
+msgid "Check the status of every shard the bot is hosting."
+msgstr "Проверка статуса каждого шарда."
+
+msgid ""
+"Shows a paginator with the most used commands on the bot. This is the poor "
+"version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+"Отображает наиболее часто используемые команды бота. Это кривая-косая версия "
+"аналитики.\n"
+"Счётчики обнуляются при каждой перезагрузке бота."
+
+msgid ""
+"Shows a paginator with the users that have used the bot the most. This is "
+"again the poor version of a bot analytics.\n"
+"The counters get reset every time the bot reboot."
+msgstr ""
+"Выводит информацию о наиболее активных пользователях бота. Это опять-таки "
+"кривая-косая версия аналитики.\n"
+"Счётчики обнуляются при каждой перезагрузке бота."
+
+msgid ""
+"Show a given tag based on the name.\n"
+"\n"
+"The command accept tags names or aliases, and will display then in a nice "
+"paginator, directly in discord.\n"
+"You can click the link in the title to read the tag online if you prefer.\n"
+"\n"
+"You can add mentions at the end of your message to allow others to control "
+"the tag pagination too."
+msgstr ""
+"Отображение метки для имени пользователя.\n"
+"\n"
+"Команда дружит с именами пользователей и псевдонимами. Вывод информации "
+"осуществляется в симпатичном пагинаторе непосредственно в Discord.\n"
+"Вы также можете перейти по ссылке в заголовке для просмотра метки онлайн.\n"
+"\n"
+"Вы можете добавить упоминание в конце сообщения, дабы другие пользователи "
+"тоже могли управлять пагинацией меток."
+
+msgid "Commands to interact with tags : creations, editions, deletions, ..."
+msgstr ""
+"Команды для взаимодействия с метками: создание, редактирование, удаление..."
+
+msgid ""
+"Create a new tag. The tag name must not be an existing tag or tag alias."
+msgstr ""
+"Создание новой метки. Она не должна совпадать с уже существующей меткой или "
+"псевдонимом."
+
+msgid ""
+"Alias an existing tag to a new name.\n"
+"This is useful to give the same tag multiple names, and be able to edit them "
+"in sync."
+msgstr ""
+"Псевдоним для существующей метки.\n"
+"Может пригодиться, когда нужно создать несколько имён для одной метки и "
+"иметь возможность редактировать их синхронно."
+
+msgid "Edit an existing tag, changing the text."
+msgstr "Редактирование существующей метки."
+
+msgid "Delete an existing tag."
+msgstr "Удаление существующей метки."
+
+msgid "List all the existing tags."
+msgstr "Отображение всех меток."
+
+msgid ""
+"View the raw version of the tag, with markdown escaped. This is useful to "
+"use as a base for editing a tag."
+msgstr ""
+"Просмотр метки в необработанном виде. Может пригодиться при редактировании "
+"метки."
+
+msgid "Voting"
+msgstr ""
+
+msgid "Please wait while I check where you can vote..."
+msgstr "Пожалуйста, подождите. Сейчас узнаю, где можно проголосовать..."
+
+msgid "You can vote !"
+msgstr "Вы можете голосовать!"
+
+msgid "Thanks for supporting the bot by voting !"
+msgstr "Спасибо за ваш голос в поддержку бота!"
+
+msgid "You might be able to vote !"
+msgstr "Возможно, вы можете голосовать."
+
+msgid ""
+"Thanks for supporting the bot by voting as much as you can. It makes a "
+"difference !"
+msgstr "Спасибо за ваши голоса в поддержку бота! Это очень важно!"
+
+msgid "Oh no! No bot list is currently available for you to vote."
+msgstr "К сожалению, в настоящее время вы не можете голосовать в бот-листах."
+
+msgid "There is nowhere for you to vote at the time !"
+msgstr "В настоящее время голосовать негде."
+
+msgid ""
+"Thanks for supporting the bot. It makes a difference! \n"
+"Unfortunately, you voted everywhere you could for now, but you can check "
+"back in a few hours."
+msgstr ""
+"Спасибо за поддержку бота! Это очень важно!\n"
+"Вы уже сделали всё возможное. Попробуйте ещё раз через несколько часов."
+
+msgid "Click me to vote"
+msgstr "Перейдите по ссылке, чтобы проголосовать."
+
+msgid "You can vote on {bl_name}"
+msgstr "Вы можете проголосовать на {bl_name}."
+
+msgid "You might be able to vote on {bl_name}"
+msgstr "Возможно, вы можете проголосовать на {bl_name}."
+
+msgid "🔫 Bang"
+msgstr ""
+
+msgid "🤗 Hug"
+msgstr ""
+
+msgid "♻️ Reload"
+msgstr ""
+
+msgid "Buy a magazine"
+msgstr ""
+
+msgid "Buy a bullet"
+msgstr ""
+
+msgid "🍀 Buy a clover"
+msgstr ""
+
+msgid "{monitored_player.mention}, RPG cooldown: **{name}** expired."
+msgstr ""
+"{monitored_player.mention}, Время восстановления RPG: срок действия "
+"**{name}** истёк."
+
+msgid "Here's the invite you requested {invite}"
+msgstr "А вот и ссылка-приглашение, которую вы запрашивали {invite}"
+
+msgid ""
+"{rpg_role.mention}, you might want to click the reaction above/do what the "
+"bot says."
+msgstr ""
+"{rpg_role.mention}, выполните действие, описанное выше, или следуйте "
+"указаниям бота."
+
+msgid "Hunting"
+msgstr ""
+
+msgid ""
+"The bot is still starting up, please wait a minute and retry. Ducks haven't "
+"been lost."
+msgstr ""
+"Бот загружается. Пожалуйста, подождите немного и повторите попытку. Все утки "
+"на месте."
+
+msgid ""
+"☠️ It's a little cold in there... Maybe because **you are DEAD**! Have you "
+"tried eating BRAINS? `{ctx.prefix}revive`..."
+msgstr ""
+
+msgid ""
+"🚰 Come on! Your clothes are wet, at least dry them (for **{time_delta}**) "
+"or something, or buy new ones (`{ctx.prefix}shop clothes`)"
+msgstr ""
+"🚰 Вся одежда промокла. Придётся её сушить (в течение **{time_delta}**) или "
+"купить новую (`{ctx.prefix}shop clothes`)"
+
+msgid ""
+"⛔️ Oh no! Your weapon has been confiscated. Wait for freetime (`{ctx."
+"prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop weapon`)"
+msgstr ""
+"⛔️ Оружие конфисковано. Придётся ждать время халявы (`{ctx.prefix}freetime`) "
+"или выкупить его через магазин (`{ctx.prefix}shop weapon`)"
 
 msgid ""
 "💥 Your weapon was sabotaged and exploded in your face. You can thank "
 "{sabotager} for this bad joke."
 msgstr ""
 
+msgid ""
+"☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"
+msgstr ""
+"☁️ Ваше оружие заклинило. Требуется перезарядка. (`{ctx.prefix}reload`)"
+
+msgid ""
+"🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | Magazines: "
+"0/{max_magazines} [**Autoreload failed**]"
+msgstr ""
+
+msgid ""
+"🦉 Magazine empty ! Reload or buy bullets | **Bullets**: 0/{max_bullets} | "
+"Magazines: {current_magazines}/{max_magazines}"
+msgstr ""
+"🦉 Обойма пуста! Перезарядите оружие или купите патроны | **Патроны**: 0/"
+"{max_bullets} | Обоймы: {current_magazines}/{max_magazines}"
+
+msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
+msgstr ""
+"💥 Ваше оружие заклинило. Перезарядите его и подумайте о покупке смазки."
+
 msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
 msgstr ""
+
+msgid ""
+"✨ You take the new homing bullets outside of their packaging, place them in "
+"your weapon and shoot with your eyes closed..."
+msgstr ""
+"✨ Вы распаковываете новые самонаводящиеся патроны, заряжаете оружие и "
+"производите выстрел, закрыв глаза..."
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. Your licence to kill saved your "
+"experience. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. At least, you had a ~~kill~~ "
+"suicide licence. [**MISSED**: -2 exp]"
+msgstr ""
+"...И пуля прилетела вам прямо в башню. Исход, понятное, дело печально-"
+"фатальный. Жалобу можно направить в Общество по защите прав животных. Благо "
+"у вас была лицензия на (само)убийство. [**ПРОМАХ**: -2 ед. опыта]"
+
+msgid ""
+"... And the bullet flew straight into your face, killing you instantly. You "
+"should send your complaints to the CACAD. [**WEAPON "
+"CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
+msgstr ""
+"...И пуля прилетела вам прямо в башню. Исход, понятное дело, печально-"
+"фатальный. Жалобу можно направить в Общество по защите прав животных. "
+"[**ОРУЖИЕ КОНФИСКОВАНО**][**ПРОМАХ**: -2 ед. опыта][**УБИЙСТВО**: -15 ед. "
+"опыта]"
+
+msgid ""
+"🔫 You missed the duck... And *almost* shot {player_name} in the head, "
+"missing them by a few hairs. Their orange coat saved them. [**MISSED**: -2 "
+"exp]"
+msgstr ""
+
+msgid ""
+"🔫 You took your weapon out, aimed it towards {player_name} head, but they "
+"had a pink coat just like yours. Using the power of love, you missed them on "
+"purpose, and hit the love tree 🌳. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"🔫 You missed the duck... And you saw your bullet go towards {player_name} "
+"head, but they had a pink coat just like yours. Just like in the movies, by "
+"using the power of love, you made the bullet hit the love tree 🌳 instead. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+
+msgid "🔫 You are now dead. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+
+msgid "🔫 You commited suicide. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Вы совершили самоубийство. [**ОРУЖИЕ КОНФИСКОВАНО**][**УБИЙСТВО**: -15 ед."
+" опыта]"
+
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, "
+"and pulled the trigger. [**WEAPON CONFISCATED**][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Вы достали оружие, направили его в голову {player_name} и нажали на "
+"спусковой крючок. [**ОРУЖИЕ КОНФИСКОВАНО**][**УБИЙСТВО**: -15 ед. опыта]"
+
+msgid "🔫 You are now dead. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+
+msgid ""
+"🔫 You commited suicide. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Вы совершили самоубийство. [**КРАСНЫЙ ПЛАЩ**: оружие не "
+"конфисковано][**УБИЙСТВО**: -15 ед. опыта]"
+
+msgid ""
+"🔫 You took your weapon out, aiming it directly towards {player_name} head, "
+"and pulled the trigger. [**RED COAT**: Kept weapon][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Вы достали оружие, прицелились в голову {player_name} и спустили курок. "
+"[**КРАСНЫЙ ПЛАЩ**: оружие не конфисковано][**УБИЙСТВО**: -15 ед. опыта]"
+
+msgid ""
+"🔫 You missed the duck... And shot yourself in the head. You died. You are "
+"legally allowed to kill ~~people~~yourself. [**MISSED**: -2 exp]"
+msgstr ""
+"🔫 Вы не попали в утку... Зато попали себе в голову. Сожалеем, но вы убиты. "
+"Законом не запрещено убивать ~~людей~~себя. [**ПРОМАХ**: -2 ед. опыта]"
+
+msgid ""
+"🔫 You missed the duck... And shot {player_name} in the head, killing them "
+"on the spot. You are legally allowed to kill people. [**MISSED**: -2 exp]"
+msgstr ""
+
+msgid ""
+"🔫 You missed the duck... And shot yourself in the head, dying instantly. "
+"[**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 exp]"
+msgstr ""
+"🔫 Вы не попали в утку... Зато попали себе в голову. Смертельный исход. "
+"~~людей~~себя. [**ОРУЖИЕ КОНФИСКОВАНО**][**ПРОМАХ**: -2 ед. "
+"опыта][**УБИЙСТВО**: -15 ед. опыта]"
+
+msgid ""
+"🔫 You missed the duck... And shot {player_name} in the head, killing them "
+"on the spot. [**WEAPON CONFISCATED**][**MISSED**: -2 exp][**MURDER**: -15 "
+"exp]"
+msgstr ""
+
+msgid ""
+"🌲 What did you try to aim at ? I guess you shot that tree, over here. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+"🌲 И куда это мы целимся? Неужели в то дерево? [**ПРОМАХ**: -2 ед. опыта]"
+
+msgid ""
+"🕵️ Woah there ! Calm down, there are no ducks. Your infrared detector "
+"stopped the shot."
+msgstr ""
+"🕵️ Спокойствие! Здесь нет уток. Инфракрасный детектор предотвратил выстрел."
+
+msgid ""
+"❓️ What are you trying to kill exactly ? There are no ducks here. "
+"[**MISSED**: -2 exp]"
+msgstr ""
+"❓️ И кого это мы пытаемся подстрелить? Уток здесь нет. [**ПРОМАХ**: -2 ед. "
+"опыта]"
+
+msgid ""
+"Huh... You don't have a weapon, it has been confiscated. Wait for freetime "
+"(`{ctx.prefix}freetime`), or buy it back in the shop (`{ctx.prefix}shop "
+"weapon`)"
+msgstr ""
+"Оружия нет, его ж конфисковали! Ждём время халявы (`{ctx.prefix}freetime`) "
+"или выкупаем оружие через магазин (`{ctx.prefix}shop weapon`)"
+
+msgid "☀️️ You unjam your weapon !"
+msgstr "☀️️ Вы разблокировали своё оружие!"
+
+msgid ""
+"🦉 You reloaded your weapon | Bullets: {current_bullets}/{max_bullets} | "
+"Magazines: {current_magazines}/{max_magazines} "
+msgstr ""
+"🦉 Вы перезарядили оружие | Патроны: {current_bullets}/{max_bullets} | "
+"Обоймы: {current_magazines}/{max_magazines}"
+
+msgid ""
+"🦉 You don't need to reload your weapon | **Bullets**: {current_bullets}/"
+"{max_bullets} | Magazines: {current_magazines}/{max_magazines} "
+msgstr ""
+"🦉 Перезарядка не требуется | **Патроны**: {current_bullets}/{max_bullets} | "
+"Обоймы: {current_magazines}/{max_magazines} "
+
+msgid ""
+"🦉 You don't have any magazines. `{ctx.prefix}shop magazine` | Bullets: "
+"{current_bullets}/{max_bullets} | **Magazines**: {current_magazines}/"
+"{max_magazines} "
+msgstr ""
+"🦉 У вас не осталось обойм. `{ctx.prefix}shop magazine` | Патроны: "
+"{current_bullets}/{max_bullets} | **Обоймы**: {current_magazines}/"
+"{max_magazines}"
+
+msgid "☠️ You are a little too dead to hug, go `{ctx.prefix}revive` yourself"
+msgstr ""
+"☠️ Вы немного мертвы, поэтому обнимашки отменяются. Вам нужно `{ctx."
+"prefix}revive` себя."
+
+msgid "tree"
+msgstr "дерево"
+
+msgid "❌ I have no idea what you want to hug..."
+msgstr "❌ И кого это мы хотим обнять?.."
+
+msgid "🌳 You hugged the tree... Thanks!"
+msgstr "🌳 Вы обняли дерево... Что ж, спасибо!"
 
 msgid ""
 "{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
 msgstr ""
 
 msgid ""
+"{you_mention} hugged {target_mention}. The developer of the bot is really "
+"happy that you love it."
+msgstr ""
+
+msgid ""
+"{you_mention} hugged {target_mention}. They hate you even more for hugging "
+"them. Don't know why tho... Try shooting them in the face."
+msgstr ""
+
+msgid ""
 "{you_mention}, you just hugged yourself. You feel a little lonely, don't "
 "you?"
+msgstr ""
+
+msgid "{you_mention} hugged {target_mention}. They feel loved."
+msgstr ""
+
+msgid "You hugged a tree, Wizzz?!"
+msgstr ""
+
+msgid "What are you trying to hug, exactly? A tree?"
+msgstr "Что вы там пытаетесь обнять? Дерево?"
+
+msgid "You are already alive and well."
+msgstr "Вы уже живы и здоровы."
+
+msgid "You eat {brains} 🧠 and regain consciousness."
+msgstr ""
+
+msgid "Admin: Spawning"
+msgstr ""
+
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_left} ducks left to "
+"spawn today."
+msgstr ""
+"На канале сейчас {ducks_spawned_count} уток. Ожидается уток: {ducks_left}."
+
+msgid ""
+"{ducks_spawned_count} ducks are on the channel, {ducks_day} ducks left to "
+"spawn during the day and {ducks_night} during the night."
+msgstr ""
+
+msgid "Here's the list of ducks spawned :"
+msgstr "Список появившихся уток:"
+
+msgid ""
+"{duck.category} ({duck.lives_left}/{duck_lives} lives), spawned {time_delta}."
+""
+msgstr ""
+
+msgid "{ducks_spawned_count} ducks removed."
+msgstr "Удалено {ducks_spawned_count} уток."
+
+msgid "Support team: emergencies"
+msgstr ""
+
+msgid ""
+"There was an error converting one of your arguments with {exception."
+"converter}. The correct syntax would be `{command_invoke_help}`. The "
+"converter returned the following error: {original}"
+msgstr ""
+"При преобразовании одного из параметров в {exception.converter} произошла "
+"ошибка. Правильный синтаксис - `{command_invoke_help}`. Конвертер выдал "
+"следующую ошибку: {original}"
+
+msgid ""
+"This command is missing an argument. The correct syntax would be "
+"`{command_invoke_help}`."
+msgstr ""
+"Отсутствует параметр команды. Правильный синтаксис - `{command_invoke_help}`."
+""
+
+msgid ""
+"Too many quotes were provided in your message: don't forget to escape your "
+"quotes like this `\\{exception.quote}`. The correct syntax for the command "
+"is `{command_invoke_help}`."
+msgstr ""
+"Ваше сообщение содержит слишком много кавычек. Не забывайте закрывать "
+"кавычки. Пример: `\\{exception.quote}`. Правильный синтаксис команды - "
+"`{command_invoke_help}`."
+
+msgid ""
+"A space was expected after a closing quote, but I found {exception.char}. "
+"Please check that you are using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"После закрывающей кавычки необходим пробел. Обнаружено: {exception.char}. "
+"Убедитесь, что вы используете правильный синтаксис - `{command_invoke_help}`."
+""
+
+msgid ""
+"A closing quote was expected, but wasn't found. Don't forget to close your "
+"quotes with `{exception.close_quote}` at the end of your argument. Please "
+"check that you are using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Требуется закрывающая одинарная кавычка. Не забывайте закрывать кавычки для "
+"параметра при помощи `{exception.close_quote}`. Убедитесь, что вы "
+"используете правильный синтаксис - `{command_invoke_help}`."
+
+msgid ""
+"Too many arguments were passed in this command. Please check that you are "
+"using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Команда содержит слишком много параметров. Убедитесь, что вы используете "
+"правильный синтаксис - `{command_invoke_help}`."
+
+msgid ""
+"The way you are invoking this command is confusing me. The correct syntax "
+"would be `{command_invoke_help}`."
+msgstr ""
+"Меня немного сбивает с толку введённая вами команда. Правильный синтаксис - "
+"`{command_invoke_help}`."
+
+msgid ""
+"An argument passed was incorrect. `{exception}`. Please check that you are "
+"using the correct syntax: `{command_invoke_help}`."
+msgstr ""
+"Неверный параметр. `{exception}`. Убедитесь, что вы используете правильный "
+"синтаксис - `{command_invoke_help}`."
+
+msgid ""
+"{exception} Please check that you are using the correct syntax: "
+"`{command_invoke_help}`."
+msgstr ""
+"{exception} Пожалуйста, убедитесь, что вы используете правильный синтаксис - "
+"`{command_invoke_help}`."
+
+msgid "This command can only be used in a private message."
+msgstr "Данная команда может быть использована только в личном сообщении."
+
+msgid "This command cannot be used in a private message."
+msgstr "Данная команда не может быть использована в личном сообщении."
+
+msgid ""
+"Multiple errors were encountered when running your command: {exception."
+"errors}"
+msgstr ""
+"При выполнении вашей команды было обнаружено несколько ошибок: {exception."
+"errors}"
+
+msgid "You need to be the owner of the bot to run that."
+msgstr "Для этого вам нужно быть владельцем бота."
+
+msgid "You need to be in a NSFW channel to run that."
+msgstr "Для выполнения этого вы должны быть на NSFW канале."
+
+msgid ""
+"You need to be in the {correct_guild.name} server (`{exception."
+"must_be_in_guild_id}`)."
+msgstr ""
+"Вы должны находиться на сервере {correct_guild.name} (`{exception."
+"must_be_in_guild_id}`)."
+
+msgid "You need to be in a server with ID {exception.must_be_in_guild_id}."
+msgstr "Вы должны находиться на сервере с ID {exception.must_be_in_guild_id}."
+
+msgid ""
+"You need to be in the {correct_channel.name} channel (`{exception."
+"must_be_in_channel_id}`)."
+msgstr ""
+"Вы должны находиться на канале {correct_channel.name}  (`{exception."
+"must_be_in_channel_id}`)."
+
+msgid "You need to be in a channel with ID {exception.must_be_in_channel_id}."
+msgstr ""
+"Вы должны находиться на канале с ID {exception.must_be_in_channel_id}."
+
+msgid ""
+"You don't have enough experience to enjoy this item. You'd need at least "
+"{exception.needed} exp, but you only have {exception.having}."
+msgstr ""
+"У вас недостаточно опыта, чтобы приобрести данный предмет. Необходимо "
+"минимум {exception.needed} ед. опыта, а у вас всего {exception.having}."
+
+msgid ""
+"Your access level is too low : you have an access level of {exception."
+"current_access.name}, and you need at least {exception.required_access.name}."
+""
+msgstr ""
+"У вас слишком низкий уровень доступа. Вы {exception.current_access.name}. "
+"Требуемый уровень - {exception.required_access.name}."
+
+msgid ""
+"The game isn't running on this channel. Admins can disable this message by "
+"running `dh!settings channel_disabled_message False`, or can enable the "
+"channel with `dh!settings enabled True`."
+msgstr ""
+"Игра не запущена. Администраторы могут отключить это сообщение, выполнив "
+"команду `dh!settings channel_disabled_message False`, или запустить бот при "
+"помощи команды `dh!settings enabled True`."
+
+msgid ""
+"Landmines commands cannot be ran on this channel. Admins can disable this "
+"message by running `dh!settings channel_disabled_message False`, or can "
+"enable the channel with `dh!settings landmines_commands_enabled True`."
+msgstr ""
+
+msgid "Check error running this command: {err_data}"
+msgstr "Проверка ошибок при выполнении этой команды: {err_data}"
+
+msgid "The provided command was not found."
+msgstr "Команда не найдена."
+
+msgid "That command has been disabled."
+msgstr "Эта команда отключена."
+
+msgid ""
+"There was an error running the specified command. Contact the bot admins."
+msgstr ""
+"Ошибка выполнения введённой команды. Пожалуйста, свяжитесь с "
+"администраторами бота."
+
+msgid "This command is overused. Please try again {some_time}."
+msgstr ""
+"Эта команда используется слишком чато. Пожалуйста, попробуйте {some_time}."
+
+msgid ""
+"This should not have happened. A command raised an error that does not comes "
+"from CommandError. Please inform the owner."
+msgstr ""
+"Этого не должно было случиться. Команда вызвала ошибку, которая не связана с "
+"CommandError. Пожалуйста, сообщите владельцу."
+
+msgid ""
+"You are above the limits of DuckHunt database. Try to reduce your "
+"expectations. Database message: `{exception}`"
+msgstr ""
+"Вы вышли за пределы базы данных DuckHunt. Попробуйте немного умерить свой "
+"пыл. Сообщение БД: `{exception}`"
+
+msgid ""
+"Missing permissions, please check I can embed links here. `{exception}`"
+msgstr ""
+"Отсутствуют разрешения. Пожалуйста, проверьте, могу ли я вставлять сюда "
+"ссылки. `{exception}`"
+
+msgid "Missing permissions, please check I can add reactions here."
+msgstr ""
+"Отсутствуют разрешения. Пожалуйста, проверьте, могу ли я использовать здесь "
+"реакции."
+
+msgid ""
+"This should not have happened. A command raised an error that does not come "
+"from CommandError, and isn't handled by our error handler. Please inform the "
+"owner."
+msgstr ""
+"Этого не должно было случиться. Команда вызвала ошибку, которая не связана с "
+"CommandError и не по зубам обработчику ошибок. Пожалуйста, сообщите "
+"владельцу."
+
+msgid "DuckHunt help"
+msgstr ""
+
+msgid ""
+"**Welcome to DuckHunt**\n"
+"\n"
+"This is a help command designed to let you find all the commands in the bot.\n"
+"However, it's *not* the best way to get started with it. I suggest reading "
+"the wiki instead, here's [a link](https://duckhunt.me/docs).\n"
+"If you have questions, you can DM the bot, or join the [support "
+"server](https://duckhunt.me/support).\n"
+"Thanks for playing."
+msgstr ""
+
+msgid "Use {prefix}{help} [command] for more info on a command."
+msgstr ""
+"Введите {prefix}{help} [команда], чтобы получить больше информации о команде."
+""
+
+msgid "{cog} help"
+msgstr ""
+
+msgid "... More available online"
+msgstr ""
+
+msgid "Inventory"
+msgstr ""
+
+msgid "Your inventory"
+msgstr "Ваш инвентарь"
+
+msgid "A lot of air and a starved mosquito."
+msgstr "Много воздуха и голодный комар"
+
+msgid "`{prefix}inv use shortcode` to use an item"
+msgstr ""
+
+msgid "❌ Unknown item."
+msgstr "❌ Неизвестный предмет."
+
+msgid "👌 Item has been given to {target.name}."
+msgstr "👌 Предмет передан {target.name}."
+
+msgid "❌ Items usage is disabled on this channel."
+msgstr "❌ На этом канале отключено использование предметов."
+
+msgid "❌ The number of items to use must be a number greater or equal to 1."
+msgstr ""
+
+msgid "❌ You can't use this item that many times."
+msgstr "❌ Вы не можете использовать этот предмет так много раз."
+
+msgid "❌ You don't have that item."
+msgstr "❌ У вас нет этого предмета."
+
+msgid "Landmines"
+msgstr ""
+
+msgid ""
+"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
+"<@{placed_by_member.user_id}>. It exploded, taking away **{explosion_value} "
+"points** from your account.\n"
+"\n"
+"<@{placed_by_member.user_id}> message:\n"
+"{message_text}"
+msgstr ""
+
+msgid ""
+"💥 You stepped on a `{landmine.word}` landmine placed {td} ago by "
+"<@{placed_by_member.user_id}>. It exploded, taking away **{explosion_value} "
+"points** from your account.\n"
+"\n"
+msgstr ""
+
+msgid "They can't play the game :("
+msgstr ""
+
+msgid "{target.name} event statistics"
+msgstr ""
+
+msgid ""
+"The most important currency in the game are the points, which are used in "
+"the shop to buy stuff. The available points show how many ponts you have and "
+"how many you acquired in total.\n"
+"You can get points by sending (long) messages. Some shop items may help you "
+"get more. Be careful not to spam, server rules **still apply** during the "
+"event. At the end of the game, the player having the greater amount of "
+"points will win."
+msgstr ""
+
+msgid "Available"
+msgstr ""
+
+msgid "{db_target.points_current} points"
+msgstr ""
+
+msgid "Messages sent"
+msgstr ""
+
+msgid "{db_target.messages_sent} ({db_target.words_sent} words)"
+msgstr ""
+
+msgid "Points won by landmines"
+msgstr ""
+
+msgid "{db_target.points_won} points"
+msgstr ""
+
+msgid "Points recovered by defusing landmines"
+msgstr ""
+
+msgid "{db_target.points_recovered} points"
+msgstr ""
+
+msgid "Points acquired by talking"
+msgstr ""
+
+msgid "{db_target.points_acquired} points"
+msgstr ""
+
+msgid "Points exploded by stepping on mines"
+msgstr ""
+
+msgid "{db_target.points_exploded} points"
+msgstr ""
+
+msgid "Points spent in the shop"
+msgstr ""
+
+msgid "{db_target.points_spent} points"
+msgstr ""
+
+msgid ""
+"For more information on how to place a mine, run the `dh!lm landmines` "
+"command."
+msgstr ""
+
+msgid ""
+"To place a landmine, send a DM to the bot with the following command: ```\n"
+"dh!landmine place {ctx.guild.id} your_mine_value your_mine_word "
+"a_message_to_send_when_the_mine_explodes\n"
+"```\n"
+"The value must be at least 50 points, and a word must be at least 3 "
+"characters long."
+msgstr ""
+
+msgid ""
+"❌ On what server do you want to place this landmine ? You need to add the "
+"Guild ID at the start of your command. See `dh!landmines landmine_how_to`"
+msgstr ""
+
+msgid "❌ You aren't in that guild."
+msgstr ""
+
+msgid "❌ A landmine must have a value higher than 50."
+msgstr ""
+
+msgid "❌ The message left on the landmine must be less than 1500 characters."
+msgstr ""
+
+msgid "❌ The word must only contain letters."
 msgstr ""
 
 msgid ""
@@ -67,13 +2004,248 @@ msgid ""
 "❌ This word is currently protected by {user}, you can't place a mine on it."
 msgstr ""
 
+msgid ""
+"❌ You don't have {value} points, you can't buy a landmine as powerful as "
+"this."
+msgstr ""
+
+msgid ""
+"💣️ You placed a landmine on `{word}` that can give you at most "
+"`{base_value}` points."
+msgstr ""
+
+msgid "❌ Please give one valid words to protect."
+msgstr ""
+
 msgid "❌ This word is already protected by {user}."
 msgstr ""
+
+msgid ""
+"❌ You don't have 500 points, so you can't buy a shield to protect a word."
+msgstr ""
+
+msgid "You placed a shield on `{word}` for 500 points."
+msgstr ""
+
+msgid ""
+"- <@{placed_by_member.user_id}> mine for {value} points (placed {td} ago)"
+msgstr ""
+
+msgid "You defused the following landmine for a value of {got_points} points."
+msgid_plural ""
+"You defused {n} landmines placed on that word, for a total value of "
+"{got_points} points."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "There were no active landmines on that word to be defused."
+msgstr ""
+
+msgid "❌ Please give (as much) valid words as you want to the defuse kit."
+msgstr ""
+
+msgid "❌ You don't have 30 points, so you can't buy a defuse kit."
+msgstr ""
+
+msgid ""
+"💰️ You used the defuse kit on `{landmine.word}`, and defused "
+"<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
+"`{landmine.value}` points value.You got {got_points} points, congratulations."
+""
+msgstr ""
+
+msgid ""
+"💸️ You used the defuse kit on `{landmine.word}`, and defused "
+"<@{placed_by_member.user_id}> landmine (placed {td} ago), that has a "
+"`{landmine.value}` points value.You've lost {-got_points} points, because "
+"the value of the landmine was lower than the defuse kit price. Sorry!"
+msgstr ""
+
+msgid ""
+"♻️️ You didn't use the defuse kit, and sold it back to the shop. You are "
+"sure that there isn't any mine on any of those words: \n"
+"```\n"
+"{words}\n"
+"```"
+msgstr ""
+
+msgid "Landmines statistics"
+msgstr ""
+
+msgid "Players tracked"
+msgstr ""
+
+msgid "Mines count"
+msgstr ""
+
+msgid "{current_mines_count} mines placed, {total_mines_count} created"
+msgstr ""
+
+msgid "Biggest active mine"
+msgstr ""
+
+msgid ""
+"Valued at `{biggest_mine.value} ({letters} letters)`, placed by <@{user}>"
+msgstr ""
+
+msgid "Players in the negative"
+msgstr ""
+
+msgid "Event scoreboard"
+msgstr ""
+
+msgid "{points} points"
+msgstr ""
+
+msgid "Support team: monitoring"
+msgstr ""
+
+msgid "Prestige"
+msgstr "Престиж"
+
+msgid "Prestige Information"
+msgstr "Информация о престиже"
+
+msgid ""
+"Prestige is a way for you to restart the DuckHunt adventure, resetting your "
+"account (experience, statistics, ...)\n"
+"In exchange for the reset, you'll get new items to help you progress faster.\n"
+"\n"
+msgstr ""
+"Престиж - это способ начать приключение DuckHunt заново, сбросив данные "
+"вашей учётной записи (опыт, статистику, ...).\n"
+"В обмен на сброс вы получите новые предметы, которые помогут вам быстрее "
+"двигаться вперёд."
+
+msgid ""
+"Prestige will be unlocked when you reach the maximum level. You are at "
+"{pct}% there (you need {missing_exp} more experience)."
+msgstr ""
+"Престиж станет доступен, когда вы достигнете максимального уровня. Текущий "
+"прогресс - {pct}% (вам нужно ещё {missing_exp} ед. опыта)."
+
+msgid ""
+"Prestige is available for you now ! Go ahead and use `{ctx.prefix}prestige "
+"confirm`. By using it now, you'll keep {kept_exp} exp."
+msgstr ""
+"Теперь для вас доступен Престиж! Используйте команду `{ctx.prefix}prestige "
+"confirm`. Если вы введёте её сейчас, вы сохраните {kept_exp} ед. опыта."
+
+msgid "Prestige daily bonus"
+msgstr "Престиж: ежедневный бонус"
+
+msgid ""
+"You can get around {experience} experience every day by using the daily "
+"command."
+msgstr ""
+"Вы можете получать примерно {experience} ед. опыта каждый день, используя "
+"ежедневную команду."
+
+msgid "✨ Current prestige level ✨️"
+msgstr "✨ Текущий уровень престижа ✨️"
+
+msgid "You have reached level {level}"
+msgstr "Вы достигли уровня {level}"
+
+msgid ""
+"**Remember**, using prestige means losing your statistics and most of your "
+"experience. However, you'll get the following items to help you"
+msgstr ""
+"**Помните**, что использование престижа означает сброс текущей статистики и "
+"утрату большей части ед. опыта. Зато вы получите в помощь следующие предметы."
+""
+
+msgid "Level 1"
+msgstr "Уровень 1"
+
+msgid "**Unbreakable sunglasses**: Never buy sunglasses again"
+msgstr ""
+"**Неломающиеся солнцезащитные очки**. Вам больше никогда не придётся "
+"покупать солнцезащитные очки"
+
+msgid "Level 2"
+msgstr "Уровень 2"
+
+msgid "**Coat colour**: Choose the colour of your coat"
+msgstr "**Цвет плаща**. Вы можете выбрать цвет плаща"
+
+msgid "Level 3"
+msgstr "Уровень 3"
 
 msgid ""
 "**More experience**: Chance to get more experience equal to your prestige "
 "level for every natural spawn killed"
 msgstr ""
+
+msgid "Level 4"
+msgstr "Уровень 4"
+
+msgid "**Icelandic water**: Wet others for longer"
+msgstr "**Ледяная водица**. Мочите других охотников по-взрослому"
+
+msgid "Level 5"
+msgstr "Уровень 5"
+
+msgid "**Untearable coat**: Buy it for life"
+msgstr "**Нервущийся плащ**. Пожизненная гарантия на плащ"
+
+msgid "Level 6"
+msgstr "Уровень 6"
+
+msgid "**Military grade silencer**: Better silencers that last twice as long"
+msgstr ""
+"**Глушитель военного образца**. Более качественные глушители, которые служат "
+"вдвое дольше"
+
+msgid "Level 7"
+msgstr "Уровень 7"
+
+msgid "**Permanent licence to kill**: Secret DuckHunt service"
+msgstr "**Постоянная лицензия на убийство**. Секретная служба DuckHunt"
+
+msgid "Level 8"
+msgstr "Уровень 8"
+
+msgid "**Bigger ammo pack**: Load twice as many bullets in your gun"
+msgstr ""
+"**Расширенный боекомплект**. В два раза больше патронов для вашего оружия"
+
+msgid "Level 9"
+msgstr "Уровень 9"
+
+msgid "**???**: Suggestions are welcome"
+msgstr "**???**. Ждём ваших предложений"
+
+msgid ""
+"❌ You haven't unlocked prestige yet. See `{ctx.prefix}prestige info` to "
+"learn more."
+msgstr ""
+"❌ Престиж пока ещё не доступен. См. `{ctx.prefix}prestige info` для "
+"получения подробной инфрмации."
+
+msgid "Prestige {old_prestige} -> {new_prestige}"
+msgstr "Престиж {old_prestige} -> {new_prestige}"
+
+msgid "You used prestige after reaching {pct}% of the required threshold."
+msgstr "Вы задействовали престиж после достижения {pct}% требуемого порога."
+
+msgid "✨ New run"
+msgstr "✨ Новое приключение"
+
+msgid "You'll restart the game with {kept_exp} experience."
+msgstr "Вы начнёте игру заново с {kept_exp} ед. опыта."
+
+msgid ""
+"❌ Your prestige level is not high enough yet. See `{ctx.prefix}prestige "
+"info` to learn more."
+msgstr ""
+"❌ Ваш уровень престижа недостаточно высок. См. `{ctx.prefix}prestige info` "
+"для получения подробной информации."
+
+msgid "❌ You already claimed your dailies today. Try again tomorrow."
+msgstr "❌ Вы уже получили ежедневные ништяки. Повторите попытку завтра."
 
 msgid ""
 "❌ The daily command was disabled. You can now get bonus experience for every "
@@ -85,20 +2257,1002 @@ msgid ""
 "experience when killing ducks."
 msgstr ""
 
+msgid ""
+"💰️ You took {exp} experience out of the prestige bank. Come back soon!"
+msgstr ""
+"💰️ Вы сняли {exp} ед. опыта со счёта в банке престижа. Приходите ещё!"
+
+msgid "Support team: private messages"
+msgstr ""
+
+msgid "DM Timed Out"
+msgstr "Время ожидания для ЛС истекло."
+
+msgid ""
+"Tickets expire after 24 hours of inactivity.\n"
+"Got a question? Ask it here or in [the support server](https://duckhunt.me/"
+"support).\n"
+"Thank you for using the DuckHunt ticket system!"
+msgstr ""
+
+msgid "Support server"
+msgstr "Сервер техподдержки"
+
+msgid ""
+"For all your questions, there is a support server. Click [here](https://"
+"duckhunt.me/support) to join."
+msgstr ""
+"Для ответов на все ваши вопросы есть сервер поддержки. Нажмите [здесь](https:"
+"//duckhunt.me/support)."
+
+msgid ""
+"DMing any message to the bot will open a ticket.\n"
+"You have a question? [Ask it](https://dontasktoask.com) to our human "
+"volunteers.\n"
+"You opened the ticket by mistake? Type `close` (*once, no prefix needed*) "
+"and we, human volunteers will close it."
+msgstr ""
+
+msgid "Support tickets are automatically deleted after 24 hours of inactivity"
+msgstr ""
+
+msgid "Attachments persistence"
+msgstr "Сохранение вложений"
+
+msgid ""
+"Images and other attached data to the message will get deleted once your "
+"ticket is closed. Make sure to save them beforehand if you wish."
+msgstr ""
+"Все изображения и вложения будут удалены после закрытия вашего запроса. "
+"Убедитесь, что вы сделали резервную копию, если это необходимо."
+
+msgid "This is not how you invite DuckHunt."
+msgstr "Бот DuckHunt приглашается немного по-другому."
+
+msgid ""
+"To invite DuckHunt, you need :\n"
+"- To be a server Administrator.\n"
+"- To click on the [following link](https://duckhunt.me/invite)\n"
+"More info on [this guide](https://duckhunt.me/docs/bot-administration/admin-"
+"quickstart). If you need more help, you can ask here and we'll get back to "
+"you."
+msgstr ""
+
+msgid "This is an automatic message."
+msgstr "Это сообщение сгенерировано автоматически."
+
+msgid "DM Closed"
+msgstr "Личные сообщения закрыты."
+
+msgid ""
+"Your support ticket was closed and the history deleted. Thanks for using "
+"DuckHunt DM support. Keep in mind, sending another message here will open a "
+"new ticket!\n"
+"In the meantime, here's a nice duck picture for you to look at !"
+msgstr ""
+"Ваше обращение в службу поддержки было закрыто, а история удалена. "
+"Благодарим за ваш запрос. Отправка нового сообщения создаст новый запрос.\n"
+"А пока полюбуйтесь этой забавной картинкой с уткой."
+
+msgid "❌ Can't send a message to this user: {e}."
+msgstr ""
+
+msgid "❌ There is no tag with that name."
+msgstr "❌ Метка с таким именем не существует."
+
+msgid "Language change offer"
+msgstr "Предложение смены языка"
+
+msgid ""
+"DuckHunt support suggests you change your personal language from "
+"{current_language} to {suggested_language}. This will translate all the "
+"messages you get in private message from DuckHunt to {suggested_language}."
+msgstr ""
+"DuckHunt рекомендует сменить язык с {current_language} на "
+"{suggested_language}. Это переведёт все сообщения от DuckHunt в ЛС на "
+"{suggested_language}."
+
+msgid ""
+"Press ✅ to accept the change, or do nothing to reject. Use the [dh!settings "
+"my_lang language_code] command in a game channel to edit later."
+msgstr ""
+"Нажмите ✅ для сохранения изменений или не делайте ничего для отмены. Для "
+"редактирования используйте команду [dh!settings my_lang language_code]."
+
+msgid "Your language preference wasn't changed."
+msgstr "Ваши языковые предпочтения не были изменены."
+
+msgid "Your preferred language is now {new_language}."
+msgstr "Теперь ваш предпочитаемый язык - {new_language}."
+
+msgid "Images"
+msgstr ""
+
+msgid "That artist is not known. Choose either Calgeka or Globloxmen."
+msgstr ""
+
+msgid "Admin: Settings"
+msgstr ""
+
+msgid "You can view the channel settings here: "
+msgstr "Посмотреть настройки канала можно здесь:"
+
+msgid "Defaults settings have been restored."
+msgstr "Восстановлены настройки по умолчанию."
+
+msgid "DHV3-Like settings have been applied to this channel."
+msgstr "Применены настройки DHV3."
+
+msgid "Casual mode settings have been applied to this channel."
+msgstr "Применены настройки обычного режима."
+
+msgid "Hardcore mode settings have been applied to this channel."
+msgstr "Применены настройки режима повышенной сложности."
+
+msgid "👻 Haunted House settings have been applied to this channel."
+msgstr "👻 Применены настройки режима \"Дом с привидениями\"."
+
+msgid "🤖 Robot fest settings have been applied to this channel."
+msgstr "🤖 Применены настройки режима \"Фестиваль роботов\"."
+
+msgid "🐙 Hydra settings have been applied to this channel."
+msgstr "🐙 Применены настройки режима \"Гидра\"."
+
+msgid "☢ Nuclear radiation settings have been applied to this channel 🍀."
+msgstr "☢ Применены настройки режима \"Радиация\" 🍀."
+
+msgid "🦘 Australia settings have been applied to this channel."
+msgstr "🦘 Применены настройки режима \"Австралия\"."
+
+msgid "There will be very big ducks on this channel."
+msgstr "На этом канале будут ну ооочень большие утки."
+
+msgid "Your math test will start soon."
+msgstr ""
+
+msgid "The server prefix is set to `{prefix}`."
+msgstr "Префикс сервера - `{prefix}`."
+
+msgid "There is no specific prefix set for this guild."
+msgstr "Для этой гильдии нет отдельного префикса."
+
+msgid ""
+"You can call me with any of the global prefixes : {global_prefixes_list}"
+msgstr ""
+"Вы можете связаться со мной, используя любой из глобальных префиксов: "
+"{global_prefixes_list}"
+
+msgid ""
+"❌ Unknown locale. If you wish to go back to the default, english language, "
+"use `{ctx.prefix}{ctx.command.qualified_name} en`"
+msgstr ""
+"❌ Неизвестный язык. Если вы хотите вернуться к языку по умолчанию "
+"(английскому), используйте `{ctx.prefix}{ctx.command.qualified_name} en`"
+
+msgid "This server language is set to `{language}` [{language_name}]."
+msgstr "Язык для этого сервера установлен на `{language}` [{language_name}]."
+
+msgid "There is no specific language set for this guild."
+msgstr "Для этой гильдии не установлен определённый язык."
+
+msgid "Webhooks are used in this channel."
+msgstr "Этот канал использует webhooks."
+
+msgid "Webhooks are not used in this channel."
+msgstr "Этот канал не использует webhooks."
+
+msgid "Global items can be used in this channel."
+msgstr "На этом канале могут использоваться глобальные предметы."
+
+msgid "Global items can't be used in this channel."
+msgstr "Глобальные предметы не могут использоваться на этом канале."
+
+msgid ""
+"Webhooks are not used in this channel. Please enable them first. You can use "
+"`{command}` to do it."
+msgstr ""
+"Этот канал не использует webhooks. Включить их можно через команду "
+"`{command}`."
+
+msgid ""
+"Your webhook was created. The bot now uses {webhooks_count} webhook to spawn "
+"ducks."
+msgid_plural ""
+"Your webhook was created. The bot now uses {webhooks_count} webhooks to "
+"spawn ducks."
+msgstr[0] ""
+"Веб-перехватчик успешно добавлен. Теперь бот использует {webhooks_count} веб-"
+"перехватчик(ов) для создания уток."
+msgstr[1] ""
+"Веб-перехватчик успешно добавлен. Теперь бот использует {webhooks_count} веб-"
+"перехватчик(ов) для создания уток."
+msgstr[2] ""
+msgstr[3] ""
+
+msgid ""
+"I couldn't create a webhook. Double-check my permissions and try again."
+msgstr ""
+"Мне не удалось создать веб-перехватчик. Проверьте мои разрешения и "
+"попробуйте ещё раз."
+
+msgid "That channel uses emojis to spawn ducks."
+msgstr "Этот канал использует смайлики при создании уток."
+
+msgid ""
+"That channel uses pure-text ducks. How does it feels to live in the IRC "
+"world ?"
+msgstr ""
+"Этот канал использует только текст при создании уток. И каково это - жить в "
+"тёплом ламповом мире IRC?"
+
+msgid "Ducks will spawn on {channel.mention}"
+msgstr "Утки появятся на {channel.mention}"
+
+msgid "Ducks won't spawn on {channel.mention}"
+msgstr "Утки не появятся на {channel.mention}"
+
+msgid ""
+"On {channel.mention}, players will pay {tax}% of tax to the bot when they "
+"share some experience."
+msgstr ""
+"Пользователи {channel.mention} будут платить боту {tax}% налога за передачу "
+"единиц опыта."
+
+msgid ""
+"Players won't have to pay any tax when sending experience to others in "
+"{channel.mention}"
+msgstr ""
+"Отправка единиц опыта другим игрокам не будет облагаться налогом для "
+"пользователей {channel.mention}"
+
+msgid "On {channel.mention}, players will be mentionned when they get killed."
+msgstr "Пользователи {channel.mention} будут упоминаться, если их подстрелят."
+
+msgid "Players won't get mentions when they get killed in {channel.mention}"
+msgstr ""
+"Пользователи {channel.mention} не будут упоминаться, если их подстрелят."
+
+msgid "On {channel.mention}, players will see the lives count of super ducks."
+msgstr ""
+"Пользователи {channel.mention} будут видеть количество жизней супер-уток."
+
+msgid "Players won't see lives of super ducks on {channel.mention}"
+msgstr ""
+"Пользователи {channel.mention} не будут видеть количество жизней супер-уток."
+
+msgid ""
+"On {channel.mention}, players will kill people {pct}% of the time when "
+"missing a shot."
+msgstr ""
+"Пользователи {channel.mention} будут убивать людей в {pct}% случаев, если не "
+"попадут в утку."
+
+msgid ""
+"Players won't kill people randomly when missing shots on {channel.mention}. "
+"They can still kill people voluntarily."
+msgstr ""
+"Пользователи {channel.mention} не будут случайным образом убивать людей при "
+"промахе по утке. Но они могут стрелять в других охотников по собственной "
+"воле."
+
+msgid ""
+"On {channel.mention}, players will frighten ducks {pct}% of the time when "
+"shooting."
+msgstr ""
+"Пользователи {channel.mention} будут пугать уток выстрелами в {pct}% случаев."
+""
+
+msgid ""
+"Players won't frighten ducks, making the silencer useless on {channel."
+"mention}."
+msgstr ""
+"Пользователи {channel.mention} не будут пугать уток выстрелами, поэтому "
+"глушители им не нужны."
+
+msgid ""
+"⚠️ In some cases, users may get NEGATIVE experience when killing ducks with "
+"that low of a experience."
+msgstr ""
+"⚠️ В некоторых случаях пользователи могут получить ОТРИЦАТЕЛЬНЫЙ опыт за "
+"убийство уток, если задано такое низкое значение."
+
+msgid ""
+"❌️ You need to provide a lower value than the one set in "
+"`clover_max_experience` !"
+msgstr ""
+"❌️ Необходимо задать значение, которое меньше `clover_max_experience`!"
+
+msgid ""
+"On {channel.mention}, when a hunter buys a clover, the minimum experience "
+"given per duck kill will be of {value}."
+msgstr ""
+"Когда охотник на канале {channel.mention} покупает клевер, он получит "
+"минимум {value} ед. опыта за каждую убитую утку."
+
+msgid ""
+"❌️ You need to provide a higher value than the one set in "
+"`clover_min_experience` !"
+msgstr ""
+"❌️ Необходимо задать значение, которое больше `clover_min_experience`!"
+
+msgid ""
+"On {channel.mention}, when a hunter buy a clover, the maximum experience "
+"given per duck kill will be of {value}."
+msgstr ""
+"Когда охотник на канале {channel.mention} покупает клевер, он получит "
+"максимум {value} ед. опыта за каждую убитую утку."
+
+msgid ""
+"⚠️ Giving negative experience when hunter kills ducks might be a bad idea."
+msgstr ""
+"⚠️ Отрицательное значение опыта за убийство охотником утки - это не очень "
+"хорошая идея."
+
+msgid ""
+"On {channel.mention}, when a hunter kills a duck, the experience given will "
+"be of {value}."
+msgstr ""
+"Когда охотник на канале {channel.mention} убивает утку, он получит {value} "
+"ед. опыта."
+
+msgid ""
+"On {channel.mention}, when a hunter kills a super-duck, the experience given "
+"for every life the duck has will be of {value}."
+msgstr ""
+"Когда охотник на канале {channel.mention} убивает супер-утку, он получит "
+"{value} ед. опыта за каждую её жизнь."
+
+msgid "❌️ To disable a channel, use `{prefix}settings enabled False`."
+msgstr ""
+"❌️ Чтобы отключить канал, используйте `{prefix}settings enabled False`."
+
+msgid ""
+"⚠️️ You should not set that higher than {maximum_value}, however, you have "
+"the required permissions to proceed. The number of ducks per day is limited "
+"to ensure resources are used fairly.\n"
+"Please click `Confirm` to proceed as requested, with {value} ducks per day "
+"on the channel."
+msgstr ""
+
+msgid "🛑 Operation cancelled."
+msgstr "🛑 Операция отменена."
+
+msgid ""
+"⚠️️ You should not set that higher than {maximum_value}, however, this is a "
+"VIP server so I'll allow much higher limits than usual. The number of ducks "
+"per day is limited to ensure resources are used fairly.\n"
+" I'm proceeding anyway as requested, with {value} ducks per day on the "
+"channel."
+msgstr ""
+"⚠️️ Задавать значение выше {maximum_value} как бы нельзя. Ограничение нужно "
+"для более рационального использования ресурсов. Но это VIP сервер, поэтому "
+"можно сделать исключение.\n"
+"Таки выполняю. Новое ежедневное количество уток на канале -  {value}."
+
+msgid ""
+"⚠️️ You cannot set that higher than {maximum_value}. The number of ducks per "
+"day is limited to ensure resources are used fairly. If you donated towards "
+"the bot, contact Eyesofcreeper#0001 to lift the limit. If not, consider "
+"donating to support me : {donor_url}."
+msgstr ""
+"⚠️️ Нельзя задать значение выше {maximum_value}. Ежедневное количество уток "
+"ограничено для справедливого использования ресурсов. Если вы помогли боту "
+"материально, свяжитесь с Eyesofcreeper#0001 для снятия ограничения. Если "
+"нет, пожалуйста, рассмотрите возможность финансовой помощи: {donor_url}."
+
+msgid "On {channel.mention}, {value} ducks will spawn every day."
+msgstr "На канале {channel.mention} ежедневно будут появляться {value} уток."
+
+msgid ""
+"❌ I don't know what type of duck you are talking about. Choose one in "
+"{allowed_ducks_types}."
+msgstr ""
+"❌ Я не понимаю, о каком виде уток вы говорите. Пожалуйста, выберите один из "
+"{allowed_ducks_types}."
+
+msgid "❌ You cannot set a negative weight."
+msgstr "❌ Вы не можете задать отрицательное значение."
+
+msgid "🦆 Weight for the {duck_type} is set to {value} in {channel.mention}."
+msgstr ""
+"🦆 Канал {channel.mention}, заданное значение для {duck_type}: {value}."
+
+msgid "❌️ Ducks need to settle for a while in the pond before leaving."
+msgstr "❌️ Уткам нужно немного отдохнуть, прежде чем они покинут пруд."
+
+msgid "❌️ Ducks will get bored long before that."
+msgstr "❌️ Уткам станет скучно намного раньше."
+
+msgid "On {channel.mention}, ducks will stay for {value} seconds."
+msgstr ""
+"Утки будут оставаться на канале {channel.mention} в течение {value} секунд."
+
+msgid "❌️ Super ducks will live !"
+msgstr "❌️ Супер-утки будут жить!"
+
+msgid ""
+"❌️ You need to provide a lower value than the one set in "
+"`super_ducks_max_life` !"
+msgstr "❌️ Необходимо задать значение, которое меньше `super_ducks_max_life`!"
+
+msgid "On {channel.mention}, super ducks will get a minimum of {value} lives."
+msgstr ""
+"У супер-уток на канале {channel.mention} будет минимум {value} жизней."
+
+msgid ""
+"❌️ You need to provide a higher value than the one set in "
+"`super_ducks_min_life` !"
+msgstr "❌️ Необходимо задать значение, которое больше `super_ducks_min_life`!"
+
+msgid "On {channel.mention}, super ducks will get a maximum of {value} lives."
+msgstr ""
+"У супер-уток на канале {channel.mention} будет максимум {value} жизней."
+
+msgid "On {channel.mention}, anti-trigger wording is enabled."
+msgstr ""
+
+msgid "On {channel.mention}, anti-trigger wording is disabled."
+msgstr ""
+
+msgid ""
+"❌ I'm sorry, I couldn't understand the time you entered for night_start. I'm "
+"looking for something following this format: `{time_format}` (ex: "
+"`{time_example}`)"
+msgstr ""
+"❌ Извините, я не понимаю значение, которое вы задали для начала ночного "
+"времени (night_start). Необходимо использовать следующий формат: "
+"`{time_format}` (пример: `{time_example}`)"
+
+msgid ""
+"❌ I'm sorry, I couldn't understand the time you entered for night_end. I'm "
+"looking for something following this format: `{time_format}` (ex: "
+"`{time_example}`)"
+msgstr ""
+"❌ Извините, я не понимаю значение, которое вы задали для окончания ночного "
+"времени (night_end). Необходимо использовать следующий формат: "
+"`{time_format}` (пример: `{time_example}`)"
+
+msgid ""
+"On {channel.mention}, it's currently daytime. The day will last forever."
+msgstr ""
+"Сейчас на канале {channel.mention} дневное время. День будет длиться вечно."
+
+msgid ""
+"On {channel.mention}, it's currently daytime, and night will fall "
+"{time_left_sun_td}. Night will last for {duration_of_night_td}."
+msgstr ""
+"Сейчас на канале {channel.mention} дневное время. Ночное время начнётся "
+"{time_left_sun_td} и будет длиться {duration_of_night_td}."
+
+msgid ""
+"On {channel.mention}, it's currently nighttime, and the sun will rise "
+"{time_left_sun_td}. A full night will last for {duration_of_night_td}."
+msgstr ""
+"Сейчас на канале {channel.mention} ночь. Солнце взойдёт {time_left_sun_td}. "
+"Полная ночь продлится {duration_of_night_td}."
+
+msgid "👌️ Api disabled here, key deleted."
+msgstr "👌️ API отключён, ключ удалён."
+
+msgid "👌️ Api is now ENABLED. Your API key will be DM'ed to you."
+msgstr "👌️ API ВКЛЮЧЁН. Ваш API ключ будет отправлен вам в ЛС."
+
+msgid "{channel.mention} API key is `{api_key}`"
+msgstr "API ключ для канала {channel.mention}: `{api_key}`"
+
+msgid ""
+"The API is disabled on {channel.mention}. Enable it with `{ctx.prefix}set "
+"api_key True`"
+msgstr ""
+"API на канале {channel.mention} отключён. Включите его, используя `{ctx."
+"prefix}set api_key True`"
+
+msgid "I couldn't DM you... Are your DMs blocked ?"
+msgstr ""
+"Я не могу связаться с вами в ЛС... Пожалуйста, проверьте настройки ЛС."
+
+msgid "Channel disabled messages are enabled."
+msgstr "Сообщения включены."
+
+msgid "Channel disabled messages are disabled. The bot will stay silent."
+msgstr "Сообщения отключены. Бот будет помалкивать."
+
+msgid ""
+"❌ Unknown level number. Please check the table here: <https://duckhunt.me/"
+"docs/players-guide/levels-and-experience>"
+msgstr ""
+
+msgid ""
+"❌ I can't assign roles. Please make sure I have the `MANAGE_ROLES` "
+"permission."
+msgstr ""
+
+msgid ""
+"❌ I can't assign this role. Move my top role (currently {top_role}) above "
+"the roles you want to be able to assign."
+msgstr ""
+
+msgid "👍️ Role added to the auto_roles list."
+msgstr ""
+
 msgid "👍️ Role ID {old_role} removed from the auto_roles list."
 msgstr ""
 
 msgid "❌️ No role was set for this level."
 msgstr ""
 
+msgid "Current roles mapping:"
+msgstr ""
+
+msgid "No level mapping is currently defined on this channel."
+msgstr ""
+
+msgid ""
+"❌ A prestige number must be a positive integer. Please check the table here: "
+"<https://duckhunt.me/docs/players-guide/levels-and-experience>"
+msgstr ""
+
+msgid "👍️ Role added to the auto_prestige_roles list."
+msgstr ""
+
+msgid "Current prestige roles mapping:"
+msgstr "Текущее отображение уровней престижа:"
+
+msgid "Level {i}"
+msgstr "Уровень {i}"
+
+msgid "Deleted role 🗑️ ID: {role_id}"
+msgstr ""
+
+msgid "No prestige level mapping is currently defined on this channel."
+msgstr ""
+
 msgid "{level} - {user} [`{user.id}`]"
 msgstr ""
+
+msgid "No members have any specific rights in the server."
+msgstr "Ни один пользователь не имеет каких-либо особых прав на сервере."
+
+msgid "❌ {target.mention}, you cannot ban yourself !"
+msgstr "❌ {target.mention}, вы не можете забанить самого себя!"
+
+msgid "{target.mention} now has a access of {level.name}."
+msgstr "Новый уровень доступа пользователя {target.mention} - {level.name}."
+
+msgid ""
+"The landmines game is enabled in {channel.mention}, users can trip on "
+"landmines and earn points here."
+msgstr ""
+
+msgid ""
+"The landmines game is disabled in {channel.mention}, users can't trip on "
+"landmines and earn points here."
+msgstr ""
+
+msgid "Members can run landmines commands in {channel.mention}."
+msgstr ""
+
+msgid "Members can't run landmines commands in {channel.mention}"
+msgstr ""
+
+msgid "You'll now be pinged in replies from the bot."
+msgstr "Теперь при ответах со стороны бота вы будете получать пинг."
+
+msgid "You wont be pinged anymore in replies from the bot."
+msgstr "Вы больше не будете получать пинг при ответах со стороны бота."
+
+msgid "Your language is set to `{language}` [{language_name}]."
+msgstr "Вы выбрали `{language}` [{language_name}]."
+
+msgid "Shop"
+msgstr ""
+
+msgid "❌ Whoops, you have too many bullets in your weapon already."
+msgstr "❌ У вас достаточно патронов. Оружие не резиновое."
+
+msgid ""
+"💸 You added a bullet in your weapon. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы добавили патрон. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter."
+"experience} ед. опыта]"
+
+msgid ""
+"💡 Next time, you might want to buy a magazine, it'll be cheaper for you 😁"
+msgstr ""
+"💡 В следующий раз есть смысл подумать о покупке обоймы. Так дешевле. 😁"
+
+msgid ""
+"❌ Whoops, you have too many magazines in your backpack already... Try "
+"reloading!"
+msgstr ""
+"❌ Упс, в вашем рюкзаке предостаточно обойм... Попробуйте перезарядить оружие."
+""
+
+msgid ""
+"💸 You added a magazine in your weapon. Time to reload! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели обойму. Теперь, если это необходимо, можно перезарядить "
+"оружие. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. "
+"опыта]"
+
+msgid ""
+"💸 You added a magazine in your weapon. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели обойму. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter."
+"experience} ед. опыта]"
+
+msgid ""
+"❌ A UN treaty bans the use of Armor Piercing and Explosive ammo for now, I "
+"can't sell that to you. (`{ctx.prefix}event`)"
+msgstr ""
+"❌ Конвенция ООН запрещает использование бронебойных и разрывных боеприпасов. "
+"Я не могу вам это продать. (`{ctx.prefix}event`)"
+
+msgid "❌ Whoops, your gun is already using AP ammo for {time_delta}!"
+msgstr ""
+"❌ Упс, вы уже используете бронебойные патроны. Срок действия: {time_delta}."
+
+msgid "❌ Your gun is using some even better explosive ammo for {time_delta}!"
+msgstr ""
+"❌ У вас есть разрывные патроны более высокого качества. Срок действия: "
+"{time_delta}."
+
+msgid ""
+"💸 You bought some AP ammo. Twice the damage, twice the fun! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели бронебойные патроны. Удвоенный урон, ещё больше веселья! "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid "❌ Your gun is already using explosive ammo for {time_delta}!"
+msgstr "❌ У вас уже есть разрывные патроны. Срок действия: {time_delta}."
+
+msgid ""
+"💸 You bought some **EXPLOSIVE** ammo. Thrice the damage, that'll be bloody! "
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели **РАЗРЫВНЫЕ** патроны. Утроенный урон. Будет месилово! "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid "❌ Your gun isn't confiscated, why would you need a new one ?"
+msgstr "❌ Ваше оружие не конфисковано. Зачем вам ещё один ствол?"
+
+msgid ""
+"💸 You bribed the police and bought back your weapon. The fun continues. "
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы дали на лапу полиции и выкупили оружие. Веселуха продолжается. "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"❌ Your gun is already perfectly greased, you don't need any more of that."
+msgstr "❌ Ваше оружие в отличном состоянии. Вам не нужно больше смазки."
+
+msgid ""
+"💸 You added some grease to your weapon to reduce jamming for a day. [Bought:"
+" -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели смазку. Ваше оружие будет работать безотказно в течение "
+"суток. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. "
+"опыта]"
+
+msgid ""
+"❌ You added a new sight to your weapon recently. You don't need a new one "
+"for your next {uses} shots."
+msgstr "❌ У вас уже есть оптика. Новая вам пока не нужна. Ресурс: {uses}."
+
+msgid ""
+"💸 You added a sight to your weapon to improve your accuracy for the next "
+"few shots. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели оптический прицел для повышения точности стрельбы. Но "
+"долговечностью он не отличается. [Покупка: -{ITEM_COST} ед. опыта, всего "
+"{db_hunter.experience} ед. опыта]"
+
+msgid ""
+"❌ You already have that infrared detector on your weapon. It is still good "
+"for {times} missed shots."
+msgstr "❌ У вас уже есть инфракрасный детектор. Ресурс: {times}."
+
+msgid ""
+"💸 You added an infrared detector to your weapon. If you can't see ducks, "
+"you can't shoot them. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+msgstr ""
+"💸 Вы приобрели инфракрасный детектор. Это очень полезная приблуда. Нет уток "
+"- нет выстрела. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter."
+"experience} ед. опыта]"
+
+msgid ""
+"❌ You already use a silencer. It's still good for {time_delta}, come back "
+"then."
+msgstr ""
+"❌ У вас уже есть глушитель. Срок службы: {time_delta}. Тогда и приходите."
+
+msgid ""
+"💸 You added a military-grade silencer to your weapon. You seem to know the "
+"game well. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели глушитель военного образца. Похоже, вы знаток. [Покупка: -"
+"{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You added a silencer to your weapon. Ducks are still afraid of the noise, "
+"but you don't make any. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+msgstr ""
+"💸 Вы приобрели глушитель. Утки всё ещё боятся шума, но вы же тихонечко. "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"❌ You tried to throw your old clover to buy a new one at the new florist. "
+"Unfortunately, there is a cop around and you don't have enough exp to pay a "
+"littering fine of {fine} exp."
+msgstr ""
+"❌ Вы попытались выбросить старый клевер, дабы купить новый у флориста. К "
+"сожалению, рядом полиция, а у вас недостаточно средств, чтобы потянуть штраф "
+"в размере {fine} ед. опыта за мусор."
+
+msgid ""
+"🍀 You throw your old clover to buy a new one at the new florist. "
+"Unfortunately, a cop catches you and fines you {fine} exp for littering."
+msgstr ""
+"🍀 Вы выбросили старый клевер, чтобы купить новый у флориста. К сожалению, "
+"вас сцапала полиция и оштрафовала на {fine} ед. опыта за мусор."
+
+msgid ""
+"❌ You already use a 4-Leaf clover. Try your luck again in {time_delta}!"
+msgstr ""
+"❌ У вас уже есть четырёхлистный клевер. Попытайте удачу ещё раз через "
+"{time_delta}!"
+
+msgid ""
+"🍀 You bought a 4-Leaf clover. Every time you kill a duck, you'll get "
+"{clover_exp} more experience points. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"🍀 Вы приобрели четырёхлистный клевер. Теперь за каждую убитую утку вы "
+"будете дополнительно получать {clover_exp} ед. опыта. [Покупка: -{ITEM_COST} "
+"ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"😎 You bought sunglasses, again... What a waste. [Bought: -{ITEM_COST} exp, "
+"total {db_hunter.experience} exp]"
+msgstr ""
+"😎 Вы приобрели ещё одни солнцезащитные очки. Не шибко модно, да и не особо "
+"рационально. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} "
+"ед. опыта]"
+
+msgid ""
+"😎 You bought sunglasses. [Bought: -{ITEM_COST} exp, total {db_hunter."
+"experience} exp]"
+msgstr ""
+"😎 Вы приобрели солнцезащитные очки. [Покупка: -{ITEM_COST} ед. опыта, всего "
+"{db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You bought some new clothes. You look very good. Maybe the ducks will "
+"like your outfit. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+msgstr ""
+"💸 Вы приобрели комплект одежды. Отлично выглядите! Может и уткам понравится."
+" [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You've just cleaned your weapon. Could've just shot once, but heh "
+"¯\\_(ツ)_/¯. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы почистили оружие. Хотя можно было просто разок выстрелить. Но дело "
+"ваше ¯\\_(ツ)_/¯. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter."
+"experience} ед. опыта]"
+
+msgid "❌ Don't play with fire, kid! Go somewhere else."
+msgstr "❌ Не играй с огнём, малыш! Займись чем-нибудь другим."
+
+msgid "❌ I don't think {target.mention} can play DuckHunt yet..."
+msgstr "❌ Думаю, что {target.mention} пока не может играть в DuckHunt..."
+
+msgid ""
+"💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
+"your mirror. That was kinda stupid, since they have sunglasses 😎. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы направляете ☀️ солнечный свет аккурат в глаза 👀 {target.mention} при "
+"помощи зеркальца. Глупая затея, ибо охотник в солнцезащитных очках 😎. "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You are redirecting ☀️ sunlight towards {target.mention} eyes 👀 using "
+"your mirror. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы направили ☀️ солнечный свет прямо в глаза 👀 {target.mention} при "
+"помощи зеркальца. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter."
+"experience} ед. опыта]"
+
+msgid ""
+"💸 You threw sand in {target.mention} weapon... Not cool! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы бросили горсть песка на оружие {target.mention}... Это подло! [Покупка:"
+" -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You threw water on {target.mention}... But they have a raincoat on. [Fail:"
+" -{ITEM_COST} exp]"
+msgstr ""
+"💸 Вы окатили {target.mention} водой... Но этот охотник в непромокаемом "
+"плаще. [Неудача: -{ITEM_COST} ед. опыта]"
+
+msgid ""
+"💸 You threw some icelandic water on {target.mention}... They can't hunt for "
+"**three** hours! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} "
+"exp]"
+msgstr ""
+"💸 Вы окатили {target.mention} ледяной водицей... Теперь он(а) не сможет "
+"охотиться целых **три** часа! [Покупка: -{ITEM_COST} ед. опыта, всего "
+"{db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You threw water on {target.mention}... They can't hunt for an hour! "
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы окатили {target.mention} водой... Теперь он(а) не сможет охотиться "
+"целый час! [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед."
+" опыта]"
+
+msgid "❌ That weapon is already sabotaged."
+msgstr "❌ Это оружие уже саботировано."
+
+msgid ""
+"💸 You sabotaged {target.mention} weapon... They don't know... yet! [Bought: "
+"-{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы саботировали оружие {target.mention}... Он(а) не в курсе... пока! "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"I couldn't DM you... Are your DMs blocked ? Anyway, you sabotaged {target."
+"name} weapon... They don't know... yet! [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"Мне не удалось связаться с вами в ЛС... Может вы заблокировали ЛС? Тем не "
+"менее вы саботировали оружие {target.name}... Он(а) не в курсе... пока! "
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы разместили приманку. Утки скоро будут здесь! [Покупка: -{ITEM_COST} ед."
+" опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы направили механическую утку на канал {channel.mention}. Она появится "
+"через 90 секунд. [Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter."
+"experience} ед. опыта]"
+
+msgid ""
+"💸 You started a mechanical duck on {channel.mention}, it will spawn in 90 "
+"seconds. [Bought: -{ITEM_COST} exp].\n"
+"**I couldn't DM you this message**"
+msgstr ""
+"💸 Вы направили механическую утку на канал {channel.mention}. Она появится "
+"через 90 секунд. [Покупка: -{ITEM_COST} ед. опыта].\n"
+"**Мне не удалось отправить вам это сообщение в ЛС.**"
+
+msgid "❌ I'm afraid you cannot choose your coat color yet."
+msgstr "❌ Боюсь, вы пока не можете выбрать цвет плаща."
+
+msgid ""
+"💸 You bought a new, **{color}** coat. \n"
+"You don't look very good, but you are very much protected from water.\n"
+"\n"
+"The tag on the coat says the following :\n"
+"> 100% Polyester, machine washable\n"
+"> {hint}\n"
+"> Made in a CACAD factory also producing homing bullets\n"
+"\n"
+"[Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели новый плащ.\n"
+"**{color}**? Вам не особо идёт, зато вы неплохо защищены от воды.\n"
+"\n"
+"На бирке написано следующее:\n"
+"> 100% полиэстер, пригодно для машинной стирки\n"
+"> {hint}\n"
+"> Сделано на фабрике Общества по защите прав животных, которое также "
+"выпускает патроны с самонаведением\n"
+"\n"
+"[Покупка: -{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid "❌ You already use a kill license."
+msgstr "❌ У вас уже есть лицензия на убийство."
+
+msgid ""
+"💸 You bought a kill license. Accidental kills are now allowed. [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+
+msgid "❌ You already have an automatic reloader."
+msgstr "❌ У вас уже есть устройство автоматической перезарядки."
+
+msgid ""
+"💸 You bought an auto reloader for your weapon. It'll reload automatically "
+"every time it's necessary for a day. [Bought: -{ITEM_COST} exp, total "
+"{db_hunter.experience} exp]"
+msgstr ""
+"💸 Вы приобрели устройство автоматической перезарядки оружия. Оно будет "
+"срабатывать в нужный момент в течение суток. [Покупка: -{ITEM_COST} ед. "
+"опыта, всего {db_hunter.experience} ед. опыта]"
+
+msgid "❌ You already have homing bullets."
+msgstr "❌ У вас уже есть самонаводящиеся патроны."
+
+msgid ""
+"💸 You are now using the brand new Homing Bullets made by CACAD (the Comitee "
+"Against the Comitee Against Ducks) in China. Try them soon! [Bought: -"
+"{ITEM_COST} exp, total {db_hunter.experience} exp]"
+msgstr ""
+"💸 Теперь у вас есть новейшие самонаводящиеся патроны, изготовленные в КНР "
+"по заказу Общества по защите прав животных. Спешите опробовать! [Покупка: -"
+"{ITEM_COST} ед. опыта, всего {db_hunter.experience} ед. опыта]"
 
 msgid "🌐 The beloved DuckHunt translators"
 msgstr ""
 
+msgid ""
+"The bot itself is made by Eyesofcreeper, with contributions from people "
+"mentionned in `{ctx.prefix}credits`. **You want to help translate this bot "
+"?** Contact Eyesofcreeper#0001 on the support server (`{ctx.prefix}invite`). "
+"Thanks!"
+msgstr ""
+"Бот разработан Eyesofcreeper. Ему помогали люди, упомянутые в `{ctx."
+"prefix}credits`. **Хотите помочь с переводом бота?** Свяжитесь с "
+"Eyesofcreeper#0001 на сервере поддержки (`{ctx.prefix}invite`). Спасибо!"
+
+msgid "Miscellaneous"
+msgstr ""
+
+msgid "Pong. — Time taken: {miliseconds}ms"
+msgstr "Понг. — Время отклика: {miliseconds} мс"
+
 msgid "You'll get back your weapon and magazines {formatted_delta}"
 msgstr ""
+
+msgid ""
+"My prefix here is {local_prefix}. You can also call me with any of the "
+"global prefixes : {global_prefixes_list}"
+msgstr ""
+"Мой локальный префикс - {local_prefix}. Вы также можете взаимодействовать со "
+"мной, используя любой из глобальных префиксов: {global_prefixes_list}"
+
+msgid ""
+"The bot itself is made by Eyesofcreeper, but these fine people down there "
+"help with graphics, ideas, images, and more. Make sure to give them a wave "
+"if you see them."
+msgstr ""
+"Сам бот разработан Eyesofcreeper, а эти замечательные люди помогают с "
+"графикой, изображениями, идеями и многим другим. Обязательно помашите им, "
+"если встретите их на просторах сети."
+
+msgid "Developer"
+msgstr "Разработчик"
+
+msgid "<@138751484517941259> (\"Eyesofcreeper\") made this bot."
+msgstr "<@138751484517941259> (\"Eyesofcreeper\") создал этот бот."
+
+msgid "Designer"
+msgstr "Дизайнер"
+
+msgid ""
+"<@465207298890006529> (\"Calgeka\") made a lot of the avatars Ducks used."
+msgstr "<@465207298890006529> (\"Calgeka\") создал множество аватаров для уток."
 
 msgid ""
 "<@807752234669703210> (\"YaOldBuddy\") made some of the avatars Ducks use."
@@ -108,15 +3262,697 @@ msgid ""
 "<@355143752248983552> (\"ZeBadMedic\") also made some of the Ducks avatars."
 msgstr ""
 
+msgid ""
+"<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
+"over the game. Join the /r/dailyducks subreddit."
+msgstr ""
+"<@376052158573051906> (\"Globloxmen\") создал много разных уток, которых вы "
+"можете встретить повсюду в игре. Присоединяйтесь к сабреддиту /r/dailyducks."
+
+msgid "Ideas"
+msgstr "Идеи"
+
+msgid ""
+"Bot based on an original idea by MenzAgitat (on IRC, #boulets EpiKnet). "
+"Website: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
+msgstr ""
+"Бот основывается на оригинальной идее MenzAgitat (IRC: #boulets EpiKnet). "
+"Веб-сайт: https://www.boulets.oqp.me/irc/aide_duck_hunt.html"
+
+msgid "Translations"
+msgstr "Локализаторы"
+
+msgid ""
+"The bot is translated in MANY languages! Translators are listed in `{ctx."
+"prefix}translators`."
+msgstr ""
+"Бот переведён на МНОГИЕ языки! Список локализаторов вызывается командой "
+"`{ctx.prefix}translators`."
+
+msgid "**DuckHunt credits**"
+msgstr "**О разработчиках DuckHunt**"
+
+msgid ""
+"The bot itself is made by Eyesofcreeper, but a lot of people helped with "
+"graphics, ideas, images, and more."
+msgstr ""
+"Сам бот разработан Eyesofcreeper, а помогают ему добрые люди. С графикой, "
+"идеями, изображениями и многим другим."
+
+msgid ""
+"To see more information about that bot, you'll need to give it the "
+"`embed_links` permission. Contact your friendly neighbourhood server admin."
+msgstr ""
+"Чтобы получить больше информации о боте, необходимо разрешение `embed_links`."
+" Вам поможет добрый администратор сервера."
+
+msgid "You don't have to go right now"
+msgstr "Вы ж вроде только недавно!"
+
+msgid "Hi, fellow cow lover"
+msgstr "Привет, любитель бурёнок!"
+
+msgid "Current event: "
+msgstr "Текущее событие:"
+
+msgid ""
+"Events last for one hour from the beginning to the end of the hour. Ending "
+"in {formatted_td}"
+msgstr ""
+"События длятся один полный час, с начала и до конца каждого часа. Текущее "
+"событие закончится {formatted_td}."
+
 msgid "The bot current time is: {formatted_td}"
 msgstr ""
+
+msgid "{exp} experience"
+msgstr "{exp} ед. опыта"
+
+msgid "Statistics"
+msgstr ""
+
+msgid "{target.name} statistics (click me!)."
+msgstr "Статистика: {target.name} (ссылка)."
+
+msgid "Bullets"
+msgstr "Патроны"
+
+msgid "Magazines"
+msgstr "Обоймы"
+
+msgid "Experience"
+msgstr "Опыт"
+
+msgid "Level"
+msgstr "Уровень"
+
+msgid "Accuracy"
+msgstr "Точность"
+
+msgid "{level_reliability} % (Real: {real_reliability} %)"
+msgstr "{level_reliability} % (Реальная: {real_reliability} %)"
+
+msgid "Reliability"
+msgstr "Отказоустойчивость"
+
+msgid "Level {level}"
+msgstr "Уровень {level}"
+
+msgid "{target.name} shooting stats."
+msgstr "Статистика стрельбы {target.name}."
+
+msgid "🧠"
+msgstr "🧠"
+
+msgid ""
+"{shots_when_dead} shots attempted when DEAD. {target.mention} went back to "
+"life {revives} times eating a total of {brains_eaten} brains"
+msgstr ""
+"{shots_when_dead} попыток выстрелить в МЁРТВОМ состоянии. {target.mention} "
+"воскрес(ла) {revives} раз, съев {brains_eaten} порций мозгов."
+
+msgid "🚰"
+msgstr "🚰"
+
+msgid "{shots} shots attempted when wet."
+msgstr "{shots} попыток выстрелить в промокшем состоянии."
+
+msgid "⛔️"
+msgstr "⛔️"
+
+msgid "{shots} shots attempted when {target.mention} gun was confiscated."
+msgstr ""
+"{shots} попыток стрельбы, когда оружие {target.mention} было конфисковано."
+
+msgid "💥"
+msgstr "💥"
+
+msgid "{shots} shots attempted with a sabotaged gun."
+msgstr "{shots} попыток стрельбы из саботированного оружия."
+
+msgid "☁"
+msgstr "☁"
+
+msgid "{shots} shots attempted with a jammed weapon."
+msgstr "{shots} попыток стрельбы из заклинившего оружия."
+
+msgid "🦉"
+msgstr "🦉"
+
+msgid "{shots} shots attempted without bullets."
+msgstr "{shots} попыток стрельбы без патронов."
+
+msgid "{shots} shots jamming {target.mention} weapon."
+msgstr "{shots} выстрелов, после которых оружие {target.mention} заклинивало."
+
+msgid "🔫"
+msgstr "🔫"
+
+msgid "{bullets} bullets used in a duck killing madness."
+msgstr "{bullets} патронов, использованных для жёсткого замеса уток."
+
+msgid "🎯"
+msgstr "🎯"
+
+msgid "{shots} shots missing a target."
+msgstr "{shots} выстрелов, не попавших в цель."
+
+msgid "☠️"
+msgstr "☠️"
+
+msgid "{shots} shots killing someone ({murders} were murders)."
+msgstr "{shots} выстрелов, поразивших других охотников ({murders} убийств)."
+
+msgid "🧟"
+msgstr "🧟"
+
+msgid "{target.mention} was killed {times} times."
+msgstr "{target.mention} был(а) убит(а) {times} раз."
+
+msgid "🏆️"
+msgstr "🏆️"
+
+msgid "{shots} shots using homing bullets."
+msgstr "{shots} выстрелов с использованием самонаводящихся патронов."
+
+msgid "🦆"
+msgstr "🦆"
+
+msgid "{shots} shots going towards ducks."
+msgstr "{shots} выстрелов в уток."
+
+msgid "🕵"
+msgstr "🕵"
+
+msgid "{shots} shots stopped by the infrared detector."
+msgstr "{shots} выстрелов, предотвращённых инфракрасным детектором."
+
+msgid "❓"
+msgstr "❓"
+
+msgid "{shots} shots without any duck in sight."
+msgstr "{shots} выстрелов, когда в поле зрения не было ни одной утки."
+
+msgid "Normal ducks"
+msgstr "Обычные утки"
+
+msgid "Ghost ducks"
+msgstr "Утки-привидения"
+
+msgid "Professor ducks"
+msgstr "Утки-профессоры"
+
+msgid "Baby ducks"
+msgstr "Утята"
+
+msgid "Golden ducks"
+msgstr "Золотые утки"
+
+msgid "Plastic ducks"
+msgstr "Пластмассовые уточки"
+
+msgid "Kamikaze ducks"
+msgstr "Утки-камикадзе"
+
+msgid "Mechanical ducks"
+msgstr "Механические утки"
+
+msgid "Super ducks"
+msgstr "Супер-утки"
+
+msgid "Mother of all ducks"
+msgstr "Матери всех уток"
+
+msgid "Armored ducks"
+msgstr "Бронированные утки"
+
+msgid "{target.name} best times."
+msgstr "Лучшее время {target.name}."
+
+msgid "Never killed any"
+msgstr "Убито 0 уток"
+
+msgid "{target.name} kill counts."
+msgstr "Убито {target.name}."
+
+msgid "{target.name} hugs counts."
+msgstr "Обнято {target.name}."
+
+msgid "Players"
+msgstr "Игроки"
+
+msgid "Hugs when dead"
+msgstr "Обнимашки в мёртвом состоянии"
+
+msgid "{target.name} hurt counts."
+msgstr "Ранено {target.name}."
+
+msgid "{target.name} resisted counts."
+msgstr "Попадания {target.name} с нулевым уроном."
+
+msgid "{target.name} scared ducks."
+msgstr "Напугано {target.name}."
+
+msgid "{target.name} achievements."
+msgstr "Достижения {target.name}."
+
+msgid "❌ You cant send experience to yourself."
+msgstr "❌ Вы не можете отправить ед. опыта самому/самой себе."
+
+msgid "❌ I'm not sure that {target.mention} can play DuckHunt."
+msgstr "❌ Я не уверен, что {target.mention} может играть в DuckHunt."
+
+msgid "❌ You need to send more experience than this."
+msgstr "❌ Необходимо отправить чуть больше ед. опыта. Не жадничайте!"
+
+msgid "❌ You don't have enough experience 🤣."
+msgstr "❌ У вас недостаточно ед. опыта 🤣."
+
+msgid ""
+"🏦 You sent {recived} experience to {reciver.mention}. A tax of {db_channel."
+"tax_on_user_send}% was applied to this transaction (taking {tax} exp out of "
+"the total sent)."
+msgstr ""
+"🏦 Вы отправили {recived} ед. опыта {reciver.mention}. Применена налоговая "
+"ставка в размере {db_channel.tax_on_user_send}% (вычтено {tax} ед. опыта)."
+
+msgid "💰️ You gave {amount} experience to {reciver.mention}. "
+msgstr "💰️ Вы отправили {amount} ед. опыта {reciver.mention}."
+
+msgid "Top Scores on #{channel}"
+msgstr "Лучшие результаты #{channel}"
 
 msgid "{target} data was deleted from this channel."
 msgstr ""
 
 msgid ""
+"❌ The channel {channel.mention} still exists on the server. Please run the "
+"command from there."
+msgstr ""
+"❌ Канал {channel.mention} до сих пор существует на сервере, где и нужно "
+"выполнить эту команду."
+
+msgid ""
+"❌ The channel used to exist but on a different server. I can't confirm you "
+"have the correct rights on that server. Please use this command in the right "
+"server, or contact support : <https://duckhunt.me/support>."
+msgstr ""
+"❌ Канал ранее существовал, но на другом сервере. Не удаётся подтвердить, что "
+"у вас есть необходимые права. Пожалуйста, используйте эту команду на "
+"соответствующем сервере или свяжитесь со службой поддержки: <https://"
+"duckhunt.me/support>."
+
+msgid ""
+"❌ I can't find a channel with that ID. Please check the given ID, or contact "
+"support : <https://duckhunt.me/support>."
+msgstr ""
+"❌ Не удаётся найти канал с таким идентификатором. Пожалуйста, проверьте "
+"указанный ID или свяжитесь со службой поддержки: <https://duckhunt.me/"
+"support>."
+
+msgid ""
+"Scores and hunters data were removed from the game, but the game wasn't "
+"stopped... You can use `{ctx.prefix}settings enabled False` to stop the game."
+""
+msgstr ""
+"Результаты и данные охотников удалены, но сама игра не была остановлена... "
+"Используйте команду `{ctx.prefix}settings enabled False` для остановки игры."
+
+msgid "Support team: misc"
+msgstr ""
+
+msgid "Most used commands"
+msgstr "Наиболее часто используемые команды"
+
+msgid "{n} uses"
+msgstr "{n} раз(а)"
+
+msgid "Top users"
+msgstr "Топчик"
+
+msgid "{n} commands used"
+msgstr "Использовано {n} команд"
+
+msgid ""
+"This is the list of all the tags on this server. They are ordered by "
+"official tags and most used first.\n"
+"The list doesn't include tag aliases"
+msgstr ""
+"Список всех меток на этом сервере. Официальные и наиболее часто используемые "
+"метки отображаются первыми.\n"
+"Псевдонимы не отображены."
+
+msgid "{u} uses, {r} revisions."
+msgstr "{u} использований, {r} ревизий."
+
+msgid "Page {current_page}/{maximum} ({entries} tags)"
+msgstr "Страница {current_page}/{maximum} ({entries} меток)"
+
+msgid "Support: tags"
+msgstr ""
+
+msgid "❌ You didn't specify what you want your tag to say."
+msgstr "❌ Вы не ввели описание метки."
+
+msgid "❌ This tag already exists."
+msgstr "❌ Данная метка уже существует."
+
+msgid "👌 Tag created: {tag.name} (`{tag.pk}`)"
+msgstr "👌 Метка создана: {tag.name} (`{tag.pk}`)"
+
+msgid "❌ Both tags already exists, what are you trying to do ?"
+msgstr "❌ Обе метки уже созданы. Что вы пытаетесь сделать?"
+
+msgid "❌ None of your tags exist."
+msgstr "❌ У вас нет меток."
+
+msgid ""
+"👌 Alias created: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
+"pk}`)"
+msgstr ""
+"👌 Псевдоним создан: {tag_alias.name} -> {tag_alias.tag.name} (`{tag_alias."
+"pk}`)"
+
+msgid "❌ This tag doesn't exist yet. You might want to create it."
+msgstr "❌ Данная метка пока ещё не существует. Есть смысл её создать."
+
+msgid "❌ You don't own that tag, you can't edit it."
+msgstr ""
+"❌ Вы не являетесь владельцем этой метки, поэтому не можете её редактировать."
+
+msgid "👌 Tag {tag.name} edited."
+msgstr "👌 Метка {tag.name} отредактирована."
+
+msgid "❌ This tag doesn't exist."
+msgstr "❌ Данная метка не существует."
+
+msgid "❌ You don't own that tag, you can't delete it."
+msgstr ""
+"❌ Вы не являетесь владельцем этой метки, поэтому не можете её удалить."
+
+msgid "👌 Tag {tag.name} deleted."
+msgstr "👌 Метка {tag.name} удалена."
+
+msgid "Murderer"
+msgstr "Убийца"
+
+msgid "Kill another hunter."
+msgstr "Убейте другого охотника"
+
+msgid "Big spender"
+msgstr "Транжира"
+
+msgid "Spend more than 2000 experience."
+msgstr "Потратьте более 2000 ед. опыта."
+
+msgid "A hunter joined the chat"
+msgstr "В чате новый охотник"
+
+msgid "Play for more than a week."
+msgstr "Играйте больше недели."
+
+msgid "We are starting to know each other"
+msgstr "Мы начинаем узнавать друг друга получше"
+
+msgid "Play for more than a month."
+msgstr "Играйте больше месяца."
+
+msgid "Wanna be friends ?"
+msgstr "Хотите дружить?"
+
+msgid "Play for more than a year."
+msgstr "Играйте больше года."
+
+msgid "I don't want your damn bullets!"
+msgstr "Нафига мне твои патроны?"
+
+msgid "Leave a bullet you found in the bushes."
+msgstr "Оставьте найденный вами в кустах патрон."
+
+msgid "Mommy is crying"
+msgstr "Мамочка горюет"
+
+msgid "Kill a few baby ducks."
+msgstr "Убейте несколько утят."
+
+msgid "MATHS 101"
+msgstr "Математика 101"
+
+msgid "Solve equations given by the Pr. Duck."
+msgstr "Решите примеры по заданию проф. Уткина."
+
+msgid "BRAAAAAINS!"
+msgstr "Мооооозг!"
+
+msgid "Eat some brains and come back to life."
+msgstr "Съешьте мозг и верните себя к жизни."
+
+msgid "Sentry gun"
+msgstr "Турель"
+
+msgid "Use more than 1000 bullets."
+msgstr "Используйте более 1000 патронов."
+
+msgid "Homing kills (you)"
+msgstr "Самонаведение убивает (вас)"
+
+msgid "Use the homing projectiles."
+msgstr "Используйте самонаводящиеся патроны."
+
+msgid "You monster"
+msgstr "Ты чудовище!"
+
+msgid "Kill a MOAD that spawns a baby duck."
+msgstr "Застрелите мать всех уток, только что давшую жизнь утёнку."
+
+msgid "Gun insurer"
+msgstr "Страховой агент"
+
+msgid "Give at least 30 exp to an hunter that lost his gun."
+msgstr ""
+"Отправьте минимум 30 ед. опыта охотнику, у которого конфисковали оружие."
+
+msgid "Short memory"
+msgstr "Короткая память"
+
+msgid "Shoot at your own mechanical duck."
+msgstr "Выстрелите в собственную механическую утку."
+
+msgid "An ounce of prevention is worth a pound of cure"
+msgstr "Лучшее лечение - это профилактика"
+
+msgid "Sabotage the gun of someone that planned to shoot at you."
+msgstr "Саботируйте оружие охотника, который собирался выстрелить в вас."
+
+msgid "https://duckhunt.me/support"
+msgstr "https://duckhunt.me/support"
+
+msgid "https://duckhunt.me/docs/players-guide/players-quickstart"
+msgstr "https://duckhunt.me/docs/players-guide/players-quickstart"
+
+msgid ""
+"Hello! The following message (written by the owner of DuckHunt) will give "
+"you a brief introduction to the bot, and also provide you with links to the "
+"DuckHunt wiki.\n"
+"First of all, thank you for using my bot! If you have any unanswered "
+"questions after reading this message and the wiki, you are more than welcome "
+"to ask for help in the support channels at <{support_server_link}>.\n"
+"\n"
+"When a duck spawns you shoot at it by using the `dh!bang` command.\n"
+"You can reload your ammunition with `dh!reload` and buy new magazines with "
+"`dh!shop magazine` or `dh!shop 2`.\n"
+"Your scores and channel leaderboards are available online (click the title "
+"in `dh!me` after playing for a while), and on Discord.If you want to learn "
+"more about the game, use the wiki! <{wiki_link}>\n"
+"We also monitor the bot DMs, so if you have further questions, just answer "
+"this message!"
+msgstr ""
+"Здравствуйте! Это сообщение от создателя DuckHunt содержит краткую "
+"информацию о боте и ссылки на вики.\n"
+"Во-первых, позвольте поблагодарить вас за использование бота. Если после "
+"прочтения данного сообщения и вики у вас останутся какие-либо вопросы, мы "
+"будем рады помочь вам на канале поддержки <{support_server_link}>.\n"
+"\n"
+"Когда на канале появляется утка, нужно выстрелить, используя команду "
+"`dh!bang`.\n"
+"Команда `dh!reload` нужна для перезарядки оружия, а `dh!shop magazine` или "
+"`dh!shop 2` - для покупки обоймы.\n"
+"Ваши очки и рейтинги доступны в режиме онлайн (пройдите по ссылке после "
+"ввода `dh!me` ), а также в Discord. Если вы хотите узнать об игре больше, "
+"пожалуйста, посетите вики. <{wiki_link}>\n"
+"Мы также мониторим ЛС, поэтому если у вас есть вопросы, вы можете задать их, "
+"ответив на это сообщение."
+
+msgid ""
+"Searching the bushes around the duck, you found... **Some trash lying "
+"around**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **какой-то ненужный хлам**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **Some trash lying "
+"around**. You didn't take it, you had already too many..."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **какой-то ненужный хлам**. "
+"Вы не стали его брать, ибо у вас полно своего..."
+
+msgid "Searching the bushes around the duck, you found... **Nothing**."
+msgstr "Пошарив в кустах возле убитой утки, вы **ничего** не нашли..."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A lot of bushes**."
+msgstr "Пошарив в кустах возле убитой утки, вы нашли... **заросли камыша**."
+
+msgid ""
 "Searching the bushes around the duck, you found... **A duck ton of bushes**."
 msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A picture of a duck**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **забавную картинку с "
+"уткой**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **An USB-C charger**."
+msgstr ""
+
+msgid ""
+"Searching the bushes around the duck, you found... **A rare duck pin**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **редкий значок с "
+"изображением утки**."
+
+msgid "Searching the bushes around the duck, you found... **A bullet**."
+msgstr "Пошарив в кустах возле убитой утки, вы нашли... **патрон**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A bullet**. You didn't "
+"take it, you had already too many in your magazine anyway..."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **патрон**. Вы не стали его "
+"брать, ибо своих полно."
+
+msgid "Searching the bushes around the duck, you found... **A magazine**."
+msgstr "Пошарив в кустах возле убитой утки, вы нашли... **обойму**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A magazine**. You "
+"didn't take it, you had already too many in your backpack..."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **обойму**. Вы не смогли её "
+"взять, так как ваш рюкзак забит под завязку."
+
+msgid ""
+"Searching the bushes around the duck, you found... **A box of explosive "
+"ammo**. 💥"
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **коробку разрывных "
+"патронов**. 💥"
+
+msgid ""
+"Searching the bushes around the duck, you found... **An almost empty box of "
+"explosive ammo**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **почти пустую коробку "
+"разрывных патронов**. 💥"
+
+msgid ""
+"Searching the bushes around the duck, you found... **Tons of Duck Grease**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **дофига утиного жира**."
+
+msgid "Searching the bushes around the duck, you found... **A new silencer**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **новенький глушитель**."
+
+msgid ""
+"Searching the bushes around the duck, you found... **An infrared detector**."
+msgstr ""
+"Пошарив в кустах возле убитой утки, вы нашли... **инфракрасный детектор**."
+
+msgid "White"
+msgstr "Белый"
+
+msgid "A useful coat when it rains."
+msgstr "Полезный плащ, когда идёт дождь."
+
+msgid "Orange"
+msgstr "Оранжевый"
+
+msgid ""
+"Better visibility: Increase your chance to frighten ducks, and reduce your "
+"chance to get shot by another hunter."
+msgstr ""
+"Улучшенная видимость: более высокая вероятность напугать утку и более низкая "
+"- быть подстреленным другим охотником."
+
+msgid "Camo"
+msgstr "Камо"
+
+msgid "Lower visibility: Less chance to frighten ducks."
+msgstr "Малозаметность: более низкая вероятность напугать утку."
+
+msgid "Blue"
+msgstr "Синий"
+
+msgid "Lucky find: Increase your chance to find items in bushes."
+msgstr "Удачная находка: больше шансов найти что-нибудь полезное в кустах."
+
+msgid "Red"
+msgstr "Красный"
+
+msgid ""
+"Hungry for blood: Increase your murder skills, reduce murder penalties."
+msgstr "Жажда крови: убивать проще, а последствий меньше."
+
+msgid "Yellow"
+msgstr "Жёлтый"
+
+msgid "Sun powers: Mirrors are less effective against you."
+msgstr "Сила солнца: напакостить вам при помощи зеркальца будет сложнее."
+
+msgid "Dark green"
+msgstr "Тёмно-зелёный"
+
+msgid "Farming skills: Clovers give you one more experience point."
+msgstr "Навыки фермера: клевер даёт вам одну дополнительную единицу опыта."
+
+msgid "Black"
+msgstr "Чёрный"
+
+msgid "Secret service: Sabotages are cheaper."
+msgstr "Секретная служба: саботаж обходится дешевле."
+
+msgid "Light blue"
+msgstr "Светло-синий"
+
+msgid "Sea powers: You are immune to water buckets."
+msgstr "Сила моря: вёдра с водой против вас бесполезны."
+
+msgid "Pink"
+msgstr "Розовый"
+
+msgid "Power of love: You can't kill players with the same coat color."
+msgstr ""
+"Сила любви: вы не можете подстрелить охотника в плаще такого же цвета."
+
+msgid ""
+"This is not a valid color. You can choose between {colors}, or `random` for "
+"a random color."
+msgstr ""
+"Недопустимый цвет. Доступные опции: {colors} или `random` для выбора в "
+"случайном порядке."
+
+msgid "normal"
+msgstr "утка обыкновенная"
+
+msgid "of which one is a normal duck"
+msgid_plural "of which {this_ducks_killed} are normal ducks"
+msgstr[0] "из которых одна класса утка обыкновенная"
+msgstr[1] "из которых {this_ducks_killed} класса утка обыкновенная"
+msgstr[2] ""
+msgstr[3] ""
 
 msgid "**Killed**: {normal_exp} exp"
 msgstr ""
@@ -134,6 +3970,63 @@ msgid ""
 "{killer.mention} killed the duck in {spawned_for_str}, for a total of "
 "{total_ducks_killed} ({ncategory_killed}) [{splits_formatted}]"
 msgstr ""
+
+msgid "{hunter.mention} scared the duck away."
+msgstr "{hunter.mention} напугал(а) утку, и она улетела."
+
+msgid ""
+"{hurter.mention} hurt the duck [**SUPER DUCK detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+"{hurter.mention} ранил(а) утку [**Обнаружена СУПЕР-УТКА**: {lives_left}/"
+"{total_lives}][**Урон** : -{damage}]"
+
+msgid ""
+"{hurter.mention} hurt the duck [**SUPER DUCK detected**][**Damage** : -"
+"{damage}]"
+msgstr ""
+"{hurter.mention} ранил(а) утку [**Обнаружена СУПЕР-УТКА**][**Урон** : -"
+"{damage}]"
+
+msgid "{hurter.mention}, the duck RESISTED. [**ARMORED DUCK detected**]"
+msgstr ""
+"{hurter.mention}, утка НЕ ПОВРЕЖДЕНА. [**Обнаружена БРОНИРОВАННАЯ УТКА**]"
+
+msgid ""
+"{hugger.mention} hugged the duck. So cute! [**Hug**: +{experience} exp]"
+msgstr ""
+"{hugger.mention} обнял(а) утёнка. Как это мило! [**Обнимашки**: "
+"+{experience} ед. опыта]"
+
+msgid "<:Wizzz:505828171397070848> Wizzz huggy ducky! So cute!"
+msgstr ""
+
+msgid ""
+"{hugger.mention} tried to hug the duck. So cute! Unfortunately, the duck "
+"hates you, because you killed all his family. [**FAIL**: {experience} exp]"
+msgstr ""
+"{hugger.mention} пробует обнять утёнка. Мило, но... Утёнок ненавидит вас, "
+"потому что вы убили всю его семью. [**НЕУДАЧА**: {experience} ед. опыта]"
+
+msgid "ghost"
+msgstr "утка-привидение"
+
+msgid "of which one is a ghost duck"
+msgid_plural "of which {this_ducks_killed} are ghost ducks"
+msgstr[0] "из которых одна класса утка-привидение"
+msgstr[1] "из которых {this_ducks_killed} класса утка-привидение"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "prof"
+msgstr "утка-профессор"
+
+msgid "of which one is a professor duck"
+msgid_plural "of which {this_ducks_killed} are Pr. ducks"
+msgstr[0] "из которых одна класса утка-профессор"
+msgstr[1] "из которых {this_ducks_killed} класса утка-профессор"
+msgstr[2] ""
+msgstr[3] ""
 
 msgid "Hey, genius! What's {operation}?"
 msgstr ""
@@ -290,13 +4183,865 @@ msgstr ""
 msgid "{hurter.mention}, that's not the correct answer!"
 msgstr ""
 
+msgid "baby"
+msgstr "утёнок"
+
 msgid ""
 "[{hurter.mention}] I'm sorry Hal, I'm afraid I can't do that <https://youtu."
 "be/ARJ8cAGm6JE?t=58>."
 msgstr ""
 
+msgid "of which one is a baby duck"
+msgid_plural "of which {this_ducks_killed} are baby ducks"
+msgstr[0] "из которых одна класса утёнок"
+msgstr[1] "из которых {this_ducks_killed} класса утёнок"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "{killer.mention} killed the Baby Duck [**Baby**: {won_experience} exp]"
+msgstr ""
+"{killer.mention} убил(а) утёнка... [**Утёнок**: {won_experience} ед. опыта]"
+
+msgid ""
+"{hugger.mention} hugged the duck in {spawned_for_str}. So cute! [**Hug**: "
+"+{experience} exp]"
+msgstr ""
+"{hugger.mention} обнял(а) утку за {spawned_for_str}. Как это мило! "
+"[**Обнимашки**: +{experience} ед. опыта]"
+
+msgid "golden"
+msgstr "золотая утка"
+
+msgid "of which one is a golden duck"
+msgid_plural "of which {this_ducks_killed} are golden ducks"
+msgstr[0] "из которых одна класса золотая утка"
+msgstr[1] "из которых {this_ducks_killed} класса золотая утка"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "plastic"
+msgstr "пластмассовая уточка"
+
+msgid "of which one is made of plastic"
+msgid_plural "of which {this_ducks_killed} are made of plastic"
+msgstr[0] "из которых одна сделана из пластика"
+msgstr[1] "из которых {this_ducks_killed} сделаны из пластика"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "kamikaze"
+msgstr "утка-камикадзе"
+
+msgid "of which one is a kamikaze duck"
+msgid_plural "of which {this_ducks_killed} are kamikaze ducks"
+msgstr[0] "из которых одна класса утка-камикадзе"
+msgstr[1] "из которых {this_ducks_killed} класса утка-камикадзе"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "mechanical"
+msgstr "механическая утка"
+
+msgid "of which one is a mechanical duck"
+msgid_plural "of which {this_ducks_killed} are mechanical ducks"
+msgstr[0] "из которых одна механическая"
+msgstr[1] "из которых {this_ducks_killed} являются механическими"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid ""
+"Damn, {killer.mention}, you suck! You killed a mechanical duck! I wonder who "
+"made it? [exp: {won_experience}]"
+msgstr ""
+"{killer.mention}, простофиля! Вы убили механическую утку! Интересно, чьи это "
+"проделки? [Опыт: {won_experience}]"
+
+msgid ""
+"Damn, {killer.mention}, you suck! You killed a mechanical duck! All of this "
+"is {creator.mention}'s fault! [exp: {won_experience}]"
+msgstr ""
+"{killer.mention}, простофиля! Вы убили механическую утку! Автор подставы - "
+"{creator.mention}! [Опыт: {won_experience}]"
+
+msgid "super"
+msgstr "супер-утка"
+
+msgid "of which one is a super duck"
+msgid_plural "of which {this_ducks_killed} are super ducks"
+msgstr[0] "из которых одна класса супер-утка"
+msgstr[1] "из которых {this_ducks_killed} класса супер-утка"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "moad"
+msgstr "мать всех уток"
+
+msgid "of which one is a MOAD"
+msgid_plural "of which {this_ducks_killed} are MOADs"
+msgstr[0] "из которых одна класса мать всех уток"
+msgstr[1] "из которых {this_ducks_killed} класса мать всех уток"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "armored"
+msgstr "бронированная утка"
+
+msgid "of which one is an armored duck"
+msgid_plural "of which {this_ducks_killed} are armored ducks"
+msgstr[0] "их которых одна класса утка бронированная"
+msgstr[1] "их которых {this_ducks_killed} класса утка бронированная"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**: {lives_left}/"
+"{total_lives}][**Damage** : -{damage}]"
+msgstr ""
+"{hurter.mention} ранил(а) утку... [**Обнаружена БРОНИРОВАННАЯ утка**: "
+"{lives_left}/{total_lives}][**Урон** : -{damage}]"
+
+msgid ""
+"{hurter.mention} hurt the duck [**ARMORED duck detected**][**Damage** : -"
+"{damage}]"
+msgstr ""
+"{hurter.mention} ранил(а) утку... [**Обнаружена БРОНИРОВАННАЯ "
+"утка**][**Урон** : -{damage}]"
+
+msgid "night"
+msgstr "ночная уточка"
+
+msgid "of which one is a night duck"
+msgid_plural "of which {this_ducks_killed} are night ducks"
+msgstr[0] "из которых одна ночная утка"
+msgstr[1] "их которых {this_ducks_killed} класса ночная уточка"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "sleeping"
+msgstr "спящая уточка"
+
+msgid "of which one is a sleeping duck"
+msgid_plural "of which {this_ducks_killed} are sleeping ducks"
+msgstr[0] "из которых одна спящая утка"
+msgstr[1] "их которых {this_ducks_killed} класса спящая уточка"
+msgstr[2] ""
+msgstr[3] ""
+
+msgid "KWAK"
+msgstr "КРЯ"
+
+msgid "KWAAK"
+msgstr "КРЯААА"
+
+msgid "KWAAAK"
+msgstr "КРЯААААА"
+
+msgid "COUAK"
+msgstr "КРЯ-КРЯ"
+
+msgid "COUAAK"
+msgstr "КРЯ-КРЯААА"
+
+msgid "COUAAAK"
+msgstr "КРЯ-КРЯААААА"
+
+msgid "QUAK"
+msgstr "КРЯК"
+
+msgid "QUAAK"
+msgstr "КРЯАААК"
+
+msgid "QUAAAK"
+msgstr "КРЯАААААК"
+
+msgid "QUACK"
+msgstr "КРЯ-КРЯ-КРЯ"
+
+msgid "QUAACK"
+msgstr "КРЯ-КРЯ-КРЯААА"
+
+msgid "QUAAACK"
+msgstr "КРЯ-КРЯ-КРЯААААА"
+
+msgid "COUAC"
+msgstr "КРЯ-КРЯ-ХРЮ"
+
+msgid "COUAAC"
+msgstr "КРЯ-КРЯ-ХРЮУУУ"
+
+msgid "COUAAAC"
+msgstr "КРЯ-КРЯ-ХРЮУУУУУ"
+
+msgid "COUACK"
+msgstr "КРЯ-БЛИН"
+
+msgid "*cries*"
+msgstr "*крякает*"
+
+msgid "Hello world"
+msgstr "Привет, мир!"
+
+msgid "How are you today?"
+msgstr "Как ваши дела?"
+
+msgid "Please don't kill me..."
+msgstr "Пожалуйста, не убивайте меня..."
+
+msgid "I love you too!"
+msgstr "Я вас тоже люблю!"
+
+msgid "Don't shoot me! I'm a fake duck!"
+msgstr "Не стреляйте в меня! Я ненастоящая..."
+
+msgid "**Duck fact**: Some ducks can fly up to 332 miles in a single day!"
+msgstr ""
+"**Утиный факт**... Некоторые утки могут пролететь до 534 км за один день!"
+
+msgid "**Duck fact**: The feathers on a ducks back are waterproof."
+msgstr "**Утиный факт**... Перья на спинке утки не пропускают воду."
+
+msgid "**Duck fact**: Ducks have three eyelids!"
+msgstr "**Утиный факт**... У уток три века!"
+
+msgid ""
+"**Duck fact**: Depending on the species, a duck can live between 2 and 12 "
+"years. Not the ducks on this game tho..."
+msgstr ""
+"**Утиный факт**... В зависимости от вида утка может прожить от 2 до 12 лет. "
+"Чего не скажешь об утках в этой игре..."
+
+msgid "I am invisible, don't bother killing me"
+msgstr "Я утка-невидимка, не пытайтесь меня подстрелить..."
+
+msgid "Who is the little ████ here that killed my friend ?"
+msgstr "Какая ████ застрелила моего друга?"
+
+msgid "You can't aim for good..."
+msgstr "Мазила!.."
+
+msgid "The duck left."
+msgstr "Утка взяла влево."
+
+msgid "The duck right."
+msgstr "Утка взяла вправо."
+
+msgid "STOP! It's not what you think!"
+msgstr "СТОП! Это не то, о чём вы подумали!"
+
+msgid "Killing me will cost you 1562 experience points."
+msgstr "Убьёте меня - потеряете 1562 ед. опыта."
+
+msgid ""
+"I have a secret plan to kill all hunters but I'm already short on breath I "
+"don't think I'll be able to explain it all to you before..."
+msgstr ""
+"У меня есть секретный план убить всех охотников. Но силы меня покидают, и я "
+"не думаю, что успею кому-либо поведать о нём до..."
+
+msgid "[INSERT DUCK NOISE HERE]"
+msgstr "[ВСТАВЬТЕ СЮДА КРИК УТКИ]"
+
+msgid "What happened after DuckHunt was created? ||The big bang||."
+msgstr "Что произошло вскоре после создания DuckHunt? ||Большой бабах||!"
+
+msgid "It's rabbit season."
+msgstr "Открыт сезон охоты на кроликов."
+
+msgid "Got a spare cape?"
+msgstr "Есть запасной плащ-невидимка?"
+
+msgid "Which side of a duck has more feathers? ||The outside||."
+msgstr "С какой стороны у утки больше перьев? ||С внешней||."
+
+msgid "I steal money. I'm a robber ducky."
+msgstr "Живу честно, приворовываю..."
+
+msgid "I'm a very special duck."
+msgstr "Я утка особенная..."
+
+msgid "**DuckHunt ProTip®**: use clovers to get more experience."
+msgstr ""
+"**Совет от DuckHunt**: используйте клевер, чтобы получать больше ед. опыта."
+
+msgid "**DuckHunt ProTip®**: use sights to improve accuracy at lower levels."
+msgstr ""
+"**Совет от DuckHunt**: используйте оптику для повышения точности стрельбы на "
+"более низких уровнях."
+
+msgid "**DuckHunt ProTip®**: use grease to prevent weapon jams"
+msgstr ""
+"**Совет от DuckHunt**: используйте смазку для повышения отказоустойчивости "
+"оружия."
+
+msgid "*Slurp*"
+msgstr "*Плюх!*"
+
+msgid "Hopefully you are all AFK..."
+msgstr "Надеюсь, вы все офлайн..."
+
+msgid "**DuckHunt ProTip®**: use infrared detectors to prevent useless shots."
+msgstr ""
+"**Совет от DuckHunt**: используйте инфракрасный детектор для предотвращения "
+"бестолковой стрельбы."
+
+msgid "I'm just doing my job..."
+msgstr "Я просто делаю свою работу..."
+
+msgid ""
+"Hey there, DuckHunt quality insurance duck here. How would you rate your "
+"experience killing ducks so far ?"
+msgstr ""
+"Здравствуйте! С вами говорит оператор службы контроля качества DuckHunt. Как "
+"бы вы оценили степерь удовлетворённости охотой на беззащитных уток?"
+
+msgid "YoU hAvE bEeN cOrRuPtEd."
+msgstr "ВаС пЛюЩит!"
+
+msgid "The duck went away."
+msgstr "Утка уплыла."
+
+msgid "The duck went to another world."
+msgstr "Утка удирает в сторону заповедника."
+
+msgid "The duck didn't have time for this."
+msgstr "У утки нет на это времени."
+
+msgid "The duck dissipated in space and time."
+msgstr "Утка растворилась в пространстве и времени."
+
+msgid "The duck left out of boredom."
+msgstr "С вами скучно, поэтому утка улетела."
+
+msgid "The duck doesn't want to be sniped."
+msgstr "Утка категорически против, чтобы на неё охотились."
+
+msgid "The duck walked up to the lemonade stand."
+msgstr "Утка отправилась в места хлебные."
+
+msgid "The duck flew over a disproportionately small gap."
+msgstr "Утку поглотила чёрная дыра."
+
+msgid "The duck chickened out."
+msgstr "Утка струсила."
+
+msgid "The duck went to the parallel universe"
+msgstr "Утка исследует параллельный мир."
+
+msgid "The duck went to a parallel universe"
+msgstr "Утка исследует параллельный мир."
+
+msgid "The duck went into the duckiverse"
+msgstr "Утка укатила на птичий рынок."
+
+msgid "The duck teleported away from here"
+msgstr "Утка телепортировалась подальше отсюда."
+
+msgid "The duck went to look for a friend"
+msgstr "Утка отправилась на поиски друзей."
+
+msgid "The duck went to a better place"
+msgstr "Утка знает места и получше."
+
+msgid "The duck went to a better party"
+msgstr "Утка почистила пёрышки и улетела тусить."
+
+msgid "The duck has some important business to take care of"
+msgstr "У утки появились срочные дела."
+
+msgid "A duck"
+msgstr "Просто утка"
+
+msgid "Mr. Duck"
+msgstr "Мистер Дак"
+
+msgid "RealDuck"
+msgstr "Реальная утка"
+
+msgid "The ghost never appeared."
+msgstr "Привидение так и не появилось."
+
+msgid "Invisible Duck"
+msgstr "Утка-невидимка"
+
+msgid "Ghost Duck"
+msgstr "Утка-привидение"
+
+msgid "Boooo Duck"
+msgstr "Утка-страшилка"
+
+msgid "Pr. Duck"
+msgstr "Проф. Уткин"
+
+msgid "EnsDuck"
+msgstr "Вумная вутка"
+
+msgid "**COIN**"
+msgstr "**КОЙН**"
+
+msgid "**Piou** ?"
+msgstr "**Пиу**?"
+
+msgid "**Coin** ?"
+msgstr "**Койн**?"
+
+msgid "**Coin**!"
+msgstr "**Койн**!"
+
+msgid "**COIIIIIINNNNNN**!"
+msgstr "**КОООООЙН**!"
+
+msgid "Smol Duck"
+msgstr "Масенькая утка"
+
+msgid "Mini Duck"
+msgstr "Мини-утка"
+
+msgid "Ducky"
+msgstr "Уточка"
+
+msgid "Duckie"
+msgstr "Утя"
+
+msgid "£!"
+msgstr "£!"
+
+msgid "Free money !"
+msgstr "Халявные деньги!"
+
+msgid "It's free money"
+msgstr "Халявное баблишко"
+
+msgid "Golden Duck"
+msgstr "Золотая утка"
+
+msgid "Golden Goose"
+msgstr "Золотой гусяра"
+
+msgid "Shiny Duck"
+msgstr "Навороченная утка"
+
+msgid "Rich Duck"
+msgstr "Богатая утка"
+
+msgid "£?"
+msgstr "£?"
+
+msgid "Have any money ?"
+msgstr "Есть бабки?"
+
+msgid "It's paid money"
+msgstr "Не путать с халявой!"
+
+msgid "Plastic Duck"
+msgstr "Пластмассовая уточка"
+
+msgid "Poor Duck"
+msgstr "Малоимущая утка"
+
+msgid "Slimey Duck"
+msgstr "Дешёвая утка"
+
+msgid "**DON'T MOVE OR EVERYTHING WILL EXPLODE!**"
+msgstr "**НЕ ШЕВЕЛИТЬСЯ! ИНАЧЕ ВСЁ ВЗОРВЁТСЯ!**"
+
+msgid "Gonna kill y'all !"
+msgstr "Всех порешу!!!"
+
+msgid "The Kamikaze Duck"
+msgstr "Утка-камикадзе"
+
+msgid "Explosive Duck"
+msgstr "Взрывоопасная утка"
+
+msgid "Boom Duck"
+msgstr "Утка-бум"
+
+msgid "Dynamite Duck"
+msgstr "Утка-динамит"
+
+msgid "The kamikaze duck exploded, killing every duck on the channel."
+msgstr "Утка-камикадзе взорвалась, забрав с собой всех уток на канале."
+
+msgid "Duck 2000"
+msgstr "Утка 2000"
+
+msgid "Omega Duck"
+msgstr "Омега утка"
+
+msgid "BZZZZZAAAAK"
+msgstr "БЗЗЗАААААК"
+
+msgid "BZAAAACK"
+msgstr "БЗАААААК"
+
+msgid "BZAACK"
+msgstr "БЗАААК"
+
+msgid "Big Duck"
+msgstr "Большая утка"
+
+msgid "Strong Duck"
+msgstr "Утка-силач"
+
+msgid "Heavy Duck"
+msgstr "Утка-супертяжвес"
+
+msgid "**I am your mother...**"
+msgstr "**Ваша мама пришла...**"
+
+msgid "Ms. Duck"
+msgstr "Миссис Дак"
+
+msgid "Mom"
+msgstr "Мамаша"
+
+msgid "Mommy"
+msgstr "Мамуля"
+
+msgid "MOAD"
+msgstr "Мать всех уток"
+
+msgid "Mooooom"
+msgstr "Мамочка"
+
 msgid "Dockolumbus"
 msgstr ""
 
 msgid "Cartographer Duck"
+msgstr ""
+
+msgid "*coin*"
+msgstr "*койн*"
+
+msgid "*Don't make a noise, it's nighttime*"
+msgstr "*Не шумите, ночь на дворе!*"
+
+msgid "*Shhhhh*"
+msgstr "*Тссссс!*"
+
+msgid "ZzZzZz"
+msgstr "Хрррм-пшшш"
+
+msgid "Everything is calm"
+msgstr "Всё спокойно"
+
+msgid "Nothing is happening right now."
+msgstr "Сейчас ничего не происходит."
+
+msgid "Ducks are migrating"
+msgstr "Миграция уток"
+
+msgid "Prepare to see more ducks in the next hour."
+msgstr "В течение следующего часа будет больше уток."
+
+msgid "Steroids in the lake"
+msgstr "Стероиды в воде"
+
+msgid ""
+"A medical waste company dumped steroids in the lake. Ducks have mutated, and "
+"you'll see a lot more super ducks. But, be careful, and don't drink that "
+"water."
+msgstr ""
+"Очень добросовестная фармацевтическая компания сбросила в воду стероиды. "
+"Утки мутировали, и теперь будет больше супер-уток. Но будьте осторожны и не "
+"пейте воду."
+
+msgid "Safety class canceled"
+msgstr "Инструктаж по ТБ отменён"
+
+msgid "The safety class was canceled, beware not to shoot other hunters!"
+msgstr ""
+"Инструктаж по технике безопасности отменили. Постарайтесь не подстрелить "
+"другого охотника!"
+
+msgid "Connection problem"
+msgstr "Технические неполадки"
+
+msgid ""
+"Ducks cant find your computer due to connection problems, and there will be "
+"less of them until it's repaired."
+msgstr ""
+"Утки не могут установить связь с вашим компьютером из-за технических "
+"неполадок. Пока проблему не устранят, уток будет меньше."
+
+msgid "A new florist in town"
+msgstr "Новый флорист в городе"
+
+msgid ""
+"A florist opened in town, and you can now find better 4-leaf-clovers. Go "
+"check them out!"
+msgstr ""
+"В городе открылся новый цветочный магазин, где можно прикупить "
+"чудодейственный четырёхлистный клевер. Спешите!"
+
+msgid "Mega-ducks"
+msgstr "Мега-утки"
+
+msgid "Someone inflated a super duck, and now they are EVEN BIGGER!!"
+msgstr ""
+"Кто-то подогнал супер-уткам много калорийной еды, и теперь они ЕЩЁ БОЛЬШЕ!!!"
+
+msgid "Windy weather"
+msgstr "Ветреная погода"
+
+msgid "Bullets are deflected by some strong wind."
+msgstr "Сильный ветер сказывается на точности стрельбы."
+
+msgid "A UN treaty bans damaging ammo"
+msgstr "Конвенция ООН запрещает использование патронов с повышенным уроном"
+
+msgid ""
+"AP and Explosive ammo are disabled. Super ducks are worth more exp, since "
+"they are getting rare."
+msgstr ""
+"Бронебойные и разрывные патроны использовать нельзя. Супер-утки на грани "
+"исчезновения, поэтому дают больше ед. опыта."
+
+msgid "Lootbox opened"
+msgstr "Лутбокс открыт"
+
+msgid "VIP card"
+msgstr "VIP карта"
+
+msgid "A nice and shiny card that allow you to set a server as VIP."
+msgstr "Новенькая красивая карта, дающая право настроить сервер как VIP"
+
+msgid "❌ {guild.name} is already VIP."
+msgstr "❌ У {guild.name} уже есть VIP-статус."
+
+msgid "✨ {guild.name} is now VIP! Thanks."
+msgstr "✨ {guild.name} получает статус VIP! Спасибо!"
+
+msgid "A book"
+msgstr "Книга"
+
+msgid "Reading it will give you experience."
+msgstr "Её прочтение добавит вам опыта."
+
+msgid ""
+"✨ You learned a lot, adding {amount} experience points to your profile."
+msgstr "✨ Вы узнали много нового и получили {amount} ед. опыта."
+
+msgid "A book in a foreign language"
+msgstr "Книга на иностранном языке"
+
+msgid "Can you read it ?"
+msgstr "Сможете её прочесть?"
+
+msgid "An encyclopedia"
+msgstr "Энциклопедия"
+
+msgid "Reading it will give you a lot of experience ?"
+msgstr "Её прочтение даст вам много опыта."
+
+msgid "A bullet"
+msgstr "Патрон"
+
+msgid ""
+"This is just a normal bullet, but it might help you to get that special "
+"achievement."
+msgstr "Вроде бы обычный патрон, но он может помочь раздобыть вкусный ужин."
+
+msgid "✨ Oh, is this a bullet ?"
+msgstr "✨ Ой, патрончик!"
+
+msgid "A good ol' egg"
+msgstr "Старое доброе яйцо"
+
+msgid "Crack it open !"
+msgstr "Разбейте его!"
+
+msgid "✨ Oh look, ducks! Ducks are everywhere!"
+msgstr "✨ Смотрите, утки! Повсюду утки!"
+
+msgid "A free card for magazines"
+msgstr "Карта для получения халявных обойм"
+
+msgid "Redeem it to refill your weapon."
+msgstr "Используйте её для пополнения боезапаса"
+
+msgid "✨ Yay! Free ammo!"
+msgstr "✨ Ура! Бесплатные патроны!"
+
+msgid "❌ Your ammo is already full!"
+msgstr ""
+
+msgid "A welcome gift"
+msgstr "Подарок от заведения"
+
+msgid "Open it in your inventory"
+msgstr "Откройте его в инвентаре"
+
+msgid "A clean box of foie gras"
+msgstr "Коробка фуа-гра"
+
+msgid "The boss dropped that when he died"
+msgstr "Босс обронил это, когда отправился на тот свет"
+
+msgid "A little something for helping the bot"
+msgstr "Кое-что в благодарность за помощь боту"
+
+msgid "Thanks for voting for DuckHunt"
+msgstr "Спасибо за участие в голосовании!"
+
+msgid "Negative cheater ?"
+msgstr "Любитель отрицательных результатов?"
+
+msgid "Duck Hugger ?"
+msgstr "Любитель обнимашек с утками?"
+
+msgid "What are you doing ?"
+msgstr "Что вы творите?"
+
+msgid "public danger"
+msgstr "опасен для окружающих"
+
+msgid "tourist"
+msgstr "турист"
+
+msgid "noob"
+msgstr "нуб"
+
+msgid "trainee"
+msgstr "стажёр"
+
+msgid "duck misser"
+msgstr "мазила"
+
+msgid "member of the Committee Against Ducks"
+msgstr ""
+
+msgid "duck hater"
+msgstr "утконенавистник"
+
+msgid "duck pest"
+msgstr "утковредитель"
+
+msgid "duck hassler"
+msgstr "задира"
+
+msgid "duck plucker"
+msgstr "утколлекционер"
+
+msgid "hunter"
+msgstr "охотник"
+
+msgid "duck inside out turner"
+msgstr "любитель вывернуть утку наизнанку"
+
+msgid "duck clobber"
+msgstr "любитель поколотить утку"
+
+msgid "duck chewer"
+msgstr "уткожеватель"
+
+msgid "duck eater"
+msgstr "уткоед"
+
+msgid "duck flattener"
+msgstr "плющитель уток"
+
+msgid "duck disassembler"
+msgstr "специалист по разбору уток"
+
+msgid "duck demolisher"
+msgstr "уничтожитель уток"
+
+msgid "duck killer"
+msgstr "убийца уток"
+
+msgid "duck skinner"
+msgstr "живодёр"
+
+msgid "duck predator"
+msgstr "хищник"
+
+msgid "duck chopper"
+msgstr "шинкователь уток"
+
+msgid "duck decorticator"
+msgstr "декортикатор уток"
+
+msgid "duck fragger"
+msgstr "уткофрагер"
+
+msgid "duck shatterer"
+msgstr "уткодробитель"
+
+msgid "duck smasher"
+msgstr "сокрушитель уток"
+
+msgid "duck breaker"
+msgstr "утколом"
+
+msgid "duck wrecker"
+msgstr "диверсант"
+
+msgid "duck impaler"
+msgstr "уткопронзитель"
+
+msgid "duck eviscerator"
+msgstr "потрошитель уток"
+
+msgid "ducks terror"
+msgstr "вселяющий ужас"
+
+msgid "duck exploder"
+msgstr "взрыватель уток"
+
+msgid "duck destructor"
+msgstr "истребитель уток"
+
+msgid "duck blaster"
+msgstr "подрывник уток"
+
+msgid "duck pulverizer"
+msgstr "измельчитель уток"
+
+msgid "duck disintegrator"
+msgstr "дезинтегратор уток"
+
+msgid "duck atomizer"
+msgstr "распылитель уток"
+
+msgid "duck annihilator"
+msgstr "аннигилятор уток"
+
+msgid "serial duck killer"
+msgstr "серийный убийца уток"
+
+msgid "duck genocider"
+msgstr "ответственный за геноцид уток"
+
+msgid "old noob"
+msgstr "старый нуб"
+
+msgid "duck toaster"
+msgstr "гурман"
+
+msgid "unemployed due to extinction of the duck species"
+msgstr "безработный вследствие исчезновения уток"
+
+msgid "This is not a valid level. Choose between {levels}"
+msgstr "Недопустимый уровень. Веберите из {levels}"
+
+msgid "Can't set such a high level"
+msgstr "Невозможно установить такой высокий уровень"
+
+msgid "You leveled up!"
+msgstr "Ваш уровень повышен!"
+
+msgid "You leveled down!"
+msgstr "Ваш уровень понижен!"
+
+msgid "❌ You cannot run this command."
+msgstr ""
+
+msgid "❌ You are not allowed to click on this button"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Confirm"
 msgstr ""
