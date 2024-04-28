@@ -22,7 +22,7 @@ msgid "Sends the link you can use to vote for DuckHunt on bot lists"
 msgstr "Envoie un lien pour voter pour DuckHunt sur les listes de bots."
 
 msgid "Create a Command view for a given command."
-msgstr "Créez une vue pour une commande donnée."
+msgstr "Créez une vue pour une commande donnée. "
 
 msgid "Create a GamePadView to allow playing the game with buttons."
 msgstr ""
