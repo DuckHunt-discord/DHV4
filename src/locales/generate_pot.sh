@@ -11,7 +11,6 @@ xgettext --omit-header --language=Python --add-comments=TRANSLATORS: --force-po 
 
 mv ./messages.pot ./en_US/LC_MESSAGES/messages.pot
 cp ./en_US/LC_MESSAGES/messages.pot ./en_US/LC_MESSAGES/messages.po
-#cp ./en_US/LC_MESSAGES/messages.pot ./en_US/LC_MESSAGES/messages.po
 
 # pybabel init -l en -i ./messages.pot -d ./
 # pybabel compile -d ./
