@@ -295,7 +295,7 @@ class Duck:
         )
 
     async def get_kill_message(
-            self, killer, db_killer: Player, won_experience: int, bonus_experience: int, prestige_experience: int
+            self, killer, db_killer: Player, won_experience: int, bonus_experience: int, prestige_experience: int, holiday_bonus_experience: int
     ) -> str:
         _ = await self.get_translate_function()
         ngettext = await self.get_ntranslate_function()
@@ -327,6 +327,9 @@ class Duck:
 
         if prestige_experience:
             splits.append(_("**Prestige**: {prestige_experience} exp", prestige_experience=prestige_experience))
+
+        if holiday_bonus_experience:
+            splits.append(_("**Holiday Bonus**: {holiday_bonus_experience} exp", holiday_bonus_experience=holiday_bonus_experience))
 
         splits_formatted = " + ".join(splits)
 
@@ -681,8 +684,14 @@ class Duck:
 
         bonus_experience = 0
         prestige_experience = 0
+        holiday_bonus_experience = 0
         if self.use_bonus_exp:
             bonus_experience = await db_killer.get_bonus_experience(won_experience)
+
+            if self.bot.current_event == Events.DUST_BOWL:
+                # Divide by two, round up
+                bonus_experience = bonus_experience // 2 + bonus_experience % 2
+
             db_killer.shooting_stats["bonus_experience_earned"] += bonus_experience
             won_experience += bonus_experience
 
@@ -690,6 +699,14 @@ class Duck:
             if prestige_experience:
                 won_experience += prestige_experience
                 db_killer.shooting_stats["prestige_experience_earned"] += prestige_experience
+
+            if self.bot.current_event == Events.BONUS:
+                if db_killer.shooting_stats.get("last_bonus_timestamp") < time.time() - HOUR:
+                    db_killer.shooting_stats["last_bonus_timestamp"] = time.time()
+
+                    holiday_bonus_experience = random.randint(65, 280)
+                    won_experience += holiday_bonus_experience
+                    db_killer.shooting_stats["holiday_bonus_experience_earned"] += holiday_bonus_experience
 
         await db_killer.edit_experience_with_levelups(
             self.channel, won_experience, bot=self.bot
@@ -699,7 +716,7 @@ class Duck:
 
         await self.send(
             await self.get_kill_message(
-                killer, db_killer, won_experience, bonus_experience, prestige_experience
+                killer, db_killer, won_experience, bonus_experience, prestige_experience, holiday_bonus_experience
             )
         )
         if bushes_coro is not None:
@@ -1462,7 +1479,7 @@ class BabyDuck(Duck):
         )
 
     async def get_kill_message(
-            self, killer, db_killer: Player, won_experience: int, bonus_experience: int, prestige_experience: int,
+            self, killer, db_killer: Player, won_experience: int, bonus_experience: int, prestige_experience: int, holiday_bonus_experience: int
     ):
         _ = await self.get_translate_function()
         return _(
@@ -1608,7 +1625,7 @@ class MechanicalDuck(Duck):
         )
 
     async def get_kill_message(
-            self, killer, db_killer, won_experience, bonus_experience, prestige_experience
+            self, killer, db_killer, won_experience, bonus_experience, prestige_experience, holiday_bonus_experience: int
     ):
         _ = await self.get_translate_function()
 

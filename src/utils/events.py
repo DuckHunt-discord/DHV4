@@ -51,4 +51,9 @@ class Events(Enum):
 
     REVOLUTION = _("Duck revolution"), _("Beware! Ducks have obtained their own rifles, and will retaliate against hunters that shoot at them.")
 
+    DUST_BOWL = _("Dust bowl"), _("A sandstorm has rolled in, causing the power of clovers to be weakened. "
+                                  "It may also be difficult to buy new clovers due to the drought.")
+
+    BONUS = _("Holiday bonus"), _("Claim your free gift! The first kill you do this hour will award you a lot of experience.")
+
 

@@ -459,6 +459,15 @@ class ShoppingCommands(Cog):
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
         db_channel: DiscordChannel = await get_from_db(ctx.channel)
 
+        if self.bot.current_event == Events.DUST_BOWL:
+            await ctx.reply(
+                _(
+                    "❌ Sorry, there is way too much sand around, I can't harvest any clovers for you... You'll just have to wait until it passes (`{prefix}event`)",
+                    prefix=ctx.prefix,
+                )
+            )
+            return False
+
         if db_hunter.is_powerup_active("clover"):
             if self.bot.current_event == Events.FLORIST:
                 try:
