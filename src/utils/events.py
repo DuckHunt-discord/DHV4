@@ -58,3 +58,7 @@ class Events(Enum):
 
     BLOSSOMING_FLOWERS = _("Blossoming flowers"), _("Flowers are blooming this season, so all four leaf clover values are increased for the hour. Enjoy the prosperity!")
 
+    GARBAGE_COLLECTION = _("Garbage collection"), _("It's hunting season, and hunters left some items behind. "
+                                                    "One person's trash can end up being your treasure, so enjoy the extra loot you find!")
+
+

@@ -629,6 +629,9 @@ class Duck:
         bush_chance = 13
         coat_color = db_hunter.get_current_coat_color()
 
+        if self.bot.current_event == Events.GARBAGE_COLLECTION:
+            bush_chance *= 2
+
         if coat_color == Coats.BLUE:
             bush_chance += 7
 
