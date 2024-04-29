@@ -137,10 +137,13 @@ class CommandButton(AutomaticDeferMixin, ui.Button):
             return
 
         if can_run:
+            args = await self.get_command_args(interaction)
+            kwargs = await self.get_command_kwargs(interaction)
+            ctx.logger.info(f"btn->command invoke {self.command.qualified_name} *{args} **{kwargs}")
             return await ctx.invoke(
                 self.command,
-                *await self.get_command_args(interaction),
-                **await self.get_command_kwargs(interaction),
+                *args,
+                **kwargs,
             )
 
 
