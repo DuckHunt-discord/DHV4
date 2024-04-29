@@ -714,7 +714,7 @@ class DucksHuntingCommands(Cog):
                     },
                     {
                         "command": "inventory use",
-                        "command_args": "mags",
+                        "command_args": ["mags"],
                         "button_kwargs": {
                             "label": "Use a magazine (from your inventory)",
                             "style": ButtonStyle.blurple,
