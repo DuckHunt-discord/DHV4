@@ -39,3 +39,16 @@ class Events(Enum):
     UN_TREATY = _("A UN treaty bans damaging ammo"), _(
         "AP and Explosive ammo are disabled. Super ducks are worth more exp, since they are getting rare."
     )
+
+    EQUALIZER = _("Equalizer"), _(
+        "Ducks are angered that long time hunters get prestige bonuses and are encouraged to kill even more of their families. "
+        "They will steal some prestige bonuses when they can in order to ensure a fairer game for all."
+    )
+
+    HAUNTED_HOUSE = _("Haunted house"), _(
+        "As it turns dark, the ducks also change with the times.  Be prepared to check if there’s a duck lurking in the corner!"
+    )
+
+    REVOLUTION = _("Duck revolution"), _("Beware! Ducks have obtained their own rifles, and will retaliate against hunters that shoot at them.")
+
+

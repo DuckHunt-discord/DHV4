@@ -596,6 +596,26 @@ class DucksHuntingCommands(Cog):
             return False
 
         if duck:
+            if self.bot.current_event == Events.REVOLUTION:
+                if random.randint(0, 99) < 10:
+                    db_hunter.shooting_stats["shot_by_duck"] += 1
+                    db_hunter.shooting_stats["got_killed"] += 1
+                    db_hunter.active_powerups["dead"] += 1
+
+                    await db_hunter.edit_experience_with_levelups(ctx, -2)
+                    await db_hunter.save()
+
+                    await ctx.reply(
+                        _(
+                            "🔫 You took your weapon out, aiming it perfectly towards the duck, and almost pulled the trigger "
+                            "when you noticed the fluffy feathers were hiding a rifle of their own. "
+                            "[**REVOLUTION**: You died][**MISSED**: -2 exp]",
+                        ),
+                        force_public=True,
+                    )
+
+                    return False
+
             db_hunter.shooting_stats["shots_with_duck"] += 1
             duck.db_target_lock_by = db_hunter  # Since we have unsaved data
             result = await duck.shoot(args)

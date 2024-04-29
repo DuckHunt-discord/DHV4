@@ -497,8 +497,14 @@ class Duck:
         if db_killer.prestige < 3:
             return 0
         else:
+
+            equalizer_offset = 0
+
+            if self.bot.current_event == Events.EQUALIZER:
+                equalizer_offset = 10
+
             if self.prestige_experience_chance is not None:
-                if random.randint(0, 99) < self.prestige_experience_chance:
+                if random.randint(0 + equalizer_offset, 99) < self.prestige_experience_chance:
                     return db_killer.prestige
                 else:
                     return 0
@@ -512,19 +518,23 @@ class Duck:
 
                 ducks_killed_today = sum(ducks_killed_today_dict.values()) - decoys_killed_today
 
+
+
                 if ducks_killed_today <= 5:
+                    if random.randint(0, 99) < 100 - equalizer_offset:
+                        return db_killer.prestige  # 100% chance
                     return db_killer.prestige  # 100% chance of getting prestige bonus
                 elif ducks_killed_today <= 10:
-                    if random.randint(0, 99) < 50:
+                    if random.randint(0 + equalizer_offset, 99) < 50:
                         return db_killer.prestige  # 50% chance
                 elif ducks_killed_today <= 50:
-                    if random.randint(0, 99) < 10:
+                    if random.randint(0 + equalizer_offset, 99) < 10:
                         return db_killer.prestige  # 10% chance
                 elif ducks_killed_today <= 100:
-                    if random.randint(0, 99) < 7:
+                    if random.randint(0 + equalizer_offset, 99) < 7:
                         return db_killer.prestige  # 7% chance
                 else:
-                    if random.randint(0, 99) < 2:
+                    if random.randint(0 + equalizer_offset, 99) < 2:
                         return db_killer.prestige  # 2% chance
 
         return 0

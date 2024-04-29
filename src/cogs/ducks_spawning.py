@@ -9,7 +9,7 @@ import discord
 
 from utils import ducks
 from utils.cog_class import Cog
-from utils.ducks import deserialize_duck
+from utils.ducks import deserialize_duck, GhostDuck
 from utils.events import Events
 from utils.models import DiscordChannel, DucksLeft, get_enabled_channels
 
@@ -91,14 +91,22 @@ class DucksSpawning(Cog):
                     ):
                         continue
 
-                    asyncio.ensure_future(
-                        ducks.spawn_random_weighted_duck(
-                            self.bot,
-                            channel,
-                            ducks_left_to_spawn.db_channel,
-                            sun=maybe_spawn_type,
+                    if self.bot.current_event == Events.HAUNTED_HOUSE:
+                        asyncio.ensure_future(
+                            GhostDuck(
+                                self.bot,
+                                channel,
+                            ).spawn()
                         )
-                    )
+                    else:
+                        asyncio.ensure_future(
+                            ducks.spawn_random_weighted_duck(
+                                self.bot,
+                                channel,
+                                ducks_left_to_spawn.db_channel,
+                                sun=maybe_spawn_type,
+                            )
+                        )
                     ducks_spawned += 1
 
                     if (
