@@ -56,4 +56,5 @@ class Events(Enum):
 
     BONUS = _("Holiday bonus"), _("Claim your free gift! The first kill you do this hour will award you a lot of experience.")
 
+    BLOSSOMING_FLOWERS = _("Blossoming flowers"), _("Flowers are blooming this season, so all four leaf clover values are increased for the hour. Enjoy the prosperity!")
 

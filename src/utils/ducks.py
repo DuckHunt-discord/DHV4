@@ -691,6 +691,8 @@ class Duck:
             if self.bot.current_event == Events.DUST_BOWL:
                 # Divide by two, round up
                 bonus_experience = bonus_experience // 2 + bonus_experience % 2
+            elif self.bot.current_event == Events.BLOSSOMING_FLOWERS:
+                bonus_experience = max(bonus_experience * 2, 21)
 
             db_killer.shooting_stats["bonus_experience_earned"] += bonus_experience
             won_experience += bonus_experience
