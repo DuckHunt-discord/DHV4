@@ -195,21 +195,38 @@ class DucksHuntingCommands(Cog):
                 else:
                     db_hunter.shooting_stats["failed_autoreloads"] += 1
                     await db_hunter.save()
-                    await CommandView(
-                        self.bot,
-                        command_to_be_ran="shop magazine",
-                        label="Buy magazine (13xp)",
-                        style=ButtonStyle.blurple,
-                    ).send(
-                        ctx,
-                        content=_(
-                            "🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | "
-                            "Magazines: 0/{max_magazines} [**Autoreload failed**]",
-                            max_bullets=level_info["bullets"],
-                            max_magazines=level_info["magazines"],
-                        ),
-                        reference=ctx.message,
-                    )
+                    if level_info["bullets"] > 2:
+                        await CommandView(
+                            self.bot,
+                            command_to_be_ran="shop magazine",
+                            label="Buy magazine (13xp)",
+                            style=ButtonStyle.blurple,
+                        ).send(
+                            ctx,
+                            content=_(
+                                "🦉 Backpack empty! Buy magazines | **Bullets**: 0/{max_bullets} | "
+                                "Magazines: 0/{max_magazines} [**Autoreload failed**]",
+                                max_bullets=level_info["bullets"],
+                                max_magazines=level_info["magazines"],
+                            ),
+                            reference=ctx.message,
+                        )
+                    else:
+                        await CommandView(
+                            self.bot,
+                            command_to_be_ran="shop bullet",
+                            label="Buy a bullet (7xp)",
+                            style=ButtonStyle.blurple,
+                        ).send(
+                            ctx,
+                            content=_(
+                                "🦉 Backpack empty! Buy bullets | **Bullets**: 0/{max_bullets} | "
+                                "Magazines: 0/{max_magazines} [**Autoreload failed**]",
+                                max_bullets=level_info["bullets"],
+                                max_magazines=level_info["magazines"],
+                            ),
+                            reference=ctx.message,
+                        )
                     return False
             else:
                 db_hunter.shooting_stats["shots_with_empty_magazine"] += 1
