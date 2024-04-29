@@ -68,15 +68,6 @@ class PrestigeCommands(Cog):
 
         e.description = description
 
-        if db_hunter.prestige > 3:
-            e.add_field(
-                name=_("Prestige daily bonus"),
-                value=_(
-                    "You can get around {experience} experience every day by using the daily command.",
-                    experience=20 * db_hunter.prestige / 2,
-                ),
-            )
-
         if db_hunter.prestige > 0:
             e.add_field(
                 name=_("✨ Current prestige level ✨️"),
@@ -185,75 +176,6 @@ class PrestigeCommands(Cog):
 
         await ctx.send(embed=e)
 
-    @prestige.command()
-    async def daily(self, ctx: MyContext):
-        """Get some more experience..."""
-        db_hunter: Player = await get_player(ctx.author, ctx.channel)
-        _ = await ctx.get_translate_function()
-
-        now = datetime.datetime.now()
-
-        if db_hunter.prestige < 3:
-            await ctx.send(
-                _(
-                    "❌ Your prestige level is not high enough yet. "
-                    "See `{ctx.prefix}prestige info` to learn more."
-                )
-            )
-            return False
-
-        if db_hunter.prestige_last_daily.date() == now.date():
-            await ctx.send(
-                _("❌ You already claimed your dailies today. Try again tomorrow.")
-            )
-            return False
-
-        if now.date() > datetime.date(year=2023, month=12, day=31):
-            await ctx.send(
-                _("❌ The daily command was disabled. You can now get bonus experience for every duck killed.")
-            )
-            return False
-        else:
-            await ctx.send(
-                _("❌ The daily command will be disabled in 2024. You can now get bonus experience when killing ducks.")
-            )
-
-        if db_hunter.prestige < 10:
-            exp_modifier = 1
-        elif db_hunter.prestige < 20:
-            exp_modifier = 2
-        elif db_hunter.prestige < 50:
-            exp_modifier = 3
-        elif db_hunter.prestige < 100:
-            exp_modifier = 4
-        else:
-            exp_modifier = 4 + db_hunter.prestige // 100
-
-        max_experience = int(3 * log(db_hunter.prestige ** 20)) * exp_modifier
-        distrib = statistics.NormalDist(max_experience / 2, max_experience / 6)
-        added_experience = int(distrib.samples(1)[0])
-
-        added_experience = min(max(5, added_experience), max_experience + 5)
-
-        await db_hunter.edit_experience_with_levelups(ctx, added_experience)
-        db_hunter.prestige_last_daily = now
-        db_hunter.prestige_dailies += 1
-
-        await db_hunter.save()
-
-        if ctx.author.id == 957254775915806780:
-            # This is just a prank for the guy who made me add the Normal Dist,
-            # with "a tiny chance for it to become negative"
-            # It's not really negative, but heh :)
-            # It'll look like so.
-            added_experience = -added_experience
-
-        await ctx.send(
-            _(
-                "💰️ You took {exp} experience out of the prestige bank. Come back soon!",
-                exp=added_experience,
-            )
-        )
 
 
 setup = PrestigeCommands.setup
