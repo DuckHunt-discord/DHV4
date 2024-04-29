@@ -328,6 +328,7 @@ class StatisticsCommands(Cog):
             (_("Mother of all ducks"), "moad"),
             (_("Armored ducks"), "armored"),
             (_("Cartographer ducks"), "cartographer"),
+            (_("Night ducks"), "night"),
         ]
 
         for field_name, field_key in fields:
