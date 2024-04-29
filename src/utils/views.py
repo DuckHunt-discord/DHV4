@@ -11,7 +11,7 @@ from utils.ctx_class import MyContext
 
 
 async def get_context_from_interaction(
-    bot: MyBot, interaction: Interaction
+        bot: MyBot, interaction: Interaction
 ) -> MyContext:
     """
     Return a modified, probably invalid but "good enough" context for use with the commands extensions.
@@ -23,10 +23,10 @@ async def get_context_from_interaction(
 
     if fake_message is None:
         fake_message = (
-            interaction.channel.last_message
-            or await interaction.channel.fetch_message(
-                interaction.channel.last_message_id
-            )
+                interaction.channel.last_message
+                or await interaction.channel.fetch_message(
+            interaction.channel.last_message_id
+        )
         )
         bot.logger.debug("Got last message from cache/network for get_context")
     fake_message.author = interaction.user
@@ -48,7 +48,7 @@ class BigButtonMixin(ui.Button):
     """
 
     def __init__(
-        self, *args, button_pad_to: int = 78, label: Optional[str] = None, **kwargs
+            self, *args, button_pad_to: int = 78, label: Optional[str] = None, **kwargs
     ):
         """
         Adds a new argument to button creation : the total length of the button (invalid if higher than 80).
@@ -91,7 +91,7 @@ class AutomaticDeferMixin(ui.Item, ABC):
 
 class CommandButton(AutomaticDeferMixin, ui.Button):
     def __init__(
-        self, bot, command, command_args=None, command_kwargs=None, *args, **kwargs
+            self, bot, command, command_args=None, command_kwargs=None, *args, **kwargs
     ):
         """
         Button to execute a command. A list of args and kwargs can be passed to run the command with those args.
@@ -257,52 +257,71 @@ class CommandView(AuthorizedUserMixin, View):
     """
 
     def __init__(
-        self,
-        bot: MyBot,
-        command_to_be_ran: Union[Command, str],
-        command_args: Optional[List[Any]] = None,
-        command_kwargs: Optional[Dict[str, Any]] = None,
-        authorized_users: Iterable[int] = "__all__",
-        persist: Union[bool, str] = True,
-        **button_kwargs,
+            self,
+            bot: MyBot,
+            command_to_be_ran: Union[Command, str] = None,
+            command_args: Optional[List[Any]] = None,
+            command_kwargs: Optional[Dict[str, Any]] = None,
+            commands: List[Dict] = None,
+            authorized_users: Iterable[int] = "__all__",
+            persist: Union[bool, str] = True,
+            **button_kwargs,
     ):
-
         super().__init__(bot)
 
-        if isinstance(command_to_be_ran, str):
-            command_to_be_ran = bot.get_command(command_to_be_ran)
+        if commands is not None and command_to_be_ran is not None:
+            raise ValueError("You can't pass both a command and a list of commands.")
 
-        if command_to_be_ran is None:
-            raise RuntimeError("The command passed can't be found.")
+        if commands is None:
+            commands = [
+                {
+                    "command": command_to_be_ran,
+                    "command_args": command_args,
+                    "command_kwargs": command_kwargs,
+                    "button_kwargs": button_kwargs,
+                }
+            ]
 
-        if (
-            isinstance(persist, bool)
-            and command_args
-            or command_kwargs
-            or authorized_users != "__all__"
-        ):
-            persist = False
+        for command_data in commands:
+            command_to_be_ran = command_data["command"]
+            command_args = command_data.get("command_args", None)
+            command_kwargs = command_data.get("command_kwargs", None)
+            button_kwargs = command_data.get("button_kwargs", {})
 
-        if isinstance(persist, str):
-            persistance_id = persist
-        elif persist:
-            persistance_id = f"cmd:cn{command_to_be_ran.qualified_name}"
-        else:
-            persistance_id = None
+            if isinstance(command_to_be_ran, str):
+                command_to_be_ran = bot.get_command(command_to_be_ran)
 
-        self.authorized_users_ids = authorized_users
+            if command_to_be_ran is None:
+                raise RuntimeError("The command passed can't be found.")
 
-        self.add_item(
-            CommandButton(
-                bot,
-                command_to_be_ran,
-                command_args,
-                command_kwargs,
-                custom_id=persistance_id,
-                row=0,
-                **button_kwargs,
+            if (
+                    isinstance(persist, bool)
+                    and command_args
+                    or command_kwargs
+                    or authorized_users != "__all__"
+            ):
+                persist = False
+
+            if isinstance(persist, str):
+                persistance_id = persist
+            elif persist:
+                persistance_id = f"cmd:cn{command_to_be_ran.qualified_name}"
+            else:
+                persistance_id = None
+
+            self.authorized_users_ids = authorized_users
+
+            self.add_item(
+                CommandButton(
+                    bot,
+                    command_to_be_ran,
+                    command_args,
+                    command_kwargs,
+                    custom_id=persistance_id,
+                    row=0,
+                    **button_kwargs,
+                )
             )
-        )
 
 
 class ConfirmView(DisableViewOnTimeoutMixin, AuthorizedUserMixin, View):
