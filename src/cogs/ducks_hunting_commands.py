@@ -713,7 +713,8 @@ class DucksHuntingCommands(Cog):
                         },
                     },
                     {
-                        "command": "inv use mags",
+                        "command": "inv use",
+                        "command_args": "mags",
                         "button_kwargs": {
                             "label": "Use a magazine (from your inventory)",
                             "style": ButtonStyle.blurple,
