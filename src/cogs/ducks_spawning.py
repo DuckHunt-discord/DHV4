@@ -391,7 +391,17 @@ class DucksSpawning(Cog):
         ).compute_ducks_count()
 
     async def change_event(self, force_choice=None, force=False):
-        if random.randint(1, 12) != 1 and not force and not force_choice:
+        can_not_select_event = not force and not force_choice
+
+        if self.bot.current_event == Events.STAY_TUNED:
+            can_not_select_event = False
+
+        random_says_no = random.randint(1, 8) != 1
+
+        if self.bot.current_event == Events.CALM_TIMES_AHEAD:
+            random_says_no = True
+
+        if random_says_no and can_not_select_event:
             self.bot.logger.info("No new event this time!")
             self.bot.current_event = Events.CALM
         else:

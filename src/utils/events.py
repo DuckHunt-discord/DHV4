@@ -61,4 +61,6 @@ class Events(Enum):
     GARBAGE_COLLECTION = _("Garbage collection"), _("It's hunting season, and hunters left some items behind. "
                                                     "One person's trash can end up being your treasure, so enjoy the extra loot you find!")
 
+    STAY_TUNED = _("Stay tuned"), _("Check back during the next two hours to see what the next events will be!")
 
+    CALM_TIMES_AHEAD = _("Calm times ahead"), _("Looks like clear skies ahead. Enjoy killing ducks in the meantime!")
