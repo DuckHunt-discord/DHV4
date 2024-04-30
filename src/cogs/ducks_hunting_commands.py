@@ -614,6 +614,8 @@ class DucksHuntingCommands(Cog):
                         force_public=True,
                     )
 
+                    await duck.release()
+
                     return False
 
             db_hunter.shooting_stats["shots_with_duck"] += 1
