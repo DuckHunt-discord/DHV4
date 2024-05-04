@@ -706,7 +706,7 @@ class Duck:
                 db_killer.shooting_stats["prestige_experience_earned"] += prestige_experience
 
             if self.bot.current_event == Events.BONUS:
-                if db_killer.shooting_stats.get("last_bonus_timestamp") < time.time() - HOUR:
+                if db_killer.shooting_stats.get("last_bonus_timestamp", 0) < time.time() - HOUR:
                     db_killer.shooting_stats["last_bonus_timestamp"] = time.time()
 
                     holiday_bonus_experience = random.randint(65, 280)
