@@ -33,6 +33,8 @@ class MyBot(AutoShardedBot):
         self.reload_config()
         # activity = discord.Game(self.config["bot"]["playing"])
         self.current_event: Events = Events.CALM
+        self.stay_tuned_was_n_events_ago = 99
+        self.calm_times_ahead_was_n_events_ago = 99
         activity = discord.Game(self.current_event.value[0])
         super().__init__(
             *args,
