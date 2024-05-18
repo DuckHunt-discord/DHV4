@@ -316,7 +316,7 @@ class Duck:
         total_ducks_killed = sum(db_killer.killed.values())
         this_ducks_killed = db_killer.killed.get(self.category)
 
-        normal_exp = won_experience - bonus_experience - prestige_experience
+        normal_exp = won_experience - bonus_experience - prestige_experience - holiday_bonus_experience
         splits = [_("**Killed**: {normal_exp} exp", normal_exp=normal_exp)]
 
         if bonus_experience:
