@@ -10,6 +10,8 @@ from utils.bot_class import MyBot
 from utils.cog_class import Cog
 
 
+MEMBER_CACHE = {}
+
 class TreeMember:
     def __init__(self, member_id: str, tagged=None):
         if tagged is None:
@@ -50,7 +52,12 @@ async def generate_visual_tree(bot:MyBot, guild, tree, indent=0):
 
     for sender_id, subtree in [(tm.member_id, tm.tagged) for tm in tree]:
         try:
-            sender_name = (await bot.fetch_user(int(sender_id))).display_name
+            sender = MEMBER_CACHE.get(sender_id, None)
+            if sender is None:
+                sender = await bot.fetch_user(int(sender_id))
+                MEMBER_CACHE[sender_id] = sender
+
+            sender_name = sender.display_name
         except:
             sender_name = f"{sender_id} (left)"
         visual_tree.append("\t" * indent + f"- {sender_name}")
