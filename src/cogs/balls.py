@@ -45,16 +45,16 @@ def get_tree_dict(tree):
     return tagged
 
 
-def generate_visual_tree(guild, tree, indent=0):
+async def generate_visual_tree(guild, tree, indent=0):
     visual_tree = []
 
     for sender_id, subtree in [(tm.member_id, tm.tagged) for tm in tree]:
         try:
-            sender_name = guild.get_member(int(sender_id)).name
+            sender_name = await guild.fetch_member(int(sender_id)).name
         except:
             sender_name = f"{sender_id} (left)"
         visual_tree.append("\t" * indent + f"- {sender_name}")
-        visual_tree.extend(generate_visual_tree(guild, subtree, indent=indent+1))
+        visual_tree.extend(await generate_visual_tree(guild, subtree, indent=indent+1))
 
     return visual_tree
 
@@ -171,7 +171,7 @@ class Balls(Cog):
 
         guild = ctx.guild
 
-        await ctx.send("```\n" + "\n".join(generate_visual_tree(guild, tree)) + "\n```")
+        await ctx.send("```\n" + "\n".join(await generate_visual_tree(guild, tree)) + "\n```")
 
     @commands.command(hidden=True)
     async def snowball(self, ctx, target: discord.Member):
