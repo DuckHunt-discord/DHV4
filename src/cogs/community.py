@@ -15,6 +15,11 @@ from utils.human_time import ShortTime
 from utils.interaction import make_message_embed
 from utils.models import AccessLevel, get_from_db
 
+SNOWBALL_ROLE = 593008022247178280
+FIREBALL_ROLE = 593010706400411671
+
+MELTING = False
+
 
 async def wait_cd(monitored_player, ctx, name, dt):
     _ = await ctx.get_translate_function(user_language=True)
@@ -65,6 +70,64 @@ class Community(Cog):
             r"(?P<message_id>[0-9]*)",
             flags=re.MULTILINE | re.IGNORECASE,
         )
+        self.support_server = None
+        self.snowball = None
+        self.fireball = None
+
+    @Cog.listener("on_ready")
+    async def get_roles(self, *args, **kwargs):
+        self.support_server = self.bot.get_guild(195260081036591104)
+        self.snowball = self.support_server.get_role(SNOWBALL_ROLE)
+        self.fireball = self.support_server.get_role(FIREBALL_ROLE)
+
+    @commands.command()
+    @checks.is_in_server(195260081036591104)
+    async def snowball(self, ctx: MyContext, target: discord.Member):
+        """
+        Hits someone with a snowball.
+        """
+        if self.support_server is None:
+            await self.get_roles()
+
+        if self.snowball not in ctx.author.roles:
+            return await ctx.reply("You don't have any snowballs yet.")
+
+        if self.fireball in target.roles and MELTING:
+            await target.remove_roles(self.fireball)
+            await ctx.reply(f"🧯 You've extinguished {target.mention} by that expert snowball throw.")
+            return  # No snowball for you
+
+        if self.snowball not in target.roles:
+            await target.add_roles(self.snowball)
+
+            await ctx.reply(f"⛄️ You've hit {target.mention} with a snowball in the face. Ouch!")
+        else:
+            await ctx.reply(f"You've given more snowballs to {target.display_name}.")
+
+    @commands.command()
+    @checks.is_in_server(195260081036591104)
+    async def fireball(self, ctx: MyContext, target: discord.Member):
+        """
+        Hits someone with a fireball.
+        """
+        if self.support_server is None:
+            await self.get_roles()
+
+        if self.fireball not in ctx.author.roles:
+            return await ctx.reply("You don't have any fireballs yet.")
+
+        if self.snowball in target.roles and MELTING:
+            await ctx.reply(f"🏂️ {target.mention} was frozen, but that expert fireball throw finally unfroze them. I'm sure they are thankful.")
+            await target.remove_roles(self.snowball)
+            return
+
+        if self.fireball not in target.roles:
+            await target.add_roles(self.fireball)
+
+            await ctx.reply(f"🔥 You've hit {target.mention} with a fireball in the face. May the phoenix rejoice, one more in the team!")
+        else:
+            await ctx.reply(f"🧨 You've given more fireballs to {target.display_name}.")
+
 
     @commands.command()
     @checks.needs_access_level(models.AccessLevel.BOT_MODERATOR)
