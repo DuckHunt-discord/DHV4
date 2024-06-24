@@ -15,13 +15,6 @@ from utils.human_time import ShortTime
 from utils.interaction import make_message_embed
 from utils.models import AccessLevel, get_from_db
 
-SNOWBALL_ROLE = 593008022247178280
-FIREBALL_ROLE = 593010706400411671
-BALLS_LOG = 593011582510956544
-
-MELTING = False
-
-
 async def wait_cd(monitored_player, ctx, name, dt):
     _ = await ctx.get_translate_function(user_language=True)
     now = timezone.now()
