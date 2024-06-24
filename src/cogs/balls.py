@@ -164,7 +164,8 @@ class Balls(Cog):
     @balls.command(hidden=True)
     async def tree(self, ctx, ball_type):
         if ball_type not in self.trees.keys():
-            await ctx.send("I can't find this tree :'(")
+            await ctx.send(f"I can't find this tree :'(. Try anything in {', '.join(self.trees.keys())}")
+            return
 
         tree = self.trees[ball_type]["origins"]
 
