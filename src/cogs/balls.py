@@ -211,7 +211,7 @@ class Balls(Cog):
         else:
             sender_profile['cooldown_time_nextok'] = int(time.time()) + sender_profile['cooldown_time']
 
-        if not role in target.roles:
+        if role not in target.roles:
             await target.add_roles(role, reason=f"Snowballed by {sender.name}#{sender.discriminator}")
             await ctx.guild.get_channel(593011582510956544).send(f"{sender.mention} ❄️ {target.mention}")
             tm = TreeMember(str(target.id))
@@ -267,7 +267,7 @@ class Balls(Cog):
         else:
             sender_profile['cooldown_time_nextok'] = int(time.time()) + sender_profile['cooldown_time']
 
-        if not role in target.roles:
+        if role not in target.roles:
             await target.add_roles(role, reason=f"Fireballed by {sender.name}#{sender.discriminator}")
             await ctx.guild.get_channel(593011582510956544).send(f"{sender.mention} 🔥 {target.mention}")
 
