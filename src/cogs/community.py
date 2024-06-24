@@ -17,6 +17,7 @@ from utils.models import AccessLevel, get_from_db
 
 SNOWBALL_ROLE = 593008022247178280
 FIREBALL_ROLE = 593010706400411671
+BALLS_LOG = 593011582510956544
 
 MELTING = False
 
@@ -71,12 +72,14 @@ class Community(Cog):
             flags=re.MULTILINE | re.IGNORECASE,
         )
         self.support_server = None
+        self.balls_log = None
         self.snowball = None
         self.fireball = None
 
     @Cog.listener("on_ready")
     async def get_roles(self, *args, **kwargs):
         self.support_server = self.bot.get_guild(195260081036591104)
+        self.balls_log = self.support_server.get_channel(BALLS_LOG)
         self.snowball = self.support_server.get_role(SNOWBALL_ROLE)
         self.fireball = self.support_server.get_role(FIREBALL_ROLE)
 
@@ -101,6 +104,7 @@ class Community(Cog):
             await target.add_roles(self.snowball)
 
             await ctx.reply(f"⛄️ You've hit {target.mention} with a snowball in the face. Ouch!")
+            await self.balls_log.send(f"{ctx.author.mention} ❄️ {target.mention}")
         else:
             await ctx.reply(f"You've given more snowballs to {target.display_name}.")
 
@@ -125,6 +129,8 @@ class Community(Cog):
             await target.add_roles(self.fireball)
 
             await ctx.reply(f"🔥 You've hit {target.mention} with a fireball in the face. May the phoenix rejoice, one more in the team!")
+            await self.balls_log.send(f"{ctx.author.mention} 🔥 {target.mention}")
+
         else:
             await ctx.reply(f"🧨 You've given more fireballs to {target.display_name}.")
 
