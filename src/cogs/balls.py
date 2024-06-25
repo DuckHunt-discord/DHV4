@@ -166,19 +166,19 @@ class Balls(Cog):
             message.append(f"You have {profile['lives'] - len(profile['snow_killed_by'])} snow life(s) left, and {profile['lives'] - len(profile['fire_killed_by'])} fire life(s) left.")
 
         message.append(f"You can send balls every {profile['cooldown_time']} second(s)")
-        await ctx.send("\n".join(message))
+        await ctx.reply("\n".join(message))
 
     @balls.command(hidden=True)
     async def tree(self, ctx, ball_type):
         if ball_type not in self.trees.keys():
-            await ctx.send(f"I can't find this tree :'(. Try anything in {', '.join(self.trees.keys())}")
+            await ctx.reply(f"I can't find this tree :'(. Try anything in {', '.join(self.trees.keys())}")
             return
 
         tree = self.trees[ball_type]["origins"]
 
         guild = ctx.guild
 
-        await ctx.send("```\n" + "\n".join(await generate_visual_tree(self.bot, guild, tree)) + "\n```")
+        await ctx.reply("```\n" + "\n".join(await generate_visual_tree(self.bot, guild, tree)) + "\n```")
 
     @commands.command(hidden=True)
     async def snowball(self, ctx, target: discord.Member):
@@ -186,14 +186,14 @@ class Balls(Cog):
         Throw snowballs at people.
         """
         # if ctx.channel.id != 593075880717189123:
-        #     await ctx.send("⛄️ Wrong channel. Please use #sniping-grounds", delete_after=10)
+        #     await ctx.reply("⛄️ Wrong channel. Please use #sniping-grounds", delete_after=10)
         #     return
 
         sender = ctx.author
         role = ctx.guild.get_role(593008022247178280)
 
         if role not in sender.roles:
-            await ctx.send("⛄️ You don't have any snow")
+            await ctx.reply("⛄️ You don't have any snow")
             return
 
         sender_profile = await self.get_profile(member_id=int(sender.id))
@@ -202,18 +202,18 @@ class Balls(Cog):
         sender_team = sender_profile.get("team", None)
 
         if sender_team == "fire":
-            await ctx.send("🔥️ You don't have any more snow. Use fire instead.")
+            await ctx.reply("🔥️ You don't have any more snow. Use fire instead.")
             return
 
         if sender_profile['cooldown_time_nextok'] > int(time.time()):
-            await ctx.send("🤷️ Wait a little, you have no more balls...")
+            await ctx.reply("🤷️ Wait a little, you have no more balls...")
             return
         else:
             sender_profile['cooldown_time_nextok'] = int(time.time()) + sender_profile['cooldown_time']
 
         if role not in target.roles:
             await target.add_roles(role, reason=f"Snowballed by {sender.name}#{sender.discriminator}")
-            await ctx.guild.get_channel(593011582510956544).send(f"{sender.mention} ❄️ {target.mention}")
+            await ctx.guild.get_channel(593011582510956544).reply(f"{sender.mention} ❄️ {target.mention}")
             tm = TreeMember(str(target.id))
 
             self.trees["snowballs"]["population"][str(target.id)] = tm
@@ -224,15 +224,15 @@ class Balls(Cog):
         avoided = random.randint(0, 100) <= target_profile['avoidance']
 
         if missed:
-            await ctx.send(f"⛄️ {sender.mention} threw a snowball on {target.mention}, but missed.")
+            await ctx.reply(f"⛄️ {sender.mention} threw a snowball on {target.mention}, but missed.")
         elif avoided:
-            await ctx.send(f"🏂️ {sender.mention} threw a snowball on {target.mention}, but {target.mention} ducked and avoided the ball.")
+            await ctx.reply(f"🏂️ {sender.mention} threw a snowball on {target.mention}, but {target.mention} ducked and avoided the ball.")
         else:
             if not str(sender.id) in target_profile['snow_killed_by']:
                 target_profile['snow_killed_by'].append(str(sender.id))
                 if len(target_profile['snow_killed_by']) >= target_profile['lives'] and target_profile.get("team", None) is None:
                     target_profile['team'] = "snow"
-            await ctx.send(f"☃️ {sender.mention} threw a snowball at {target.mention}.")
+            await ctx.reply(f"☃️ {sender.mention} threw a snowball at {target.mention}.")
         await self.save_profiles()
 
     @commands.command(hidden=True)
@@ -242,7 +242,7 @@ class Balls(Cog):
         """
 
         # if ctx.channel.id != 593075880717189123:
-        #     await ctx.send("🔥 Wrong channel. Please use #sniping-grounds", delete_after=10)
+        #     await ctx.reply("🔥 Wrong channel. Please use #sniping-grounds", delete_after=10)
         #     return
 
         sender = ctx.author
@@ -254,22 +254,22 @@ class Balls(Cog):
         sender_team = sender_profile.get("team", None)
 
         if sender_team == "snow":
-            await ctx.send("❄️ You don't have any more fire. Use snow instead.")
+            await ctx.reply("❄️ You don't have any more fire. Use snow instead.")
             return
 
         if role not in sender.roles:
-            await ctx.send("🔥️ You don't have any fire (yet)")
+            await ctx.reply("🔥️ You don't have any fire (yet)")
             return
 
         if sender_profile['cooldown_time_nextok'] > int(time.time()):
-            await ctx.send("🤷️ Wait a little, you have no more balls...")
+            await ctx.reply("🤷️ Wait a little, you have no more balls...")
             return
         else:
             sender_profile['cooldown_time_nextok'] = int(time.time()) + sender_profile['cooldown_time']
 
         if role not in target.roles:
             await target.add_roles(role, reason=f"Fireballed by {sender.name}#{sender.discriminator}")
-            await ctx.guild.get_channel(593011582510956544).send(f"{sender.mention} 🔥 {target.mention}")
+            await ctx.guild.get_channel(593011582510956544).reply(f"{sender.mention} 🔥 {target.mention}")
 
             tm = TreeMember(str(target.id))
 
@@ -281,15 +281,15 @@ class Balls(Cog):
         avoided = random.randint(0, 100) <= target_profile['avoidance']
 
         if missed:
-            await ctx.send(f"👨‍🚒️ {sender.mention} threw a fireball on {target.mention}, but missed.")
+            await ctx.reply(f"👨‍🚒️ {sender.mention} threw a fireball on {target.mention}, but missed.")
         elif avoided:
-            await ctx.send(f"👨‍🚒️ {sender.mention} threw a fireball on {target.mention}, but {target.mention} ducked and avoided the ball.")
+            await ctx.reply(f"👨‍🚒️ {sender.mention} threw a fireball on {target.mention}, but {target.mention} ducked and avoided the ball.")
         else:
             if not str(sender.id) in target_profile['fire_killed_by']:
                 target_profile['fire_killed_by'].append(str(sender.id))
                 if len(target_profile['fire_killed_by']) >= target_profile['lives'] and target_profile.get("team", None) is None:
                     target_profile['team'] = "fire"
-            await ctx.send(f"🎆️ {sender.mention} threw a fireball at {target.mention}.")
+            await ctx.reply(f"🎆️ {sender.mention} threw a fireball at {target.mention}.")
         await self.save_profiles()
 
 
