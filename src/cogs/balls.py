@@ -129,7 +129,6 @@ class Balls(Cog):
         return profile
 
     async def save_balls(self):
-        #print(self.trees)
         balls = {}
         for name, tree in self.trees.items():
             balls[name] = get_tree_dict(tree["origins"])
@@ -150,7 +149,7 @@ class Balls(Cog):
         pass
 
     @balls.command(hidden=True)
-    async def profile(self, ctx, target:discord.Member = None):
+    async def profile(self, ctx, target: discord.Member = None):
         if target is None:
             target = ctx.author
 
@@ -269,7 +268,7 @@ class Balls(Cog):
 
         if role not in target.roles:
             await target.add_roles(role, reason=f"Fireballed by {sender.name}#{sender.discriminator}")
-            await ctx.guild.get_channel(593011582510956544).reply(f"{sender.mention} 🔥 {target.mention}")
+            await ctx.guild.get_channel(593011582510956544).send(f"{sender.mention} 🔥 {target.mention}")
 
             tm = TreeMember(str(target.id))
 
