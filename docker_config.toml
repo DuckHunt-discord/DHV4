@@ -52,6 +52,7 @@ cogs_to_load = ['cogs.error_handling',
                 'cogs.rest_api',
                 'cogs.buttons',
                 'cogs.help_command',
+                'cogs.balls',
                 'jishaku',
                 ]
 # The name after cogs is the name of the class
