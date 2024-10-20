@@ -95,9 +95,6 @@ msgstr "Lässt eine Nacht-Ente erscheinen"
 msgid "Spawns a sleeping duck."
 msgstr "Lässt eine schlafende Ente erscheinen"
 
-msgid "Spawns a cartographer duck."
-msgstr ""
-
 msgid "Show ducks currently on the channel"
 msgstr "Zeigt die Enten an, die aktuell auf dem Kanal sind"
 
@@ -160,11 +157,6 @@ msgstr ""
 
 msgid "Congratulate an user giving them a trophy."
 msgstr "Gratuliere einem Benutzer durch das Überreichen einer Trophäe."
-
-msgid ""
-"Update the @Have DuckHunt role members, according to\n"
-"the owners of every guild where DuckHunt is enabled."
-msgstr ""
 
 msgid ""
 "Content-aware carving of an image/avatar, resizing it to reduce the width "
@@ -524,24 +516,6 @@ msgstr ""
 "/channels/<channel_id>\n"
 "\n"
 "Informationen über einen bestimmten Kanal abrufen"
-
-msgid ""
-"/channels/<channel_id>/settings\n"
-"\n"
-"Get settings for a specific channel ID"
-msgstr ""
-
-msgid ""
-"/channels/<channel_id>/top\n"
-"\n"
-"Get players data for a specific channel ID, ordered by experience"
-msgstr ""
-
-msgid ""
-"/channels/<channel_id>/player/<player_id>\n"
-"\n"
-"Get information for a specific player ID and channel ID"
-msgstr ""
 
 msgid ""
 "/help/commands\n"
@@ -1166,12 +1140,6 @@ msgstr "Ich habe einen langen Naken"
 msgid "It's impossible."
 msgstr "Das ist unmöglich."
 
-msgid ""
-"Vote for a boss to spawn for a minute.\n"
-"This is an unfair vote: while it needs people to vote quickly for a boss,\n"
-"if someone vote against, the boss won't spawn."
-msgstr ""
-
 msgid "Who doesn't need cows ?"
 msgstr "Wer braucht keine Kühe?"
 
@@ -1506,11 +1474,6 @@ msgstr ""
 "prefix}shop weapon`)"
 
 msgid ""
-"💥 Your weapon was sabotaged and exploded in your face. You can thank "
-"{sabotager} for this bad joke."
-msgstr ""
-
-msgid ""
 "☁️ Your weapon is jammed. Reload it to clean it up ! (`{ctx.prefix}reload`)"
 msgstr ""
 "☁️ Ihre Waffe ist verklemmt. Laden Sie sie neu, um es zu beheben! (`{ctx."
@@ -1534,9 +1497,6 @@ msgid "💥 Your weapon jammed. Reload it and consider buying grease next time."
 msgstr ""
 "💥 Ihre Waffe hat geklemmt. Laden Sie sie neu und überlegen Sie, ob Sie das "
 "nächste Mal Fett kaufen."
-
-msgid "💥 Your weapon jammed. Reload it and ponder how unlucky you are."
-msgstr ""
 
 msgid ""
 "✨ You take the new homing bullets outside of their packaging, place them in "
@@ -1740,10 +1700,6 @@ msgid "🌳 You hugged the tree... Thanks!"
 msgstr "🌳 Du hast den Baum umarmt... Danke!"
 
 msgid ""
-"{you_mention} hugged the whole {target_mention} gang. IT'S A GROUP HUG!!! 💯"
-msgstr ""
-
-msgid ""
 "{you_mention} hugged {target_mention}. The developer of the bot is really "
 "happy that you love it."
 msgstr ""
@@ -1757,11 +1713,6 @@ msgstr ""
 "{you_mention} hat {target_mention} umarmt. Sie hassen dich noch mehr, weil "
 "du sie umarmt hast. Ich weiß nicht, warum... Versuch, ihnen ins Gesicht zu "
 "schießen."
-
-msgid ""
-"{you_mention}, you just hugged yourself. You feel a little lonely, don't "
-"you?"
-msgstr ""
 
 msgid "{you_mention} hugged {target_mention}. They feel loved."
 msgstr "{you_mention} hat {target_mention} umarmt. Sie fühlen sich geliebt."
@@ -2219,15 +2170,6 @@ msgid "❌ The word must only contain letters."
 msgstr "❌ Das Wort darf nur Buchstaben enthalten."
 
 msgid ""
-"❌ This word is currently protected by {user}, you can't place a mine on it — "
-"{protect.message}."
-msgstr ""
-
-msgid ""
-"❌ This word is currently protected by {user}, you can't place a mine on it."
-msgstr ""
-
-msgid ""
 "❌ You don't have {value} points, you can't buy a landmine as powerful as "
 "this."
 msgstr ""
@@ -2242,9 +2184,6 @@ msgstr ""
 
 msgid "❌ Please give one valid words to protect."
 msgstr "❌ Bitte geben Sie ein gültiges Wort zum Schutz an."
-
-msgid "❌ This word is already protected by {user}."
-msgstr ""
 
 msgid ""
 "❌ You don't have 500 points, so you can't buy a shield to protect a word."
@@ -2427,11 +2366,6 @@ msgstr "**Mantelfarbe**: Wählen Sie die Farbe Ihres Fells"
 msgid "Level 3"
 msgstr "Level 3"
 
-msgid ""
-"**More experience**: Chance to get more experience equal to your prestige "
-"level for every natural spawn killed"
-msgstr ""
-
 msgid "Level 4"
 msgstr "Level 3"
 
@@ -2504,16 +2438,6 @@ msgid "❌ You already claimed your dailies today. Try again tomorrow."
 msgstr ""
 "❌ Sie haben Ihre Dailys heute schon beansprucht. Versuchen Sie es morgen "
 "erneut."
-
-msgid ""
-"❌ The daily command was disabled. You can now get bonus experience for every "
-"duck killed."
-msgstr ""
-
-msgid ""
-"❌ The daily command will be disabled in 2024. You can now get bonus "
-"experience when killing ducks."
-msgstr ""
 
 msgid ""
 "💰️ You took {exp} experience out of the prestige bank. Come back soon!"
@@ -3079,12 +3003,6 @@ msgstr ""
 msgid "👍️ Role added to the auto_roles list."
 msgstr "👍️ Rolle zur Liste der auto_roles hinzugefügt."
 
-msgid "👍️ Role ID {old_role} removed from the auto_roles list."
-msgstr ""
-
-msgid "❌️ No role was set for this level."
-msgstr ""
-
 msgid "Current roles mapping:"
 msgstr "Aktuelle Rollenzuordnung:"
 
@@ -3113,9 +3031,6 @@ msgstr "Gelöschte Rolle 🗑️ ID: {role_id}"
 msgid "No prestige level mapping is currently defined on this channel."
 msgstr ""
 "Für diesen Kanal ist derzeit keine Zuordnung von Prestigestufen definiert."
-
-msgid "{level} - {user} [`{user.id}`]"
-msgstr ""
 
 msgid "No members have any specific rights in the server."
 msgstr "Die Mitglieder haben keine besonderen Rechte auf dem Server."
@@ -3528,9 +3443,6 @@ msgstr ""
 "Probieren Sie sie bald aus! [Gekauft: -{ITEM_COST} exp, total {db_hunter."
 "experience} exp]"
 
-msgid "🌐 The beloved DuckHunt translators"
-msgstr ""
-
 msgid ""
 "The bot itself is made by Eyesofcreeper, with contributions from people "
 "mentionned in `{ctx.prefix}credits`. **You want to help translate this bot "
@@ -3547,9 +3459,6 @@ msgstr "Verschiedenes"
 
 msgid "Pong. — Time taken: {miliseconds}ms"
 msgstr "Pong. - Benötigte Zeit: {miliseconds}ms"
-
-msgid "You'll get back your weapon and magazines {formatted_delta}"
-msgstr ""
 
 msgid ""
 "My prefix here is {local_prefix}. You can also call me with any of the "
@@ -3581,14 +3490,6 @@ msgid ""
 msgstr ""
 "<@465207298890006529> (\"Calgeka\") hat viele der von Ducks verwendeten "
 "Avatare erstellt."
-
-msgid ""
-"<@807752234669703210> (\"YaOldBuddy\") made some of the avatars Ducks use."
-msgstr ""
-
-msgid ""
-"<@355143752248983552> (\"ZeBadMedic\") also made some of the Ducks avatars."
-msgstr ""
 
 msgid ""
 "<@376052158573051906> (\"Globloxmen\") made a lot of ducks you can find all "
@@ -3650,9 +3551,6 @@ msgid ""
 msgstr ""
 "Die Ereignisse dauern eine Stunde vom Anfang bis zum Ende der Stunde. Ende "
 "in {formatted_td}"
-
-msgid "The bot current time is: {formatted_td}"
-msgstr ""
 
 msgid "{exp} experience"
 msgstr "{exp} Erfahrung"
@@ -3872,9 +3770,6 @@ msgstr "💰️ Sie haben {amount} Erfahrung an {reciver.mention} gegeben "
 
 msgid "Top Scores on #{channel}"
 msgstr "Top Scores auf #{channel}"
-
-msgid "{target} data was deleted from this channel."
-msgstr ""
 
 msgid ""
 "❌ The channel {channel.mention} still exists on the server. Please run the "
@@ -4139,10 +4034,6 @@ msgstr ""
 "Menge Büsche**."
 
 msgid ""
-"Searching the bushes around the duck, you found... **A duck ton of bushes**."
-msgstr ""
-
-msgid ""
 "Searching the bushes around the duck, you found... **A picture of a duck**."
 msgstr ""
 "Als Sie die Büsche um die Ente herum durchsuchten, fanden Sie... **Ein Bild "
@@ -4300,23 +4191,6 @@ msgid_plural "of which {this_ducks_killed} are normal ducks"
 msgstr[0] "von denen eine eine normale Ente ist"
 msgstr[1] "davon sind {this_ducks_killed} normale Enten"
 
-msgid "**Killed**: {normal_exp} exp"
-msgstr ""
-
-msgid "**2-leaf Clover**: {bonus_experience} exp"
-msgstr ""
-
-msgid "**4-leaf Clover**: {bonus_experience} exp"
-msgstr ""
-
-msgid "**Prestige**: {prestige_experience} exp"
-msgstr ""
-
-msgid ""
-"{killer.mention} killed the duck in {spawned_for_str}, for a total of "
-"{total_ducks_killed} ({ncategory_killed}) [{splits_formatted}]"
-msgstr ""
-
 msgid "{hunter.mention} scared the duck away."
 msgstr "{hunter.mention} hat die Ente verscheucht."
 
@@ -4370,166 +4244,8 @@ msgid_plural "of which {this_ducks_killed} are Pr. ducks"
 msgstr[0] "von denen einer ein Professor Ente ist"
 msgstr[1] "wovon {this_ducks_killed} Pr. Enten sind"
 
-msgid "Hey, genius! What's {operation}?"
-msgstr ""
-
-msgid ""
-"Come on, {hurter.mention}! I asked you a question! What's {operation}? "
-"Answer with `dh!bang <answer>`."
-msgstr ""
-
-msgid ""
-"Come on, {hurter.mention}! I bet even a calculator could outsmart you. "
-"What's {operation}? Impress me with your brilliance, if you have any left. "
-"(`dh!bang <answer>`)"
-msgstr ""
-
-msgid "{hurter.mention}, Just give me digits ! What's {operation}?"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, I didn't know I was asking for the meaning of life. It's "
-"just {operation}. Can you handle that, or is it too mind-boggling for you?"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, seriously? That's not the right answer! I wouldn't say "
-"{operation} is that hard to calculate... Come on!"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, That's not the right answer! What's {operation}? Answer "
-"with `dh!bang <answer>`."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, are you allergic to numbers? Because that's not the answer."
-" I thought even you could handle basic math. Apparently, I overestimated you."
-" Again."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, I'm starting to think you're not even trying. What's "
-"{operation}? Answer with `dh!bang <answer>`."
-msgstr ""
-
-msgid ""
-"Alright, {hurter.mention}, let's break it down. Math: not a foreign language."
-" I'm starting to think you'd struggle with counting your own fingers. What's "
-"{operation}?"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, darling, if ignorance were a currency, you'd be a "
-"millionaire by now. What's {operation}? Or is that too rich for your "
-"intellectual wallet?"
-msgstr ""
-
-msgid ""
-"I'm starting to think you're doing this on purpose. What's {operation}? "
-"Answer with `dh!bang <answer>`."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, I see you're trying the 'random number generator' approach "
-"to math. Newsflash: it's not working. What's {operation}?"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, if I had a penny for every wrong answer you've given, I'd "
-"be able to buy a tutor for you. What's {operation}? And please, for the love "
-"of math, be right this time."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, I've seen toddlers with a better grasp of math than you. "
-"Seriously, it's {operation}, not rocket science. Although, given your track "
-"record, you may want to learn from them."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, is your calculator on vacation? Because your answers are "
-"definitely taking a holiday from correctness. What's {operation}? Take your "
-"time; I've got all day to witness this spectacle."
-msgstr ""
-
-msgid ""
-"Ah, {hurter.mention}, your mathematical prowess is truly a spectacle. I "
-"asked for {operation}, not a tragic comedy. Can you manage to get it right, "
-"or should I prepare for disappointment?"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, I bet if solving this equation was a life skill, you'd be "
-"in dire straits right now. What's {operation}? And no, consulting a psychic "
-"won't help you here."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, did you mistake this for a guessing game? It's not 'Who "
-"Wants to Be a Millionaire: Math Edition.' What's {operation}? And remember, "
-"there are no lifelines for the academically challenged."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, your math proficiency is like a rare species – extinct. "
-"What's {operation}? Or is that too much to ask from the endangered species "
-"called your intellect?"
-msgstr ""
-
-msgid ""
-"{hurter.mention}, I'm beginning to think your understanding of numbers is "
-"purely theoretical. What's {operation}? And no, this isn't hard like a "
-"quantum mechanics problem; it's just basic math."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, for fuck sake, just kill me already! Let's do something a "
-"bit easier for you...What's {operation}? "
-msgstr ""
-
-msgid ""
-"{hugger.mention} attempted a hug. Cute, but the duck despises you for wiping "
-"out its family, and for failing HARD at math. [**FAIL**: {experience} exp]"
-msgstr ""
-
-msgid ""
-"{hugger.mention} attempted a hug. Adorable, but your affection won't fix the "
-"fact that you're failing miserably at math, {hugger.mention}. [**FAIL**: "
-"{experience} exp]"
-msgstr ""
-
-msgid "cartographer"
-msgstr ""
-
-msgid "of which one is a cartographer duck"
-msgid_plural "of which {this_ducks_killed} are cartographer ducks"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid ""
-"ℹ️ **Cartographer Duck**: Find the duck in the map above, by adding the "
-"letter and the number to the bang command. Example: `dh!bang A1`."
-msgstr ""
-
-msgid ""
-"{hurter.mention}, You need to find the duck in the map above! Answer with "
-"`dh!bang <coordinates>`."
-msgstr ""
-
-msgid "{hurter.mention}, Give coordinates like so `B3`! `{exc_message}`"
-msgstr ""
-
-msgid "{hurter.mention}, that's not the correct answer!"
-msgstr ""
-
 msgid "baby"
 msgstr "Baby"
-
-msgid ""
-"[{hurter.mention}] I'm sorry Hal, I'm afraid I can't do that <https://youtu."
-"be/ARJ8cAGm6JE?t=58>."
-msgstr ""
 
 msgid "of which one is a baby duck"
 msgid_plural "of which {this_ducks_killed} are baby ducks"
@@ -5028,12 +4744,6 @@ msgstr "PINGUIN"
 
 msgid "Mooooom"
 msgstr "Muttiiiii"
-
-msgid "Dockolumbus"
-msgstr ""
-
-msgid "Cartographer Duck"
-msgstr ""
 
 msgid "*coin*"
 msgstr "*münze*"
