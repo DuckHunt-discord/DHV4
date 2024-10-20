@@ -9,7 +9,7 @@ discord.py==2.4.0
 #git+https://github.com/iDevision/enhanced-discord.py.git#2.0
 tortoise-orm[accel]==0.21.7
 aerich==0.7.2
-asyncpg==0.29.0
+asyncpg==0.30.0
 python-rapidjson==1.20
 ciso8601==2.3.1
 #seam-carving
