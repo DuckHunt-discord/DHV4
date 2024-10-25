@@ -787,6 +787,8 @@ class Player(Model):
         "sabotaged_weapons",
         "experience",
         "givebacks",
+        "ducks_killed_today",
+        "ducks_killed_today_last_reset",
     }
 
     async def do_prestige(self, bot, kept_exp):
