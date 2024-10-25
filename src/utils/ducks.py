@@ -178,7 +178,7 @@ class Duck:
             db_killer.ducks_killed_today_last_reset = now
             db_killer.ducks_killed_today = defaultdict(int)
 
-        if self.decoy:
+        if self.decoy and self.prestige_experience_chance is None:
             db_killer.ducks_killed_today["decoy"] += 1
 
         db_killer.ducks_killed_today[self.category] += 1
@@ -500,7 +500,6 @@ class Duck:
         if db_killer.prestige < 3:
             return 0
         else:
-
             equalizer_offset = 0
 
             if self.bot.current_event == Events.EQUALIZER:
@@ -520,8 +519,6 @@ class Duck:
                         ducks_killed_today_dict.pop(ducktype.category, None)
 
                 ducks_killed_today = sum(ducks_killed_today_dict.values()) - decoys_killed_today
-
-
 
                 if ducks_killed_today <= 5:
                     if random.randint(0, 99) < 100 - equalizer_offset:
