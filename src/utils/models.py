@@ -789,6 +789,7 @@ class Player(Model):
         "givebacks",
         "ducks_killed_today",
         "ducks_killed_today_last_reset",
+        "best_times",
     }
 
     async def do_prestige(self, bot, kept_exp):
