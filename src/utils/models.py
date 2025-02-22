@@ -647,6 +647,9 @@ class UserInventory(Model):
     item_spawn_ducks_left = fields.IntField(default=0)
     item_refill_magazines_left = fields.IntField(default=0)
 
+    # Stupidity
+    painted_dry_wall_left = fields.IntField(default=0)
+
     def __str__(self):
         return f"{self.user_id} inventory"
 
