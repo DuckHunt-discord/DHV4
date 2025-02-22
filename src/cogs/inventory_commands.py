@@ -1,3 +1,8 @@
+import asyncio
+import random
+from asyncio import create_task, ensure_future
+from typing import List
+
 import discord
 from discord.ext import commands
 
@@ -8,7 +13,7 @@ from utils.inventory_items import (
     ALL_INVENTORY,
     ALL_SHORTCODE,
     InvalidUsesCount,
-    NotInInventory,
+    NotInInventory, PaintedDryWall,
 )
 from utils.models import DiscordUser, get_from_db, get_user_inventory
 
@@ -20,6 +25,73 @@ def _(message):
 class InventoryCommands(Cog):
     display_name = _("Inventory")
     help_priority = 9
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.watching_paint_dry = {}
+
+    @commands.command(aliases=["watch_paint_dry"])
+    @checks.channel_enabled()
+    async def watchpaintdry(self, ctx: MyContext):
+        """
+        Watch paint dry.
+        """
+        _ = await ctx.get_translate_function(user_language=True)
+
+        if ctx.author.id in self.watching_paint_dry:
+            msg = self.watching_paint_dry[ctx.author.id]
+            await msg.delete()
+
+            await ctx.send(_("You stopped watching."))
+        else:
+            # I want a wall of emojis, with :blue_square: (any color) spoilered when it didn't dry yet
+            # and unspoilered when it does dry.
+            embed = discord.Embed(title=_("Watching paint dry"))
+            embed.description = _("Paint is wet...")
+            embed.description += "\n".join(
+                [
+                    "||:blue_square:||" * 10
+                    for _ in range(10)
+                ]
+            )
+
+            msg = await ctx.send(embed=embed)
+            self.watching_paint_dry[ctx.author.id] = msg
+
+            ensure_future(self.drying_paint(ctx, msg, _))
+
+    async def drying_paint(self, ctx: MyContext, msg: discord.Message, _):
+        # Replace one emoji with the dry version
+        await asyncio.sleep(random.randint(10, 300))
+        embed = msg.embeds[0]
+        description = embed.description
+        description = description.replace("||:blue_square:||", ":blue_square:", 1)
+        embed.description = description
+
+        if "||:blue_square:||" in description:
+            if ctx.author.id not in self.watching_paint_dry:
+                await msg.edit(content=_("You stopped watching."), embed=embed)
+                return
+
+            await msg.edit(embed=embed)
+            ensure_future(self.drying_paint(ctx, msg, _))
+        else:
+            # Paint finished drying !!
+            del self.watching_paint_dry[ctx.author.id]
+            await msg.edit(content=_("Paint is dry now."), embed=embed)
+
+            # Give 1 PaintedDryWall to the user
+            db_user = await get_from_db(ctx.author, as_user=True)
+            await PaintedDryWall.give_to(db_user)
+
+    async def on_message(self, message: discord.Message):
+        if message.author.bot:
+            return
+
+        if message.author.id in self.watching_paint_dry:
+            msg = self.watching_paint_dry.pop(message.author.id)
+
+            await msg.reply("The paint can't dry if you stop watching!")
+
 
     @commands.command(aliases=["open"])
     @checks.channel_enabled()

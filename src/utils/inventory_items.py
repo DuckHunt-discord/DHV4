@@ -262,6 +262,22 @@ class Encyclopedia(Book):
     db_name: str = "item_maxi_exp_boost"
     item_exp_amount = 75
 
+class PaintedDryWall(Item):
+    name: str = _("A painted wall")
+    description: str = _("The paint is now dry. GG.")
+    _shortcode: str = "painteddrywall"
+
+    db_name: str = "painted_dry_wall"
+
+
+    async def use_item(self, ctx: MyContext, db_player=None, **kwargs):
+        # Can't actually use this
+        await ctx.send(
+            _(
+                "You broke the fourth wall.",
+            )
+        )
+
 
 class Bullet(Item):
     name: str = _("A bullet")
@@ -385,6 +401,7 @@ ITEMS: typing.List[typing.Type[Item]] = [
     Bullet,
     Egg,
     RefillMagazines,
+    PaintedDryWall,
 ]
 LOOTBOXES: typing.List[typing.Type[Item]] = [WelcomePackage, FoieGras, Voted]
 
