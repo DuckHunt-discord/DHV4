@@ -65,7 +65,7 @@ class InventoryCommands(Cog):
 
     async def drying_paint(self, ctx: MyContext, msg: discord.Message, _):
         # Wait a random period before drying one part of the paint.
-        await asyncio.sleep(random.randint(1, 2))
+        await asyncio.sleep(random.randint(5, 35))
         embed = msg.embeds[0]
         description = embed.description
 
