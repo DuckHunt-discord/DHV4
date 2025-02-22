@@ -21,10 +21,19 @@ from utils.models import DiscordUser, get_from_db, get_user_inventory
 def _(message):
     return message
 
+# Helper: Replace the nth occurrence (1-indexed) of a substring.
+def replace_nth(s: str, old: str, new: str, n: int) -> str:
+    start = -1
+    for i in range(n):
+        start = s.find(old, start + 1)
+        if start == -1:
+            return s
+    return s[:start] + new + s[start + len(old):]
 
 class InventoryCommands(Cog):
     display_name = _("Inventory")
     help_priority = 9
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.watching_paint_dry = {}
@@ -40,7 +49,6 @@ class InventoryCommands(Cog):
         if ctx.author.id in self.watching_paint_dry:
             msg = self.watching_paint_dry[ctx.author.id]
             await msg.delete()
-
             await ctx.send(_("You stopped watching."))
         else:
             embed = discord.Embed(title=_("Watching paint dry"))
@@ -51,33 +59,41 @@ class InventoryCommands(Cog):
                     for _ in range(10)
                 ]
             )
-
             msg = await ctx.send(embed=embed)
             self.watching_paint_dry[ctx.author.id] = msg
-
-            ensure_future(self.drying_paint(ctx, msg, _))
+            asyncio.ensure_future(self.drying_paint(ctx, msg, _))
 
     async def drying_paint(self, ctx: MyContext, msg: discord.Message, _):
-        # Replace one emoji with the dry version
-        await asyncio.sleep(random.randint(5, 30))
+        # Wait a random period before drying one part of the paint.
+        await asyncio.sleep(random.randint(1, 2))
         embed = msg.embeds[0]
         description = embed.description
-        description = description.replace(":blue_square:", ":white_large_square:", 1)
-        embed.description = description
 
-        if ":blue_square:" in description:
+        # Count how many blue squares remain.
+        occurrences = description.count(":blue_square:")
+        if occurrences == 0:
+            # Safety check; all squares should be replaced by now.
+            return
+
+        # Choose a random occurrence to replace.
+        random_occurrence = random.randint(1, occurrences)
+        new_description = replace_nth(description, ":blue_square:", ":white_large_square:", random_occurrence)
+        embed.description = new_description
+
+        # If any blue squares remain, schedule the next drying step.
+        if ":blue_square:" in new_description:
             if ctx.author.id not in self.watching_paint_dry or self.watching_paint_dry[ctx.author.id] != msg:
                 await msg.edit(content=_("You stopped watching."), embed=embed)
                 return
 
             await msg.edit(embed=embed)
-            ensure_future(self.drying_paint(ctx, msg, _))
+            asyncio.ensure_future(self.drying_paint(ctx, msg, _))
         else:
-            # Paint finished drying !!
+            # All paint has dried!
             del self.watching_paint_dry[ctx.author.id]
             await msg.edit(content=_("Paint is dry now."), embed=embed)
 
-            # Give 1 PaintedDryWall to the user
+            # Give 1 PaintedDryWall to the user.
             db_user = await get_from_db(ctx.author, as_user=True)
             await PaintedDryWall.give_to(db_user)
 
@@ -88,9 +104,7 @@ class InventoryCommands(Cog):
 
         if message.author.id in self.watching_paint_dry:
             msg = self.watching_paint_dry.pop(message.author.id)
-
             await msg.reply("The paint can't dry if you stop watching!")
-
 
     @commands.command(aliases=["open"])
     @checks.channel_enabled()
