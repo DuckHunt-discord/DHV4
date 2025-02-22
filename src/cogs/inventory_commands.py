@@ -66,7 +66,7 @@ class InventoryCommands(Cog):
         embed.description = description
 
         if ":blue_square:" in description:
-            if ctx.author.id not in self.watching_paint_dry:
+            if ctx.author.id not in self.watching_paint_dry or self.watching_paint_dry[ctx.author.id] != msg:
                 await msg.edit(content=_("You stopped watching."), embed=embed)
                 return
 
