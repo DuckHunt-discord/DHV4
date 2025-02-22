@@ -43,13 +43,11 @@ class InventoryCommands(Cog):
 
             await ctx.send(_("You stopped watching."))
         else:
-            # I want a wall of emojis, with :blue_square: (any color) spoilered when it didn't dry yet
-            # and unspoilered when it does dry.
             embed = discord.Embed(title=_("Watching paint dry"))
-            embed.description = _("Paint is wet...")
+            embed.description = _("Paint is wet...") + "\n\n"
             embed.description += "\n".join(
                 [
-                    "||:blue_square:||" * 10
+                    ":blue_square:" * 10
                     for _ in range(10)
                 ]
             )
@@ -61,13 +59,13 @@ class InventoryCommands(Cog):
 
     async def drying_paint(self, ctx: MyContext, msg: discord.Message, _):
         # Replace one emoji with the dry version
-        await asyncio.sleep(random.randint(10, 300))
+        await asyncio.sleep(random.randint(5, 30))
         embed = msg.embeds[0]
         description = embed.description
-        description = description.replace("||:blue_square:||", ":blue_square:", 1)
+        description = description.replace(":blue_square:", ":white_large_square:", 1)
         embed.description = description
 
-        if "||:blue_square:||" in description:
+        if ":blue_square:" in description:
             if ctx.author.id not in self.watching_paint_dry:
                 await msg.edit(content=_("You stopped watching."), embed=embed)
                 return
@@ -83,6 +81,7 @@ class InventoryCommands(Cog):
             db_user = await get_from_db(ctx.author, as_user=True)
             await PaintedDryWall.give_to(db_user)
 
+    @Cog.listener()
     async def on_message(self, message: discord.Message):
         if message.author.bot:
             return
