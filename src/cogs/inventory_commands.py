@@ -91,7 +91,16 @@ class InventoryCommands(Cog):
         else:
             # All paint has dried!
             del self.watching_paint_dry[ctx.author.id]
+            embed.description = _("✨ The paint is dry now. Check your inventory. ✨") + "\n\n"
+            embed.description += "\n".join(
+                [
+                    ":white_large_square:" * 10
+                    for _ in range(10)
+                ]
+            )
+
             await msg.edit(content=_("Paint is dry now."), embed=embed)
+
 
             # Give 1 PaintedDryWall to the user.
             db_user = await get_from_db(ctx.author, as_user=True)
