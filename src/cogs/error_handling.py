@@ -195,7 +195,7 @@ class CommandErrorHandler(Cog):
                 elif isinstance(exception, checks.ChannelDisabled):
                     db_guild = await get_from_db(ctx.guild)
 
-                    if db_guild.channel_disabled_message:
+                    if db_guild and db_guild.channel_disabled_message:
                         message = _(
                             "The game isn't running on this channel. "
                             "Admins can disable this message by running `dh!settings channel_disabled_message False`, "

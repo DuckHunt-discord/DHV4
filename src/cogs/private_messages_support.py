@@ -5,6 +5,7 @@ from typing import Dict, List
 
 import babel
 import discord
+from aiohttp import payload_type
 from babel import Locale
 from babel.dates import format_datetime, format_timedelta
 from discord import RawReactionActionEvent
@@ -205,7 +206,8 @@ class PrivateMessagesSupport(Cog):
         super().__init__(bot, *args, **kwargs)
         self.webhook_cache: Dict[discord.TextChannel, discord.Webhook] = {}
         self.users_cache: Dict[int, discord.User] = {}
-        self.blocked_ids: List[int] = []
+        self.archived_threads_cache: Dict[int, discord.Thread] = {}  # Cache for archived threads
+        self.tags_cache: Dict[int, discord.ForumTag] = {}  # Cache for forum tags
         self.index = 0
         self.background_loop.start()
 
@@ -219,15 +221,40 @@ class PrivateMessagesSupport(Cog):
         )
         self.views_added = False
 
+    @commands.Cog.listener()
     async def on_ready(self):
-        if not self.views_added:
-            self.bot.add_view(CloseReasonSelectView(self.bot))
-            self.bot.add_view(get_close_reason_view(self.bot, "asked", "Asked closed"))
-            self.bot.add_view(
-                get_close_reason_view(self.bot, "invites", "Sent the bot an invite")
-            )
+        self.bot.logger.info(f"Loading archived support channel threads from the forwarding forum.")
 
-            self.views_added = True
+        # Load archived threads into cache
+        forum = await self.get_forwarding_forum()
+        async for thread in forum.archived_threads():
+            try:
+                user_id = int(thread.name)
+                self.archived_threads_cache[user_id] = thread
+            except ValueError:
+                continue
+
+        self.bot.logger.info(f"Threads loaded. {len(self.archived_threads_cache)} archived threads in forwarding forum cache.")
+
+    @commands.Cog.listener()
+    async def on_raw_thread_update(self, payload):
+        thread_id = payload.data["id"]
+        # guild_id = int(payload.data["guild_id"])
+        parent_id = int(payload.data["parent_id"])
+        forum = await self.get_forwarding_forum()
+
+        # Check if the channel is a thread and if it's archived
+        if parent_id == forum.id:
+            self.bot.logger.debug(f"Got raw thread update for a thread of the support forum.")
+            after = payload.data.get("thread") or await self.bot.fetch_channel(thread_id)
+
+            # Check if the thread is in the forwarding forum
+            # Remove from cache
+            user_id = int(after.name)
+            if after.archived:
+                self.bot.logger.debug(f"[SUPPORT] Archiving thread {after.name} in cache (from event!).")
+                # Store the thread in the cache
+                self.archived_threads_cache[user_id] = after
 
     def cog_unload(self):
         self.background_loop.cancel()
@@ -235,25 +262,22 @@ class PrivateMessagesSupport(Cog):
     @tasks.loop(hours=1)
     async def background_loop(self):
         """
-        Check for age of the last message sent in the channel.
-        If it's too old, consider the channel inactive and close the ticket.
+        Check for age of the last message sent in the thread.
+        If it's too old, consider the thread inactive and close the ticket.
         """
-        category = await self.get_forwarding_category()
+        forum = await self.get_forwarding_forum()
         now = timezone.now()
         one_day_ago = now - datetime.timedelta(days=1)
-        for ticket_channel in category.text_channels:
-            last_message_id = ticket_channel.last_message_id
+        
+        # Check active threads
+        for thread in forum.threads:
+            last_message_id = thread.last_message_id
             if last_message_id:
-                # We have the ID of the last message, there is no need to fetch the API, since we can just extract the
-                # datetime from it.
                 last_message_time = snowflake_time(last_message_id)
             else:
-                # For some reason, we couldn't get the last message, so we'll have to go the expensive route.
-                # In my testing, I didn't see it happen, but better safe than sorry.
                 try:
-                    last_message = (await ticket_channel.history(limit=1).flatten())[0]
+                    last_message = (await thread.history(limit=1).flatten())[0]
                 except IndexError:
-                    # No messages at all.
                     last_message_time = now
                 else:
                     last_message_time = last_message.created_at
@@ -264,18 +288,18 @@ class PrivateMessagesSupport(Cog):
             )
             self.bot.logger.debug(
                 f"[SUPPORT GARBAGE COLLECTOR] "
-                f"#{ticket_channel.name} has been inactive for {inactive_for_str}."
+                f"#{thread.name} has been inactive for {inactive_for_str}."
             )
 
             if last_message_time <= one_day_ago:
                 self.bot.logger.debug(
                     f"[SUPPORT GARBAGE COLLECTOR] "
-                    f"Deleting #{ticket_channel.name}..."
+                    f"Archiving #{thread.name}..."
                 )
                 # The last message was sent a day ago, or more.
-                # It's time to close the channel.
-                async with ticket_channel.typing():
-                    user = await self.get_user(ticket_channel.name)
+                # It's time to close the thread.
+                async with thread.typing():
+                    user = await self.get_user(thread.name)
                     db_user = await get_from_db(user, as_user=True)
 
                     ticket = await db_user.get_or_create_support_ticket()
@@ -287,7 +311,6 @@ class PrivateMessagesSupport(Cog):
                     await ticket.save()
 
                     language = db_user.language
-
                     _ = get_translate_function(self.bot, language)
 
                     inactivity_embed = discord.Embed(
@@ -313,25 +336,22 @@ class PrivateMessagesSupport(Cog):
                     except:
                         pass
 
-                    await self.clear_caches(ticket_channel)
-
-                    await ticket_channel.delete(
-                        reason=f"Automatic deletion for inactivity."
-                    )
+                    await self.clear_caches(thread)
+                    await thread.edit(archived=True)
 
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
         await asyncio.sleep(2)
 
-    async def is_in_forwarding_channels(self, ctx):
-        category = await self.get_forwarding_category()
+    async def is_in_forwarding_threads(self, ctx):
+        forum = await self.get_forwarding_forum()
         if not ctx.guild:
             raise commands.NoPrivateMessage()
-        elif ctx.guild.id != category.guild.id:
-            raise NotInServer(must_be_in_guild_id=category.guild.id)
-        elif ctx.channel.category != category:
-            raise NotInChannel(must_be_in_channel_id=category.id)
+        elif ctx.guild.id != forum.guild.id:
+            raise NotInServer(must_be_in_guild_id=forum.guild.id)
+        elif not isinstance(ctx.channel, discord.Thread) or ctx.channel.parent_id != forum.id:
+            raise NotInChannel(must_be_in_channel_id=forum.id)
         return True
 
     async def get_user(self, user_id):
@@ -343,57 +363,81 @@ class PrivateMessagesSupport(Cog):
 
         return user
 
-    async def get_forwarding_category(self) -> discord.CategoryChannel:
-        return self.bot.get_channel(self.config()["forwarding_category"])
+    async def get_forwarding_forum(self) -> discord.ForumChannel:
+        return self.bot.get_channel(self.config()["forwarding_forum"])
 
-    async def get_or_create_channel(self, user: discord.User) -> discord.TextChannel:
-        forwarding_category = await self.get_forwarding_category()
+    async def get_forum_tag(self, tag_id: int) -> discord.ForumTag:
+        # Check cache first
+        if tag_id in self.tags_cache:
+            return self.tags_cache[tag_id]
+            
+        forum = await self.get_forwarding_forum()
+        for tag in forum.available_tags:
+            if tag.id == tag_id:
+                # Cache the tag
+                self.tags_cache[tag_id] = tag
+                return tag
+        raise ValueError(f"Tag with ID {tag_id} not found in forum")
 
-        channel = discord.utils.get(
-            forwarding_category.text_channels, name=str(user.id)
+    async def get_or_create_thread(self, user: discord.User) -> discord.Thread:
+        user_id = int(user.id)
+        forum = await self.get_forwarding_forum()
+        blocked_tag = await self.get_forum_tag(self.config()["forum_categories"]["blocked"])
+        
+        # First check active threads in forum
+        for thread in forum.threads:
+            if thread.name == str(user.id):
+                self.bot.logger.debug(f"[SUPPORT] found thread for {user} in the forum object ({thread.archived=}, {thread.locked=}).")
+
+                if blocked_tag in thread.applied_tags:
+                    self.bot.logger.info(f"[SUPPORT] Thread for {user} is blocked. Ignoring.")
+                    return None
+
+                return thread
+                
+        # Then check archived threads cache
+        if user_id in self.archived_threads_cache:
+            thread = self.archived_threads_cache[user_id]
+            self.bot.logger.debug(f"[SUPPORT] found thread for {user} in the archived cache ({thread.archived=}, {thread.locked=}).")
+            # Check if thread is in blocked category
+
+            if blocked_tag in thread.applied_tags:
+                self.bot.logger.info(f"[SUPPORT] Thread for {user} is blocked. Ignoring.")
+                return None
+                
+            # Unarchive the thread and set it back to open
+            open_tag = await self.get_forum_tag(self.config()["forum_categories"]["open"])
+            self.bot.logger.info(f"[SUPPORT] Thread for {user} is archived, and we got a new message. Re opening!")
+            await thread.edit(archived=False, applied_tags=[open_tag])
+            
+            # Remove from archived cache since it's now active
+            del self.archived_threads_cache[user_id]
+            
+            # Send a new recap embed
+            await self.handle_ticket_opening(thread, user)
+            return thread
+                
+        # Create new thread if none exists
+        self.bot.logger.info(f"[SUPPORT] creating a DM thread for {user}.")
+        
+        now_str = format_datetime(datetime.datetime.now(), locale="en")
+        open_tag = await self.get_forum_tag(self.config()["forum_categories"]["open"])
+        thread, message = await forum.create_thread(
+            name=str(user.id),
+            content=f"This is the logs of a DM with {user.name}#{user.discriminator}. "
+            f"What's written in there will be sent back to them, except if "
+            f"the message starts with > or is a DuckHunt command.\nThread opened: {now_str}",
+            reason="Received a DM.",
+            applied_tags=[open_tag]
         )
-        if not channel:
-            self.bot.logger.info(
-                f"[SUPPORT] creating a DM channel for {user}."
-            )
-
-            now_str = format_datetime(datetime.datetime.now(), locale="en")
-            channel = await forwarding_category.create_text_channel(
-                name=str(user.id),
-                topic=f"This is the logs of a DM with {user.name}#{user.discriminator}. "
-                f"What's written in there will be sent back to them, except if "
-                f"the message starts with > or is a DuckHunt command.\nChannel opened: {now_str}"
-                f"\n\n\n[getbeaned:disable_automod]\n[getbeaned:disable_logging]",
-                reason="Received a DM.",
-            )
-
-            self.bot.logger.debug(
-                f"[SUPPORT] creating a webhook for {user}."
-            )
-
-            webhook = await channel.create_webhook(
-                name=f"{user}",
-                avatar=await user.display_avatar.replace(format="png", size=512).read(),
-                reason="Received a DM.",
-            )
-            self.webhook_cache[channel] = webhook
-            self.bot.logger.debug(
-                f"[SUPPORT] channel created for {user}."
-            )
-            await self.handle_ticket_opening(channel, user)
-        else:
-            if self.webhook_cache.get(channel, None) is None:
-                self.bot.logger.debug(
-                    f"[SUPPORT] recorvering {user} channel webhook."
-                )
-
-                webhook = (await channel.webhooks())[0]
-                self.webhook_cache[channel] = webhook
-        return channel
+        
+        self.bot.logger.debug(f"[SUPPORT] thread created for {user}.")
+        await self.handle_ticket_opening(thread, user)
+        return thread
 
     async def send_mirrored_message(
         self,
-        channel: discord.TextChannel,
+        channel: discord.Thread,
         user: discord.User,
         db_user=None,
         support_view=None,
@@ -415,31 +459,31 @@ class PrivateMessagesSupport(Cog):
         try:
             await user.send(**send_kwargs)
         except discord.Forbidden:
-            await channel_message.add_reaction(emoji="❌")
+            await channel_message.add_reaction("❌")
             await channel.send(
                 content="❌ Couldn't send the above message, `dh!ps close` to close the channel."
             )
 
     async def handle_ticket_opening(
-        self, channel: discord.TextChannel, user: discord.User
+        self, thread: discord.Thread, user: discord.User
     ):
         db_user: DiscordUser = await get_from_db(user, as_user=True)
         ticket = await db_user.get_or_create_support_ticket()
         await ticket.save()
 
-        await channel.send(
-            content=f"Opening a DM channel with {user} ({user.mention}).\n"
+        await thread.send(
+            content=f"Opening a DM thread with {user} ({user.mention}).\n"
             f"Every message in here will get sent back to them if it's not a bot message, "
             f"DuckHunt command, and if it doesn't start with the > character.\n"
-            f"You can use many commands in the DM channels, detailed in "
+            f"You can use many commands in the DM threads, detailed in "
             f"`dh!help private_support`\n"
-            f"• `dh!ps close` will close the channel, sending a DM to the user.\n"
-            f"• `dh!ps tag tag_name` will send a tag to the user *and* in the channel. "
-            f"The two are linked, so changing pages in this channel "
+            f"• `dh!ps close` will close the thread, sending a DM to the user.\n"
+            f"• `dh!ps tag tag_name` will send a tag to the user *and* in the thread. "
+            f"The two are linked, so changing pages in this thread "
             f"will change the page in the DM too.\n"
-            f"• `dh!ps block` will block the user from opening further channels.\n"
+            f"• `dh!ps block` will block the user from opening further threads.\n"
             f"• `dh!ps huh` should be used if the message is not a support request, "
-            f"and will silently close the channel.\n"
+            f"and will silently close the thread.\n"
             f"Attachments are supported in messages.\n\n"
             f"Thanks for helping with the bot DM support ! <3"
         )
@@ -457,7 +501,7 @@ class PrivateMessagesSupport(Cog):
         )
 
         info_embed.description = (
-            "Information in this box isn't meant to be shared outside of this channel, and is "
+            "Information in this box isn't meant to be shared outside of this thread, and is "
             "provided for support purposes only. \n"
             "Nothing was sent to the user about this."
         )
@@ -492,18 +536,6 @@ class PrivateMessagesSupport(Cog):
         info_embed.add_field(
             name="Tickets created", value=str(ticket_count), inline=True
         )
-
-        # The following requires members intents.
-        # members = []
-        # for maybe_member in self.bot.get_all_members():
-        #     if maybe_member.id == user.id:
-        #         members.append(maybe_member)
-
-        # if len(members) > 1:
-        #     info_embed.add_field(name="Shared servers", value=str(len(members)), inline=True)
-        # else:
-        #     guild = members[0].guild
-        #     info_embed.add_field(name="Shared server", value=f"1: {guild.name} <{guild.id}>", inline=True)
 
         if ticket_count > 1:
             async for ticket in SupportTicket.filter(user=db_user, closed=True).order_by("-opened_at").select_related("closed_by", "last_tag_used").limit(5):
@@ -540,7 +572,7 @@ class PrivateMessagesSupport(Cog):
                     value=f"[Statistics](https://duckhunt.me/data/channels/{player_data.channel.discord_id}/{user.id}) - {player_data.experience} exp",
                 )
 
-        await CloseReasonSelectView(self.bot).send(channel, embed=info_embed)
+        await CloseReasonSelectView(self.bot).send(thread, embed=info_embed)
 
         _ = get_translate_function(self.bot, db_user.language)
 
@@ -555,14 +587,14 @@ class PrivateMessagesSupport(Cog):
 
         welcome_embed.set_footer(
             text=_(
-                "Support tickets are automatically deleted after 24 hours of inactivity"
+                "Support tickets are automatically archived after 24 hours of inactivity"
             )
         )
 
         try:
             await user.send(embed=welcome_embed)
         except discord.Forbidden:
-            await channel.send(
+            await thread.send(
                 content="❌ It seems I can't send messages to the user, you might want to close the DM. "
                 "`dh!ps close`."
             )
@@ -617,7 +649,12 @@ class PrivateMessagesSupport(Cog):
             )
 
     async def handle_auto_responses(self, message: discord.Message):
-        forwarding_channel = await self.get_or_create_channel(message.author)
+        forwarding_channel = await self.get_or_create_thread(message.author)
+
+        if forwarding_channel is None:
+            # Thread is in blocked category
+            return
+
         content = message.content
 
         user = message.author
@@ -656,11 +693,12 @@ class PrivateMessagesSupport(Cog):
         )
         await self.bot.wait_until_ready()
 
-        forwarding_channel = await self.get_or_create_channel(message.author)
-        forwarding_webhook = self.webhook_cache[forwarding_channel]
+        thread = await self.get_or_create_thread(message.author)
+        if thread is None:  # Thread is in blocked category
+            return
 
         self.bot.logger.debug(
-            f"[SUPPORT] got {message.author} channel and webhook."
+            f"[SUPPORT] got {message.author} thread."
         )
 
         attachments = message.attachments
@@ -676,29 +714,26 @@ class PrivateMessagesSupport(Cog):
             "embeds": embeds,
             "files": files,
             "allowed_mentions": discord.AllowedMentions.none(),
-            "wait": True,
         }
 
         if "close" in message.content.lower():
             view = get_close_reason_view(self.bot, "asked", "Asked closed")
-            await view.send(forwarding_webhook, **send_kwargs)
+            await view.send(thread, **send_kwargs)
         else:
-            await forwarding_webhook.send(**send_kwargs)
+            await thread.send(**send_kwargs)
 
         self.bot.logger.debug(
             f"[SUPPORT] {message.author} message forwarded."
         )
 
-    async def clear_caches(self, channel: discord.TextChannel):
+    async def clear_caches(self, thread: discord.Thread):
         try:
-            self.users_cache.pop(int(channel.name))
-        except KeyError:
-            # Cog reload, probably.
-            pass
-
-        try:
-            self.webhook_cache.pop(channel)
-        except KeyError:
+            user_id = int(thread.name)
+            # Clear user cache
+            self.users_cache.pop(user_id)
+            # Clear thread caches
+            # self.archived_threads_cache.pop(user_id, None)
+        except (KeyError, ValueError):
             # Cog reload, probably.
             pass
 
@@ -720,8 +755,8 @@ class PrivateMessagesSupport(Cog):
 
         if guild:
             if (
-                message.channel.category
-                and message.channel.category == await self.get_forwarding_category()
+                isinstance(message.channel, discord.Thread)
+                and message.channel.parent == await self.get_forwarding_forum()
             ):
                 if message.content.startswith(">"):
                     return
@@ -730,15 +765,8 @@ class PrivateMessagesSupport(Cog):
                     await self.handle_support_message(message)
         else:
             # New DM message.
-            if message.author.id in self.blocked_ids:
-                # Blocked
-                self.bot.logger.debug(
-                    f"[SUPPORT] received a message from {message.author} -> Ignored because of blacklist"
-                )
-                return
-            else:
-                await self.handle_dm_message(message)
-                await self.handle_auto_responses(message)
+            await self.handle_dm_message(message)
+            await self.handle_auto_responses(message)
 
     @commands.group(aliases=["ps"])
     async def private_support(self, ctx: MyContext):
@@ -746,7 +774,7 @@ class PrivateMessagesSupport(Cog):
         The DuckHunt bot DMs are monitored. All of these commands are used to control the created channels, and to
         interact with remote users.
         """
-        await self.is_in_forwarding_channels(ctx)
+        await self.is_in_forwarding_threads(ctx)
 
         if not ctx.invoked_subcommand:
             await ctx.send_help(ctx.command)
@@ -754,9 +782,9 @@ class PrivateMessagesSupport(Cog):
     @private_support.command()
     async def close(self, ctx: MyContext, *, reason: str = None):
         """
-        Close the opened DM channel. Will send a message telling the user that the DM was closed.
+        Close the opened DM thread. Will send a message telling the user that the DM was closed.
         """
-        await self.is_in_forwarding_channels(ctx)
+        await self.is_in_forwarding_threads(ctx)
 
         user = await self.get_user(ctx.channel.name)
         db_user = await get_from_db(user, as_user=True)
@@ -767,14 +795,13 @@ class PrivateMessagesSupport(Cog):
         await ticket.save()
 
         language = db_user.language
-
         _ = get_translate_function(self.bot, language)
 
         close_embed = discord.Embed(
             color=discord.Color.red(),
             title=_("DM Closed"),
             description=_(
-                "Your support ticket was closed and the history deleted. "
+                "Your support ticket was closed and the history archived. "
                 "Thanks for using DuckHunt DM support. "
                 "Keep in mind, sending another message here will open a new ticket!\n"
                 "In the meantime, here's a nice duck picture for you to look at !",
@@ -793,27 +820,30 @@ class PrivateMessagesSupport(Cog):
         file, debug = await get_random_duck_file(self.bot)
         close_embed.set_image(url="attachment://random_duck.png")
 
-        await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
+        await ctx.send(content="🚮 Archiving thread...")
 
         try:
             await user.send(file=file, embed=close_embed)
         except:
             pass
 
-        await asyncio.sleep(5)  # To let people stop writing
-
-        await self.clear_caches(ctx.channel)
-
-        await ctx.channel.delete(
+        closed_tag = await self.get_forum_tag(self.config()["forum_categories"]["closed"])
+        await ctx.channel.edit(
+            archived=True,
+            applied_tags=[closed_tag],
             reason=f"{ctx.author} ({ctx.author.id}) closed the DM."
         )
+        
+        # Update thread caches
+        user_id = int(ctx.channel.name)
+        self.archived_threads_cache[user_id] = ctx.channel
 
     @private_support.command(aliases=["not_support", "huh"])
     async def close_silent(self, ctx: MyContext, *, reason: str = None):
         """
-        Close the opened DM channel. Will not send a message, since it wasn't a support request.
+        Close the opened DM thread. Will not send a message, since it wasn't a support request.
         """
-        await self.is_in_forwarding_channels(ctx)
+        await self.is_in_forwarding_threads(ctx)
 
         if reason is None:
             reason = "Closed silently."
@@ -827,14 +857,18 @@ class PrivateMessagesSupport(Cog):
         await ticket.save()
 
         async with ctx.typing():
-            await ctx.send(content="🚮 Deleting channel... Don't send messages anymore!")
-            await asyncio.sleep(5)  # To let people stop writing
+            await ctx.send(content="🚮 Archiving thread..?")
 
-            await self.clear_caches(ctx.channel)
-
-            await ctx.channel.delete(
+            closed_tag = await self.get_forum_tag(self.config()["forum_categories"]["closed"])
+            await ctx.channel.edit(
+                archived=True,
+                applied_tags=[closed_tag],
                 reason=f"{ctx.author} ({ctx.author.id}) closed the DM."
             )
+            
+            # Update thread caches
+            user_id = int(ctx.channel.name)
+            self.archived_threads_cache[user_id] = ctx.channel
 
     @private_support.command()
     @dont_block
@@ -842,10 +876,21 @@ class PrivateMessagesSupport(Cog):
         """
         Block the user from opening further DMs channels.
         """
-        await self.is_in_forwarding_channels(ctx)
+        await self.is_in_forwarding_threads(ctx)
 
-        self.blocked_ids.append(int(ctx.channel.name))
-        await ctx.send("👌")
+        blocked_tag = await self.get_forum_tag(self.config()["forum_categories"]["blocked"])
+        await ctx.channel.edit(
+            applied_tags=[blocked_tag],
+            reason=f"{ctx.author} ({ctx.author.id}) blocked the user.",
+            locked=True,
+        )
+
+        # Update thread caches
+        user_id = int(ctx.channel.name)
+        self.archived_threads_cache[user_id] = ctx.channel
+
+
+        await ctx.send("👌 User blocked and thread marked as blocked.")
 
     @private_support.command(aliases=["send_tag", "t"])
     @dont_block
@@ -853,7 +898,7 @@ class PrivateMessagesSupport(Cog):
         """
         Send a tag to the user, as if you used the dh!tag command in his DMs.
         """
-        await self.is_in_forwarding_channels(ctx)
+        await self.is_in_forwarding_threads(ctx)
 
         user = await self.get_user(ctx.channel.name)
         tag = await get_tag(tag_name)
@@ -895,7 +940,7 @@ class PrivateMessagesSupport(Cog):
         Suggest a new language to the user. This will show them a prompt asking them if they want to switch to this new
         language.
         """
-        await self.is_in_forwarding_channels(ctx)
+        await self.is_in_forwarding_threads(ctx)
 
         user = await self.get_user(ctx.channel.name)
         db_user = await get_from_db(user, as_user=True)

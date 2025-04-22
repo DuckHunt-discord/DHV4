@@ -77,7 +77,8 @@ rpg_role_name = "Ping me for RPG bot events"
 moderators_that_can_delete_with_reactions = [251996890369884161]
 
 [cogs.PrivateMessagesSupport]
-forwarding_category = 821732328018935818
+forwarding_forum = 1019680991377359020
+forum_categories = { open = 1023013348733890661, closed = 1023013388277780501, blocked = 1019693959922073641 }
 
 [cogs.RestAPI]
 listen_ip = "0.0.0.0"

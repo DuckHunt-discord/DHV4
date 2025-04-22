@@ -76,15 +76,26 @@ class Balls(Cog):
         self.bot = bot
         self.trees = {}
 
-        with open("cache/balls.json", "r") as f:
-            balls = json.load(f)
+        try:
+            with open("cache/balls.json", "r") as f:
+                balls = json.load(f)
+        except FileNotFoundError:
+            self.bot.logger.info("No balls file found. Creating a new one.")
+            balls = {
+                "snowballs": {},
+                "fireballs": {}
+            }
 
         for name, tree in balls.items():
             origins, population = generate_tree(tree)
             self.trees[name] = {"origins": origins, "population": population}
 
-        with open("cache/balls_profiles.json", "r") as f:
-            self.balls_profiles = json.load(f)
+        try:
+            with open("cache/balls_profiles.json", "r") as f:
+                self.balls_profiles = json.load(f)
+        except FileNotFoundError:
+            self.bot.logger.info("No balls profiles file found. Creating a new one.")
+            self.balls_profiles = {}
 
     async def get_profile(self, member_id):
         profile = self.balls_profiles.get(str(member_id), {})
