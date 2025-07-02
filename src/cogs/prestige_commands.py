@@ -38,7 +38,7 @@ class PrestigeCommands(Cog):
 
         _ = await ctx.get_translate_function()
         higher_level = get_higher_level()
-        needed_exp = higher_level["expMin"]
+        needed_exp = higher_level["expMin"] + (db_hunter.prestige * 500)
         current_exp = db_hunter.experience
         missing_exp = needed_exp - current_exp
         progression = round(current_exp / needed_exp * 100)
@@ -130,7 +130,7 @@ class PrestigeCommands(Cog):
 
         _ = await ctx.get_translate_function()
         higher_level = get_higher_level()
-        needed_exp = higher_level["expMin"]
+        needed_exp = higher_level["expMin"] + (db_hunter.prestige * 500)
         current_exp = db_hunter.experience
         missing_exp = needed_exp - current_exp
         progression = round(current_exp / needed_exp * 100)
