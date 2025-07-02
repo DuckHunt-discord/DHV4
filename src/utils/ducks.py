@@ -5,6 +5,7 @@ import time
 import typing
 from collections import defaultdict
 from enum import Enum
+from math import log
 from typing import Optional
 
 import discord
@@ -497,7 +498,12 @@ class Duck:
         if self.decoy:
             return 0
 
-        if db_killer.prestige < 3:
+        current_prestige_level = db_killer.prestige
+
+        if current_prestige_level >= 100:
+            current_prestige_level = int(100 + log(current_prestige_level - 100, 2))
+
+        if current_prestige_level < 3:
             return 0
         else:
             equalizer_offset = 0
@@ -507,7 +513,7 @@ class Duck:
 
             if self.prestige_experience_chance is not None:
                 if random.randint(0 + equalizer_offset, 99) < self.prestige_experience_chance:
-                    return db_killer.prestige
+                    return current_prestige_level
                 else:
                     return 0
             else:
@@ -522,20 +528,20 @@ class Duck:
 
                 if ducks_killed_today <= 5:
                     if random.randint(0, 99) < 100 - equalizer_offset:
-                        return db_killer.prestige  # 100% chance
-                    return db_killer.prestige  # 100% chance of getting prestige bonus
+                        return current_prestige_level  # 100% chance
+                    return current_prestige_level  # 100% chance of getting prestige bonus
                 elif ducks_killed_today <= 10:
                     if random.randint(0 + equalizer_offset, 99) < 50:
-                        return db_killer.prestige  # 50% chance
+                        return current_prestige_level  # 50% chance
                 elif ducks_killed_today <= 50:
                     if random.randint(0 + equalizer_offset, 99) < 10:
-                        return db_killer.prestige  # 10% chance
+                        return current_prestige_level  # 10% chance
                 elif ducks_killed_today <= 100:
                     if random.randint(0 + equalizer_offset, 99) < 7:
-                        return db_killer.prestige  # 7% chance
+                        return current_prestige_level  # 7% chance
                 else:
                     if random.randint(0 + equalizer_offset, 99) < 2:
-                        return db_killer.prestige  # 2% chance
+                        return current_prestige_level  # 2% chance
 
         return 0
 
