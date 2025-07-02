@@ -500,8 +500,9 @@ class Duck:
 
         current_prestige_level = db_killer.prestige
 
-        if current_prestige_level >= 100:
-            current_prestige_level = int(100 + log(current_prestige_level - 100, 2))
+        # This didn't go well
+        # if current_prestige_level >= 100:
+        #     current_prestige_level = int(100 + log(current_prestige_level - 100, 2))
 
         if current_prestige_level < 3:
             return 0
