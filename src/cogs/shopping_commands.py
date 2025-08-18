@@ -907,9 +907,9 @@ class ShoppingCommands(Cog):
         await db_hunter.save()
 
         for i in range(cnt):
-            delay = random.randint(MINUTE, 10 * MINUTE)
-
             async def spawn():
+                delay = random.randint(MINUTE, 10 * MINUTE)
+
                 await asyncio.sleep(delay)
                 await ducks.spawn_random_weighted_duck(self.bot, ctx.channel, decoy=True)
 
