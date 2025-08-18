@@ -876,11 +876,14 @@ class ShoppingCommands(Cog):
             )
 
     @shop.command(aliases=["20", "duck"])
-    async def decoy(self, ctx: MyContext):
+    async def decoy(self, ctx: MyContext, cnt: int = 1):
         """
         Place a decoy to make a duck spawn in the next 10 minutes. [8 exp]
         """
         ITEM_COST = 8
+
+        if cnt <= 0:
+            cnt = 1
 
         _ = await ctx.get_translate_function(user_language=True)
 
@@ -891,31 +894,41 @@ class ShoppingCommands(Cog):
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
-        self.ensure_enough_experience(db_hunter, ITEM_COST)
+        self.ensure_enough_experience(db_hunter, ITEM_COST * cnt)
 
         # We don't want to send a level down message here.
         # https://github.com/DuckHunt-discord/DHV4/issues/129
-        db_hunter.experience -= ITEM_COST
+        db_hunter.experience -= ITEM_COST * cnt
 
-        db_hunter.bought_items["decoy"] += 1
+        db_hunter.bought_items["decoy"] += cnt
 
         await db_hunter.save()
 
-        delay = random.randint(MINUTE, 10 * MINUTE)
+        for _ in range(cnt):
+            delay = random.randint(MINUTE, 10 * MINUTE)
 
-        async def spawn():
-            await asyncio.sleep(delay)
-            await ducks.spawn_random_weighted_duck(self.bot, ctx.channel, decoy=True)
+            async def spawn():
+                await asyncio.sleep(delay)
+                await ducks.spawn_random_weighted_duck(self.bot, ctx.channel, decoy=True)
 
-        asyncio.ensure_future(spawn())
+            asyncio.ensure_future(spawn())
 
-        await ctx.author.send(
-            _(
-                "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
-                db_hunter=db_hunter,
-                ITEM_COST=ITEM_COST,
+        if cnt == 1:
+            await ctx.author.send(
+                _(
+                    "💸 You placed a decoy on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
+                    db_hunter=db_hunter,
+                    ITEM_COST=ITEM_COST,
+                )
             )
-        )
+        else:
+            await ctx.author.send(
+                _(
+                    "💸 You placed decoys on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
+                    db_hunter=db_hunter,
+                    ITEM_COST=ITEM_COST * cnt,
+                )
+            )
 
     @shop.command(aliases=["23", "mecha"])
     async def mechanical(self, ctx: MyContext):
