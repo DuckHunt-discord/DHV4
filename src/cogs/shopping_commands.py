@@ -906,7 +906,7 @@ class ShoppingCommands(Cog):
 
         await db_hunter.save()
 
-        for _ in range(cnt):
+        for i in range(cnt):
             delay = random.randint(MINUTE, 10 * MINUTE)
 
             async def spawn():
