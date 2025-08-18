@@ -926,7 +926,7 @@ class ShoppingCommands(Cog):
                 _(
                     "💸 You placed decoys on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
                     db_hunter=db_hunter,
-                    ITEM_COST=ITEM_COST * cnt,
+                    ITEM_COST=(ITEM_COST * cnt),
                 )
             )
 
