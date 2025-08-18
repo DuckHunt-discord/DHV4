@@ -885,6 +885,8 @@ class ShoppingCommands(Cog):
         if cnt <= 0:
             cnt = 1
 
+        ACTUAL_COST = ITEM_COST * cnt
+
         _ = await ctx.get_translate_function(user_language=True)
 
         try:
@@ -894,11 +896,11 @@ class ShoppingCommands(Cog):
 
         db_hunter: Player = await get_player(ctx.author, ctx.channel)
 
-        self.ensure_enough_experience(db_hunter, ITEM_COST * cnt)
+        self.ensure_enough_experience(db_hunter, ACTUAL_COST)
 
         # We don't want to send a level down message here.
         # https://github.com/DuckHunt-discord/DHV4/issues/129
-        db_hunter.experience -= ITEM_COST * cnt
+        db_hunter.experience -= ACTUAL_COST
 
         db_hunter.bought_items["decoy"] += cnt
 
@@ -926,7 +928,7 @@ class ShoppingCommands(Cog):
                 _(
                     "💸 You placed decoys on the channel, the ducks will come soon! [Bought: -{ITEM_COST} exp, total {db_hunter.experience} exp]",
                     db_hunter=db_hunter,
-                    ITEM_COST=(ITEM_COST * cnt),
+                    ITEM_COST=ACTUAL_COST,
                 )
             )
 
