@@ -1906,10 +1906,10 @@ msgid "Check error running this command: {err_data}"
 msgstr ""
 
 msgid "The provided command was not found."
-msgstr ""
+msgstr "O comando fornecido não foi encontrado."
 
 msgid "That command has been disabled."
-msgstr ""
+msgstr "Esse comando foi desativado."
 
 msgid ""
 "There was an error running the specified command. Contact the bot admins."
