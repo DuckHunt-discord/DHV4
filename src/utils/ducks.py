@@ -1353,9 +1353,9 @@ class Map:
             [
                 "".join(
                     map(
-                        lambda e: "" + anti_bot_zero_width(e.value) + ""
+                        lambda e: "||" + anti_bot_zero_width(e.value) + "||"
                         if e != MapTile.NOTHING
-                        else "" + anti_bot_zero_width(MapTile.TREE1.value) + "",
+                        else "||" + anti_bot_zero_width(MapTile.TREE1.value) + "||",
                         row,
                     )
                 )
@@ -1409,8 +1409,6 @@ class CartographerDuck(Duck):
                 )
                 + "\n\n"
                 + map_str
-                + "\n\n"
-                + "ℹ️ Spoilers are currently disabled due to a Discord bug that affect players on iPhones."
         )
 
     async def shoot(self, args: list):
