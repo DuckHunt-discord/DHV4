@@ -1,8 +1,10 @@
 """
 Some example of commands that can be used only in the bot support server.
 """
+import asyncio
 import time
 
+from aiohttp import ClientError
 import discord
 from babel import dates
 from discord.ext import commands, menus, tasks
@@ -25,6 +27,9 @@ class SupportServerCommands(Cog):
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.index = 0
+        self.background_loop.add_exception_type(
+            discord.HTTPException, ClientError, OSError
+        )
         self.background_loop.start()
 
     def cog_unload(self):
@@ -147,6 +152,16 @@ class SupportServerCommands(Cog):
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
+
+    @background_loop.error
+    async def on_background_loop_error(self, exception):
+        self.bot.logger.exception(
+            "Status loop errored, restarting in 30 seconds.", exc_info=exception
+        )
+        if self.bot.is_closed():
+            return
+        await asyncio.sleep(30)
+        self.background_loop.restart()
 
     @commands.command(aliases=["shard_status"])
     async def shards(self, ctx: MyContext):

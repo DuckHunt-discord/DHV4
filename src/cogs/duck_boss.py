@@ -1,6 +1,8 @@
+import asyncio
 import random
 from typing import List
 
+from aiohttp import ClientError
 import discord
 from babel.dates import format_timedelta
 from discord.ext import tasks
@@ -15,9 +17,12 @@ class DuckBoss(Cog):
     def __init__(self, bot, *args, **kwargs):
         super().__init__(bot, *args, **kwargs)
         self.boss_every_n_minutes = 1440
-        self.background_loop.start()
         self.iterations_no_spawn = 1
         self.iterations_spawn = 0
+        self.background_loop.add_exception_type(
+            discord.HTTPException, ClientError, OSError
+        )
+        self.background_loop.start()
 
     @property
     def luck(self):
@@ -208,6 +213,16 @@ class DuckBoss(Cog):
     @background_loop.before_loop
     async def before(self):
         await self.bot.wait_until_ready()
+
+    @background_loop.error
+    async def on_background_loop_error(self, exception):
+        self.bot.logger.exception(
+            "Boss loop errored, restarting in 30 seconds.", exc_info=exception
+        )
+        if self.bot.is_closed():
+            return
+        await asyncio.sleep(30)
+        self.background_loop.restart()
 
 
 setup = DuckBoss.setup
