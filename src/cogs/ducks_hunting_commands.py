@@ -338,7 +338,7 @@ class DucksHuntingCommands(Cog):
                     force_public=True,
                 )
             await ctx.send(
-                f"https://duckhunt.me/api/tombstone/?name={quote_plus(ctx.author.name)}&reason={quote_plus(_('Signed up for the CACAD.'))}",
+                f"https://duckhunt.me/web_api/tombstone/?name={quote_plus(ctx.author.name)}&reason={quote_plus(_('Signed up for the CACAD.'))}",
                 force_public=True,
             )
             return False
@@ -581,7 +581,7 @@ class DucksHuntingCommands(Cog):
                             )
 
                 await ctx.send(
-                    f"https://duckhunt.me/api/tombstone/?name={quote_plus(db_target.member.user.name)}&reason={quote_plus(_('Forgot to duck'))}",
+                    f"https://duckhunt.me/web_api/tombstone/?name={quote_plus(db_target.member.user.name)}&reason={quote_plus(_('Forgot to duck'))}",
                     force_public=True,
                 )
             else:
