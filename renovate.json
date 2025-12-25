@@ -1,16 +1,31 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":assignee(paris-ci)",
+    "config:recommended",
     ":automergeMinor",
     ":dependencyDashboard",
     ":automergePr",
     ":prImmediately",
     ":rebaseStalePrs",
     ":disableRateLimiting",
-    ":label(🤖 Automatic)"
+    ":label(🤖 Automatic)",
+    "group:allNonMajor"
   ],
   "git-submodules": {
     "enabled": true
-  }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^Dockerfile$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*suite=(?<suite>.*?)\\s+depName=(?<depName>.*?)\\s*\\nENV\\s+.*?_VERSION=\"(?<currentValue>.*?)\""
+      ],
+      "datasourceTemplate": "deb",
+      "registryUrlTemplate": "https://deb.debian.org/debian?suite={{suite}}&components=main,contrib,non-free&binaryArch=amd64"
+    }
+  ]
+}
 }

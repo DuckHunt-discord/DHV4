@@ -1,12 +1,8 @@
-import asyncio
-
 import discord
 import uvloop
 
 from utils.bot_class import MyBot
 from utils.config import load_config
-
-asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 config = load_config()
 
@@ -48,4 +44,4 @@ async def main():
         await bot.start(config["auth"]["discord"]["token"])
 
 
-asyncio.run(main())
+uvloop.run(main())
