@@ -21,6 +21,6 @@ aiohttp[speedups]==3.13.3
 aiohttp_cors==0.8.1
 polib==1.2.0
 tqdm==4.67.3
-pillow==12.1.0
+pillow==12.1.1
 statcord.py==3.1.1
 audioop-lts==0.2.2; python_version>='3.13'
