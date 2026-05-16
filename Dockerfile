@@ -38,7 +38,7 @@ ENV GIT_VERSION="1:2.47.3-0+deb13u1"
 # renovate: suite=trixie depName=gettext
 ENV GETTEXT_VERSION="0.23.1-2"
 # renovate: suite=trixie depName=nano
-ENV NANO_VERSION="8.4-1"
+ENV NANO_VERSION="8.4-1+deb13u1"
 
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
