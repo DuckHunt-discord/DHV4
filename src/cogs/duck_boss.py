@@ -83,7 +83,8 @@ class DuckBoss(Cog):
                     [
                         "https://media.discordapp.net/attachments/795225915248214036/795404123443953705/boss_Calgeka.png",
                         "https://media.discordapp.net/attachments/795225915248214036/873971254888108092/boss_llama_Calgeka.png",
-                        "https://media.discordapp.net/attachments/795225915248214036/1104065301869502665/boss_Buddy.png"
+                        "https://media.discordapp.net/attachments/795225915248214036/1104065301869502665/boss_Buddy.png",
+                        "https://media.discordapp.net/attachments/795225915248214036/1516887743681269770/boss_pixel_Buddy.png"
                     ]
                 )
             )
@@ -146,6 +147,11 @@ class DuckBoss(Cog):
                     # Special case the buddy.
                     new_embed.set_image(
                         url="https://media.discordapp.net/attachments/795225915248214036/1104065302171504720/deadboss_Buddy.png"
+                    )
+                elif "boss_pixel_Buddy.png" in str(boss_message.embeds[0].image.url):
+                    # Special case the pixel buddy.
+                    new_embed.set_image(
+                        url="https://media.discordapp.net/attachments/795225915248214036/1516887744020742377/deadboss_pixel_Buddy.png"
                     )
                 else:
                     new_embed.set_image(
