@@ -10,7 +10,7 @@ discord.py==2.7.1
 tortoise-orm[accel]==0.25.4
 aerich==0.10.1
 asyncpg==0.31.0
-python-rapidjson==1.23
+python-rapidjson==1.24
 ciso8601==2.3.3
 #seam-carving
 Babel==2.18.0
