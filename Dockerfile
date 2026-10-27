@@ -1,4 +1,4 @@
-FROM python:3.15.1-trixie
+FROM python:3.15.2-trixie
 
 # ============================================================================
 # APT PACKAGE VERSION PINNING
